@@ -1,25 +1,58 @@
 #!/usr/bash
 sudo add-apt-repository ppa:jonathonf/vim
 sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo add-apt-repository ppa:jonathonf/python-2.7
+#sudo add-apt-repository ppa:jonathonf/python-2.7
 sudo add-apt-repository ppa:jonathonf/gcc
 
 
 sudo apt update
-sudo apt install vim gcc python python-dev clang clang-4.0 python-dev python3-dev
+#sudo apt install vim gcc python python-dev clang clang-4.0 python-dev python3-dev
+sudo apt install vim gcc python-dev clang python3-dev
+
 sudo apt install git
+#in case to install vim is not succeded 
 sudo apt-get -f install
 sudo apt install vim git
-sudo apt-get install build-essential cmake llvm-4.0 libclang-4.0-dev libboost-all-dev
+
+#sudo apt-get install build-essential cmake llvm-4.0 libclang-4.0-dev libboost-all-dev
+sudo apt install build-essential cmake python3-dev
+
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+
+if [ -f ~/.basrc ]; then
+  echo  "source `pwd`/_mybashrc" >>  ~/.bashrc
+else
+  echo  "source `pwd`/_mybashrc" >  ~/.bashrc
+fi
+
+if [ -f ~/.vimrc ]; then
+  echo  "source `pwd`/_myvimrc" >>  ~/.bashrc
+else
+  echo  "source `pwd`/_myvimrc" >  ~/.bashrc
+fi
+
 #get bundle plugin tools if internet is available
+#create the bundle folder
+if [ -d ~/.vim/bundle ]; then
+  echo  "There is bundle folder, backup it"
+  mv -f  ~/.vim/bundle ~/.vim/bundle_back
+else
+  echo  "Do not find the bundle folder"
+fi
+
 mkdir -p ~/.vim/bundle/
 cd ~/.vim/bundle/
+
 git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
+
+vim +PluginInstall +qall
 #gvim
 #vim
-vim +PluginInstall +qall
 #:PluginInstall
+
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer
 #"or
