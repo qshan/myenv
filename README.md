@@ -3,5 +3,6 @@
 
 #Linux version is lubuntu 16.4
 
-source ./set_ctags_env
-source ./set_vim_env
+source ./set_ctags_env;
+
+source ./set_vim_env;
