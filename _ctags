@@ -1,3 +1,4 @@
+# Basic options
 --exclude=.SOS
 --exclude=.git
 --exclude=nobackup
@@ -6,9 +7,11 @@
 --exclude=*.log
 --exclude=*.swp
 
+# Define and mapping for sv
 --langdef=systemverilog
 --langmap=systemverilog:.v.vg.sv.svh.svi.tv.vinc
-
+--systemverilog-kinds=+ctfmpied
+# Regex for sv
 --regex-systemverilog=/^\s*(\b(static|local|virtual|protected)\b)*\s*\bclass\b\s*(\b\w+\b)/\3/c,class/
 --regex-systemverilog=/^\s*(\b(static|local|virtual|protected)\b)*\s*\btask\b\s*(\b(static|automatic)\b)?\s*(\w+::)?\s*(\b\w+\b)/\6/t,task/
 --regex-systemverilog=/^\s*(\b(static|local|virtual|protected)\b)*\s*\bfunction\b\s*(\b(\w+)\b)?\s*(\w+::)?\s*(\b\w+\b)/\6/f,function/
@@ -33,5 +36,5 @@
 --regex-systemverilog=/^[ \t]*typedef[ \t]+.*[ \t]+([a-zA-Z_0-9]+)[ \t]*;/\1/e,typedef/
 --regex-systemverilog=/^[ \t]*`define[ \t]*([a-zA-Z_0-9]+)/`\1/d,define/
 --regex-systemverilog=/^[ \t]*`SVT_REPLACEABLE_DEFINE\([ \t]*([a-zA-Z_0-9]+),.*\)/`\1/d,define/
---systemverilog-kinds=+ctfmpied
---languages=+systemverilog,C,C++,HTML,Lisp,Make,Matlab,Perl,Python,Sh,Tex
+
+#--languages=+systemverilog,C,C++,HTML,Lisp,Make,Matlab,Perl,Python,Sh,Tex
