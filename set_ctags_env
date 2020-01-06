@@ -1,0 +1,15 @@
+#!/usr/bash
+
+
+sudo apt update
+sudo apt install ctags
+
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+
+if [ -f ~/.ctags ]; then
+  cat _ctags >>  ~/.bashrc
+else
+  ln -s `pwd`/_ctags ~/.ctags 
+fi
