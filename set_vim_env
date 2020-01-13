@@ -21,11 +21,6 @@ sudo apt install build-essential cmake python3-dev
 #    . ~/_mybashrc
 #fi
 
-if [ -f ~/.basrc ]; then
-  echo  "source `pwd`/_mybashrc" >>  ~/.bashrc
-else
-  echo  "source `pwd`/_mybashrc" >  ~/.bashrc
-fi
 
 if [ -f ~/.vimrc ]; then
   echo  "source `pwd`/_myvimrc" >>  ~/.vimrc

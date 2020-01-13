@@ -1,12 +1,16 @@
+"save these contents as _myvimrc file
+"source _myvimrc
 "# -----install guidance--Start-------------------
 "#udpate vim python gcc
-"sudo add-apt-repository ppa:jonathonf/vim 
+"sudo add-apt-repository ppa:jonathonf/vim
 "sudo add-apt-repository ppa:jonathonf/python-3.6
 "sudo add-apt-repository ppa:jonathonf/python-2.7
 "sudo add-apt-repository ppa:jonathonf/gcc
 "
-"sudo apt update 
+"sudo apt update
 "sudo apt install vim git
+"""""sudo apt-get -f install 
+"""""sudo apt-get install git
 "sudo apt-get install build-essential cmake llvm-4.0 clang-4.0 libclang-4.0-dev libboost-all-dev clang python-dev python3-dev
 "#get bundle plugin tools if internet is available
 "mkdir -p ~/.vim/bundle/
@@ -14,9 +18,9 @@
 "git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "#git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
 "gvim
-"vim + PluginInstall + qall
+"vim +PluginInstall +qall
 ":PluginInstall
-"cd ~/.vim/bundle/YouCompleteMe 
+"cd ~/.vim/bundle/YouCompleteMe
 "./install.py --clang-completer
 "or
 "./install.py --all
@@ -30,19 +34,19 @@
 
 " -----good part--Start-------------------
 set number
-" set nu     
-"set nonumber     
-" set nonu
+"set nu
+"set nonumber
+"set nonu
 set laststatus=2     "0->never;1->only when at least 2 windows;2->always
 "
 set ruler
-"set ru     
+"set ru
 "set noruler
 "
 set cursorline
 "
-"set cul     
-"set nocursorline     
+"set cul
+"set nocursorline
 "set nocul
 "
 set cursorcolumn
@@ -58,7 +62,7 @@ set wrap       "auto display line with a line break, but do not insert the line 
 set backspace=indent,eol,start
 "
 "set guifont size in gvim
-"you could resize with Ctl+Shift+-/+ in vim
+"you could resize with 'Ctl'-'Shift'-'+'/'Ctl'-'-' in vim
 "set guifont=Sans\ Bold\ 12
 set guifont=Monospace\ 16
 " set the color of text background
@@ -81,6 +85,7 @@ command! UpdateTags !ctags -R .
 "":! command_you_want_to_run    "run the shell command in VIM command
 
 set magic    "substitute magic
+"set nomagic
 "set smagic    "substitute magic
 "set sm
 
@@ -99,8 +104,9 @@ set expandtab       "replae the tab with blankspace
 set tabstop=2         "set to show the tab with 2 blankspace; identify how many space as a TAB
 set softtabstop=2    " how many space to show for a tab in Insert mode
 ":retab 2                  "command, to replace the tab as 2 space in current file
+"ret 2
 "set textwidth=30 "breaking the line if the count is over 30 in this line
-"set linebreak 
+"set linebreak
 "
 "set smartcase  "- use case if any caps used 	Override the 'ignorecase' option if the search pattern contains upper case characters.
 "set scs
@@ -148,7 +154,6 @@ set showmode
 set showcmd
 "
 filetype plugin indent on
-
 "
 syntax enable     "keep your current color settings
 "syntax on     "overrule your settings with the defaults
@@ -180,20 +185,23 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " copy following words into bot of your .vimrc file
 " vundle set before call plugin list
-set nocompatible              " be iMproved, required 
-filetype off                  " required 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 " set the runtimepath to include Vundle and initialize rtp=runtimepath
-"set runtimepath+=~/.vim/syntax 
+"set runtimepath+=~/.vim/syntax
+
 set rtp+=~/.vim/bundle/Vundle.vim
 
 " vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 "help file: https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt
-"http://vim-scripts.org/vim/scripts.html 
+"http://vim-scripts.org/vim/scripts.html
+
 " call vundle from ~/.vim/bundle
 call vundle#begin()
 " 另一种选择, 指定一个vundle安装插件的路径
-"call vundle#begin('~/some/path/here') 
-Plugin 'VundleVim/Vundle.vim' 
+"call vundle#begin('~/some/path/here')
+Plugin 'VundleVim/Vundle.vim'
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'tomasr/molokai'
 "Plugin 'vim-scripts/phd'
@@ -211,11 +219,13 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'vim-scripts/DrawIt'
-"Plugin 'SirVer/ultisnips' 
+"Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
-"""recompile the YouCompleteMe for local Env"re-compile lib for YCM
+"""recompile the YouCompleteMe for local Env
+"re-compile lib for YCM
 ""sudo apt install python2.7-dev
-"""cd ~/.vim/bundle/YouCompleteMe """./install.py --clang-completer
+"""cd ~/.vim/bundle/YouCompleteMe
+"""./install.py --clang-completer
 """or
 """./install.py --all
 """ will download clang and other pludgin automatically
@@ -228,7 +238,7 @@ Plugin 'Valloric/YouCompleteMe'
 "augroup END
 
 "tabnine-vim is good complete plugin based on youcomplete. It is better to use on Windows. YCM is not good for windows install
-"Plugin 'zxqfl/tabnine-vim' 
+"Plugin 'zxqfl/tabnine-vim'
 "Plugin 'derekwyatt/vim-protodef'
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'fholgado/minibufexpl.vim'
@@ -257,8 +267,8 @@ Plugin 'vhda/verilog_systemverilog.vim'
 " 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
 """Plugin 'ascenator/L9', {'name': 'newL9'}
 " 你的所有插件需要在下面这行之前
-" 插件列表结束  
-call vundle#end()            "required 
+" 插件列表结束
+call vundle#end()            "required
 filetype plugin indent on    "required 加载vim自带和插件相应的语法和文件类型相关脚本
 " 忽视插件改变缩进,可以使用以下替代:
 "filetype plugin on
@@ -306,6 +316,14 @@ let b:match_words =  '<:>,' .
 "       \  '<fshan_start:fshan_end>'
 "" -----match jump part--end------------------
 "" -----personal comand--Start-------------------
+"""vim +{command} filename
+"""vim -c {command} filename
+"""vim --cmd {command}
+"""vim -t tag_name
+"""vim +{command}
+"""vim +"source Session_You_Need_call.vim"
+"""vim -d filename1 filename2
+"""vim -do filename1 filename2
 " isf     =     isfname
 " isk     =     iskeyword
 command! MyCdCurrentFilePath cd %:p:h
@@ -314,6 +332,12 @@ command! MyDotInIskeywordRemove  set iskeyword-=.
 command! MySaveWithSudo :w !sudo tee %
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
+"""open and edit the syntax file in your environment
+":e $VIMRUNTIME/syntax/tcl.vim
+""" then you could add your keywords in this file
+"""set the syntax style by manual
+""set syntax=tcl
+""set syn=tcl
 """ display current working directory
 " :pwd
 """ display the file name with full path
@@ -332,14 +356,14 @@ command! MyCdFilePath cd %:p:h
 " :let
 " :set all
 ":set            - shows vars different from defaults
-":set all        - shows all values 
+":set all        - shows all values
 ":set foo?       - shows the value of foo
 ":set foo+=opt   - add opt to the value w/o changing others
 ":set foo-=opt   - remove opt from value
 ":set foo&       - reset foo to default value
 ":setlocal foo   - only the current buffer
-"""Search and replace...
-"""search whole file and replace
+"""Search and replace... (substitute)
+"""search whole file and replace, (substitute)
 ":%s/search_for_this/replace_with_this/
 ":%s/search_for_this/replace_with_this/g
 """ confirm each replace
@@ -368,59 +392,63 @@ command! MyCdFilePath cd %:p:h
 ":b 2
 "registers     - show named registers and what's in them
 ":reg
-"""registers     - paste what's in register "5 ""5p
+"""registers     - paste what's in register "5
+"   '"5p'
 """vim tips and tricks https://www.cs.swarthmore.edu/oldhelp/vim/home.html
 """----------------------------Auto completion----------------------------
 """Completion command
 """COMPLETING SPECIFIC ITEMS
-"""	CTRL-X CTRL-F file names
-"""	CTRL-X CTRL-L whole lines
-"""	CTRL-X CTRL-D macro definitions (also in included files)
-"""	CTRL-X CTRL-I current and included files
-"""	CTRL-X CTRL-K   words from a dictionary
-"""	CTRL-X CTRL-T   words from a thesaurus
-"""	CTRL-X CTRL-] tags
-"""	CTRL-X CTRL-V Vim command line
-""" CTRL-X CTRL-O Omni compeletion
-"""	CTRL-X CTRL-J   Search keywords to complete in forwad directions
+"""  CTRL-X    CTRL-F    "file names
+"""  CTRL-X    CTRL-L    "whole lines
+"""  CTRL-X    CTRL-D    "macro definitions (also in included files)
+"""  CTRL-X    CTRL-I    "current and included files
+"""  CTRL-X    CTRL-K    "words from a dictionary
+"""  CTRL-X    CTRL-T    "words from a thesaurus
+"""  CTRL-X    CTRL-]    "tags
+"""  CTRL-X    CTRL-V    "Vim command line
+"""  CTRL-X    CTRL-O    "Omni compeletion
+"""  CTRL-X    CTRL-J    "Search keywords to complete in forwad directions
 
-""" CTRL-N         find the next match, 
-""" CTRL-P         find the previous match.
-""" CTRL-Y         select current selection 
-""" CTRL-E         quit the selection
+"""  CTRL-N              "find the next match, 
+"""  CTRL-P              "find the previous match.
+"""  CTRL-Y              "select current selection 
+"""  CTRL-E              "quit the selection
 
 """----------------------------Multi-window----------------------------
 """Ctl + W + s
 """:sp [filename]
-"""Ctl + W + c     close current window
-"""Ctl + W + o     keep current window, close others
-"""Ctl + W + =     make all window have same hight
-"""Ctl + W + _     make current window have the max hight
-"""Ctl + W + |     make current window have the max width
-"""Ctl + W + ]     Splite current window, and jump to the cursor
+"""Ctl-W + c              "close current window
+"""Ctl-W + o              "keep current window, close others
+"""Ctl-W + =              "make all window have same hight
+"""Ctl-W + _              "make current window have the max hight
+"""Ctl-W + |              "make current window have the max width
+"""Ctl-W + ]              "Splite current window, and jump to the cursor
 """:vp [filename]
-"""Ctrl + w + h
-"""Ctrl + w + h   向左移动窗口
-"""Ctrl + w + j   向下移动窗口
-"""Ctrl + w + j   向上移动窗口
-"""Ctrl + w + l   向右移动窗口
+"""Ctrl-w + h             "向左移动窗口
+"""Ctrl-w + j             "向下移动窗口
+"""Ctrl-w + j             "向上移动窗口
+"""Ctrl-w + l             "向右移动窗口
 
-"""Ctrl + w + w   这个命令会在所有窗口中循环移动
-"""Ctrl + w + t   移动到最左上角的窗口
-""""trl + w + b   移动到最右下角的窗口
-"""Ctrl + w + p   移动到前一个访问的窗口
-""":resize num    将窗口的高度调整为num行
+"""Ctrl-w + w             "这个命令会在所有窗口中循环移动
+"""Ctrl-w + t             "移动到最左上角的窗口
+"""Ctrl-w + b             "移动到最右下角的窗口
+"""Ctrl-w + p             "移动到前一个访问的窗口
+""":resize num            "将窗口的高度调整为num行
 """:res num
 """:vertical resize num   "将窗口的宽度调整为num列
 """:vertical res num      "将窗口的宽度调整为num列
 """:resize+num            "将窗口的高度增加num行
-"""CTL+W + -              "减小窗口
-"""CTL+W + +              "增加窗口
-"""CTL+W + num -          "减小窗口num行
-"""CTL+W + num +          "增加窗口num行
+"""CTL-W + -              "减小窗口
+"""CTL-W + +              "增加窗口
+"""CTL-W + num -          "减小窗口num行
+"""CTL-W + num +          "增加窗口num行
 """:resize-num            "将窗口的高度减少num行
 """:vertical resize+num   "将窗口的宽度增加num列
 """:vertical resize-num   "将窗口的宽度减少num列
+
+"""q + :                  "list the command history list
+"""q + /                  "list the search command history list
+"""q + ?                  "list the search command history list
 """"--------------------Netrw - embeded plugin--------------------
 """:Explore
 """:E
@@ -431,11 +459,13 @@ command! MyCdFilePath cd %:p:h
 "let g:netrw_sort_by
 "let g:netrw_sort_direction = 'reverse'
 """"--------------------Session     -------------------
-"mksession                "default is Session.vim
+"mksession                            "default is Session.vim
 "mksession session_name_you_input     "default is Session.vim
 "source Session.vim
+"vim +"source Session_You_Need_Call.vim"
 """"--------------------Binary edit--------------------
-"set binary               "vim -b filename_you_edit
+"vim -b filename_you_edit
+"set binary     
 """set bin
 """set nobinary
 """"----------------------------------------
@@ -443,6 +473,6 @@ command! MyCdFilePath cd %:p:h
 """""iskeyword isk
 """""showfulltag sft 
 """""noshowfulltag nosft
-""""":set wildmode=longest,list 
-" -----popular comand--End-------------------
+""""":set wildmode=longest,list
 
+" -----popular comand--End-------------------

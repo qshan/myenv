@@ -15,6 +15,7 @@ alias grep='grep --color=auto'
 
 alias la='ls -alh'
 
+###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
 alias ctags_R='ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_R_Python="ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"

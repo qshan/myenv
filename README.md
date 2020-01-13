@@ -12,4 +12,6 @@ source ./set_ctags_env;
 
 source ./set_vim_env;
 
+source ./set_bash_env;
+
 source ./get_install_chrome;
