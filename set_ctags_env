@@ -9,6 +9,7 @@ sudo apt install ctags
 #fi
 
 if [ -f ~/.ctags ]; then
+  cat "#add `pwd`/_ctags file contents"  >>  ~/.bashrc
   cat _ctags >>  ~/.bashrc
 else
   ln -s `pwd`/_ctags ~/.ctags 
