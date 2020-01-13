@@ -62,7 +62,7 @@ set wrap       "auto display line with a line break, but do not insert the line 
 set backspace=indent,eol,start
 "
 "set guifont size in gvim
-"you could resize with 'Ctl'-'Shift'-'+'/'Ctl'-'-' in vim
+"you could resize with Ctl-Shift-'+' / Ctl-'-' in vim
 "set guifont=Sans\ Bold\ 12
 set guifont=Monospace\ 16
 " set the color of text background
@@ -74,6 +74,7 @@ colorscheme desert
 "highlight <-> hi
 highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi MatchParen ctermbg=DarkRed guibg=lightblue
+"
 ""highlight  the user defined keywords
 syntax keyword TodoFrankShan TODO todo Todo DSF_IP Error: Error-
 "highlight link TodoFrankShan Todo
@@ -335,6 +336,7 @@ command! MySaveWithSudo :w !sudo tee %
 """open and edit the syntax file in your environment
 ":e $VIMRUNTIME/syntax/tcl.vim
 """ then you could add your keywords in this file
+"
 """set the syntax style by manual
 ""set syntax=tcl
 ""set syn=tcl
