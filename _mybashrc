@@ -20,3 +20,7 @@ alias la='ls -alh'
 alias ctags_R='ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_R_Python="ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
 alias ctags_R_SV="ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
+
+#sudo apt install openjdk-8-jdk
+export BrissInstallPath='~/data/tools/briss/briss-0.9'
+alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar"
