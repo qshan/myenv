@@ -10,8 +10,10 @@ echo "Calling _mybashrc file setting"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-#for lbuntu
-alias openFileBroswer='pcmanfm'
+#for lubuntu
+alias openFileBroswer='pcmanfm &'
+#for ubuntu
+#alias openFileBroswer='nautilus &'
 
 
 alias la='ls -alh'
