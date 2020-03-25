@@ -2,6 +2,8 @@
 "source _myvimrc
 "# -----install guidance--Start-------------------
 "#udpate vim python gcc
+"#fshan
+
 "sudo add-apt-repository ppa:jonathonf/vim
 "sudo add-apt-repository ppa:jonathonf/python-3.6
 "sudo add-apt-repository ppa:jonathonf/python-2.7
@@ -27,8 +29,7 @@
 " will download clang and other pludgin automatically
 " -----install guidance--End-------------------
 
-"good web: 
-"https://blog.csdn.net/zhangpower1993/article/details/52184581
+"good web: https://blog.csdn.net/zhangpower1993/article/details/52184581
 "good web: https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt
 "good web: https://www.cnblogs.com/aaronLinux/p/6798898.html
 
@@ -62,7 +63,7 @@ set wrap       "auto display line with a line break, but do not insert the line 
 set backspace=indent,eol,start
 "
 "set guifont size in gvim
-"you could resize with Ctl-Shift-'+' / Ctl-'-' in vim
+"you could resize with Ctl-Shift-'+' | Ctl-'-' in vim
 "set guifont=Sans\ Bold\ 12
 set guifont=Monospace\ 16
 " set the color of text background
@@ -85,7 +86,8 @@ highlight link TodoFrankShan vimTodo
 command! UpdateTags !ctags -R .
 "":! command_you_want_to_run    "run the shell command in VIM command
 
-set magic    "substitute magic
+set magic
+"substitute magic
 "set nomagic
 "set smagic    "substitute magic
 "set sm
@@ -147,7 +149,10 @@ set list
 "
 set showmatch
 " Highlight matching pairs of brackets. Use the '%' character to jump between them.
+"set mps+=<:>
 set matchpairs+=<:>
+:au FileType c,cpp,java set mps+==:;
+"":autocmd FileType c,cpp,java set mps+==:;
 "set sm
 set mouse=a
 " Display options
@@ -171,6 +176,20 @@ set nofoldenable
 set foldmethod=syntax
 set foldlevel=1
 "
+"set spell
+"set spell spelllang=en_us
+"""""set nospell
+"setlocal spell spelllang=en_us
+"]s    """""To move to a next misspelled word, 
+"[s    """""To move to a misspelled word, but search backwards
+"]S    """""To move to a next word, but only stop at bad words, not at rare words or words for another region
+"[S    """""To move to a Bad word, but search backwards
+"z=    """""if I highlight autocompletion and then use z= to see recommended list details, select the item you need
+"zg    """"""Use the zg command and Vim will add it to its dictionary. 
+"zw    """"""Mark words as incorrect
+"zug   """""" Undo |zw| and |zg|, remove the word from the entry in 'spellfile'.  Count used as with |zg|.
+"zwg   """""" Undo |zw| and |zg|, remove the word from the entry in 'spellfile'.  Count used as with |zg|.
+"
 " Automatically save and load folds
 "autocmd BufEnter * lcd %:p:h
 " Automatically save and load folds
@@ -193,8 +212,8 @@ filetype off                  " required
 "set runtimepath+=~/.vim/syntax
 
 set rtp+=~/.vim/bundle/Vundle.vim
-
-" vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
+"
+"vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 "help file: https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt
 "http://vim-scripts.org/vim/scripts.html
 
@@ -237,7 +256,7 @@ Plugin 'Valloric/YouCompleteMe'
 "  au!
 "  au Filetype * set completeopt=menu,preview
 "augroup END
-
+"
 "tabnine-vim is good complete plugin based on youcomplete. It is better to use on Windows. YCM is not good for windows install
 "Plugin 'zxqfl/tabnine-vim'
 "Plugin 'derekwyatt/vim-protodef'
@@ -248,6 +267,7 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'suan/vim-instant-markdown'
 "Plugin 'lilydjwg/fcitx.vim'
+"""""Verilog/SystemVerilog Syntax and Omni-completion
 Plugin 'vhda/verilog_systemverilog.vim'
 "https://github.com/vhda/verilog_systemverilog.vim
 " 以下范例用来支持不同格式的插件安装.
@@ -283,7 +303,15 @@ filetype plugin indent on    "required 加载vim自带和插件相应的语法�
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 "" -----Vundle part--end------------------
+"filetype on
+"set the *.min file as the makefile type
+au BufReadPre,BufNewFilE *.min  set filetype=make
+"set *.min file with make syntax highlight
+:autocmd BufReadPost,FileReadPost *.min set syntax=make
 "
+"set the *.c,*.h file auto pattern
+:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr FOR
 "" -----match jump part--start------------------
 set showmatch
 "set sm
@@ -302,12 +330,9 @@ let b:match_words =  '<:>,' .
                     \ '\<task\>:\<endtask\>,' .
                     \ '\<case\>\|\<casex\>\|\<casez\>:\<endcase\>,' .
                     \ '\<class\>:\<endclass\>,' .
-                    \ '\<ifdef\>\|\<ifndef\>:\<endif\>,' .
-                    \ '\<ifdef\>\|\<ifndef\>:\<else\>:\<endif\>,' .
-                    \ '\<ifeq\>\|\<ifneq\>:\<endif\>,' .
-                    \ '\<ifeq\>\|\<ifneq\>:\<else\>:\<endif\>,' .
-                    \ '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#endif\>,' .
-                    \ '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#else\>:\<#endif\>,' .
+                    \ '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,' .
+                    \ 'ifdef\|ifndef\|ifeq\|ifneq:else:endif,' .
+                    \ '`ifdef\|`ifndef\|`if:`else:`endif,' .
                     \ '\<fshan_start\>:\<fshan_end\>'
 "
 "format of match_words:
@@ -325,6 +350,13 @@ let b:match_words =  '<:>,' .
 """vim +"source Session_You_Need_call.vim"
 """vim -d filename1 filename2
 """vim -do filename1 filename2
+""" dp     "diffput the different block different put
+""" do     "diffget the different block different obtain
+""" V to select the line or lines you need, and :diffput or :diffpuwill update the line or lines you selected to other side
+""" V to select the line or lines you need, and :diffget or :diffgwill update the line or lines you selected to current side
+""":diffu     "diffupdate
+""":diffthis     "enter diff mode with current open files, or difft
+""":diffoff     "exit from diff mode, or diffo
 " isf     =     isfname
 " isk     =     iskeyword
 command! MyCdCurrentFilePath cd %:p:h
@@ -340,6 +372,7 @@ command! MySaveWithSudo :w !sudo tee %
 """set the syntax style by manual
 ""set syntax=tcl
 ""set syn=tcl
+"""
 """ display current working directory
 " :pwd
 """ display the file name with full path
@@ -423,7 +456,11 @@ command! MyCdFilePath cd %:p:h
 """Ctl-W + o              "keep current window, close others
 """Ctl-W + =              "make all window have same hight
 """Ctl-W + _              "make current window have the max hight
+""":res _                 "make current window have the min hight
 """Ctl-W + |              "make current window have the max width
+"""Ctl-W + 1 + |          "make current window have the max width
+"""Ctl-W + n              "Creat a new split windows
+"""Ctl-W + vn             "Creat a new split windows
 """Ctl-W + ]              "Splite current window, and jump to the cursor
 """:vp [filename]
 """Ctrl-w + h             "向左移动窗口
@@ -467,7 +504,7 @@ command! MyCdFilePath cd %:p:h
 "vim +"source Session_You_Need_Call.vim"
 """"--------------------Binary edit--------------------
 "vim -b filename_you_edit
-"set binary     
+"set binary
 """set bin
 """set nobinary
 """"----------------------------------------
