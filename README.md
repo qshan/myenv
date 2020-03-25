@@ -17,5 +17,5 @@ source ./set_bash_env;
 source ./get_install_chrome;
 
 #command for git maintain
-# git commit -am "update bashrc description"
-# git push
+#git commit -am "update bashrc description"
+#git push
