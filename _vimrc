@@ -34,6 +34,7 @@
 "good web: https://www.cnblogs.com/aaronLinux/p/6798898.html
 
 " -----good part--Start-------------------
+set encoding=utf-8
 set number
 "set nu
 "set nonumber
@@ -269,13 +270,20 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin 'lilydjwg/fcitx.vim'
 """""Verilog/SystemVerilog Syntax and Omni-completion
 Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'Python-Syntax-Folding'
 "https://github.com/vhda/verilog_systemverilog.vim
+"the following example is used to show the installation of different plugin
 " 以下范例用来支持不同格式的插件安装.
+" please file the script of install plugin between vundle#begin and
+" vundle#end.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
+" the plugin on github
 " 格式为 Plugin '用户名/插件仓库名'
+" format: Plugin 'Username/PluginName'
 ""Plugin 'tpope/vim-fugitive'
 " 来自 http://vim-scripts.org/vim/scripts.html 的插件
+" The plugin from http://vim-scripts.org/vim/scripts.html 的插件
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
 """Plugin 'L9'
 " 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
