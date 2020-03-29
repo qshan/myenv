@@ -332,12 +332,12 @@ let b:match_words = '<:>,' .
 
 let b:match_words =  '<:>,' .
                     \ '\<if\>:\<else\>,' .
-                    \ 'begin:end,' . 'fork:join,' .
                     \ 'module:endmodule,' .
+                    \ 'begin:end,' . 'fork:join\|join_any\|join_none,' .
+                    \ 'class\>:endclass,' .
                     \ 'function:endfunction,' .
                     \ 'task:endtask,' .
                     \ 'case\|casex\|casez:endcase,' .
-                    \ 'class\>:endclass,' .
                     \ '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,' .
                     \ 'ifdef\|ifndef\|ifeq\|ifneq:else:endif,' .
                     \ '`ifdef\|`ifndef\|`if:`else:`endif,' .
