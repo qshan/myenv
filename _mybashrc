@@ -1,14 +1,16 @@
 #!/bin/bash
 
 #####exmaple of Calling this file, just add this part at the end of ~/.bashrc
-#if [ -f ~/data/_mybashrc ]; then
-#    . ~/data/_mybashrc
+#if [ -f ~/data/myenv/_mybashrc ]; then
+#    . ~/data/myenv/_mybashrc
 #fi
 #--------------------------------------------------
 
 echo "Calling _mybashrc file setting"
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias h='history'
 
 #for lubuntu
 alias openFileBroswer='pcmanfm &'
@@ -24,7 +26,22 @@ alias ctags_R='ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_R_Python="ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
 alias ctags_R_SV="ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
 
+export PATH=$PATH:/usr/local/lib
+
 #sudo apt install openjdk-8-jdk
 #if ['' eq `which java`]; then sudo apt install openjdk-8-jdk; fi;
 export BrissInstallPath='~/data/tools/briss/briss-0.9'
 alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar"
+
+#set format of shell header string
+alias set_full_path="export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+"
+#alias set_short_path="export PS1='[\u@\h_\w\$ '"
+alias set_short_path="export PS1='\[\033[01;32m\]\u@\h$ '"
+
+#\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$
+
+# \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ 
+
+##alias set_full_path="export PS1='\[\e]0;\u@\h:_\w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
+#alias set_short_path="export PS1='[\u@\h_\W]\$'"
