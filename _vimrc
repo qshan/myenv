@@ -330,6 +330,7 @@ let b:match_words = '<:>,' .
         \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
         \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 
+":au FileType c,cpp let b:match_words =  '<:>,' .
 let b:match_words =  '<:>,' .
                     \ '\<if\>:\<else\>,' .
                     \ 'module:endmodule,' .

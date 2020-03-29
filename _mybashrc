@@ -11,6 +11,7 @@ echo "Calling _mybashrc file setting"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias h='history'
+alias v='vim'
 
 #for lubuntu
 alias openFileBroswer='pcmanfm &'
