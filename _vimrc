@@ -70,7 +70,8 @@ set guifont=Monospace\ 16
 " set the color of text background
 set background=dark
 "color murphy
-colorscheme desert
+"colorscheme desert
+colorscheme industry
 "
 "highlight the keywords you need in vim
 "highlight <-> hi
@@ -311,6 +312,7 @@ filetype plugin indent on    "required 加载vim自带和插件相应的语法�
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 "" -----Vundle part--end------------------
+"
 "filetype on
 "set the *.min file as the makefile type
 au BufReadPre,BufNewFilE *.min  set filetype=make
@@ -320,29 +322,38 @@ au BufReadPre,BufNewFilE *.min  set filetype=make
 "set the *.c,*.h file auto pattern
 :autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
 :autocmd BufLeave  *.c,*.h     unabbr FOR
+
 "" -----match jump part--start------------------
+"packadd! matchit
 set showmatch
 "set sm
 "let b:match_ignorecase = 0
+"
 ".html file match jump
 let b:match_words = '<:>,' .
         \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
         \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
         \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
-
-":au FileType c,cpp let b:match_words =  '<:>,' .
-let b:match_words =  '<:>,' .
-                    \ '\<if\>:\<else\>,' .
-                    \ 'module:endmodule,' .
-                    \ 'begin:end,' . 'fork:join\|join_any\|join_none,' .
-                    \ 'class\>:endclass,' .
-                    \ 'function:endfunction,' .
-                    \ 'task:endtask,' .
-                    \ 'case\|casex\|casez:endcase,' .
-                    \ '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,' .
-                    \ 'ifdef\|ifndef\|ifeq\|ifneq:else:endif,' .
-                    \ '`ifdef\|`ifndef\|`if:`else:`endif,' .
-                    \ '\<fshan_start\>:\<fshan_end\>'
+"
+"filetype on
+"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
+"
+:let b:match_words .=  '<:>,'
+                    \ . 'module:endmodule,'
+                    \ . 'begin:end,'
+                    \ . 'fork:join\|join_any\|join_none,'
+                    \ . 'class:endclass,'
+                    \ . 'function:endfunction,'
+                    \ . '\<task\>:\<endtask\>,'
+                    \ . 'case\|casex\|casez:endcase,'
+                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
+                    \ . 'ifdef\|ifndef\|ifeq\|ifneq:else:endif,'
+                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
+                    \ . '\<if\>:\<else\>,'
+                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
+                    \ . 'fshan_start:fshan_end,'
+                    \ . '\<fshan_start\>:\<fshan_end\>'
 "
 "format of match_words:
 "         ='<:>,' .
