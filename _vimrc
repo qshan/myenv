@@ -355,6 +355,10 @@ let b:match_words = '<:>,' .
                     \ . 'fshan_start:fshan_end,'
                     \ . '\<fshan_start\>:\<fshan_end\>'
 "
+:autocmd FileType c,cpp :let b:match_words .=  'if:else,'
+                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
+                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
+"
 "format of match_words:
 "         ='<:>,' .
 "       \  '<:>,' .
