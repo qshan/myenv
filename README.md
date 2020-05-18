@@ -5,8 +5,9 @@
 
 #you could run "source README.md to let this script run"
 
-sudo apt update
-sudo apt install git
+sudo apt update;
+
+sudo apt install git;
 
 git clone --recursive https://github.com/qshan/myenv.git
 
