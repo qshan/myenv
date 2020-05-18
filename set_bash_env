@@ -1,0 +1,16 @@
+#!/usr/bash
+
+
+
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+
+if [ -f ~/.basrc ]; then
+  echo  "source `pwd`/_mybashrc" >>  ~/.bashrc
+else
+#  echo  "source `pwd`/_mybashrc" >  ~/.bashrc
+  echo  "source `pwd`/_mybashrc" >>  ~/.bashrc
+fi
+
+
