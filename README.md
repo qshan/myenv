@@ -3,6 +3,8 @@
 
 #Linux version is lubuntu 16.4
 
+#you could run "source README.md to let this script run"
+
 sudo apt update
 sudo apt install git
 
@@ -19,6 +21,7 @@ source ./get_install_chrome;
 #command for git maintain
 
 #git git add New_File_With_Path
+
 #git commit -am "update bashrc description"
 
 #git push
