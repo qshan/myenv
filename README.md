@@ -21,6 +21,10 @@ source ./get_install_chrome;
 
 #command for git maintain
 
+#git fetch
+
+#get checkout README.md
+
 #git add New_File_With_Path
 
 #git commit -am "update bashrc description"
