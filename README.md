@@ -21,9 +21,11 @@ source ./get_install_chrome;
 
 #command for git maintain
 
-#git fetch
+#git fetch origin
 
-#get checkout README.md
+#git checkout README.md
+
+#git pull
 
 #git add New_File_With_Path
 
