@@ -6,9 +6,13 @@
 #fi
 #--------------------------------------------------
 
+setenv timefshan "`date +%Y-%m-%d-%H%M`"
+
 echo "Calling _mybashrc file setting"
 
 alias ls='ls --color=auto'
+alias la='ls -alh'
+alias lt='ls -ctl'
 alias grep='grep --color=auto'
 alias h='history'
 alias v='vim'
@@ -19,7 +23,6 @@ alias openFileBroswer='pcmanfm &'
 #alias openFileBroswer='nautilus &'
 
 
-alias la='ls -alh'
 
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
@@ -34,7 +37,7 @@ export PATH=$PATH:/usr/local/lib
 export BrissInstallPath='~/data/tools/briss/briss-0.9'
 alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar"
 
-#set format of shell header string
+#set format of shell header string for bash
 #alias set_full_path="export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
 alias set_full_path="export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$\[\e[m\]'"
 #alias set_short_path="export PS1='[\u@\h_\w\$ '"
