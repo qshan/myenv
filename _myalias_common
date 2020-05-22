@@ -1,2 +1,26 @@
 
 #this alias could be call by bashrc and cshrc
+#ln -s _myalias_common ~/.myalias_common
+
+
+
+
+#alias setting here for bash format
+alias ls='ls --color=auto'
+alias la='ls -alh'
+alias lt='ls -ctl'
+alias grep='grep --color=auto'
+alias h='history'
+alias v='vim'
+
+#for lubuntu
+alias openFileBroswer='pcmanfm &'
+#for ubuntu
+#alias openFileBroswer='nautilus &'
+###############alias for tags generation
+#
+#alias ctags='the_ctags_in_your_env'
+alias ctags_R='ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
+alias ctags_R_Python="ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
+alias ctags_R_SV="ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
+
