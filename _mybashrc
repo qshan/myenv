@@ -26,6 +26,7 @@ alias openFileBroswer='pcmanfm &'
 #for ubuntu
 #alias openFileBroswer='nautilus &'
 
+alias openPdf='evince '
 
 
 ###############alias for tags generation
