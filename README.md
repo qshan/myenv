@@ -21,6 +21,10 @@ source ./get_install_chrome;
 
 #command for git maintain
 
+#git remote
+
+#git branch
+
 #git fetch origin
 
 #git checkout README.md
