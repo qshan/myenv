@@ -20,6 +20,9 @@ alias lt='ls -ctl'
 alias grep='grep --color=auto'
 alias h='history'
 alias v='vim'
+alias lnsTf='ln -sTf'
+alias lnsnf='ln -snf'
+alias grep-rni='grep -rni'
 
 #for lubuntu
 alias openFileBroswer='pcmanfm &'
@@ -41,7 +44,7 @@ export PATH=$PATH:/usr/local/lib
 #sudo apt install openjdk-8-jdk
 #if ['' eq `which java`]; then sudo apt install openjdk-8-jdk; fi;
 export BrissInstallPath='~/data/tools/briss/briss-0.9'
-alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar"
+alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar &"
 
 #set format of shell header string for bash
 #alias set_full_path="export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
