@@ -21,6 +21,8 @@ source ./get_install_chrome;
 
 #command for git maintain
 
+#git clone --recursive git@github.com:qshan/myenv.git
+
 #git remote
 
 #git branch
