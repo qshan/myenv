@@ -1,0 +1,7 @@
+
+#it is just study info for myself
+
+###verification###
+#uvmprimer example list
+git clone --recursive git@github.com:qshan/uvmprimer.git
+git clone --recrusive git@github.com:qshan/UVM-1.git
