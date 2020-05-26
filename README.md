@@ -31,6 +31,8 @@ source ./get_install_chrome;
 
 #git pull
 
+#git pull FileNameWithPath
+
 #git add New_File_With_Path
 
 #git commit -am "update bashrc description"
