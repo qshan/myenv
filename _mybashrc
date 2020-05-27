@@ -40,6 +40,8 @@ alias openPdf='evince '
 alias ctags_R='ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_R_Python="ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
 alias ctags_R_SV="ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
+#you could try with filelist input style, like
+#ctags_R -L filelist_name
 
 export PATH=$PATH:/usr/local/lib
 
