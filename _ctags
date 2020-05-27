@@ -1,4 +1,5 @@
 # Basic options
+# [TODO]add the ignore file type here
 --exclude=.SOS
 --exclude=.git
 --exclude=nobackup
@@ -7,6 +8,14 @@
 --exclude=*.log
 --exclude=*.swp
 
+#[TODO]add more file extention name in ctags filetype
+#you could check the details supported in shell env
+#ctags --list-maps
+--langmap=make:+.min
+
+#[TODO]add the new filetype in env here
+#ctags --list-languages
+#ctags --list-kinds
 # Define and mapping for sv
 --langdef=systemverilog
 --langmap=systemverilog:.v.vg.sv.svh.svi.tv.vinc
