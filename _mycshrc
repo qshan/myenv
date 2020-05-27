@@ -20,10 +20,15 @@ setenv timefshan "`date +%Y-%m-%d-%H%M`"
 #endif
 
 #alias setting here
-alias ls 'ls --color=auto'
+alias ls '\ls --color=auto'
 alias la 'ls -alh'
 alias lt 'ls -ctl'
-alias grep 'grep --color=auto'
+alias grep '\grep --color=auto'
+alias grep-rni '\grep --color=auto -rni'
+alias greprni' \grep --color=auto -rni'
+alias findL '\find -L'
+alias lnsTf 'ln -sTf'
+alias lnsnf 'ln -snf'
 alias h 'history'
 alias v 'vim'
 
