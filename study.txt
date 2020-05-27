@@ -5,3 +5,5 @@
 #uvmprimer example list
 git clone --recursive git@github.com:qshan/uvmprimer.git
 git clone --recrusive git@github.com:qshan/UVM-1.git
+
+#https://verificationacademy.com/topics
