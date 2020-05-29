@@ -23,6 +23,8 @@ alias greprni'=\grep --color=auto -rni'
 alias findL='\find -L'
 alias lnsTf='ln -sTf'
 alias lnsnf='ln -snf'
+alias chmod+R='chmod -R a+r'
+alias chmod-R='chmod -R a-r'
 alias h='history'
 alias v='vim'
 
