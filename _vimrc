@@ -389,6 +389,17 @@ command! MyDotInIskeywordRemove  set iskeyword-=.
 command! MySaveWithSudo :w !sudo tee %
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
+"""----------------------------basic command to move cursor in comand mode----------------------------
+"           k
+"      h         l
+"           j
+"e   "move cursor to end of words
+"b   "move cursor to start of words
+"w   "move cursor to start of next words
+"w   "move cursor to start of the line, (no blank part)
+"0   "move cursor to start of the line
+"$   "move cursor to end of the line
+"
 """open and edit the syntax file in your environment
 ":e $VIMRUNTIME/syntax/tcl.vim
 """ then you could add your keywords in this file
@@ -435,6 +446,8 @@ command! MyCdFilePath cd %:p:h
 ":set foldmethod=syntax
 """ Folding, open
 "zo
+""" Folding, open all in this folding
+"zA
 """ Folding, close
 "zc
 """ delete the words in '' 删除单引号中的文字
@@ -445,6 +458,10 @@ command! MyCdFilePath cd %:p:h
 "da’
 """ delete the words in "" and "" 删除单引号以及其中的文字
 "da”
+""" change mode, delete the words and into insert mode
+"cw”
+""" change mode, delete to end of line and into insert mode
+"c$”
 "buffer - show current buffers
 ":ls
 """buffer - open buffer #2 in this window
@@ -457,20 +474,20 @@ command! MyCdFilePath cd %:p:h
 """----------------------------Auto completion----------------------------
 """Completion command
 """COMPLETING SPECIFIC ITEMS
-"""  CTRL-X    CTRL-F    "file names
+"""  CTRL-X    CTRL-F    "#####file names
 """  CTRL-X    CTRL-L    "whole lines
 """  CTRL-X    CTRL-D    "macro definitions (also in included files)
 """  CTRL-X    CTRL-I    "current and included files
 """  CTRL-X    CTRL-K    "words from a dictionary
 """  CTRL-X    CTRL-T    "words from a thesaurus
-"""  CTRL-X    CTRL-]    "tags
+"""  CTRL-X    CTRL-]    "#####tags
 """  CTRL-X    CTRL-V    "Vim command line
 """  CTRL-X    CTRL-O    "Omni compeletion
 """  CTRL-X    CTRL-J    "Search keywords to complete in forwad directions
 
-"""  CTRL-N              "find the next match, 
+"""  CTRL-N              "#####find the next match, 
 """  CTRL-P              "find the previous match.
-"""  CTRL-Y              "select current selection 
+"""  CTRL-Y              "#####select current selection 
 """  CTRL-E              "quit the selection
 
 """----------------------------Multi-window----------------------------
