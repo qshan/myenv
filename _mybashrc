@@ -6,9 +6,10 @@
 #fi
 #--------------------------------------------------
 
+echo "Calling _mybashrc file setting"
+
 export timefshan="`date +%Y-%m-%d-%H%M`"
 
-echo "Calling _mybashrc file setting"
 
 #if [ -f ~/.myalias_common ]; then
 #  source ~/.myalias_common
@@ -25,6 +26,7 @@ alias lnsTf='ln -sTf'
 alias lnsnf='ln -snf'
 alias chmod+R='chmod -R a+r'
 alias chmod-R='chmod -R a-r'
+alias chmodER='chmod -R a=r'
 alias h='history'
 alias v='vim'
 
