@@ -67,6 +67,7 @@ set backspace=indent,eol,start
 "you could resize with Ctl-Shift-'+' | Ctl-'-' in vim
 "set guifont=Sans\ Bold\ 12
 set guifont=Monospace\ 16
+
 " set the color of text background
 set background=dark
 "color murphy
@@ -136,8 +137,10 @@ set wildmode=longest,list
 "set completeopt+=longest
 "set completeopt+=menu
 "set wildmenu
-"syntax on
-"syntax enable
+"syntax enable  "This command switches on syntax highlighting: >
+"syntax on      "turn on the syntax highlight
+"syntax off     "turn off the syntax highlight
+"The `:syntax enable` command will keep your current color settings.  This allows using `:highlight` commands to set your preferred colors before or after using this command.  If you want Vim to overrule your settings with the defaults, use: >  :syntax on
 "set omnifunc=syntaxcomplete#Complete
 "autocmd FileType c set omnifunc=ccomplete#Complete
 "--------------------------------------
@@ -207,8 +210,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " copy following words into bot of your .vimrc file
 " vundle set before call plugin list
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible              " be iMproved, required for Vundle
+filetype off                  " required for Vundle
 
 " set the runtimepath to include Vundle and initialize rtp=runtimepath
 "set runtimepath+=~/.vim/syntax
@@ -220,7 +223,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 "http://vim-scripts.org/vim/scripts.html
 
 " call vundle from ~/.vim/bundle
-call vundle#begin()
+call vundle#begin()           "required for Vundle
 " 另一种选择, 指定一个vundle安装插件的路径
 "call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.vim'
@@ -298,8 +301,8 @@ Plugin 'Python-Syntax-Folding'
 """Plugin 'ascenator/L9', {'name': 'newL9'}
 " 你的所有插件需要在下面这行之前
 " 插件列表结束
-call vundle#end()            "required
-filetype plugin indent on    "required 加载vim自带和插件相应的语法和文件类型相关脚本
+call vundle#end()            "required for Vundle
+filetype plugin indent on    "required for Vundle 加载vim自带和插件相应的语法和文件类型相关脚本
 " 忽视插件改变缩进,可以使用以下替代:
 "filetype plugin on
 "
