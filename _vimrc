@@ -24,8 +24,10 @@
 ":PluginInstall
 "cd ~/.vim/bundle/YouCompleteMe
 "./install.py --clang-completer
+"python3 ./install.py --clang-completer
 "or
 "./install.py --all
+"python3 ./install.py --all
 " will download clang and other pludgin automatically
 " -----install guidance--End-------------------
 
