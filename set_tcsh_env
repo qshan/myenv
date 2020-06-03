@@ -1,0 +1,19 @@
+#!/usr/bash
+
+
+
+#bash format
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+
+#tcsh format
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#endif
+
+
+echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.cshrc
+echo " source `pwd`/_mycshrc" >>  ~/.cshrc
+echo "endif"  >> ~/.cshrc
+

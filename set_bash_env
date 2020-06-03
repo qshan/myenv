@@ -6,11 +6,15 @@
 #    . ~/_mybashrc
 #fi
 
-if [ -f ~/.basrc ]; then
-  echo  "source `pwd`/_mybashrc" >>  ~/.bashrc
-else
-#  echo  "source `pwd`/_mybashrc" >  ~/.bashrc
-  echo  "source `pwd`/_mybashrc" >>  ~/.bashrc
-fi
 
+#if [ -f ~/.basrc ]; then
+#  echo  " source `pwd`/_mybashrc" >>  ~/.bashrc
+#else
+##  echo  "source `pwd`/_mybashrc" >  ~/.bashrc
+#  echo  " source `pwd`/_mybashrc" >>  ~/.bashrc
+#fi
+
+echo "if [ -f `pwd`/_mybashrc ]; then"  >> ~/.bashrc
+echo " source `pwd`/_mybashrc" >>  ~/.bashrc
+echo "fi"  >> ~/.bashrc
 
