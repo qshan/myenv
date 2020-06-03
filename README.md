@@ -48,3 +48,5 @@ source ./get_install_chrome;
 #git commit -am "update bashrc description"
 
 #git push
+
+#git push origin master
