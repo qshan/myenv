@@ -50,3 +50,5 @@ source ./get_install_chrome;
 #git push
 
 #git push origin master
+
+#git push origin :
