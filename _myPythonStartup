@@ -1,0 +1,20 @@
+# python startup file
+import sys
+import readline
+import rlcompleter
+# need install pyreadline on windwos with following commands
+# pip install pyreadline
+import atexit
+import os
+
+# tab completion
+readline.parse_and_bind('tab: complete')
+# history file
+histfile = os.path.join(os.environ['HOMEPATH'], '.pythonhistory')
+try:
+    readline.read_history_file(histfile)
+except IOError:
+      pass
+atexit.register(readline.write_history_file, histfile)
+
+del os, histfile, readline, rlcompleter

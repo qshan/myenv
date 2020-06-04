@@ -1,0 +1,6 @@
+
+ln -sTf `pwd`/_myPythonStartup ~/.pythonstartup
+
+echo "if [ -f `pwd`/_mybashrc ]; then"  >> ~/.bashrc
+echo "export PYTHONSTARTUP='~/.pythonstartup'" >>  ~/.bashrc
+echo "fi"  >> ~/.bashrc
