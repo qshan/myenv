@@ -103,7 +103,7 @@ set cindent     "Enables automatic C program indenting.
 
 set autoindent     "Copy indent from current line when starting a new line
 "set ai     "autoindent
-set smartindent     "better than autoindent, use basic c syntax to indent
+"mask_for_sv_file"set smartindent     "better than autoindent, use basic c syntax to indent
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
 set expandtab       "replae the tab with blankspace 

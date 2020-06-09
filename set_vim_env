@@ -17,9 +17,15 @@ sudo apt install vim git
 #sudo apt-get install build-essential cmake llvm-4.0 libclang-4.0-dev libboost-all-dev
 sudo apt install build-essential cmake python3-dev
 
+#bash format
 #if [ -f ~/_mybashrc ]; then
 #    . ~/_mybashrc
 #fi
+
+#tcsh format
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#endif
 
 
 if [ -f ~/.vimrc ]; then
@@ -49,7 +55,10 @@ vim +PluginInstall +qall
 #:PluginInstall
 
 cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
+#./install.py --clang-completer
+
+python3 ./install.py --clang-completer
+
 #"or
 #"./install.py --all
 #" will download clang and other pludgin automatically
