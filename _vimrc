@@ -392,7 +392,7 @@ command! MyCdCurrentFilePath      cd %:p:h
 command! MyDotInIskeywordAdd      set iskeyword+=.
 command! MyDotInIskeywordRemove   set iskeyword-=.
 command! MySaveWithSudo           :w !sudo tee %
-command! MySearchCompileError     :/"incompatible\|redefined\|error:\|Error:"
+command! MySearchCompileError     :/"incompatible\|redefined\|error\:\|Error\:"
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
 """----------------------------basic command to move cursor in comand mode----------------------------
@@ -531,6 +531,14 @@ command! MyCdFilePath cd %:p:h
 """:resize-num            "将窗口的高度减少num行
 """:vertical resize+num   "将窗口的宽度增加num列
 """:vertical resize-num   "将窗口的宽度减少num列
+
+"""Jump commands
+"CTL-]                    "jump to tag linker define
+"CTL-t                    "jump back according the tag info
+"CTL-o                    "jump back the previous operation location
+"CTL-i                    "jump forward, Vs jump back
+"gf                       "go to file
+"gd                       "go to variable define
 
 """q + :                  "list the command history list
 """q + /                  "list the search command history list
