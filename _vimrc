@@ -388,10 +388,11 @@ let b:match_words = '<:>,' .
 """:diffoff     "exit from diff mode, or diffo
 " isf     =     isfname
 " isk     =     iskeyword
-command! MyCdCurrentFilePath cd %:p:h
-command! MyDotInIskeywordAdd  set iskeyword+=.
-command! MyDotInIskeywordRemove  set iskeyword-=.
-command! MySaveWithSudo :w !sudo tee %
+command! MyCdCurrentFilePath      cd %:p:h
+command! MyDotInIskeywordAdd      set iskeyword+=.
+command! MyDotInIskeywordRemove   set iskeyword-=.
+command! MySaveWithSudo           :w !sudo tee %
+command! MySearchCompileError     :/"incompatible\|redefined\|error:\|Error:"
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
 """----------------------------basic command to move cursor in comand mode----------------------------
