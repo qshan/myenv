@@ -82,7 +82,7 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
-syntax keyword TodoFrankShan TODO todo Todo DSF_IP Error: Error-
+syntax keyword TodoFrankShan TODO todo Todo fshan DSF_IP Error\: Error\-
 "highlight link TodoFrankShan Todo
 highlight link TodoFrankShan vimTodo
 "you could check the highlight details with hi or hightlight
@@ -393,6 +393,7 @@ command! MyDotInIskeywordAdd      set iskeyword+=.
 command! MyDotInIskeywordRemove   set iskeyword-=.
 command! MySaveWithSudo           :w !sudo tee %
 command! MySearchCompileError     :/"incompatible\|redefined\|error\:\|Error\:"
+command! MyRemoveBlankOnEnd       %s/\s*$//g
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
 """----------------------------basic command to move cursor in comand mode----------------------------

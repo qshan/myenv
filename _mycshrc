@@ -14,7 +14,8 @@ set autoexpand
 set history=100000
 
 setenv timefshan "`date +%Y-%m-%d-%H%M`"
-~/.myalias_common
+#~/.myalias_common
+#
 #if ( -f ~/.myalias_common ) then
 #  source ~/.myalias_common
 #endif
