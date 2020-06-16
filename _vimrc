@@ -184,6 +184,7 @@ set foldmethod=syntax
 set foldlevel=1
 "
 "set spell
+set spelllang=en_us
 "set spell spelllang=en_us
 """""set nospell
 "setlocal spell spelllang=en_us
@@ -394,6 +395,7 @@ command! MyDotInIskeywordRemove   set iskeyword-=.
 command! MySaveWithSudo           :w !sudo tee %
 command! MySearchCompileError     :/"incompatible\|redefined\|error\:\|Error\:"
 command! MyRemoveBlankOnEnd       %s/\s*$//g
+command! MySpellCheckEn           set spell spelllang=en_us
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
 """----------------------------basic command to move cursor in comand mode----------------------------

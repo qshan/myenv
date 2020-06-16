@@ -1,0 +1,24 @@
+#!bin/bash
+#install rust tool chain
+
+#https://rustup.rs/
+echo "install rust toolchain"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo "#$HOME/.cargo/bin" >> ~/.bashrc
+echo "add rust bin path in env path"
+export PATH=$PATH:$HOME/.cargo/bin
+echo "check the rust version"
+rustc -V
+
+#support enbedded
+echo "install Cortex-M0, M0+, and M1 (ARMv6-M architecture):"
+rustup target add thumbv6m-none-eabi
+echo "install Cortex-M3 (ARMv7-M architecture):"
+rustup target add thumbv7m-none-eabi
+ehco "install Cortex-M4 and M7 without hardware floating point (ARMv7E-M architecture):"
+rustup target add thumbv7em-none-eabi
+echo "install Cortex-M4F and M7F with hardware floating point (ARMv7E-M architecture):"
+rustup target add thumbv7em-none-eabihf
+echo "install cargo-binutils"
+cargo install cargo-binutils
+rustup component add llvm-tools-preview
