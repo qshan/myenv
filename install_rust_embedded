@@ -10,6 +10,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 echo "check the rust version"
 rustc -V
 
+#example web https://docs.rust-embedded.org/book/intro/index.html
 #support enbedded
 echo "install Cortex-M0, M0+, and M1 (ARMv6-M architecture):"
 rustup target add thumbv6m-none-eabi
@@ -22,3 +23,7 @@ rustup target add thumbv7em-none-eabihf
 echo "install cargo-binutils"
 cargo install cargo-binutils
 rustup component add llvm-tools-preview
+
+echo "install gdb tool for Ubuntu 18.04 or newer / Debian stretch or newer"
+echo "NOTE gdb-multiarch is the GDB command you'll use to debug your ARM Cortex-M programs"
+sudo apt install gdb-multiarch openocd qemu-system-arm
