@@ -76,32 +76,6 @@ set background=dark
 "colorscheme desert
 colorscheme industry
 "
-"highlight the keywords you need in vim
-"highlight <-> hi
-highlight MatchParen ctermbg=DarkRed guibg=lightblue
-"hi MatchParen ctermbg=DarkRed guibg=lightblue
-"
-""highlight  the user defined keywords
-syntax keyword FrankShanTodo  contained fshan DSF_IP dsf_ip TODO todo Todo
-"hi FrankShanTodo   term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
-highlight link FrankShanTodo  Todo
-syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
-"hi FrankShanError  term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
-highlight link FrankShanError Error
-"Todo  xxx term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
-"Error xxx term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
-"hi FrankShanTodo
-"hi FrankShanError
-
-"you could check the highlight details with hi or hightlight
-"syntax keyword FrankShanTodo  TODO todo Todo fshan DSF_IP
-"syntax keyword FrankShanError Error error "Error:" "error:" "Error-" "error-"
-"highlight link FrankShanTodo  Todo
-"highlight link FrankShanError Error
-"hi Todo
-"hi Error
-"highlight link FrankShanTodo  vimTodo
-"hi vimTodo
 "
 "define udpate the tags command in vim env, this require ctags is avilable in env
 command! UpdateTags !ctags -R .
@@ -344,6 +318,33 @@ au BufReadPre,BufNewFilE *.min  set filetype=make
 "set the *.c,*.h file auto pattern
 :autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
 :autocmd BufLeave  *.c,*.h     unabbr FOR
+
+"highlight the keywords you need in vim
+"highlight <-> hi
+highlight MatchParen ctermbg=DarkRed guibg=lightblue
+"hi MatchParen ctermbg=DarkRed guibg=lightblue
+"
+""highlight  the user defined keywords
+syntax keyword FrankShanTodo  contained fshan DSF_IP dsf_ip TODO todo Todo
+hi FrankShanTodo   term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
+"highlight link FrankShanTodo  Todo
+syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
+hi FrankShanError  term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
+"highlight link FrankShanError Error
+"Todo  xxx term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
+"Error xxx term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
+"hi FrankShanTodo
+"hi FrankShanError
+
+"you could check the highlight details with hi or hightlight
+"syntax keyword FrankShanTodo  TODO todo Todo fshan DSF_IP
+"syntax keyword FrankShanError Error error "Error:" "error:" "Error-" "error-"
+"highlight link FrankShanTodo  Todo
+"highlight link FrankShanError Error
+"hi Todo
+"hi Error
+"highlight link FrankShanTodo  vimTodo
+"hi vimTodo
 
 "" -----match jump part--start------------------
 "packadd! matchit
