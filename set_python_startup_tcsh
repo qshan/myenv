@@ -1,0 +1,6 @@
+
+ln -sTf `pwd`/_myPythonStartup ~/.pythonstartup
+
+echo "if ( -f `pwd`/_mybashrc ) then"  >> ~/.cshrc
+echo "export PYTHONSTARTUP '~/.pythonstartup'" >>  ~/.cshrc
+echo "endif"  >> ~/.cshrc
