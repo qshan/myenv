@@ -82,14 +82,25 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
-syntax keyword FrankShanTodo  contained TODO todo Todo fshan DSF_IP
-syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
-highlight link FrankShanTodo  vimTodo
+syntax keyword FrankShanTodo  contained fshan DSF_IP dsf_ip TODO todo Todo
+"hi FrankShanTodo   term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
 highlight link FrankShanTodo  Todo
+syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
+"hi FrankShanError  term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
 highlight link FrankShanError Error
+"Todo  xxx term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
+"Error xxx term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
+"hi FrankShanTodo
+"hi FrankShanError
+
 "you could check the highlight details with hi or hightlight
-hi Todo
-hi Error
+"syntax keyword FrankShanTodo  TODO todo Todo fshan DSF_IP
+"syntax keyword FrankShanError Error error "Error:" "error:" "Error-" "error-"
+"highlight link FrankShanTodo  Todo
+"highlight link FrankShanError Error
+"hi Todo
+"hi Error
+"highlight link FrankShanTodo  vimTodo
 "hi vimTodo
 "
 "define udpate the tags command in vim env, this require ctags is avilable in env
@@ -513,9 +524,10 @@ command! MyCdFilePath cd %:p:h
 """Ctl-W + o              "keep current window, close others
 """Ctl-W + =              "make all window have same hight
 """Ctl-W + _              "make current window have the max hight
+"""Ctl-W + 1 + _          "make current window have the min hight
 """:res _                 "make current window have the min hight
 """Ctl-W + |              "make current window have the max width
-"""Ctl-W + 1 + |          "make current window have the max width
+"""Ctl-W + 1 + |          "make current window have the min width
 """Ctl-W + n              "Creat a new split windows
 """Ctl-W + vn             "Creat a new split windows
 """Ctl-W + ]              "Splite current window, and jump to the cursor
