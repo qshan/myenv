@@ -82,15 +82,15 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
-syntax keyword FrankShanTodo contained TODO todo Todo fshan DSF_IP
+syntax keyword FrankShanTodo  contained TODO todo Todo fshan DSF_IP
 syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
-highlight link FrankShanTodo vimTodo
-highlight link FrankShanTodo Todo
+highlight link FrankShanTodo  vimTodo
+highlight link FrankShanTodo  Todo
 highlight link FrankShanError Error
 "you could check the highlight details with hi or hightlight
 hi Todo
 hi Error
-hi vimTodo
+"hi vimTodo
 "
 "define udpate the tags command in vim env, this require ctags is avilable in env
 command! UpdateTags !ctags -R .
@@ -394,13 +394,15 @@ let b:match_words = '<:>,' .
 """:diffoff     "exit from diff mode, or diffo
 " isf     =     isfname
 " isk     =     iskeyword
-command! MyCdCurrentFilePath      cd %:p:h
-command! MyDotInIskeywordAdd      set iskeyword+=.
-command! MyDotInIskeywordRemove   set iskeyword-=.
-command! MySaveWithSudo           :w !sudo tee %
-command! MySearchCompileError     :/"incompatible\|redefined\|error\:\|Error\:"
-command! MyRemoveBlankOnEnd       %s/\s*$//g
-command! MySpellCheckEn           set spell spelllang=en_us
+command! MyCdCurrentFilePath        cd %:p:h
+command! MyDotInIskeywordAdd        set iskeyword+=.
+command! MyDotInIskeywordRemove     set iskeyword-=.
+command! MySaveWithSudo             :w !sudo tee %
+command! MySearchCompileError       :/"incompatible\|redefined\|error\:\|Error\:"
+command! MyRemoveBlankOnEnd         %s/\s*$//g
+command! MySpellCheckEn             set spell spelllang=en_us
+command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
+
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
 """----------------------------basic command to move cursor in comand mode----------------------------
