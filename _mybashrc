@@ -7,7 +7,7 @@
 #--------------------------------------------------
 
 echo "Calling _mybashrc file setting"
-
+history 10000
 export timefshan="`date +%Y-%m-%d-%H%M`"
 
 
@@ -27,7 +27,7 @@ alias lnsnf='ln -snf'
 alias chmod+R='chmod -R a+r'
 alias chmod-R='chmod -R a-r'
 alias chmodER='chmod -R a=r'
-alias h='history'
+alias h='history 1000'
 alias v='vim'
 
 #for lubuntu

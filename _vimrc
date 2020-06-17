@@ -82,10 +82,15 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
-syntax keyword TodoFrankShan TODO todo Todo fshan DSF_IP Error\: Error\-
-"highlight link TodoFrankShan Todo
-highlight link TodoFrankShan vimTodo
+syntax keyword FrankShanTodo contained TODO todo Todo fshan DSF_IP
+syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
+highlight link FrankShanTodo vimTodo
+highlight link FrankShanTodo Todo
+highlight link FrankShanError Error
 "you could check the highlight details with hi or hightlight
+hi Todo
+hi Error
+hi vimTodo
 "
 "define udpate the tags command in vim env, this require ctags is avilable in env
 command! UpdateTags !ctags -R .
