@@ -325,26 +325,33 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
-syntax keyword FrankShanTodo  contained fshan DSF_IP dsf_ip TODO todo Todo
-hi FrankShanTodo   term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
-"highlight link FrankShanTodo  Todo
-syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
-hi FrankShanError  term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
-"highlight link FrankShanError Error
-"Todo  xxx term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
-"Error xxx term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
-"hi FrankShanTodo
-"hi FrankShanError
 
-"you could check the highlight details with hi or hightlight
-"syntax keyword FrankShanTodo  TODO todo Todo fshan DSF_IP
-"syntax keyword FrankShanError Error error "Error:" "error:" "Error-" "error-"
-"highlight link FrankShanTodo  Todo
-"highlight link FrankShanError Error
-"hi Todo
-"hi Error
-"highlight link FrankShanTodo  vimTodo
-"hi vimTodo
+"it is better to put those match words on end of file
+"just one highlight type per time
+":match Todo /fshan\|DSF_IP\|dsf_ip\|Error\:\|error:\|Error\-\|error\-/
+"
+"need source $MYVIMRC after e(open)
+"syntax keyword FrankShanTodo   todo DSF_IP dsf_ip fshan
+"syntax keyword FrankShanError  Error error
+"syntax keyword FrankShanError  Error: error: Error-
+"hi def link FrankShanTodo      Todo
+"hi def link FrankShanError     Error
+"
+"need source $MYVIMRC after e(open)
+syntax match Todo /todo\|fshan\|DSF_IP\|dsf_ip/
+syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+
+
+""you could check the highlight details with hi or hightlight
+"""""syntax keyword FrankShanTodo  contained fshan DSF_IP dsf_ip TODO todo Todo
+"""""hi FrankShanTodo   term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
+""""""highlight link FrankShanTodo  Todo
+"""""syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
+"""""hi FrankShanError  term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
+""""""highlight link FrankShanError Error
+""""""Todo  xxx term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
+""""""Error xxx term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
+
 
 "" -----match jump part--start------------------
 "packadd! matchit
