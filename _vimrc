@@ -77,9 +77,6 @@ set background=dark
 colorscheme industry
 "
 "
-"define udpate the tags command in vim env, this require ctags is avilable in env
-command! UpdateTags !ctags -R .
-"":! command_you_want_to_run    "run the shell command in VIM command
 
 set magic
 "substitute magic
@@ -413,6 +410,11 @@ let b:match_words = '<:>,' .
 """:diffoff     "exit from diff mode, or diffo
 " isf     =     isfname
 " isk     =     iskeyword
+"
+"define udpate the tags command in vim env, this require ctags is avilable in env
+"":! command_you_want_to_run    "run the shell command in VIM command
+command! UpdateTags !ctags -R .
+"command! MyCdFilePath               cd %:p:h
 command! MyCdCurrentFilePath        cd %:p:h
 command! MyDotInIskeywordAdd        set iskeyword+=.
 command! MyDotInIskeywordRemove     set iskeyword-=.
@@ -455,8 +457,6 @@ command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 " :cd %:p:h
 """set path of current window as path "设置当前窗口的工作目录为path
 ":lcd {path}
-""" for windows more
-command! MyCdFilePath cd %:p:h
 """ view the list of all variables and their values
 " :let
 " :set all
