@@ -382,9 +382,17 @@ let b:match_words = '<:>,' .
                     \ . 'fshan_start:fshan_end,'
                     \ . '\<fshan_start\>:\<fshan_end\>'
 "
-:autocmd FileType c,cpp :let b:match_words .=  'if:else,'
+:autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
+"
+":autocmd FileType c,cpp :let b:match_words .=  '/<if/>:/<else/>,'
+:autocmd FileType c,cpp let b:match_words =  '<:>,' 
+                    \ . '/<if/>:/<else/>,'
                     \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
                     \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
+"
+:autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>'
+"
+:autocmd FileType bash let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<fi/>'
 "
 "format of match_words:
 "         ='<:>,' .
@@ -392,7 +400,6 @@ let b:match_words = '<:>,' .
 "       \  '< \<match_head1 \> \| \< match_head2 \> : \<match_end \>,' .
 "       \  '<fshan_start:fshan_end>'
 "
-:autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
 "" -----match jump part--end------------------
 "" -----personal comand--Start-------------------
 """vim +{command} filename
