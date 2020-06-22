@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/usr/tcsh
 
 
 
@@ -10,6 +10,15 @@
 #tcsh format
 #if ( -f ~/_mycshrc ) then
 #    . ~/_mycshrc
+#else
+#endif
+#if ( -d MyFolderName ) then
+#    . ~/_mycshrc
+#else
+#endif
+#if ( $?MyVariable ) then
+#    echo "MyVariable is $MyVariable"
+#else
 #endif
 
 

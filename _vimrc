@@ -391,6 +391,8 @@ let b:match_words = '<:>,' .
 "       \  '<:>,' .
 "       \  '< \<match_head1 \> \| \< match_head2 \> : \<match_end \>,' .
 "       \  '<fshan_start:fshan_end>'
+"
+:autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
 "" -----match jump part--end------------------
 "" -----personal comand--Start-------------------
 """vim +{command} filename
@@ -423,6 +425,8 @@ command! MySearchCompileError       :/"incompatible\|redefined\|error\:\|Error\:
 command! MyRemoveBlankOnEnd         %s/\s*$//g
 command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
+":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
+command! MyAddMatchWords            let b:match_words= '<:>,' .
 
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------

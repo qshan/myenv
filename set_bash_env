@@ -2,8 +2,18 @@
 
 
 
+#bash format
 #if [ -f ~/_mybashrc ]; then
 #    . ~/_mybashrc
+#else
+#fi
+#if [ -d MyFolderName ]; then
+#    ls MyFolderName
+#else
+#fi
+#if [ $?MyVariable ]; then
+#    echo "MyVariable is $MyVariable"
+#else
 #fi
 
 
