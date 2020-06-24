@@ -72,9 +72,9 @@ set guifont=Monospace\ 16
 
 " set the color of text background
 set background=dark
-"color murphy
+color murphy
 "colorscheme desert
-colorscheme industry
+"colorscheme industry
 "
 "
 
@@ -435,6 +435,169 @@ command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
 command! MyAddMatchWords            let b:match_words= '<:>,' .
 
+"au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- \t$ //comments: $//--------------------$
+
+"set the *.v,*.vh,*.sv,*.svh,*.c,*.h file auto pattern
+au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab cccc //--------------------//comments: //--------------------
+
+"
+"set the *.c,*.h file auto pattern when edit this file
+:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr FOR
+
+"highlight the keywords you need in vim
+"highlight <-> hi
+highlight MatchParen ctermbg=DarkRed guibg=lightblue
+"hi MatchParen ctermbg=DarkRed guibg=lightblue
+"
+""highlight  the user defined keywords
+
+"it is better to put those match words on end of file
+"just one highlight type per time
+":match Todo /fshan\|DSF_IP\|dsf_ip\|Error\:\|error:\|Error\-\|error\-/
+"
+"need source $MYVIMRC after e(open)
+"syntax keyword FrankShanTodo   todo DSF_IP dsf_ip fshan
+"syntax keyword FrankShanError  Error error
+"syntax keyword FrankShanError  Error: error: Error-
+"hi def link FrankShanTodo      Todo
+"hi def link FrankShanError     Error
+"
+"need source $MYVIMRC after e(open)
+syntax match Todo /todo\|fshan\|DSF_IP\|dsf_ip/
+syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+
+
+""you could check the highlight details with hi or hightlight
+"""""syntax keyword FrankShanTodo  contained fshan DSF_IP dsf_ip TODO todo Todo
+"""""hi FrankShanTodo   term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
+""""""highlight link FrankShanTodo  Todo
+"""""syntax keyword FrankShanError contained Error error "Error:" "error:" "Error-" "error-"
+"""""hi FrankShanError  term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
+""""""highlight link FrankShanError Error
+""""""Todo  xxx term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
+""""""Error xxx term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
+
+
+"" -----match jump part--start------------------
+"packadd! matchit
+set showmatch
+"set sm
+"let b:match_ignorecase = 0
+"
+".html file match jump
+let b:match_words = '<:>,' .
+        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
+        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
+        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+"
+"filetype on
+"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
+"
+:let b:match_words .=  '<:>,'
+                    \ . 'module:endmodule,'
+                    \ . 'begin:\<end\>,'
+                    \ . 'fork:\<join\>\|join_any\|join_none,'
+                    \ . 'class:endclass,'
+                    \ . 'function:endfunction,'
+                    \ . '\<task\>:\<endtask\>,'
+                    \ . 'case\|casex\|casez:default\s*\::endcase,'
+                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
+                    \ . 'ifdef\|ifndef\|ifeq\|ifneq:else:\<endif\>,'
+                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
+                    \ . '\<if\>:\<else\>,'
+                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
+                    \ . 'fshan_start:fshan_end,'
+                    \ . '\<fshan_start\>:\<fshan_end\>'
+"
+:autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
+"
+":autocmd FileType c,cpp :let b:match_words .=  '/<if/>:/<else/>,'
+:autocmd FileType c,cpp let b:match_words =  '<:>,' 
+                    \ . '/<if/>:/<else/>,'
+                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
+                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
+"
+:autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>'
+"
+:autocmd FileType bash let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<fi/>'
+"
+"format of match_words:
+"         ='<:>,' .
+"       \  '<:>,' .
+"       \  '< \<match_head1 \> \| \< match_head2 \> : \<match_end \>,' .
+"       \  '<fshan_start:fshan_end>'
+"
+"" -----match jump part--end------------------
+"" -----personal comand--Start-------------------
+"""vim +{command} filename
+"""vim -c {command} filename
+"""vim --cmd {command}
+"""vim -t tag_name
+"""vim +{command}
+"""vim +"source Session_You_Need_call.vim"
+"""vim -d filename1 filename2
+"""vim -do filename1 filename2
+""" dp     "diffput the different block different put
+""" do     "diffget the different block different obtain
+""" V to select the line or lines you need, and :diffput or :diffpuwill update the line or lines you selected to other side
+""" V to select the line or lines you need, and :diffget or :diffgwill update the line or lines you selected to current side
+""":diffu     "diffupdate
+""":diffthis     "enter diff mode with current open files, or difft
+""":diffoff     "exit from diff mode, or diffo
+" isf     =     isfname
+" isk     =     iskeyword
+"
+"define udpate the tags command in vim env, this require ctags is avilable in env
+"":! command_you_want_to_run    "run the shell command in VIM command
+command! UpdateTags !ctags -R .
+"command! MyCdFilePath               cd %:p:h
+command! MyCdCurrentFilePath        cd %:p:h
+command! MyDotInIskeywordAdd        set iskeyword+=.
+command! MyDotInIskeywordRemove     set iskeyword-=.
+command! MySaveWithSudo             :w !sudo tee %
+command! MySearchCompileError       :/"incompatible\|redefined\|error\:\|Error\:"
+command! MyRemoveBlankOnEnd         %s/\s*$//g
+command! MySpellCheckEn             set spell spelllang=en_us
+command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
+":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
+command! MyAddMatchWords            let b:match_words= '<:>,' .
+
+""" -----personal comand--End-------------------
+""" -----popular comand--Start-------------------
+"""----------------------------basic command to move cursor in comand mode----------------------------
+"           k
+"      h         l
+"           j
+"e   "move cursor to end of words
+"b   "move cursor to start of words
+"w   "move cursor to start of next words
+"w   "move cursor to start of the line, (no blank part)
+"0   "move cursor to start of the line
+"$   "move cursor to end of the line
+"
+"""open and edit the syntax file in your environment
+":e $VIMRUNTIME/syntax/tcl.vim
+""" then you could add your keywords in this file
+"
+"""set the syntax style by manual
+""set syntax=tcl
+""set syn=tcl
+"""
+""" display current working directory
+" :pwd
+""" display the file name with full path
+":echo expand('%:p')
+""" display the file name without path
+":echo expand('%:t')
+"""display the folder current file located
+":echo expand('$:p:h')
+"""cd the folder current file located
+" :cd %:p:h
+"""set path of current window as path "设置当前窗口的工作目录为path
+":lcd {path}
+""" view the list of all var
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
 """----------------------------basic command to move cursor in comand mode----------------------------
