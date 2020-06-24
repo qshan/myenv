@@ -7,6 +7,9 @@
 --exclude=results
 --exclude=*.log
 --exclude=*.swp
+--exclude=tags
+
+langmap=make:+*.min
 
 --langdef=SystemVerilog
 --langmap=SystemVerilog:.v.vg.sv.svh.svi.tv.vinc
