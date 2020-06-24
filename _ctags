@@ -23,7 +23,7 @@
 --regex-SystemVerilog=/^\s*\binterface\b\s*(\b\w+\b)/\1/i,interface/
 --regex-SystemVerilog=/^\s*\bpackage\b\s*(\b\w+\b)/\1/i,package/
 --regex-SystemVerilog=/^\s*\btypedef\b\s+.*\s+(\b\w+\b)\s*;/\1/e,typedef/
---regex-SystemVerilog=/^\s*`define\b\s*(\w+)/`\1/d,define/
+--regex-SystemVerilog=/^\s*`define\b\s*(\w+)/\1/d,define/
 --regex-SystemVerilog=/}\s*(\b\w+\b)\s*;/\1/e,typedef/
 
 --regex-SystemVerilog=/^\s*(\b(static|local|private|rand)\b)*\s*(\b(shortint|int|longint)\b)\s*(\bunsigned\b)?(\s*.+)*\s*(\b\w+\b)/\7/v,variable/
