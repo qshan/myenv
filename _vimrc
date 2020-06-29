@@ -724,6 +724,7 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """registers     - paste what's in register "5
 "   '"5p'
 """vim tips and tricks https://www.cs.swarthmore.edu/oldhelp/vim/home.html
+"""
 """----------------------------basic command to move cursor in insert mode----------------------------
 """CTRL-r + %            "insert the filename with 
 """CTRL-r + *            "insert the clipboard contents (X11: primary selection)
@@ -731,6 +732,7 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """CTRL-r + :            "insert the last command-line
 """CTRL-r + .            "insert the last inserted text
 """CTRL-v + CTRL-m       "insert the symbo of end of line with windows format
+"""CTRL-a                "Insert previously inserted text.
 """CTRL-w                "delete the word before the cursor
 """CTRL-u                "delete all of words before the cursor
 
