@@ -4,6 +4,16 @@
 sudo apt update
 sudo apt install ctags
 
+#install the ctags with make
+#mkdir ctags
+#cd ctags
+#wget -c http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+#tar -zxvf ctags-5.8.tar.gz
+#cd ctags-5.8
+#./configure
+#make
+#sudo make install
+
 #if [ -f ~/_mybashrc ]; then
 #    . ~/_mybashrc
 #fi

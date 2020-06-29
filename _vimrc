@@ -141,17 +141,13 @@ set wildmode=longest,list
 set list
 "set nolist
 "
-set showmatch
-" Highlight matching pairs of brackets. Use the '%' character to jump between them.
-"set mps+=<:>
-set matchpairs+=<:>
-:au FileType c,cpp,java set mps+==:;
-"":autocmd FileType c,cpp,java set mps+==:;
-"set sm
 set mouse=a
 " Display options
 set showmode
 set showcmd
+set showcmd     "show the commnds info
+set cmdheight=1 "set the number of display command line as 1
+set laststatus=2 "set the status bar (default is 1, no display)
 "
 filetype plugin indent on
 "
@@ -353,6 +349,13 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 
 
 "" -----match jump part--start------------------
+set showmatch
+" Highlight matching pairs of brackets. Use the '%' character to jump between them.
+"set mps+=<:>
+"set matchpairs+=<:>
+:au FileType c,cpp,java set mps+==:;
+"":autocmd FileType c,cpp,java set mps+==:;
+"set sm
 "------------------------------
 filetype plugin on
 source ~/.vim/plugin/matchit.vim
@@ -639,7 +642,7 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """ view the list of all var
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
-"""----------------------------basic command to move cursor in comand mode----------------------------
+"""----------------------------basic command to move cursor in command mode----------------------------
 "           k
 "      h         l
 "           j
@@ -649,6 +652,8 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 "w   "move cursor to start of the line, (no blank part)
 "0   "move cursor to start of the line
 "$   "move cursor to end of the line
+"v+> "shift right of the line
+"v+< "shift left of the line
 "
 """open and edit the syntax file in your environment
 ":e $VIMRUNTIME/syntax/tcl.vim
@@ -719,6 +724,16 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """registers     - paste what's in register "5
 "   '"5p'
 """vim tips and tricks https://www.cs.swarthmore.edu/oldhelp/vim/home.html
+"""----------------------------basic command to move cursor in insert mode----------------------------
+"""CTRL-r + %            "insert the filename with 
+"""CTRL-r + *            "insert the clipboard contents (X11: primary selection)
+"""CTRL-r + +            "insert the clipboard contents
+"""CTRL-r + :            "insert the last command-line
+"""CTRL-r + .            "insert the last inserted text
+"""CTRL-v + CTRL-m       "insert the symbo of end of line with windows format
+"""CTRL-w                "delete the word before the cursor
+"""CTRL-u                "delete all of words before the cursor
+
 """----------------------------Auto completion----------------------------
 """Completion command
 """COMPLETING SPECIFIC ITEMS
