@@ -325,7 +325,9 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 
 "it is better to put those match words on end of file
 "just one highlight type per time
-":match Todo /fshan\|DSF_IP\|dsf_ip\|Error\:\|error:\|Error\-\|error\-/
+:match Todo /fshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+:2match Error /Error:\|error:\|Error-\|error-/
+:3match Underlined /incompatible\|redefined\|expansion/
 "
 "need source $MYVIMRC after e(open)
 "syntax keyword FrankShanTodo   todo DSF_IP dsf_ip fshan
@@ -335,8 +337,8 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi def link FrankShanError     Error
 "
 "need source $MYVIMRC after e(open)
-syntax match Todo /todo\|fshan\|DSF_IP\|dsf_ip/
-syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+"syntax match Todo /todo\|fshan\|DSF_IP\|dsf_ip/
+"syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
 ""you could check the highlight details with hi or hightlight
@@ -351,26 +353,63 @@ syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
 "" -----match jump part--start------------------
-"packadd! matchit
+"------------------------------
+filetype plugin on
+source ~/.vim/plugin/matchit.vim
+
+if exists("loaded_matchit")
+let b:match_ignorecase = 0
+"let b:match_ignorecase = 1
+let b:match_skip = 's:Comment'
+"let b:match_words = '<:>'
+"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+":autocmd FileType systemverilog :let b:match_words .=  '<:>,'
+"                    \ . 'module:endmodule,'
+autocmd BufReadPre,BufNewFilE *.sv,*.svh,*.v,*.vh  :let b:match_words =  '<:>,'
+                    \ . 'module:endmodule,'
+                    \ . 'begin:\<end\>,'
+                    \ . 'fork:\<join\>\|join_any\|join_none,'
+                    \ . 'class\>:endclass\>,'
+                    \ . 'package:endpackage,'
+                    \ . 'function:endfunction,'
+                    \ . '\<task\>:\<endtask\>,'
+                    \ . 'case\|casex\|casez:default\s*\::endcase,'
+                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
+                    \ . '\<if\>:\<else\>,'
+                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>,'
+                    \ . '\<fshan_start\>:\<fshan_end\>'
+
+autocmd BufReadPre,BufNewFilE *.,*.h  :let b:match_words =  '<:>,'
+                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
+                    \ . '\<if\>:\<else\>,'
+                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>,'
+                    \ . '\<fshan_start\>:\<fshan_end\>'
+
+".html file match jump
+autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,' .
+        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
+        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
+        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+
+endif "end of if exists("loaded_matchit")
+
+
 set showmatch
 "set sm
 "let b:match_ignorecase = 0
 "
-".html file match jump
-let b:match_words = '<:>,' .
-        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
-        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 "
 "filetype on
 "autocmd BufReadPre,BufNewFilE *.min  set filetype=make
 ":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
 "
+:let b:match_words = '<:>,'
 :let b:match_words .=  '<:>,'
                     \ . 'module:endmodule,'
                     \ . 'begin:\<end\>,'
                     \ . 'fork:\<join\>\|join_any\|join_none,'
-                    \ . 'class:endclass,'
+                    \ . 'class\>:endclass\>,'
+                    \ . 'package:endpackage,'
                     \ . 'function:endfunction,'
                     \ . '\<task\>:\<endtask\>,'
                     \ . 'case\|casex\|casez:default\s*\::endcase,'
@@ -378,17 +417,16 @@ let b:match_words = '<:>,' .
                     \ . 'ifdef\|ifndef\|ifeq\|ifneq:else:\<endif\>,'
                     \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
                     \ . '\<if\>:\<else\>,'
-                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
-                    \ . 'fshan_start:fshan_end,'
+                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>,'
                     \ . '\<fshan_start\>:\<fshan_end\>'
 "
-:autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
+":autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
 "
 ":autocmd FileType c,cpp :let b:match_words .=  '/<if/>:/<else/>,'
-:autocmd FileType c,cpp let b:match_words =  '<:>,' 
-                    \ . '/<if/>:/<else/>,'
-                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
-                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
+":autocmd FileType c,cpp let b:match_words =  '<:>,' 
+"                    \ . '/<if/>:/<else/>,'
+"                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
+"                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
 "
 :autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>'
 "
@@ -428,14 +466,15 @@ command! MyCdCurrentFilePath        cd %:p:h
 command! MyDotInIskeywordAdd        set iskeyword+=.
 command! MyDotInIskeywordRemove     set iskeyword-=.
 command! MySaveWithSudo             :w !sudo tee %
-command! MySearchCompileError       :/"incompatible\|redefined\|error\:\|Error\:"
+command! MySearchCompileError       :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
 command! MyRemoveBlankOnEnd         %s/\s*$//g
 command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
 command! MyAddMatchWords            let b:match_words= '<:>,' .
 
-"au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- \t$ //comments: $//--------------------$
+" change line char in windows is ^M, we could input it as i_CTRL+V_CTRL+SHIFT+M
+"au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
 
 "set the *.v,*.vh,*.sv,*.svh,*.c,*.h file auto pattern
 au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab cccc //--------------------//comments: //--------------------
