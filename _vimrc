@@ -1,3 +1,4 @@
+"
 "save these contents as _myvimrc file
 "source _myvimrc
 "# -----install guidance--Start-------------------
@@ -304,7 +305,7 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "
 "filetype on
 "set the *.min file as the makefile type
-au BufReadPre,BufNewFilE *.min  set filetype=make
+au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
 "set *.min file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.min set syntax=make
 "
@@ -358,35 +359,43 @@ set showmatch
 "set sm
 "------------------------------
 filetype plugin on
-source ~/.vim/plugin/matchit.vim
+if exists("loaded_matchit")
+else
+"source ~/.vim/plugin/matchit.vim
+source $VIMRUNTIME/macros/matchit.vim
+endif
 
 if exists("loaded_matchit")
 let b:match_ignorecase = 0
 "let b:match_ignorecase = 1
 let b:match_skip = 's:Comment'
-"let b:match_words = '<:>'
-"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+let b:match_words = '<:>'
+"autocmd BufReadPre,BufNewFile,FileReadPost *.min  set filetype=make
 ":autocmd FileType systemverilog :let b:match_words .=  '<:>,'
 "                    \ . 'module:endmodule,'
-autocmd BufReadPre,BufNewFilE *.sv,*.svh,*.v,*.vh  :let b:match_words =  '<:>,'
-                    \ . 'module:endmodule,'
-                    \ . 'begin:\<end\>,'
+endif "end of if exists("loaded_matchit")
+
+":au BufEnter *.sv,*.svh,*.v,*.vh :let b:match_words='module\>:endmodule\>'
+"set the match_words according the #####file extension name#####
+autocmd BufReadPost,BufNewFile,FileReadPost *.sv,*.svh,*.v,*.vh  :let b:match_words =  '<:>,'
+                    \ . 'module\>:endmodule\>,'
+                    \ . 'begin\>:\<end\>,'
                     \ . 'fork\>:join\>\|join_any\>\|join_none\>,'
                     \ . 'class\>:endclass\>,'
-                    \ . 'package:endpackage,'
-                    \ . 'function:endfunction,'
-                    \ . '\<task\>:\<endtask\>,'
-                    \ . 'case\|casex\|casez:default\s*\::endcase,'
-                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
-                    \ . '\<if\>:\<else\>,'
-                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>,'
-                    \ . '\<fshan_start\>:\<fshan_end\>'
+                    \ . 'package\>:endpackage\>,'
+                    \ . 'function\>:endfunction\>,'
+                    \ . 'task\>:endtask\>,'
+                    \ . 'case\|casex\|casez:default\s*\::endcase\>,'
+                    \ . '`ifdef\>\|`ifndef\>\|`if\>:`else\>:`endif\>,'
+                    \ . 'if\>:else\>,'
+                    \ . 'while\>:continue\>:break\>:endwhile\>,'
+                    \ . 'fshan_start\>:fshan_end\>'
 
 autocmd BufReadPre,BufNewFilE *.c,*.h  :let b:match_words =  '<:>,'
-                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
-                    \ . '\<if\>:\<else\>,'
-                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>,'
-                    \ . '\<fshan_start\>:\<fshan_end\>'
+                    \ . '#ifdef\>\|#ifndef\>\|#if\>\|#ifeq\>\|#ifneq\>:#else\>:#endif\>,'
+                    \ . 'if\>:else\>,'
+                    \ . 'while\>:continue\>:break\>:endwhile\>,'
+                    \ . 'fshan_start\>:fshan_end\>'
 
 ".html file match jump
 autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,' .
@@ -394,7 +403,6 @@ autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,' .
         \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
         \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 
-endif "end of if exists("loaded_matchit")
 
 
 set showmatch
@@ -406,22 +414,22 @@ set showmatch
 "autocmd BufReadPre,BufNewFilE *.min  set filetype=make
 ":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
 "
-:let b:match_words = '<:>,'
-:let b:match_words .=  '<:>,'
-                    \ . 'module:endmodule,'
-                    \ . 'begin:\<end\>,'
-                    \ . 'fork:\<join\>\|join_any\|join_none,'
-                    \ . 'class\>:endclass\>,'
-                    \ . 'package:endpackage,'
-                    \ . 'function:endfunction,'
-                    \ . '\<task\>:\<endtask\>,'
-                    \ . 'case\|casex\|casez:default\s*\::endcase,'
-                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
-                    \ . 'ifdef\|ifndef\|ifeq\|ifneq:else:\<endif\>,'
-                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
-                    \ . '\<if\>:\<else\>,'
-                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>,'
-                    \ . '\<fshan_start\>:\<fshan_end\>'
+"""""":let b:match_words = '<:>,'
+"""""":let b:match_words .=  '<:>,'
+""""""                    \ . 'module:endmodule,'
+""""""                    \ . 'begin:\<end\>,'
+""""""                    \ . 'fork:\<join\>\|join_any\|join_none,'
+""""""                    \ . 'class\>:endclass\>,'
+""""""                    \ . 'package:endpackage,'
+""""""                    \ . 'function:endfunction,'
+""""""                    \ . '\<task\>:\<endtask\>,'
+""""""                    \ . 'case\|casex\|casez:default\s*\::endcase,'
+""""""                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
+""""""                    \ . 'ifdef\|ifndef\|ifeq\|ifneq:else:\<endif\>,'
+""""""                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
+""""""                    \ . '\<if\>:\<else\>,'
+""""""                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>,'
+""""""                    \ . '\<fshan_start\>:\<fshan_end\>'
 "
 ":autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
 "
@@ -431,9 +439,16 @@ set showmatch
 "                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
 "                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
 "
-:autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>'
+
+"filetype on
+":autocmd BufReadPost,FileReadPost *.min set syntax=make
+"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+"set match_words according the #####filetype#####
+:autocmd FileType tcsh,csh let b:match_words =  '<:>,' 
+                          \. 'if\>:then\>:else\>:endif\>'
 "
-:autocmd FileType bash let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<fi/>'
+:autocmd FileType bash,sh let b:match_words =  '<:>,' 
+                          \. 'if\>:then\>:else\>:fi\>\|endif\>'
 "
 "format of match_words:
 "         ='<:>,' .
@@ -561,6 +576,9 @@ let b:match_words = '<:>,' .
                     \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
                     \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
 "
+"
+"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
 :autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>'
 "
 :autocmd FileType bash let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<fi/>'

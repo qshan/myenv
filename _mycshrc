@@ -1,4 +1,4 @@
-
+#!/bin/tcsh
 
 echo "Calling _mybashrc file setting"
 
