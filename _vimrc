@@ -448,7 +448,8 @@ set showmatch
                           \. 'if\>:then\>:else\>:endif\>'
 "
 :autocmd FileType bash,sh let b:match_words =  '<:>,' 
-                          \. 'if\>:then\>:else\>:fi\>\|endif\>'
+                          \. 'if\>:then\>:else\>:fi\>\|endif\>,'
+                          \. 'func!\>:endfunc\>'
 "
 "format of match_words:
 "         ='<:>,' .
@@ -715,24 +716,32 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 ":set foldenable
 """ Fold control - methods selection
 ":set foldmethod=syntax
+""" Folding, define z_f
+"z_f
 """ Folding, open
-"zo
+"z_o
 """ Folding, open all in this folding
-"zA
+"z_A
 """ Folding, close
-"zc
+"z_c
 """ delete the words in '' 删除单引号中的文字
-"di’
+"d_i_’
 """ delete the words in ""删除双引号中的文字
-"di”
+"d_i_”
 """ delete the words in '' and '' 删除单引号以及其中的文字
-"da’
+"d_a_’
 """ delete the words in "" and "" 删除单引号以及其中的文字
-"da”
-""" change mode, delete the words and into insert mode
-"cw”
+"d_a_”
+""" change mode, delete the words between " and into insert mode
+"c_w”
 """ change mode, delete to end of line and into insert mode
-"c$”
+"c_i_w”
+""" change mode, delete to current word internally and into insert mode
+"c_i_s”
+""" change mode, delete to current sentence internally and into insert mode
+"c_i_p”
+""" change mode, delete to current paragraph internally and into insert mode
+"c_$”
 "buffer - show current buffers
 ":ls
 """buffer - open buffer #2 in this window
@@ -742,17 +751,51 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """registers     - paste what's in register "5
 "   '"5p'
 """vim tips and tricks https://www.cs.swarthmore.edu/oldhelp/vim/home.html
+"""----------------------------some command about the motion in insert mode----------------------------
+"motion-6.Text object selection *object-select* *text-objects*  *v_a* *v_i*
+"This is a series of commands that can only be used while in Visual mode or after an operator.  
+"The commands that start with "a" select "a"n object including white space, 
+"the commands starting with "i" select an "inner" object without white space, or just the white space.  Thus the "inner" commands always select less text than the "a" commands.
+"
+"i_example:  iw  iW  is  ip  ib  iB  i]  i[  i)  i(  i>  i<  i}  i{  i"  i'  i`  it
+"a_example:  iw  iW  is  ip  ib  iB  i]  i[  i)  i(  i>  i<  i}  i{  i"  i'  i`  it
+"example: 
+"c_i_w  
+"c_i_s  
+"c_i_p
+"
+"motion-2.Left-right motions    *left-right-motions*
+" f{char}   To [count]'th occurrence of {char} to the right.  The  cursor is placed on {char} |inclusive|.
+" F{char}   To the [count]'th occurrence of {char} to the left. The cursor is placed on {char} |exclusive|.
+"{char} can be entered like with the |f| command.
+" t{char} Till before [count]'th occurrence of {char} to the right.  The cursor is placed on the character left of {char} |inclusive|. {char} can be entered like with the |f| command.
+" T{char}  Till after [count]'th occurrence of {char} to the left.  The cursor is placed on the character right of {char} |exclusive|. {char} can be entered like with the |f| command.
+"motion-4. Word motions *word-motions*
+" w
+" e
+" b
+
+"motion-5. Text object motions *object-motions*
+" (     [count] sentences backward.  |exclusive| motion.
+" )     [count] sentences forward.  |exclusive| motion.
+" {     [count] paragraphs backward.  |exclusive| motion.
+" }     [count] paragraphs forward.  |exclusive| motion.
+" ]]    [count] sections forward or to the next '{' in the first column.  When used after an operator, then also stops below a '}' in the first column.  |exclusive| Note that |exclusive-linewise| often applies.
+" ][    [count] sections forward or to the next '}' in the first column.  |exclusive| Note that |exclusive-linewise| often applies.
+" [[    [count] sections backward or to the previous '{' in the first column.  |exclusive| Note that |exclusive-linewise| often applies.
+" []    [count] sections backward or to the previous '}' in the first column.  |exclusive| Note that |exclusive-linewise| often applies.
 """
 """----------------------------basic command to move cursor in insert mode----------------------------
-"""CTRL-r + %            "insert the filename with 
-"""CTRL-r + *            "insert the clipboard contents (X11: primary selection)
-"""CTRL-r + +            "insert the clipboard contents
-"""CTRL-r + :            "insert the last command-line
-"""CTRL-r + .            "insert the last inserted text
-"""CTRL-v + CTRL-m       "insert the symbo of end of line with windows format
-"""CTRL-a                "Insert previously inserted text.
-"""CTRL-w                "delete the word before the cursor
-"""CTRL-u                "delete all of words before the cursor
+"""i_CTRL-r + %            "insert the filename with 
+"""i_CTRL-r + *            "insert the clipboard contents (X11: primary selection)
+"""i_CTRL-r + +            "insert the clipboard contents
+"""i_CTRL-r + :            "insert the last command-line
+"""i_CTRL-r + .            "insert the last inserted text
+"""i_CTRL-v + CTRL-m       "insert the symbo of end of line with windows format
+"""i_CTRL-a                "Insert previously inserted text.
+"""i_CTRL-w                "delete the word before the cursor
+"""i_CTRL-u                "delete all of words before the cursor
+"""i_CTRL-c                "exit the insert mode
 
 """----------------------------Auto completion----------------------------
 """Completion command
