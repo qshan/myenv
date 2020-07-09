@@ -398,10 +398,10 @@ autocmd BufReadPre,BufNewFilE *.c,*.h  :let b:match_words =  '<:>,'
                     \ . 'fshan_start\>:fshan_end\>'
 
 ".html file match jump
-autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,' .
-        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
-        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,'
+                    \ . '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,'
+                    \ . '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,'
+                    \ . '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 
 
 
