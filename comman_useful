@@ -3,3 +3,21 @@
 #replace contents the c file in the TargetPathName, the contents changing is like this:
 #HWIO_OUTXF ( basename, xxxxx) -> HWIO_OUTF (xxxxx) 
 find TargetPathName -type f -iname "*.c" |xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
+
+
+sed 's/Word_searched/word_target/g' input_file > outputfile
+
+sed -i -r 's/Word_searched/word_target/g' File_name_replaced
+
+sed -i -E "s/\s*Addr:(0[xX][0-9a-fA-F]*).*:Data:#(0[xX][0-9a-fA-F]*).*/      <register address='\1' value='\2' \/>/g" Cypress_FF_reg_dump_after_wla_pass_BBB_20190822.xml
+
+# Example: delete the 4th line in a file
+$ sed '4d' input.txt > output.txt
+
+# Example: replace every occurrence of 'hello' with 'world' on lines 10-20
+$ sed '10,20s/hello/world/' input.txt > output.txt
+
+find ./CONFIG -type f -exec sed -i "s/_HOME_DIR_/$_HOME_DIR/g" {} \;
+find . -type f -exec sed -i 's/foo/bar/g' {} +
+
+grep -RiIl 'search' | xargs sed -i 's/search/replace/g'
