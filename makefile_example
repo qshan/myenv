@@ -1,3 +1,68 @@
 
+
+DSF_CC?=armcc
+DSF_LINK?=armlink
+DSF_CFLAGS= -O2
+DSF_CPPFLAGS= -I include
+export DSF_CC DSF_LINK DSF_CFLAGS DSFDSF_CPPFLAGS
+
+DSF_TOP_DIR=
+DSF_INC_DIR=
+DSF_SRC_DIR=
+
+DSF_TARGET_NAME=
+DSF_MODULE_LIBS=
+DSF_OBJS=
+DSF_SRC=$(wildcard *.c ./sub/*.c)
+
+#set DSF_SRCS variable
+DSF_SRCS := $(wildcard *.c)
+#get the *.c file in the DSF_SRC_DIR
+DSF_SRCS += $(foreach dir,$(DSF_SRC_DIR),$(wildcard $(dir)/*.c))
+#replace the *.c to *.o name in the contents of DSF_SRCS
+DSF_OBJS := $(patsubst %.c,%.o, $(DSF_SRCS))
+#replace the *.c to *.o name in the contents of DSF_SRCS
+DSF_OBJS_D := $(patsubst %.c,%.d,$(DSF_SRCS))
+
+
+#all:$(TARGET) debug
+$(DSF_TARGET_NAME):$(DSF_OBJS)
+#	$(DSF_CC) $(DSF_OBJS) -o $(DSF_TARGET_NAME)
+	$(DSF_CC)  -o $(DSF_TARGET_NAME) $^ -include $(DSF_OBJS_D)
+
+$(DSF_OBJS):%.o:%.c
+#	$(DSF_CC) -c  $(DSF_CPPFLAGS)  -o $@  $(DSF_CFLAGS) $^
+	$(DSF_CC) $(DSF_CPPFLAGS) $(DSF_CFLAGS) -MM -MT $@ -MF $(patsubst %o,%d,$@) $<
+	$(DSF_CC) $(DSF_CPPFLAGS) -o $@ $(DSF_CFLAGS) $<
+
+
+.PHONY :debug
+debug:
+	@echo "srcs = $(SRCS),objs = $(OBJS)."
+
+.PHONY : clean
+clean:
+	rm -rf add.o sub.o main.o main.d
+	make clean -C src
+
+VPATH = src:../header
+
+#$@ target file
+#$^ all dependance files
+#S< the firt dependance file
+
 #DSF_Target:DSF_Prerequisites
 #	DSF_recipe
+
+#DSF_OBJS:DSF_Prerequisites
+#	$(DSF_CC) $(DSF_CFLAGS) $(DSF_IDIR) $(DSF_MODULE_LIBS)
+
+#wildcard call the *.c file in folders of ./ and ./sub
+#DSF_SRC=$(wildcard *.c ./sub/*.c)
+
+#patsubst change the ".c" to ".o" in the contents of $(dir)
+#obj=$(patsubst %.c,%.o,$(dir) )
+
+#.PHONYa:clean
+#clean:
+#	\rm *.o
