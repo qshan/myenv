@@ -22,7 +22,13 @@ $ sed '10,20s/hello/world/' input.txt > output.txt
 find ./CONFIG -type f -exec sed -i "s/_HOME_DIR_/$_HOME_DIR/g" {} \;
 find . -type f -exec sed -i 's/foo/bar/g' {} +
 
+#copy when source file is newer than destination file
 find SearchPath -type f -iname SearchPattern | xargs -I{} cp -u {} TargetCopyPath
+#forcely copy the source file to destination
+find SearchPath -type f -iname SearchPattern | xargs -I{} \cp -f {} TargetCopyPath
+
+find SearchPath -type f -iname SearchPattern | xargs -I{} cp  {} TargetCopyPath
 find SearchPath -type f -iname SearchPattern | xargs -I{} mv {} TargetCopyPath
+find SearchPath -type f -iname SearchPattern | xargs -I{} \mv -f {} TargetCopyPath
 
 grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
