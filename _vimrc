@@ -798,6 +798,10 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """i_CTRL-u                "delete all of words before the cursor
 """i_CTRL-c                "exit the insert mode
 
+"""----------------------------read  the output contenst of command in vim command----------------------------
+"read the command output
+":r! ls
+":read! ls
 """----------------------------Auto completion----------------------------
 """Completion command
 """COMPLETING SPECIFIC ITEMS
