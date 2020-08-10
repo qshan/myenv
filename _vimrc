@@ -487,6 +487,7 @@ command! MyDotInIskeywordRemove     set iskeyword-=.
 command! MySaveWithSudo             :w !sudo tee %
 command! MySearchCompileError       :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
 command! MyRemoveWriteSpaceOnEnd    :%s/\s*$//g
+command! MyRemoveEmptyLine          :%s/^\s*$\n//g
 command! MyWriteSpace2UnderLine     :s/\s*/_/g
 command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim

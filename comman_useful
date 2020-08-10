@@ -4,14 +4,21 @@
 #HWIO_OUTXF ( basename, xxxxx) -> HWIO_OUTF (xxxxx) 
 find TargetPathName -type f -iname "*.c" |xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
 
-
+#replace the keywords and generate a new file
 sed 's/Word_searched/word_target/g' input_file > outputfile
 
+#replace the keywords in targetfile
 sed -i 's/Word_searched/word_target/g' File_name_replaced
 
 sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 
 sed -i -E "s/\s*Addr:(0[xX][0-9a-fA-F]*).*:Data:#(0[xX][0-9a-fA-F]*).*/      <register address='\1' value='\2' \/>/g" Cypress_FF_reg_dump_after_wla_pass_BBB_20190822.xml
+
+#delete the empty line (cover write space) in targetfile
+sed  -i '/^\s*$/d' data.txt
+
+#delete the empty line (cover write space) and generate a new file
+sed '/^\s*$/d' data.txt  > data.update.txt
 
 # Example: delete the 4th line in a file
 $ sed '4d' input.txt > output.txt
