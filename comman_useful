@@ -38,4 +38,8 @@ find SearchPath -type f -iname SearchPattern | xargs -I{} cp  {} TargetCopyPath
 find SearchPath -type f -iname SearchPattern | xargs -I{} mv {} TargetCopyPath
 find SearchPath -type f -iname SearchPattern | xargs -I{} \mv -f {} TargetCopyPath
 
+#forcely remove the folder in the SearchPath
+find SearchPath -type d -iname "*" | xargs \rm -rf
+find ./* -type d -iname "*" | xargs \rm -rf
+
 grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
