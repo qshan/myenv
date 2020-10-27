@@ -43,3 +43,7 @@ find SearchPath -type d -iname "*" | xargs \rm -rf
 find ./* -type d -iname "*" | xargs \rm -rf
 
 grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
+
+ln -sTf SourceFolderName TargetLinkerName
+ln -snf SourceFolderName TargetLinkerName
+

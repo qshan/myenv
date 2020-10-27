@@ -500,9 +500,11 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 "set the *.v,*.vh,*.sv,*.svh,*.c,*.h file auto pattern
 au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab cccc //--------------------//comments: //--------------------
 
+au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab fileheader //--------------------<CR>//comments: <CR>//--------------------<CR>
+
 "
 "set the *.c,*.h file auto pattern when edit this file
-:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>  {<CR>  }<Esc>O 
 :autocmd BufLeave  *.c,*.h     unabbr FOR
 
 "highlight the keywords you need in vim
