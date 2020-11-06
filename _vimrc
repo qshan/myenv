@@ -493,6 +493,7 @@ command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
 command! MyAddMatchWords            let b:match_words= '<:>,' .
+command! MyShowHex                  :%!xxd
 
 " change line char in windows is ^M, we could input it as i_CTRL+V_CTRL+SHIFT+M
 "au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
