@@ -323,7 +323,7 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "it is better to put those match words on end of file
 "just one highlight type per time
 :match Todo /fshan\|DSF_IP\|dsf_ip\|fixme\|todo/
-:2match Error /Error:\|error:\|Error-\|error-/
+:2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 :3match Underlined /incompatible\|redefined\|expansion/
 "
 "need source $MYVIMRC after e(open)
