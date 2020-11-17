@@ -1,0 +1,14 @@
+#/bin/tcsh!
+
+echo "arg 0 is" $0
+echo "arg 1 is" $1
+#echo "arg n_update is" $1_update
+echo "arg * is" $*
+
+setenv input_argument_file $1
+echo "input_file is" ${input_argument_file}
+setenv input_argument_file_name `ls ${input_argument_file} | sed -r 's/.*\/(.*)\..*/\1/g'`
+#setenv input_argument_file_name `echo ${input_argument_file} | sed -r 's/.*\/(.*)\..*/\1/g'`
+#setenv input_argument_file_name `ls ${input_argument_file} | sed -r 's/.*\/*(.*)\..*/\1/g'`
+setenv output_file_name ${input_argument_file_name}_`date +%Y-%m-%d-%H%M`
+echo "output_file_name is" ${output_file_name}
