@@ -10,5 +10,9 @@ echo "input_file is" ${input_argument_file}
 setenv input_argument_file_name `ls ${input_argument_file} | sed -r 's/.*\/(.*)\..*/\1/g'`
 #setenv input_argument_file_name `echo ${input_argument_file} | sed -r 's/.*\/(.*)\..*/\1/g'`
 #setenv input_argument_file_name `ls ${input_argument_file} | sed -r 's/.*\/*(.*)\..*/\1/g'`
+#
+setenv input_argument_file_name_line_number `wc -l < ${input_argument_file}`
+echo "the number of is:" ${input_argument_file_name_line_number}
+
 setenv output_file_name ${input_argument_file_name}_`date +%Y-%m-%d-%H%M`
 echo "output_file_name is" ${output_file_name}
