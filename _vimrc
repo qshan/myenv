@@ -310,8 +310,8 @@ au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
 :autocmd BufReadPost,FileReadPost *.min set syntax=make
 "
 "set the *.c,*.h file auto pattern
-:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
-:autocmd BufLeave  *.c,*.h     unabbr FOR
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+":autocmd BufLeave  *.c,*.h     unabbr FOR
 
 "highlight the keywords you need in vim
 "highlight <-> hi
@@ -505,8 +505,19 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 
 "
 "set the *.c,*.h file auto pattern when edit this file
-:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>  {<CR>    //code is here<CR>  }<Esc>O 
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>  {<CR>    //code is here<CR>  }<Esc>O 
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
 :autocmd BufLeave  *.c,*.h     unabbr FOR
+"
+:autocmd BufEnter  *.c,*.h     abbr WHILE while ()<CR>{<CR>}<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr WHILE
+"
+:autocmd BufEnter  *.c,*.h     abbr DO do<CR>{<CR>}while ();<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr DO
+"
+:autocmd BufEnter  *.c,*.h     abbr SWITCH switch()<CR>{<CR>case ITEM :<CR>;<CR>break;<CR>case ITEM :<CR>;<CR>break;<CR>default:<CR>;<CR>}<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr SWITCH
 
 "highlight the keywords you need in vim
 "highlight <-> hi
