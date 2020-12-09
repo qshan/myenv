@@ -5,12 +5,25 @@
 #bash format
 #if [ -f ~/_mybashrc ]; then
 #    . ~/_mybashrc
+#fi
+
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
 #else
 #fi
+
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#elif CONDITION-IS-TRUE; then
+#else
+#     COMMAND_RUN
+#fi
+
 #if [ -d MyFolderName ]; then
 #    ls MyFolderName
 #else
 #fi
+
 #if [ $?MyVariable ]; then
 #    echo "MyVariable is $MyVariable"
 #else

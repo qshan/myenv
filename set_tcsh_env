@@ -10,17 +10,30 @@
 #tcsh format
 #if ( -f ~/_mycshrc ) then
 #    . ~/_mycshrc
+#endif
+
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
 #else
 #endif
+
 #if ( -d MyFolderName ) then
 #    . ~/_mycshrc
 #else
 #endif
+
 #if ( $?MyVariable ) then
 #    echo "MyVariable is $MyVariable"
 #else
 #endif
 
+#switch (STRING)
+#  case PATTERN:
+#    COMMAND
+#    breaksw
+#  default:
+#    COMMAND
+#endsw
 
 echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.cshrc
 echo " source `pwd`/_mycshrc" >>  ~/.cshrc
