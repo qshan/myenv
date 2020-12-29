@@ -386,15 +386,16 @@ autocmd BufReadPost,BufNewFile,FileReadPost *.sv,*.svh,*.v,*.vh  :let b:match_wo
                     \ . 'function\>:endfunction\>,'
                     \ . 'task\>:endtask\>,'
                     \ . 'case\|casex\|casez:default\s*\::endcase\>,'
-                    \ . '`ifdef\>\|`ifndef\>\|`if\>:`else\>:`endif\>,'
+                    \ . '`ifdef\>\|`ifndef\>:`elsif\>\|`else\>:`endif\>,'
                     \ . 'if\>:else\>,'
                     \ . 'while\>:continue\>:break\>:endwhile\>,'
                     \ . 'fshan_start\>:fshan_end\>'
 
 autocmd BufReadPre,BufNewFilE *.c,*.h  :let b:match_words =  '<:>,'
-                    \ . '#ifdef\>\|#ifndef\>\|#if\>\|#ifeq\>\|#ifneq\>:#else\>:#endif\>,'
+                    \ . '#ifdef\>\|#ifndef\>\|#if\>\|#ifeq\>:#elif\>\|#else:#endif\>,'
                     \ . 'if\>:else\>,'
-                    \ . 'while\>:continue\>:break\>:endwhile\>,'
+                    \ . 'switch\>:case\>:default\s*\:\>,'
+                    \ . 'for\>:break\>:continue\>,'
                     \ . 'fshan_start\>:fshan_end\>'
 
 ".html file match jump
