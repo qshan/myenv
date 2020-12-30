@@ -50,3 +50,16 @@ alias ctags_R_SV      "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaS
 alias ctags_L_C       'ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
 alias ctags_L_Python  "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
 alias ctags_L_SV      "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
+
+#set format of shell header string for tcsh
+#alias set_full_path "%U%m%u:%B%~%b%#"
+#alias set_full_path "set prompt='%U%m%u:%B%C%b%#'"
+alias set_full_path "set prompt='%U%m%u:%B%/%b%#'"
+
+alias set_short_path "set prompt='%B%m%b:%h%#'"
+#alias set_short_path "set prompt='%U%m%u:%B%c%b%#'"
+#alias set_short_path "set prompt='%U%m%u:%B%c%b:%h%#'"
+
+
+#set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands
+#set prompt='%B%c%b%h%#' #display last part of current folder + linenumber of history commands
