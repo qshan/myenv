@@ -54,10 +54,12 @@ alias ctags_L_SV      "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz 
 #set format of shell header string for tcsh
 #alias set_full_path "%U%m%u:%B%~%b%#"
 #alias set_full_path "set prompt='%U%m%u:%B%C%b%#'"
+#alias set_full_path "set prompt='%U%M%u:%B%/%b%#'"
 alias set_full_path "set prompt='%U%m%u:%B%/%b%#'"
 
 alias set_short_path "set prompt='%B%m%b:%h%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c%b%#'"
+#alias set_short_path "set prompt='%U%m%u:%B%c2%b%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c%b:%h%#'"
 
 
