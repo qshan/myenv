@@ -34,9 +34,10 @@ find SearchPath -type f -iname SearchPattern | xargs -I{} cp -u {} TargetCopyPat
 #forcely copy the source file to destination
 find SearchPath -type f -iname SearchPattern | xargs -I{} \cp -f {} TargetCopyPath
 
-find SearchPath -type f -iname SearchPattern | xargs -I{} cp  {} TargetCopyPath
-find SearchPath -type f -iname SearchPattern | xargs -I{} mv {} TargetCopyPath
-find SearchPath -type f -iname SearchPattern | xargs -I{} \mv -f {} TargetCopyPath
+find SearchPath -type f -iname SearchNamePattern | xargs -I{} cp  {} TargetCopyPath
+find SearchPath -type f -iname SearchNamePattern | xargs -I{} mv {} TargetCopyPath
+find SearchPath -type f -iname SearchNamePattern | xargs -I{} \mv -f {} TargetCopyPath
+find SearchPath -type f -iname SearchNamePattern | xargs \grep --color -oi grepPattern
 
 #forcely remove the folder in the SearchPath
 find SearchPath -type d -iname "*" | xargs \rm -rf
