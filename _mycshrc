@@ -62,6 +62,55 @@ alias set_short_path "set prompt='%B%m%b:%h%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c2%b%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c%b:%h%#'"
 
-
 #set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands
 #set prompt='%B%c%b%h%#' #display last part of current folder + linenumber of history commands
+
+#following info got from man tcsh
+##$##       prompt  The string which is printed before reading each command from the terminal.  prompt may include any of the following  formattingsequences (+), which are replaced by the given information:
+##$##               %/  The current working directory.
+##$##               %~  The  current  working  directory, but with one's home directory represented by `~' and other users' home directories repre‐sented by `~user' as per Filename substitution.  `~user' substitution happens only if the shell has already used `~user' ina pathname in the current session.
+##$##               %c[[0]n], %.[[0]n]
+##$##                   The  trailing component of the current working directory, or n trailing components if a digit n is given.  If n begins with`0', the number of skipped components precede the trailing component(s) in the format `/<skipped>trailing'.  If the  ellip‐sis  shell variable is set, skipped components are represented by an ellipsis so the whole becomes `...trailing'.  `~' sub‐
+##$##                   stitution is done as in `%~' above, but the `~' component is ignored when counting trailing components.
+##$##               %C  Like %c, but without `~' substitution.
+##$##               %h, %!, !
+##$##                   The current history event number.
+##$##               %M  The full hostname.
+##$##               %m  The hostname up to the first `.'.
+##$##               %S (%s)
+##$##                   Start (stop) standout mode.
+##$##               %B (%b)
+##$##                   Start (stop) boldfacing mode.
+##$##               %U (%u)
+##$##                   Start (stop) underline mode.
+##$##               %t, %@
+##$##                   The time of day in 12-hour AM/PM format.
+##$##               %T  Like `%t', but in 24-hour format (but see the ampm shell variable).
+##$##               %p  The `precise' time of day in 12-hour AM/PM format, with seconds.
+##$##               %P  Like `%p', but in 24-hour format (but see the ampm shell variable).
+##$##               \c  c is parsed as in bindkey.
+##$##               ^c  c is parsed as in bindkey.
+##$##               %%  A single `%'.
+##$##               %n  The user name.
+##$##               %N  The effective user name.
+##$##               %j  The number of jobs.
+##$##               %d  The weekday in `Day' format.
+##$##               %D  The day in `dd' format.
+##$##               %w  The month in `Mon' format.
+##$##               %W  The month in `mm' format.
+##$##               %y  The year in `yy' format.
+##$##               %Y  The year in `yyyy' format.
+##$##               %l  The shell's tty.
+##$##               %L  Clears from the end of the prompt to end of the display or the end of the line.
+##$##               %$  Expands the shell or environment variable name immediately after the `$'.
+##$##               %#  `>' (or the first character of the promptchars  shell  variable)  for  normal  users,  `#'  (or  the  second  character  of promptchars) for the superuser.
+##$##               %{string%}
+##$##                   Includes string as a literal escape sequence.  It should be used only to change terminal attributes and should not move the cursor location.  This cannot be the last sequence in prompt.
+##$##               %?  The return code of the command executed just before the prompt.
+##$##               %R  In prompt2, the status of the parser.  In prompt3, the corrected string.  In history, the history string.
+##$##               `%B', `%S', `%U' and `%{string%}' are available in only eight-bit-clean shells; see the version shell variable.
+##$##               The bold, standout and underline sequences are often used to distinguish a superuser shell.  For example,
+##$##                   > set prompt = "%m [%h] %B[%@]%b [%/] you rang? "
+##$##                   tut [37] [2:54pm] [/usr/accts/sys] you rang? _
+##$##               If `%t', `%@', `%T', `%p', or `%P' is used, and noding is not set, then print `DING!' on the change of hour  (i.e,  `:00'  min‐utes) instead of the actual time.
+##$##               Set by default to `%# ' in interactive shells.
