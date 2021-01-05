@@ -48,3 +48,9 @@ grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
 ln -sTf SourceFolderName TargetLinkerName
 ln -snf SourceFolderName TargetLinkerName
 
+#check the key details in the SHELL you used
+#list binding key details info in tcsh
+bindkey -b
+#list binding key details info in bash
+man bash
+#search Commands for Moving
