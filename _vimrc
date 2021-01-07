@@ -309,6 +309,11 @@ au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
 "set *.min file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.min set syntax=make
 "
+"set the *.emacs and *_emacs file as the makefile type
+au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  set filetype=lisp
+"set *.emacs and *_emacs file with make syntax highlight
+:autocmd BufReadPost,FileReadPost *.emacs,*_emacs set syntax=lisp
+"
 "set the *.c,*.h file auto pattern
 ":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
 ":autocmd BufLeave  *.c,*.h     unabbr FOR

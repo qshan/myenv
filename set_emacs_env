@@ -1,0 +1,34 @@
+#!/bin/bash
+
+
+sudo apt update
+sudo apt install emacs
+
+#bash format
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+
+#tcsh format
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#endif
+
+if [ -f ~/.emacs ]; then
+  echo "~/.emacs is there" ;
+  echo  '(load "'"`pwd`"'/_emacs")'  >>  ~/.emacs ;
+else
+  echo "~/.emacs is not there" ;
+  echo  '(load "'"`pwd`"'/_emacs")'  >  ~/.emacs ;
+fi
+
+if [ -d ~/.emacs.d ]; then
+  echo  "There is bundle folder, backup it" ;
+  \mv -f  ~/.emacs.d ~/.emacs.d.back ;
+else
+  echo  "Do not find the bundle folder" ;
+fi
+#  \cp -rf ./_emacs.d ~/.emacs.d ;
+  \ln -sf  ./_emacs.d ~/.emacs.d ;
+
+emacs &
