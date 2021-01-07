@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+echo "please note, it is better to run just times"
 sudo apt update
 sudo apt install emacs
 
@@ -23,12 +23,12 @@ else
 fi
 
 if [ -d ~/.emacs.d ]; then
-  echo  "There is bundle folder, backup it" ;
-  \mv -f  ~/.emacs.d ~/.emacs.d.back ;
+  echo  "There is .emacs.d folder, will back up it" ;
+  \mv -f  ~/.emacs.d ~/.emacs.d.back."`date +%Y-%m-%d-%H%M`" ;
 else
-  echo  "Do not find the bundle folder" ;
+  echo  "There is no .emacs.d folder in your home" ;
 fi
 #  \cp -rf ./_emacs.d ~/.emacs.d ;
-  \ln -sf  ./_emacs.d ~/.emacs.d ;
+  \ln -sf  `pwd`/_emacs.d ~/.emacs.d ;
 
 emacs &
