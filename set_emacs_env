@@ -1,8 +1,15 @@
 #!/bin/bash
 
 echo "Please note, it is better to run just for initial env"
+
+#add emacs ppa source
+sudo add-apt-repository ppa:kelleyk/emacs
+
 sudo apt update
-sudo apt install emacs
+
+#install emancs v26 here, you could install new version if you like
+sudo apt install emacs26 emacs26-common
+#sudo apt install emacs
 
 #bash format
 #if [ -f ~/_mybashrc ]; then
