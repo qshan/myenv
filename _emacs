@@ -19,3 +19,10 @@
 (set-foreground-color "white") ;; 使用白色前景
 (set-face-foreground 'region "green")  ;; 区域前景颜色设为绿色
 (set-face-background 'region "blue") ;; 区域背景色设为蓝色
+
+;;(setq load-path (cons "~/.emacs.d/YouLispFilePath" load-path))
+;;(load "YouLispName") ;;this command will search and load YouLispName.elc or YouLispName.el or YouLispName in order in the load-path list
+
+;;Start to load config in init.el
+;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
+(load-file "~/.emacs.d/init.el")

@@ -21,14 +21,15 @@ sudo apt install emacs26 emacs26-common
 #    . ~/_mycshrc
 #endif
 
-#link the _emacs to your home path
+#add/call the _emacs into .emacs in your home path
 if [ -f ~/.emacs ]; then
   echo "~/.emacs is there" ;
-  echo  '(load "'"`pwd`"'/_emacs")'  >>  ~/.emacs ;
+  echo  ';;load config in _emacs here'  >>  ~/.emacs ;
 else
   echo "~/.emacs is not there" ;
-  echo  '(load "'"`pwd`"'/_emacs")'  >  ~/.emacs ;
+  echo  ';;load config _emacs here'  >  ~/.emacs ;
 fi
+  echo  '(load-file "'"`pwd`"'/_emacs")'  >>  ~/.emacs ;
 
 #to get and use redguardtoo stable setup
 git clone https://github.com/redguardtoo/emacs.d.git _emacs.d;
