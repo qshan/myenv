@@ -61,6 +61,9 @@ set cursorcolumn
 set list
 "set nolist
 "
+"set the space line, if linespace=0, Maybe the underline is invisible
+set linespace=4
+"
 set wrap       "auto display line with a line break, but do not insert the line break in the file
 "set nowrap       "display a lines in one lies
 "
