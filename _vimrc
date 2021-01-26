@@ -504,7 +504,7 @@ command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 command! MyAddMatchWords            let b:match_words= '<:>,' .
 command! MyShowHex                  :%!xxd
 
-" change line char in windows is ^M, we could input it as i_CTRL+V_CTRL+SHIFT+M
+" change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
 "au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
 
 "set the *.v,*.vh,*.sv,*.svh,*.c,*.h file auto pattern
@@ -811,16 +811,16 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 " []    [count] sections backward or to the previous '}' in the first column.  |exclusive| Note that |exclusive-linewise| often applies.
 """
 """----------------------------basic command to move cursor in insert mode----------------------------
-"""i_CTRL-r + %            "insert the filename with 
-"""i_CTRL-r + *            "insert the clipboard contents (X11: primary selection)
-"""i_CTRL-r + +            "insert the clipboard contents
-"""i_CTRL-r + :            "insert the last command-line
-"""i_CTRL-r + .            "insert the last inserted text
-"""i_CTRL-v + CTRL-m       "insert the symbo of end of line with windows format
-"""i_CTRL-a                "Insert previously inserted text.
-"""i_CTRL-w                "delete the word before the cursor
-"""i_CTRL-u                "delete all of words before the cursor
-"""i_CTRL-c                "exit the insert mode
+"""i_C-r + %            "insert the filename with 
+"""i_C-r + *            "insert the clipboard contents (X11: primary selection)
+"""i_C-r + +            "insert the clipboard contents
+"""i_C-r + :            "insert the last command-line
+"""i_C-r + .            "insert the last inserted text
+"""i_C-v + C-m          "insert the symbo of end of line with windows format
+"""i_C-a                "Insert previously inserted text.
+"""i_C-w                "delete the word before the cursor
+"""i_C-u                "delete all of words before the cursor
+"""i_C-c                "exit the insert mode
 
 """----------------------------read  the output contenst of command in vim command----------------------------
 "read the command output
@@ -829,64 +829,64 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """----------------------------Auto completion----------------------------
 """Completion command
 """COMPLETING SPECIFIC ITEMS
-"""  CTRL-X    CTRL-F    "#####file names
-"""  CTRL-X    CTRL-L    "whole lines
-"""  CTRL-X    CTRL-D    "macro definitions (also in included files)
-"""  CTRL-X    CTRL-I    "current and included files
-"""  CTRL-X    CTRL-K    "words from a dictionary
-"""  CTRL-X    CTRL-T    "words from a thesaurus
-"""  CTRL-X    CTRL-]    "#####tags
-"""  CTRL-X    CTRL-V    "Vim command line
-"""  CTRL-X    CTRL-O    "Omni compeletion
-"""  CTRL-X    CTRL-J    "Search keywords to complete in forwad directions
+"""  C-x    C-f       "#####file names
+"""  C-x    C-l       "whole lines
+"""  C-x    C-d       "macro definitions (also in included files)
+"""  C-x    C-i       "current and included files
+"""  C-x    C-k       "words from a dictionary
+"""  C-x    C-t       "words from a thesaurus
+"""  C-x    C-]       "#####tags
+"""  C-x    C-v       "Vim command line
+"""  C-x    C-o       "Omni compeletion
+"""  C-x    C-j       "Search keywords to complete in forwad directions
 
-"""  CTRL-N              "#####find the next match, 
-"""  CTRL-P              "find the previous match.
-"""  CTRL-Y              "#####select current selection 
-"""  CTRL-E              "quit the selection
+"""  C-n              "#####find the next match, 
+"""  C-p              "find the previous match.
+"""  C-y              "#####select current selection 
+"""  C-e              "quit the selection
 
 """----------------------------Multi-window----------------------------
-"""Ctl + W + s
+"""C + W + s
 """:sp [filename]
-"""Ctl-W + c              "close current window
-"""Ctl-W + o              "keep current window, close others
-"""Ctl-W + =              "make all window have same hight
-"""Ctl-W + _              "make current window have the max hight
-"""Ctl-W + 1 + _          "make current window have the min hight
+"""C-w + c                "close current window
+"""C-w + o                "keep current window, close others
+"""C-w + =                "make all window have same hight
+"""C-w + _                "make current window have the max hight
+"""C-w + 1 + _            "make current window have the min hight
 """:res _                 "make current window have the min hight
-"""Ctl-W + |              "make current window have the max width
-"""Ctl-W + 1 + |          "make current window have the min width
-"""Ctl-W + n              "Creat a new split windows
-"""Ctl-W + vn             "Creat a new split windows
-"""Ctl-W + ]              "Splite current window, and jump to the cursor
+"""C-w + |                "make current window have the max width
+"""C-w + 1 + |            "make current window have the min width
+"""C-w + n                "Creat a new split windows
+"""C-w + vn               "Creat a new split windows
+"""C-w + ]                "Splite current window, and jump to the cursor
 """:vp [filename]
-"""Ctrl-w + h             "向左移动窗口
-"""Ctrl-w + j             "向下移动窗口
-"""Ctrl-w + j             "向上移动窗口
-"""Ctrl-w + l             "向右移动窗口
+"""C-w + h                "向左移动窗口
+"""C-w + j                "向下移动窗口
+"""C-w + j                "向上移动窗口
+"""C-w + l                "向右移动窗口
 
-"""Ctrl-w + w             "这个命令会在所有窗口中循环移动
-"""Ctrl-w + t             "移动到最左上角的窗口
-"""Ctrl-w + b             "移动到最右下角的窗口
-"""Ctrl-w + p             "移动到前一个访问的窗口
+"""C-w + w                "这个命令会在所有窗口中循环移动
+"""C-w + t                "移动到最左上角的窗口
+"""C-w + b                "移动到最右下角的窗口
+"""C-w + p                "移动到前一个访问的窗口
 """:resize num            "将窗口的高度调整为num行
 """:res num
 """:vertical resize num   "将窗口的宽度调整为num列
 """:vertical res num      "将窗口的宽度调整为num列
 """:resize+num            "将窗口的高度增加num行
-"""CTL-W + -              "减小窗口
-"""CTL-W + +              "增加窗口
-"""CTL-W + num -          "减小窗口num行
-"""CTL-W + num +          "增加窗口num行
+"""C-w + -                "减小窗口
+"""C-w + +                "增加窗口
+"""C-w + num -            "减小窗口num行
+"""C-w + num +            "增加窗口num行
 """:resize-num            "将窗口的高度减少num行
 """:vertical resize+num   "将窗口的宽度增加num列
 """:vertical resize-num   "将窗口的宽度减少num列
 
 """Jump commands
-"CTL-]                    "jump to tag linker define
-"CTL-t                    "jump back according the tag info
-"CTL-o                    "jump back the previous operation location
-"CTL-i                    "jump forward, Vs jump back
+"C-]                      "jump to tag linker define
+"C-t                      "jump back according the tag info
+"C-o                      "jump back the previous operation location
+"C-i                      "jump forward, Vs jump back
 "gf                       "go to file
 "gd                       "go to variable define
 

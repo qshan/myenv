@@ -1,11 +1,5 @@
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (tango-dark))))
+'(ansi-color-faces-vector
+  [default default default italic underline success warning error])
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -26,3 +20,6 @@
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
+
+;;C-x RET r (revert-buffer-with-coding-system)  ;;reread the file using the correct coding system
+;;C-\ Enable or disable use of the selected input method (toggle-input-method).
