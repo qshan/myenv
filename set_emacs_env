@@ -35,6 +35,7 @@ fi
 git clone https://github.com/redguardtoo/emacs.d.git _emacs.d;
 cd _emacs.d;
 git reset --hard stable
+#git pull https://redguardtoo@github.com/redguardtoo/emacs.d.git stable
 
 #link the _emacs.d to your home path
 if [ -d ~/.emacs.d ]; then

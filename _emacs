@@ -23,3 +23,46 @@
 
 ;;C-x RET r (revert-buffer-with-coding-system)  ;;reread the file using the correct coding system
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
+;;M-x load-theme
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;Enable installation of packages from MELPA by adding an entry to
+;;;;;package-archives after (require 'package) and before the call to
+;;;;;package-initialize in your init.el or .emacs file:
+
+;;;;;add package-initialize in your init.el or .emacs file
+;;(require 'package)
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;;;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;;;;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;(package-initialize)
+;;;;;Note that you'll need to run
+;;M-x package-refresh-contents
+;;;;;or
+;;M-x package-list-packages
+;;;;;to ensure that Emacs has fetched the MELPA package list before
+;;you can install packages with
+;;M-x package-install
+;;;;;or similar.
+;;;;;To use the stable package repository instead of the default “bleeding-edge” repository, use this instead of "melpa":
+;;(add-to-list 'package-archives
+;;             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;Install evil via package.el(MELPA), execute the following commands:
+;;M-x package-refresh-contents
+;;M-x package-install RET evil RET
+;;;;;Finally, add the following lines to your Emacs init file, like ~/.emacs:
+;;(require 'evil)
+;;(evil-mode 1)
+;;;;;--------------------------------------------------
+;;;;;Manually install evil, First, install goto-chg and cl-lib. Evil lives in a git repository. To download Evil, do:
+;;git clone --depth 1 https://github.com/emacs-evil/evil.git
+;;;;;Then add the following lines to your Emacs init file, like ~/.emacs:
+;;(add-to-list 'load-path "path/to/evil")
+;;(require 'evil)
+;;(evil-mode 1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;Press C-h t ;; to read bundled tutorial.
+
