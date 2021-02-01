@@ -63,6 +63,182 @@
 ;;(require 'evil)
 ;;(evil-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;install org-mode
+;;;;;Using Emacs packaging system. You can install Org from the “package menu”, with
+;;M-x list-packages
+;;;;;Downloading Org as an archive. You can download Org latest release from Org’s website, and then set the load path in your emcas init files, like .emacs or init.el
+;;(add-to-list 'load-path "~/path/to/orgdir/lisp")
+;;(add-to-list 'load-path "~/path/to/orgdir/contrib/lisp" t)
+;;;;;Using Org’s git repository. download the src, and compile and install
+;;$ cd ~/src/
+;;$ git clone https://code.orgmode.org/bzg/org-mode.git
+;;$ cd org-mode/
+;;$ make autoloads
+;;$ make doc
+;;$ make install
+
+;;;;;For a better experience, the three Org commands org-store-link, org-capture and org-agenda ought to be accessible anywhere in Emacs, not just in Org buffers. To that effect, you need to bind them to globally available keys, like the ones reserved for users (see (elisp)Key Binding Conventions). Here are suggested bindings, please modify the keys to your own liking.
+;;(global-set-key (kbd "C-c l") 'org-store-link)
+;;(global-set-key (kbd "C-c a") 'org-agenda)
+;;(global-set-key (kbd "C-c c") 'org-capture)
+
+;;;;;Files with the ‘.org’ extension use Org mode by default. To turn on Org mode in a file that does not have the extension ‘.org’, make the first line of a file look like this:
+;;MY PROJECTS    -*- mode: org; -*-
+;;;;;which selects Org mode for this buffer no matter what the file’s name is. See also the variable org-insert-mode-line-in-empty-file.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;; list the key binding, (M-x describe-bindings)
+;;C-h b
+
+;;;;;Headlines define the structure of an outline tree. Org headlines start on the left margin3 with one or more stars followed by a space. For example:
+;; C-RET (org-insert-heading-respect-content)
+;;* Top level headline
+;;** Second level
+;;*** Third level
+;;    some text
+;;*** Third level
+;;    more text
+;;* Another top level headline
+
+;;;;;TODO item
+;;C-c C-t (org-todo)
+;;S-RIGHT
+;;S-LEFT
+
+;;;;;Using TODO types, it would be set up like this:
+;;(setq org-todo-keywords '((type "Fred" "Sara" "Lucy" "|" "DONE")))
+
+;;;;;Multiple keyword sets in one file. Sometimes you may want to use different sets of TODO keywords in parallel. For example, you may want to have the basic TODO/DONE, but also a workflow for bug fixing, and a separate state indicating that an item has been canceled—so it is not DONE, but also does not require action. Your setup would then look like this:
+;;(setq org-todo-keywords
+;;      '((sequence "TODO" "|" "DONE")
+;;        (sequence "REPORT" "BUG" "KNOWNCAUSE" "|" "FIXED")
+;;        (sequence "|" "CANCELED")))
+
+;;;;;Fast access to TODO states. If you would like to quickly change an entry to an arbitrary TODO state instead of cycling through the states, you can set up keys for single-letter access to the states. This is done by adding the selection character after each keyword, in parentheses38. For example:
+;;(setq org-todo-keywords
+;;      '((sequence "TODO(t)" "|" "DONE(d)")
+;;        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+;;        (sequence "|" "CANCELED(c)")))
+
+;;;;;Per-file keywords. Setting up keywords for individual files
+;;;;;It can be very useful to use different aspects of the TODO mechanism in different files. For file-local settings, you need to add special lines to the file which set the keywords and interpretation for that file only.
+;;;;;For example, to set one of the two examples discussed above, you need one of the following lines, starting in column zero anywhere in the file:
+;;#+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
+;;;;;You may also write ‘#+SEQ_TODO’ to be explicit about the interpretation, but it means the same as ‘#+TODO’, or
+;;#+TYP_TODO: Fred Sara Lucy Mike | DONE
+;;;;;A setup for using several sets in parallel would be:
+;;#+TODO: TODO | DONE
+;;#+TODO: REPORT BUG KNOWNCAUSE | FIXED
+;;#+TODO: | CANCELED
+;;;;;To make sure you are using the correct keyword, type ‘#+’ into the buffer and then use M-TAB to complete it (see Completion).
+;;;;;Remember that the keywords after the vertical bar—or the last keyword if no bar is there—must always mean that the item is DONE, although you may use a different word. After changing one of these lines, use C-c C-c with point still in the line to make the changes known to Org mode40.
+
+;;;;;Faces for TODO keywords. Org mode highlights TODO keywords with special faces: org-todo for keywords indicating that an item still has to be acted upon, and org-done for keywords indicating that an item is finished. If you are using more than two different states, you might want to use special faces for some of them. This can be done using the variable org-todo-keyword-faces. For example:
+;;(setq org-todo-keyword-faces
+;;      '(("TODO" . org-warning) ("STARTED" . "yellow")
+;;        ("CANCELED" . (:foreground "blue" :weight bold))))
+;;;;;While using a list with face properties as shown for ‘CANCELED’ should work, this does not always seem to be the case. If necessary, define a special face and use that. A string is interpreted as a color. The variable org-faces-easy-properties determines if that color is interpreted as a foreground or a background color.
+
+
+
+
+
+;;;;;TODO keywords as workflow states. You can use TODO keywords to indicate different, possibly sequential states in the process of working on an item, for example:
+;;(setq org-todo-keywords
+;;      '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+;;;;;or
+;;(setq org-todo-keywords
+;;'((sequence "TODO(t)" "|" "DONE(d)")
+;;        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+;;        (sequence "|" "CANCELED(c)")))
+;;;;;The vertical bar separates the TODO keywords (states that need action) from the DONE states (which need no further action). If you do not provide the separator bar, the last state is used as the DONE state.
+;;;;;With this setup, the command C-c C-t cycles an entry from ‘TODO’ to ‘FEEDBACK’, then to ‘VERIFY’, and finally to ‘DONE’ and ‘DELEGATED’. You may also use a numeric prefix argument to quickly select a specific state. For example C-3 C-c C-t changes the state immediately to ‘VERIFY’. Or you can use S-RIGHT and S-LEFT to go forward and backward through the states. If you define many keywords, you can use in-buffer completion (see Completion) or a special one-key selection scheme (see Fast access to TODO states) to insert these words into the buffer. Changing a TODO state can be logged with a timestamp, see Tracking TODO state changes, for more information.
+
+;;;;;Setting Tags. Tags can simply be typed into the buffer at the end of a headline. After a colon, M-TAB offers completion on tags. There is also a special command for inserting tags:
+;;C-c C-q (org-set-tags-command)
+;;C-c C-c (org-set-tags-command)
+
+;;;;;Plain Lists
+;;;;;Unordered list items start with ‘-’, ‘+’, or ‘*’ as bullets.
+;;-Unordered list items-
+;;+Unordered list items+
+;;*Unordered list items*
+;;;;;Ordered list items start with a numeral followed by either a period or a right parenthesis10, such as ‘1.’ or ‘1)’11 If you want a list to start with a different value—e.g., 20—start the text of the item with ‘[@20]’12. Those constructs can be used in any item of the list in order to enforce a particular numbering.
+;;;;;Description list items are unordered list items, and contain the separator ‘::’ to distinguish the description term from the description.
+
+;;;;;Timestamps. A timestamp is a specification of a date (possibly with a time or a range of times) in a special format
+;;;;;Plain timestamp; Event; Appointment. A simple timestamp just assigns a date/time to an item. This is just like writing down an appointment or event in a paper agenda. In the agenda display, the headline of an entry associated with a plain timestamp is shown exactly on that date.
+;;* Meet Peter at the movies
+;;  <2006-11-01 Wed 19:15>
+;;* Discussion on climate change
+;;  <2006-11-02 Thu 20:00-22:00>
+;;;;;Timestamp with repeater interval. A timestamp may contain a repeater interval, indicating that it applies not only on the given date, but again and again after a certain interval of N days (d), weeks (w), months (m), or years (y). The following shows up in the agenda every Wednesday:
+;;* Pick up Sam at school
+;;  <2007-05-16 Wed 12:30 +1w>
+;;;;;Diary-style expression entries. For more complex date specifications, Org mode supports using the special expression diary entries implemented in the Emacs Calendar package60. For example, with optional time:
+;;* 22:00-23:00 The nerd meeting on every 2nd Thursday of the month
+;;  <%%(diary-float t 4 2)>
+;;;;;Time/Date range. Two timestamps connected by ‘--’ denote a range. The headline is shown on the first and last day of the range, and on any dates that are displayed and fall in the range. Here is an example:
+;;** Meeting in Amsterdam
+;;   <2004-08-23 Mon>--<2004-08-26 Thu>
+;;;;;Inactive timestamp. Just like a plain timestamp, but with square brackets instead of angular ones. These timestamps are inactive in the sense that they do not trigger an entry to show up in the agenda.
+;;* Gillian comes late for the fifth time
+;;  [2006-11-01 Wed]
+
+;;;;;Creating Timestamps
+;;C-c . (org-time-stamp)
+;;C-c ! (org-time-stamp-inactive)
+;;C-c C-c
+;;C-c < (org-date-from-calendar)
+;;C-c > (org-goto-calendar)
+;;C-c C-o (org-open-at-point)
+;;S-LEFT (org-timestamp-down-day)
+;;S-RIGHT (org-timestamp-up-day)
+;;S-UP (org-timestamp-up)
+;;S-DOWN (org-timestamp-down)
+;;C-c C-y (org-evaluate-time-range)
+
+
+
+
+
+
+
+
+;;;;;To display the buffer in the indented view, activate Org Indent minor mode with:
+;;M-x org-indent-mode
+;;;;To globally turn on Org Indent mode for all files, customize the variable org-startup-indented. To control it for individual files, use ‘STARTUP’ keyword as follows:
+;;#+STARTUP: indent
+;;#+STARTUP: noindent
+;;;;;It is possible to use hard spaces to achieve the indentation instead, if the bare ASCII file should have the indented look also outside Emacs150. With Org’s support, you have to indent all lines to line up with the outline headers. You would use these settings151:
+;;(setq org-adapt-indentation t
+;;      org-hide-leading-stars t
+;;      org-odd-levels-only t)
+;;;;;Hiding leading stars (org-hide-leading-stars). The second setting makes leading stars invisible by applying the face org-hide to them. For per-file preference, use these file ‘STARTUP’ options:
+;;#+STARTUP: hidestars
+;;#+STARTUP: showstars
+;;;;;Odd levels (org-odd-levels-only). The third setting makes Org use only odd levels, 1, 3, 5, …, in the outline to create more indentation. On a per-file level, control this with:
+;;#+STARTUP: odd
+;;#+STARTUP: oddeven
+;;;;;To convert a file between single and double stars layouts, use
+;;M-x org-convert-to-odd-levels
+;;M-x org-convert-to-oddeven-levels.
+
+;;;;;Global and local cycling
+;;TAB
+;;S-TAB
+;;C-u TAB
+
+;;;;;Initial visibility. When Emacs first visits an Org file, the global state is set to showeverything, i.e., all file content is visible6.
+;;;;;This can be configured through the variable org-startup-folded, or on a per-file basis by adding one of the following lines anywhere in the buffer:
+;;#+STARTUP: overview
+;;#+STARTUP: content
+;;#+STARTUP: showall
+;;#+STARTUP: showeverything
+
+
+
 
 ;;;;;Press C-h t ;; to read bundled tutorial.
 
