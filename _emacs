@@ -21,7 +21,19 @@
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
 
-;;C-x RET r (revert-buffer-with-coding-system)  ;;reread the file using the correct coding system
+;;;;;config the theme with color-theme
+;;(load-file "~/.emacs.d/elpa/color-theme-20190220.1115/themes/color-theme-library.el")
+;;;;;to add load-path plus requrie are same as the load-file directly
+;;;(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-20190220.1115/themes")
+;;;(require 'color-theme)
+;;
+;;(color-theme-initialize)
+;;;(color-theme-robin-hood)
+;;;(color-theme-taylor)
+;;(color-theme-gnome2)
+
+
+;;C-x RET r (revert-buffer-with-coding-system)  ;;re-read the file using the correct coding system
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
 ;;M-x load-theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -86,13 +98,14 @@
 ;;MY PROJECTS    -*- mode: org; -*-
 ;;;;;which selects Org mode for this buffer no matter what the file’s name is. See also the variable org-insert-mode-line-in-empty-file.
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;; list the key binding, (M-x describe-bindings)
-;;C-h b
 
 ;;;;;Headlines define the structure of an outline tree. Org headlines start on the left margin3 with one or more stars followed by a space. For example:
-;; C-RET (org-insert-heading-respect-content)
+;;C-RET ;(org-insert-heading-after-content)
+;;M-RET ;(org-insert-heading-respect-content)
+;;C-c * ;(org-insert-heading);turn item/line into headline
+;;M-LEFT/RIGHT    ;promote/demote heading
+;;C-TAB ;(org-shifttab)
+;;TAB ;(org-cycle)
 ;;* Top level headline
 ;;** Second level
 ;;*** Third level
@@ -100,9 +113,17 @@
 ;;*** Third level
 ;;    more text
 ;;* Another top level headline
+;;M-x org-indent-mode RET;turn on/off the indent mode
+;;;;; or add this info in the head of file
+;;#+STARTUP: indent
+;;;;; or add this info in config file,like .emacs
+;;(setq org-starup-indented t)
+
+;;C-c C-l ; (org-insert-link) ;insert a link (TAB completes stored link)
+;;C-c C-l ; (org-insert-link) ; edit link at point, same as the insert a link
 
 ;;;;;TODO item
-;;C-c C-t (org-todo)
+;;C-c C-t (org-todo) ;rotate the state of the current item
 ;;S-RIGHT
 ;;S-LEFT
 
@@ -142,8 +163,6 @@
 
 
 
-
-
 ;;;;;TODO keywords as workflow states. You can use TODO keywords to indicate different, possibly sequential states in the process of working on an item, for example:
 ;;(setq org-todo-keywords
 ;;      '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
@@ -161,11 +180,24 @@
 
 ;;;;;Plain Lists
 ;;;;;Unordered list items start with ‘-’, ‘+’, or ‘*’ as bullets.
-;;-Unordered list items-
-;;+Unordered list items+
-;;*Unordered list items*
+;;- Unordered list items
+;;+ Unordered list items
+;;* Unordered list items
 ;;;;;Ordered list items start with a numeral followed by either a period or a right parenthesis10, such as ‘1.’ or ‘1)’11 If you want a list to start with a different value—e.g., 20—start the text of the item with ‘[@20]’12. Those constructs can be used in any item of the list in order to enforce a particular numbering.
+;;1. ordered list item
+;;1) ordered list item
 ;;;;;Description list items are unordered list items, and contain the separator ‘::’ to distinguish the description term from the description.
+
+;;;;;formated text with pair of '*', '/', '+' and '_', like this
+;; *formated text here*
+;; /formated text here/
+;; +formated text here+
+;; _formated text here_
+
+;;;;;Table edit
+;; | Name | Phone | Age | TAB, C-c |; creat the table
+;;C-c RET ;add line upper current location
+;;C-c - ;add line after current location
 
 ;;;;;Timestamps. A timestamp is a specification of a date (possibly with a time or a range of times) in a special format
 ;;;;;Plain timestamp; Event; Appointment. A simple timestamp just assigns a date/time to an item. This is just like writing down an appointment or event in a paper agenda. In the agenda display, the headline of an entry associated with a plain timestamp is shown exactly on that date.
@@ -238,7 +270,270 @@
 ;;#+STARTUP: showeverything
 
 
+;;;;;export the text
+;;C-c C-e
+
+;;;;;install counsel-gtags for completion. counsel-gtags is available on MELPA and MELPA stable. you could install with
+;; M-x package-install RET counsel-gtags RET
+;;;;;counsel-gtags command part of commands list
+;;counsel-gtags-find-definition  ;Search for definition.
+;;counsel-gtags-find-reference   ;Search for references.
+;;counsel-gtags-find-symbol      ;Search for symbol references.
+;;counsel-gtags-find-file        ;Search for file among tagged files.
+;;counsel-gtags-go-backward      ;Go to previous position in context stack.
+;;counsel-gtags-go-forward       ;Go to next position in context stack.
+;;counsel-gtags-create-tags      ;Create GNU GLOBAL tags.
+;;counsel-gtags-update-tags      ;Update tags.
+;;counsel-gtags-dwim             ;Find name by context.
+;;;Jump to tag definition if cursor is on tag reference
+;;;Jump to tag reference if cursor is on tag definition
+;;;;;Other window commands. There are also the commands:
+;;counsel-gtags-find-definition-other-window
+;;counsel-gtags-find-reference-other-window
+;;counsel-gtags-find-symbol-other-window
+;;counsel-gtags-find-file-other-window
+;;;;;Similar to the mentioned before with similar names but use other windows instead of the same. This functionality is also available throw ivy-actions in the candidates list pressing M-o j.
+
+;;;;;Ivy is split into three package:ivy, swiper and counsel. by installing counsel, the other two are brought in as dependencies. 
+;;M-x package-refresh-contents RET
+;;M-x counsel-mode ;enable the counsel mode
+;;;;;Ivy, a generic completion mechanism for Emacs. Counsel, a collection of Ivy-enhanced version of common Emacs commands. Swiper, an Ivy-enhanced alternative to isearch.
+;; M-x ivy-mode ;try Ivy, enable the Ivy completion, including specific completion for file and buffer names
+;;;;;ivy-mode ensure that any Emacs command using completing-read-function uses ivy for completion. Counsel takes this further, provioding versions of common Emacs commands that are customised to make the best use of ivy. Enabling counsel-mode remaps built-in Emacs functions that have counsel replacement
+;;M-x package-install RET counsel RET ;install counsel from Emacs package manager
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;Hotkey info Here;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;~/.emacs.d/init.el
+
+;;;;; list the key binding, (M-x describe-bindings)
+;;;;C-h .    ;display-local-help
+;;;;C-h RET  ;view-order-manuals display local help
+;;;;C-h ?    ;help-for-help
+;;;;C-h C-h  ;help-for-help
+;;;;C-h r    ;info-emacs-manual
+;;;;C-h t    ;help-with-tutorial to read bundled tutorial.
+;;C-h q      ;quit-help
+;;
+;;;;C-h b    ;describe-bindings list the binding info
+;;C-h c      ;describe-key-briefly check the info of input-key
+;;C-h f      ;counsel-describe-function
+;;;;C-h k    ;describe-key, will open describe with a windows
+;;;;C-h p    ;finder-by-keywords
+;;;;C-h K    ;find-function-on-key, will open the function definition
+;;C-h C-f    ;find-function, will open the function definition
+;;;;C-h C    ;describe-coding-system
+;;
+;;C-x o n    ;switch window to window-n
+;;;;C-i      ;evil-jump-forward
+;;C-o        ;evil-jump-backward
+;;gf         ;find-file-at-point
+;;gd         ;evil-goto-definition
+;;C-x C-o    ;find-file-at-point
+;;;;M-x ffap ;find-file-at-point
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;--------------------------------------------------
+;;;;;`evil-normal-state-minor-mode' Minor Mode Bindings:
+;;key             binding
+;;---             -------
+; C-n             evil-paste-pop-next
+; C-p             evil-paste-pop
+; C-r             undo-fu-only-redo
+; C-t             pop-tag-mark
+; ESC             Prefix Command
+; C-]             counsel-etags-find-tag-at-point
+; SPC             Prefix Command
+; "               evil-use-register
+; &               evil-ex-repeat-substitute
+; ,               Prefix Command
+; .               evil-repeat
+; ;               Prefix Command
+; <               evil-shift-left
+; =               evil-indent
+; >               evil-shift-right
+; @               evil-execute-macro
+; A               evil-append-line
+; C               evil-change-line
+; D               evil-delete-line
+; I               evil-insert-line
+; J               evil-join
+; O               evil-open-above
+; P               evil-paste-before
+; R               evil-replace-state
+; S               evil-change-whole-line
+; X               evil-delete-backward-char
+; Y               Keyboard Macro
+; Z               Prefix Command
+; a               evil-append
+; c               evil-change
+; d               evil-delete
+; g               Prefix Command
+; i               evil-insert
+; m               evil-set-marker
+; o               evil-open-below
+; p               evil-paste-after
+; q               evil-record-macro
+; r               evil-replace
+; s               evil-substitute ;replace
+; u               undo-fu-only-undo
+; x               evil-delete-char
+; y               evil-yank
+; z               Prefix Command
+; ~               evil-invert-char
+; DEL             evil-backward-char
+; C-.             evil-repeat-pop
+; <deletechar>    evil-delete-char
+; <escape>        evil-force-normal-state
+; <insert>        evil-insert
+; <insertchar>    evil-insert
+; <mouse-2>       mouse-yank-primary
+; <remap>         Prefix Command
+
+; ;             ace-pinyin-jump-char-2
+; a             avy-goto-char-timer
+; d             Prefix Command
+; g             Prefix Command
+; m             Prefix Command
+; w             avy-goto-word-or-subword-1
+;;--------------------------------------------------
+;;;;;`evil-motion-state-minor-mode' Minor Mode Bindings:
+;;key             binding
+;;---             -------
+
+; C-b             evil-scroll-page-up
+; C-d             evil-scroll-down
+; C-e             evil-scroll-line-down
+; C-f             evil-scroll-page-down
+; TAB             evil-jump-forward
+; RET             evil-ret
+; C-o             evil-jump-backward
+; C-v             evil-visual-block
+; C-w             evil-window-map
+; C-y             evil-scroll-line-up
+; C-z             evil-emacs-state
+; C-^             evil-buffer
+; !               evil-shell-command
+; #               evil-search-word-backward
+; $               evil-end-of-line
+; '               evil-goto-mark-line
+; (               evil-backward-sentence-begin
+; )               evil-forward-sentence-begin
+; *               evil-search-word-forward
+; +               evil-next-line-first-non-blank
+; -               evil-previous-line-first-non-blank
+; /               evil-search-forward
+; 0               evil-digit-argument-or-evil-beginning-of-line
+; 1 .. 9          digit-argument
+; :               evil-ex
+; ?               evil-search-backward
+; B               evil-backward-WORD-begin
+; E               evil-forward-WORD-end
+; F               evil-find-char-backward
+; G               evil-goto-line
+; H               evil-window-top
+; K               evil-lookup
+; L               evil-window-bottom
+; M               evil-window-middle
+; N               evil-search-previous
+; T               evil-find-char-to-backward
+; V               evil-visual-line
+; W               evil-forward-WORD-begin
+; [               Prefix Command
+; \               evil-execute-in-emacs-state
+; ]               Prefix Command
+; ^               evil-first-non-blank
+; _               evil-next-line-1-first-non-blank
+; `               evil-goto-mark
+; b               evil-backward-word-begin
+; e               evil-forward-word-end
+; f               evil-find-char
+; g               Prefix Command
+; h               evil-backward-char
+; j               evil-next-line
+; k               evil-previous-line
+; l               evil-forward-char
+; n               evil-search-next
+; t               evil-find-char-to
+; v               evil-visual-char
+; w               evil-forward-word-begin
+; z               Prefix Command
+; {               evil-backward-paragraph
+; |               evil-goto-column
+; }               evil-forward-paragraph
+; C-6             evil-switch-to-windows-last-buffer
+
+; z RET           Keyboard Macro
+; z +             evil-scroll-bottom-line-to-top
+; z -             Keyboard Macro
+; z .             Keyboard Macro
+; z H             evil-scroll-left
+; z L             evil-scroll-right
+; z ^             evil-scroll-top-line-to-bottom
+; z b             evil-scroll-line-to-bottom
+; z h             evil-scroll-column-left
+; z l             evil-scroll-column-right
+; z t             evil-scroll-line-to-top
+; z z             evil-scroll-line-to-center
+; z <left>        Keyboard Macro
+; z <return>      Keyboard Macro
+; z <right>       Keyboard Macro
+
+; C-w C-b         evil-window-bottom-right
+; C-w C-c         evil-window-delete
+; C-w C-f         ffap-other-window
+; C-w C-n         evil-window-new
+; C-w C-o         delete-other-windows
+; C-w C-p         evil-window-mru
+; C-w C-r         evil-window-rotate-downwards
+; C-w C-s         evil-window-split
+; C-w C-t         evil-window-top-left
+; C-w C-v         evil-window-vsplit
+; C-w C-w         evil-window-next
+; C-w C-_         evil-window-set-height
+; C-w +           evil-window-increase-height
+; C-w -           evil-window-decrease-height
+; C-w <           evil-window-decrease-width
+; C-w =           balance-windows
+; C-w >           evil-window-increase-width
+; C-w H           evil-window-move-far-left
+; C-w J           evil-window-move-very-bottom
+; C-w K           evil-window-move-very-top
+; C-w L           evil-window-move-far-right
+; C-w R           evil-window-rotate-upwards
+; C-w S           evil-window-split
+; C-w W           evil-window-prev
+; C-w _           evil-window-set-height
+; C-w b           evil-window-bottom-right
+; C-w c           evil-window-delete
+; C-w h           evil-window-left
+; C-w j           evil-window-down
+; C-w k           evil-window-up
+; C-w l           evil-window-right
+; C-w n           evil-window-new
+; C-w o           delete-other-windows
+; C-w p           evil-window-mru
+; C-w q           evil-quit
+; C-w r           evil-window-rotate-downwards
+; C-w s           evil-window-split
+; C-w t           evil-window-top-left
+; C-w v           evil-window-vsplit
+; C-w w           evil-window-next
+; C-w |           evil-window-set-width
+; C-w C-S-h       evil-window-move-far-left
+; C-w C-S-j       evil-window-move-very-bottom
+; C-w C-S-k       evil-window-move-very-top
+; C-w C-S-l       evil-window-move-far-right
+; C-w C-S-r       evil-window-rotate-upwards
+; C-w C-S-s       evil-window-split
+; C-w C-S-w       evil-window-prev
 
 
-;;;;;Press C-h t ;; to read bundled tutorial.
+
+;;--------------------------------------------------
+
+
+
 
