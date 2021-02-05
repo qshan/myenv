@@ -20,6 +20,9 @@
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
+(menu-bar-mode t)
+;;(tool-bar-mode t)
+
 
 ;;;;;config the theme with color-theme
 ;;(load-file "~/.emacs.d/elpa/color-theme-20190220.1115/themes/color-theme-library.el")
@@ -32,6 +35,7 @@
 ;;;(color-theme-taylor)
 ;;(color-theme-gnome2)
 
+;;tango-2
 
 ;;C-x RET r (revert-buffer-with-coding-system)  ;;re-read the file using the correct coding system
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
@@ -316,7 +320,7 @@
 ;;;;C-h t    ;help-with-tutorial to read bundled tutorial.
 ;;C-h q      ;quit-help
 ;;
-;;;;C-h b    ;describe-bindings list the binding info
+;;;;C-h b    ;(M-x describe-bindings), list the binding info
 ;;C-h c      ;describe-key-briefly check the info of input-key
 ;;C-h f      ;counsel-describe-function
 ;;;;C-h k    ;describe-key, will open describe with a windows
@@ -339,196 +343,196 @@
 ;;;;;`evil-normal-state-minor-mode' Minor Mode Bindings:
 ;;key             binding
 ;;---             -------
-; C-n             evil-paste-pop-next
-; C-p             evil-paste-pop
-; C-r             undo-fu-only-redo
-; C-t             pop-tag-mark
-; ESC             Prefix Command
-; C-]             counsel-etags-find-tag-at-point
-; SPC             Prefix Command
-; "               evil-use-register
-; &               evil-ex-repeat-substitute
-; ,               Prefix Command
-; .               evil-repeat
-; ;               Prefix Command
-; <               evil-shift-left
-; =               evil-indent
-; >               evil-shift-right
-; @               evil-execute-macro
-; A               evil-append-line
-; C               evil-change-line
-; D               evil-delete-line
-; I               evil-insert-line
-; J               evil-join
-; O               evil-open-above
-; P               evil-paste-before
-; R               evil-replace-state
-; S               evil-change-whole-line
-; X               evil-delete-backward-char
-; Y               Keyboard Macro
-; Z               Prefix Command
-; a               evil-append
-; c               evil-change
-; d               evil-delete
-; g               Prefix Command
-; i               evil-insert
-; m               evil-set-marker
-; o               evil-open-below
-; p               evil-paste-after
-; q               evil-record-macro
-; r               evil-replace
-; s               evil-substitute ;replace
-; u               undo-fu-only-undo
-; x               evil-delete-char
-; y               evil-yank
-; z               Prefix Command
-; ~               evil-invert-char
-; DEL             evil-backward-char
-; C-.             evil-repeat-pop
-; <deletechar>    evil-delete-char
-; <escape>        evil-force-normal-state
-; <insert>        evil-insert
-; <insertchar>    evil-insert
-; <mouse-2>       mouse-yank-primary
-; <remap>         Prefix Command
+                                        ; C-n             evil-paste-pop-next
+                                        ; C-p             evil-paste-pop
+                                        ; C-r             undo-fu-only-redo
+                                        ; C-t             pop-tag-mark
+                                        ; ESC             Prefix Command
+                                        ; C-]             counsel-etags-find-tag-at-point
+                                        ; SPC             Prefix Command
+                                        ; "               evil-use-register
+                                        ; &               evil-ex-repeat-substitute
+                                        ; ,               Prefix Command
+                                        ; .               evil-repeat
+                                        ; ;               Prefix Command
+                                        ; <               evil-shift-left
+                                        ; =               evil-indent
+                                        ; >               evil-shift-right
+                                        ; @               evil-execute-macro
+                                        ; A               evil-append-line
+                                        ; C               evil-change-line
+                                        ; D               evil-delete-line
+                                        ; I               evil-insert-line
+                                        ; J               evil-join
+                                        ; O               evil-open-above
+                                        ; P               evil-paste-before
+                                        ; R               evil-replace-state
+                                        ; S               evil-change-whole-line
+                                        ; X               evil-delete-backward-char
+                                        ; Y               Keyboard Macro
+                                        ; Z               Prefix Command
+                                        ; a               evil-append
+                                        ; c               evil-change
+                                        ; d               evil-delete
+                                        ; g               Prefix Command
+                                        ; i               evil-insert
+                                        ; m               evil-set-marker
+                                        ; o               evil-open-below
+                                        ; p               evil-paste-after
+                                        ; q               evil-record-macro
+                                        ; r               evil-replace
+                                        ; s               evil-substitute ;replace
+                                        ; u               undo-fu-only-undo
+                                        ; x               evil-delete-char
+                                        ; y               evil-yank
+                                        ; z               Prefix Command
+                                        ; ~               evil-invert-char
+                                        ; DEL             evil-backward-char
+                                        ; C-.             evil-repeat-pop
+                                        ; <deletechar>    evil-delete-char
+                                        ; <escape>        evil-force-normal-state
+                                        ; <insert>        evil-insert
+                                        ; <insertchar>    evil-insert
+                                        ; <mouse-2>       mouse-yank-primary
+                                        ; <remap>         Prefix Command
 
-; ;             ace-pinyin-jump-char-2
-; a             avy-goto-char-timer
-; d             Prefix Command
-; g             Prefix Command
-; m             Prefix Command
-; w             avy-goto-word-or-subword-1
+                                        ; ;             ace-pinyin-jump-char-2
+                                        ; a             avy-goto-char-timer
+                                        ; d             Prefix Command
+                                        ; g             Prefix Command
+                                        ; m             Prefix Command
+                                        ; w             avy-goto-word-or-subword-1
 ;;--------------------------------------------------
 ;;;;;`evil-motion-state-minor-mode' Minor Mode Bindings:
 ;;key             binding
 ;;---             -------
 
-; C-b             evil-scroll-page-up
-; C-d             evil-scroll-down
-; C-e             evil-scroll-line-down
-; C-f             evil-scroll-page-down
-; TAB             evil-jump-forward
-; RET             evil-ret
-; C-o             evil-jump-backward
-; C-v             evil-visual-block
-; C-w             evil-window-map
-; C-y             evil-scroll-line-up
-; C-z             evil-emacs-state
-; C-^             evil-buffer
-; !               evil-shell-command
-; #               evil-search-word-backward
-; $               evil-end-of-line
-; '               evil-goto-mark-line
-; (               evil-backward-sentence-begin
-; )               evil-forward-sentence-begin
-; *               evil-search-word-forward
-; +               evil-next-line-first-non-blank
-; -               evil-previous-line-first-non-blank
-; /               evil-search-forward
-; 0               evil-digit-argument-or-evil-beginning-of-line
-; 1 .. 9          digit-argument
-; :               evil-ex
-; ?               evil-search-backward
-; B               evil-backward-WORD-begin
-; E               evil-forward-WORD-end
-; F               evil-find-char-backward
-; G               evil-goto-line
-; H               evil-window-top
-; K               evil-lookup
-; L               evil-window-bottom
-; M               evil-window-middle
-; N               evil-search-previous
-; T               evil-find-char-to-backward
-; V               evil-visual-line
-; W               evil-forward-WORD-begin
-; [               Prefix Command
-; \               evil-execute-in-emacs-state
-; ]               Prefix Command
-; ^               evil-first-non-blank
-; _               evil-next-line-1-first-non-blank
-; `               evil-goto-mark
-; b               evil-backward-word-begin
-; e               evil-forward-word-end
-; f               evil-find-char
-; g               Prefix Command
-; h               evil-backward-char
-; j               evil-next-line
-; k               evil-previous-line
-; l               evil-forward-char
-; n               evil-search-next
-; t               evil-find-char-to
-; v               evil-visual-char
-; w               evil-forward-word-begin
-; z               Prefix Command
-; {               evil-backward-paragraph
-; |               evil-goto-column
-; }               evil-forward-paragraph
-; C-6             evil-switch-to-windows-last-buffer
+                                        ; C-b             evil-scroll-page-up
+                                        ; C-d             evil-scroll-down
+                                        ; C-e             evil-scroll-line-down
+                                        ; C-f             evil-scroll-page-down
+                                        ; TAB             evil-jump-forward
+                                        ; RET             evil-ret
+                                        ; C-o             evil-jump-backward
+                                        ; C-v             evil-visual-block
+                                        ; C-w             evil-window-map
+                                        ; C-y             evil-scroll-line-up
+                                        ; C-z             evil-emacs-state
+                                        ; C-^             evil-buffer
+                                        ; !               evil-shell-command
+                                        ; #               evil-search-word-backward
+                                        ; $               evil-end-of-line
+                                        ; '               evil-goto-mark-line
+                                        ; (               evil-backward-sentence-begin
+                                        ; )               evil-forward-sentence-begin
+                                        ; *               evil-search-word-forward
+                                        ; +               evil-next-line-first-non-blank
+                                        ; -               evil-previous-line-first-non-blank
+                                        ; /               evil-search-forward
+                                        ; 0               evil-digit-argument-or-evil-beginning-of-line
+                                        ; 1 .. 9          digit-argument
+                                        ; :               evil-ex
+                                        ; ?               evil-search-backward
+                                        ; B               evil-backward-WORD-begin
+                                        ; E               evil-forward-WORD-end
+                                        ; F               evil-find-char-backward
+                                        ; G               evil-goto-line
+                                        ; H               evil-window-top
+                                        ; K               evil-lookup
+                                        ; L               evil-window-bottom
+                                        ; M               evil-window-middle
+                                        ; N               evil-search-previous
+                                        ; T               evil-find-char-to-backward
+                                        ; V               evil-visual-line
+                                        ; W               evil-forward-WORD-begin
+                                        ; [               Prefix Command
+                                        ; \               evil-execute-in-emacs-state
+                                        ; ]               Prefix Command
+                                        ; ^               evil-first-non-blank
+                                        ; _               evil-next-line-1-first-non-blank
+                                        ; `               evil-goto-mark
+                                        ; b               evil-backward-word-begin
+                                        ; e               evil-forward-word-end
+                                        ; f               evil-find-char
+                                        ; g               Prefix Command
+                                        ; h               evil-backward-char
+                                        ; j               evil-next-line
+                                        ; k               evil-previous-line
+                                        ; l               evil-forward-char
+                                        ; n               evil-search-next
+                                        ; t               evil-find-char-to
+                                        ; v               evil-visual-char
+                                        ; w               evil-forward-word-begin
+                                        ; z               Prefix Command
+                                        ; {               evil-backward-paragraph
+                                        ; |               evil-goto-column
+                                        ; }               evil-forward-paragraph
+                                        ; C-6             evil-switch-to-windows-last-buffer
 
-; z RET           Keyboard Macro
-; z +             evil-scroll-bottom-line-to-top
-; z -             Keyboard Macro
-; z .             Keyboard Macro
-; z H             evil-scroll-left
-; z L             evil-scroll-right
-; z ^             evil-scroll-top-line-to-bottom
-; z b             evil-scroll-line-to-bottom
-; z h             evil-scroll-column-left
-; z l             evil-scroll-column-right
-; z t             evil-scroll-line-to-top
-; z z             evil-scroll-line-to-center
-; z <left>        Keyboard Macro
-; z <return>      Keyboard Macro
-; z <right>       Keyboard Macro
+                                        ; z RET           Keyboard Macro
+                                        ; z +             evil-scroll-bottom-line-to-top
+                                        ; z -             Keyboard Macro
+                                        ; z .             Keyboard Macro
+                                        ; z H             evil-scroll-left
+                                        ; z L             evil-scroll-right
+                                        ; z ^             evil-scroll-top-line-to-bottom
+                                        ; z b             evil-scroll-line-to-bottom
+                                        ; z h             evil-scroll-column-left
+                                        ; z l             evil-scroll-column-right
+                                        ; z t             evil-scroll-line-to-top
+                                        ; z z             evil-scroll-line-to-center
+                                        ; z <left>        Keyboard Macro
+                                        ; z <return>      Keyboard Macro
+                                        ; z <right>       Keyboard Macro
 
-; C-w C-b         evil-window-bottom-right
-; C-w C-c         evil-window-delete
-; C-w C-f         ffap-other-window
-; C-w C-n         evil-window-new
-; C-w C-o         delete-other-windows
-; C-w C-p         evil-window-mru
-; C-w C-r         evil-window-rotate-downwards
-; C-w C-s         evil-window-split
-; C-w C-t         evil-window-top-left
-; C-w C-v         evil-window-vsplit
-; C-w C-w         evil-window-next
-; C-w C-_         evil-window-set-height
-; C-w +           evil-window-increase-height
-; C-w -           evil-window-decrease-height
-; C-w <           evil-window-decrease-width
-; C-w =           balance-windows
-; C-w >           evil-window-increase-width
-; C-w H           evil-window-move-far-left
-; C-w J           evil-window-move-very-bottom
-; C-w K           evil-window-move-very-top
-; C-w L           evil-window-move-far-right
-; C-w R           evil-window-rotate-upwards
-; C-w S           evil-window-split
-; C-w W           evil-window-prev
-; C-w _           evil-window-set-height
-; C-w b           evil-window-bottom-right
-; C-w c           evil-window-delete
-; C-w h           evil-window-left
-; C-w j           evil-window-down
-; C-w k           evil-window-up
-; C-w l           evil-window-right
-; C-w n           evil-window-new
-; C-w o           delete-other-windows
-; C-w p           evil-window-mru
-; C-w q           evil-quit
-; C-w r           evil-window-rotate-downwards
-; C-w s           evil-window-split
-; C-w t           evil-window-top-left
-; C-w v           evil-window-vsplit
-; C-w w           evil-window-next
-; C-w |           evil-window-set-width
-; C-w C-S-h       evil-window-move-far-left
-; C-w C-S-j       evil-window-move-very-bottom
-; C-w C-S-k       evil-window-move-very-top
-; C-w C-S-l       evil-window-move-far-right
-; C-w C-S-r       evil-window-rotate-upwards
-; C-w C-S-s       evil-window-split
-; C-w C-S-w       evil-window-prev
+                                        ; C-w C-b         evil-window-bottom-right
+                                        ; C-w C-c         evil-window-delete
+                                        ; C-w C-f         ffap-other-window
+                                        ; C-w C-n         evil-window-new
+                                        ; C-w C-o         delete-other-windows
+                                        ; C-w C-p         evil-window-mru
+                                        ; C-w C-r         evil-window-rotate-downwards
+                                        ; C-w C-s         evil-window-split
+                                        ; C-w C-t         evil-window-top-left
+                                        ; C-w C-v         evil-window-vsplit
+                                        ; C-w C-w         evil-window-next
+                                        ; C-w C-_         evil-window-set-height
+                                        ; C-w +           evil-window-increase-height
+                                        ; C-w -           evil-window-decrease-height
+                                        ; C-w <           evil-window-decrease-width
+                                        ; C-w =           balance-windows
+                                        ; C-w >           evil-window-increase-width
+                                        ; C-w H           evil-window-move-far-left
+                                        ; C-w J           evil-window-move-very-bottom
+                                        ; C-w K           evil-window-move-very-top
+                                        ; C-w L           evil-window-move-far-right
+                                        ; C-w R           evil-window-rotate-upwards
+                                        ; C-w S           evil-window-split
+                                        ; C-w W           evil-window-prev
+                                        ; C-w _           evil-window-set-height
+                                        ; C-w b           evil-window-bottom-right
+                                        ; C-w c           evil-window-delete
+                                        ; C-w h           evil-window-left
+                                        ; C-w j           evil-window-down
+                                        ; C-w k           evil-window-up
+                                        ; C-w l           evil-window-right
+                                        ; C-w n           evil-window-new
+                                        ; C-w o           delete-other-windows
+                                        ; C-w p           evil-window-mru
+                                        ; C-w q           evil-quit
+                                        ; C-w r           evil-window-rotate-downwards
+                                        ; C-w s           evil-window-split
+                                        ; C-w t           evil-window-top-left
+                                        ; C-w v           evil-window-vsplit
+                                        ; C-w w           evil-window-next
+                                        ; C-w |           evil-window-set-width
+                                        ; C-w C-S-h       evil-window-move-far-left
+                                        ; C-w C-S-j       evil-window-move-very-bottom
+                                        ; C-w C-S-k       evil-window-move-very-top
+                                        ; C-w C-S-l       evil-window-move-far-right
+                                        ; C-w C-S-r       evil-window-rotate-upwards
+                                        ; C-w C-S-s       evil-window-split
+                                        ; C-w C-S-w       evil-window-prev
 
 
 
