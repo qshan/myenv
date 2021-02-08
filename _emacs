@@ -8,11 +8,11 @@
  )
 
 
-;;(set-background-color "black") ;; 使用黑色背景
-(set-background-color "grey20") ;; 使用grey20背景
-(set-foreground-color "white") ;; 使用白色前景
+;;(set-background-color "black")       ;; 使用黑色背景
+(set-background-color "grey20")        ;; 使用grey20背景
+(set-foreground-color "white")         ;; 使用白色前景
 (set-face-foreground 'region "green")  ;; 区域前景颜色设为绿色
-(set-face-background 'region "blue") ;; 区域背景色设为蓝色
+(set-face-background 'region "blue")   ;; 区域背景色设为蓝色
 
 ;;(setq load-path (cons "~/.emacs.d/YouLispFilePath" load-path))
 ;;(load "YouLispName") ;;this command will search and load YouLispName.elc or YouLispName.el or YouLispName in order in the load-path list
@@ -20,9 +20,15 @@
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
-(menu-bar-mode t)
+(menu-bar-mode t)    ;;show the menu bar in the GUI
+;;M-x menu-bar-mode  ;;show the menu bar with command
+;;(menu-bar-mode -1) ;;disable the menu bar in GUI
 ;;(tool-bar-mode t)
+;;(scroll-bar-mode t)
 
+;;;;;;useful .el info
+;;functions-args.el 
+;;;;GNU Emacs package for showing an inline arguments hint for the C/C++ function at point. https://github.com/abo-abo/function-args
 
 ;;;;;config the theme with color-theme
 ;;(load-file "~/.emacs.d/elpa/color-theme-20190220.1115/themes/color-theme-library.el")
@@ -34,8 +40,14 @@
 ;;;(color-theme-robin-hood)
 ;;;(color-theme-taylor)
 ;;(color-theme-gnome2)
-
 ;;tango-2
+
+;;flycheck.el
+;;Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs, intended as replacement for the older Flymake extension which is part of GNU Emac
+;;;;https://www.flycheck.org/en/latest/
+;;;;add those info into init el file after install with MELPA to enable the flycheck
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
+
 
 ;;C-x RET r (revert-buffer-with-coding-system)  ;;re-read the file using the correct coding system
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
@@ -78,6 +90,8 @@
 ;;(add-to-list 'load-path "path/to/evil")
 ;;(require 'evil)
 ;;(evil-mode 1)
+;;;;;--------------------------------------------------
+;;;;;It’s defined in lisp/init-evil.el. Press C-z to switch between Emacs and Vim key bindings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;install org-mode
 ;;;;;Using Emacs packaging system. You can install Org from the “package menu”, with
@@ -277,6 +291,21 @@
 ;;;;;export the text
 ;;C-c C-e
 
+;;GNU Global gtags
+;;;;https://www.gnu.org/software/global/global.html
+;;;;http://adoxa.altervista.org/global/
+;;;;https://www.gnu.org/software/global/globaldoc_toc.html
+;;;;https://tracker.debian.org/pkg/global
+;;;;https://github.com/punitagrawal/global
+;;;;;;https://www.emacswiki.org/emacs/GnuGlobal
+;;;;;;gtags::          gtags - create tag files for global
+
+;;Univeral ctags
+;;;;https://github.com/universal-ctags
+;;;;https://github.com/universal-ctags/ctags-win32/releases
+;;;;https://ctags.io/
+
+
 ;;;;;install counsel-gtags for completion. counsel-gtags is available on MELPA and MELPA stable. you could install with
 ;; M-x package-install RET counsel-gtags RET
 ;;;;;counsel-gtags command part of commands list
@@ -311,6 +340,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;~/.emacs.d/init.el
 
+;;C-z        ;to switch between Emacs and Vim key bindings.
+;;M-x shell   ;run avaiable shell in emacs window
+;;M-x replace-string   ;replace string, like replace ^M with C-j
+;;C-x d ;enter Dired Mode
+;;C-x o n    ;switch window to window-n
+;;;;C-i      ;evil-jump-forward
+;;C-o        ;evil-jump-backward
+;;gf         ;find-file-at-point
+;;gd         ;evil-goto-definition
+;;C-x C-o    ;find-file-at-point
+;;;;M-x ffap ;find-file-at-point
+
+;;help and get the info with help
 ;;;;; list the key binding, (M-x describe-bindings)
 ;;;;C-h .    ;display-local-help
 ;;;;C-h RET  ;view-order-manuals display local help
@@ -329,13 +371,61 @@
 ;;C-h C-f    ;find-function, will open the function definition
 ;;;;C-h C    ;describe-coding-system
 ;;
-;;C-x o n    ;switch window to window-n
-;;;;C-i      ;evil-jump-forward
-;;C-o        ;evil-jump-backward
-;;gf         ;find-file-at-point
-;;gd         ;evil-goto-definition
-;;C-x C-o    ;find-file-at-point
-;;;;M-x ffap ;find-file-at-point
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;C-x d ;enter Dired Mode
+;;;;;Dired, File Management. Dired is a built-in file manager for Emacs that does some pretty amazing things! Here are some key bindings you should try out:
+;;;;;Evil Keybindings and other behaviour
+;;C-z     ;(evil-toggle-key);The key used to change to and from Emacs state. Must be readable by read-kbd-macro
+;;C-x C-0  +/-/0   ;;text-scale-adjust, +: increase   -:decrease
+;; C-x d           ;;open the dired buffer, then input the directory info and get the files list info in that folder
+;;M-x dired        ;;same as the C-x d
+;;
+;;;;;Navigation
+;;;;;Emacs / Evil
+;;n / j            ;- next line
+;;p / k            ;- previous line
+;;j / J            ;- jump to file in buffer
+;;RET              ;- select file or directory
+;;^                ;- go to parent directory
+;;q                ;(quit-window) in dired-mode-map
+;;file buffer operation
+;;S-RET / g O      ;- Open file in “other” window
+;;M-RET            ;- Show file in other window without focusing (previewing files)
+;;g o              ;(dired-view-file) - Open file but in a “preview” mode, close with q
+;;g / g r          ;Refresh the buffer with revert-buffer after changing configuration (and after filesystem changes!)
+;;;;;Marking files
+;;m                ;- Marks a file
+;;u                ;- Unmarks a file
+;;U                ;- Unmarks all files in buffer
+;;* t / t          ;- Inverts marked files in buffer
+;;% m              ;- Mark files in buffer using regular expression
+;;*                ;- Lots of other auto-marking functions
+;;k / K            ;- “Kill” marked items (refresh buffer with g / g r to get them back)
+;;;;;Many operations can be done on a single file if there are no active marks!
+;;;;;Copying and Renaming files
+;;C                ;- Copy marked files (or if no files are marked, the current file)
+;;;;;Copying single and multiple files
+;;U                ;- Unmark all files in buffer
+;;R                ;- Rename marked files, renaming multiple is a move!
+;;% R              ;- Rename based on regular expression: ^test , old-\&
+;;;;;Power command: C-x C-q (dired-toggle-read-only) - Makes all file names in the buffer editable directly to rename them! Press Z Z to confirm renaming or Z Q to abort.
+;;;;;Deleting files
+;;D                ;- Delete marked file
+;;d                ;- Mark file for deletion
+;;x                ;- Execute deletion for marks
+;;;;;delete-by-moving-to-trash - Move to trash instead of deleting permanently
+;;;;;Creating and extracting archives
+;;Z                ;- Compress or uncompress a file or folder to (.tar.gz)
+;;c                ;- Compress selection to a specific file
+;;;;;dired-compress-files-alist - Bind compression commands to file extension
+;;;;;Other common operations
+;;T                ;- Touch (change timestamp)
+;;M                ;- Change file mode
+;;O                ;- Change file owner
+;;G                ;- Change file group
+;;S                ;- Create a symbolic link to this file
+;;L                ;- Load an Emacs Lisp file into Emacs
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

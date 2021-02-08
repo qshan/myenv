@@ -478,8 +478,8 @@ set showmatch
 """vim -do filename1 filename2
 """ dp     "diffput the different block different put
 """ do     "diffget the different block different obtain
-""" V to select the line or lines you need, and :diffput or :diffpuwill update the line or lines you selected to other side
-""" V to select the line or lines you need, and :diffget or :diffgwill update the line or lines you selected to current side
+""" V/S-v to select the line or lines you need, and :diffput or :diffpuwill update the line or lines you selected to other side
+""" V/S-v to select the line or lines you need, and :diffget or :diffgwill update the line or lines you selected to current side
 """:diffu     "diffupdate
 """:diffthis     "enter diff mode with current open files, or difft
 """:diffoff     "exit from diff mode, or diffo
@@ -652,41 +652,8 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 
 """ -----personal comand--End-------------------
 """ -----popular comand--Start-------------------
+"Hotkeys
 """----------------------------basic command to move cursor in comand mode----------------------------
-"           k
-"      h         l
-"           j
-"e   "move cursor to end of words
-"b   "move cursor to start of words
-"w   "move cursor to start of next words
-"w   "move cursor to start of the line, (no blank part)
-"0   "move cursor to start of the line
-"$   "move cursor to end of the line
-"
-"""open and edit the syntax file in your environment
-":e $VIMRUNTIME/syntax/tcl.vim
-""" then you could add your keywords in this file
-"
-"""set the syntax style by manual
-""set syntax=tcl
-""set syn=tcl
-"""
-""" display current working directory
-" :pwd
-""" display the file name with full path
-":echo expand('%:p')
-""" display the file name without path
-":echo expand('%:t')
-"""display the folder current file located
-":echo expand('$:p:h')
-"""cd the folder current file located
-" :cd %:p:h
-"""set path of current window as path "设置当前窗口的工作目录为path
-":lcd {path}
-""" view the list of all var
-""" -----personal comand--End-------------------
-""" -----popular comand--Start-------------------
-"""----------------------------basic command to move cursor in command mode----------------------------
 "           k
 "      h         l
 "           j
@@ -719,6 +686,11 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 " :cd %:p:h
 """set path of current window as path "设置当前窗口的工作目录为path
 ":lcd {path}
+""" -----personal comand--End-------------------
+"
+""" -----popular comand--Start-------------------
+"""----------------------------basic command to move cursor in command mode----------------------------
+"
 """ view the list of all variables and their values
 " :let
 " :set all
@@ -853,7 +825,7 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """C-w + =                "make all window have same hight
 """C-w + _                "make current window have the max hight
 """C-w + 1 + _            "make current window have the min hight
-""":res _                 "make current window have the min hight
+""":res(ize) _                 "make current window have the min hight
 """C-w + |                "make current window have the max width
 """C-w + 1 + |            "make current window have the min width
 """C-w + n                "Creat a new split windows
@@ -869,19 +841,42 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """C-w + t                "移动到最左上角的窗口
 """C-w + b                "移动到最右下角的窗口
 """C-w + p                "移动到前一个访问的窗口
-""":resize num            "将窗口的高度调整为num行
+""":res(ize) num            "将窗口的高度调整为num行
 """:res num
-""":vertical resize num   "将窗口的宽度调整为num列
+""":vertical res(ize) num   "将窗口的宽度调整为num列
 """:vertical res num      "将窗口的宽度调整为num列
-""":resize+num            "将窗口的高度增加num行
+""":res(ize)+num            "将窗口的高度增加num行
 """C-w + -                "减小窗口
 """C-w + +                "增加窗口
 """C-w + num -            "减小窗口num行
 """C-w + num +            "增加窗口num行
-""":resize-num            "将窗口的高度减少num行
-""":vertical resize+num   "将窗口的宽度增加num列
-""":vertical resize-num   "将窗口的宽度减少num列
-
+""":res(ize)-num            "将窗口的高度减少num行
+""":vertical res(ize)+num   "将窗口的宽度增加num列
+""":vertical res(ize)-num   "将窗口的宽度减少num列
+"""C-w c-]                "就会在分割窗口bai(window)里打开标签.
+"""C-w T                  "让某个窗口另起一个标签页(tab)，（大写T）就可以.
+""":f FileName            "给窗口重命名
+"
+"""----------------------------Multi-files----------------------------
+"""  vi a b c               "vi打开多文件
+"""  :n                     "跳至下一个文件，也可以直接指定要跳的文件，如:n c，可以直接跳到c文件
+"""  :e#                    "回到刚才编辑的文件
+"""  :Ex                    "开启目录浏览器，可以浏览当前目录下的所有文件，并可以选择
+"""  :Sex                   "水平分割当前窗口，并在一个窗口中开启目录浏览器
+"""  :ls                    "显示当前buffer情况
+"""  :shell                 "可以在不关闭vi的情况下切换到shell命令行
+"""  :exit                  "从shell回到vi
+"
+"""----------------------------Multi-TAB----------------------------
+"""  :gt                         "多个标签间进行切换时向右切换gt，向左切换用gT
+"""  :gT                         "多个标签间进行切换时向右切换gt，向左切换用gT
+"""  :tabnew filename            "在编辑的时候想增加一个标签就可以:tabnew filename
+"""  :tabc                       "关闭当前的tab
+"""  :tabo                       "关闭所有其他的tab
+"""  :tabs                       "查看所有打开的tab
+"""  :tabp                       "前一个
+"""  :tabn                       "后一个
+"
 """Jump commands
 "C-]                      "jump to tag linker define
 "C-t                      "jump back according the tag info
