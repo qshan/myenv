@@ -26,8 +26,24 @@
 ;;(tool-bar-mode t)
 ;;(scroll-bar-mode t)
 
+;;Univeral ctags
+;;;;https://github.com/universal-ctags
+;;;;https://github.com/universal-ctags/ctags-win32/releases
+;;;;https://ctags.io/
+;;
+;;set tags for emacs
+;;generate the TAGS for Emacs
+;;ctags -e -R --c++-kinds=+px --fields=+iaS --extra=+qf ./
+;;TODO;;set tags variable for Emacs env
+;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
+  (setq tags-table-list '("~/data/work/c-demo-project-tuhdo/TAGS"))
+;;  (setq tags-file-name '("~/data/work/c-demo-project-tuhdo/TAGS"))
+;;set for company mode
+  (with-eval-after-load 'company
+    (company-ctags-auto-setup))
+
 ;;;;;;useful .el info
-;;functions-args.el 
+;;functions-args.el
 ;;;;GNU Emacs package for showing an inline arguments hint for the C/C++ function at point. https://github.com/abo-abo/function-args
 
 ;;;;;config the theme with color-theme
@@ -300,10 +316,6 @@
 ;;;;;;https://www.emacswiki.org/emacs/GnuGlobal
 ;;;;;;gtags::          gtags - create tag files for global
 
-;;Univeral ctags
-;;;;https://github.com/universal-ctags
-;;;;https://github.com/universal-ctags/ctags-win32/releases
-;;;;https://ctags.io/
 
 
 ;;;;;install counsel-gtags for completion. counsel-gtags is available on MELPA and MELPA stable. you could install with
@@ -370,6 +382,9 @@
 ;;;;C-h K    ;find-function-on-key, will open the function definition
 ;;C-h C-f    ;find-function, will open the function definition
 ;;;;C-h C    ;describe-coding-system
+;;
+;;M-x load-file ~/.emacs
+;;M-x eval-buffer
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;C-x d ;enter Dired Mode
@@ -623,11 +638,4 @@
                                         ; C-w C-S-r       evil-window-rotate-upwards
                                         ; C-w C-S-s       evil-window-split
                                         ; C-w C-S-w       evil-window-prev
-
-
-
 ;;--------------------------------------------------
-
-
-
-

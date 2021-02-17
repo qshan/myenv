@@ -44,6 +44,9 @@ alias openPdf='evince '
 alias ctags_R='ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_R_Python="ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
 alias ctags_R_SV="ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
+alias ctags_Re='ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf'
+alias ctags_Re_Python="ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf"
+alias ctags_Re_SV="ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
 alias ctags_L_C='ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
 alias ctags_L_Python="ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
 alias ctags_L_SV="ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
