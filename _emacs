@@ -30,17 +30,64 @@
 ;;;;https://github.com/universal-ctags
 ;;;;https://github.com/universal-ctags/ctags-win32/releases
 ;;;;https://ctags.io/
+;;;;https://docs.ctags.io/en/latest/man-pages.html
+;;
+;;install universal ctags with following script
+;;the details could be get here, https://github.com/universal-ctags/ctags/blob/master/docs/autotools.rst
+;;    $ git clone https://github.com/universal-ctags/ctags.git
+;;    $ cd ctags
+;;    $ ./autogen.sh
+;;    $ #./configure --prefix=/where/you/want # defaults to /usr/local
+;;    $ make
+;;    $ make install # may require extra privileges depending on where to install
 ;;
 ;;set tags for emacs
-;;generate the TAGS for Emacs
-;;ctags -e -R --c++-kinds=+px --fields=+iaS --extra=+qf ./
-;;TODO;;set tags variable for Emacs env
-;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
-  (setq tags-table-list '("~/data/work/c-demo-project-tuhdo/TAGS"))
+;;1.generate the TAGS for Emacs
+;;find SearchPathName -name "*.[chCH]" -print | etags -
+;;find SearchPathName -name "*.[chCH]"  | xargs ctags
+;;ctags -e -R --c++-kinds=+px --fields=+iaS --extra=+qf SearchPathName
+;;
+;;2. TODO;open/set TAGS file for current emancs env
+;;M-x visit-tags-table RETURN
+;;then select the TAGS file for project, and TAGS setting work now
+;;
+;;or TODO
+;;set the TAGS for emacs env in the emcas init file, like in ~/.emacs or init.el
+;;  (setq tags-table-list '("TagsFilePath/TAGS"))
+;;for example, (setq tags-table-list '("~/data/work/c-demo-project-tuhdo/TAGS"))
+;;
+;;set tags variable for Emacs env
 ;;  (setq tags-file-name '("~/data/work/c-demo-project-tuhdo/TAGS"))
+;;
+;;3. others. reset the emacs tag file
+;;M-x tags-reset-tags-tables
+;;
+;;M-x list-tags
+;;M-.     ;search/jump to the function definition
+;;C-]     ;jump to the function definition on evil mode
+;;C-u M-. ;search next function name
+;;C-o     ;return back on evil mode
+;;M-*     ;return the location of last searching tag
+;;C-M-.   ;search the function definition with FunctionName
+;;
+;;M-x tags-query-replace
+;;C-u M-x tags-query-replace
+;;search function name in the tags-table-list
+;;M-.: FunctionName
+;;complete the function name
+;;C-n
+;;
+
 ;;set for company mode
   (with-eval-after-load 'company
     (company-ctags-auto-setup))
+;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
+;;
+;;General completion set with company mode for Global gtags
+;;after install Global gtags, and add those setting in emacs init file
+;;(require 'company)
+;;(add-hook 'after-init-hook 'global-company-mode)
+
 
 ;;;;;;useful .el info
 ;;functions-args.el
@@ -82,7 +129,7 @@
 ;;(package-initialize)
 ;;;;;Note that you'll need to run
 ;;M-x package-refresh-contents
-;;;;;or
+;;;;;TODO;or update the mepla database
 ;;M-x package-list-packages
 ;;;;;to ensure that Emacs has fetched the MELPA package list before
 ;;you can install packages with
@@ -314,12 +361,23 @@
 ;;;;https://tracker.debian.org/pkg/global
 ;;;;https://github.com/punitagrawal/global
 ;;;;;;https://www.emacswiki.org/emacs/GnuGlobal
-;;;;;;gtags::          gtags - create tag files for global
-
-
-
+;;;;;;gtags CodeFilePath         ;create tag files for global
+;;
+;;global gtags file info
+;;;;  ´GTAGS´     : Tag file for object definitions.
+;;;;  ´GRTAGS´    : Tag file for object references.
+;;;;  ´GSYMS´     : Tag file for other symbols.
+;;;;  ´GPATH´     : Tag file for path of source files.
+;;;;  ´GTAGSROOT´ : If  environment  variable GTAGSROOT is not set and ´GTAGSROOT´ exist in the same directory with ´GTAGS´ then use the value as GTAGSROOT.
+;;;;  ´/etc/gtags.conf´, ´$HOME/.globalrc´ : Configuration file.
+;;
 ;;;;;install counsel-gtags for completion. counsel-gtags is available on MELPA and MELPA stable. you could install with
 ;; M-x package-install RET counsel-gtags RET
+;;TODO;generate the TAGS file
+;; $ gtags CodeFilePath
+;; $ gtags -f CodeFileListName
+;; $ gtags [-ciIOqvw][-C dir][-d tag-file][-f file][dbpath]
+;;;;https://www.gnu.org/software/global/globaldoc_toc.html#gtags
 ;;;;;counsel-gtags command part of commands list
 ;;counsel-gtags-find-definition  ;Search for definition.
 ;;counsel-gtags-find-reference   ;Search for references.
@@ -353,39 +411,55 @@
 ;;;;;;~/.emacs.d/init.el
 
 ;;C-z        ;to switch between Emacs and Vim key bindings.
-;;M-x shell   ;run avaiable shell in emacs window
+;;M-x shell  ;run avaiable shell in emacs window
+;;M-!        ;run shell
 ;;M-x replace-string   ;replace string, like replace ^M with C-j
 ;;C-x d ;enter Dired Mode
 ;;C-x o n    ;switch window to window-n
 ;;;;C-i      ;evil-jump-forward
-;;C-o        ;evil-jump-backward
-;;gf         ;find-file-at-point
-;;gd         ;evil-goto-definition
+;;C-o        ;evil-jump-backward (Evil-mode)
+;;gf         ;find-file-at-point (Evil-mode)
+;;gd         ;evil-goto-definition (Evil-mode)
 ;;C-x C-o    ;find-file-at-point
 ;;;;M-x ffap ;find-file-at-point
+;;C-x C-=    ;increase the font size with Evil-mode
+;;C-x C-+    ;increase the font size with Evil-mode
+;;C-x C--    ;decrease the font size with Evil-mode
+;;;;M-x C-+    ;increase the font size
+;;;;M-x C--    ;decrease the font size
+;;C-g        ;quit current command
 
 ;;help and get the info with help
 ;;;;; list the key binding, (M-x describe-bindings)
 ;;;;C-h .    ;display-local-help
 ;;;;C-h RET  ;view-order-manuals display local help
 ;;;;C-h ?    ;help-for-help
-;;;;C-h C-h  ;help-for-help
+;;;;C-h C-h  ;runs help-for-help. Use this command if you want to see a list of available help commands. Remember, if you partially remember a key binding, just press as much as you can remember and then press C-h, Emacs will list available commands for that prefix. Prefix C-h is no exception. C-h C-h simply returns all key bindings and commands of prefix C-h
 ;;;;C-h r    ;info-emacs-manual
 ;;;;C-h t    ;help-with-tutorial to read bundled tutorial.
 ;;C-h q      ;quit-help
 ;;
 ;;;;C-h b    ;(M-x describe-bindings), list the binding info
+;;C-h c      ;runs describe-key-briefly to find out what command is bound to a key. For example, after C-h c, run C-x C-f gives you find-files.
 ;;C-h c      ;describe-key-briefly check the info of input-key
 ;;C-h f      ;counsel-describe-function
+;;;;C-h k    ;runs describe-key to find out what command is bound to a key, along with the documentation of the command. Use this if you want to know how to use a command.
 ;;;;C-h k    ;describe-key, will open describe with a windows
 ;;;;C-h p    ;finder-by-keywords
 ;;;;C-h K    ;find-function-on-key, will open the function definition
 ;;C-h C-f    ;find-function, will open the function definition
 ;;;;C-h C    ;describe-coding-system
-;;
-;;M-x load-file ~/.emacs
-;;M-x eval-buffer
-;;
+;;;;C-h m    ;runs describe-mode to see all the key bindings and documentation of current major mode and minor modes of a buffer.
+;;;;C-h w    ;runs where-is to get which keystrokes invoke a given command.
+;;;;C-h e    ;runs view-echo-area-messages, allow you to see the logging of echo area messages.
+;;;;C-h v    ;runs describe-variable, and asks you for a variable; you can TAB to complete a variable. This command is important, because aside from describing a variable, it allows you to customize the behavior of Emacs and 3rd party packages. But for now, you don't need it.
+
+;;re-load the emacs config file with load-file
+;;M-x load-file ~/.emacs    ;load .emacs file as Lisp code, and execute
+;;M-x eval-buffer           ;use current buffer/file as Lisp code, and execute
+;;M-x eval-region           ;use the region selected as Lisp code, and execute
+;;M-x eval-last-sexp        ;use the current line as Lisp code, and execute
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;C-x d ;enter Dired Mode
 ;;;;;Dired, File Management. Dired is a built-in file manager for Emacs that does some pretty amazing things! Here are some key bindings you should try out:
