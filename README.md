@@ -37,8 +37,6 @@ source ./get_install_chrome;
 
 #git fetch origin
 
-#git checkout README.md
-
 #git pull
 
 #git pull FileNameWithPath
@@ -52,3 +50,41 @@ source ./get_install_chrome;
 #git push origin master
 
 #git push origin :
+
+#git add/rm <file>... # to update what will be committed
+
+#git checkout -- <file>... # to discard changes in working directory
+
+#git rm --cached <file>
+
+#git reset HEAD <file>...
+
+#git status
+
+#git log
+
+#git log -p
+
+#git log -p -3
+
+#git log --stat
+
+#git log --pretty
+
+#git log --pretty=format:"%h - %an, %ar : %s"
+
+#git log --pretty=format:"%h - %an, %ar : %s" --graph
+
+#git tag
+
+#git tag -l "Tag_keyword_info"
+
+#git tag -a TagVersionName -m "comments for this version tag"
+
+#git show TagVersionName
+
+#git push origin TagVersionNameYouWantToShare
+
+#git push origin --tags
+
+#git checkout TagVersionNameYouNeed
