@@ -11,6 +11,19 @@ history 10000
 export timefshan="`date +%Y-%m-%d-%H%M`"
 
 
+# replace Caps with CTRL
+setxkbmap -option ctrl:nocaps
+#
+###set as default setting
+##setxkbmap -option
+#
+# replace the Caps as press left-Shift and right-Shift both
+#setxkbmap -option shift:both_capslock
+#
+# make short-pressed ctrl behave like Escape
+# 单独按下Caps表示Escape，Caps+其它键时表示Ctrl
+#xcape -e "Control_L=Escape"
+
 #if [ -f ~/.myalias_common ]; then
 #  source ~/.myalias_common
 #fi
