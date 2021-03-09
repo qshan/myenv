@@ -884,7 +884,15 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 "C-i                      "jump forward, Vs jump back
 "gf                       "go to file
 "gd                       "go to variable define
-
+"
+":tn                       "go next tag info accorind the tag list
+":tp                       "go previous tag info accorind the tag list
+"g]                       "list the jump tag definition available
+":ts                      "list the jump tag definition available
+":tjump                   "jump to tag dinfinition if there is one definition, list the jump tag definition available if there are more than one definition
+":tlast
+":tfirst
+"
 """q + :                  "list the command history list
 """q + /                  "list the search command history list
 """q + ?                  "list the search command history list
