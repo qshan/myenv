@@ -798,6 +798,7 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 "read the command output
 ":r! ls
 ":read! ls
+":! grep -rni "KeyWordSearch" PathName
 """----------------------------Auto completion----------------------------
 """Completion command
 """COMPLETING SPECIFIC ITEMS
