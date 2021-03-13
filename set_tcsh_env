@@ -7,9 +7,18 @@
 #    . ~/_mybashrc
 #fi
 
+#-------------------------tcsh-------------------------
+#format for tcsh code
+#
 #tcsh format
 #if ( -f ~/_mycshrc ) then
 #    . ~/_mycshrc
+#endif
+
+#if ( $?MyEnvVariableName ) then
+#    echo "MyEnvVariableName is $MyEnvVariableName"
+#else
+#    echo "MyEnvVariableName is not defined now"
 #endif
 
 #if ( -f ~/_mycshrc ) then
@@ -34,6 +43,7 @@
 #  default:
 #    COMMAND
 #endsw
+#-------------------------tcsh-------------------------
 
 echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.cshrc
 echo " source `pwd`/_mycshrc" >>  ~/.cshrc

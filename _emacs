@@ -8,8 +8,8 @@
  )
 
 
-;;(set-background-color "black")       ;; 使用黑色背景
-(set-background-color "grey20")        ;; 使用grey20背景
+;;(set-background-color "grey20")        ;; 使用grey20背景
+(set-background-color "black")       ;; 使用黑色背景
 (set-foreground-color "white")         ;; 使用白色前景
 (set-face-foreground 'region "green")  ;; 区域前景颜色设为绿色
 (set-face-background 'region "blue")   ;; 区域背景色设为蓝色
@@ -25,6 +25,14 @@
 ;;(menu-bar-mode -1) ;;disable the menu bar in GUI
 ;;(tool-bar-mode t)
 ;;(scroll-bar-mode t)
+
+;;(setq indent-tabs-mode t)
+;;(setq indent-tabs-mode nil)
+;;(setq default-tab-width 2)
+
+
+;;it is better to end the setting here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;Univeral ctags
 ;;;;https://github.com/universal-ctags
