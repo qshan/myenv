@@ -1,0 +1,34 @@
+#/usr/bin/bash!
+
+#get TigerVNC installation file
+#https://dl.bintray.com/tigervnc/stable/ubuntu-16.04LTS/amd64/
+#https://dl.bintray.com/tigervnc/stable/ubuntu-16.04LTS/amd64/tigervncserver_1.10.0-1ubuntu1_amd64.deb
+#https://dl.bintray.com/tigervnc/stable/ubuntu-16.04LTS/amd64/xtigervncviewer_1.10.0-1ubuntu1_amd64.deb
+
+#install TigeriVNCServer and TigerVNCViewer, like this
+#sudo dpkg -i tigervncserver_filename.deb
+#sudo apt-get install -f
+#sudo dpkg -i xtigervncviewer_1.10.0-1ubuntu1_amd64.deb
+#sudo apt-get install -f
+
+#check the current desktop name
+#$ echo $DESKTOP_SESSION
+
+#Check avaliable desktop in your env.
+#$ ls /usr/share/xsessions
+#$ ls /usr/share/xsessions/*.desktop
+sudo apt update
+sudo apt install tigervncserver
+sudo apt install xtigervncviewer
+
+#$ tigervncserver :1
+#$ tigervncserver :1 -geometry 1600x1024
+#$ tigervncserver :1 -localhost -geometry 1024x768 -depth 32
+#
+#$ sudo x0vncserver -passwordfile ~/.vnc/passwd -display :1
+
+#start the vncserver with this command
+#$ vncserver
+#
+#$# note, by default, the port of TigerVNCServer is 5900, if you get the port info is 1  based on the log,
+#please use the port 5901 to connect this VNCServer
