@@ -358,10 +358,12 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 
 
 "" -----match jump part--start------------------
+"packadd! matchit
 set showmatch
 " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 "set mps+=<:>
 "set matchpairs+=<:>
+"let b:match_ignorecase = 0
 :au FileType c,cpp,java set mps+==:;
 "":autocmd FileType c,cpp,java set mps+==:;
 "set sm
@@ -382,6 +384,43 @@ let b:match_words = '<:>'
 ":autocmd FileType systemverilog :let b:match_words .=  '<:>,'
 "                    \ . 'module:endmodule,'
 endif "end of if exists("loaded_matchit")
+
+:let b:match_words .=  '<:>,'
+                    \ . 'module:endmodule,'
+                    \ . 'begin:\<end\>,'
+                    \ . 'fork:\<join\>\|join_any\|join_none,'
+                    \ . 'class:endclass,'
+                    \ . 'function:endfunction,'
+                    \ . '\<task\>:\<endtask\>,'
+                    \ . 'case\|casex\|casez:default\s*\::endcase,'
+                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
+                    \ . 'ifdef\|ifndef\|ifeq\|ifneq:else:\<endif\>,'
+                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
+                    \ . '\<if\>:\<else\>,'
+                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
+                    \ . 'fshan_start:fshan_end,'
+                    \ . '\<fshan_start\>:\<fshan_end\>'
+
+"
+"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
+:autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>'
+"
+:autocmd FileType bash let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<fi/>'
+"
+
+"filetype on
+"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
+":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
+"
+":autocmd FileType c,cpp :let b:match_words .=  '/<if/>:/<else/>,'
+:autocmd FileType c,cpp let b:match_words =  '<:>,'
+                    \ . '/<if/>:/<else/>,'
+                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
+                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
+"
+
+:autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
 
 ":au BufEnter *.sv,*.svh,*.v,*.vh :let b:match_words='module\>:endmodule\>'
 "set the match_words according the #####file extension name#####
@@ -405,6 +444,13 @@ autocmd BufReadPre,BufNewFilE *.c,*.h  :let b:match_words =  '<:>,'
                     \ . 'switch\>:case\>:default\s*\:\>,'
                     \ . 'for\>:break\>:continue\>,'
                     \ . 'fshan_start\>:fshan_end\>'
+
+".html file match jump
+let b:match_words = '<:>,' .
+        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
+        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
+        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+"
 
 ".html file match jump
 autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,'
@@ -467,67 +513,8 @@ set showmatch
 "       \  '<fshan_start:fshan_end>'
 "
 "" -----match jump part--end------------------
-"" -----personal comand--Start-------------------
-"""vim +{command} filename
-"""vim -c {command} filename
-"""vim --cmd {command}
-"""vim -t tag_name
-"""vim +{command}
-"""vim +"source Session_You_Need_call.vim"
-"""vim -d filename1 filename2
-"""vim -do filename1 filename2
-""" dp     "diffput the different block different put
-""" do     "diffget the different block different obtain
-""" V/S-v to select the line or lines you need, and :diffput or :diffpuwill update the line or lines you selected to other side
-""" V/S-v to select the line or lines you need, and :diffget or :diffgwill update the line or lines you selected to current side
-""":diffu     "diffupdate
-""":diffthis     "enter diff mode with current open files, or difft
-""":diffoff     "exit from diff mode, or diffo
-" isf     =     isfname
-" isk     =     iskeyword
-"
-"define udpate the tags command in vim env, this require ctags is avilable in env
-"":! command_you_want_to_run    "run the shell command in VIM command
-command! UpdateTags !ctags -R .
-"command! MyCdFilePath               cd %:p:h
-command! MyCdCurrentFilePath        cd %:p:h
-command! MyDotInIskeywordAdd        set iskeyword+=.
-command! MyDotInIskeywordRemove     set iskeyword-=.
-command! MySaveWithSudo             :w !sudo tee %
-command! MySearchCompileError       :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
-command! MyRemoveWriteSpaceOnEnd    :%s/\s*$//g
-command! MyRemoveEmptyLine          :%s/^\s*$\n//g
-command! MyWriteSpace2UnderLine     :s/\s*/_/g
-command! MySpellCheckEn             set spell spelllang=en_us
-command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
-":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
-command! MyAddMatchWords            let b:match_words= '<:>,' .
-command! MyShowHex                  :%!xxd
-
-" change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
-"au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
-
-"set the *.v,*.vh,*.sv,*.svh,*.c,*.h file auto pattern
-au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab cccc //--------------------//comments: //--------------------
-
-au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //--------------------<CR>//Comments: <CR>//--------------------<CR>
-
-"
-"set the *.c,*.h file auto pattern when edit this file
-":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>  {<CR>    //code is here<CR>  }<Esc>O 
-":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
-:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
-:autocmd BufLeave  *.c,*.h     unabbr FOR
-"
-:autocmd BufEnter  *.c,*.h     abbr WHILE while ()<CR>{<CR>}<Esc>O 
-:autocmd BufLeave  *.c,*.h     unabbr WHILE
-"
-:autocmd BufEnter  *.c,*.h     abbr DO do<CR>{<CR>}while ();<Esc>O 
-:autocmd BufLeave  *.c,*.h     unabbr DO
-"
-:autocmd BufEnter  *.c,*.h     abbr SWITCH switch()<CR>{<CR>case ITEM :<CR>;<CR>break;<CR>case ITEM :<CR>;<CR>break;<CR>default:<CR>;<CR>}<Esc>O 
-:autocmd BufLeave  *.c,*.h     unabbr SWITCH
-
+""
+""" -----hightlight setting--start-------------------
 "highlight the keywords you need in vim
 "highlight <-> hi
 highlight MatchParen ctermbg=DarkRed guibg=lightblue
@@ -560,82 +547,11 @@ syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 """"""highlight link FrankShanError Error
 """"""Todo  xxx term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
 """"""Error xxx term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
-
-
-"" -----match jump part--start------------------
-"packadd! matchit
-set showmatch
-"set sm
-"let b:match_ignorecase = 0
+""" -----hightlight setting--End-------------------
+""
+""" -----personal command--Start-------------------
 "
-".html file match jump
-let b:match_words = '<:>,' .
-        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
-        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
-"
-"filetype on
-"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
-":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
-"
-:let b:match_words .=  '<:>,'
-                    \ . 'module:endmodule,'
-                    \ . 'begin:\<end\>,'
-                    \ . 'fork:\<join\>\|join_any\|join_none,'
-                    \ . 'class:endclass,'
-                    \ . 'function:endfunction,'
-                    \ . '\<task\>:\<endtask\>,'
-                    \ . 'case\|casex\|casez:default\s*\::endcase,'
-                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>\|\<#ifeq\>\|\<#ifneq\>:\<#else\>:\<#endif\>,'
-                    \ . 'ifdef\|ifndef\|ifeq\|ifneq:else:\<endif\>,'
-                    \ . '`ifdef\|`ifndef\|`if:`else:`endif,'
-                    \ . '\<if\>:\<else\>,'
-                    \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
-                    \ . 'fshan_start:fshan_end,'
-                    \ . '\<fshan_start\>:\<fshan_end\>'
-"
-:autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
-"
-":autocmd FileType c,cpp :let b:match_words .=  '/<if/>:/<else/>,'
-:autocmd FileType c,cpp let b:match_words =  '<:>,' 
-                    \ . '/<if/>:/<else/>,'
-                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
-                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
-"
-"
-"autocmd BufReadPre,BufNewFilE *.min  set filetype=make
-":autocmd FileType c,cpp let b:match_words .=  '<:>,' .
-:autocmd FileType tcsh,csh let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>'
-"
-:autocmd FileType bash let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<fi/>'
-"
-"format of match_words:
-"         ='<:>,' .
-"       \  '<:>,' .
-"       \  '< \<match_head1 \> \| \< match_head2 \> : \<match_end \>,' .
-"       \  '<fshan_start:fshan_end>'
-"
-"" -----match jump part--end------------------
-"" -----personal comand--Start-------------------
-"""vim +{command} filename
-"""vim -c {command} filename
-"""vim --cmd {command}
-"""vim -t tag_name
-"""vim +{command}
-"""vim +"source Session_You_Need_call.vim"
-"""vim -d filename1 filename2
-"""vim -do filename1 filename2
-""" dp     "diffput the different block different put
-""" do     "diffget the different block different obtain
-""" V to select the line or lines you need, and :diffput or :diffpuwill update the line or lines you selected to other side
-""" V to select the line or lines you need, and :diffget or :diffgwill update the line or lines you selected to current side
-""":diffu     "diffupdate
-""":diffthis     "enter diff mode with current open files, or difft
-""":diffoff     "exit from diff mode, or diffo
-" isf     =     isfname
-" isk     =     iskeyword
-"
-"define udpate the tags command in vim env, this require ctags is avilable in env
+"define update the tags command in vim env, this require ctags is avilable in env
 "":! command_you_want_to_run    "run the shell command in VIM command
 command! UpdateTags !ctags -R .
 "command! MyCdFilePath               cd %:p:h
@@ -643,17 +559,46 @@ command! MyCdCurrentFilePath        cd %:p:h
 command! MyDotInIskeywordAdd        set iskeyword+=.
 command! MyDotInIskeywordRemove     set iskeyword-=.
 command! MySaveWithSudo             :w !sudo tee %
-command! MySearchCompileError       :/"incompatible\|redefined\|error\:\|Error\:"
-command! MyRemoveBlankOnEnd         %s/\s*$//g
+command! MySearchCompileError       :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
+command! MyRemoveWriteSpaceOnEnd    :%s/\s*$//g
+command! MyRemoveEmptyLine          :%s/^\s*$\n//g
+command! MyWriteSpace2UnderLine     :s/\s*/_/g
 command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
 command! MyAddMatchWords            let b:match_words= '<:>,' .
+command! MyShowHex                  :%!xxd
+command! MyIgnoreWhiteSpaceDiff     :set diffopt+=iwhite
 
-""" -----personal comand--End-------------------
-""" -----popular comand--Start-------------------
+" change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
+"au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
+
+"set the *.v,*.vh,*.sv,*.svh,*.c,*.h file auto pattern
+au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab cccc //--------------------//comments: //--------------------
+
+au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //--------------------<CR>//Comments: <CR>//--------------------<CR>
+
+"
+"set the *.c,*.h file auto pattern when edit this file
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>  {<CR>    //code is here<CR>  }<Esc>O 
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr FOR
+"
+:autocmd BufEnter  *.c,*.h     abbr WHILE while ()<CR>{<CR>}<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr WHILE
+"
+:autocmd BufEnter  *.c,*.h     abbr DO do<CR>{<CR>}while ();<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr DO
+"
+:autocmd BufEnter  *.c,*.h     abbr SWITCH switch()<CR>{<CR>case ITEM :<CR>;<CR>break;<CR>case ITEM :<CR>;<CR>break;<CR>default:<CR>;<CR>}<Esc>O 
+:autocmd BufLeave  *.c,*.h     unabbr SWITCH
+""
+""" -----personal command--End-------------------
+"
+""" -----popular command--Start-------------------
 "Hotkeys
-"""----------------------------basic command to move cursor in comand mode----------------------------
+"""----------------------------basic command to move cursor in command mode----------------------------
 "           k
 "      h         l
 "           j
@@ -669,6 +614,26 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """open and edit the syntax file in your environment
 ":e $VIMRUNTIME/syntax/tcl.vim
 """ then you could add your keywords in this file
+""
+"""vim +{command} filename
+"""vim -c {command} filename
+"""vim --cmd {command}
+"""vim -t tag_name
+"""vim +{command}
+""
+"""vim +"source Session_You_Need_call.vim"
+"""vim -d filename1 filename2
+"""vim -do filename1 filename2
+""" dp     "diffput the different block different put
+""" do     "diffget the different block different obtain
+""" V/S-v to select the line or lines you need, and :diffput or :diffpuwill update the line or lines you selected to other side
+""" V/S-v to select the line or lines you need, and :diffget or :diffgwill update the line or lines you selected to current side
+""":diffu     "diffupdate
+""":diffthis     "enter diff mode with current open files, or difft
+""":diffoff     "exit from diff mode, or diffo
+" isf     =     isfname
+" isk     =     iskeyword
+" :set diffopt+=iwhite
 "
 """set the syntax style by manual
 ""set syntax=tcl
@@ -686,9 +651,6 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 " :cd %:p:h
 """set path of current window as path "设置当前窗口的工作目录为path
 ":lcd {path}
-""" -----personal comand--End-------------------
-"
-""" -----popular comand--Start-------------------
 """----------------------------basic command to move cursor in command mode----------------------------
 "
 """ view the list of all variables and their values
@@ -923,4 +885,4 @@ command! MyAddMatchWords            let b:match_words= '<:>,' .
 """""noshowfulltag nosft
 """"":set wildmode=longest,list
 
-" -----popular comand--End-------------------
+" -----popular command--End-------------------
