@@ -568,7 +568,12 @@ command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
 command! MyAddMatchWords            let b:match_words= '<:>,' .
 command! MyShowHex                  :%!xxd
-command! MyIgnoreWhiteSpaceDiff     :set diffopt+=iwhite
+command! MyDiffIgnoreWhiteSpace     :set diffopt+=iwhite,iblank
+" :set diffopt+=iblank
+" :set diffopt+=iwhite
+" :set diffopt+=icase
+" :set diffopt+=iwhiteall
+" :set diffopt+=iwhiteeol
 
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
 "au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
@@ -633,7 +638,12 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """:diffoff     "exit from diff mode, or diffo
 " isf     =     isfname
 " isk     =     iskeyword
+""
+" :set diffopt+=iblank
 " :set diffopt+=iwhite
+" :set diffopt+=icase
+" :set diffopt+=iwhiteall
+" :set diffopt+=iwhiteeol
 "
 """set the syntax style by manual
 ""set syntax=tcl
