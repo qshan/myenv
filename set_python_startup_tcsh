@@ -1,6 +1,8 @@
+#! /usr/bin/tcsh
+#ln -sTf `pwd`/_myPythonStartup ~/.pythonstartup
+ln -sTf `pwd`/_myPythonStartup $HOME/.pythonstartup
 
-ln -sTf `pwd`/_myPythonStartup ~/.pythonstartup
-
-echo "if ( -f `pwd`/_mybashrc ) then"  >> ~/.cshrc
-echo "export PYTHONSTARTUP '~/.pythonstartup'" >>  ~/.cshrc
+echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.cshrc
+#echo "export PYTHONSTARTUP '~/.pythonstartup'" >>  ~/.cshrc
+echo "export PYTHONSTARTUP='$HOME/.pythonstartup'" >>  ~/.cshrc
 echo "endif"  >> ~/.cshrc
