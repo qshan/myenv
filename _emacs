@@ -26,6 +26,17 @@
 ;;(tool-bar-mode t)
 ;;(scroll-bar-mode t)
 
+;;enable line highlight
+(global-hl-line-mode t)
+;;(global-hl-line-mode +1)
+;;(hl-line-mode t)
+
+;;M-x package-install
+;;;;select file-column-indicator
+;;worked???
+(require 'fill-column-indicator)
+
+
 ;;(setq indent-tabs-mode t)
 ;;(setq indent-tabs-mode nil)
 ;;(setq default-tab-width 2)

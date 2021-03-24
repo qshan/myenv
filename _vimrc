@@ -766,6 +766,11 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """i_C-u                "delete all of words before the cursor
 """i_C-c                "exit the insert mode
 
+"""----------------------------case change lowercase uppercase----------------------------
+"~                      "swap the case on the cursor location
+"g~ RET                 "swap the case on the current line
+"gu                     "change to lowercase on the current line
+"gU                     "change to uppercase on the current line
 """----------------------------read  the output contenst of command in vim command----------------------------
 "read the command output
 ":r! ls
