@@ -25,6 +25,20 @@
 ;;(menu-bar-mode -1) ;;disable the menu bar in GUI
 ;;(tool-bar-mode t)
 ;;(scroll-bar-mode t)
+;;
+
+;;(global-subword-mode t)
+
+;;to_check_underscore_motion_setting
+;;to-check-middlescore-motion-setting
+;;ToCheckCamelCaseCodeStyle
+;;(with-evil-after-load `evil (defalias #`forward-evil-word #`forward-evil-symbol))
+;;override the word constituents
+(modify-syntax-entry ?_ "w" (standard-syntax-table))
+(modify-syntax-entry ?- "w" (standard-syntax-table))
+
+
+
 
 ;;enable line highlight
 (global-hl-line-mode t)
