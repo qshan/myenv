@@ -1,0 +1,19 @@
+#!/bin/sh
+#this is a example of xstartup
+#worked xtartup for ubuntu 16.04
+
+#this is xstartup.common
+# Uncomment the following two lines for normal desktop:
+export XKL_XMODMAP_DISABLE=1
+ unset SESSION_MANAGER
+# exec /etc/X11/xinit/xinitrc
+ DBUS_SESSION_BUS_ADDRESS
+
+#gnome-session &
+gnome-panel &
+gnome-settings-daemon &
+#unity-settings-daemo &
+metacity &
+#nautilus &
+nautilus --force-desktop &
+gnome-terminal &

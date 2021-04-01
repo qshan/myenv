@@ -7,7 +7,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-
 ;;(set-background-color "grey20")        ;; 使用grey20背景
 (set-background-color "black")       ;; 使用黑色背景
 (set-foreground-color "white")         ;; 使用白色前景
@@ -16,6 +15,14 @@
 
 ;;(setq load-path (cons "~/.emacs.d/YouLispFilePath" load-path))
 ;;(load "YouLispName") ;;this command will search and load YouLispName.elc or YouLispName.el or YouLispName in order in the load-path list
+
+
+;;to_check_underscore_motion_setting
+;;to-check-middlescore-motion-setting
+;;ToCheckCamelCaseCodeStyle
+;;(with-evil-after-load `evil (defalias #`forward-evil-word #`forward-evil-symbol))
+
+
 
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
@@ -27,17 +34,14 @@
 ;;(scroll-bar-mode t)
 ;;
 
-;;(global-subword-mode t)
-
-;;to_check_underscore_motion_setting
-;;to-check-middlescore-motion-setting
-;;ToCheckCamelCaseCodeStyle
-;;(with-evil-after-load `evil (defalias #`forward-evil-word #`forward-evil-symbol))
-;;override the word constituents
-(modify-syntax-entry ?_ "w" (standard-syntax-table))
-(modify-syntax-entry ?- "w" (standard-syntax-table))
+;;;;ignore the underscore
+;;(modify-syntax-entry ?_ "w")
+;;;;ignore the underscore in c-mode
+;;(add-hook 'c-mode-common-hook (lambda () (modify-syntax-entry ?_ "w")))
 
 
+;;;;
+;;(global-subword-mode 1)
 
 
 ;;enable line highlight
@@ -48,16 +52,77 @@
 ;;M-x package-install
 ;;;;select file-column-indicator
 ;;worked???
-(require 'fill-column-indicator)
+;;(require 'fill-column-indicator)
 
-
-;;(setq indent-tabs-mode t)
-;;(setq indent-tabs-mode nil)
-;;(setq default-tab-width 2)
-
+;;--------------------------------------------------
+;;;;(setq indent-tabs-mode t)
+;;;;(setq indent-tabs-mode nil)
+;;;;(setq default-tab-width 2)
+;;;;to_check_underscore_motion_setting
+;;;;to-check-middlescore-motion-setting
+;;;;ToCheckCamelCaseCodeStyle
+;;;;;;
+;;;;ignore the underscore and '-'
+;;(modify-syntax-entry ?_ "w")
+;;(modify-syntax-entry ?_ "w" (standard-syntax-table))
+;;(modify-syntax-entry ?- "w")
+;;(modify-syntax-entry ?- "w" (standard-syntax-table))
+;;;;;;ignore the underscore in c-mode
+;;(add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;;(add-hook 'python-mode-hook   #'(lambda () (modify-syntax-entry ?_ "w")))
+;;;;eval-buffer
+;;;;load-file ~/.emacs
+;;;;(global-superword-mode nil)
+;;(global-superword-mode 0)
+;;(global-subword-mode +1)
+;;(setq global-subword-mode t)
+;;;;(superword-mode nil)
+;;(superword-mode 0)
+;;(subword-mode +1)
+;;(setq subword-mode t)
+;;;;(require 'subword)
+;;;;(global-subword-mode nil)
+;;;;(global-superword-mode 1)
 
 ;;it is better to end the setting here
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;##################################################
+;;--------------------------------------------------
+;;--------------------------------------------------
+;;to_check_underscore_motion_setting
+;;to-check-middlescore-motion-setting
+;;ToCheckCamelCaseCodeStyle
+;;;;
+(defun fshan-subword-mode ()
+  "set submod and ignore '-' and '_' for word constitunt"
+  (interactive)
+  (modify-syntax-entry ?_ "w")
+  ;;(modify-syntax-entry ?_ "w" (standard-syntax-table))
+  (modify-syntax-entry ?- "w")
+  ;;(modify-syntax-entry ?- "w" (standard-syntax-table))
+;;;;;;ignore the underscore in c-mode
+;;(add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;;(add-hook 'python-mode-hook   #'(lambda () (modify-syntax-entry ?_ "w")))
+;;;;eval-buffer
+;;;;load-file ~/.emacs
+  ;;;;(global-superword-mode nil)
+  ;;(global-superword-mode 0)
+  ;;(global-subword-mode 1)
+  ;;(setq global-subword-mode t)
+  ;;(superword-mode nil)
+  ;;(superword-mode 0)
+  ;;(subword-mode 1)
+  (subword-mode +1)
+  ;;(setq subword-mode t)
+  ;;;; enable just in ruby-mode
+  ;;(add-hook 'ruby-mode-hook 'subword-mode)
+  ;;(add-hook 'c-mode-common-hook 'subword-mode)
+  ;;(add-hook 'python-mode-hook  'subword-mode)
+  ;; enable for all programming modes
+  (add-hook 'prog-mode-hook 'subword-mode)
+  )
+;;(require 'my-subword-mode)
+;;--------------------------------------------------
+;::::::::::::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;Univeral ctags
 ;;;;https://github.com/universal-ctags
@@ -475,7 +540,7 @@
 ;;;;C-h b    ;(M-x describe-bindings), list the binding info
 ;;C-h c      ;runs describe-key-briefly to find out what command is bound to a key. For example, after C-h c, run C-x C-f gives you find-files.
 ;;C-h c      ;describe-key-briefly check the info of input-key
-;;C-h f      ;counsel-describe-function
+;;C-h f      ;counsel-describe-function ###good###
 ;;;;C-h k    ;runs describe-key to find out what command is bound to a key, along with the documentation of the command. Use this if you want to know how to use a command.
 ;;;;C-h k    ;describe-key, will open describe with a windows
 ;;;;C-h p    ;finder-by-keywords

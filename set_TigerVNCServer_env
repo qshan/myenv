@@ -1,4 +1,4 @@
-#/usr/bin/bash!
+#!/usr/bin/bash
 
 #get TigerVNC installation file
 #https://dl.bintray.com/tigervnc/stable/ubuntu-16.04LTS/amd64/
