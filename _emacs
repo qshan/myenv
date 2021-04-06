@@ -54,47 +54,32 @@
 ;;worked???
 ;;(require 'fill-column-indicator)
 
+
 ;;--------------------------------------------------
-;;;;(setq indent-tabs-mode t)
-;;;;(setq indent-tabs-mode nil)
-;;;;(setq default-tab-width 2)
-;;;;to_check_underscore_motion_setting
-;;;;to-check-middlescore-motion-setting
-;;;;ToCheckCamelCaseCodeStyle
-;;;;;;
-;;;;ignore the underscore and '-'
-;;(modify-syntax-entry ?_ "w")
-;;(modify-syntax-entry ?_ "w" (standard-syntax-table))
-;;(modify-syntax-entry ?- "w")
-;;(modify-syntax-entry ?- "w" (standard-syntax-table))
-;;;;;;ignore the underscore in c-mode
-;;(add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-;;(add-hook 'python-mode-hook   #'(lambda () (modify-syntax-entry ?_ "w")))
-;;;;eval-buffer
-;;;;load-file ~/.emacs
-;;;;(global-superword-mode nil)
-;;(global-superword-mode 0)
-;;(global-subword-mode +1)
-;;(setq global-subword-mode t)
-;;;;(superword-mode nil)
-;;(superword-mode 0)
-;;(subword-mode +1)
-;;(setq subword-mode t)
-;;;;(require 'subword)
-;;;;(global-subword-mode nil)
-;;;;(global-superword-mode 1)
+
+;;set for company mode
+  (with-eval-after-load 'company (company-ctags-auto-setup))
+;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
 
 ;;it is better to end the setting here
 ;;##################################################
 ;;--------------------------------------------------
 ;;--------------------------------------------------
+;;defun personal env setting here
 ;;to_check_underscore_motion_setting
 ;;to-check-middlescore-motion-setting
-;;ToCheckCamelCaseCodeStyle
+;;ToCheckCamelCasenCodeStyle
 ;;;;
 (defun fshan-subword-mode ()
   "set submod and ignore '-' and '_' for word constitunt"
   (interactive)
+  ;;
+  ;;disable subwork-mode to ingnore CamelCaseNaming
+  (subword-mode -1)
+  ;;(when (not subword-mode) (subword-mode 1))
+  ;;(capitalized-words-mode 1)
+  ;;(subword-mode 1)
+  ;;(add-hook 'c-mode-common-hook (lambda () (subword-mode 1)))
   (modify-syntax-entry ?_ "w")
   ;;(modify-syntax-entry ?_ "w" (standard-syntax-table))
   (modify-syntax-entry ?- "w")
@@ -108,18 +93,22 @@
   ;;(global-superword-mode 0)
   ;;(global-subword-mode 1)
   ;;(setq global-subword-mode t)
-  ;;(superword-mode nil)
+  ;;(superword-mode -1)
   ;;(superword-mode 0)
   ;;(subword-mode 1)
-  (subword-mode +1)
+  ;;(subword-mode +1)
   ;;(setq subword-mode t)
   ;;;; enable just in ruby-mode
   ;;(add-hook 'ruby-mode-hook 'subword-mode)
   ;;(add-hook 'c-mode-common-hook 'subword-mode)
   ;;(add-hook 'python-mode-hook  'subword-mode)
   ;; enable for all programming modes
-  (add-hook 'prog-mode-hook 'subword-mode)
-  )
+  ;;(add-hook 'prog-mode-hook 'subword-mode)
+;;
+  ;;show white space
+  (whitespace-mode)
+
+  ) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
 ;::::::::::::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -177,8 +166,8 @@
 ;;
 
 ;;set for company mode
-  (with-eval-after-load 'company
-    (company-ctags-auto-setup))
+;;  (with-eval-after-load 'company (company-ctags-auto-setup))
+
 ;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
 ;;
 ;;General completion set with company mode for Global gtags
