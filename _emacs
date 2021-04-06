@@ -107,7 +107,20 @@
 ;;
   ;;show white space
   (whitespace-mode)
-
+  ;;(whitespace-mode t)
+  ;;
+  (setq default-tab-width 2)
+  ;;(setq-default tab-width 2)
+  ;;set current buffer's tab width
+  (setq tab-width 2)
+  ;;set whitespace mappling table
+  (setq whitespace-display-mappings '(
+                                      (space-mark    ?\    [?\u00B7]    [?.])
+                                      (space-mark    ?\xA0 [?\u00A4]    [?_])
+                                      (newline-mark  ?\n   [? \?\n])
+                                      (tab-mark      ?\t  [?\u00BB ?\t] [?\\ ?\t])
+                                      ))
+;
   ) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
@@ -799,4 +812,9 @@
                                         ; C-w C-S-r       evil-window-rotate-upwards
                                         ; C-w C-S-s       evil-window-split
                                         ; C-w C-S-w       evil-window-prev
+
+;;remove the trailing whirtespace
+;;M-x delete-trailing-whitespace
+;;M-x whitesace-cleanup
+;;
 ;;--------------------------------------------------
