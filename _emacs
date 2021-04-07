@@ -54,12 +54,17 @@
 ;;worked???
 ;;(require 'fill-column-indicator)
 
+;;--------------------------------------------------
+;;define-key for folding here
+;;(define-key evil-fold-list "zz" '???)
+(define-key evil-normal-state-map (kdb "z c" 'evil-close-fold)
+(define-key evil-normal-state-map (kdb "z C" 'evil-close-folds)
 
 ;;--------------------------------------------------
-
 ;;set for company mode
   (with-eval-after-load 'company (company-ctags-auto-setup))
 ;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
+;;--------------------------------------------------
 
 ;;it is better to end the setting here
 ;;##################################################
