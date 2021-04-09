@@ -57,8 +57,8 @@
 ;;--------------------------------------------------
 ;;define-key for folding here
 ;;(define-key evil-fold-list "zz" '???)
-(define-key evil-normal-state-map (kdb "z c" 'evil-close-fold)
-(define-key evil-normal-state-map (kdb "z C" 'evil-close-folds)
+;;(define-key evil-normal-state-map (kdb "z c" 'evil-close-fold)
+;;(define-key evil-normal-state-map (kdb "z C" 'evil-close-folds)
 
 ;;--------------------------------------------------
 ;;set for company mode

@@ -119,3 +119,30 @@ man bash
 #git push origin --tags
 
 #git checkout TagVersionNameYouNeed
+
+#git checkout BranchName
+
+#git status -s
+
+#git diff FileName
+
+#git diff --cached FileName
+
+#git diff HEAD
+
+#git diff --stat
+
+#git diff Branch1 Branch2
+
+#git diff Branch1 Branch2 --stat
+
+#sudo \rm -f  /var/lib/dpkg/info/git-el.postinst
+
+#sudo apt-get install -f
+
+#sudo apt-get install autotools-dev automake
+#http://ftp.gnu.org/gnu/automake/
+#http://ftp.gnu.org/gnu/automake/automake-1.16.tar.xz
+#http://ftp.gnu.org/gnu/automake/automake-1.16.3.tar.xz
+
+#sudo apt-get install -y gettext
