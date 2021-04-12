@@ -53,40 +53,43 @@
 ;;;;select file-column-indicator
 ;;worked???
 ;;(require 'fill-column-indicator)
-;; ToDo 
 
+;;;;ToCheck:
 ;;M-x package-install RET
-;;;;select hl-todo
+;;select hl-todo
 ;;;;(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 (add-to-list 'load-path (directory-file-name "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
 (setq hl-todo-keyword-faces
-  '(("HOLD" . "#d0bf8f")
-    ("TODO" . "#cc9393")
-    ("ToDo" . "#cc9393")
-    ("todo" . "#cc9393")
-    ("fshan" . "#cc9393")
-    ("qshan" . "#cc9393")
-    ("NEXT" . "#dca3a3")
-    ("THEM" . "#dc8cc3")
-    ("PROG" . "#7cb8bb")
-    ("OKAY" . "#7cb8bb")
-    ("DONT" . "#5f7f5f")
-    ("FAIL" . "#8c5353")
-    ("error" . "#ff0000")
-    ("Error" . "#ff0000")
-    ("DONE" . "#afd8af")
-    ("NOTE"   . "#d0bf8f")
-    ("KLUDGE" . "#d0bf8f")
-    ("HACK"   . "#d0bf8f")
-    ("TEMP"   . "#d0bf8f")
-    ("FIXME"  . "#cc9393")
-    ("XXX+"   . "#cc9393")))
-
+  '(("HOLD"    . "#d0bf8f")
+    ("TODO"    . "#cc9393")
+    ("ToDo"    . "#cc9393")
+    ("todo"    . "#cc9393")
+    ("fshan"   . "#cc9393")
+    ("qshan"   . "#cc9393")
+    ("NEXT"    . "#dca3a3")
+    ("THEM"    . "#dc8cc3")
+    ("PROG"    . "#7cb8bb")
+    ("OKAY"    . "#7cb8bb")
+    ("DONT"    . "#5f7f5f")
+    ;;("FAIL"    . "#8c5353")
+    ("FAIL"    . "#ff0000")
+    ("error"   . "#ff0000")
+    ("Error"   . "#ff0000")
+    ("DONE"    . "#afd8af")
+    ("NOTE"    . "#d0bf8f")
+    ("ToCheck" . "#d0bf8f")
+    ("KLUDGE"  . "#d0bf8f")
+    ("HACK"    . "#d0bf8f")
+    ("TEMP"    . "#d0bf8f")
+    ("FIXME"   . "#cc9393")
+    ("FixMe"   . "#cc9393")
+    ("XXX+"    . "#cc9393")))
+;;
 (global-hl-todo-mode 1)
 ;;(hl-todo-insert ("ToDo" . "#cc9393"))
 ;;;;    ("TODO" . "#cc9393")
 ;;(hl-todo-mode 1)
-;;;;Check TODO todo
+;;;;Check here:   todo
 
 ;;--------------------------------------------------
 ;;define-key for folding here
