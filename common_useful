@@ -45,6 +45,7 @@ find ./* -type d -iname "*" | xargs \rm -rf
 
 grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
 
+env | sort
 ln -sTf SourceFolderName TargetLinkerName
 ln -snf SourceFolderName TargetLinkerName
 
@@ -86,6 +87,28 @@ man bash
 
 #git checkout -- <file>... # to discard changes in working directory
 
+#git checkout TagVersionNameYouNeed
+
+#git checkout BranchNameWithPath
+
+#git checkout HEAD
+#git checkout master
+
+#git checkout HEAD^
+#git checkout HEAD~1
+
+#git checkout HEAD^^
+#git checkout HEAD~2
+#--------------------------------------------------
+#      git-command               WorkingDiretory           Stage/Index               History
+#git add                              Y             ->         Y
+#git commit                                                    Y            ->          Y
+#git checkout                         Y                       <-                        Y
+#git reset --soft                                              Y             <-         Y
+#git reset --mixed                    Y                       <-                        Y
+#git reset --hard        (deleted)                            <-                        Y
+#--------------------------------------------------
+
 #git rm --cached <file>
 
 #git reset HEAD <file>...
@@ -118,9 +141,6 @@ man bash
 
 #git push origin --tags
 
-#git checkout TagVersionNameYouNeed
-
-#git checkout BranchName
 
 #git status -s
 
@@ -135,14 +155,34 @@ man bash
 #git diff Branch1 Branch2
 
 #git diff Branch1 Branch2 --stat
+#--------------------------------------------------
 
 #sudo \rm -f  /var/lib/dpkg/info/git-el.postinst
 
-#sudo apt-get install -f
+#sudo apt-get install -y NameOfSoftware
+#sudo apt-get -f install
+#sudo apt-get install --reinstall NameOfSoftware
+#sudo apt-get autoremove NameOfSoftware
 
-#sudo apt-get install autotools-dev automake
+#sudo apt-get install autotools-dev automake gettext gettext-el
 #http://ftp.gnu.org/gnu/automake/
 #http://ftp.gnu.org/gnu/automake/automake-1.16.tar.xz
 #http://ftp.gnu.org/gnu/automake/automake-1.16.3.tar.xz
 
-#sudo apt-get install -y gettext
+#sudo apt-cache search KeyWordsSearched
+
+#sudo apt-get install -y gettext gettext-base gettext-doc gettext-el gettext-lint libgettextpo0 libgettextpo-dev
+#sudo apt-get install -y libsysfs-dev
+#sudo apt-get install pkg-config pkg-config-aarch64-linux-gnu
+#sudo apt-get install libncurses5 libncurses5-dbg libncurses5-dev lib64ncurses5 lib64ncurses5-dev
+#sudo apt-get install gdb gdb64 gdb-source gdb-doc gdb-dbg gdb-multiarch xxgdb
+
+#sudo apt-get install libiconv-hook-dev
+#sudo apt-get install libtool
+#sudo apt-get install linkchecker linkchecker-gui linklint link-grammar
+#sudo apt-get install intltool intltool-debian autopoint libint-dev
+#sudo apt-get install libgtk2.0-dev libgtk2.0-common libgtk-3-dev libgtk-3-common
+
+
+
+#sudo apt-get install kdbg
