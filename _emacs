@@ -16,13 +16,10 @@
 ;;(setq load-path (cons "~/.emacs.d/YouLispFilePath" load-path))
 ;;(load "YouLispName") ;;this command will search and load YouLispName.elc or YouLispName.el or YouLispName in order in the load-path list
 
-
 ;;to_check_underscore_motion_setting
 ;;to-check-middlescore-motion-setting
 ;;ToCheckCamelCaseCodeStyle
 ;;(with-evil-after-load `evil (defalias #`forward-evil-word #`forward-evil-symbol))
-
-
 
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
@@ -32,17 +29,19 @@
 ;;(menu-bar-mode -1) ;;disable the menu bar in GUI
 ;;(tool-bar-mode t)
 ;;(scroll-bar-mode t)
+;;(scroll-bar-mode -1)
 ;;
+;;;;ToCheck:
+;;;;good reference web for eamcs init.el setting
+;;;; https://juanjoalvarez.net/posts/2014/vim-emacsevil-chaotic-migration-guide/
 
 ;;;;ignore the underscore
 ;;(modify-syntax-entry ?_ "w")
 ;;;;ignore the underscore in c-mode
 ;;(add-hook 'c-mode-common-hook (lambda () (modify-syntax-entry ?_ "w")))
 
-
 ;;;;
 ;;(global-subword-mode 1)
-
 
 ;;enable line highlight
 (global-hl-line-mode t)
@@ -57,6 +56,7 @@
 ;;;;ToCheck:
 ;;M-x package-install RET
 ;;select hl-todo
+;;;; https://github.com/tarsius/hl-todo
 ;;;;(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 (add-to-list 'load-path (directory-file-name "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
 (setq hl-todo-keyword-faces
@@ -90,7 +90,32 @@
 ;;;;    ("TODO" . "#cc9393")
 ;;(hl-todo-mode 1)
 ;;;;Check here:   todo
-
+;;--------------------------------------------------
+;;;;ToCheck:
+;;M-x package-install RET
+;;select;; evil-search-highlight-persist
+;;??;;(require 'evil-search-highlight-persist)
+;;(global-evil-search-highlight-persist t)
+;;--------------------------------------------------
+;;show match pattern
+(show-paren-mode t)
+;;(require 'autopair)
+;;(autopair-global-mode)
+;;--------------------------------------------------
+;; do not create backup file
+(setq make-backup-files nil)
+;;--------------------------------------------------
+;;save the cursor position of file when reopen them
+(setq save-place-file "~/.emacs.d/mysaveplace")
+(setq-default save-place t)
+(require 'saveplace)
+;;--------------------------------------------------
+;;graphical gdb
+(setq gdb-many-windows t)
+;;--------------------------------------------------
+;;;;	;;
+;;(setq-default tab-width 2 indent-tabs-mode nil)
+;;(setq-default c-basic-offset 2 c-default-style "bsd")
 ;;--------------------------------------------------
 ;;define-key for folding here
 ;;(define-key evil-fold-list "zz" '???)
