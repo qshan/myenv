@@ -51,6 +51,10 @@ alias chmodER 'chmod -R a=r'
 alias h 'history'
 alias v 'vim'
 
+alias Emacs '/usr/bin/emacs26'
+alias EmacsM 'Emacs -mm'
+#alias EmacsM 'Emacs --maximized'
+
 #for lubuntu
 alias openFileBroswer 'pcmanfm &'
 #for ubuntu
