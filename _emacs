@@ -99,8 +99,17 @@
 ;;--------------------------------------------------
 ;;show match pattern
 (show-paren-mode t)
+(auto-fill-mode 1)
+;;(setq-default auto-fill-function 'do-auto-fill)
+;;(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;;(setq show-paren-delay 0)
+;;
 ;;(require 'autopair)
 ;;(autopair-global-mode)
+;;--------------------------------------------------
+;; {{ @see https://github.com/redguardtoo/evil-matchit
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
 ;;--------------------------------------------------
 ;; do not create backup file
 (setq make-backup-files nil)
