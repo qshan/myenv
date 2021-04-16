@@ -126,6 +126,7 @@
 ;;(setq-default tab-width 2 indent-tabs-mode nil)
 ;;(setq-default c-basic-offset 2 c-default-style "bsd")
 ;;--------------------------------------------------
+;;Folding Vs Narrowing
 ;;define-key for folding here
 ;;(define-key evil-fold-list "zz" '???)
 ;;(define-key evil-normal-state-map (kdb "z c" 'evil-close-fold)
@@ -604,6 +605,8 @@
 ;;;;M-x C-+    ;increase the font size
 ;;;;M-x C--    ;decrease the font size
 ;;C-g        ;quit current command
+;;C-x C-;    ;comment-line
+;;C-C C-c    ;comment-region in c-mode
 
 ;;help and get the info with help
 ;;;;; list the key binding, (M-x describe-bindings)
