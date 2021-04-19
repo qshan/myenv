@@ -59,6 +59,7 @@ set cursorline
 ":hi CursorLine cterm=NONE ctermbg=grey
 ":hi CursorLine cterm=underline ctermbg=grey guibg=Grey40
 ":hi CursorLine ctermbg=grey guibg=Grey40
+":hi CursorLine cterm=bold ctermfg=white ctermbg=grey gui=bold guifg=white guibg=Grey40
 :hi CursorLine cterm=NONE ctermbg=grey guibg=Grey40
 "
 set cursorcolumn
@@ -69,6 +70,9 @@ set cursorcolumn
 ":hi CursorColumn cterm=underline ctermbg=grey guibg=Grey40
 ":hi CursorColumn cterm=reverse ctermbg=grey guibg=Grey40
 :hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
+"autocmd InsertEnter * hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
+"autocmd InsertEnter * hi CursorLine cterm=bold gui=bold ctermbg=grey guibg=Grey40
+"autocmd InsertLeave * hi CursorLine cterm=NONE gui=NONE ctermbg=grey guibg=Grey40
 "
 "show symbol, like show blank and tab
 set list
@@ -310,8 +314,10 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "filetype plugin on
 "
 "set here again to avoid the vundle's plugin setting
-:hi CursorLine cterm=NONE ctermbg=grey guibg=Grey40
-:hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
+:hi CursorLine   cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
+:hi CursorColumn cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
+:autocmd InsertEnter * highlight CursorLine cterm=bold gui=bold
+:autocmd InsertLeave * highlight CursorLine cterm=NONE gui=NONE
 "
 " 常用的命令
 " :PluginList       - 列出所有已配置的插件
@@ -588,7 +594,7 @@ command! MyShowHex                  :%!xxd
 command! MyDiffIgnoreWhiteSpace     :set diffopt+=iwhite,iblank
 "command! MyCursorHighlight          :hi CursorLine cterm=NONE ctermbg=grey CursorColumn ctermbg=grey
 command! MyCursorColumn             :hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
-command! MyCursorLine               :hi CursorLine cterm=NONE ctermbg=grey guibg=Grey40
+command! MyCursorLine               :hi CursorLine cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
 " :set diffopt+=iblank
 " :set diffopt+=iwhite
 " :set diffopt+=icase
