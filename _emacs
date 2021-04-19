@@ -606,7 +606,7 @@
 ;;;;M-x C--    ;decrease the font size
 ;;C-g        ;quit current command
 ;;C-x C-;    ;comment-line
-;;C-C C-c    ;comment-region in c-mode
+;;C-C C-c    ;comment-region in C-like modes
 
 ;;help and get the info with help
 ;;;;; list the key binding, (M-x describe-bindings)

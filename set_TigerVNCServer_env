@@ -21,6 +21,7 @@ sudo apt update
 sudo apt install tigervncserver
 sudo apt install xtigervncviewer
 
+
 #$ tigervncserver :1
 #$ tigervncserver :1 -geometry 1600x1024
 #$ tigervncserver :1 -localhost -geometry 1024x768 -depth 32
@@ -32,3 +33,17 @@ sudo apt install xtigervncviewer
 #
 #$# note, by default, the port of TigerVNCServer is 5900, if you get the port info is 1  based on the log,
 #please use the port 5901 to connect this VNCServer
+
+#ToCheck
+#set the local display as the vnc export display
+##Check the local display port firstly
+#$echo $DISPLAY
+#$:1
+##config and enable the vnc server from hostside
+#$sudo x0vncserver -passwordfile ~/.vnc/passwd -display :1
+##$sudo x0vncserver -passwordfile ~/.vnc/passwd -display ${DISPLAY}
+##login with vncviewer
+#$vncviewer hostname:5901
+#$vncviewer hostip:5901
+#$vncviewer usrname@hostname:5901
+#$vncviewer usrname@hostip:5901

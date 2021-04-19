@@ -37,7 +37,9 @@
 "good web: https://www.cnblogs.com/aaronLinux/p/6798898.html
 
 " -----good part--Start-------------------
-set encoding=utf-8
+set nocompatible
+"
+"set encoding=utf-8
 set number
 "set nu
 "set nonumber
@@ -49,13 +51,24 @@ set ruler
 "set noruler
 "
 set cursorline
-"
 "set cul
 "set nocursorline
 "set nocul
 "
+"set color of line highlight
+":hi CursorLine cterm=NONE ctermbg=grey
+":hi CursorLine cterm=underline ctermbg=grey guibg=Grey40
+":hi CursorLine ctermbg=grey guibg=Grey40
+:hi CursorLine cterm=NONE ctermbg=grey guibg=Grey40
+"
 set cursorcolumn
 "set cuc
+"
+"set color of column highlight
+":hi CursorColumn ctermbg=grey guibg=Grey40
+":hi CursorColumn cterm=underline ctermbg=grey guibg=Grey40
+":hi CursorColumn cterm=reverse ctermbg=grey guibg=Grey40
+:hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
 "
 "show symbol, like show blank and tab
 set list
@@ -295,6 +308,10 @@ call vundle#end()            "required for Vundle
 filetype plugin indent on    "required for Vundle 加载vim自带和插件相应的语法和文件类型相关脚本
 " 忽视插件改变缩进,可以使用以下替代:
 "filetype plugin on
+"
+"set here again to avoid the vundle's plugin setting
+:hi CursorLine cterm=NONE ctermbg=grey guibg=Grey40
+:hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
 "
 " 常用的命令
 " :PluginList       - 列出所有已配置的插件
@@ -569,6 +586,9 @@ command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 command! MyAddMatchWords            let b:match_words= '<:>,' .
 command! MyShowHex                  :%!xxd
 command! MyDiffIgnoreWhiteSpace     :set diffopt+=iwhite,iblank
+"command! MyCursorHighlight          :hi CursorLine cterm=NONE ctermbg=grey CursorColumn ctermbg=grey
+command! MyCursorColumn             :hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
+command! MyCursorLine               :hi CursorLine cterm=NONE ctermbg=grey guibg=Grey40
 " :set diffopt+=iblank
 " :set diffopt+=iwhite
 " :set diffopt+=icase
