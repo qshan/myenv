@@ -203,6 +203,10 @@
 ;;--------------------------------------------------
 ;::::::::::::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;open emacs with miximized windows
+;;emacs -mm
+;;emacs --miximized
+
 ;;Univeral ctags
 ;;;;https://github.com/universal-ctags
 ;;;;https://github.com/universal-ctags/ctags-win32/releases
