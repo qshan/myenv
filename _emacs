@@ -45,13 +45,53 @@
 
 ;;enable line highlight
 (global-hl-line-mode t)
+;;check the color supported
+;;M-X list-colors-display
+;;(set-face-background 'hl-line "light yellow")
+;;(set-face-background 'hl-line "#ffffe0")
+;;(set-face-background 'hl-line "#CAFF70")
+;;(set-face-background 'hl-line "gray60")
+;;(set-face-background 'hl-line "#999999")
+;;(set-face-background 'hl-line "gray40")
+;;(set-face-background 'hl-line "#666666")
+;;(set-face-background 'hl-line "gray20")
+(set-face-background 'hl-line "#333333")
+;;(set-face-underline 'hl-line t)
+;;(set-face-underline-p 'hl-line t)
+;;(set-face-underline-p 'highlight t)
+;;(set-face-attribute 'hl-line-face nil :underline t)
+(set-face-attribute 'hl-line nil :underline t)
+;;M-X list-faces-display
+;;(set-face-attribute 'hl-line-face nil :background "light green")
+;;(global-hl-line-mode -1)
 ;;(global-hl-line-mode +1)
 ;;(hl-line-mode t)
+;;
+;;hl-file-column
+;;cd ~/.emacs.d/site-lisp
+;;git clone --recursive https://github.com/laishulu/hl-fill-column.git
+(add-to-list 'load-path "~/.emacs.d/site-lisp/hl-fill-column")
+;;(load  "~/.emacs.d/site-lisp/hl-fill-column/hl-fill-column.el")
+;;(require-init 'hl-fill-column t)
+;; load hl-file-column.el
+;;(load "hl-fill-column")
+;;(require-init 'hl-fill-column t)
+;;(require 'hl-fill-column)
+;;(hl-fill-column t)
+;;(global-hl-fill-column-mode t)
 
 ;;M-x package-install RET
 ;;;;select file-column-indicator
 ;;worked???
 ;;(require 'fill-column-indicator)
+;;(fci-mode t)
+
+;;;;set default font
+;;(h)
+
+;;(seq dispaly-line-number nil)
+;;M-x display-line-numbers-mode
+;;M-x global-display-line-numbers-mode
 
 ;;;;ToCheck:
 ;;M-x package-install RET
@@ -137,7 +177,13 @@
   (with-eval-after-load 'company (company-ctags-auto-setup))
 ;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
 ;;--------------------------------------------------
-
+;;clear whitespace end of row/line
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'whitespace-cleanup)
+;;clear blank-line between line and line
+(add-hook 'before-save-hook 'delete-blank-lines)
+;;--------------------------------------------------
+;;
 ;;it is better to end the setting here
 ;;##################################################
 ;;--------------------------------------------------

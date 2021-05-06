@@ -12,7 +12,7 @@
 "
 "sudo apt update
 "sudo apt install vim git
-"""""sudo apt-get -f install 
+"""""sudo apt-get -f install
 """""sudo apt-get install git
 "sudo apt-get install build-essential cmake llvm-4.0 clang-4.0 libclang-4.0-dev libboost-all-dev clang python-dev python3-dev
 "#get bundle plugin tools if internet is available
@@ -60,7 +60,7 @@ set cursorline
 ":hi CursorLine cterm=underline ctermbg=grey guibg=Grey40
 ":hi CursorLine ctermbg=grey guibg=Grey40
 ":hi CursorLine cterm=bold ctermfg=white ctermbg=grey gui=bold guifg=white guibg=Grey40
-:hi CursorLine cterm=NONE ctermbg=grey guibg=Grey40
+:hi CursorLine cterm=NONE ctermbg=DarkGray guibg=Grey40
 "
 set cursorcolumn
 "set cuc
@@ -114,7 +114,7 @@ set autoindent     "Copy indent from current line when starting a new line
 "mask_for_sv_file"set smartindent     "better than autoindent, use basic c syntax to indent
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
-set expandtab       "replae the tab with blankspace 
+set expandtab        "replae the tab with blankspace
 "set et     "set expandtab       "
 "
 set tabstop=2         "set to show the tab with 2 blankspace; identify how many space as a TAB
@@ -124,7 +124,7 @@ set softtabstop=2    " how many space to show for a tab in Insert mode
 "set textwidth=30 "breaking the line if the count is over 30 in this line
 "set linebreak
 "
-"set smartcase  "- use case if any caps used 	Override the 'ignorecase' option if the search pattern contains upper case characters.
+"set smartcase  "- use case if any caps used    Override the 'ignorecase' option if the search pattern contains upper case characters.
 "set scs
 "
 set ignorecase "- ignore case insensitive
@@ -139,6 +139,13 @@ set incsearch "- show match as search proceeds
 "set is
 "
 set nocompatible
+""""remove the toolbar
+set guioptions-=T
+""""remove the menubar
+""set guioptions-=m
+""""enable the menubar
+set guioptions=m
+""
 set wildmenu     "wmnu, When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 set wildmode=longest,list
 "set omnifunc=syntaxcomplete#Complete     "incase, you have to use moni
@@ -192,12 +199,12 @@ set spelllang=en_us
 "set spell spelllang=en_us
 """""set nospell
 "setlocal spell spelllang=en_us
-"]s    """""To move to a next misspelled word, 
+"]s    """""To move to a next misspelled word,
 "[s    """""To move to a misspelled word, but search backwards
 "]S    """""To move to a next word, but only stop at bad words, not at rare words or words for another region
 "[S    """""To move to a Bad word, but search backwards
 "z=    """""if I highlight autocompletion and then use z= to see recommended list details, select the item you need
-"zg    """"""Use the zg command and Vim will add it to its dictionary. 
+"zg    """"""Use the zg command and Vim will add it to its dictionary.
 "zw    """"""Mark words as incorrect
 "zug   """""" Undo |zw| and |zg|, remove the word from the entry in 'spellfile'.  Count used as with |zg|.
 "zwg   """""" Undo |zw| and |zg|, remove the word from the entry in 'spellfile'.  Count used as with |zg|.
@@ -315,9 +322,32 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "
 "set here again to avoid the vundle's plugin setting
 :hi CursorLine   cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
+":hi CursorLine   cterm=NONE ctermbg=DarkYellow gui=NONE guibg=Grey40
+":hi CursorLine   cterm=NONE ctermfg=Black ctermbg=grey gui=NONE guibg=Grey40
 :hi CursorColumn cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
-:autocmd InsertEnter * highlight CursorLine cterm=bold gui=bold
-:autocmd InsertLeave * highlight CursorLine cterm=NONE gui=NONE
+":autocmd InsertEnter * highlight CursorLine cterm=bold gui=bold
+:autocmd InsertEnter * highlight CursorLine cterm=underline ctermbg=NONE gui=underline guibg=NONE
+":autocmd InsertLeave * highlight CursorLine cterm=NONE gui=NONE
+:autocmd InsertLeave * highlight CursorLine cterm=NONE      ctermbg=grey gui=NONE      guibg=Grey40
+
+"          *cterm-colors*
+"      NR-16   NR-8    COLOR NAME ~
+"      0       0       Black
+"      1       4       DarkBlue
+"      2       2       DarkGreen
+"      3       6       DarkCyan
+"      4       1       DarkRed
+"      5       5       DarkMagenta
+"      6       3       Brown, DarkYellow
+"      7       7       LightGray, LightGrey, Gray, Grey
+"      8       0*      DarkGray, DarkGrey
+"      9       4*      Blue, LightBlue
+"      10      2*      Green, LightGreen
+"      11      6*      Cyan, LightCyan
+"      12      1*      Red, LightRed
+"      13      5*      Magenta, LightMagenta
+"      14      3*      Yellow, LightYellow
+"      15      7*      White
 "
 " 常用的命令
 " :PluginList       - 列出所有已配置的插件
@@ -341,7 +371,7 @@ au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  set filetype=lisp
 :autocmd BufReadPost,FileReadPost *.emacs,*_emacs set syntax=lisp
 "
 "set the *.c,*.h file auto pattern
-":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O
 ":autocmd BufLeave  *.c,*.h     unabbr FOR
 
 "highlight the keywords you need in vim
@@ -512,7 +542,7 @@ set showmatch
 ":autocmd FileType systemVerilog let b:match_words =  '<:>,' . '/<`if/>:/<`else/>:/<`endif/>'
 "
 ":autocmd FileType c,cpp :let b:match_words .=  '/<if/>:/<else/>,'
-":autocmd FileType c,cpp let b:match_words =  '<:>,' 
+":autocmd FileType c,cpp let b:match_words =  '<:>,'
 "                    \ . '/<if/>:/<else/>,'
 "                    \ . '\<#ifdef\>\|\<#ifndef\>\|\<#if\>:\<#elif\>:\<#else\>:\<#endif\>,'
 "                    \ . '\<switch\>:\<case\>:\<case\>\|\<default\>'
@@ -522,10 +552,10 @@ set showmatch
 ":autocmd BufReadPost,FileReadPost *.min set syntax=make
 "autocmd BufReadPre,BufNewFilE *.min  set filetype=make
 "set match_words according the #####filetype#####
-:autocmd FileType tcsh,csh let b:match_words =  '<:>,' 
+:autocmd FileType tcsh,csh let b:match_words =  '<:>,'
                           \. 'if\>:then\>:else\>:endif\>'
 "
-:autocmd FileType bash,sh let b:match_words =  '<:>,' 
+:autocmd FileType bash,sh let b:match_words =  '<:>,'
                           \. 'if\>:then\>:else\>:fi\>\|endif\>,'
                           \. 'func!\>:endfunc\>'
 "
@@ -611,15 +641,15 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 
 "
 "set the *.c,*.h file auto pattern when edit this file
-":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>  {<CR>    //code is here<CR>  }<Esc>O 
-":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
-:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O 
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>  {<CR>    //code is here<CR>  }<Esc>O
+":autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O
+:autocmd BufEnter  *.c,*.h     abbr FOR for (i = 0; i < 3; ++i)<CR>{<CR>}<Esc>O
 :autocmd BufLeave  *.c,*.h     unabbr FOR
 "
-:autocmd BufEnter  *.c,*.h     abbr WHILE while ()<CR>{<CR>}<Esc>O 
+:autocmd BufEnter  *.c,*.h     abbr WHILE while ()<CR>{<CR>}<Esc>O
 :autocmd BufLeave  *.c,*.h     unabbr WHILE
 "
-:autocmd BufEnter  *.c,*.h     abbr DO do<CR>{<CR>}while ();<Esc>O 
+:autocmd BufEnter  *.c,*.h     abbr DO do<CR>{<CR>}while ();<Esc>O
 :autocmd BufLeave  *.c,*.h     unabbr DO
 "
 :autocmd BufEnter  *.c,*.h     abbr SWITCH switch()<CR>{<CR>case ITEM :<CR>;<CR>break;<CR>case ITEM :<CR>;<CR>break;<CR>default:<CR>;<CR>}<Esc>O 
