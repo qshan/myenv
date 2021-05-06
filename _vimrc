@@ -615,6 +615,7 @@ command! MySaveWithSudo             :w !sudo tee %
 command! MySearchCompileError       :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
 command! MyRemoveWriteSpaceOnEnd    :%s/\s*$//g
 command! MyRemoveEmptyLine          :%s/^\s*$\n//g
+command! MyReplaceSpaceWithNewLine  :%s/\s//g
 command! MyWriteSpace2UnderLine     :s/\s*/_/g
 command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
@@ -631,6 +632,7 @@ command! MyCursorLine               :hi CursorLine cterm=NONE ctermbg=grey gui=N
 " :set diffopt+=iwhiteall
 " :set diffopt+=iwhiteeol
 
+"input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
 "au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
 
