@@ -365,6 +365,11 @@ au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
 "set *.min file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.min set syntax=make
 "
+"set the *.cshrc and *_cshrc file as the makefile type
+au BufReadPre,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=csh
+"set *.cshrc and *_cshrc file with make syntax highlight
+:autocmd BufReadPost,FileReadPost *.cshrc,*_cshrc set syntax=csh
+"
 "set the *.emacs and *_emacs file as the makefile type
 au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  set filetype=lisp
 "set *.emacs and *_emacs file with make syntax highlight

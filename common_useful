@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #replace contents the c file in the TargetPathName, the contents changing is like this:
-#HWIO_OUTXF ( basename, xxxxx) -> HWIO_OUTF (xxxxx) 
+#HWIO_OUTXF ( basename, xxxxx) -> HWIO_OUTF (xxxxx)
 find TargetPathName -type f -iname "*.c" |xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
 
 #replace the keywords and generate a new file

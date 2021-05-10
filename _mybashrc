@@ -48,6 +48,10 @@ alias v='vim'
 alias Emacs='/usr/bin/emacs26'
 alias EmacsM='Emacs -mm'
 #alias EmacsM='Emacs --maximized'
+#function of open emace gui with background process in shell
+EmacsMm () {
+  Emacs -mm "$@" &
+}
 
 #for lubuntu
 alias openFileBroswer='pcmanfm &'
@@ -90,7 +94,7 @@ alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:
 
 #\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$
 
-# \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ 
+# \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
 
 ##alias set_full_path="export PS1='\[\e]0;\u@\h:_\w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
 #alias set_short_path="export PS1='[\u@\h_\W]\$'"
@@ -134,4 +138,3 @@ alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:
 ###$              \]     end a sequence of non-printing characters
 ###$
 ###$       The  command  number and the history number are usually different: the history number of a command is its position in the history list, which may include commands restored from the history file (see HISTORY below), while the command number is the position in the sequence of  commands  executed  during the current shell session.  After the string is decoded, it is expanded via parameter expansion, command substitution, arithmetic expansion, and quote removal, subject to the value of the promptvars shell option (see the description of  the shopt command under SHELL BUILTIN COMMANDS below).
-

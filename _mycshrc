@@ -56,7 +56,11 @@ alias v 'vim'
 alias Emacs '/usr/bin/emacs26'
 alias EmacsM 'Emacs -mm'
 #alias EmacsM 'Emacs --maximized'
-
+#NotSupportInCsh#function of open emace gui with background process in shell
+#NotSupportInCshEmacsMm () {
+#NotSupportInCsh  Emacs -mm "$@" &
+#NotSupportInCsh}
+#
 #for lubuntu
 alias openFileBroswer 'pcmanfm &'
 #for ubuntu

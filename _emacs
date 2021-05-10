@@ -171,7 +171,6 @@
 ;;(define-key evil-fold-list "zz" '???)
 ;;(define-key evil-normal-state-map (kdb "z c" 'evil-close-fold)
 ;;(define-key evil-normal-state-map (kdb "z C" 'evil-close-folds)
-
 ;;--------------------------------------------------
 ;;set for company mode
   (with-eval-after-load 'company (company-ctags-auto-setup))
@@ -194,7 +193,7 @@
 ;;ToCheckCamelCasenCodeStyle
 ;;;;
 (defun fshan-subword-mode ()
-  "set submod and ignore '-' and '_' for word constitunt"
+  "set submod and ignore '-' and '_' for word constitunt qshan"
   (interactive)
   ;;
   ;;disable subwork-mode to ingnore CamelCaseNaming
@@ -624,7 +623,7 @@
 ;;counsel-gtags-find-file-other-window
 ;;;;;Similar to the mentioned before with similar names but use other windows instead of the same. This functionality is also available throw ivy-actions in the candidates list pressing M-o j.
 
-;;;;;Ivy is split into three package:ivy, swiper and counsel. by installing counsel, the other two are brought in as dependencies. 
+;;;;;Ivy is split into three package:ivy, swiper and counsel. by installing counsel, the other two are brought in as dependencies.
 ;;M-x package-refresh-contents RET
 ;;M-x counsel-mode ;enable the counsel mode
 ;;;;;Ivy, a generic completion mechanism for Emacs. Counsel, a collection of Ivy-enhanced version of common Emacs commands. Swiper, an Ivy-enhanced alternative to isearch.

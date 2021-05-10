@@ -1,4 +1,3 @@
-
 #this alias could be call by bashrc and cshrc
 #ln -s _myalias_common ~/.myalias_common
 
@@ -32,4 +31,3 @@ alias openFileBroswer='pcmanfm &'
 alias ctags_R='ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_R_Python="ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
 alias ctags_R_SV="ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
-
