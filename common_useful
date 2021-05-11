@@ -26,6 +26,10 @@ $ sed '4d' input.txt > output.txt
 # Example: replace every occurrence of 'hello' with 'world' on lines 10-20
 $ sed '10,20s/hello/world/' input.txt > output.txt
 
+#replace(,0x0001) to (,0x1), replace (,0x0000) to (,0x0)
+sed  -i -r 's/,0x0+/,0x/g' data.txt
+sed  -i 's/,0x)/,0x0)/g' data.txt
+
 find ./CONFIG -type f -exec sed -i "s/_HOME_DIR_/$_HOME_DIR/g" {} \;
 find . -type f -exec sed -i 's/foo/bar/g' {} +
 
