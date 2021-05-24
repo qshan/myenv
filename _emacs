@@ -184,9 +184,34 @@
 ;;clear blank-line between line and line
 (add-hook 'before-save-hook 'delete-blank-lines)
 ;;--------------------------------------------------
+;;setting for whitespace-mode
+  (setq default-tab-width 2)
+  ;;(setq-default tab-width 2)
+  ;;set current buffer's tab width
+  (setq tab-width 2)
+;;
+  ;;set whitespace mappling table
+  (setq whitespace-display-mappings '(
+        ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
+        (space-mark    ?\     [?\xB7]      [?.])  ;;space
+        ;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
+        (space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
+        ;;;;(newline-mark  ?\n   [? \?\n])           ;;end of line
+        (newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
+        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
+                                      ))
+;;
+(setq fill-column 80)
+;;set limit length
+;;(setq whitespace-line-column 80);
+(setq whitespace-line-column 120);
+(setq whitespace-line-count 120);
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
 ;;
 ;;it is better to end the setting here
-;;##################################################
+;;##############################################################################
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;--------------------------------------------------
 ;;--------------------------------------------------
 ;;defun personal env setting here
@@ -249,6 +274,7 @@
         ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
                                       ))
 ;;
+(setq fill-column 80)
 ;;set limit length
 ;;(setq whitespace-line-column 80);
 (setq whitespace-line-column 120);
@@ -263,7 +289,13 @@
 ;;;;open emacs with miximized windows
 ;;emacs -mm
 ;;emacs --miximized
-
+;
+;;set the variable
+;M-x set-variable RET NameOfVariable RET 80 RET
+;
+;M-x set-variable RET fill-column RET 80 RET
+;(setq fill-column 85)
+;
 ;;Univeral ctags
 ;;;;https://github.com/universal-ctags
 ;;;;https://github.com/universal-ctags/ctags-win32/releases
