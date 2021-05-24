@@ -98,7 +98,9 @@
 ;;select hl-todo
 ;;;; https://github.com/tarsius/hl-todo
 ;;;;(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
-(add-to-list 'load-path (directory-file-name "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
+;
+(add-to-list 'load-path (directory-file-name
+                         "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
 (setq hl-todo-keyword-faces
   '(("HOLD"    . "#d0bf8f")
     ("TODO"    . "#cc9393")
@@ -235,19 +237,29 @@
   ;;(setq-default tab-width 2)
   ;;set current buffer's tab width
   (setq tab-width 2)
+;;
   ;;set whitespace mappling table
   (setq whitespace-display-mappings '(
-                                      (space-mark    ?\    [?\u00B7]    [?.])
-                                      (space-mark    ?\xA0 [?\u00A4]    [?_])
-                                      (newline-mark  ?\n   [? \?\n])
-                                      (tab-mark      ?\t  [?\u00BB ?\t] [?\\ ?\t])
+        ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
+        (space-mark    ?\     [?\xB7]      [?.])  ;;space
+        ;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
+        (space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
+        ;;;;(newline-mark  ?\n   [? \?\n])           ;;end of line
+        (newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
+        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
                                       ))
-;
+;;
+;;set limit length
+;;(setq whitespace-line-column 80);
+(setq whitespace-line-column 120);
+(setq whitespace-line-count 120);
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
+;;
   ) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
-;::::::::::::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;open emacs with miximized windows
 ;;emacs -mm
 ;;emacs --miximized
@@ -259,13 +271,15 @@
 ;;;;https://docs.ctags.io/en/latest/man-pages.html
 ;;
 ;;install universal ctags with following script
-;;the details could be get here, https://github.com/universal-ctags/ctags/blob/master/docs/autotools.rst
+;;the details could be get here,
+;;https://github.com/universal-ctags/ctags/blob/master/docs/autotools.rst
+
 ;;    $ git clone https://github.com/universal-ctags/ctags.git
 ;;    $ cd ctags
 ;;    $ ./autogen.sh
 ;;    $ #./configure --prefix=/where/you/want # defaults to /usr/local
 ;;    $ make
-;;    $ make install # may require extra privileges depending on where to install
+;;    $ make install #may require extra privileges depending on where to install
 ;;
 ;;set tags for emacs
 ;;1.generate the TAGS for Emacs
@@ -317,7 +331,10 @@
 
 ;;;;;;useful .el info
 ;;functions-args.el
-;;;;GNU Emacs package for showing an inline arguments hint for the C/C++ function at point. https://github.com/abo-abo/function-args
+;;;;GNU Emacs package for showing an inline arguments hint
+;;;;for the C/C++ function at point.
+;;https://github.com/abo-abo/function-args
+
 
 ;;;;;config the theme with color-theme
 ;;(load-file "~/.emacs.d/elpa/color-theme-20190220.1115/themes/color-theme-library.el")
@@ -332,16 +349,19 @@
 ;;tango-2
 
 ;;flycheck.el
-;;Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs, intended as replacement for the older Flymake extension which is part of GNU Emac
+;;Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,
+;;intended as replacement for the older Flymake extension which is part of GNU Emac
 ;;;;https://www.flycheck.org/en/latest/
 ;;;;add those info into init el file after install with MELPA to enable the flycheck
 ;;(add-hook 'after-init-hook #'global-flycheck-mode)
 
-
-;;C-x RET r (revert-buffer-with-coding-system)  ;;re-read the file using the correct coding system
+;;
+;;re-read the file using the correct coding system
+;;C-x RET r (revert-buffer-with-coding-system)
+;
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
 ;;M-x load-theme
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;Enable installation of packages from MELPA by adding an entry to
 ;;;;;package-archives after (require 'package) and before the call to
 ;;;;;package-initialize in your init.el or .emacs file:
@@ -349,8 +369,10 @@
 ;;;;;add package-initialize in your init.el or .emacs file
 ;;(require 'package)
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;;;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;;;;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;;;; Comment/uncomment this line to enable MELPA Stable if desired.
+;;See `package-archive-priorities` and `package-pinned-packages`.
+;;Most users will not need or want to do this.
+
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;;(package-initialize)
 ;;;;;Note that you'll need to run
@@ -364,8 +386,8 @@
 ;;;;;To use the stable package repository instead of the default “bleeding-edge” repository, use this instead of "melpa":
 ;;(add-to-list 'package-archives
 ;;             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;Install evil via package.el(MELPA), execute the following commands:
 ;;M-x package-refresh-contents
 ;;M-x package-install RET evil RET
@@ -381,7 +403,7 @@
 ;;(evil-mode 1)
 ;;;;;--------------------------------------------------
 ;;;;;It’s defined in lisp/init-evil.el. Press C-z to switch between Emacs and Vim key bindings.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;install org-mode
 ;;;;;Using Emacs packaging system. You can install Org from the “package menu”, with
 ;;M-x list-packages
@@ -400,7 +422,6 @@
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
 ;;(global-set-key (kbd "C-c a") 'org-agenda)
 ;;(global-set-key (kbd "C-c c") 'org-capture)
-
 ;;;;;Files with the ‘.org’ extension use Org mode by default. To turn on Org mode in a file that does not have the extension ‘.org’, make the first line of a file look like this:
 ;;MY PROJECTS    -*- mode: org; -*-
 ;;;;;which selects Org mode for this buffer no matter what the file’s name is. See also the variable org-insert-mode-line-in-empty-file.
@@ -630,10 +651,9 @@
 ;; M-x ivy-mode ;try Ivy, enable the Ivy completion, including specific completion for file and buffer names
 ;;;;;ivy-mode ensure that any Emacs command using completing-read-function uses ivy for completion. Counsel takes this further, provioding versions of common Emacs commands that are customised to make the best use of ivy. Enabling counsel-mode remaps built-in Emacs functions that have counsel replacement
 ;;M-x package-install RET counsel RET ;install counsel from Emacs package manager
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;Hotkey info Here;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;Hotkey info Here;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;~/.emacs.d/init.el
 
 ;;C-z        ;to switch between Emacs and Vim key bindings.
