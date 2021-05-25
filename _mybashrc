@@ -46,12 +46,13 @@ alias h='history 1000'
 alias v='vim'
 
 alias Emacs='/usr/bin/emacs26'
-alias EmacsM='Emacs -mm'
+#alias EmacsM='Emacs -mm'
 #alias EmacsM='Emacs --maximized'
 #function of open emace gui with background process in shell
-EmacsMm () {
-  Emacs -mm "$@" &
-}
+#EmacsMm () {
+#  Emacs -mm "$@" &
+#}
+alias EmacsM='functionEmacsM(){ Emacs -mm "$@" & }; functionEmacsM '
 
 #for lubuntu
 alias openFileBroswer='pcmanfm &'

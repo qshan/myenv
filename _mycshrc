@@ -54,8 +54,17 @@ alias h 'history'
 alias v 'vim'
 
 alias Emacs '/usr/bin/emacs26'
-alias EmacsM 'Emacs -mm'
+#alias EmacsM 'Emacs -mm'
+alias EmacsM 'Emacs -mm \!* &'
 #alias EmacsM 'Emacs --maximized'
+################################################################################
+# arguments of tcsh:
+# \!*       all command-line arguments
+# \!^       first command-line arguments
+# \!\!:2    second command-line arguments
+# \!$       latest command-line arguments
+#example:  alias backup  'cp \!^  \!^.back'
+################################################################################
 #NotSupportInCsh#function of open emace gui with background process in shell
 #NotSupportInCshEmacsMm () {
 #NotSupportInCsh  Emacs -mm "$@" &
