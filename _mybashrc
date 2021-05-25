@@ -49,10 +49,11 @@ alias Emacs='/usr/bin/emacs26'
 #alias EmacsM='Emacs -mm'
 #alias EmacsM='Emacs --maximized'
 #function of open emace gui with background process in shell
-#EmacsMm () {
-#  Emacs -mm "$@" &
-#}
-alias EmacsM='functionEmacsM(){ Emacs -mm "$@" & }; functionEmacsM '
+#wored#EmacsMm () {
+#wored#  Emacs -mm "$@" &
+#wored#}
+##worked##alias EmacsM='functionEmacsM(){ Emacs -mm "$@" & }; functionEmacsM '
+alias EmacsM='functionEmacsM(){ unset -f functionEmacsM; Emacs -mm "$@" & }; functionEmacsM '
 
 #for lubuntu
 alias openFileBroswer='pcmanfm &'
