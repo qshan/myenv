@@ -69,7 +69,11 @@ man bash
 
 #git remote
 
-#git branch
+#git branch -A
+
+#git branch BranchName
+
+#git switch NameOfSwitched
 
 #git fetch origin
 
@@ -82,6 +86,10 @@ man bash
 #git commit -am "update bashrc description"
 
 #git push
+
+#git push ToRemote FromLocal
+
+#git push origin_remote master_local
 
 #git push origin master
 
@@ -104,18 +112,39 @@ man bash
 #git checkout HEAD^^
 #git checkout HEAD~2
 #--------------------------------------------------
-#      git-command               WorkingDiretory           Stage/Index               History
-#git add                              Y             ->         Y
-#git commit                                                    Y            ->          Y
-#git checkout                         Y                       <-                        Y
-#git reset --soft                                              Y             <-         Y
-#git reset --mixed                    Y                       <-                        Y
-#git reset --hard        (deleted)                            <-                        Y
+#      git-command               WorkSpace                 Stage/Index               History/LocalRepo       RemoteRepo
+#git add                              Y           -->          Y
+#--------------------------------------------------------------------------------
+#git commit -am                       Y                       -->                       Y
+#git checkout                         Y                       <--                       Y
+#git commit                                                    Y             -->        Y
+#git reset --soft                                              Y             <--        Y
+#git reset --mixed                    Y                       <--                       Y
+#git reset --hard        (deleted)                            <--                       Y
+#git pull                             Y                                      <--                                 Y
+#--------------------------------------------------------------------------------
+#git push                                                                               Y           -->          Y
+#git fetch                                                                              Y           <--          Y
+#git clone                                                                              Y           <--          Y
 #--------------------------------------------------
 
 #git rm --cached <file>
 
 #git reset HEAD <file>...
+
+##undo add
+#git reset
+
+##undo a commit and redo
+#git commit -m "comments this time"
+#git reset --soft HEAD^
+##edit the files
+#git commit -a -c ORIG_HEAD
+
+#undo a commit permanently
+#git commit -m "comments this time"
+##the last thress commits (HEAD, HEAD^ and HEAD~2) ware bad, polish them
+#git reset --hard HEAD~3
 
 #git status
 
@@ -138,6 +167,10 @@ man bash
 #git tag -l "Tag_keyword_info"
 
 #git tag -a TagVersionName -m "comments for this version tag"
+
+#git tag -d TagNameDeleted
+
+#git fetch origin_remote tag TanName
 
 #git show TagVersionName
 
@@ -172,16 +205,16 @@ man bash
 # $git add FilesNameNeededBack
 ####add to repo
 # $git commit -am "comment for this change"
-####clone the local info to remote repository
+####create a bare repository and clone the local info to remote repository
 # $cd RemoteRepositoryFolerNameWithPullPath
 # $git clone --bare file://ProjectFolderNameWithFullPath/.git RemoteRepositoryName.git
 ##or
 # $git clone --bare file://ProjectFolderNameWithFullPath/.git RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git
-####create linker with local file with remote repository
+####add a localname for remote repo. create linker the local repository with remote repository
 # $git remote add origin file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git
 ####push the local repo to remote repo
-# $git push --set-upstream origin master        #firt time
-# $git push origin master                       #normall push
+# $git push --set-upstream origin master        #first time
+# $git push origin master                       #normal push
 ####get the code from remote repo
 # $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git
 # $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git NewFolderName

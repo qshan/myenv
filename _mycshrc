@@ -36,22 +36,21 @@ setxkbmap -option ctrl:nocaps
 #endif
 
 #alias setting here
-alias ls '\ls --color=auto'
-alias la 'ls -alh'
-alias lt 'ls -ctl'
-alias grep '\grep --color=auto'
-alias grep-rni '\grep --color=auto -rni'
-alias greprni' \grep --color=auto -rni'
-alias findL '\find -L'
-alias findSwfFile 'find ./ -type f -iname "*.sw*"'
+alias ls                '\ls --color=auto'
+alias la                'ls -alh'
+alias lt                'ls -ctl'
+alias grep              '\grep --color=auto'
+alias greprni           '\grep --color=auto -rni'
+alias findL             '\find -L'
+alias findSwfFile       'find ./ -type f -iname "*.sw*"'
 alias findSwfFileRemove 'find ./ -type f -iname "*.sw*" | xargs \rm -rf'
-alias lnsTf 'ln -sTf'
-alias lnsnf 'ln -snf'
-alias chmod+R 'chmod -R a+r'
-alias chmod-R 'chmod -R a-r'
-alias chmodER 'chmod -R a=r'
-alias h 'history'
-alias v 'vim'
+alias lnsTf             'ln -sTf'
+alias lnsnf             'ln -snf'
+alias chmod+R           'chmod -R a+r'
+alias chmod-R           'chmod -R a-r'
+alias chmodER           'chmod -R a=r'
+alias h                 'history'
+alias v                 'vim'
 
 alias Emacs '/usr/bin/emacs26'
 #alias EmacsM 'Emacs -mm'
@@ -74,18 +73,36 @@ alias EmacsM 'Emacs -mm \!* &'
 alias openFileBroswer 'pcmanfm &'
 #for ubuntu
 #alias openFileBroswer 'nautilus &'
+
+alias openPdf       'evince '
+
+alias cargonew      'cargo new '
+alias cargobuild    'cargo build '
+alias cargorun      'cargo run '
+
+#git alias
+alias gitcommit-am  'git commit -am '
+alias gitreset-soft 'git reset --soft'
+alias gitreset-hard 'git reset --hard'
+alias gitresethead0 'git reset HEAD'
+alias gitresethead1 'git reset HEAD^'
+alias gitresethead2 'git reset HEAD~2'
+alias gitresethead3 'git reset HEAD~3'
+alias gitdiffhead   'git diff HEAD'
+
+
 ###############alias for tags generation
 #
 #alias ctags='the_ctags_in_your_env'
-alias ctags_R         'ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
-alias ctags_R_Python  "ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
-alias ctags_R_SV      "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
+alias ctags_R          'ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
+alias ctags_R_Python   "ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
+alias ctags_R_SV       "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
 alias ctags_Re         'ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_Re_Python  "ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf"
 alias ctags_Re_SV      "ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
-alias ctags_L_C       'ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
-alias ctags_L_Python  "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
-alias ctags_L_SV      "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
+alias ctags_L_C        'ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
+alias ctags_L_Python   "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
+alias ctags_L_SV       "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
 
 #set format of shell header string for tcsh
 #alias set_full_path "%U%m%u:%B%~%b%#"

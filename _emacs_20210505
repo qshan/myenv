@@ -24,9 +24,9 @@
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
-(menu-bar-mode t)    ;;show the menu bar in the GUI
+;(menu-bar-mode t)    ;;show the menu bar in the GUI
 ;;M-x menu-bar-mode  ;;show the menu bar with command
-;;(menu-bar-mode -1) ;;disable the menu bar in GUI
+(menu-bar-mode -1) ;;disable the menu bar in GUI
 ;;(tool-bar-mode t)
 ;;(scroll-bar-mode t)
 ;;(scroll-bar-mode -1)
@@ -45,24 +45,15 @@
 
 ;;enable line highlight
 (global-hl-line-mode t)
+;;(set-face-background 'hl-line "light yellow")
+;;(set-face-background 'hl-line "#CAFF70")
 ;;check the color supported
 ;;M-X list-colors-display
-;;(set-face-background 'hl-line "light yellow")
-;;(set-face-background 'hl-line "#ffffe0")
-;;(set-face-background 'hl-line "#CAFF70")
-;;(set-face-background 'hl-line "gray60")
-;;(set-face-background 'hl-line "#999999")
-;;(set-face-background 'hl-line "gray40")
-;;(set-face-background 'hl-line "#666666")
 ;;(set-face-background 'hl-line "gray20")
-(set-face-background 'hl-line "#333333")
-;;(set-face-underline 'hl-line t)
-;;(set-face-underline-p 'hl-line t)
-;;(set-face-underline-p 'highlight t)
-;;(set-face-attribute 'hl-line-face nil :underline t)
-(set-face-attribute 'hl-line nil :underline t)
+(set-face-background 'hl-line "#3a3a3a")
+(set-face-underline 'hl-line t)
 ;;M-X list-faces-display
-;;(set-face-attribute 'hl-line-face nil :background "light green")
+;;(set-face-attribute 'hl-line nil :background "light green")
 ;;(global-hl-line-mode -1)
 ;;(global-hl-line-mode +1)
 ;;(hl-line-mode t)
@@ -98,9 +89,7 @@
 ;;select hl-todo
 ;;;; https://github.com/tarsius/hl-todo
 ;;;;(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
-;
-(add-to-list 'load-path (directory-file-name
-                         "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
+(add-to-list 'load-path (directory-file-name "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
 (setq hl-todo-keyword-faces
   '(("HOLD"    . "#d0bf8f")
     ("TODO"    . "#cc9393")
@@ -173,48 +162,15 @@
 ;;(define-key evil-fold-list "zz" '???)
 ;;(define-key evil-normal-state-map (kdb "z c" 'evil-close-fold)
 ;;(define-key evil-normal-state-map (kdb "z C" 'evil-close-folds)
+
 ;;--------------------------------------------------
 ;;set for company mode
   (with-eval-after-load 'company (company-ctags-auto-setup))
 ;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
 ;;--------------------------------------------------
-;;clear whitespace end of row/line
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'before-save-hook 'whitespace-cleanup)
-;;clear blank-line between line and line
-(add-hook 'before-save-hook 'delete-blank-lines)
-;;--------------------------------------------------
-;;setting for whitespace-mode
-  (setq default-tab-width 2)
-  ;;(setq-default tab-width 2)
-  ;;set current buffer's tab width
-  (setq tab-width 2)
-;;
-(defun reset-whitespace-display-mappling ()
-  ;;set whitespace mapping table
-  (setq whitespace-display-mappings '(
-        (space-mark    ?\    [?\u00B7]    [?.])  ;;space
-        ;;(space-mark    ?\     [?\xB7]      [?.])  ;;space
-        (space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
-        ;;(space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
-        (newline-mark  ?\n   [? \?\n])           ;;end of line
-        ;;(newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
-        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
-                                      ))
 
-  )
-;;
-(setq fill-column 80)
-;;set limit length
-;;(setq whitespace-line-column 80);
-(setq whitespace-line-column 120);
-(setq whitespace-line-count 120);
-;;debug;;(setq whitespace-style '(face lines-tail))
-;;TODO;;(add-hook 'prog-mode-hook 'whitespace-mode)
-;;
 ;;it is better to end the setting here
-;;##############################################################################
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;##################################################
 ;;--------------------------------------------------
 ;;--------------------------------------------------
 ;;defun personal env setting here
@@ -223,7 +179,7 @@
 ;;ToCheckCamelCasenCodeStyle
 ;;;;
 (defun fshan-subword-mode ()
-  "set submod and ignore '-' and '_' for word constitunt qshan"
+  "set submod and ignore '-' and '_' for word constitunt"
   (interactive)
   ;;
   ;;disable subwork-mode to ingnore CamelCaseNaming
@@ -265,62 +221,23 @@
   ;;(setq-default tab-width 2)
   ;;set current buffer's tab width
   (setq tab-width 2)
-;;
   ;;set whitespace mappling table
   (setq whitespace-display-mappings '(
-        ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
-        (space-mark    ?\     [?\xB7]      [?.])  ;;space
-        ;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
-        (space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
-        ;;;;(newline-mark  ?\n   [? \?\n])           ;;end of line
-        (newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
-        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
-        (space-mark   ?\     [?\u00B7]     [?.]) ; space - centered dot
-        (space-mark   ?\xA0  [?\u00A4]     [?_]) ; hard space - currency
-        (space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
-        (space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
-        (space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
-        (space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
-        ;; NEWLINE is displayed using the face `whitespace-newline'
-        (newline-mark ?\n    [?$ ?\n])  ; eol - dollar sign
-        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n]) ; eol - downwards arrow
-        ;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n]) ; eol - pilcrow
-        ;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n]) ; eol - overscore
-        ;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n]) ; eol - negation
-        ;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n]) ; eol - grade
-        ;;
-        ;; WARNING: the mapping below has a problem.
-        ;; When a TAB occupies exactly one column, it will display the
-        ;; character ?\xBB at that column followed by a TAB which goes to
-        ;; the next TAB column.
-        ;; If this is a problem for you, please, comment the line below.
-        (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]) ; tab - left quote mark
-
-
+                                      (space-mark    ?\    [?\u00B7]    [?.])
+                                      (space-mark    ?\xA0 [?\u00A4]    [?_])
+                                      (newline-mark  ?\n   [? \?\n])
+                                      (tab-mark      ?\t  [?\u00BB ?\t] [?\\ ?\t])
                                       ))
-;;
-(setq fill-column 80)
-;;set limit length
-;;(setq whitespace-line-column 80);
-(setq whitespace-line-column 120);
-(setq whitespace-line-count 120);
-(setq whitespace-style '(face lines-tail))
-(add-hook 'prog-mode-hook 'whitespace-mode)
-;;
+;
   ) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;::::::::::::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;open emacs with miximized windows
 ;;emacs -mm
 ;;emacs --miximized
-;
-;;set the variable
-;M-x set-variable RET NameOfVariable RET 80 RET
-;
-;M-x set-variable RET fill-column RET 80 RET
-;(setq fill-column 85)
-;
+
 ;;Univeral ctags
 ;;;;https://github.com/universal-ctags
 ;;;;https://github.com/universal-ctags/ctags-win32/releases
@@ -328,15 +245,13 @@
 ;;;;https://docs.ctags.io/en/latest/man-pages.html
 ;;
 ;;install universal ctags with following script
-;;the details could be get here,
-;;https://github.com/universal-ctags/ctags/blob/master/docs/autotools.rst
-
+;;the details could be get here, https://github.com/universal-ctags/ctags/blob/master/docs/autotools.rst
 ;;    $ git clone https://github.com/universal-ctags/ctags.git
 ;;    $ cd ctags
 ;;    $ ./autogen.sh
 ;;    $ #./configure --prefix=/where/you/want # defaults to /usr/local
 ;;    $ make
-;;    $ make install #may require extra privileges depending on where to install
+;;    $ make install # may require extra privileges depending on where to install
 ;;
 ;;set tags for emacs
 ;;1.generate the TAGS for Emacs
@@ -388,10 +303,7 @@
 
 ;;;;;;useful .el info
 ;;functions-args.el
-;;;;GNU Emacs package for showing an inline arguments hint
-;;;;for the C/C++ function at point.
-;;https://github.com/abo-abo/function-args
-
+;;;;GNU Emacs package for showing an inline arguments hint for the C/C++ function at point. https://github.com/abo-abo/function-args
 
 ;;;;;config the theme with color-theme
 ;;(load-file "~/.emacs.d/elpa/color-theme-20190220.1115/themes/color-theme-library.el")
@@ -406,19 +318,16 @@
 ;;tango-2
 
 ;;flycheck.el
-;;Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,
-;;intended as replacement for the older Flymake extension which is part of GNU Emac
+;;Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs, intended as replacement for the older Flymake extension which is part of GNU Emac
 ;;;;https://www.flycheck.org/en/latest/
 ;;;;add those info into init el file after install with MELPA to enable the flycheck
 ;;(add-hook 'after-init-hook #'global-flycheck-mode)
 
-;;
-;;re-read the file using the correct coding system
-;;C-x RET r (revert-buffer-with-coding-system)
-;
+
+;;C-x RET r (revert-buffer-with-coding-system)  ;;re-read the file using the correct coding system
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
 ;;M-x load-theme
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;Enable installation of packages from MELPA by adding an entry to
 ;;;;;package-archives after (require 'package) and before the call to
 ;;;;;package-initialize in your init.el or .emacs file:
@@ -426,10 +335,8 @@
 ;;;;;add package-initialize in your init.el or .emacs file
 ;;(require 'package)
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;;;; Comment/uncomment this line to enable MELPA Stable if desired.
-;;See `package-archive-priorities` and `package-pinned-packages`.
-;;Most users will not need or want to do this.
-
+;;;;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;;;;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;;(package-initialize)
 ;;;;;Note that you'll need to run
@@ -443,8 +350,8 @@
 ;;;;;To use the stable package repository instead of the default “bleeding-edge” repository, use this instead of "melpa":
 ;;(add-to-list 'package-archives
 ;;             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;Install evil via package.el(MELPA), execute the following commands:
 ;;M-x package-refresh-contents
 ;;M-x package-install RET evil RET
@@ -460,7 +367,7 @@
 ;;(evil-mode 1)
 ;;;;;--------------------------------------------------
 ;;;;;It’s defined in lisp/init-evil.el. Press C-z to switch between Emacs and Vim key bindings.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;install org-mode
 ;;;;;Using Emacs packaging system. You can install Org from the “package menu”, with
 ;;M-x list-packages
@@ -479,6 +386,7 @@
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
 ;;(global-set-key (kbd "C-c a") 'org-agenda)
 ;;(global-set-key (kbd "C-c c") 'org-capture)
+
 ;;;;;Files with the ‘.org’ extension use Org mode by default. To turn on Org mode in a file that does not have the extension ‘.org’, make the first line of a file look like this:
 ;;MY PROJECTS    -*- mode: org; -*-
 ;;;;;which selects Org mode for this buffer no matter what the file’s name is. See also the variable org-insert-mode-line-in-empty-file.
@@ -701,16 +609,17 @@
 ;;counsel-gtags-find-file-other-window
 ;;;;;Similar to the mentioned before with similar names but use other windows instead of the same. This functionality is also available throw ivy-actions in the candidates list pressing M-o j.
 
-;;;;;Ivy is split into three package:ivy, swiper and counsel. by installing counsel, the other two are brought in as dependencies.
+;;;;;Ivy is split into three package:ivy, swiper and counsel. by installing counsel, the other two are brought in as dependencies. 
 ;;M-x package-refresh-contents RET
 ;;M-x counsel-mode ;enable the counsel mode
 ;;;;;Ivy, a generic completion mechanism for Emacs. Counsel, a collection of Ivy-enhanced version of common Emacs commands. Swiper, an Ivy-enhanced alternative to isearch.
 ;; M-x ivy-mode ;try Ivy, enable the Ivy completion, including specific completion for file and buffer names
 ;;;;;ivy-mode ensure that any Emacs command using completing-read-function uses ivy for completion. Counsel takes this further, provioding versions of common Emacs commands that are customised to make the best use of ivy. Enabling counsel-mode remaps built-in Emacs functions that have counsel replacement
 ;;M-x package-install RET counsel RET ;install counsel from Emacs package manager
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;Hotkey info Here;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;Hotkey info Here;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;~/.emacs.d/init.el
 
 ;;C-z        ;to switch between Emacs and Vim key bindings.

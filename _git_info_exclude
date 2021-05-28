@@ -1,0 +1,56 @@
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+##To have Git ignore certain files across all repositories you can create a global .gitignore with the following command in your terminal or command prompt:
+#$ git config --global core.excludesfile <Path_To_Global_gitignore_file>
+##Git will now use this in addition to each repository's own .gitignore file. Rules for this are:
+##If the local .gitignore file explicitly includes a file while the global .gitignore ignores it, the local .gitignore takes priority (the file will be included)
+##If the repository is cloned on multiple machines, then the global .gigignore must be loaded on all machines or at least include it, as the ignored files will be pushed up to the repo while the PC with the global .gitignore wouldn't update it. This is why a repo specific .gitignore is a better idea than a global one if the project is worked on by a team#
+#
+#TODO
+##set this file as local file
+# $ln -s `pwd`/_git_info_exclude ${HOME}/.gitignore_global
+#
+##Pattern could be read from .gitignore, $GIT_DIR/.git/info/exclude and ~/.gitconfig/core.excludesFile
+#
+##set the global setting for .gitignore
+# $git config --global core.excludesfile ~/.gitignore_global
+#
+##check this config
+# $git config --global core.excludesfile
+#
+#gvim temp file:s
+*.swp
+*.swo
+*.swn
+*.swm
+#
+#FolderName
+.git/
+#
+# C compile
+*.[oa]
+*~
+#
+#keep this files
+!*.c
+!*.h
+# ignore all .a files
+*.a
+#
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+
+# ignore all files in any directory named build
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+#doc/*.txt
+
+# ignore all .pdf files in the doc/ directory and any of its subdirectories
+#doc/**/*.pdf

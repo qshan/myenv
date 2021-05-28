@@ -4,10 +4,19 @@
 #if [ -f ~/data/myenv/_mybashrc ]; then
 #    . ~/data/myenv/_mybashrc
 #fi
+#
+#if [ -f ~/data/myenv/_mybashrc ]; then
+#    . ~/data/myenv/_mybashrc
+#else
+#     echo "no this file"
+#fi
+#read here https://tecadmin.net/tutorial/bash-scripting/bash-functions/
 #--------------------------------------------------
 
 echo "Calling _mybashrc file setting"
+
 history 10000
+
 export timefshan="`date +%Y-%m-%d-%H%M`"
 
 
@@ -32,8 +41,7 @@ alias ls='\ls --color=auto'
 alias la='ls -alh'
 alias lt='ls -ctl'
 alias grep='\grep --color=auto'
-alias grep-rni='\grep --color=auto -rni'
-alias greprni'=\grep --color=auto -rni'
+alias greprni='\grep --color=auto -rni'
 alias findL='\find -L'
 alias findSwfFile='find ./ -type f -iname "*.sw*"'
 alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rf'
@@ -62,6 +70,19 @@ alias openFileBroswer='pcmanfm &'
 
 alias openPdf='evince '
 
+alias cargonew='cargo new '
+alias cargobuild='cargo build '
+alias cargorun='cargo run '
+
+#git alias
+alias gitcommit-am='git commit -am '
+alias gitreset-soft='git reset --soft'
+alias gitreset-hard='git reset --hard'
+alias gitresethead0='git reset HEAD'
+alias gitresethead1='git reset HEAD^'
+alias gitresethead2='git reset HEAD~2'
+alias gitresethead3='git reset HEAD~3'
+alias gitdiffhead='git diff HEAD'
 
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
