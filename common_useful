@@ -63,7 +63,7 @@ man bash
 #--------------------------------------------------
 #command for git maintain
 
-#git remote add [shortname] [url]
+#git remote add [shortname_on_remote] [url_remote_address]
 
 #git clone --recursive git@github.com:qshan/myenv.git
 
@@ -87,7 +87,7 @@ man bash
 
 #git push
 
-#git push ToRemote FromLocal
+#git push NameToRemote NameFromLocal
 
 #git push origin_remote master_local
 
@@ -103,14 +103,20 @@ man bash
 
 #git checkout BranchNameWithPath
 
-#git checkout HEAD
+
 #git checkout master
 
-#git checkout HEAD^
-#git checkout HEAD~1
+#HEAD sequence:
+# ~ most of the time to goback a number of generations, usually you want, is almost linear in appearance and wants to go backward in a straight line
+# ^ on merge commits, because they have two or more parents, suggests an interesting of a tree or a fork in the road
+#git checkout HEAD
 
-#git checkout HEAD^^
+#git checkout HEAD~1
+#git checkout HEAD^
+
 #git checkout HEAD~2
+#git checkout HEAD^^
+
 #--------------------------------------------------
 #      git-command               WorkSpace                 Stage/Index               History/LocalRepo       RemoteRepo
 #git add                              Y           -->          Y

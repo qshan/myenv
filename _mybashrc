@@ -83,6 +83,7 @@ alias gitresethead1='git reset HEAD^'
 alias gitresethead2='git reset HEAD~2'
 alias gitresethead3='git reset HEAD~3'
 alias gitdiffhead='git diff HEAD'
+alias gitdiffcached='git diff --cached'
 
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
