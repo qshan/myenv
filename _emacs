@@ -184,19 +184,6 @@
 ;;clear blank-line between line and line
 (add-hook 'before-save-hook 'delete-blank-lines)
 ;;--------------------------------------------------
-;;create mytab width here
-(setq qshan-tab-width 2)
-;;
-;;setting for whitespace-mode
-(setq default-tab-width qshan-tab-width)
-(setq-default tab-width qshan-tab-width)
-;;(setq-default tab-width 2)
-;;set current buffer's tab width
-(setq tab-width qshan-tab-width)
-;;
-(setq-default c-basic-offset qshan-tab-width
-                  tab-width qshan-tab-width
-                  indent-tabs-mode t)
 ;;
 (defun reset-whitespace-display-mappling ()
   ;;set whitespace mapping table
@@ -219,6 +206,23 @@
 (setq whitespace-line-count 120);
 ;;debug;;(setq whitespace-style '(face lines-tail))
 ;;TODO;;(add-hook 'prog-mode-hook 'whitespace-mode)
+;;--------------------------------------------------
+;;create mytab width here
+(setq qshan-tab-width 2)
+;;
+;;setting for whitespace-mode
+(setq default-tab-width qshan-tab-width)
+(setq-default tab-width qshan-tab-width)
+;;set current buffer's tab width
+(setq tab-width qshan-tab-width)
+
+;;
+(setq-default c-basic-offset qshan-tab-width
+              tab-width qshan-tab-width
+              c-basic-indent qshan-tab-width
+              ;;indent-tabs-mode t
+              indent-tabs-mode nil)
+;;--------------------------------------------------
 ;;
 ;;it is better to end the setting here
 ;;##############################################################################
@@ -240,9 +244,9 @@
   ;;(capitalized-words-mode 1)
   ;;(subword-mode 1)
   ;;(add-hook 'c-mode-common-hook (lambda () (subword-mode 1)))
-  (modify-syntax-entry ?_ "w")
+  (modify-syntax-entry ?_ "w")  ;;now '_' is not considered a word-delimiter
   ;;(modify-syntax-entry ?_ "w" (standard-syntax-table))
-  (modify-syntax-entry ?- "w")
+  (modify-syntax-entry ?- "w")  ;;now '-' is not considered a word-delimiter
   ;;(modify-syntax-entry ?- "w" (standard-syntax-table))
 ;;;;;;ignore the underscore in c-mode
 ;;(add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
