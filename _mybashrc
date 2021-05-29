@@ -106,23 +106,69 @@ export PATH=$PATH:/usr/local/lib
 #if ['' eq `which java`]; then sudo apt install openjdk-8-jdk; fi;
 export BrissInstallPath='~/data/tools/briss/briss-0.9'
 alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar &"
-
+#
+#Bash Color Codes
+## Text Format					Foreground (text) color		 Background color
+## 0: normal text			30: Black									 40: Black
+## 1: bold						31: Red										 41: Red
+## 4: Underlined text	32: Green									 42: Green
+##										33: Yellow								 43: Yellow
+##										34: Blue									 44: Blue
+##										35: Purple								 45: Purple
+##										36: Cyan									 46: Cyan
+##										37: White									 47: White
+##  \e[  – Indicates the beginning of color prompt
+##  x;ym – Indicates color code. Use the color code values mentioned below.
+##  \e[m – indicates the end of color promptSTARTFGCOLOR='\e[0;34m';
+##  STARTBGCOLOR="\e[47m"
+##  ENDCOLOR="\e[0m"
+##  export PS1="$STARTFGCOLOR$STARTBGCOLOR\u@\h \w> $ENDCOLOR"
+##  export PS1="${STARTFGCOLOR}${STARTBGCOLOR}\u@\h \w> ${ENDCOLOR}"
+#
+export BashBlack="\e[0;30m"
+export BashDarkGray="\e[1;30m"
+export BashBlue="\e[0;34m"
+export BashLightBlue="\e[1;34m"
+export BashGreen="\e[0;32m"
+export BashLightGreen="\e[1;32m"
+export BashCyan="\e[0;36m"
+export BashLightCyan="\e[1;36m"
+export BashRed="\e[0;31m"
+export BashLightRed="\e[1;31m"
+export BashPurple="\e[0;35m"
+export BashLightPurple="\e[1;35m"
+export BashBrown="\e[0;33m"
+export BashYellow="\e[1;33m"
+export BashLightGray="\e[0;37m"
+export BashWhite="\e[1;37m"
+export BashColorEnd="\e[0m"
 #set format of shell header string for bash
 #alias set_full_path="export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
-alias set_full_path="export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$\[\e[m\]'"
+#worked#alias set_full_path="export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$\[\e[m\]'"
+#NeedRemove+\e[-m#alias set_full_path="export PS1='\[\033[${BashLightGreen}m\]\u\[\033[00m\]:\[\033[${BashLightBlue}m\]\w\[\033[00m\]$\[\e[m\]'"
+#alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w\[${BashColorEnd}\]$\[${BashColorEnd}\]'"
+alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w\[${BashColorEnd}\]$'"
+#
 #alias set_short_path="export PS1='[\u@\h_\w\$ '"
 #alias set_short_path="export PS1='\[\033[01;32m\]\u@\h$ '"
 #alias set_short_path="export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$\[\e[m\]'"
-alias set_short_path="export PS1='\[\033[01;33m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[01;32m\]$\[\e[m\]'"
+#worked#alias set_short_path="export PS1='\[\033[01;33m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[01;32m\]$\[\e[m\]'"
+#worked#alias set_short_path="export PS1='\[\033[${BashYellow}m\]\u\[\033[00m\]:\[\033[${BashLightBlue}m\]\W\[\033[${BashLightGreen}m\]$\[\e[m\]'"
+alias set_short_path="export PS1='\[${BashYellow}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\W\[${BashLightGreen}\]$\[${BashColorEnd}\]'"
+alias set_short_path1='export PS1="${BashYellow}\u${BashColorEnd}:${BashLightBlue}\W${BashLightGreen}$\[${BashColorEnd}\]"'
+#try##alias set_short_path='export PS1="\[---\e[---${BashYellow}m \]---\u---\[---\e[---0m---\]:\[---\e[---${BashLightBlue}m---\]---\W\[---\e[---${BashLightGreen}m---\]---$---\[---\e[m---\]"'
+#new#alias set_short_path='export PS1="${BashYellow}---\u---${BashColorEnd}---:---${BashLightBlue}---\W---${BashLightGreen}$---\[---${BashColorEnd}---\]"'
+#
 alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
+alias set_default_lubuntu_path1="export PS1='\[${BashYellow}\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w${BashColorEnd}\$'"
+#alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
 
 #\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$
 
 # \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
 
 ##alias set_full_path="export PS1='\[\e]0;\u@\h:_\w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
-#alias set_short_path="export PS1='[\u@\h_\W]\$'"
-
+#alias set_shor_path="export PS1='[\u@\h_\W]\$'"
 ###$#following info got from man bash
 ###$       PS1    The value of this parameter is expanded (see PROMPTING below) and used as the primary  prompt  string.   The  default  value  is``\s-\v\$ ''.
 ###$       PS2    The value of this parameter is expanded as with PS1 and used as the secondary prompt string.  The default is ``> ''.

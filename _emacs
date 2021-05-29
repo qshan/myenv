@@ -184,11 +184,19 @@
 ;;clear blank-line between line and line
 (add-hook 'before-save-hook 'delete-blank-lines)
 ;;--------------------------------------------------
+;;create mytab width here
+(setq qshan-tab-width 2)
+;;
 ;;setting for whitespace-mode
-  (setq default-tab-width 2)
-  ;;(setq-default tab-width 2)
-  ;;set current buffer's tab width
-  (setq tab-width 2)
+(setq default-tab-width qshan-tab-width)
+(setq-default tab-width qshan-tab-width)
+;;(setq-default tab-width 2)
+;;set current buffer's tab width
+(setq tab-width qshan-tab-width)
+;;
+(setq-default c-basic-offset qshan-tab-width
+                  tab-width qshan-tab-width
+                  indent-tabs-mode t)
 ;;
 (defun reset-whitespace-display-mappling ()
   ;;set whitespace mapping table

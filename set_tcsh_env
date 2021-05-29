@@ -1,6 +1,4 @@
-#!/usr/tcsh
-
-
+#!/usr/bash
 
 #bash format
 #if [ -f ~/_mybashrc ]; then
@@ -46,6 +44,5 @@
 #-------------------------tcsh-------------------------
 
 echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.cshrc
-echo " source `pwd`/_mycshrc" >>  ~/.cshrc
+echo " source `pwd`/_mycshrc" >>!  ~/.cshrc
 echo "endif"  >> ~/.cshrc
-

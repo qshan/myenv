@@ -5,7 +5,7 @@ echo "Calling _mybashrc file setting"
 
 #####
 if ( -f ~/.cshrc.local ) then
-  source ~/.cshrc.local
+	source ~/.cshrc.local
 endif
 
 
@@ -104,17 +104,49 @@ alias ctags_L_C        'ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
 alias ctags_L_Python   "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
 alias ctags_L_SV       "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
 
+
+###set prompt to change the display format of
+###head of tcsh shell
+
+setenv TcshBlack           "%{\e[0;30m%}"
+setenv TcshDarkGray        "%{\e[1;30m%}"
+setenv TcshBlue            "%{\e[0;34m%}"
+setenv TcshLightBlue       "%{\e[1;34m%}"
+setenv TcshGreen           "%{\e[0;32m%}"
+setenv TcshLightGreen      "%{\e[1;32m%}"
+setenv TcshCyan            "%{\e[0;36m%}"
+setenv TcshLightCyan       "%{\e[1;36m%}"
+setenv TcshRed             "%{\e[0;31m%}"
+setenv TcshLightRed        "%{\e[1;31m%}"
+setenv TcshPurple          "%{\e[0;35m%}"
+setenv TcshLightPurple     "%{\e[1;35m%}"
+setenv TcshBrown           "%{\e[0;33m%}"
+setenv TcshYellow          "%{\e[1;33m%}"
+setenv TcshLightGray       "%{\e[0;37m%}"
+setenv TcshWhite           "%{\e[1;37m%}"
+setenv TcshColorEnd        "%{\e[0m%}"
+
 #set format of shell header string for tcsh
 #alias set_full_path "%U%m%u:%B%~%b%#"
 #alias set_full_path "set prompt='%U%m%u:%B%C%b%#'"
 #alias set_full_path "set prompt='%U%M%u:%B%/%b%#'"
 alias set_full_path "set prompt='%U%m%u:%B%/%b%#'"
+alias set_full_path "set prompt='${TcshYellow}%U%m%u:%B%/%b%#${TcshColorEnd}'"
 
-alias set_short_path "set prompt='%B%m%b:%h%#'"
+alias set_short_path "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:${TcshGreen}%h%#${TcshColorEnd}'"
+#alias set_short_path "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:%h%#'"
+#alias set_short_path "set prompt='%B%m%b:%h%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c%b%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c2%b%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c%b:%h%#'"
+#alias set_short_path1 "set prompt='%B%m%b:%h%#'"
+alias set_short_path1 "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshGreen}%h%#${TcshColorEnd}'"
 
+#alias set_default_path "set prompt='%{\033[0;32m%}%U%m%u:%B%~%b%#'"
+alias set_default_path "set prompt='%U%m%u:%B%~%b%#'"
+#worked#alias set_default_path1 "set prompt='%{\e[1;33m%}%U%m%u:%B%~%b%#'"
+alias set_default_path1 "set prompt='${TcshYellow}%U%m%u:%B%~%b%#${TcshColorEnd}'"
+##%U%m%u:%B%~%b%#
 #set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands
 #set prompt='%B%c%b%h%#' #display last part of current folder + linenumber of history commands
 

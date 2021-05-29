@@ -64,68 +64,67 @@ man bash
 #command for git maintain
 
 #save the state
-#git add .
-#git commit -m "comments for current status"
+# $git add .
+# $git commit -m "comments for current status"
 
 #save the state
-#git commit -am "comments for current status"
+# $git commit -am "comments for current status"
 
 #remove the new edit and back to last commit
-#git reset --hard
+# $git reset --hard
+# $git remote add [shortname_on_remote] [url_remote_address]
 
-#git remote add [shortname_on_remote] [url_remote_address]
+# $git clone --recursive git@github.com:qshan/myenv.git
 
-#git clone --recursive git@github.com:qshan/myenv.git
+# $git remote
 
-#git remote
+# $git branch -A
 
-#git branch -A
+# $git branch BranchName
 
-#git branch BranchName
+# $git switch NameOfSwitched
 
-#git switch NameOfSwitched
+# $git fetch origin
 
-#git fetch origin
+# $git pull
 
-#git pull
+# $git pull FileNameWithPath
 
-#git pull FileNameWithPath
+# $git add New_File_With_Path
 
-#git add New_File_With_Path
+# $git commit -am "update bashrc description"
 
-#git commit -am "update bashrc description"
+# $git push
 
-#git push
+# $git push NameToRemote NameFromLocal
 
-#git push NameToRemote NameFromLocal
+# $git push origin_remote master_local
 
-#git push origin_remote master_local
+# $git push origin master
 
-#git push origin master
+# $git push origin :
 
-#git push origin :
+# $git add/rm <file>... # to update what will be committed
 
-#git add/rm <file>... # to update what will be committed
+# $git checkout -- <file>... # to discard changes in working directory
 
-#git checkout -- <file>... # to discard changes in working directory
+# $git checkout TagVersionNameYouNeed
 
-#git checkout TagVersionNameYouNeed
-
-#git checkout BranchNameWithPath
+# $git checkout BranchNameWithPath
 
 
-#git checkout master
+# $git checkout master
 
 #HEAD sequence:
 # ~ most of the time to goback a number of generations, usually you want, is almost linear in appearance and wants to go backward in a straight line
 # ^ on merge commits, because they have two or more parents, suggests an interesting of a tree or a fork in the road
-#git checkout HEAD
+# $git checkout HEAD
 
-#git checkout HEAD~1
-#git checkout HEAD^
+# $git checkout HEAD~1
+# $git checkout HEAD^
 
-#git checkout HEAD~2
-#git checkout HEAD^^
+# $git checkout HEAD~2
+# $git checkout HEAD^^
 
 #--------------------------------------------------
 #      git-command               WorkSpace                 Stage/Index           History/LocalRepo         RemoteRepo
@@ -145,71 +144,80 @@ man bash
 #git clone                                                                              Y           <--          Y
 #--------------------------------------------------
 
-#git rm --cached <file>
+# $git rm --cached <file>
 
-#git reset HEAD <file>...
+# $git reset HEAD <file>...
 
 ##undo add
-#git reset
+# $git reset
 
 ##undo a commit and redo
-#git commit -m "comments this time"
-#git reset --soft HEAD^
+# $git commit -m "comments this time"
+# $git reset --soft HEAD^
 ##edit the files
-#git commit -a -c ORIG_HEAD
+# $git commit -a -c ORIG_HEAD
 
 #undo a commit permanently
-#git commit -m "comments this time"
+# $git commit -m "comments this time"
 ##the last thress commits (HEAD, HEAD^ and HEAD~2) ware bad, polish them
-#git reset --hard HEAD~3
+# $git reset --hard HEAD~3
+# $git status
 
-#git status
+# $git log
 
-#git log
+# $git log -p
 
-#git log -p
+# $git log -p -3
 
-#git log -p -3
+# $git log --stat
 
-#git log --stat
+# $git log --pretty
 
-#git log --pretty
+# $git log --pretty=format:"%h - %an, %ar : %s"
 
-#git log --pretty=format:"%h - %an, %ar : %s"
+# $git log --pretty=format:"%h - %an, %ar : %s" --graph
 
-#git log --pretty=format:"%h - %an, %ar : %s" --graph
+# $git tag
 
-#git tag
+# $git tag -l "Tag_keyword_info"
 
-#git tag -l "Tag_keyword_info"
+# $git tag -a TagVersionName -m "comments for this version tag"
 
-#git tag -a TagVersionName -m "comments for this version tag"
+# $git tag -d TagNameDeleted
 
-#git tag -d TagNameDeleted
+# $git fetch origin_remote tag TanName
 
-#git fetch origin_remote tag TanName
+# $git show TagVersionName
 
-#git show TagVersionName
+# $git push origin TagVersionNameYouWantToShare
 
-#git push origin TagVersionNameYouWantToShare
-
-#git push origin --tags
+# $git push origin --tags
 
 
-#git status -s
+# $git status -s
 
-#git diff FileName
+# $git diff FileName
 
-#git diff --cached FileName
+# $git diff --cached FileName
 
-#git diff HEAD
+# $git diff HEAD
 
-#git diff --stat
+# $git diff --stat
 
-#git diff Branch1 Branch2
+# $git diff Branch1 Branch2
 
-#git diff Branch1 Branch2 --stat
-#------------start of create git backup in local path--------------------------------------
+# $git diff Branch1 Branch2 --stat
+
+#------------start of git stash--------------------------------------
+##... hack hack...
+# $git stash
+##edit emergency fix
+# $git commit -a -m "Fix in a hurry"
+# $git stash pop
+##...continue hack hack...
+#------------end of git stash  --------------------------------------
+
+
 ####create the local repo folder
 # $mkdir ProjectFolderName
 ####init the local repo
