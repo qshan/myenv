@@ -63,6 +63,16 @@ man bash
 #--------------------------------------------------
 #command for git maintain
 
+#save the state
+#git add .
+#git commit -m "comments for current status"
+
+#save the state
+#git commit -am "comments for current status"
+
+#remove the new edit and back to last commit
+#git reset --hard
+
 #git remote add [shortname_on_remote] [url_remote_address]
 
 #git clone --recursive git@github.com:qshan/myenv.git
@@ -118,15 +128,16 @@ man bash
 #git checkout HEAD^^
 
 #--------------------------------------------------
-#      git-command               WorkSpace                 Stage/Index               History/LocalRepo       RemoteRepo
+#      git-command               WorkSpace                 Stage/Index           History/LocalRepo         RemoteRepo
 #git add                              Y           -->          Y
 #--------------------------------------------------------------------------------
+#git commit -a                        Y                       -->                       Y
 #git commit -am                       Y                       -->                       Y
 #git checkout                         Y                       <--                       Y
 #git commit                                                    Y             -->        Y
 #git reset --soft                                              Y             <--        Y
 #git reset --mixed                    Y                       <--                       Y
-#git reset --hard        (deleted)                            <--                       Y
+#git reset --hard                     Y(deleted new edit)     <--                       Y
 #git pull                             Y                                      <--                                 Y
 #--------------------------------------------------------------------------------
 #git push                                                                               Y           -->          Y
