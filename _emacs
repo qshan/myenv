@@ -1,5 +1,5 @@
 '(ansi-color-faces-vector
-  [default default default italic underline success warning error])
+	[default default default italic underline success warning error])
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -100,32 +100,32 @@
 ;;;;(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 ;
 (add-to-list 'load-path (directory-file-name
-                         "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
+												 "~/.emacs.d/elpa/hl-todo-3.1.2/hl-todo-autoloads"))
 (setq hl-todo-keyword-faces
-  '(("HOLD"    . "#d0bf8f")
-    ("TODO"    . "#cc9393")
-    ("ToDo"    . "#cc9393")
-    ("todo"    . "#cc9393")
-    ("fshan"   . "#cc9393")
-    ("qshan"   . "#cc9393")
-    ("NEXT"    . "#dca3a3")
-    ("THEM"    . "#dc8cc3")
-    ("PROG"    . "#7cb8bb")
-    ("OKAY"    . "#7cb8bb")
-    ("DONT"    . "#5f7f5f")
-    ;;("FAIL"    . "#8c5353")
-    ("FAIL"    . "#ff0000")
-    ("error"   . "#ff0000")
-    ("Error"   . "#ff0000")
-    ("DONE"    . "#afd8af")
-    ("NOTE"    . "#d0bf8f")
-    ("ToCheck" . "#d0bf8f")
-    ("KLUDGE"  . "#d0bf8f")
-    ("HACK"    . "#d0bf8f")
-    ("TEMP"    . "#d0bf8f")
-    ("FIXME"   . "#cc9393")
-    ("FixMe"   . "#cc9393")
-    ("XXX+"    . "#cc9393")))
+	'(("HOLD"    . "#d0bf8f")
+		("TODO"    . "#cc9393")
+		("ToDo"    . "#cc9393")
+		("todo"    . "#cc9393")
+		("fshan"   . "#cc9393")
+		("qshan"   . "#cc9393")
+		("NEXT"    . "#dca3a3")
+		("THEM"    . "#dc8cc3")
+		("PROG"    . "#7cb8bb")
+		("OKAY"    . "#7cb8bb")
+		("DONT"    . "#5f7f5f")
+		;;("FAIL"    . "#8c5353")
+		("FAIL"    . "#ff0000")
+		("error"   . "#ff0000")
+		("Error"   . "#ff0000")
+		("DONE"    . "#afd8af")
+		("NOTE"    . "#d0bf8f")
+		("ToCheck" . "#d0bf8f")
+		("KLUDGE"  . "#d0bf8f")
+		("HACK"    . "#d0bf8f")
+		("TEMP"    . "#d0bf8f")
+		("FIXME"   . "#cc9393")
+		("FixMe"   . "#cc9393")
+		("XXX+"    . "#cc9393")))
 ;;
 (global-hl-todo-mode 1)
 ;;(hl-todo-insert ("ToDo" . "#cc9393"))
@@ -175,7 +175,7 @@
 ;;(define-key evil-normal-state-map (kdb "z C" 'evil-close-folds)
 ;;--------------------------------------------------
 ;;set for company mode
-  (with-eval-after-load 'company (company-ctags-auto-setup))
+	(with-eval-after-load 'company (company-ctags-auto-setup))
 ;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
 ;;--------------------------------------------------
 ;;clear whitespace end of row/line
@@ -186,18 +186,18 @@
 ;;--------------------------------------------------
 ;;
 (defun reset-whitespace-display-mappling ()
-  ;;set whitespace mapping table
-  (setq whitespace-display-mappings '(
-        (space-mark    ?\    [?\u00B7]    [?.])  ;;space
-        ;;(space-mark    ?\     [?\xB7]      [?.])  ;;space
-        (space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
-        ;;(space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
-        (newline-mark  ?\n   [? \?\n])           ;;end of line
-        ;;(newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
-        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
-                                      ))
+	;;set whitespace mapping table
+	(setq whitespace-display-mappings '(
+				(space-mark    ?\    [?\u00B7]    [?.])  ;;space
+				;;(space-mark    ?\     [?\xB7]      [?.])  ;;space
+				(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
+				;;(space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
+				(newline-mark  ?\n   [? \?\n])           ;;end of line
+				;;(newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
+				;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
+																			))
 
-  )
+	)
 ;;
 (setq fill-column 80)
 ;;set limit length
@@ -215,13 +215,14 @@
 (setq-default tab-width qshan-tab-width)
 ;;set current buffer's tab width
 (setq tab-width qshan-tab-width)
-
 ;;
 (setq-default c-basic-offset qshan-tab-width
-              tab-width qshan-tab-width
-              c-basic-indent qshan-tab-width
-              ;;indent-tabs-mode t
-              indent-tabs-mode nil)
+							tab-width qshan-tab-width
+							c-basic-indent qshan-tab-width
+							;;indent-tabs-mode t
+							indent-tabs-mode nil)
+
+;;(hook 'c-mode-common-hook (lambda () (setq indent-tabs-mode t)))
 ;;--------------------------------------------------
 ;;
 ;;it is better to end the setting here
@@ -235,81 +236,81 @@
 ;;ToCheckCamelCasenCodeStyle
 ;;;;
 (defun fshan-subword-mode ()
-  "set submod and ignore '-' and '_' for word constitunt qshan"
-  (interactive)
-  ;;
-  ;;disable subwork-mode to ingnore CamelCaseNaming
-  (subword-mode -1)
-  ;;(when (not subword-mode) (subword-mode 1))
-  ;;(capitalized-words-mode 1)
-  ;;(subword-mode 1)
-  ;;(add-hook 'c-mode-common-hook (lambda () (subword-mode 1)))
-  (modify-syntax-entry ?_ "w")  ;;now '_' is not considered a word-delimiter
-  ;;(modify-syntax-entry ?_ "w" (standard-syntax-table))
-  (modify-syntax-entry ?- "w")  ;;now '-' is not considered a word-delimiter
-  ;;(modify-syntax-entry ?- "w" (standard-syntax-table))
+	"set submod and ignore '-' and '_' for word constitunt qshan"
+	(interactive)
+	;;
+	;;disable subwork-mode to ingnore CamelCaseNaming
+	(subword-mode -1)
+	;;(when (not subword-mode) (subword-mode 1))
+	;;(capitalized-words-mode 1)
+	;;(subword-mode 1)
+	;;(add-hook 'c-mode-common-hook (lambda () (subword-mode 1)))
+	(modify-syntax-entry ?_ "w")  ;;now '_' is not considered a word-delimiter
+	;;(modify-syntax-entry ?_ "w" (standard-syntax-table))
+	(modify-syntax-entry ?- "w")  ;;now '-' is not considered a word-delimiter
+	;;(modify-syntax-entry ?- "w" (standard-syntax-table))
 ;;;;;;ignore the underscore in c-mode
 ;;(add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 ;;(add-hook 'python-mode-hook   #'(lambda () (modify-syntax-entry ?_ "w")))
 ;;;;eval-buffer
 ;;;;load-file ~/.emacs
-  ;;;;(global-superword-mode nil)
-  ;;(global-superword-mode 0)
-  ;;(global-subword-mode 1)
-  ;;(setq global-subword-mode t)
-  ;;(superword-mode -1)
-  ;;(superword-mode 0)
-  ;;(subword-mode 1)
-  ;;(subword-mode +1)
-  ;;(setq subword-mode t)
-  ;;;; enable just in ruby-mode
-  ;;(add-hook 'ruby-mode-hook 'subword-mode)
-  ;;(add-hook 'c-mode-common-hook 'subword-mode)
-  ;;(add-hook 'python-mode-hook  'subword-mode)
-  ;; enable for all programming modes
-  ;;(add-hook 'prog-mode-hook 'subword-mode)
+	;;;;(global-superword-mode nil)
+	;;(global-superword-mode 0)
+	;;(global-subword-mode 1)
+	;;(setq global-subword-mode t)
+	;;(superword-mode -1)
+	;;(superword-mode 0)
+	;;(subword-mode 1)
+	;;(subword-mode +1)
+	;;(setq subword-mode t)
+	;;;; enable just in ruby-mode
+	;;(add-hook 'ruby-mode-hook 'subword-mode)
+	;;(add-hook 'c-mode-common-hook 'subword-mode)
+	;;(add-hook 'python-mode-hook  'subword-mode)
+	;; enable for all programming modes
+	;;(add-hook 'prog-mode-hook 'subword-mode)
 ;;
-  ;;show white space
-  (whitespace-mode)
-  ;;(whitespace-mode t)
-  ;;
-  (setq default-tab-width 2)
-  ;;(setq-default tab-width 2)
-  ;;set current buffer's tab width
-  (setq tab-width 2)
+	;;show white space
+	(whitespace-mode)
+	;;(whitespace-mode t)
+	;;
+	(setq default-tab-width 2)
+	;;(setq-default tab-width 2)
+	;;set current buffer's tab width
+	(setq tab-width 2)
 ;;
-  ;;set whitespace mappling table
-  (setq whitespace-display-mappings '(
-        ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
-        (space-mark    ?\     [?\xB7]      [?.])  ;;space
-        ;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
-        (space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
-        ;;;;(newline-mark  ?\n   [? \?\n])           ;;end of line
-        (newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
-        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
-        (space-mark   ?\     [?\u00B7]     [?.]) ; space - centered dot
-        (space-mark   ?\xA0  [?\u00A4]     [?_]) ; hard space - currency
-        (space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
-        (space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
-        (space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
-        (space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
-        ;; NEWLINE is displayed using the face `whitespace-newline'
-        (newline-mark ?\n    [?$ ?\n])  ; eol - dollar sign
-        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n]) ; eol - downwards arrow
-        ;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n]) ; eol - pilcrow
-        ;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n]) ; eol - overscore
-        ;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n]) ; eol - negation
-        ;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n]) ; eol - grade
-        ;;
-        ;; WARNING: the mapping below has a problem.
-        ;; When a TAB occupies exactly one column, it will display the
-        ;; character ?\xBB at that column followed by a TAB which goes to
-        ;; the next TAB column.
-        ;; If this is a problem for you, please, comment the line below.
-        (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]) ; tab - left quote mark
+	;;set whitespace mappling table
+	(setq whitespace-display-mappings '(
+				;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
+				(space-mark    ?\     [?\xB7]      [?.])  ;;space
+				;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
+				(space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
+				;;;;(newline-mark  ?\n   [? \?\n])           ;;end of line
+				(newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
+				;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
+				(space-mark   ?\     [?\u00B7]     [?.]) ; space - centered dot
+				(space-mark   ?\xA0  [?\u00A4]     [?_]) ; hard space - currency
+				(space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
+				(space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
+				(space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
+				(space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
+				;; NEWLINE is displayed using the face `whitespace-newline'
+				(newline-mark ?\n    [?$ ?\n])  ; eol - dollar sign
+				;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n]) ; eol - downwards arrow
+				;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n]) ; eol - pilcrow
+				;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n]) ; eol - overscore
+				;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n]) ; eol - negation
+				;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n]) ; eol - grade
+				;;
+				;; WARNING: the mapping below has a problem.
+				;; When a TAB occupies exactly one column, it will display the
+				;; character ?\xBB at that column followed by a TAB which goes to
+				;; the next TAB column.
+				;; If this is a problem for you, please, comment the line below.
+				(tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]) ; tab - left quote mark
 
 
-                                      ))
+																			))
 ;;
 (setq fill-column 80)
 ;;set limit length
@@ -319,7 +320,7 @@
 (setq whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook 'whitespace-mode)
 ;;
-  ) ;;end of fshan-subword-mode
+	) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -839,196 +840,196 @@
 ;;;;;`evil-normal-state-minor-mode' Minor Mode Bindings:
 ;;key             binding
 ;;---             -------
-                                        ; C-n             evil-paste-pop-next
-                                        ; C-p             evil-paste-pop
-                                        ; C-r             undo-fu-only-redo
-                                        ; C-t             pop-tag-mark
-                                        ; ESC             Prefix Command
-                                        ; C-]             counsel-etags-find-tag-at-point
-                                        ; SPC             Prefix Command
-                                        ; "               evil-use-register
-                                        ; &               evil-ex-repeat-substitute
-                                        ; ,               Prefix Command
-                                        ; .               evil-repeat
-                                        ; ;               Prefix Command
-                                        ; <               evil-shift-left
-                                        ; =               evil-indent
-                                        ; >               evil-shift-right
-                                        ; @               evil-execute-macro
-                                        ; A               evil-append-line
-                                        ; C               evil-change-line
-                                        ; D               evil-delete-line
-                                        ; I               evil-insert-line
-                                        ; J               evil-join
-                                        ; O               evil-open-above
-                                        ; P               evil-paste-before
-                                        ; R               evil-replace-state
-                                        ; S               evil-change-whole-line
-                                        ; X               evil-delete-backward-char
-                                        ; Y               Keyboard Macro
-                                        ; Z               Prefix Command
-                                        ; a               evil-append
-                                        ; c               evil-change
-                                        ; d               evil-delete
-                                        ; g               Prefix Command
-                                        ; i               evil-insert
-                                        ; m               evil-set-marker
-                                        ; o               evil-open-below
-                                        ; p               evil-paste-after
-                                        ; q               evil-record-macro
-                                        ; r               evil-replace
-                                        ; s               evil-substitute ;replace
-                                        ; u               undo-fu-only-undo
-                                        ; x               evil-delete-char
-                                        ; y               evil-yank
-                                        ; z               Prefix Command
-                                        ; ~               evil-invert-char
-                                        ; DEL             evil-backward-char
-                                        ; C-.             evil-repeat-pop
-                                        ; <deletechar>    evil-delete-char
-                                        ; <escape>        evil-force-normal-state
-                                        ; <insert>        evil-insert
-                                        ; <insertchar>    evil-insert
-                                        ; <mouse-2>       mouse-yank-primary
-                                        ; <remap>         Prefix Command
+																				; C-n             evil-paste-pop-next
+																				; C-p             evil-paste-pop
+																				; C-r             undo-fu-only-redo
+																				; C-t             pop-tag-mark
+																				; ESC             Prefix Command
+																				; C-]             counsel-etags-find-tag-at-point
+																				; SPC             Prefix Command
+																				; "               evil-use-register
+																				; &               evil-ex-repeat-substitute
+																				; ,               Prefix Command
+																				; .               evil-repeat
+																				; ;               Prefix Command
+																				; <               evil-shift-left
+																				; =               evil-indent
+																				; >               evil-shift-right
+																				; @               evil-execute-macro
+																				; A               evil-append-line
+																				; C               evil-change-line
+																				; D               evil-delete-line
+																				; I               evil-insert-line
+																				; J               evil-join
+																				; O               evil-open-above
+																				; P               evil-paste-before
+																				; R               evil-replace-state
+																				; S               evil-change-whole-line
+																				; X               evil-delete-backward-char
+																				; Y               Keyboard Macro
+																				; Z               Prefix Command
+																				; a               evil-append
+																				; c               evil-change
+																				; d               evil-delete
+																				; g               Prefix Command
+																				; i               evil-insert
+																				; m               evil-set-marker
+																				; o               evil-open-below
+																				; p               evil-paste-after
+																				; q               evil-record-macro
+																				; r               evil-replace
+																				; s               evil-substitute ;replace
+																				; u               undo-fu-only-undo
+																				; x               evil-delete-char
+																				; y               evil-yank
+																				; z               Prefix Command
+																				; ~               evil-invert-char
+																				; DEL             evil-backward-char
+																				; C-.             evil-repeat-pop
+																				; <deletechar>    evil-delete-char
+																				; <escape>        evil-force-normal-state
+																				; <insert>        evil-insert
+																				; <insertchar>    evil-insert
+																				; <mouse-2>       mouse-yank-primary
+																				; <remap>         Prefix Command
 
-                                        ; ;             ace-pinyin-jump-char-2
-                                        ; a             avy-goto-char-timer
-                                        ; d             Prefix Command
-                                        ; g             Prefix Command
-                                        ; m             Prefix Command
-                                        ; w             avy-goto-word-or-subword-1
+																				; ;             ace-pinyin-jump-char-2
+																				; a             avy-goto-char-timer
+																				; d             Prefix Command
+																				; g             Prefix Command
+																				; m             Prefix Command
+																				; w             avy-goto-word-or-subword-1
 ;;--------------------------------------------------
 ;;;;;`evil-motion-state-minor-mode' Minor Mode Bindings:
 ;;key             binding
 ;;---             -------
 
-                                        ; C-b             evil-scroll-page-up
-                                        ; C-d             evil-scroll-down
-                                        ; C-e             evil-scroll-line-down
-                                        ; C-f             evil-scroll-page-down
-                                        ; TAB             evil-jump-forward
-                                        ; RET             evil-ret
-                                        ; C-o             evil-jump-backward
-                                        ; C-v             evil-visual-block
-                                        ; C-w             evil-window-map
-                                        ; C-y             evil-scroll-line-up
-                                        ; C-z             evil-emacs-state
-                                        ; C-^             evil-buffer
-                                        ; !               evil-shell-command
-                                        ; #               evil-search-word-backward
-                                        ; $               evil-end-of-line
-                                        ; '               evil-goto-mark-line
-                                        ; (               evil-backward-sentence-begin
-                                        ; )               evil-forward-sentence-begin
-                                        ; *               evil-search-word-forward
-                                        ; +               evil-next-line-first-non-blank
-                                        ; -               evil-previous-line-first-non-blank
-                                        ; /               evil-search-forward
-                                        ; 0               evil-digit-argument-or-evil-beginning-of-line
-                                        ; 1 .. 9          digit-argument
-                                        ; :               evil-ex
-                                        ; ?               evil-search-backward
-                                        ; B               evil-backward-WORD-begin
-                                        ; E               evil-forward-WORD-end
-                                        ; F               evil-find-char-backward
-                                        ; G               evil-goto-line
-                                        ; H               evil-window-top
-                                        ; K               evil-lookup
-                                        ; L               evil-window-bottom
-                                        ; M               evil-window-middle
-                                        ; N               evil-search-previous
-                                        ; T               evil-find-char-to-backward
-                                        ; V               evil-visual-line
-                                        ; W               evil-forward-WORD-begin
-                                        ; [               Prefix Command
-                                        ; \               evil-execute-in-emacs-state
-                                        ; ]               Prefix Command
-                                        ; ^               evil-first-non-blank
-                                        ; _               evil-next-line-1-first-non-blank
-                                        ; `               evil-goto-mark
-                                        ; b               evil-backward-word-begin
-                                        ; e               evil-forward-word-end
-                                        ; f               evil-find-char
-                                        ; g               Prefix Command
-                                        ; h               evil-backward-char
-                                        ; j               evil-next-line
-                                        ; k               evil-previous-line
-                                        ; l               evil-forward-char
-                                        ; n               evil-search-next
-                                        ; t               evil-find-char-to
-                                        ; v               evil-visual-char
-                                        ; w               evil-forward-word-begin
-                                        ; z               Prefix Command
-                                        ; {               evil-backward-paragraph
-                                        ; |               evil-goto-column
-                                        ; }               evil-forward-paragraph
-                                        ; C-6             evil-switch-to-windows-last-buffer
+																				; C-b             evil-scroll-page-up
+																				; C-d             evil-scroll-down
+																				; C-e             evil-scroll-line-down
+																				; C-f             evil-scroll-page-down
+																				; TAB             evil-jump-forward
+																				; RET             evil-ret
+																				; C-o             evil-jump-backward
+																				; C-v             evil-visual-block
+																				; C-w             evil-window-map
+																				; C-y             evil-scroll-line-up
+																				; C-z             evil-emacs-state
+																				; C-^             evil-buffer
+																				; !               evil-shell-command
+																				; #               evil-search-word-backward
+																				; $               evil-end-of-line
+																				; '               evil-goto-mark-line
+																				; (               evil-backward-sentence-begin
+																				; )               evil-forward-sentence-begin
+																				; *               evil-search-word-forward
+																				; +               evil-next-line-first-non-blank
+																				; -               evil-previous-line-first-non-blank
+																				; /               evil-search-forward
+																				; 0               evil-digit-argument-or-evil-beginning-of-line
+																				; 1 .. 9          digit-argument
+																				; :               evil-ex
+																				; ?               evil-search-backward
+																				; B               evil-backward-WORD-begin
+																				; E               evil-forward-WORD-end
+																				; F               evil-find-char-backward
+																				; G               evil-goto-line
+																				; H               evil-window-top
+																				; K               evil-lookup
+																				; L               evil-window-bottom
+																				; M               evil-window-middle
+																				; N               evil-search-previous
+																				; T               evil-find-char-to-backward
+																				; V               evil-visual-line
+																				; W               evil-forward-WORD-begin
+																				; [               Prefix Command
+																				; \               evil-execute-in-emacs-state
+																				; ]               Prefix Command
+																				; ^               evil-first-non-blank
+																				; _               evil-next-line-1-first-non-blank
+																				; `               evil-goto-mark
+																				; b               evil-backward-word-begin
+																				; e               evil-forward-word-end
+																				; f               evil-find-char
+																				; g               Prefix Command
+																				; h               evil-backward-char
+																				; j               evil-next-line
+																				; k               evil-previous-line
+																				; l               evil-forward-char
+																				; n               evil-search-next
+																				; t               evil-find-char-to
+																				; v               evil-visual-char
+																				; w               evil-forward-word-begin
+																				; z               Prefix Command
+																				; {               evil-backward-paragraph
+																				; |               evil-goto-column
+																				; }               evil-forward-paragraph
+																				; C-6             evil-switch-to-windows-last-buffer
 
-                                        ; z RET           Keyboard Macro
-                                        ; z +             evil-scroll-bottom-line-to-top
-                                        ; z -             Keyboard Macro
-                                        ; z .             Keyboard Macro
-                                        ; z H             evil-scroll-left
-                                        ; z L             evil-scroll-right
-                                        ; z ^             evil-scroll-top-line-to-bottom
-                                        ; z b             evil-scroll-line-to-bottom
-                                        ; z h             evil-scroll-column-left
-                                        ; z l             evil-scroll-column-right
-                                        ; z t             evil-scroll-line-to-top
-                                        ; z z             evil-scroll-line-to-center
-                                        ; z <left>        Keyboard Macro
-                                        ; z <return>      Keyboard Macro
-                                        ; z <right>       Keyboard Macro
+																				; z RET           Keyboard Macro
+																				; z +             evil-scroll-bottom-line-to-top
+																				; z -             Keyboard Macro
+																				; z .             Keyboard Macro
+																				; z H             evil-scroll-left
+																				; z L             evil-scroll-right
+																				; z ^             evil-scroll-top-line-to-bottom
+																				; z b             evil-scroll-line-to-bottom
+																				; z h             evil-scroll-column-left
+																				; z l             evil-scroll-column-right
+																				; z t             evil-scroll-line-to-top
+																				; z z             evil-scroll-line-to-center
+																				; z <left>        Keyboard Macro
+																				; z <return>      Keyboard Macro
+																				; z <right>       Keyboard Macro
 
-                                        ; C-w C-b         evil-window-bottom-right
-                                        ; C-w C-c         evil-window-delete
-                                        ; C-w C-f         ffap-other-window
-                                        ; C-w C-n         evil-window-new
-                                        ; C-w C-o         delete-other-windows
-                                        ; C-w C-p         evil-window-mru
-                                        ; C-w C-r         evil-window-rotate-downwards
-                                        ; C-w C-s         evil-window-split
-                                        ; C-w C-t         evil-window-top-left
-                                        ; C-w C-v         evil-window-vsplit
-                                        ; C-w C-w         evil-window-next
-                                        ; C-w C-_         evil-window-set-height
-                                        ; C-w +           evil-window-increase-height
-                                        ; C-w -           evil-window-decrease-height
-                                        ; C-w <           evil-window-decrease-width
-                                        ; C-w =           balance-windows
-                                        ; C-w >           evil-window-increase-width
-                                        ; C-w H           evil-window-move-far-left
-                                        ; C-w J           evil-window-move-very-bottom
-                                        ; C-w K           evil-window-move-very-top
-                                        ; C-w L           evil-window-move-far-right
-                                        ; C-w R           evil-window-rotate-upwards
-                                        ; C-w S           evil-window-split
-                                        ; C-w W           evil-window-prev
-                                        ; C-w _           evil-window-set-height
-                                        ; C-w b           evil-window-bottom-right
-                                        ; C-w c           evil-window-delete
-                                        ; C-w h           evil-window-left
-                                        ; C-w j           evil-window-down
-                                        ; C-w k           evil-window-up
-                                        ; C-w l           evil-window-right
-                                        ; C-w n           evil-window-new
-                                        ; C-w o           delete-other-windows
-                                        ; C-w p           evil-window-mru
-                                        ; C-w q           evil-quit
-                                        ; C-w r           evil-window-rotate-downwards
-                                        ; C-w s           evil-window-split
-                                        ; C-w t           evil-window-top-left
-                                        ; C-w v           evil-window-vsplit
-                                        ; C-w w           evil-window-next
-                                        ; C-w |           evil-window-set-width
-                                        ; C-w C-S-h       evil-window-move-far-left
-                                        ; C-w C-S-j       evil-window-move-very-bottom
-                                        ; C-w C-S-k       evil-window-move-very-top
-                                        ; C-w C-S-l       evil-window-move-far-right
-                                        ; C-w C-S-r       evil-window-rotate-upwards
-                                        ; C-w C-S-s       evil-window-split
-                                        ; C-w C-S-w       evil-window-prev
+																				; C-w C-b         evil-window-bottom-right
+																				; C-w C-c         evil-window-delete
+																				; C-w C-f         ffap-other-window
+																				; C-w C-n         evil-window-new
+																				; C-w C-o         delete-other-windows
+																				; C-w C-p         evil-window-mru
+																				; C-w C-r         evil-window-rotate-downwards
+																				; C-w C-s         evil-window-split
+																				; C-w C-t         evil-window-top-left
+																				; C-w C-v         evil-window-vsplit
+																				; C-w C-w         evil-window-next
+																				; C-w C-_         evil-window-set-height
+																				; C-w +           evil-window-increase-height
+																				; C-w -           evil-window-decrease-height
+																				; C-w <           evil-window-decrease-width
+																				; C-w =           balance-windows
+																				; C-w >           evil-window-increase-width
+																				; C-w H           evil-window-move-far-left
+																				; C-w J           evil-window-move-very-bottom
+																				; C-w K           evil-window-move-very-top
+																				; C-w L           evil-window-move-far-right
+																				; C-w R           evil-window-rotate-upwards
+																				; C-w S           evil-window-split
+																				; C-w W           evil-window-prev
+																				; C-w _           evil-window-set-height
+																				; C-w b           evil-window-bottom-right
+																				; C-w c           evil-window-delete
+																				; C-w h           evil-window-left
+																				; C-w j           evil-window-down
+																				; C-w k           evil-window-up
+																				; C-w l           evil-window-right
+																				; C-w n           evil-window-new
+																				; C-w o           delete-other-windows
+																				; C-w p           evil-window-mru
+																				; C-w q           evil-quit
+																				; C-w r           evil-window-rotate-downwards
+																				; C-w s           evil-window-split
+																				; C-w t           evil-window-top-left
+																				; C-w v           evil-window-vsplit
+																				; C-w w           evil-window-next
+																				; C-w |           evil-window-set-width
+																				; C-w C-S-h       evil-window-move-far-left
+																				; C-w C-S-j       evil-window-move-very-bottom
+																				; C-w C-S-k       evil-window-move-very-top
+																				; C-w C-S-l       evil-window-move-far-right
+																				; C-w C-S-r       evil-window-rotate-upwards
+																				; C-w C-S-s       evil-window-split
+																				; C-w C-S-w       evil-window-prev
 
 ;;remove the trailing whirtespace
 ;;M-x delete-trailing-whitespace

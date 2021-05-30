@@ -142,6 +142,8 @@ export BashYellow="\e[1;33m"
 export BashLightGray="\e[0;37m"
 export BashWhite="\e[1;37m"
 export BashColorEnd="\e[0m"
+#worked#export BashColorEnd="\033[0m"
+
 #set format of shell header string for bash
 #alias set_full_path="export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
 #worked#alias set_full_path="export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$\[\e[m\]'"
