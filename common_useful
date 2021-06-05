@@ -112,6 +112,8 @@ man bash
 
 # $git checkout BranchNameWithPath
 
+## create a new branch from master
+# $git checkout -b NewBranchName master
 
 # $git checkout master
 
@@ -147,6 +149,9 @@ man bash
 # $git rm --cached <file>
 
 # $git reset HEAD <file>...
+
+# $git clean -n -d
+# $git clean -f -d
 
 ##undo add
 # $git reset
@@ -207,6 +212,13 @@ man bash
 # $git diff Branch1 Branch2
 
 # $git diff Branch1 Branch2 --stat
+
+##save local modification away,
+##and revert the working directory to match the HEAD commit
+# $git stash save # same as #git stash
+##remove a single stashed state, and do the inverse operation of git stash save.
+# $git stash pop
+# $git stash apply
 
 #------------start of git stash--------------------------------------
 ##... hack hack...

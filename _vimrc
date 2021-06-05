@@ -184,15 +184,16 @@ syntax enable     "keep your current color settings
 "tabnine, based on youcompleteme, set this if do not use vundle install  the youcompleteme
 "set rtp+=~/tabnine-vim
 "
-" set the fold options
-set nofoldenable
-"set foldenable     "enable fold when you need
-"set fen     "=foldenable
 "set the folder methods
 "set foldmethod=indent
 "set foldmethod=manual
 set foldmethod=syntax
-set foldlevel=1
+set foldlevel=100
+syntax enable  "This command switches on syntax highlighting: >
+" set the fold options
+set nofoldenable
+"set foldenable     "enable fold when you need
+"set fen     "=foldenable
 "
 "set spell
 set spelllang=en_us
@@ -659,7 +660,7 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 :autocmd BufEnter  *.c,*.h     abbr DO do<CR>{<CR>}while ();<Esc>O
 :autocmd BufLeave  *.c,*.h     unabbr DO
 "
-:autocmd BufEnter  *.c,*.h     abbr SWITCH switch()<CR>{<CR>case ITEM :<CR>;<CR>break;<CR>case ITEM :<CR>;<CR>break;<CR>default:<CR>;<CR>}<Esc>O 
+:autocmd BufEnter  *.c,*.h     abbr SWITCH switch()<CR>{<CR>case ITEM :<CR>;<CR>break;<CR>case ITEM :<CR>;<CR>break;<CR>default:<CR>;<CR>}<Esc>O
 :autocmd BufLeave  *.c,*.h     unabbr SWITCH
 ""
 """ -----personal command--End-------------------
@@ -742,7 +743,7 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 ":%s/search_for_this/replace_with_this/g
 """ confirm each replace
 ":%s/search_for_this/replace_with_this/c
-""" Folding, select block, then 
+""" Folding, select block, then
 ":fold
 """ Fold control - enable
 ":set foldenable
@@ -785,15 +786,15 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """vim tips and tricks https://www.cs.swarthmore.edu/oldhelp/vim/home.html
 """----------------------------some command about the motion in insert mode----------------------------
 "motion-6.Text object selection *object-select* *text-objects*  *v_a* *v_i*
-"This is a series of commands that can only be used while in Visual mode or after an operator.  
-"The commands that start with "a" select "a"n object including white space, 
+"This is a series of commands that can only be used while in Visual mode or after an operator.
+"The commands that start with "a" select "a"n object including white space,
 "the commands starting with "i" select an "inner" object without white space, or just the white space.  Thus the "inner" commands always select less text than the "a" commands.
 "
 "i_example:  iw  iW  is  ip  ib  iB  i]  i[  i)  i(  i>  i<  i}  i{  i"  i'  i`  it
 "a_example:  iw  iW  is  ip  ib  iB  i]  i[  i)  i(  i>  i<  i}  i{  i"  i'  i`  it
-"example: 
-"c_i_w  
-"c_i_s  
+"example:
+"c_i_w
+"c_i_s
 "c_i_p
 "
 "motion-2.Left-right motions    *left-right-motions*
@@ -818,7 +819,7 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 " []    [count] sections backward or to the previous '}' in the first column.  |exclusive| Note that |exclusive-linewise| often applies.
 """
 """----------------------------basic command to move cursor in insert mode----------------------------
-"""i_C-r + %            "insert the filename with 
+"""i_C-r + %            "insert the filename with
 """i_C-r + *            "insert the clipboard contents (X11: primary selection)
 """i_C-r + +            "insert the clipboard contents
 """i_C-r + :            "insert the last command-line
@@ -853,9 +854,9 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """  C-x    C-o       "Omni compeletion
 """  C-x    C-j       "Search keywords to complete in forwad directions
 
-"""  C-n              "#####find the next match, 
+"""  C-n              "#####find the next match,
 """  C-p              "find the previous match.
-"""  C-y              "#####select current selection 
+"""  C-y              "#####select current selection
 """  C-e              "quit the selection
 
 """----------------------------Multi-window----------------------------
@@ -959,7 +960,7 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """"----------------------------------------
 "keywords about the tag:
 """""iskeyword isk
-"""""showfulltag sft 
+"""""showfulltag sft
 """""noshowfulltag nosft
 """"":set wildmode=longest,list
 
