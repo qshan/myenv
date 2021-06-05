@@ -15,6 +15,10 @@ sudo apt install git;
 
 #git config --global user.email "youremail@example.com"
 
+git config --global push.default matching
+
+#git config --global push.default simple
+
 git clone --recursive https://github.com/qshan/myenv.git
 
 source ./set_ctags_env;
