@@ -177,6 +177,17 @@
 ;;(define-key evil-fold-list "zz" '???)
 ;;(define-key evil-normal-state-map (kdb "z c" 'evil-close-fold)
 ;;(define-key evil-normal-state-map (kdb "z C" 'evil-close-folds)
+;;
+;;use the hideshow to implement the fold function
+(setq hs-minor-mode 1)
+;; use z c and z a to implement fold
+;;reference info here: https://www.emacswiki.org/emacs/HideShow
+(add-hook 'c-mode-common-hook     'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook   'hs-minor-mode)
+(add-hook 'lisp-mode-hook         'hs-minor-mode)
+(add-hook 'perl-mode-hook         'hs-minor-mode)
+(add-hook 'python-mode-hook       'hs-minor-mode)
+(add-hook 'rust-mode-hook         'hs-minor-mode)
 ;;--------------------------------------------------
 ;;set for company mode
 (with-eval-after-load 'company (company-ctags-auto-setup))
@@ -223,6 +234,7 @@
 
 (setq-default c-basic-offset qshan-tab-width)
 (setq-default c-basic-indent qshan-tab-width)
+(setq-default c-basic-offset qshan-tab-width c-default-style "linux")
 ;;(setq-default tab-width 2 indent-tabs-mode nil)
 ;;(setq-default c-basic-offset 2 c-default-style "bsd")
 (setq-default tab-width qshan-tab-width)
@@ -238,6 +250,11 @@
 ;;make return key also do indent globally
 (electric-indent-mode 1)
 
+;;check the mode info here
+;;/usr/share/emacs/site-lisp/*.el
+
+;;check current major modesto
+;;M-: major-mode RET
 ;;(setq auto-mode-alist (append '(("*_emacs\\.emacs\\'" . emacs-lisp-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(
                                 ("\\.emacs\\'" . emacs-lisp-mode)
@@ -272,6 +289,13 @@
             (setq tag-width qshan-tab-width
                   indent-tabs-mode nil)
             ))
+
+;;disable the indent based on the c syntax
+(add-to-list 'c-mode-common-hook
+             (lambda ()
+               (setq c-syntactic-indentation nil)
+               )
+             )
 
 (add-hook 'prog-mode-hook
           (lambda ()
@@ -406,6 +430,8 @@
 ;
 ;;check variable in emacs envelop
 ;;C-h v NameOfVariable RET
+;;;;or
+;; M-: NameOfVariable RET
 ;
 ;;set the variable
 ;M-x set-variable RET NameOfVariable RET 80 RET
@@ -808,51 +834,56 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;~/.emacs.d/init.el
 
-;;C-z        ;to switch between Emacs and Vim key bindings.
-;;M-x shell  ;run avaiable shell in emacs window
-;;M-!        ;run shell
+;;C-z         ;to switch between Emacs and Vim key bindings.
+;;M-x shell   ;run avaiable shell in emacs window
+;;M-!         ;run shell
 ;;M-x replace-string   ;replace string, like replace ^M with C-j
 ;;C-x d ;enter Dired Mode
-;;C-x o n    ;switch window to window-n
-;;;;C-i      ;evil-jump-forward
-;;C-o        ;evil-jump-backward (Evil-mode)
-;;gf         ;find-file-at-point (Evil-mode)
-;;gd         ;evil-goto-definition (Evil-mode)
-;;C-x C-o    ;find-file-at-point
-;;;;M-x ffap ;find-file-at-point
-;;C-x C-=    ;increase the font size with Evil-mode
-;;C-x C-+    ;increase the font size with Evil-mode
-;;C-x C--    ;decrease the font size with Evil-mode
-;;;;M-x C-+    ;increase the font size
-;;;;M-x C--    ;decrease the font size
-;;C-g        ;quit current command
-;;C-x C-;    ;comment-line
-;;C-C C-c    ;comment-region in C-like modes
+;;C-x o n     ;switch window to window-n
+;;;;C-i       ;evil-jump-forward
+;;C-o         ;evil-jump-backward (Evil-mode)
+;;gf          ;find-file-at-point (Evil-mode)
+;;gd          ;evil-goto-definition (Evil-mode)
+;;C-x C-o     ;find-file-at-point
+;;;;M-x ffap  ;find-file-at-point
+;;C-x C-=     ;increase the font size with Evil-mode
+;;C-x C-+     ;increase the font size with Evil-mode
+;;C-x C--     ;decrease the font size with Evil-mode
+;;;;M-x C-+   ;increase the font size
+;;;;M-x C--   ;decrease the font size
+;;C-g         ;quit current command
+;; comment command here
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
+;;M-;         ;comment/uncomment current line or selected part
+;;C-x C-;     ;(comment-line) switch between the comment current line and uncomment line
+;;C-u M-;     ;kill comment on current line
+;;C-C C-c     ;(comment-region) in C-like modes
+;;M-x comment-region
 
 ;;help and get the info with help
 ;;;;; list the key binding, (M-x describe-bindings)
-;;;;C-h .    ;display-local-help
-;;;;C-h RET  ;view-order-manuals display local help
-;;;;C-h ?    ;help-for-help
-;;;;C-h C-h  ;runs help-for-help. Use this command if you want to see a list of available help commands. Remember, if you partially remember a key binding, just press as much as you can remember and then press C-h, Emacs will list available commands for that prefix. Prefix C-h is no exception. C-h C-h simply returns all key bindings and commands of prefix C-h
-;;;;C-h r    ;info-emacs-manual
-;;;;C-h t    ;help-with-tutorial to read bundled tutorial.
-;;C-h q      ;quit-help
+;;;;C-h .     ;display-local-help
+;;;;C-h RET   ;view-order-manuals display local help
+;;;;C-h ?     ;help-for-help
+;;;;C-h C-h   ;runs help-for-help. Use this command if you want to see a list of available help commands. Remember, if you partially remember a key binding, just press as much as you can remember and then press C-h, Emacs will list available commands for that prefix. Prefix C-h is no exception. C-h C-h simply returns all key bindings and commands of prefix C-h
+;;;;C-h r     ;info-emacs-manual
+;;;;C-h t     ;help-with-tutorial to read bundled tutorial.
+;;C-h q       ;quit-help
 ;;
-;;;;C-h b    ;(M-x describe-bindings), list the binding info
-;;C-h c      ;runs describe-key-briefly to find out what command is bound to a key. For example, after C-h c, run C-x C-f gives you find-files.
-;;C-h c      ;describe-key-briefly check the info of input-key
-;;C-h f      ;counsel-describe-function ###good###
-;;;;C-h k    ;runs describe-key to find out what command is bound to a key, along with the documentation of the command. Use this if you want to know how to use a command.
-;;;;C-h k    ;describe-key, will open describe with a windows
-;;;;C-h p    ;finder-by-keywords
-;;;;C-h K    ;find-function-on-key, will open the function definition
-;;C-h C-f    ;find-function, will open the function definition
-;;;;C-h C    ;describe-coding-system
-;;;;C-h m    ;runs describe-mode to see all the key bindings and documentation of current major mode and minor modes of a buffer.
-;;;;C-h w    ;runs where-is to get which keystrokes invoke a given command.
-;;;;C-h e    ;runs view-echo-area-messages, allow you to see the logging of echo area messages.
-;;;;C-h v    ;runs describe-variable, and asks you for a variable; you can TAB to complete a variable. This command is important, because aside from describing a variable, it allows you to customize the behavior of Emacs and 3rd party packages. But for now, you don't need it.
+;;;;C-h b     ;(M-x describe-bindings), list the binding info
+;;C-h c       ;runs describe-key-briefly to find out what command is bound to a key. For example, after C-h c, run C-x C-f gives you find-files.
+;;C-h c       ;describe-key-briefly check the info of input-key
+;;C-h f       ;counsel-describe-function ###good###
+;;;;C-h k     ;runs describe-key to find out what command is bound to a key, along with the documentation of the command. Use this if you want to know how to use a command.
+;;;;C-h k     ;describe-key, will open describe with a windows
+;;;;C-h p     ;finder-by-keywords
+;;;;C-h K     ;find-function-on-key, will open the function definition
+;;C-h C-f     ;find-function, will open the function definition
+;;;;C-h C     ;describe-coding-system
+;;;;C-h m     ;runs describe-mode to see all the key bindings and documentation of current major mode and minor modes of a buffer.
+;;;;C-h w     ;runs where-is to get which keystrokes invoke a given command.
+;;;;C-h e     ;runs view-echo-area-messages, allow you to see the logging of echo area messages.
+;;;;C-h v     ;runs describe-variable, and asks you for a variable; you can TAB to complete a variable. This command is important, because aside from describing a variable, it allows you to customize the behavior of Emacs and 3rd party packages. But for now, you don't need it.
 
 ;;re-load the emacs config file with load-file
 ;;M-x load-file ~/.emacs    ;load .emacs file as Lisp code, and execute

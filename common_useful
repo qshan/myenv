@@ -182,11 +182,22 @@ man bash
 
 # $git log --pretty=format:"%h - %an, %ar : %s" --graph
 
+##list the git tag list
 # $git tag
 
-# $git tag -l "Tag_keyword_info"
+##create a tag
+# $git tag NewTagName
 
-# $git tag -a TagVersionName -m "comments for this version tag"
+##create a tag with comments
+# $git tag -a NewTagVersionName -m "comments for this version tag"
+
+##create a tag with comment
+# $git tag -a NewTagVersionName -m "comments for this version tag"
+
+##verify the if the tag successfully created by git tag command
+# $git tag -n
+
+# $git tag -l "Tag_keyword_info"
 
 # $git tag -d TagNameDeleted
 
