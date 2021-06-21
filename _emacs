@@ -39,6 +39,27 @@
 ;;;;good reference web for eamcs init.el setting
 ;;;; https://juanjoalvarez.net/posts/2014/vim-emacsevil-chaotic-migration-guide/
 
+;; reference about the org http://doc.norang.ca/org-mode.html
+;;start of org setting--------------------------------------------------
+;;;;goog reference https://hugocisneros.com/org-config/#setting-up-todo-keywords
+(setq org-todo-keywords
+    (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+            (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"))))
+;;“TODO” faces and export settings
+(setq org-todo-keyword-faces
+    (quote (("TODO" :foreground "red" :weight bold)
+            ("NEXT" :foreground "blue" :weight bold)
+            ("DONE" :foreground "forest green" :weight bold)
+            ("WAITING" :foreground "orange" :weight bold)
+            ("HOLD" :foreground "magenta" :weight bold)
+            ("CANCELLED" :foreground "forest green" :weight bold)
+            ("MEETING" :foreground "forest green" :weight bold)
+            ("PHONE" :foreground "forest green" :weight bold))))
+(setq-default org-export-with-todo-keywords nil)
+(setq-default org-enforce-todo-dependencies t)
+;;end of org setting--------------------------------------------------
+
+
 ;;;;ignore the underscore
 ;;(modify-syntax-entry ?_ "w")
 ;;;;ignore the underscore in c-mode
@@ -852,6 +873,7 @@
 ;;;;M-x C-+   ;increase the font size
 ;;;;M-x C--   ;decrease the font size
 ;;C-g         ;quit current command
+;;
 ;; comment command here
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
 ;;M-;         ;comment/uncomment current line or selected part
@@ -859,6 +881,10 @@
 ;;C-u M-;     ;kill comment on current line
 ;;C-C C-c     ;(comment-region) in C-like modes
 ;;M-x comment-region
+;;
+;;C-x C-q     ;(dired-toggle-read-only) - Makes all file names in the buffer editable directly to rename them! Press Z Z to confirm renaming or Z Q to abort.
+;;M-x delete-trailing-whitespace    ;remove the white space at end of line
+;;M-x whitespace-cleanup            ;
 
 ;;help and get the info with help
 ;;;;; list the key binding, (M-x describe-bindings)
