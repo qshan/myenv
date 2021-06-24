@@ -49,6 +49,12 @@ find ./* -type d -iname "*" | xargs \rm -rf
 
 grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
 
+#rename the file name with replace the space with underline
+rename  's/\s+/_/g' FileName
+rename -v 's/\s+/_/g' FileName
+#To translate uppercase names to lower, you'd use
+rename 'y/A-Z/a-z/' *
+
 env | sort
 ln -sTf SourceFolderName TargetLinkerName
 ln -snf SourceFolderName TargetLinkerName
