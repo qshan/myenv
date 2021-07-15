@@ -8,7 +8,7 @@ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.original
 sudo gedit /etc/samba/smb.conf
 #create the sharefolder
 mkdir -p FolderNameSharedWithPath
-#add the following part for one share folder in end of smb.conf. 
+#add the following part for one share folder in end of smb.conf.
 #copy multi pcs and udpate the name and path for multi sharing
 #--------------------------------------------------
 [ShareFolderNameShown]
