@@ -218,17 +218,56 @@ man bash
 
 # $git status -s
 
-# $git diff FileName
+#WorkSpace-----Stage/Index-----History/LocalRepo-----RemoteRepo
 
-# $git diff --cached FileName
+#####Various ways to check your working tree#####
+# diff between workspace and stage(add)
+# diff between workspace and last commit in LocalRepo if the stage is empty
+# changes in the working tree not yet staged for the next commit
+# $git diff FileNameWithPath
+# $git diff
 
+# diff between staged(add) and last commit in LocalRepo
+# changes between the index/staged and your last commit
+# $git diff --cached
+# $git diff --staged
+
+# diff between (workspace + stage) and last commit in LocalRepo
+# changes in the working tree since your last commit
 # $git diff HEAD
 
 # $git diff --stat
 
+# diff between n-last commit and last commit in LocalRepo
+# $git diff HEAD~n
+
+# $git diff HEAD^ FileNameWithPath
+
+#####Compare with arbitrary commits#####
+# compare the current branch and BranchName
+# $git diff BranchName
+
+# Compare the file FileName
+# $git diff HEAD -- ./FileName
+
+# Compare the version before the last commit and last commit
+# $git diff HEAD^ HEAD
+
 # $git diff Branch1 Branch2
 
 # $git diff Branch1 Branch2 --stat
+
+# diff file with specific tools
+# $git difftool -tool=gvimdiff FileNameWithPath
+# $git difftool -tool=vimdiff FileNameWithPath
+
+# diff between workspace and stage(add)
+# $git diff --color HEAD^ FileNameWithPath
+
+# $git diff --color --color-moved HEAD^ FileNameWithPath
+
+# $git diff --color -w HEAD^ FileNameWithPath
+# $git diff --color --ignore-all-space HEAD^ FileNameWithPath
 
 ##save local modification away,
 ##and revert the working directory to match the HEAD commit
