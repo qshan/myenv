@@ -1,0 +1,45 @@
+#!/usr/bash
+
+
+git config --global user.name "Frank Shan"
+git config --global user.email frankqs0304@hotmail.com
+git config --global core.editor vim
+
+#bash format
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#else
+#fi
+
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#elif CONDITION-IS-TRUE; then
+#else
+#     COMMAND_RUN
+#fi
+
+#if [ -d MyFolderName ]; then
+#    ls MyFolderName
+#else
+#fi
+
+#if [ $?MyVariable ]; then
+#    echo "MyVariable is $MyVariable"
+#else
+#fi
+
+
+#if [ -f ~/.basrc ]; then
+#  echo  " source `pwd`/_mybashrc" >>  ~/.bashrc
+#else
+##  echo  "source `pwd`/_mybashrc" >  ~/.bashrc
+#  echo  " source `pwd`/_mybashrc" >>  ~/.bashrc
+#fi
+
+#echo "if [ -f `pwd`/_mybashrc ]; then"  >> ~/.bashrc
+#echo " source `pwd`/_mybashrc" >>  ~/.bashrc
+#echo "fi"  >> ~/.bashrc
