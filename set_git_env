@@ -3,7 +3,14 @@
 
 git config --global user.name "Frank Shan"
 git config --global user.email frankqs0304@hotmail.com
+#git config --global core.editor gvim
 git config --global core.editor vim
+#git config --global diff.tool gvimdiff
+git config --global diff.tool vimdiff
+git config --global difftool.vimdiff.path '/use/bin'
+#git config --global merge.tool gvimdiff
+git config --global merge.tool vimdiff
+git config --global mergetool.vimdiff.path '/use/bin'
 
 #bash format
 #if [ -f ~/_mybashrc ]; then
