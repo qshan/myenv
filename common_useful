@@ -10,9 +10,16 @@ sed 's/Word_searched/word_target/g' input_file > outputfile
 #replace the keywords in targetfile
 sed -i 's/Word_searched/word_target/g' File_name_replaced
 
+
 sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 
 sed -i -E "s/\s*Addr:(0[xX][0-9a-fA-F]*).*:Data:#(0[xX][0-9a-fA-F]*).*/      <register address='\1' value='\2' \/>/g" Cypress_FF_reg_dump_after_wla_pass_BBB_20190822.xml
+
+#replase the space on the end of line in that files
+sed -i 's/\s\+\$/\$/g' File_name_replaced
+
+#find the specific named file and replase the space on the end of line in that files
+find TargetPathName -type f -iname "*.[c|h]" |xargs sed -i 's/\s\+\$/\$/g'
 
 #delete the empty line (cover write space) in targetfile
 sed  -i '/^\s*$/d' data.txt
@@ -48,6 +55,16 @@ find SearchPath -type d -iname "*" | xargs \rm -rf
 find ./* -type d -iname "*" | xargs \rm -rf
 
 grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
+
+#search the space on end of line
+#one space char
+grep -rni '\s\$'  SearchPath
+#multi space chars
+grep -rni '\s\+\$'  SearchPath
+#one space char from line start
+grep -rni '^.*\s\$'  SearchPath
+#multi space chars from line start
+grep -rni '^.*\s\+\$'  SearchPath
 
 #rename the file name with replace the space with underline
 rename  's/\s+/_/g' FileName
@@ -358,6 +375,29 @@ man bash
 #tcsh#$ alias aclocal '\aclocal -I /usr/share/aclocal'
 #--------------------------------------------------
 
+#add wirte access of FileName for all of users (user/groups/others)
+chmod a+w FileName
+#add read access of FileName for user/OwnerOfFile
+chmod u+r FileName
+#remove the write access of FileName for group
+chmod g-w FileName
+#set the access of FileName as x for others
+chmod o=x FileName
+
+#add
+chmod +t FileName
+
+# change the owner of FileName as UserName
+chown UserName FileName
+
+# change the owner of FolderName and subfolder as UserName
+chown R UserName FolderName
+
+# change the group of FileName as UserName
+chgrp UserName FileName
+
+# change the group of FolderName and subfolder as UserName
+chgrp R UserName FolderName
 
 
 #sudo apt-get install kdbg
