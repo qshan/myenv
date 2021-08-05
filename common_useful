@@ -19,7 +19,7 @@ sed -i -E "s/\s*Addr:(0[xX][0-9a-fA-F]*).*:Data:#(0[xX][0-9a-fA-F]*).*/      <re
 sed -i 's/\s\+\$/\$/g' File_name_replaced
 
 #find the specific named file and replase the space on the end of line in that files
-find TargetPathName -type f -iname "*.[c|h]" |xargs sed -i 's/\s\+\$/\$/g'
+find TargetPathName -type f -iname "*.[c|h]" | xargs sed -i 's/\s\+\$/\$/g'
 
 #delete the empty line (cover write space) in targetfile
 sed  -i '/^\s*$/d' data.txt
@@ -236,6 +236,13 @@ man bash
 # $git status -s
 
 #WorkSpace-----Stage/Index-----History/LocalRepo-----RemoteRepo
+
+######simple methods to check the differ [start]
+######## 1. check the diff with struct to get the basic info of diff, like the which file is different
+######## $git diff --stat
+######## 2. check the diff from the file view, to check the details of file you are interested in
+######## $git diff FileNameNeedChecked
+######simple methods to check the differ [end]
 
 #####Various ways to check your working tree#####
 # diff between workspace and stage(add)
