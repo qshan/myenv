@@ -181,6 +181,10 @@
 ;; do not create backup file
 (setq make-backup-files nil)
 ;;--------------------------------------------------
+;;save desktop
+;;(desktop-save-mode 0)
+;;(desktop-save-mode 1)
+;;--------------------------------------------------
 ;;save the cursor position of file when reopen them
 (setq save-place-file "~/.emacs.d/mysaveplace")
 (setq-default save-place t)

@@ -102,7 +102,8 @@ color murphy
 set magic
 "substitute magic
 "set nomagic
-"set smagic    "substitute magic
+"set smagic
+""substitute magic
 "set sm
 
 set cindent     "Enables automatic C program indenting.
@@ -115,7 +116,9 @@ set autoindent     "Copy indent from current line when starting a new line
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
 set expandtab        "replae the tab with blankspace
-"set et     "set expandtab       "
+"set et
+""set expandtab
+""
 "
 set tabstop=2         "set to show the tab with 2 blankspace; identify how many space as a TAB
 set softtabstop=2    " how many space to show for a tab in Insert mode
@@ -127,15 +130,18 @@ set softtabstop=2    " how many space to show for a tab in Insert mode
 "set smartcase  "- use case if any caps used    Override the 'ignorecase' option if the search pattern contains upper case characters.
 "set scs
 "
-set ignorecase "- ignore case insensitive
+set ignorecase
+"- ignore case insensitive
 "set ic
 " Include only uppercase words with uppercase search term
 set smartcase
 "
-set hlsearch   "- search highlighting
+set hlsearch
+"- search highlighting
 "set hls
 "
-set incsearch "- show match as search proceeds
+set incsearch
+"- show match as search proceeds
 "set is
 "
 set nocompatible
@@ -741,6 +747,12 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """search whole file and replace, (substitute)
 ":%s/search_for_this/replace_with_this/
 ":%s/search_for_this/replace_with_this/g
+" replace/substitute the specific lines, from Start to End"
+":StartLineNumber,EndLineNumber%s/search_for_this/replace_with_this/g
+":1,6s/search_for_this/replace_with_this/g
+" replace the specific lines, from current line to add specific number"
+":.,+NumberOfOffset%s/search_for_this/replace_with_this/g
+":.,+5s/search_for_this/replace_with_this/g
 """ confirm each replace
 ":%s/search_for_this/replace_with_this/c
 """ Folding, select block, then
