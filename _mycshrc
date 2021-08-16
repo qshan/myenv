@@ -59,7 +59,8 @@ alias v                   'vim'
 
 alias Emacs '/usr/bin/emacs26'
 #alias EmacsM 'Emacs -mm'
-alias EmacsM 'Emacs -mm \!* &'
+#alias EmacsM 'Emacs -mm \!* &'
+alias EmacsM 'Emacs -mm --nodesktop \!* &'
 #alias EmacsM 'Emacs --maximized'
 ################################################################################
 # arguments of tcsh:

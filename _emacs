@@ -183,7 +183,11 @@
 ;;--------------------------------------------------
 ;;save desktop
 ;;(desktop-save-mode 0)
-;;(desktop-save-mode 1)
+(desktop-save-mode 1)
+;;;;command to save the current desktop
+;;M-x desktop-save
+;;;;command to call the previous/saved desktop
+;;M-x desktop-read
 ;;--------------------------------------------------
 ;;save the cursor position of file when reopen them
 (setq save-place-file "~/.emacs.d/mysaveplace")

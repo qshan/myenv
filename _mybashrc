@@ -66,7 +66,9 @@ alias Emacs='/usr/bin/emacs26'
 #wored#  Emacs -mm "$@" &
 #wored#}
 ##worked##alias EmacsM='functionEmacsM(){ Emacs -mm "$@" & }; functionEmacsM '
-alias EmacsM='functionEmacsM(){ unset -f functionEmacsM; Emacs -mm "$@" & }; functionEmacsM '
+#alias EmacsM='functionEmacsM(){ unset -f functionEmacsM; Emacs -mm "$@" & }; functionEmacsM '
+alias EmacsM='functionEmacsM(){ unset -f functionEmacsM; Emacs -mm --no-desktop "$@" & }; functionEmacsM '
+
 
 #for lubuntu
 alias openFileBroswer='pcmanfm &'
