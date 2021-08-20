@@ -50,3 +50,272 @@ git config --global mergetool.vimdiff.path '/use/bin'
 #echo "if [ -f `pwd`/_mybashrc ]; then"  >> ~/.bashrc
 #echo " source `pwd`/_mybashrc" >>  ~/.bashrc
 #echo "fi"  >> ~/.bashrc
+
+#--------------------------------------------------
+#command for git maintain
+
+#save the state
+# $git add .
+# $git commit -m "comments for current status"
+
+#save the state
+# $git commit -am "comments for current status"
+
+#remove the new edit and back to last commit
+# $git reset --hard
+# $git remote add [shortname_on_remote] [url_remote_address]
+
+# $git clone --recursive git@github.com:qshan/myenv.git
+
+# $git remote
+
+# $git branch -A
+
+# $git branch BranchName
+
+# $git switch NameOfSwitched
+
+# $git fetch origin
+
+# $git pull
+
+# $git pull FileNameWithPath
+
+# $git add New_File_With_Path
+
+# $git commit -am "update bashrc description"
+
+# $git push
+
+# $git push NameToRemote NameFromLocal
+
+# $git push origin_remote master_local
+
+# $git push origin master
+
+# $git push origin :
+
+# $git add/rm <file>... # to update what will be committed
+
+# $git checkout -- <file>... # to discard changes in working directory
+
+# $git checkout TagVersionNameYouNeed
+
+# $git checkout BranchNameWithPath
+
+## create a new branch from master
+# $git checkout -b NewBranchName master
+
+# $git checkout master
+
+#HEAD sequence:
+# ~ most of the time to goback a number of generations, usually you want, is almost linear in appearance and wants to go backward in a straight line
+# ^ on merge commits, because they have two or more parents, suggests an interesting of a tree or a fork in the road
+# $git checkout HEAD
+
+# $git checkout HEAD~1
+# $git checkout HEAD^
+
+# $git checkout HEAD~2
+# $git checkout HEAD^^
+
+#--------------------------------------------------
+#      git-command               WorkSpace                 Stage/Index           History/LocalRepo         RemoteRepo
+#git add                              Y           -->          Y
+#--------------------------------------------------------------------------------
+#git commit -a                        Y                       -->                       Y
+#git commit -am                       Y                       -->                       Y
+#git checkout                         Y                       <--                       Y
+#git commit                                                    Y             -->        Y
+#git reset --soft                                              Y             <--        Y
+#git reset --mixed                    Y                       <--                       Y
+#git reset --hard                     Y(deleted new edit)     <--                       Y
+#git pull                             Y                                      <--                                 Y
+#--------------------------------------------------------------------------------
+#git push                                                                               Y           -->          Y
+#git fetch                                                                              Y           <--          Y
+#git clone                                                                              Y           <--          Y
+#--------------------------------------------------
+
+# $git rm --cached <file>
+
+# $git reset HEAD <file>...
+
+# $git clean -n -d
+# $git clean -f -d
+
+##undo add
+# $git reset
+
+##undo a commit and redo
+# $git commit -m "comments this time"
+# $git reset --soft HEAD^
+##edit the files
+# $git commit -a -c ORIG_HEAD
+
+#undo a commit permanently
+# $git commit -m "comments this time"
+##the last thress commits (HEAD, HEAD^ and HEAD~2) ware bad, polish them
+# $git reset --hard HEAD~3
+# $git status
+
+# $git log
+
+# $git log -p
+
+# $git log -p -3
+
+# $git log --stat
+
+# $git log --pretty
+
+# $git log --pretty=format:"%h - %an, %ar : %s"
+
+# $git log --pretty=format:"%h - %an, %ar : %s" --graph
+
+##list the git tag list
+# $git tag
+# $git tag -l
+
+##list the specific tag
+# $git tag -l "Tag_keyword_info"
+# $git tag -l TagName
+
+##show the info about the specific tag
+# $git show TagVersionName
+
+##create a tag
+# $git tag NewTagName
+
+##create a tag with specific CommitID
+# $git tag -a NewTagVersionName CommitID
+
+##create a tag with comments
+# $git tag -a NewTagVersionName -m "comments for this version tag"
+
+##checkout with specific tag
+# #git checkout TagName
+
+##checkout with specific tag for specific branch
+# #git checkout -b BranchName TagName
+
+##verify the if the tag successfully created by git tag command
+# $git tag -n
+
+# $git tag -d TagNameDeleted
+
+# $git fetch origin_remote tag TanName
+
+# $git push origin :TagVersionNameYouWantToShare
+
+# $git push origin --tags
+
+##check the tag info on remote
+# $git ls-remote --tags origin
+
+
+# $git status -s
+
+#WorkSpace-----Stage/Index-----History/LocalRepo-----RemoteRepo
+
+######simple methods to check the differ [start]
+######## 1. check the diff with struct to get the basic info of diff, like the which file is different
+######## $git diff --stat
+######## 2. check the diff from the file view, to check the details of file you are interested in
+######## $git diff FileNameNeedChecked
+######simple methods to check the differ [end]
+
+#####Various ways to check your working tree#####
+# diff between workspace and stage(add)
+# diff between workspace and last commit in LocalRepo if the stage is empty
+# changes in the working tree not yet staged for the next commit
+# $git diff FileNameWithPath
+# $git diff
+
+# diff between staged(add) and last commit in LocalRepo
+# changes between the index/staged and your last commit
+# $git diff --cached
+# $git diff --staged
+
+# diff between (workspace + stage) and last commit in LocalRepo
+# changes in the working tree since your last commit
+# $git diff HEAD
+
+# $git diff --stat
+
+# diff between n-last commit and last commit in LocalRepo
+# $git diff HEAD~n
+
+# $git diff HEAD^ FileNameWithPath
+
+#####Compare with arbitrary commits#####
+# compare the current branch and BranchName
+# $git diff BranchName
+
+# Compare the file FileName
+# $git diff HEAD -- ./FileName
+
+# Compare the version before the last commit and last commit
+# $git diff HEAD^ HEAD
+
+# $git diff Branch1 Branch2
+
+# $git diff Branch1 Branch2 --stat
+
+# diff file with specific tools
+# $git difftool -tool=gvimdiff FileNameWithPath
+# $git difftool -tool=vimdiff FileNameWithPath
+
+# diff between workspace and stage(add)
+# $git diff --color HEAD^ FileNameWithPath
+
+# $git diff --color --color-moved HEAD^ FileNameWithPath
+
+# $git diff --color -w HEAD^ FileNameWithPath
+# $git diff --color --ignore-all-space HEAD^ FileNameWithPath
+
+##save local modification away,
+##and revert the working directory to match the HEAD commit
+# $git stash save # same as #git stash
+##remove a single stashed state, and do the inverse operation of git stash save.
+# $git stash pop
+# $git stash apply
+
+#------------start of git stash--------------------------------------
+##... hack hack...
+# $git stash
+##edit emergency fix
+# $git commit -a -m "Fix in a hurry"
+# $git stash pop
+##...continue hack hack...
+#------------end of git stash  --------------------------------------
+
+
+#------------start of create git backup in local path--------------------------------------
+####create the local repo folder
+# $mkdir ProjectFolderName
+####init the local repo
+# $cd ProjectFolderName
+# $git init
+####create or copy file you need here
+# $touch Reamme.txt
+####add the files into stage
+# $git add Reamme.txt
+# $git add FilesNameNeededBack
+####add to repo
+# $git commit -am "comment for this change"
+####create a bare repository and clone the local info to remote repository
+# $cd RemoteRepositoryFolerNameWithPullPath
+# $git clone --bare file://ProjectFolderNameWithFullPath/.git RemoteRepositoryName.git
+##or
+# $git clone --bare file://ProjectFolderNameWithFullPath/.git RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git
+####add a localname for remote repo. create linker the local repository with remote repository
+# $git remote add origin file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git
+####push the local repo to remote repo
+# $git push --set-upstream origin master        #first time
+# $git push origin master                       #normal push
+####get the code from remote repo
+# $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git
+# $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git NewFolderName
+#------------end of create git backup in local path--------------------------------------
+##

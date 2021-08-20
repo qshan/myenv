@@ -625,10 +625,12 @@ command! MyDotInIskeywordAdd        set iskeyword+=.
 command! MyDotInIskeywordRemove     set iskeyword-=.
 command! MySaveWithSudo             :w !sudo tee %
 command! MySearchCompileError       :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
-command! MyRemoveWriteSpaceOnEnd    :%s/\s*$//g
+command! MyRemoveWhiteSpaceOnEnd    :%s/\s*$//g
 command! MyRemoveEmptyLine          :%s/^\s*$\n//g
-command! MyReplaceSpaceWithNewLine  :%s/\s//g
-command! MyWriteSpace2UnderLine     :s/\s+/_/g
+command! MyReplaceSpaceWithNewLine  :%s/\s\+/\r/g
+command! MyReplaceSpaceWithNewLine1 :%s/\s\+//g
+command! MyReplaceSpaceWithTab      :%s/\s\+/\t/g
+command! MyWhiteSpace2UnderLine     :s/\s\+/_/g
 command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
@@ -977,3 +979,47 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """"":set wildmode=longest,list
 
 " -----popular command--End-------------------
+
+" -----String-char--Start-------------------
+" string					*string* *String* *expr-string* *E114*
+" ------
+" "string"		string constant		*expr-quote*
+"
+" Note that double quotes are used.
+"
+" A string constant accepts these special characters:
+" \...	three-digit octal number (e.g., "\316")
+" \..	two-digit octal number (must be followed by non-digit)
+" \.	one-digit octal number (must be followed by non-digit)
+" \x..	byte specified with two hex numbers (e.g., "\x1f")
+" \x.	byte specified with one hex number (must be followed by non-hex char)
+" \X..	same as \x..
+" \X.	same as \x.
+" \u....	character specified with up to 4 hex numbers, stored according to the
+"   current value of 'encoding' (e.g., "\u02a4")
+" \U....	same as \u but allows up to 8 hex numbers.
+" \b	backspace <BS>
+" \e	escape <Esc>
+" \f	formfeed <FF>
+" \n	newline <NL>
+" \r	return <CR>
+" \t	tab <Tab>
+" \\	backslash
+" \"	double quote
+" \<xxx>	Special key named "xxx".  e.g. "\<C-W>" for CTRL-W.  This is for use
+"   in mappings, the 0x80 byte is escaped.
+"   To use the double quote character it must be escaped: "<M-\">".
+"   Don't use <Char-xxxx> to get a utf-8 character, use \uxxxx as
+"   mentioned above.
+" \<*xxx>	Like \<xxx> but prepends a modifier instead of including it in the
+"   character.  E.g. "\<C-w>" is one character 0x17 while "\<*C-w>" is four
+"   bytes: 3 for the CTRL modifier and then character "W".
+"
+" Note that "\xff" is stored as the byte 255, which may be invalid in some
+" encodings.  Use "\u00ff" to store character 255 according to the current value
+" of 'encoding'.
+"
+" Note that "\000" and "\x00" force the end of the string.
+"
+
+" -----String-char--End-------------------
