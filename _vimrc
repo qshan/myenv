@@ -631,6 +631,7 @@ command! MyReplaceSpaceWithNewLine  :%s/\s\+/\r/g
 command! MyReplaceSpaceWithNewLine1 :%s/\s\+//g
 command! MyReplaceSpaceWithTab      :%s/\s\+/\t/g
 command! MyWhiteSpace2UnderLine     :s/\s\+/_/g
+command! MyExchangePattern12        :s/\(Pattern1\)\(Pattern2\)/\2\1/g
 command! MySpellCheckEn             set spell spelllang=en_us
 command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
@@ -738,23 +739,29 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """ view the list of all variables and their values
 " :let
 " :set all
-":set            - shows vars different from defaults
-":set all        - shows all values
-":set foo?       - shows the value of foo
-":set foo+=opt   - add opt to the value w/o changing others
-":set foo-=opt   - remove opt from value
-":set foo&       - reset foo to default value
-":setlocal foo   - only the current buffer
+" :set            - shows vars different from defaults
+" :set all        - shows all values
+" :set foo?       - shows the value of foo
+" :set foo+=opt   - add opt to the value w/o changing others
+" :set foo-=opt   - remove opt from value
+" :set foo&       - reset foo to default value
+" :setlocal foo   - only the current buffer
 """Search and replace... (substitute)
 """search whole file and replace, (substitute)
 ":%s/search_for_this/replace_with_this/
 ":%s/search_for_this/replace_with_this/g
+""
 " replace/substitute the specific lines, from Start to End"
-":StartLineNumber,EndLineNumber%s/search_for_this/replace_with_this/g
+":StartLineNumber,EndLineNumbers/search_for_this/replace_with_this/g
 ":1,6s/search_for_this/replace_with_this/g
+""
+":s/search_for_this/replace_with_this/g TheNumberOfRepeated
+":s/search_for_this/replace_with_this/g 6
+""
 " replace the specific lines, from current line to add specific number"
 ":.,+NumberOfOffset%s/search_for_this/replace_with_this/g
 ":.,+5s/search_for_this/replace_with_this/g
+""
 """ confirm each replace
 ":%s/search_for_this/replace_with_this/c
 """ Folding, select block, then
