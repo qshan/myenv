@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/fshan/data/tools/scons/scons-github/UNKNOWN.egg-info'
 let g:netrw_dirhist_6='/home/fshan/data/myenv/_vim'
 let g:netrw_dirhist_5='/home/fshan/.emacs.d/auto-save-list'
 let g:netrw_dirhist_4='/home/fshan/.emacs.d'

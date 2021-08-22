@@ -196,7 +196,52 @@
 ;;--------------------------------------------------
 ;;graphical gdb
 (setq gdb-many-windows t)
-;;--------------------------------------------------
+;=======gdb_info start============================================
+;; gdb for debug
+;;before compile, set the " -g -Wall" for compile argument/flag
+;; for 32 bit mode " -m32"
+;; for 64 bit mode " -m64"
+;;
+;;start to debug with gdb/gdb64 with " -tui", like
+;; $gdb64 -tui TargetExeProgramNameWithPath
+;;
+;;after start gdb64, to run the "focus" to open the source code window layout
+;; focus    ;;open the source code window, enter or leave TUI mode
+;; C-x C-a  ;;open the source code window, enter or leave TUI mode
+;; C-x a    ;;open the source code window, enter or leave TUI mode
+;; C-x A    ;;open the source code window, enter or leave TUI mode
+;; C-x 1    ;;only one window
+;; C-x 2    ;;at least window, normally, show the source code window and assembly code window
+;; layout asm   ;;open the assembly window
+;; layout scr   ;;open the source code window
+;; layout regs  ;;open the register window
+;;
+;; C-x o    ;;change the active window
+;; C-x s    ;;switch in and out of the TUI SingleKey mode, in SingleKey mode, step -> s; out of SingleKey mode, step -> s <CR>;
+;; C-L      ;;refresh the screen
+;;
+;; then you could check the source code with every step
+;;
+;; ----------TUI SingleKye mode start----------
+;;
+;; Key     function
+;;
+;; c        continue
+;; d        down
+;; f        finish
+;; n        next
+;; o        nexti, Step Over
+;; q        exit Single Key mode
+;; r        run
+;; s        step
+;; i        stepi
+;; u        up
+;; v        info local
+;; w        where
+;;
+;; ----------TUI SingleKye mode end----------
+;;
+;;======gdb_info end============================================
 ;;;;	;;
 ;;(setq-default tab-width 2 indent-tabs-mode nil)
 ;;(setq-default c-basic-offset 2 c-default-style "bsd")

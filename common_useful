@@ -154,3 +154,30 @@ chgrp R UserName FolderName
 
 
 #sudo apt-get install kdbg
+
+##mount the disk operation
+# #check the info about the disk and partition
+# sudo fdisk -alh
+# sudo blkid
+# ls /dev/disk/by-XXX -alh
+#
+# #mount the sdb1 on the specific path
+# sudo mount -rw -t ext4 /dev/sdb1 /home/fshan/data
+#
+#####fstab contents example start#####
+#     # <fs>            <mountpoint>    <type>        <opts>        <dump/pass>
+#     # NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+#     /dev/sda10        /boot            ext4        noauto,noatime    1 2
+#     /dev/sda6         /                ext4        noatime           0 1
+#     /dev/sda9         none             swap        sw                0 0
+#     /dev/cdrom        /mnt/cdrom       auto        noauto,ro         0 0
+#     /dev/sdb1    /home/fshan/data/sdb1 ext4        defaults,rw       0 0
+#
+##explaination of opts
+## defaults: rw,suid,dev,exec,auto,nouser,async
+## auto : noauto
+## rw   : ro
+## exec : noexec
+## sync : async
+## user : nouser
+#####fstab contents example end#####
