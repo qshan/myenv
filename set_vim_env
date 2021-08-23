@@ -1,6 +1,7 @@
 #!/usr/bash
 sudo add-apt-repository ppa:jonathonf/vim
-sudo add-apt-repository ppa:jonathonf/python-3.6
+#sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo add-apt-repository ppa:deadsnakes/ppa
 #sudo add-apt-repository ppa:jonathonf/python-2.7
 sudo add-apt-repository ppa:jonathonf/gcc
 

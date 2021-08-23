@@ -181,3 +181,21 @@ chgrp R UserName FolderName
 ## sync : async
 ## user : nouser
 #####fstab contents example end#####
+
+#####alternative setting start#####
+#
+###install alternatives on the path
+###update-alternatives:    --install <link>         <name>      <path>        <priority>
+# sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
+# sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2
+# sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
+#
+###set the python default as the python3
+# sudo update-alternatives --config python
+###then, select selection number: 3
+#
+#####alternative setting end#####
+
+#####good download linker start#####
+# http://archive.ubuntu.com/ubuntu/pool/universe/s/scons
+#####good download linker end#####

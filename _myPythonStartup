@@ -1,4 +1,22 @@
 # python startup file
+#
+###add apt source
+# sudo add-apt-repository ppa:deadsnakes/ppa
+#
+###add the python3 alternative linker
+#update-alternatives:     --install  <link>         <name> <path>            <priority>
+#sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1
+#sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
+#sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
+###update the default as python3
+# sudo update-alternatives --config python3
+#
+# sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+# sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
+# sudo update-alternactive --config python3
+# #then select 1
+#
+#
 import sys
 import readline
 import rlcompleter

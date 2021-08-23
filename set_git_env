@@ -108,6 +108,10 @@ git config --global mergetool.vimdiff.path '/use/bin'
 
 # $git checkout master
 
+# #recover/restore the folder/files after you delete files
+# $git checkout HEAD FolderNameDeleted/*
+# $git checkout HEAD FileNameDeleted
+
 #HEAD sequence:
 # ~ most of the time to goback a number of generations, usually you want, is almost linear in appearance and wants to go backward in a straight line
 # ^ on merge commits, because they have two or more parents, suggests an interesting of a tree or a fork in the road
