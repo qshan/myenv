@@ -1,37 +1,83 @@
-# python startup file
+kkkjjjk# python startup file
 #
 ###add apt source
-# sudo add-apt-repository ppa:deadsnakes/ppa
+##sudo add-apt-repository ppa:deadsnakes/ppa
+#
+###add the python alternative linker
+###update-alternatives:     --install  <link>         <name> <path>            <priority>
+# sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1
+# sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
+# sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
+###update the default as python
+# sudo update-alternatives --config python3
+###then select 1
 #
 ###add the python3 alternative linker
-#update-alternatives:     --install  <link>         <name> <path>            <priority>
-#sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1
-#sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
-#sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
-###update the default as python3
-# sudo update-alternatives --config python3
-#
+###update-alternatives:     --install  <link>         <name>        <path>            <priority>
 # sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
 # sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
-# sudo update-alternactive --config python3
-# #then select 1
+###update the default as python3
+# sudo update-alternatives --config python3
+###then select 1
 #
+###add the python-config alternative linker
+###update-alternatives:     --install  <link>         <name>        <path>            <priority>
+# sudo update-alternatives --install /usr/bin/python-config python-config /usr/bin/python2-config 1
+# sudo update-alternatives --install /usr/bin/python-config python-config /usr/bin/python3-config 2
+###update the default as python2-config
+# sudo update-alternatives --config python-config
+###then select 1
+#
+###add the python2-config alternative linker
+###update-alternatives:     --install  <link>         <name>        <path>            <priority>
+# sudo update-alternatives --install /usr/bin/python2-config python2-config /usr/bin/python2.7-config 1
+###update the default as python2.7-config
+# sudo update-alternatives --config python2-config
+###then select 1
+#
+###add the python3-config alternative linker
+###update-alternatives:     --install  <link>         <name>        <path>            <priority>
+# sudo update-alternatives --install /usr/bin/python3-config python3-config /usr/bin/python3.6-config 1
+# sudo update-alternatives --install /usr/bin/python3-config python3-config /usr/bin/python3.8-config 2
+# sudo update-alternatives --install /usr/bin/python3-config python3-config /usr/bin/python3.5-config 3
+###update the default as python3.6-config
+# sudo update-alternatives --config python3-config
+###then select 1
+#
+###add the python3m alternative linker
+###update-alternatives:     --install  <link>           <name>        <path>            <priority>
+# sudo update-alternatives --install /usr/bin/python3m python3m /usr/bin/python3.6m    1
+# sudo update-alternatives --install /usr/bin/python3m python3m /usr/bin/python3.5m    2
+#####sudo update-alternatives --install /usr/bin/python3m python3m /usr/bin/python3.8m 3
+###update the default as python3.6m-config
+# sudo update-alternatives --config python3m
+###then select 1
+#
+#
+###add the python3m-config alternative linker
+#update-alternatives:     --install  <link>         <name>        <path>            <priority>
+# sudo update-alternatives --install /usr/bin/python3m-config python3m-config /usr/bin/python3.6m-config 1
+# sudo update-alternatives --install /usr/bin/python3m-config python3m-config /usr/bin/python3.5m-config 2
+#####sudo update-alternatives --install /usr/bin/python3m-config python3m-config /usr/bin/python3.8-config 3
+###update the default as python3.6m-config
+# sudo update-alternatives --config python3m-config
+###then select 1
 #
 import sys
 import readline
 import rlcompleter
-# need install pyreadline on windwos with following commands
+##need install pyreadline on windwos with following commands
 # pip install pyreadline
 import atexit
 import os
-
-# tab completion
+#
+##tab completion###
 readline.parse_and_bind('tab: complete')
-
-# history file
-#for windows
+#
+###history file###
+###for windows###
 #histfile = os.path.join(os.environ['HOMEPATH'], '.pythonhistory')
-#for Linux
+###for Linux###
 histfile = os.path.join(os.environ['HOME'], ".pythonhistory")
 try:
     readline.read_history_file(histfile)
