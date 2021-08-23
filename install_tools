@@ -1,0 +1,121 @@
+#!/usr/bash
+sudo add-apt-repository ppa:jonathonf/vim
+#sudo add-apt-repository ppa:jonathonf/python-3.6
+#sudo add-apt-repository ppa:jonathonf/python-3.8
+sudo add-apt-repository ppa:deadsnakes/ppa
+#sudo add-apt-repository ppa:jonathonf/python-2.7
+#
+sudo apt install build-essential manpages-dev software-properties-common
+
+####other ppa source from this web
+#### https://launchpad.net/~jonathonf
+##sudo add-apt-repository ppa:jonathonf/gcc
+##sudo add-apt-repository ppa:jonathonf/binutils
+##sudo add-apt-repository ppa:jonathonf/gnat
+##sudo add-apt-repository ppa:jonathonf/nvptx-tools
+##sudo add-apt-repository ppa:jonathonf/zlib
+##sudo add-apt-repository ppa:jonathonf/llvm
+##sudo add-apt-repository ppa:jonathonf/python-packages
+##sudo add-apt-repository ppa:jonathonf/rustlang
+##sudo add-apt-repository ppa:jonathonf/rustlang-deps
+##sudo add-apt-repository ppa:jonathonf/wine
+##sudo add-apt-repository ppa:jonathonf/wine-builddeps
+##sudo add-apt-repository ppa:jonathonf/vlc-3
+##sudo add-apt-repository ppa:jonathonf/xfce-4.14
+##sudo add-apt-repository ppa:jonathonf/lightdm
+##sudo add-apt-repository ppa:jonathonf/libtool
+##sudo add-apt-repository ppa:jonathonf/libssh
+##sudo add-apt-repository ppa:jonathonf/gettext
+##sudo add-apt-repository ppa:jonathonf/git
+##sudo add-apt-repository ppa:jonathonf/googletest
+
+#####example of install and remove start#####
+####add ppa source
+# sudo add-apt-repository ppa:jonathonf/vim
+####update the database
+# sudo apt update
+####install the sw
+# sudo apt install vim
+#
+####remove the sw
+# sudo apt remove vim
+####remove the pps source
+# sudo add-apt-repository --remove ppa:jonathonf/vim
+#####example of install and remove end#####
+
+#
+####for gcc higher version
+##https://gcc.gnu.org/
+##sudo add-apt-repository ppa:jonathonf/gcc
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+#
+sudo apt update
+#
+#sudo apt install vim gcc python python-dev clang clang-4.0 python-dev python3-dev
+sudo apt install git ssh vim
+#
+sudo apt install gcc clang cmake scons build-essential
+sudo apt install python-dev python3-dev
+#
+###in case to install vim is not succeded
+##sudo apt-get -f install
+#
+#bash format
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+#
+#tcsh format
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#endif
+#
+##reinstall a tool
+#sudo apt remove --purge python3-apt
+#sudo apt autoremove
+#sudo apt autoclean
+#sudo apt install software-properties-common python3-apt
+#
+####sudo apt install gcc-9*
+#  sudo apt install gcc-9 gcc-9-doc gcc-9-locales gcc-9-offload-nvptx gcc-9-source gcc-9-base gcc-9-hppa64-linux-gnu gcc-9-plugin-dev gcc-9-test-results g++-9
+####gcc-9-multilib g++-9-multilib
+#
+####add the gcc alternative linker
+####update-alternatives:     --install  <link>         <name> <path>            <priority>
+# sudo update-alternatives   --install  /usr/bin/gcc   gcc    /usr/bin/gcc-5        1
+# sudo update-alternatives   --install  /usr/bin/gcc   gcc    /usr/bin/gcc-9        2
+####update the default as gcc-9
+# sudo update-alternatives --config gcc
+####then select 2
+#
+####add the g++ alternative linker
+####update-alternatives:     --install  <link>         <name> <path>            <priority>
+# sudo update-alternatives   --install  /usr/bin/g++   g++    /usr/bin/g++-5    1
+# sudo update-alternatives   --install  /usr/bin/g++   g++    /usr/bin/g++-9    2
+####update the default as g++-9
+# sudo update-alternatives --config g++
+####then select 2
+#
+####add the gcc-ar alternative linker
+####update-alternatives:     --install  <link>            <name>    <path>               <priority>
+# sudo update-alternatives   --install  /usr/bin/gcc-ar   gcc-ar    /usr/bin/gcc-ar-5      1
+# sudo update-alternatives   --install  /usr/bin/gcc-ar   gcc-ar    /usr/bin/gcc-ar-9      2
+####update the default as gcc-ar-9
+# sudo update-alternatives --config gcc-ar
+####then select 2
+#
+####add the gcc-nm alternative linker
+####update-alternatives:     --install  <link>            <name>    <path>               <priority>
+# sudo update-alternatives   --install  /usr/bin/gcc-nm   gcc-nm    /usr/bin/gcc-nm-5       1
+# sudo update-alternatives   --install  /usr/bin/gcc-nm   gcc-nm    /usr/bin/gcc-nm-9       2
+####update the default as gcc-nm-9
+# sudo update-alternatives --config gcc-nm
+####then select 2
+#
+####add the gcc-ranlib alternative linker
+####update-alternatives:     --install  <link>                <name>        <path>               <priority>
+# sudo update-alternatives   --install  /usr/bin/gcc-ranlib   gcc-ranlib    /usr/bin/gcc-ranlib-5    1
+# sudo update-alternatives   --install  /usr/bin/gcc-ranlib   gcc-ranlib    /usr/bin/gcc-ranlib-9    2
+####update the default as gcc-ranlib-9
+# sudo update-alternatives --config gcc-ranlib
+####then select 2
