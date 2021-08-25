@@ -306,6 +306,8 @@
 
 (setq-default evil-shift-width qshan-tab-width)
 
+;;C-c C-l  ;;disable electric indentation in the current buffer
+
 (setq-default c-basic-offset qshan-tab-width)
 (setq-default c-basic-indent qshan-tab-width)
 (setq-default c-basic-offset qshan-tab-width c-default-style "linux")
@@ -349,7 +351,8 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (setq tag-width qshan-tab-width
-                  c-tab-always-indent t
+                  ;;c-tab-always-indent t
+                  c-tab-always-indent nil
                   c-indent-level 2
                   indent-tabs-mode nil)
             ))
@@ -1228,3 +1231,336 @@
 ;;M-x whitesace-cleanup
 ;;
 ;;--------------------------------------------------
+
+;;=======ediff_info start============================================
+;;detail info web https://www.gnu.org/software/emacs/manual/html_mono/ediff.html
+;;Ediff can be invoked interactively using the following functions, which can be run either from the minibuffer or from the menu bar. In the menu bar, all Ediff’s entry points belong to three submenus of the Tools menu: Compare, Merge, and Apply Patch.
+;;
+;;ediff-files
+;;ediff
+;;;;Compare two files.
+;;
+;;ediff-backup
+;;;;Compare a file with its backup. If there are several numerical backups, use the latest. If the file is itself a backup, then compare it with its original.
+;;
+;;ediff-current-file
+;;;;Compare the buffer with its file on disk. This function can be used as a safe version of revert-buffer.
+;;
+;;ediff-buffers
+;;;;[good]Compare two buffers.
+;;
+;;ediff-files3
+;;ediff3
+;;Compare three files.
+;;
+;;ediff-buffers3
+;;;;Compare three buffers.
+;;
+;;edirs
+;;ediff-directories
+;;;;Compare files common to two directories.
+;;
+;;edirs3
+;;ediff-directories3
+;;;;Compare files common to three directories.
+;;
+;;edir-revisions
+;;ediff-directory-revisions
+;;;;Compare versions of files in a given directory. Ediff selects only the files that are under version control.
+;;
+;;edir-merge-revisions
+;;ediff-merge-directory-revisions
+;;;;Merge versions of files in a given directory. Ediff selects only the files that are under version control.
+;;
+;;edir-merge-revisions-with-ancestor
+;;ediff-merge-directory-revisions-with-ancestor
+;;;;Merge versions of files in a given directory using other versions as ancestors. Ediff selects only the files that are under version control.
+;;
+;;ediff-windows-wordwise
+;;;;Compare text visible in 2 windows word-by-word.
+;;
+;;ediff-windows-linewise
+;;;;Compare text visible in 2 windows line-by-line.
+;;
+;;ediff-regions-wordwise
+;;;;Compare regions word-by-word. The regions can come from the same buffer and they can even overlap. You will be asked to specify the buffers that contain the regions, which you want to compare. For each buffer, you will also be asked to mark the regions to be compared. Pay attention to the messages that appear in the minibuffer.
+;;
+;;ediff-regions-linewise
+;;;;Similar to ediff-windows-linewise, but compares the regions line-by-line. See ediff-windows-linewise for more details.
+;;
+;;ediff-revision
+;;;;Compare versions of the current buffer, if the buffer is visiting a file under version control.
+;;
+;;ediff-patch-file
+;;epatch
+;;;;Patch a file or multiple files, then compare. If the patch applies to just one file, Ediff will invoke a regular comparison session. If it is a multi-file patch, then a session group interface will be used and the user will be able to patch the files selectively. See Session Groups, for more details.
+;;
+;;;;Since the patch might be in a buffer or a file, you will be asked which is the case. To avoid this extra prompt, you can invoke this command with a prefix argument. With an odd prefix argument, Ediff assumes the patch is in a file; with an even argument, a buffer is assumed.
+;;
+;;;;Note that ediff-patch-file will actually use the patch utility to change the original files on disk. This is not that dangerous, since you will always have the original contents of the file saved in another file that has the extension .orig. Furthermore, if the file is under version control, then you can always back out to one of the previous versions (see the section on Version Control in the Emacs manual).
+;;
+;;;;ediff-patch-file is careful about versions control: if the file to be patched is checked in, then Ediff will offer to check it out, because failing to do so may result in the loss of the changes when the file is checked out the next time.
+;;
+;;;;If you don’t intend to modify the file via the patch and just want to see what the patch is all about (and decide later), then ediff-patch-buffer might be a better choice.
+;;
+;;ediff-patch-buffer
+;;epatch-buffer
+;;;;Patch a buffer, then compare. The buffer being patched and the file visited by that buffer (if any) is not modified. The result of the patch appears in some other buffer that has the name ending with _patched.
+;;
+;;;;This function would refuse to apply a multifile patch to a buffer. Use ediff-patch-file for that (and when you want the original file to be modified by the patch utility).
+;;
+;;;;Since the patch might be in a buffer or a file, you will be asked which is the case. To avoid this extra prompt, you can invoke this command with a prefix argument. With an odd prefix argument, Ediff assumes the patch is in a file; with an even argument, a buffer is assumed.
+;;
+;;ediff-merge-files
+;;ediff-merge
+;;;;Merge two files.
+;;
+;;ediff-merge-files-with-ancestor
+;;ediff-merge-with-ancestor
+;;;;Like ediff-merge, but with a third ancestor file.
+;;
+;;ediff-merge-buffers
+;;;;Merge two buffers.
+;;
+;;ediff-merge-buffers-with-ancestor
+;;;;Same but with ancestor.
+;;
+;;edirs-merge
+;;ediff-merge-directories
+;;;;Merge files common to two directories.
+;;
+;;edirs-merge-with-ancestor
+;;ediff-merge-directories-with-ancestor
+;;;;Same but using files in a third directory as ancestors. If a pair of files doesn’t have an ancestor in the ancestor-directory, you will still be able to merge them without the ancestor.
+;;
+;;ediff-merge-revisions
+;;;;Merge two versions of the file visited by the current buffer.
+;;
+;;ediff-merge-revisions-with-ancestor
+;;;;Same but with ancestor.
+;;
+;;ediff-documentation
+;;;;Brings up this manual.
+;;
+;;ediff-show-registry
+;;eregistry
+;;;;Brings up Ediff session registry. This feature enables you to quickly find and restart active Ediff sessions.
+;;
+;;
+;;3.1 Quick Help Commands
+;; ?
+;;;;Toggles the Ediff Quick Help window ON and OFF.
+;;
+;; G
+;;;;Prepares a mail buffer for sending a praise or a curse to the Ediff maintainer.
+;;
+;; E
+;;;;Brings up the top node of this manual, where you can find further information on the various Ediff functions and advanced issues, such as customization, session groups, etc.
+;;
+;; v
+;;;;Scrolls up buffers A and B (and buffer C where appropriate) in a coordinated fashion.
+;;
+;; V
+;;;;Scrolls the buffers down.
+;;
+;; <
+;;;;Scrolls the buffers to the left simultaneously.
+;;
+;; >
+;;;;Scrolls buffers to the right.
+;;
+;; wd
+;;;;Saves the output from the diff utility, for further reference.
+;;;;With prefix argument, saves the plain output from diff (see ediff-diff-program and ediff-diff-options). Without the argument, it saves customized diff output (see ediff-custom-diff-program and ediff-custom-diff-options), if it is available.
+;;
+;; wa
+;;;;Saves buffer A, if it was modified.
+;;
+;; wb
+;;;;Saves buffer B, if it was modified.
+;;
+;; wc
+;;;;Saves buffer C, if it was modified (if you are in a session that compares three files simultaneously).
+;;
+;; a
+;;;;In comparison sessions: Copies the current difference region (or the region specified as the prefix to this command) from buffer A to buffer B. Ediff saves the old contents of buffer B’s region; it can be restored via the command rb, which see.
+;;In merge sessions: Copies the current difference region (or the region specified as the prefix to this command) from buffer A to the merge buffer. The old contents of this region in buffer C can be restored via the command r.
+;;
+;; b
+;;Works similarly, but copies the current difference region from buffer B to buffer A (in comparison sessions) or the merge buffer (in merge sessions).
+;;;;Ediff saves the old contents of the difference region copied over; it can be reinstated via the command ra in comparison sessions and r in merge sessions.
+;;
+;; ab
+;;;;Copies the current difference region (or the region specified as the prefix to this command) from buffer A to buffer B. This (and the next five) command is enabled only in sessions that compare three files simultaneously. The old region in buffer B is saved and can be restored via the command rb.
+;;
+;; ac
+;;;;Copies the difference region from buffer A to buffer C. The old region in buffer C is saved and can be restored via the command rc.
+;;
+;; ba
+;;;;Copies the difference region from buffer B to buffer A. The old region in buffer A is saved and can be restored via the command ra.
+;;
+;; bc
+;;;;Copies the difference region from buffer B to buffer C. The command rc undoes this.
+;;
+;; ca
+;;;;Copies the difference region from buffer C to buffer A. The command ra undoes this.
+;;
+;; cb
+;;;;Copies the difference region from buffer C to buffer B. The command rb undoes this.
+;;
+;; p
+;; DEL
+;;;;Makes the previous difference region current.
+;;
+;; n
+;; SPC
+;;;;Makes the next difference region current.
+;;
+;; j
+;; -j
+;; Nj
+;;;;Makes the very first difference region current.
+;;-j makes the last region current. Typing a number, N, and then j makes the difference region N current. Typing -N (a negative number) then j makes current the region Last - N.
+;;
+;; ga
+;;;;Makes current the difference region closest to the position of the point in buffer A.
+;;However, with a prefix argument, Ediff would position all variants around the area indicated by the current point in buffer A: if the point is inside a difference region, then the variants will be positioned at this difference region. If the point is not in any difference region, then it is in an area where all variants agree with each other. In this case, the variants will be positioned so that each would display this area (of agreement).
+;;
+;; gb
+;;Makes current the difference region closest to the position of the point in buffer B.
+;;With a prefix argument, behaves like ga, but with respect to buffer B.
+;;
+;; gc
+;;;;In merge sessions: makes current the difference region closest to the point in the merge buffer.
+;;;;In 3-file comparison sessions: makes current the region closest to the point in buffer C.
+;;;;With a prefix argument, behaves like ga, but with respect to buffer C.
+;;
+;; !
+;;;;Recomputes the difference regions, bringing them up to date. This is often needed because it is common to do all sorts of editing during Ediff sessions, so after a while, the highlighted difference regions may no longer reflect the actual differences among the buffers.
+;;
+;; *
+;;;;Forces refinement of the current difference region, which highlights the exact words of disagreement among the buffers. With a negative prefix argument, unhighlights the current region.
+;;;;Forceful refinement may be needed if Ediff encounters a difference region that is larger than ediff-auto-refine-limit. In this situation, Ediff doesn’t do automatic refinement in order to improve response time. (Ediff doesn’t auto-refine on dumb terminals as well, but * still works there. However, the only useful piece of information it can tell you is whether or not the difference regions disagree only in the amount of white space.)
+;;
+;;This command is also useful when the highlighted fine differences are no longer current, due to user editing.
+;;
+;; m
+;;;;Displays the current Ediff session in a frame as wide as the physical display. This is useful when comparing files side-by-side. Typing m again restores the original size of the frame.
+;;
+;; |
+;;;;Toggles the horizontal/vertical split of the Ediff display. Horizontal split is convenient when it is possible to compare files side-by-side. If the frame in which files are displayed is too narrow and lines are cut off, typing m may help some.
+;;
+;; @
+;;;;Toggles auto-refinement of difference regions (i.e., automatic highlighting of the exact words that differ among the variants). Auto-refinement is turned off on devices where Emacs doesn’t support highlighting.
+;;On slow machines, it may be advantageous to turn auto-refinement off. The user can always forcefully refine specific difference regions by typing *.
+;;
+;; h
+;;;;Cycles between full highlighting, the mode where fine differences are not highlighted (but computed), and the mode where highlighting is done with ASCII strings. The latter is not really recommended, unless on a dumb TTY.
+;;
+;; r
+;;;;Restores the old contents of the region in the merge buffer. (If you copied a difference region from buffer A or B into the merge buffer using the commands a or b, Ediff saves the old contents of the region in case you change your mind.)
+;;;;This command is enabled in merge sessions only.
+;;
+;; ra
+;;;;Restores the old contents of the current difference region in buffer A, which was previously saved when the user invoked one of these commands: b, ba, ca, which see. This command is enabled in comparison sessions only.
+;;
+;; rb
+;;;;Restores the old contents of the current difference region in buffer B, which was previously saved when the user invoked one of these commands: a, ab, cb, which see. This command is enabled in comparison sessions only.
+;;
+;; rc
+;;;;Restores the old contents of the current difference region in buffer C, which was previously saved when the user invoked one of these commands: ac, bc, which see. This command is enabled in 3-file comparison sessions only.
+;;
+;; ##
+;;;;Tell Ediff to skip over regions that disagree among themselves only in the amount of white space and line breaks.
+;;;;Even though such regions will be skipped over, you can still jump to any one of them by typing the region number and then j. Typing ## again puts Ediff back in the original state.
+;;
+;; #c
+;;;;Toggle case sensitivity in the diff program. All diffs are recomputed. Case sensitivity is controlled by the variables ediff-ignore-case-option, ediff-ignore-case-option3, and ediff-ignore-case, which are explained elsewhere.
+;;
+;; #h
+;; #f
+;;;;Ediff works hard to ameliorate the effects of boredom in the workplace...
+;;Quite often differences are due to identical replacements (e.g., the word “foo” is replaced with the word “bar” everywhere). If the number of regions with such boring differences exceeds your tolerance threshold, you may be tempted to tell Ediff to skip these regions altogether (you will still be able to jump to them via the command j). The above commands, #h and #f, may well save your day!
+;;
+;;;;#h prompts you to specify regular expressions for each variant. Difference regions where each variant’s region matches the corresponding regular expression will be skipped from then on. (You can also tell Ediff to skip regions where at least one variant matches its regular expression.)
+;;;;#f does dual job: it focuses on regions that match the corresponding regular expressions. All other regions will be skipped over. See Selective Browsing, for more.
+;;
+;; A
+;;;;Toggles the read-only property in buffer A. If file A is under version control and is checked in, it is checked out (with your permission).
+;;
+;; B
+;;;;Toggles the read-only property in buffer B. If file B is under version control and is checked in, it is checked out.
+;;
+;; C
+;;;;Toggles the read-only property in buffer C (in 3-file comparison sessions). If file C is under version control and is checked in, it is checked out.
+;;
+;; ~
+;;;;Swaps the windows where buffers A and B are displayed. If you are comparing three buffers at once, then this command would rotate the windows among buffers A, B, and C.
+;;
+;; i
+;;;;Displays all kinds of useful data about the current Ediff session.
+;;
+;; D
+;;;;Runs ediff-custom-diff-program on the variants and displays the buffer containing the output. This is useful when you must send the output to your Mom.
+;;With a prefix argument, displays the plain diff output. See Patch and Diff Programs, for details.
+;;
+;; R
+;;;;Displays a list of currently active Ediff sessions—the Ediff Registry. You can then restart any of these sessions by either clicking on a session record or by putting the cursor over it and then typing the return key.
+;;;;(Some poor souls leave so many active Ediff sessions around that they lose track of them completely... The R command is designed to save these people from the recently discovered Ediff Proficiency Syndrome.)
+;;;;Typing R brings up Ediff Registry only if it is typed into an Ediff Control Panel. If you don’t have a control panel handy, type this in the minibuffer: M-x eregistry. See Registry of Ediff Sessions.
+;;
+;; M
+;;;;Shows the session group buffer that invoked the current Ediff session. See Session Groups, for more information on session groups.
+;;
+;; z
+;;;;Suspends the current Ediff session. (If you develop a condition known as Repetitive Ediff Injury—a serious but curable illness—you must change your current activity. This command tries hard to hide all Ediff-related buffers.)
+;;;;The easiest way to resume a suspended Ediff session is through the registry of active sessions. See Registry of Ediff Sessions, for details.
+;;
+;; q
+;;;;Terminates this Ediff session. With a prefix argument (e.g.,1q), asks if you also want to delete the buffers of the variants. Modified files and the results of merges are never deleted.
+;;
+;; %
+;;;;Toggles narrowing in Ediff buffers. Ediff buffers may be narrowed if you are comparing only parts of these buffers via the commands ediff-windows-* and ediff-regions-*, which see.
+;;
+;; C-l
+;;;;Restores the usual Ediff window setup. This is the quickest way to resume an Ediff session, but it works only if the control panel of that session is visible.
+;;
+;; $$
+;;;;While merging with an ancestor file, Ediff is determined to reduce user’s wear and tear by saving him and her much of unproductive, repetitive typing. If it notices that, say, file A’s difference region is identical to the same difference region in the ancestor file, then the merge buffer will automatically get the difference region taken from buffer B. The rationale is that this difference region in buffer A is as old as that in the ancestor buffer, so the contents of that region in buffer B represents real change.
+;;;;You may want to ignore such “obvious” merges and concentrate on difference regions where both files “clash” with the ancestor, since this means that two different people have been changing this region independently and they had different ideas on how to do this.
+;;;;The above command does this for you by skipping the regions where only one of the variants clashes with the ancestor but the other variant agrees with it. Typing $$ again undoes this setting.
+;;
+;; $*
+;;;;When merging files with large number of differences, it is sometimes convenient to be able to skip the difference regions for which you already decided which variant is most appropriate. Typing $* will accomplish precisely this.
+;;;;To be more precise, this toggles the check for whether the current merge is identical to its default setting, as originally decided by Ediff. For instance, if Ediff is merging according to the “combined” policy, then the merge region is skipped over if it is different from the combination of the regions in buffers A and B. (Warning: swapping buffers A and B will confuse things in this respect.) If the merge region is marked as “prefer-A” then this region will be skipped if it differs from the current difference region in buffer A, etc.
+;;
+;; /
+;;;;Toggle to display the ancestor file in 3way merges. You can enable permanently this setting customizing the variable ediff-show-ancestor.
+;;
+;; &
+;;;;In some situations, such as when one of the files agrees with the ancestor file on a difference region and the other doesn’t, Ediff knows what to do: it copies the current difference region from the second buffer into the merge buffer.
+;;;;In other cases, the right course of action is not that clearcut, and Ediff would use a default action. The above command changes the default action. The default action can be ‘default-A’ (choose the region from buffer A), ‘default-B’ (choose the region from buffer B), or ‘combined’ (combine the regions from the two buffers). See Merging and diff3, for further details.
+;;;;The command & also affects the regions in the merge buffers that have ‘default-A’, ‘default-B’, or ‘combined’ status, provided they weren’t changed with respect to the original. For instance, if such a region has the status ‘default-A’ then changing the default action to ‘default-B’ will also replace this merge-buffer’s region with the corresponding region from buffer B.
+;;
+;; s
+;;;;Causes the merge window shrink to its minimum size, thereby exposing as much of the variant buffers as possible. Typing s again restores the original size of that window.
+;;;;With a positive prefix argument, this command enlarges the merge window. E.g., 4s increases the size of the window by about 4 lines, if possible. With a negative numeric argument, the size of the merge window shrinks by that many lines, if possible. Thus, -s shrinks the window by about 1 line and -3s by about 3 lines.
+;;;;This command is intended only for temporary viewing; therefore, Ediff restores window C to its original size whenever it makes any other change in the window configuration. However, redisplaying (C-l) or jumping to another difference does not affect window C’s size.
+;;;;The split between the merge window and the variant windows is controlled by the variable ediff-merge-window-share, which see.
+;;
+;; +
+;;;;Combines the difference regions from buffers A and B and copies the result into the merge buffer. See Merging and diff3, and the variables ediff-combine-diffs and ediff-combination-pattern.
+;;
+;; =
+;;;;You may run into situations when a large chunk of text in one file has been edited and then moved to a different place in another file. In such a case, these two chunks of text are unlikely to belong to the same difference region, so the refinement feature of Ediff will not be able to tell you what exactly differs inside these chunks. Since eyeballing large pieces of text is contrary to human nature, Ediff has a special command to help reduce the risk of developing a cataract.
+;;
+;;;;In other situations, the currently highlighted region might be big and you might want to reconcile of them interactively.
+;;
+;;All of this can be done with the above command, =, which compares regions within Ediff buffers. Typing = creates a child Ediff session for comparing regions in buffers A, B, or C as follows.
+;;;;First, you will be asked whether you want to compare the fine differences between the currently highlighted buffers on a word-by-word basis. If you accept, a child Ediff session will start using the currently highlighted regions. Ediff will let you step over the differences word-wise.
+;;;;If you reject the offer, you will be asked to select regions of your choice.
+;;;;If you are comparing 2 files or buffers: Ediff will ask you to select regions in buffers A and B.
+;;;;If you are comparing 3 files or buffers simultaneously: Ediff will ask you to choose buffers and then select regions inside those buffers.
+;;;;If you are merging files or buffers (with or without ancestor): Ediff will ask you to choose which buffer (A or B) to compare with the merge buffer and then select regions in those buffers.
+
+;;=======ediff_info end============================================

@@ -1,16 +1,25 @@
 #!/usr/bash
 
-
 git config --global user.name "Frank Shan"
 git config --global user.email frankqs0304@hotmail.com
+#
+git config --global alias.d difftool
+#
 #git config --global core.editor gvim
+git config --global diff.tool.prompt false
+git config --global diff.tool.trustExitCode true
+#
 git config --global core.editor vim
 #git config --global diff.tool gvimdiff
 git config --global diff.tool vimdiff
 git config --global difftool.vimdiff.path '/use/bin'
+#
 #git config --global merge.tool gvimdiff
 git config --global merge.tool vimdiff
 git config --global mergetool.vimdiff.path '/use/bin'
+
+##check git config info
+git config --list
 
 #bash format
 #if [ -f ~/_mybashrc ]; then
@@ -269,6 +278,14 @@ git config --global mergetool.vimdiff.path '/use/bin'
 # diff file with specific tools
 # $git difftool -tool=gvimdiff FileNameWithPath
 # $git difftool -tool=vimdiff FileNameWithPath
+# $git difftool -tool=ediff FileNameWithPath
+
+# $git difftool --extcmd vimdiff HEAD FileNameWithPath
+# $git difftool --extcmd vimdiff FileNameWithPath
+
+# diff two object/file with difftool when there is default config for difftool
+# $git difftool HEAD
+# $git difftool HEAD TheSpecificFileName
 
 # diff between workspace and stage(add)
 # $git diff --color HEAD^ FileNameWithPath
