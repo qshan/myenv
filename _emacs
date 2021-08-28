@@ -464,6 +464,8 @@
 (defun fshan-reset-whitespace-display-mapping ()
   (interactive)
 
+  (subword-mode -1)
+
   ;;set whitespace mapping table
   (setq whitespace-display-mappings '(
         ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
@@ -472,15 +474,21 @@
         (space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
         ;;(newline-mark  ?\n   [? \?\n])           ;;end of line
         (newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
+        (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
+        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
         ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
         (tab-mark      ?\t   [?\xBB ?\t] [?\\ ?\t])
                                       ))
   ;;(whitespace-mode)
   (global-whitespace-mode)
+  ;;(whitespace-newline-mode)
+  (global-whitespace-newline-mode)
 )
 
 (defun fshan-reset-whitespace-display-mapping01 ()
   (interactive)
+
+  (subword-mode -1)
 
 ;;
   ;;set whitespace mappling table
@@ -539,6 +547,8 @@
 
   ;;(whitespace-mode)
   (global-whitespace-mode)
+  ;;(whitespace-newline-mode)
+  (global-whitespace-newline-mode)
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;open emacs with miximized windows
