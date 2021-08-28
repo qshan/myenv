@@ -466,6 +466,8 @@
 
   (subword-mode -1)
 
+  ;;Code-characters table http://rmhh.co.uk/ascii.html
+
   ;;set whitespace mapping table
   (setq whitespace-display-mappings '(
         ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
@@ -477,7 +479,8 @@
         (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
         ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
         ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
-        (tab-mark      ?\t   [?\xBB ?\t] [?\\ ?\t])
+        (tab-mark      ?\t   [?\xBB ?\t] [?\\ ?\t]) ;;»
+        ;;(tab-mark      ?\t   [?\x1D ?\t] [?\\ ?\t]) ;;<->
                                       ))
   ;;(whitespace-mode)
   (global-whitespace-mode)
@@ -543,6 +546,7 @@
         ;; the next TAB column.
         ;; If this is a problem for you, please, comment the line below.
         (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]) ; tab - left quote mark
+        (tab-mark      ?\t   [?\x1D ?\t] [?\\ ?\t])
                                       ))
 
   ;;(whitespace-mode)
