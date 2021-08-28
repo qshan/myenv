@@ -173,7 +173,15 @@ set wildmode=longest,list
 "
 "show symbol, like show blank and tab
 set list
-"set nolist
+""set nolist
+""set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
+""set listchars=eol:$,tab:»\ ,trail:~,extends:>,precedes:<,space:·
+set listchars=eol:$,tab:»»,trail:~,extends:>,precedes:<,space:·
+""set listchars=eol:$,tab:→\ ,trail:~,extends:>,precedes:<,space:·
+"highlight StrangeWhitespace guibg=Red ctermbg=Red
+highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
+autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
+match Whitespace /  \+/
 "
 set mouse=a
 " Display options

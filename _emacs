@@ -262,6 +262,7 @@
 (add-hook 'perl-mode-hook         'hs-minor-mode)
 (add-hook 'python-mode-hook       'hs-minor-mode)
 (add-hook 'rust-mode-hook         'hs-minor-mode)
+(add-hook 'makefile-mode-hook     'hs-minor-mode)
 ;;--------------------------------------------------
 ;;set for company mode
 (with-eval-after-load 'company (company-ctags-auto-setup))
@@ -274,17 +275,6 @@
 ;;ToCheck;;;;clear blank-line between line and line
 ;;ToCheck;;(add-hook 'before-save-hook 'delete-blank-lines)
 ;;ToCheck;;;;--------------------------------------------------
-
-;;set whitespace mapping table
-(setq whitespace-display-mappings '(
-      (space-mark    ?\    [?\u00B7]    [?.])  ;;space
-      ;;(space-mark    ?\     [?\xB7]      [?.])  ;;space
-      (space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
-      ;;(space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
-      (newline-mark  ?\n   [? \?\n])           ;;end of line
-      ;;(newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
-      ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
-                                    ))
 ;;
 ;;
 (setq fill-column 80)
@@ -336,7 +326,13 @@
                                 ("\\.emacs\\'" . emacs-lisp-mode)
                                 ("_emacs.*\\'" . emacs-lisp-mode)
                                 ("_emacs.*"    . emacs-lisp-mode)
+                                ("makefile*"   . makefile-mode)
+                                ("Makefile*"   . makefile-mode)
                                 ("\\.c\\'"     . c-mode)
+                                ("\\.cc\\'"    . c-mode)
+                                ("\\.cpp\\'"   . c-mode)
+                                ("\\.py\\'"    . python-mode)
+                                ("\\.sm\\'"    . ruby-mode)
                                 ) auto-mode-alist))
 
 ;;;###autoload
@@ -348,6 +344,12 @@
                   indent-tabs-mode nil)
             ))
 
+(add-hook 'makefile-mode-hook
+          (lambda ()
+            (setq tag-width qshan-tab-width
+                  indent-tabs-mode t)
+            ))
+
 (add-hook 'c-mode-common-hook
           (lambda ()
             (setq tag-width qshan-tab-width
@@ -356,11 +358,13 @@
                   c-indent-level 2
                   indent-tabs-mode nil)
             ))
+
 (add-hook 'c-mode-hook
           (lambda ()
             (setq tag-width qshan-tab-width
                   indent-tabs-mode nil)
             ))
+
 (add-hook 'cc-mode-hook
           (lambda ()
             (setq tag-width qshan-tab-width
@@ -434,6 +438,7 @@
 ;;
   ;;show white space
   (whitespace-mode)
+  ;;(global-whitespace-mode)
   ;;(whitespace-mode t)
   ;;
   (setq default-tab-width 2)
@@ -441,38 +446,8 @@
   ;;set current buffer's tab width
   (setq tab-width 2)
 ;;
-  ;;set whitespace mappling table
-  (setq whitespace-display-mappings '(
-        ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
-        (space-mark    ?\     [?\xB7]      [?.])  ;;space
-        ;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
-        (space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
-        ;;;;(newline-mark  ?\n   [? \?\n])           ;;end of line
-        (newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
-        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
-        (space-mark   ?\     [?\u00B7]     [?.]) ; space - centered dot
-        (space-mark   ?\xA0  [?\u00A4]     [?_]) ; hard space - currency
-        (space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
-        (space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
-        (space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
-        (space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
-        ;; NEWLINE is displayed using the face `whitespace-newline'
-        (newline-mark ?\n    [?$ ?\n])  ; eol - dollar sign
-        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n]) ; eol - downwards arrow
-        ;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n]) ; eol - pilcrow
-        ;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n]) ; eol - overscore
-        ;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n]) ; eol - negation
-        ;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n]) ; eol - grade
-        ;;
-        ;; WARNING: the mapping below has a problem.
-        ;; When a TAB occupies exactly one column, it will display the
-        ;; character ?\xBB at that column followed by a TAB which goes to
-        ;; the next TAB column.
-        ;; If this is a problem for you, please, comment the line below.
-        (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]) ; tab - left quote mark
-
-
-                                      ))
+  (fshan-reset-whitespace-display-mapping)
+;;
 ;;
 (setq fill-column 80)
 ;;set limit length
@@ -486,20 +461,85 @@
 ) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
-(defun fshan-reset-whitespace-display-mappling ()
+(defun fshan-reset-whitespace-display-mapping ()
   (interactive)
+
   ;;set whitespace mapping table
   (setq whitespace-display-mappings '(
-        (space-mark    ?\    [?\u00B7]    [?.])  ;;space
+        ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
+        (space-mark    ?\     [?\xB7]      [?.])  ;;space
+        ;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
+        (space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
+        ;;(newline-mark  ?\n   [? \?\n])           ;;end of line
+        (newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
+        ;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
+        (tab-mark      ?\t   [?\xBB ?\t] [?\\ ?\t])
+                                      ))
+  ;;(whitespace-mode)
+  (global-whitespace-mode)
+)
+
+(defun fshan-reset-whitespace-display-mapping01 ()
+  (interactive)
+
+;;
+  ;;set whitespace mappling table
+  (setq whitespace-display-mappings '(
+        ;;;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
         ;;(space-mark    ?\     [?\xB7]      [?.])  ;;space
-        (space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
+        ;;;;(space-mark    ?\xA0 [?\u00A4]    [?_])  ;;hard space
         ;;(space-mark    ?\xA0  [?\xA4]      [?_])  ;;hard space
-        (newline-mark  ?\n   [? \?\n])           ;;end of line
+        ;;;;;;(newline-mark  ?\n   [? \?\n])           ;;end of line
         ;;(newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
-        (tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
+        ;;;;(tab-mark      ?\t   [?\u00BB ?\t] [?\\ ?\t])
+        ;;;;;;(space-mark   ?\     [?\u00B7]     [?.]) ; space - centered dot
+        ;;;;;;(space-mark   ?\xA0  [?\u00A4]     [?_]) ; hard space - currency
+        ;;;;;;(space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
+        ;;;;;;(space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
+        ;;;;;;(space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
+        ;;;;;;(space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
+        ;;;; NEWLINE is displayed using the face `whitespace-newline'
+        ;;(newline-mark ?\n    [?$ ?\n])  ; eol - dollar sign
+        ;;;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n]) ; eol - downwards arrow
+        ;;;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n]) ; eol - pilcrow
+        ;;;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n]) ; eol - overscore
+        ;;;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n]) ; eol - negation
+        ;;;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n]) ; eol - grade
+        ;;;;
+        ;;;; WARNING: the mapping below has a problem.
+        ;;;; When a TAB occupies exactly one column, it will display the
+        ;;;; character ?\xBB at that column followed by a TAB which goes to
+        ;;;; the next TAB column.
+        ;;;; If this is a problem for you, please, comment the line below.
+        ;;;;(tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]) ; tab - left quote mark
+        ;;(tab-mark     ?\t    [?\xBB ?\t] [?\\ ?\t]) ; tab - left quote mark
+
+        ;; good web https://www.emacswiki.org/emacs/whitespace.el
+        (space-mark   ?\     [?\u00B7]     [?.]) ; space - centereddo
+        (space-mark   ?\xA0  [?\u00A4]     [?_]) ; hard space - currency
+        (space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
+        (space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
+        (space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
+        (space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
+        ;; NEWLINE is displayed using the face `whitespace-newline'
+        (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
+        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
+        ;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n])	; eol - pilcrow
+        ;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n])	; eol - overscore
+        ;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n])	; eol - negation
+        ;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n])	; eol - grade
+        ;;
+        ;; WARNING: the mapping below has a problem.
+        ;; When a TAB occupies exactly one column, it will display the
+        ;; character ?\xBB at that column followed by a TAB which goes to
+        ;; the next TAB column.
+        ;; If this is a problem for you, please, comment the line below.
+        (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]) ; tab - left quote mark
                                       ))
 
-  )
+  ;;(whitespace-mode)
+  (global-whitespace-mode)
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;open emacs with miximized windows
 ;;emacs -mm
