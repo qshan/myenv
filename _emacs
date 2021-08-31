@@ -993,6 +993,7 @@
 ;;M-x comment-region
 ;;
 ;;(toggle-read-only)    ;;force edit the file opened with read only mode
+;;C-x C-q     ;;(read-only-mode)      ;;switch read-only-mode between read-only and writable
 ;;C-x C-q     ;(dired-toggle-read-only) - Makes all file names in the buffer editable directly to rename them! Press Z Z to confirm renaming or Z Q to abort.
 ;;M-x delete-trailing-whitespace    ;remove the white space at end of line
 ;;M-x whitespace-cleanup            ;

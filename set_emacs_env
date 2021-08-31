@@ -31,6 +31,13 @@ else
 fi
   echo  '(load-file "'"`pwd`"'/_emacs")'  >>  ~/.emacs ;
 
+#rename _emacs.d for the git clone
+if [ -d ./_emacs.d ]; then
+  echo  "There is _emacs.d folder, will back up it" ;
+  \mv -f  ./_emacs.d ./_emacs.d.back."`date +%Y-%m-%d-%H%M`" ;
+else
+  echo  "There is no _emacs.d folder in current folder" ;
+fi
 #to get and use redguardtoo stable setup
 #git clone https://github.com/redguardtoo/emacs.d.git _emacs.d;
 git clone --recursive https://github.com/redguardtoo/emacs.d.git _emacs.d;

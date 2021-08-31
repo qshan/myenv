@@ -155,6 +155,57 @@ chgrp R UserName FolderName
 
 #sudo apt-get install kdbg
 
+#==============================make udisk with unetbootin start==============================
+####install unetbootin if there is no this sw in your pc
+# $sudo apt install unetbootin
+####list the disk info
+# $sudo fdisk -l
+####get the udisk location: /dev/sdc
+#
+# $sudo wipefs --all /dev/sdc
+#
+# $sudo fdisk -l
+#
+####make partition for udisk
+# $sudo fdisk /dev/sdc
+# $     ->       Command (m for help): n
+# $     ->       Select (default p): p
+# $     ->       Partition number (1-4, default 1): 1
+# $     ->       First sector (2048-121110527, default 2048):
+# $     ->       Last sector, +sectors or +size{K,M,G,T,P} (2048-121110527, default 121110527):
+# $     ->       Do you want to remove the signature? [Y]es/[N]o: Y
+# $     ->       Command (m for help): w
+#
+####dectect the udisk again
+# $partprobe
+
+# $sudo fdisk -l
+####make dos format for udisk to support the writable of udisk
+# $sudo cfdisk /dev/sdc1
+# $     ->       dos
+# $     ->       new
+# $     ->       primary
+# $     ->       type
+# $     ->       c W95 FAT32 (LBA)
+# $     ->       Bootable
+# $     ->       Attributes: 80
+# $     ->       Write
+# $     ->       Are you sure you want to write the partition table to disk? yes
+#
+###finally, the config is
+###Partition type: W95 FAT32 (LBA) (c) Partition type: W95 FAT32 (LBA) (c)
+###Attributes: 80
+#
+# $sudo umount PATH_OF_sdc1_MOUNTED
+# $sudo mkfs.vfat -n 'TempData' /dev/sdc1
+#
+####mount the disk before udisk gen
+# $mount /dev/sdb1
+#
+####make udisk
+# $unetbootin installtype=USB targetdrive=/dev/sdb1
+#==============================make udisk with unetbootin end  ==============================
+
 ##mount the disk operation
 # #check the info about the disk and partition
 # sudo fdisk -alh
