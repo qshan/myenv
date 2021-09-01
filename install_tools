@@ -43,6 +43,12 @@ sudo apt install build-essential manpages-dev software-properties-common
 # sudo add-apt-repository --remove ppa:jonathonf/vim
 #####example of install and remove end#####
 
+####add ppa for unetbootin
+sudo add-apt-repository ppa:gezakovacs/ppa
+#sudo apt-add-repository ppa:n-muench/programs-ppa
+#sudo apt-get update
+#sudo apt-get install unetbootin
+
 #
 ####for gcc higher version
 ##https://gcc.gnu.org/
@@ -57,7 +63,11 @@ sudo apt install git ssh vim
 sudo apt install gcc g++ clang cmake scons build-essential
 sudo apt install python-dev python3-dev
 #
-###in case to install vim is not succeded
+sudo apt-get install unetbootin
+####usage of unetbootin
+# $sudo unetbootin installtype=USB targetdrive=/dev/sdb1
+#
+####in case to install vim is not succeded
 ##sudo apt-get -f install
 #
 #bash format
