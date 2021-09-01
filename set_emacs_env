@@ -45,6 +45,7 @@ cd _emacs.d;
 git reset --hard stable
 #git pull https://redguardtoo@github.com/redguardtoo/emacs.d.git stable
 
+cd ../
 #link the _emacs.d to your home path
 if [ -d ~/.emacs.d ]; then
   echo  "There is .emacs.d folder, will back up it" ;

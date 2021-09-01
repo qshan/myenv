@@ -154,6 +154,65 @@ chgrp R UserName FolderName
 
 
 #sudo apt-get install kdbg
+#==============================the command related to disk start==============================
+#------------------------------
+# $df -a
+# $df -k
+# $df -m
+# $df -i
+# $df -t ext3
+# $df -x ext3
+# $df -h
+# $df -h /dev/sdc2
+#------------------------------
+# $pydf
+#------------------------------
+# $du -sh     NameOfFolder
+# $du -sh     NameOfFolder/*
+#------------------------------
+####
+# $sudo fdisk -l
+# $sudo fdisk -l /dev/sdc
+# $sudo fdisk /dev/sdc
+# $sudo fdisk -s /dev/sdc2
+#------------------------------
+####
+# $lsblk
+#------------------------------
+####
+# $sudo blkid
+#------------------------------
+#------------------------------
+####
+# $sudo hwinfo --short --block
+#------------------------------
+####
+# $cfdisk
+# $sudo cfdisk /dev/sdc
+# $sudo cfdisk /dev/sdc2
+#------------------------------
+####
+# $sudo parted -l
+#------------------------------
+####
+# $sudo sfdisk -l
+#------------------------------
+####
+# $sudo mkfs.ext4      /dev/sdc2
+# $sudo mkfs.msdos     /dev/sdc2
+# $sudo mkfs.vfat      /dev/sdc2
+# $sudo mkfs.fat       /dev/sdc2
+# $sudo mkfs.ntfs      /dev/sdc2
+# $sudo mkfs.vfat -n 'TempData' /dev/sdc2
+#------------------------------
+# $wipe
+#------------------------------
+# $dd
+# $dd if=/dev/zero of=/dev/sda2 bs=512 count=1
+#------------------------------
+# $scrub    /dev/sdc2
+# $
+#==============================the command related to disk end  ==============================
 
 #==============================make udisk with unetbootin start==============================
 ####install unetbootin if there is no this sw in your pc
@@ -181,7 +240,7 @@ chgrp R UserName FolderName
 
 # $sudo fdisk -l
 ####make dos format for udisk to support the writable of udisk
-# $sudo cfdisk /dev/sdc1
+# $sudo cfdisk /dev/sdc
 # $     ->       dos
 # $     ->       new
 # $     ->       primary
@@ -203,7 +262,7 @@ chgrp R UserName FolderName
 # $mount /dev/sdb1
 #
 ####make udisk
-# $unetbootin installtype=USB targetdrive=/dev/sdb1
+# $sudo unetbootin installtype=USB targetdrive=/dev/sdb1
 #==============================make udisk with unetbootin end  ==============================
 
 ##mount the disk operation
