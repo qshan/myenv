@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+
+#### info linker https://linuxconfig.org/how-to-setup-sftp-server-on-ubuntu-20-04-focal-fossa-linux#:~:text=How%20to%20setup%20SFTP%20server%20on%20Ubuntu%2020.04,to%20SFTP%20using%20GUI.%20...%205%20Conclusion.%20
+#### https://jaedsada.me/blogs/ubuntu/install-sftp
+
+#SFTP requires SSH, so if SSH server is not already installed on your system, install it with the following command
+sudo apt-get install ssh
+#set config of sshd server
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.back.by.$user
+
+#sudo vi /etc/ssh/sshd_config
+
+#create the sharefolder
+#mkdir -p FolderNameSharedWithPath
+
+#--------------------------------------------------
+####    https://jaedsada.me/blogs/ubuntu/install-sftp
+####find those word and mask them
+#####    #subsystem       sftp    /usr/lib/openssh/sftp-server
+#add the following part for one share folder after sftp /usr/lib/openssh/sftp-server.
+####Subsystem sftp internal-sftp
+####Match group ftpaccess
+####ChrootDirectory %h
+####X11Forwarding no
+####AllowTcpForwarding no
+####ForceCommand internal-sftp
+#--------------------------------------------------
+####The lines above will allow users in the sftp group to access their home directories via SFTP, but denies them normal SSH access, so they can never access a shell. After pasting those lines, save and close the configuration file.
+sudo ehco " Match group sftp "            >> /etc/ssh/sshd_config
+sudo ehco " ChrootDirectory /home "       >> /etc/ssh/sshd_config
+sudo ehco " X11Forwarding no "            >> /etc/ssh/sshd_config
+sudo ehco " AllowTcpForwarding no "       >> /etc/ssh/sshd_config
+sudo ehco " ForceCommand internal-sftp "  >> /etc/ssh/sshd_config
+#--------------------------------------------------
+####restart the ssh service, Restart the SSH service for these new changes to take effect
+sudo systemctl restart ssh
+
+
+####create sftp account
+####Create a new user group called sftp. All of our SFTP users will need to belong to this group.
+sudo addgroup sftp
+####Next, create a new user. We'll simply call ours sftpuser in this example. Also be sure to add this user to the sftp group
+sudo useradd -m sftpuser -g sftp
+## $sudo usermode sftpuser -g sftp
+####Set a password for the newly created sftpuser
+sudo passwd sftpuser
+####Lastly, let's grant full access to the user on their own home directory, but deny access to the directory for all other users on the system
+sudo chmod 700 /home/sftpuser/
+
+####login with sftpuser account and try
+sftp sftpuser@127.0.0.1
+
+#work now?

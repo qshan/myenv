@@ -309,3 +309,42 @@ chgrp R UserName FolderName
 #####good download linker start#####
 # http://archive.ubuntu.com/ubuntu/pool/universe/s/scons
 #####good download linker end#####
+
+#==============================download-file-methods start==============================
+#--------------------------------------------------
+####wget
+# $wget -c TheLinkerOfRemoteFileName
+#--------------------------------------------------
+####download and upload file with curl
+####download file
+#### --netrc -n :Makes curl scan the .netrc file in the user's home directory for the login name and password
+# $curl --netrc --remote-name ftp://ftp.example.com/file.bin
+# $curl --netrc -O ftp://ftp.example.com/file.bin
+####upload the file
+# $curl --netrc --upload-file file.bin ftp://ftp.example.com/
+# $curl --netrc -T file.bin ftp://ftp.example.com/
+####upload file with UserName and Password
+# $curl --user UserName:Password --upload-file file.bin ftp://ftp.example.com/
+# $curl --user UserName:Password -T file.bin ftp://ftp.example.com/
+#--------------------------------------------------
+####ftp
+# $ftp -in -u ftp:UserName:Password@servername/path/to/ localfile
+#--------------------------------------------------
+####sftp
+# $sftp
+#--------------------------------------------------
+# $scp
+# $scp -r FolderNameOnLocalWithFullPath UserName@ServerName.com:FullPathNameOfRemoteServerName
+
+#==============================download-file-methods ent==============================
+#==============================the-user-groups-management start==============================
+####create a new user NewUserName
+## $sudo adduser NewUserName -g root
+####create a new user NewUserName and asign it as one of root group
+## $sudo adduser NewUserName -g root
+#--------------------------------------------------
+####a sign a group GroupNameAssigned to OneUserName
+## $sudo chmod OneUserName -g GroupNameAssigned
+#--------------------------------------------------
+
+#==============================the-user-groups-management ent==============================

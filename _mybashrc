@@ -54,7 +54,10 @@ alias chmod-R='chmod -R a-r'
 alias chmodER='chmod -R a=r'
 alias RenameReplaceSpace="\rename 's/\s+/_/g' "
 alias RenameReplaceSpace1="\rename 's/_-_/-/g' "
-alias RenameRemoveSChar="\rename 's/\s*[(|)|\[|\]|{|}|&|,]+\s*/-/g' "
+alias RenameRePlaceSpace2="\rename 's/\s*[(|)|\[|\]|{|}|&|,|-]*\s+/-/g' "
+alias RenameRemoveSChar="\rename 's/\s*[(|)|\[|\]|{|}|&|,|-]+\s*/-/g' "
+alias RenameRemoveSChar2="\rename 's/[(|)|\[|\]|{|}|&|,]+//g' "
+#alias RenameFiles='functionRenameFiles(){ unset -f functionRenameFiles; RenameRemoveSChar "$@" ; RenameReplaceSpace "$@" ;}; functionRenameFiles '
 alias h='history 1000'
 alias v='vim'
 
