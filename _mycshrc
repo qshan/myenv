@@ -12,7 +12,7 @@ endif
 set autolist
 set autoexpand
 
-set history=100000
+set history = 100000
 
 setenv timefshan "`date +%Y-%m-%d-%H%M`"
 
@@ -102,6 +102,17 @@ alias gitresethead2 'git reset HEAD~2'
 alias gitresethead3 'git reset HEAD~3'
 alias gitdiffhead   'git diff HEAD'
 alias gitdiffcached 'git diff --cached'
+
+####set complete with tab in shell command
+####get the detail with 'man tcsh'
+set autolist = ambiguous
+set complete = enhance
+####set complete = Enhance
+set autoexpand
+
+
+####set correct = cmd
+set correct = all
 
 ###############alias for tags generation
 #
