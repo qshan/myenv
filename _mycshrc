@@ -1,7 +1,7 @@
 #!/bin/csh
 #!/bin/tcsh
 
-echo "Calling _mybashrc file setting"
+echo "Calling _mycshrc file setting"
 
 #####
 if ( -f ~/.cshrc.local ) then
@@ -53,9 +53,9 @@ alias chmod-R             'chmod -R a-r'
 alias chmodER             'chmod -R a=r'
 alias RenameReplaceSpace  "\rename 's/\s+/_/g' "
 alias RenameReplaceSpace1 "\rename 's/_-_/-/g' "
-alias RenameRePlaceSpace2 "\rename 's/\s*[(|)|\[|\]|{|}|&|,|!|-]*\s+/-/g' "
-alias RenameRemoveSChar   "\rename 's/\s*[(|)|\[|\]|{|}|&|,|!|-]+\s*/-/g' "
-alias RenameRemoveSChar2  "\rename    's/[(|)|\[|\]|{|}|&|,|!]+//g' "
+alias RenameRePlaceSpace2 "\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/-/g' "
+alias RenameRemoveSChar   "\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
+alias RenameRemoveSChar2  "\rename 's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
 alias RenameCleanDotInFileName     "\rename    's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFiles         "RenameRemoveSChar \!* ; RenameReplaceSpace \!* "
 #alias RenameFilesInCurrentFolder   "RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
@@ -160,7 +160,8 @@ alias set_default_path "set prompt='%U%m%u:%B%~%b%#'"
 #worked#alias set_default_path1 "set prompt='%{\e[1;33m%}%U%m%u:%B%~%b%#'"
 alias set_default_path_with_yellow "set prompt='${TcshYellow}%U%m%u:%B%~%b%#${TcshColorEnd}'"
 #####set default with color by default
-set_default_lubuntu_path_with_yellow
+set_default_path_with_yellow
+#set_full_path1
 
 ##%U%m%u:%B%~%b%#
 #set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands
