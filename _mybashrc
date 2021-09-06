@@ -154,7 +154,8 @@ export BashBrown="\e[0;33m"
 export BashYellow="\e[1;33m"
 export BashLightGray="\e[0;37m"
 export BashWhite="\e[1;37m"
-export BashColorEnd="\e[0m"
+#export BashColorEnd="\e[0m"
+export BashColorEnd="\e[0;m"
 #worked#export BashColorEnd="\033[0m"
 
 #set format of shell header string for bash
@@ -162,8 +163,11 @@ export BashColorEnd="\e[0m"
 #worked#alias set_full_path="export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$\[\e[m\]'"
 #NeedRemove+\e[-m#alias set_full_path="export PS1='\[\033[${BashLightGreen}m\]\u\[\033[00m\]:\[\033[${BashLightBlue}m\]\w\[\033[00m\]$\[\e[m\]'"
 #alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w\[${BashColorEnd}\]$\[${BashColorEnd}\]'"
-alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w\[${BashColorEnd}\]$'"
-alias set_full_path1="export PS1='\[${BashYellow}\]\u:\w\[${BashColorEnd}\]$'"
+#alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w\[${BashColorEnd}\]$'"
+#alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w[\#]\[${BashColorEnd}\]$'"
+alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w\[${BashColorEnd}\][\#]$'"
+#alias set_full_path1="export PS1='\[${BashYellow}\]\u:\w\[${BashColorEnd}\]$'"
+alias set_full_path1="export PS1='\[${BashYellow}\]\u:\w[\#]\[${BashColorEnd}\]$'"
 #
 #alias set_short_path="export PS1='[\u@\h_\w\$ '"
 #alias set_short_path="export PS1='\[\033[01;32m\]\u@\h$ '"
@@ -177,10 +181,14 @@ alias set_short_path1='export PS1="${BashYellow}\u${BashColorEnd}:${BashLightBlu
 #
 alias             set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
 #alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w${BashColorEnd}\$'"
-alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\u@\h: \w\a\]${BashColorEnd}\$'"
+#alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\u@\h: \w\a\]${BashColorEnd}\$'"
+#alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\u@\H: \w\a\][\#]${BashColorEnd}\$'"
+#alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\u@\H: \w\a\]${BashColorEnd}\$'"
+alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\]\u@\H:\w\[${BashColorEnd}\][\#]$'"
 #####set default with color by default
-set_default_lubuntu_path_with_yellow
-#set_full_path1
+#set_default_lubuntu_path_with_yellow
+#export PS1=``\s-\v\$ ''
+set_full_path
 
 #alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
 
