@@ -156,9 +156,13 @@ setenv TcshColorEnd        "%{\e[0m%}"
 #alias set_full_path "set prompt='%U%M%u:%B%/%b%#'"
 #alias set_full_path "set prompt='%U%m%u:%B%/%b[%h]%#'"
 #alias set_full_path1 "set prompt='${TcshYellow}%U%m%u:%B%/%b[%h]%#${TcshColorEnd}'"
-alias set_full_path "set prompt='${TcshYellow}%U%m%u:%B%/%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
+#alias set_full_path "set prompt='${TcshGreen}%B%n%b${TcshColorEnd}@${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%/%b${TcshColorEnd}${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}${TcshLightGray}%S'"
+alias set_full_path "set prompt='${TcshGreen}%B%n%b${TcshColorEnd}@${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%/%b${TcshColorEnd}${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}'"
+#alias set_full_path1 "set prompt='${TcshYellow}%U%m%u:%B%/%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
+alias set_full_path1 "set prompt='${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%~%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
 
-alias set_short_path "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:${TcshGreen}[%h]%#${TcshColorEnd}'"
+alias set_short_path "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}'"
+#alias set_short_path "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:${TcshGreen}[%h]%#${TcshColorEnd}'"
 #alias set_short_path "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:${TcshGreen}%h%#${TcshColorEnd}'"
 #alias set_short_path "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:%h%#'"
 #alias set_short_path "set prompt='%B%m%b:%h%#'"
@@ -166,17 +170,21 @@ alias set_short_path "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:${TcshGreen
 #alias set_short_path "set prompt='%U%m%u:%B%c2%b%#'"
 #alias set_short_path "set prompt='%U%m%u:%B%c%b:%h%#'"
 #alias set_short_path1 "set prompt='%B%m%b:%h%#'"
-alias set_short_path1 "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshGreen}[%h]%#${TcshColorEnd}'"
+#alias set_short_path1 "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshGreen}[%h]%#${TcshColorEnd}'"
+alias set_short_path1 "set prompt='${TcshYellow}%B%m%b${TcshColorEnd}:${TcshGreen}%B[%h]%#%b${TcshColorEnd}'"
 
 #alias set_default_path "set prompt='%{\033[0;32m%}%U%m%u:%B%~%b%#'"
 alias set_default_path "set prompt='%U%m%u:%B%~%b[%h]%#'"
 #worked#alias set_default_path1 "set prompt='%{\e[1;33m%}%U%m%u:%B%~%b%#'"
 #alias set_default_path_with_yellow "set prompt='${TcshYellow}%U%m%u:%B%~%b[%h]%#${TcshColorEnd}'"
 #alias set_default_path_with_yellow "set prompt='${TcshYellow}%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
-alias set_default_path_with_yellow "set prompt='${TcshYellow}%N@%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
+#alias set_default_path_with_yellow "set prompt='${TcshYellow}%N@%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
+#alias set_default_path_with_yellow "set prompt='${TcshYellow}%N@%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
+alias set_default_path_with_yellow "set prompt='${TcshYellow}%N@%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}%S[%h]%#%s${TcshColorEnd}'"
 #####set default with color by default
-set_default_path_with_yellow
-#set_full_path1
+#set_default_path_with_yellow
+#set_full_path
+set_full_path1
 
 ##%U%m%u:%B%~%b%#
 #set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands

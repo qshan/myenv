@@ -2,6 +2,12 @@
 ;; -*- mode: Lisp;-*-
 ;; -*- mode: Lisp; eval: (auto-fill-mode 1); -*-
 
+;;https://zhuanlan.zhihu.com/p/64131744
+;;https://huadeyu.tech/tools/emacs-setup-notes.html
+;;https://www.cnblogs.com/youge/p/4518739.html
+;;https://blog.csdn.net/redguardtoo/article/details/7222501
+;;https://orgmode.org/
+
 '(ansi-color-faces-vector
   [default default default italic underline success warning error])
 (custom-set-faces
