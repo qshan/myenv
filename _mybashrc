@@ -13,7 +13,7 @@
 #read here https://tecadmin.net/tutorial/bash-scripting/bash-functions/
 #--------------------------------------------------
 
-echo "Calling _mybashrc file setting"
+echo "Calling ###[_mybashrc]### file setting"
 
 history 10000
 
@@ -61,6 +61,7 @@ alias RenameCleanDotInFileName="\rename    's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFiles='functionRenameFiles(){ unset -f functionRenameFiles; RenameRemoveSChar "$@" ; RenameReplaceSpace "$@" ;}; functionRenameFiles '
 #alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
 alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
+alias RenameFilesInFolder='functionRenameFilesInFolder(){ unset -f functionRenameFilesInFolder; RenameRemoveSChar "$@"/*.* ; RenameReplaceSpace "$@"/*.* ;  RenameCleanDotInFileName "$@"/*.* ;}; functionRenameFilesInFolder '
 alias h='history 1000'
 alias v='vim'
 
