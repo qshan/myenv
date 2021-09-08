@@ -161,6 +161,7 @@ set TcshColorEnd       = "%{\e[0m%}"
 alias set_full_path "set prompt='${TcshGreen}%B%n%b${TcshColorEnd}@${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%/%b${TcshColorEnd}${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}'"
 #alias set_full_path1 "set prompt='${TcshYellow}%U%m%u:%B%/%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
 alias set_full_path1 "set prompt='${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%~%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
+alias set_full_path2 "set prompt='${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%c3%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
 
 alias set_short_path "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
 #alias set_short_path "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}'"
@@ -183,6 +184,7 @@ alias set_default_path "set prompt='%U%m%u:%B%~%b[%h]%#'"
 #alias set_default_path_with_yellow "set prompt='${TcshYellow}%N@%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
 #alias set_default_path_with_yellow "set prompt='${TcshYellow}%N@%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
 alias set_default_path_with_yellow "set prompt='${TcshYellow}%N@%U%m%u:%B%~%b${TcshColorEnd}${TcshGreen}%S[%h]%#%s${TcshColorEnd}'"
+alias set_default_path_with_yellow1 "set prompt='${TcshYellow}%N@%U%m%u:%B%c3%b${TcshColorEnd}${TcshGreen}%S[%h]%#%s${TcshColorEnd}'"
 #####set default with color by default
 #set_default_path_with_yellow
 #set_full_path

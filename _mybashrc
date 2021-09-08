@@ -169,11 +169,11 @@ export BashColorEnd="\[\e[0;m\]"
 #alias set_full_path="export PS1='\[${BashLightGreen}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\w\[${BashColorEnd}\][\#]$'"
 ####update the color variable formate
 #alias set_full_path="export PS1='${BashLightGreen}\u${BashColorEnd}:${BashLightBlue}\w${BashColorEnd}[\#]$'"
-alias set_full_path="export PS1='${BashLightGreen}\u${BashColorEnd}:${BashLightBlue}\w${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
+alias  set_full_path="export PS1='${BashLightGreen}\u${BashColorEnd}:${BashLightBlue}\w${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
 #alias set_full_path1="export PS1='\[${BashYellow}\]\u:\w\[${BashColorEnd}\]$'"
 #alias set_full_path1="export PS1='\[${BashYellow}\]\u:\w[\#]\[${BashColorEnd}\]$'"
 ####update the color variable formate
-alias set_full_path1="export PS1='${BashYellow}\u:\w[\#]${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
+alias set_full_path1="export PS1='${BashYellow}\u:\w${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
 #
 #alias set_short_path="export PS1='[\u@\h_\w\$ '"
 #alias set_short_path="export PS1='\[\033[01;32m\]\u@\h$ '"
@@ -183,7 +183,7 @@ alias set_full_path1="export PS1='${BashYellow}\u:\w[\#]${BashColorEnd}${BashLig
 #alias set_short_path="export PS1='\[${BashYellow}\]\u\[${BashColorEnd}\]:\[${BashLightBlue}\]\W\[${BashLightGreen}\]$\[${BashColorEnd}\]'"
 #alias set_short_path1='export PS1="${BashYellow}\u${BashColorEnd}:${BashLightBlue}\W${BashLightGreen}$\[${BashColorEnd}\]"'
 ####update the color variable formate
-alias set_short_path="export PS1='${BashYellow}\u${BashColorEnd}:${BashLightBlue}\W${BashLightGreen}[\#]${BashColorEnd}$'"
+alias  set_short_path="export PS1='${BashYellow}\u${BashColorEnd}:${BashLightBlue}\W${BashLightGreen}[\#]${BashColorEnd}$'"
 alias set_short_path1='export PS1="${BashYellow}\u${BashColorEnd}:${BashLightBlue}\W${BashLightGreen}[\#]${BashColorEnd}$"'
 #try##alias set_short_path='export PS1="\[---\e[---${BashYellow}m \]---\u---\[---\e[---0m---\]:\[---\e[---${BashLightBlue}m---\]---\W\[---\e[---${BashLightGreen}m---\]---$---\[---\e[m---\]"'
 #new#alias set_short_path='export PS1="${BashYellow}---\u---${BashColorEnd}---:---${BashLightBlue}---\W---${BashLightGreen}$---\[---${BashColorEnd}---\]"'
@@ -195,9 +195,10 @@ alias set_short_path1='export PS1="${BashYellow}\u${BashColorEnd}:${BashLightBlu
 #alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\u@\H: \w\a\]${BashColorEnd}\$'"
 #alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\]\u@\H:\w\[${BashColorEnd}\][\#]$'"
 ####update the color variable formate
-alias             set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
+alias              set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
 #alias set_default_lubuntu_path_with_yellow="export PS1='${BashYellow}\u@\H:\w${BashColorEnd}[\#]$'"
-alias set_default_lubuntu_path_with_yellow="export PS1='${BashYellow}\u@\H:\w${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
+alias  set_default_lubuntu_path_with_yellow="export PS1='${BashYellow}\u@\H:\w${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
+alias set_default_lubuntu_path_with_yellow1="export PS1='${BashYellow}\u@\H:\W${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
 #####set default with color by default
 #set_default_lubuntu_path_with_yellow
 #export PS1=``\s-\v\$ ''
