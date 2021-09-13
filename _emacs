@@ -337,6 +337,8 @@
                                 ("\\.c\\'"     . c-mode)
                                 ("\\.cc\\'"    . c-mode)
                                 ("\\.cpp\\'"   . c-mode)
+                                ("\\.h\\'"     . c-mode)
+                                ("\\.hh\\'"    . c-mode)
                                 ("\\.py\\'"    . python-mode)
                                 ("\\.sm\\'"    . ruby-mode)
                                 ) auto-mode-alist))
@@ -1409,6 +1411,7 @@
 ;;;;Brings up Ediff session registry. This feature enables you to quickly find and restart active Ediff sessions.
 ;;
 ;;
+;;ediff
 ;;3.1 Quick Help Commands
 ;; ?
 ;;;;Toggles the Ediff Quick Help window ON and OFF.

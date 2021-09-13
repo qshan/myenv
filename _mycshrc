@@ -9,8 +9,8 @@ if ( -f ~/.cshrc.local ) then
 endif
 
 
-set autolist
-set autoexpand
+#set autolist
+#set autoexpand
 
 set history = 100000
 
@@ -107,13 +107,19 @@ alias gitdiffcached 'git diff --cached'
 ####set complete with tab in shell command
 ####get the detail with 'man tcsh'
 set autolist = ambiguous
+#set complete = igncase
 set complete = enhance
 ####set complete = Enhance
 set autoexpand
-
-
 ####set correct = cmd
 set correct = all
+set autocorrect
+
+if ( -f ~/.git-completion.tcsh ) then
+  source ~/.git-completion.tcsh
+endif
+
+
 
 ###############alias for tags generation
 #
