@@ -276,9 +276,9 @@ git config --list
 # $git diff Branch1 Branch2 --stat
 
 # diff file with specific tools
-# $git difftool -tool=gvimdiff FileNameWithPath
-# $git difftool -tool=vimdiff FileNameWithPath
-# $git difftool -tool=ediff FileNameWithPath
+# $git difftool --tool=gvimdiff FileNameWithPath
+# $git difftool --tool=vimdiff FileNameWithPath
+# $git difftool --tool=ediff FileNameWithPath
 
 # $git difftool --extcmd vimdiff HEAD FileNameWithPath
 # $git difftool --extcmd vimdiff FileNameWithPath

@@ -17,6 +17,12 @@
  ;; If there is more than one, they won't work right.
  )
 
+;;encoding and envs
+(prefer-coding-system 'utf-8)
+(setenv "LANG" "en_US.UTF-8")
+(setenv "LC_ALL" "en_US.UTF-8")
+(setenv "LC_CTYPE" "en_US.UTF-8")
+
 ;;(set-background-color "grey20")        ;; 使用grey20背景
 (set-background-color "black")       ;; 使用黑色背景
 (set-foreground-color "white")         ;; 使用白色前景
@@ -40,6 +46,13 @@
 ;;(tool-bar-mode t)
 ;;(scroll-bar-mode t)
 ;;(scroll-bar-mode -1)
+(display-time-mode 1)
+(column-number-mode 1)
+(show-paren-mode 1)
+(display-battery-mode 1)
+(toggle-scroll-bar t)
+(global-auto-revert-mode t)
+;;(global-hl-line-mode t)
 ;;
 ;;;;ToCheck:
 ;;;;good reference web for eamcs init.el setting
@@ -74,7 +87,7 @@
 ;;;;
 ;;(global-subword-mode 1)
 
-;;enable line highlight
+;;TODO enable line highlight
 (global-hl-line-mode t)
 ;;check the color supported
 ;;M-X list-colors-display
@@ -87,6 +100,9 @@
 ;;(set-face-background 'hl-line "#666666")
 ;;(set-face-background 'hl-line "gray20")
 (set-face-background 'hl-line "#333333")
+;;
+;;to keep syntax highlighting in the current line
+(set-face-foreground 'highlight nil)
 ;;(set-face-underline 'hl-line t)
 ;;(set-face-underline-p 'hl-line t)
 ;;(set-face-underline-p 'highlight t)
@@ -98,7 +114,7 @@
 ;;(global-hl-line-mode +1)
 ;;(hl-line-mode t)
 ;;
-;;hl-file-column
+;;TODO hl-file-column
 ;;cd ~/.emacs.d/site-lisp
 ;;git clone --recursive https://github.com/laishulu/hl-fill-column.git
 (add-to-list 'load-path "~/.emacs.d/site-lisp/hl-fill-column")
@@ -110,6 +126,18 @@
 ;;(require 'hl-fill-column)
 ;;(hl-fill-column t)
 ;;(global-hl-fill-column-mode t)
+;;
+;;set the color of cursor
+;;(set-cursor-color "red")
+;;(set-cursor-color "purple")
+;;(set-cursor-color "yellow")
+;;(set-cursor-color "green")
+;;(set-cursor-color "#00ff00") ;;green color
+;;
+;;highlight the location at cursor
+;;(setq highlight-symbol-at-point t)
+
+;;
 
 ;;M-x package-install RET
 ;;;;select file-column-indicator
@@ -156,13 +184,24 @@
     ("TEMP"    . "#d0bf8f")
     ("FIXME"   . "#cc9393")
     ("FixMe"   . "#cc9393")
-    ("XXX+"    . "#cc9393")))
+    ("XXX+"    . "#cc9393"))
+)
+;;
 ;;
 (global-hl-todo-mode 1)
 ;;(hl-todo-insert ("ToDo" . "#cc9393"))
 ;;;;    ("TODO" . "#cc9393")
 ;;(hl-todo-mode 1)
 ;;;;Check here:   todo
+;;
+;;https://erickgnavar.github.io/emacs-config/#org96c7b43
+(defun my/highlight-todo-like-words ()
+  (font-lock-add-keywords
+   nil `(("\\<\\(fixme\\|toDo\\)"
+          1 font-lock-warning-face t))))
+
+(add-hook 'prog-mode-hook 'my/highlight-todo-like-words)
+;;
 ;;--------------------------------------------------
 ;;;;ToCheck:
 ;;M-x package-install RET
@@ -342,6 +381,9 @@
                                 ("\\.py\\'"    . python-mode)
                                 ("\\.sm\\'"    . ruby-mode)
                                 ) auto-mode-alist))
+
+;;rainbow display mode
+(rainbow-delimiters-mode t)
 
 ;;;###autoload
 ;;(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
