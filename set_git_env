@@ -18,6 +18,8 @@ git config --global difftool.vimdiff.path '/use/bin'
 git config --global merge.tool vimdiff
 git config --global mergetool.vimdiff.path '/use/bin'
 
+git config --global core.excludesfile `pwd`/_git_info_exclude
+
 ##check git config info
 git config --list
 

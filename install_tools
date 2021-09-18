@@ -1,5 +1,5 @@
 #!/usr/bash
-sudo add-apt-repository ppa:jonathonf/vim
+#sudo add-apt-repository ppa:jonathonf/vim
 #sudo add-apt-repository ppa:jonathonf/python-3.6
 #sudo add-apt-repository ppa:jonathonf/python-3.8
 sudo add-apt-repository ppa:deadsnakes/ppa
@@ -9,7 +9,7 @@ sudo apt install build-essential manpages-dev software-properties-common
 
 ####other ppa source from this web
 #### https://launchpad.net/~jonathonf
-##sudo add-apt-repository ppa:jonathonf/gcc
+sudo add-apt-repository ppa:jonathonf/gcc
 ##sudo add-apt-repository ppa:jonathonf/binutils
 ##sudo add-apt-repository ppa:jonathonf/gnat
 ##sudo add-apt-repository ppa:jonathonf/nvptx-tools
@@ -60,8 +60,12 @@ sudo apt update
 #sudo apt install vim gcc python python-dev clang clang-4.0 python-dev python3-dev
 sudo apt install git ssh sshd vim
 #
+#for vim 
+#sudo apt install vim gcc python-dev clang python3-dev
+#sudo apt install vim vim-gnome gcc python-dev clang python3-dev
+#
 sudo apt install gcc g++ clang cmake scons build-essential
-sudo apt install python-dev python3-dev
+#sudo apt install python-dev python3-dev
 #
 sudo apt-get install unetbootin
 ####usage of unetbootin

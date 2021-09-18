@@ -1,21 +1,21 @@
 #!/usr/bash
 sudo add-apt-repository ppa:jonathonf/vim
 #sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo add-apt-repository ppa:deadsnakes/ppa
+#sudo add-apt-repository ppa:deadsnakes/ppa
 #sudo add-apt-repository ppa:jonathonf/python-2.7
-sudo add-apt-repository ppa:jonathonf/gcc
+#sudo add-apt-repository ppa:jonathonf/gcc
 
 
 sudo apt update
 #sudo apt install vim gcc python python-dev clang clang-4.0 python-dev python3-dev
-sudo apt install vim gcc python-dev clang python3-dev
+sudo apt install ssh git vim python3 clang clang-tools cmake
+##sudo apt install vim  vim-gnome
 
-sudo apt install git ssh
+#sudo apt install git ssh
 #in case to install vim is not succeded
 sudo apt-get -f install
 #ToCheck#
 #sudo apt install vim git
-sudo apt install vim vim-gnome
 
 #sudo apt-get install build-essential cmake llvm-4.0 libclang-4.0-dev libboost-all-dev
 sudo apt install build-essential cmake python3-dev
@@ -51,6 +51,7 @@ cd ~/.vim/bundle/
 
 git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
+cd -
 
 vim +PluginInstall +qall
 #gvim
@@ -60,7 +61,10 @@ vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
 #./install.py --clang-completer
 
+git submodule update --init --recursive
+
 python3 ./install.py --clang-completer
+cd -
 
 #"or
 #"./install.py --all

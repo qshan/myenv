@@ -8,8 +8,9 @@ sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt update
 
 #install emancs v26 here, you could install new version if you like
-sudo apt install emacs26 emacs26-common
 #sudo apt install emacs
+sudo apt install emacs emacs-bin-common emacs-common emacs-el emacs-intl-fonts
+#sudo apt install emacs26 emacs26-common
 
 #bash format
 #if [ -f ~/_mybashrc ]; then
@@ -38,14 +39,16 @@ if [ -d ./_emacs.d ]; then
 else
   echo  "There is no _emacs.d folder in current folder" ;
 fi
+
 #to get and use redguardtoo stable setup
 #git clone https://github.com/redguardtoo/emacs.d.git _emacs.d;
 git clone --recursive https://github.com/redguardtoo/emacs.d.git _emacs.d;
 cd _emacs.d;
-git reset --hard stable
-#git pull https://redguardtoo@github.com/redguardtoo/emacs.d.git stable
+#git reset --hard stable
+git pull https://redguardtoo@github.com/redguardtoo/emacs.d.git stable
+cd -
 
-cd ../
+
 #link the _emacs.d to your home path
 if [ -d ~/.emacs.d ]; then
   echo  "There is .emacs.d folder, will back up it" ;
