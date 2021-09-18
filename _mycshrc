@@ -64,7 +64,7 @@ alias RenameFilesInFolder "RenameRemoveSChar \!*/*.* ; RenameReplaceSpace \!*/*.
 alias h                   'history'
 alias v                   'vim'
 
-alias Emacs '/usr/bin/emacs26'
+alias Emacs '/usr/bin/emacs'
 #alias EmacsM 'Emacs -mm'
 #alias EmacsM 'Emacs -mm \!* &'
 alias EmacsM 'Emacs -mm --nodesktop \!* &'
@@ -95,14 +95,15 @@ alias cargorun      'cargo run '
 
 #git alias
 alias gitcommit-am  'git commit -am '
-alias gitreset-soft 'git reset --soft'
-alias gitreset-hard 'git reset --hard'
-alias gitresethead0 'git reset HEAD'
-alias gitresethead1 'git reset HEAD^'
-alias gitresethead2 'git reset HEAD~2'
-alias gitresethead3 'git reset HEAD~3'
-alias gitdiffhead   'git diff HEAD'
-alias gitdiffcached 'git diff --cached'
+alias gitclone      'git clone --recursive '
+alias gitreset-soft 'git reset --soft '
+alias gitreset-hard 'git reset --hard '
+alias gitresethead0 'git reset HEAD '
+alias gitresethead1 'git reset HEAD^ '
+alias gitresethead2 'git reset HEAD~2 '
+alias gitresethead3 'git reset HEAD~3 '
+alias gitdiffhead   'git diff HEAD '
+alias gitdiffcached 'git diff --cached '
 
 ####set complete with tab in shell command
 ####get the detail with 'man tcsh'

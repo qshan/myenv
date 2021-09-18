@@ -60,14 +60,14 @@ sudo apt update
 #sudo apt install vim gcc python python-dev clang clang-4.0 python-dev python3-dev
 sudo apt install git ssh sshd vim
 #
-#for vim 
+#for vim
 #sudo apt install vim gcc python-dev clang python3-dev
 #sudo apt install vim vim-gnome gcc python-dev clang python3-dev
 #
 sudo apt install gcc g++ clang cmake scons build-essential
 #sudo apt install python-dev python3-dev
 #
-sudo apt-get install unetbootin
+sudo apt-get install unetbootin meld
 ####usage of unetbootin
 # $sudo unetbootin installtype=USB targetdrive=/dev/sdb1
 #
