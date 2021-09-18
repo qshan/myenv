@@ -37,6 +37,15 @@
 #  echo  " source `pwd`/_mybashrc" >>  ~/.bashrc
 #fi
 
+if [ -f ~/.basrc ]; then
+  echo  "~/.bashrc is there"
+  ls ~/.bashrc
+else
+  touch ~/.bashrc
+  echo  "touch ~/.bashrc"
+  echo  "#!/usr/bash " >>  ~/.bashrc
+fi
+
 echo "if [ -f `pwd`/_mybashrc ]; then"  >> ~/.bashrc
 echo " source `pwd`/_mybashrc" >>  ~/.bashrc
 echo "fi"  >> ~/.bashrc

@@ -41,8 +41,23 @@
 #  default:
 #    COMMAND
 #endsw
+
 #-------------------------tcsh-------------------------
 
-echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.cshrc
-echo " source `pwd`/_mycshrc" >>!  ~/.cshrc
-echo "endif"  >> ~/.cshrc
+#tcsh format
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#endif
+
+if [ -f ~/.tcshrc ]; then
+  echo  "~/.tcshrc is there"
+  ls ~/.tcshrc
+else
+  touch ~/.tcshrc
+  echo  "touch ~/.tcshrc"
+  echo  "#!/usr/tcsh " >>  ~/.tcshrc
+fi
+
+echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.tcshrc
+echo " source `pwd`/_mycshrc" >>!  ~/.tcshrc
+echo "endif"  >> ~/.tcshrc
