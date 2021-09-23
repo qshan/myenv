@@ -627,28 +627,30 @@ syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 "define update the tags command in vim env, this require ctags is avilable in env
 "":! command_you_want_to_run    "run the shell command in VIM command
 command! UpdateTags !ctags -R .
-"command! MyCdFilePath               cd %:p:h
-command! MyCdCurrentFilePath        cd %:p:h
-command! MyDotInIskeywordAdd        set iskeyword+=.
-command! MyDotInIskeywordRemove     set iskeyword-=.
-command! MySaveWithSudo             :w !sudo tee %
-command! MySearchCompileError       :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
-command! MyRemoveWhiteSpaceOnEnd    :%s/\s*$//g
-command! MyRemoveEmptyLine          :%s/^\s*$\n//g
-command! MyReplaceSpaceWithNewLine  :%s/\s\+/\r/g
-command! MyReplaceSpaceWithNewLine1 :%s/\s\+//g
-command! MyReplaceSpaceWithTab      :%s/\s\+/\t/g
-command! MyWhiteSpace2UnderLine     :s/\s\+/_/g
-command! MyExchangePattern12        :s/\(Pattern1\)\(Pattern2\)/\2\1/g
-command! MySpellCheckEn             set spell spelllang=en_us
-command! MyCheckCurrentActiveGroups :so $VIMRUNTIME/syntax/hitest.vim
+"command! MyCdFilePath                           cd %:p:h
+command! MyCdCurrentFilePath                    cd %:p:h
+command! MyDotInIskeywordAdd                    set iskeyword+=.
+command! MyDotInIskeywordRemove                 set iskeyword-=.
+command! MySaveWithSudo                         :w !sudo tee %
+command! MySearchCompileError                   :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
+command! MyReadCurrentFileName                  :r! echo %
+command! MyReadCurrentFileNameWithFullPath      :r! echo %:p
+command! MyRemoveWhiteSpaceOnEnd                :%s/\s*$//g
+command! MyRemoveEmptyLine                      :%s/^\s*$\n//g
+command! MyReplaceSpaceWithNewLine              :%s/\s\+/\r/g
+command! MyReplaceSpaceWithNewLine1             :%s/\s\+//g
+command! MyReplaceSpaceWithTab                  :%s/\s\+/\t/g
+command! MyWhiteSpace2UnderLine                 :s/\s\+/_/g
+command! MyExchangePattern12                    :s/\(Pattern1\)\(Pattern2\)/\2\1/g
+command! MySpellCheckEn                         set spell spelllang=en_us
+command! MyCheckCurrentActiveGroups             :so $VIMRUNTIME/syntax/hitest.vim
+command! MyAddMatchWords                        let b:match_words= '<:>,' .
+command! MyShowHex                              :%!xxd
+command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
+"command! MyCursorHighlight                      :hi CursorLine cterm=NONE ctermbg=grey CursorColumn ctermbg=grey
+command! MyCursorColumn                         :hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
+command! MyCursorLine                           :hi CursorLine cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
 ":let b:match_words =  '<:>,' . '/<if/>:/<then/>:/<else/>:/<endif/>\|/<fi/>'
-command! MyAddMatchWords            let b:match_words= '<:>,' .
-command! MyShowHex                  :%!xxd
-command! MyDiffIgnoreWhiteSpace     :set diffopt+=iwhite,iblank
-"command! MyCursorHighlight          :hi CursorLine cterm=NONE ctermbg=grey CursorColumn ctermbg=grey
-command! MyCursorColumn             :hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
-command! MyCursorLine               :hi CursorLine cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
 " :set diffopt+=iblank
 " :set diffopt+=iwhite
 " :set diffopt+=icase

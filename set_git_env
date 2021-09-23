@@ -11,12 +11,12 @@ git config --global diff.tool.trustExitCode true
 #
 git config --global core.editor vim
 #git config --global diff.tool gvimdiff
-git config --global diff.tool vimdiff
-git config --global difftool.vimdiff.path '/use/bin'
+git config --global diff.tool vimdiff2
+git config --global difftool.vimdiff2.path '/usr/bin'
 #
 #git config --global merge.tool gvimdiff
-git config --global merge.tool vimdiff
-git config --global mergetool.vimdiff.path '/use/bin'
+git config --global merge.tool vimdiff2
+git config --global mergetool.vimdiff2.path '/usr/bin'
 
 git config --global core.excludesfile `pwd`/_git_info_exclude
 
