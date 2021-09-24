@@ -3,22 +3,31 @@
 git config --global user.name "Frank Shan"
 git config --global user.email frankqs0304@hotmail.com
 #
-git config --global alias.d difftool
 #
 #git config --global core.editor gvim
 git config --global diff.tool.prompt false
 git config --global diff.tool.trustExitCode true
 #
-git config --global core.editor vim
+git config --global core.editor 'vim'
 #git config --global diff.tool gvimdiff
-git config --global diff.tool vimdiff2
-git config --global difftool.vimdiff2.path '/usr/bin'
+
+#ToCheck#
+git config --global diff.tool 'vimdiff'
+#git config --global difftool.vimdiff.path '/usr/bin/vimdiff'
+#git config --global difftool.vimdiff.path `which vimdiff`
+
+#git config --global diff.tool meld
+#git config --global diff.tool kdiff3
+
 #
 #git config --global merge.tool gvimdiff
 git config --global merge.tool vimdiff2
-git config --global mergetool.vimdiff2.path '/usr/bin'
+#git config --global mergetool.vimdiff2.path '/usr/bin/vimdiff'
 
 git config --global core.excludesfile `pwd`/_git_info_exclude
+
+git config --global alias.d 'difftool'
+git config --global alias.m 'mergetool'
 
 ##check git config info
 git config --list
