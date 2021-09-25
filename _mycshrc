@@ -1,26 +1,45 @@
 #!/bin/csh
 #!/bin/tcsh
 
+#####
+#if ( -f ~/.cshrc.local ) then
+#  source ~/.cshrc.local
+#endif
+
 echo "Calling ###[_mycshrc]### file setting"
 
 
 ##ToCheck##
+## https://web.fe.up.pt/~jmcruz/etc/unix/sh-vs-csh.html
 ##------------------------------
 ##login shell startup fils call sequence
-#/etc/csh.cshrc
-#/etc/csh.login
-#~/.tcshrc
-#~/.cshrc
-#~/.login
+# /etc/csh.cshrc
+# /etc/csh.login
+# ~/.tcshrc
+# ~/.cshrc
+# ~/.login
 ##------------------------------
 ##logout clean fils call sequence
-#/etc/csh.logout
-#~/.logout
+# /etc/csh.logout
+# ~/.logout
 ##------------------------------
 ##no-login shell startup fils call sequence
-#/etc/csh.cshrc
-#~/.tcshrc
-#~/.cshrc
+# /etc/csh.cshrc
+# ~/.tcshrc
+# ~/.cshrc
+##------------------------------
+##tcsh Shell variables
+# set VarName=5
+# set VarName = 5
+##------------------------------
+##tcsh Environment variables (children inherit them)
+# setenv EnvVarName 5
+##------------------------------
+##tcsh PATH & path variables
+# export path=(PathName01 PathName02)
+##------------------------------
+##alias setting format
+# alias ls  "ls -l"
 ##------------------------------
 
 #####
@@ -31,7 +50,8 @@ endif
 #set autolist
 #set autoexpand
 
-set history = 100000
+#set the tcsh history size for personal setting
+set history = 10000
 
 setenv timefshan "`date +%Y-%m-%d-%H%M`"
 
@@ -87,7 +107,7 @@ alias RenameCleanDotInFileName     "\rename    's/[-|_]*\.+[-|_]*/./g' "
 alias RenameFilesInCurrentFolder    "RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
 alias RenameFilesInFolder "RenameRemoveSChar \!*/*.* ; RenameReplaceSpace \!*/*.* ; RenameCleanDotInFileName \!*/*.* ;"
 ##------------------------------
-alias h                   'history'
+alias h                   '\history 1000'
 alias v                   'vim'
 
 ##ToCheck# for your env default setting
@@ -162,7 +182,7 @@ alias ctags_R_SV          "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=
 alias ctags_Re            'ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf'
 alias ctags_Re_Python     "ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf"
 alias ctags_Re_SV         "ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
-alias ctags_L_C           'ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
+alias ctags_L_C           'ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L'
 alias ctags_L_Python      "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
 alias ctags_L_SV          "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
 
