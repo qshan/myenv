@@ -21,7 +21,7 @@ git config --global diff.tool 'vimdiff'
 
 #
 #git config --global merge.tool gvimdiff
-git config --global merge.tool vimdiff2
+git config --global merge.tool vimdiff
 #git config --global mergetool.vimdiff2.path '/usr/bin/vimdiff'
 
 git config --global core.excludesfile `pwd`/_git_info_exclude

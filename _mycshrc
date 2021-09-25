@@ -3,11 +3,30 @@
 
 echo "Calling ###[_mycshrc]### file setting"
 
+
+##ToCheck##
+##------------------------------
+##login shell startup fils call sequence
+#/etc/csh.cshrc
+#/etc/csh.login
+#~/.tcshrc
+#~/.cshrc
+#~/.login
+##------------------------------
+##logout clean fils call sequence
+#/etc/csh.logout
+#~/.logout
+##------------------------------
+##no-login shell startup fils call sequence
+#/etc/csh.cshrc
+#~/.tcshrc
+#~/.cshrc
+##------------------------------
+
 #####
 if ( -f ~/.cshrc.local ) then
   source ~/.cshrc.local
 endif
-
 
 #set autolist
 #set autoexpand
@@ -36,21 +55,27 @@ setxkbmap -option ctrl:nocaps
 #endif
 
 #alias setting here
-alias ls                  '\ls --color=auto'
-alias la                  'ls -alh'
-alias lt                  'ls -ctl'
-alias grep                '\grep --color=auto'
-alias greprni             '\grep --color=auto -rni'
-alias findL               '\find -L'
-alias findSwfFile         'find ./ -type f -iname "*.sw*"'
-alias findSwfFileRemove   'find ./ -type f -iname "*.sw*" | xargs \rm -rf'
-alias findDotOFile        'find ./ -type f -iname "*.o*"'
-alias findDotOFileRemove  'find ./ -type f -iname "*.o*" | xargs \rm -rf'
-alias lnsTf               'ln -sTf'
-alias lnsnf               'ln -snf'
-alias chmod+R             'chmod -R a+r'
-alias chmod-R             'chmod -R a-r'
-alias chmodER             'chmod -R a=r'
+##------------------------------
+alias ls                  '\ls --color=auto '
+alias la                  'ls -alh '
+alias lt                  'ls -ctl '
+##------------------------------
+alias grep                '\grep --color=auto '
+alias greprni             '\grep --color=auto -rni '
+##------------------------------
+alias findL               '\find -L '
+alias findSwfFile         'find ./ -type f -iname "*.sw*" '
+alias findSwfFileRemove   'find ./ -type f -iname "*.sw*" | xargs \rm -rf '
+alias findDotOFile        'find ./ -type f -iname "*.o*" '
+alias findDotOFileRemove  'find ./ -type f -iname "*.o*" | xargs \rm -rf '
+##------------------------------
+alias lnsTf               'ln -sTf '
+alias lnsnf               'ln -snf '
+##------------------------------
+alias chmod+R             'chmod -R a+r '
+alias chmod-R             'chmod -R a-r '
+alias chmodER             'chmod -R a=r '
+##------------------------------
 alias RenameReplaceSpace  "\rename 's/\s+/_/g' "
 alias RenameReplaceSpace1 "\rename 's/_-_/-/g' "
 alias RenameRePlaceSpace2 "\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/-/g' "
@@ -61,10 +86,12 @@ alias RenameCleanDotInFileName     "\rename    's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFilesInCurrentFolder   "RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
 alias RenameFilesInCurrentFolder    "RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
 alias RenameFilesInFolder "RenameRemoveSChar \!*/*.* ; RenameReplaceSpace \!*/*.* ; RenameCleanDotInFileName \!*/*.* ;"
+##------------------------------
 alias h                   'history'
 alias v                   'vim'
 
-alias Emacs '/usr/bin/emacs'
+##ToCheck# for your env default setting
+alias Emacs '/usr/bin/emacs26'
 #alias EmacsM 'Emacs -mm'
 #alias EmacsM 'Emacs -mm \!* &'
 alias EmacsM 'Emacs -mm --nodesktop \!* &'
@@ -83,27 +110,30 @@ alias EmacsM 'Emacs -mm --nodesktop \!* &'
 #NotSupportInCsh}
 #
 #for lubuntu
-alias openFileBroswer 'pcmanfm &'
+alias openFileBroswer     'pcmanfm &'
 #for ubuntu
 #alias openFileBroswer 'nautilus &'
 
-alias openPdf       'evince '
+alias openPdf             'evince '
 
-alias cargonew      'cargo new '
-alias cargobuild    'cargo build '
-alias cargorun      'cargo run '
+alias cargonew            'cargo new '
+alias cargobuild          'cargo build '
+alias cargorun            'cargo run '
 
 #git alias
-alias gitcommit-am  'git commit -am '
-alias gitclone      'git clone --recursive '
-alias gitreset-soft 'git reset --soft '
-alias gitreset-hard 'git reset --hard '
-alias gitresethead0 'git reset HEAD '
-alias gitresethead1 'git reset HEAD^ '
-alias gitresethead2 'git reset HEAD~2 '
-alias gitresethead3 'git reset HEAD~3 '
-alias gitdiffhead   'git diff HEAD '
-alias gitdiffcached 'git diff --cached '
+alias gitcommit_am        'git commit -am '
+alias gitclone            'git clone --recursive '
+alias gitdiffstat         'git diff --stat '
+alias gitdifftool         'git difftool --tool=vimdiff '
+alias gitstatus           'git status '
+alias gitreset_soft       'git reset --soft '
+alias gitreset_hard       'git reset --hard '
+alias gitreset_head0      'git reset HEAD '
+alias gitreset_head1      'git reset HEAD^ '
+alias gitreset_head2      'git reset HEAD~2 '
+alias gitreset_head3      'git reset HEAD~3 '
+alias gitdiffhead         'git diff HEAD '
+alias gitdiff_cached      'git diff --cached '
 
 ####set complete with tab in shell command
 ####get the detail with 'man tcsh'
@@ -125,37 +155,37 @@ endif
 ###############alias for tags generation
 #
 #alias ctags='the_ctags_in_your_env'
-alias ctags_R          'ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
-alias ctags_R_Python   "ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
-alias ctags_R_SV       "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
-alias ctags_Re         'ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf'
-alias ctags_Re_Python  "ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf"
-alias ctags_Re_SV      "ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
-alias ctags_L_C        'ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
-alias ctags_L_Python   "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
-alias ctags_L_SV       "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
+alias ctags_R             'ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
+alias ctags_R_Python      "ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
+alias ctags_R_SV          "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
+alias ctags_Re            'ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf'
+alias ctags_Re_Python     "ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf"
+alias ctags_Re_SV         "ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
+alias ctags_L_C           'ctags  --c++-kinds=+px --fields=+iaS --extra=+qf -L'
+alias ctags_L_Python      "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
+alias ctags_L_SV          "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
 
 
 ###set prompt to change the display format of
 ###head of tcsh shell
 
-setenv TcshBlack           "%{\e[0;30m%}"
-setenv TcshDarkGray        "%{\e[1;30m%}"
-setenv TcshBlue            "%{\e[0;34m%}"
-setenv TcshLightBlue       "%{\e[1;34m%}"
-setenv TcshGreen           "%{\e[0;32m%}"
-setenv TcshLightGreen      "%{\e[1;32m%}"
-setenv TcshCyan            "%{\e[0;36m%}"
-setenv TcshLightCyan       "%{\e[1;36m%}"
-setenv TcshRed             "%{\e[0;31m%}"
-setenv TcshLightRed        "%{\e[1;31m%}"
-setenv TcshPurple          "%{\e[0;35m%}"
-setenv TcshLightPurple     "%{\e[1;35m%}"
-setenv TcshBrown           "%{\e[0;33m%}"
-setenv TcshYellow          "%{\e[1;33m%}"
-setenv TcshLightGray       "%{\e[0;37m%}"
-setenv TcshWhite           "%{\e[1;37m%}"
-setenv TcshColorEnd        "%{\e[0m%}"
+setenv TcshBlack          "%{\e[0;30m%}"
+setenv TcshDarkGray       "%{\e[1;30m%}"
+setenv TcshBlue           "%{\e[0;34m%}"
+setenv TcshLightBlue      "%{\e[1;34m%}"
+setenv TcshGreen          "%{\e[0;32m%}"
+setenv TcshLightGreen     "%{\e[1;32m%}"
+setenv TcshCyan           "%{\e[0;36m%}"
+setenv TcshLightCyan      "%{\e[1;36m%}"
+setenv TcshRed            "%{\e[0;31m%}"
+setenv TcshLightRed       "%{\e[1;31m%}"
+setenv TcshPurple         "%{\e[0;35m%}"
+setenv TcshLightPurple    "%{\e[1;35m%}"
+setenv TcshBrown          "%{\e[0;33m%}"
+setenv TcshYellow         "%{\e[1;33m%}"
+setenv TcshLightGray      "%{\e[0;37m%}"
+setenv TcshWhite          "%{\e[1;37m%}"
+setenv TcshColorEnd       "%{\e[0m%}"
 #worked#setenv TcshColorEnd        "%{\033[0m%}"
 
 #set format of shell header string for tcsh

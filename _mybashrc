@@ -15,7 +15,27 @@
 
 echo "Calling ###[_mybashrc]### file setting"
 
-history 10000
+##ToCheck##
+##------------------------------
+##login shell startup fils call sequence
+#/etc/profile
+#~/.bash_profile
+#~/.bash_login
+#~/.profile
+##------------------------------
+##logout clean fils call sequence
+#~/.bashrc
+##------------------------------
+##no-login shell startup fils call sequence
+#~/.bash_logout
+##------------------------------
+
+#####
+#if [ -f ~/.myalias_common ]; then
+#  source ~/.myalias_common
+#fi
+
+alias history='\history 100000 '
 
 export timefshan="`date +%Y-%m-%d-%H%M`"
 
@@ -37,21 +57,28 @@ setxkbmap -option ctrl:nocaps
 #  source ~/.myalias_common
 #fi
 
-alias ls='\ls --color=auto'
-alias la='ls -alh'
-alias lt='ls -ctl'
-alias grep='\grep --color=auto'
-alias greprni='\grep --color=auto -rni'
-alias findL='\find -L'
-alias findSwfFile='find ./ -type f -iname "*.sw*"'
-alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rf'
-alias findDotOFile='find ./ -type f -iname "*.o"'
-alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rf'
-alias lnsTf='ln -sTf'
-alias lnsnf='ln -snf'
-alias chmod+R='chmod -R a+r'
-alias chmod-R='chmod -R a-r'
-alias chmodER='chmod -R a=r'
+#alias setting here
+##------------------------------
+alias ls='\ls --color=auto '
+alias la='ls -alh '
+alias lt='ls -ctl '
+##------------------------------
+alias grep='\grep --color=auto '
+alias greprni='\grep --color=auto -rni '
+##------------------------------
+alias findL='\find -L '
+alias findSwfFile='find ./ -type f -iname "*.sw*" '
+alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rf '
+alias findDotOFile='find ./ -type f -iname "*.o" '
+alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rf '
+##------------------------------
+alias lnsTf='ln -sTf '
+alias lnsnf='ln -snf '
+##------------------------------
+alias chmod+R='chmod -R a+r '
+alias chmod-R='chmod -R a-r '
+alias chmodER='chmod -R a=r '
+##------------------------------
 alias RenameReplaceSpace="\rename 's/\s+/_/g' "
 alias RenameReplaceSpace1="\rename 's/_-_/-/g' "
 alias RenameRePlaceSpace2="\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/-/g' "
@@ -62,10 +89,11 @@ alias RenameCleanDotInFileName="\rename    's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
 alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
 alias RenameFilesInFolder='functionRenameFilesInFolder(){ unset -f functionRenameFilesInFolder; RenameRemoveSChar "$@"/*.* ; RenameReplaceSpace "$@"/*.* ;  RenameCleanDotInFileName "$@"/*.* ;}; functionRenameFilesInFolder '
-alias h='history 1000'
+##------------------------------
+alias h='\history 100000'
 alias v='vim'
 
-#ToCheck# for your env default setting
+##ToCheck# for your env default setting
 alias Emacs='/usr/bin/emacs26'
 #alias EmacsM='Emacs -mm'
 #alias EmacsM='Emacs --maximized'
@@ -90,16 +118,19 @@ alias cargobuild='cargo build '
 alias cargorun='cargo run '
 
 #git alias
-alias gitcommit-am='git commit -am '
+alias gitcommit_am='git commit -am '
 alias gitclone='git clone --recursive '
-alias gitreset-soft='git reset --soft '
-alias gitreset-hard='git reset --hard '
-alias gitresethead0='git reset HEAD '
-alias gitresethead1='git reset HEAD^ '
-alias gitresethead2='git reset HEAD~2 '
-alias gitresethead3='git reset HEAD~3 '
-alias gitdiffhead='git diff HEAD '
-alias gitdiffcached='git diff --cached '
+alias gitdiffstat='git diff --stat '
+alias gitdifftool='git difftool --tool=vimdiff '
+alias gitstatus='git status '
+alias gitreset_soft='git reset --soft '
+alias gitreset_hard='git reset --hard '
+alias gitreset_head0='git reset HEAD '
+alias gitreset_head1='git reset HEAD^ '
+alias gitreset_head2='git reset HEAD~2 '
+alias gitreset_head3='git reset HEAD~3 '
+alias gitdiff_head='git diff HEAD '
+alias gitdiff_cached='git diff --cached '
 
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
