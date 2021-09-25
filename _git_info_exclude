@@ -22,11 +22,18 @@
 ##check this config
 # $git config --global core.excludesfile
 #
-#gvim temp file:s
+#gvim temp file:sw?
 *.swp
 *.swo
 *.swn
 *.swm
+*.sw?
+#
+#python temp file:
+*.pyc
+#
+#vscode temp file:
+*.vscode
 #
 #FolderName
 .git/
