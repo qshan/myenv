@@ -122,6 +122,7 @@ alias cargorun            'cargo run '
 
 #git alias
 alias gitcommit_am        'git commit -am '
+alias gitpush             'git push '
 alias gitclone            'git clone --recursive '
 alias gitdiffstat         'git diff --stat '
 alias gitdifftool         'git difftool --tool=vimdiff '
