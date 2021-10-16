@@ -214,13 +214,13 @@ set spelllang=en_us
 "set spell spelllang=en_us
 """""set nospell
 "setlocal spell spelllang=en_us
-"]s    """""To move to a next misspelled word,
-"[s    """""To move to a misspelled word, but search backwards
-"]S    """""To move to a next word, but only stop at bad words, not at rare words or words for another region
-"[S    """""To move to a Bad word, but search backwards
-"z=    """""if I highlight autocompletion and then use z= to see recommended list details, select the item you need
-"zg    """"""Use the zg command and Vim will add it to its dictionary.
-"zw    """"""Mark words as incorrect
+"]s    """""" To move to a next misspelled word,
+"[s    """""" To move to a misspelled word, but search backwards
+"]S    """""" To move to a next word, but only stop at bad words, not at rare words or words for another region
+"[S    """""" To move to a Bad word, but search backwards
+"z=    """""" if I highlight autocompletion and then use z= to see recommended list details, select the item you need
+"zg    """""" Use the zg command and Vim will add it to its dictionary.
+"zw    """""" Mark words as incorrect
 "zug   """""" Undo |zw| and |zg|, remove the word from the entry in 'spellfile'.  Count used as with |zg|.
 "zwg   """""" Undo |zw| and |zg|, remove the word from the entry in 'spellfile'.  Count used as with |zg|.
 "
@@ -365,10 +365,10 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "      15      7*      White
 "
 " 常用的命令
-" :PluginList       - 列出所有已配置的插件
-" :PluginInstall     - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
-" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
-" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+" :PluginList         - 列出所有已配置的插件
+" :PluginInstall      - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo   - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean        - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
 "
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
@@ -893,42 +893,46 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """----------------------------Multi-window----------------------------
 """C + W + s
 """:sp [filename]
-"""C-w + c                "close current window
-"""C-w + o                "keep current window, close others
-"""C-w + =                "make all window have same hight
-"""C-w + _                "make current window have the max hight
-"""C-w + 1 + _            "make current window have the min hight
-""":res(ize) _                 "make current window have the min hight
-"""C-w + |                "make current window have the max width
-"""C-w + 1 + |            "make current window have the min width
-"""C-w + n                "Creat a new split windows
-"""C-w + vn               "Creat a new split windows
-"""C-w + ]                "Splite current window, and jump to the cursor
+"""C-w + c                  "close current window
+"""C-w + o                  "keep current window, close others
+"""C-w + =                  "make all window have same hight
+"""C-w + _                  "make current window have the max hight
+"""C-w + 1 + _              "make current window have the min hight
+""":res(ize) _              "make current window have the min hight
+"""C-w + |                  "make current window have the max width
+"""C-w + 1 + |              "make current window have the min width
+"""C-w + n                  "Creat a new split windows
+"""C-w + vn                 "Creat a new split windows
+"""C-w + ]                  "Splite current window, and jump to the cursor
 """:vp [filename]
-"""C-w + h                "向左移动窗口
-"""C-w + j                "向下移动窗口
-"""C-w + j                "向上移动窗口
-"""C-w + l                "向右移动窗口
-
-"""C-w + w                "这个命令会在所有窗口中循环移动
-"""C-w + t                "移动到最左上角的窗口
-"""C-w + b                "移动到最右下角的窗口
-"""C-w + p                "移动到前一个访问的窗口
+"""C-w + h                  "向左移动窗口
+"""C-w + j                  "向下移动窗口
+"""C-w + j                  "向上移动窗口
+"""C-w + l                  "向右移动窗口
+"""
+"""C-w + w                  "这个命令会在所有窗口中循环移动
+"""C-w + t                  "移动到最左上角的窗口
+"""C-w + b                  "移动到最右下角的窗口
+"""C-w + p                  "移动到前一个访问的窗口
+"""
+"""C-w + J                  "show window layout vertically
+"""C-w + H                  "show window layout horizontally
+"""
 """:res(ize) num            "将窗口的高度调整为num行
 """:res num
 """:vertical res(ize) num   "将窗口的宽度调整为num列
-""":vertical res num      "将窗口的宽度调整为num列
+""":vertical res num        "将窗口的宽度调整为num列
 """:res(ize)+num            "将窗口的高度增加num行
-"""C-w + -                "减小窗口
-"""C-w + +                "增加窗口
-"""C-w + num -            "减小窗口num行
-"""C-w + num +            "增加窗口num行
+"""C-w + -                  "减小窗口
+"""C-w + +                  "增加窗口
+"""C-w + num -              "减小窗口num行
+"""C-w + num +              "增加窗口num行
 """:res(ize)-num            "将窗口的高度减少num行
 """:vertical res(ize)+num   "将窗口的宽度增加num列
 """:vertical res(ize)-num   "将窗口的宽度减少num列
-"""C-w c-]                "就会在分割窗口bai(window)里打开标签.
-"""C-w T                  "让某个窗口另起一个标签页(tab)，（大写T）就可以.
-""":f FileName            "给窗口重命名
+"""C-w c-]                  "就会在分割窗口bai(window)里打开标签.
+"""C-w T                    "让某个窗口另起一个标签页(tab)，（大写T）就可以.
+""":f FileName              "给窗口重命名
 "
 """----------------------------Multi-files----------------------------
 """  vi a b c               "vi打开多文件
@@ -951,24 +955,24 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """  :tabn                       "后一个
 "
 """Jump commands
-"C-]                      "jump to tag linker define
-"C-t                      "jump back according the tag info
-"C-o                      "jump back the previous operation location
-"C-i                      "jump forward, Vs jump back
-"gf                       "go to file
-"gd                       "go to variable define
+"C-]                        "jump to tag linker define
+"C-t                        "jump back according the tag info
+"C-o                        "jump back the previous operation location
+"C-i                        "jump forward, Vs jump back
+"gf                         "go to file
+"gd                         "go to variable define
 "
-":tn                       "go next tag info accorind the tag list
-":tp                       "go previous tag info accorind the tag list
-"g]                       "list the jump tag definition available
-":ts                      "list the jump tag definition available
-":tjump                   "jump to tag dinfinition if there is one definition, list the jump tag definition available if there are more than one definition
+":tn                        "go next tag info accorind the tag list
+":tp                        "go previous tag info accorind the tag list
+"g]                         "list the jump tag definition available
+":ts                        "list the jump tag definition available
+":tjump                     "jump to tag dinfinition if there is one definition, list the jump tag definition available if there are more than one definition
 ":tlast
 ":tfirst
 "
-"""q + :                  "list the command history list
-"""q + /                  "list the search command history list
-"""q + ?                  "list the search command history list
+"""q + :                    "list the command history list
+"""q + /                    "list the search command history list
+"""q + ?                    "list the search command history list
 """"--------------------Netrw - embeded plugin--------------------
 """:Explore
 """:E

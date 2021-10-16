@@ -373,6 +373,8 @@
                                 ("_emacs.*"    . emacs-lisp-mode)
                                 ("makefile*"   . makefile-mode)
                                 ("Makefile*"   . makefile-mode)
+                                ("SConstruct*" . scons-mode)
+                                ("SConscript*" . scons-mode)
                                 ("\\.c\\'"     . c-mode)
                                 ("\\.cc\\'"    . c-mode)
                                 ("\\.cpp\\'"   . c-mode)
@@ -1356,6 +1358,8 @@
                                         ; C-w <           evil-window-decrease-width
                                         ; C-w =           balance-windows
                                         ; C-w >           evil-window-increase-width
+                                        ;;;C-w + J        "show window layout vertically
+                                        ;;;C-w + H        "show window layout horizontally
                                         ; C-w H           evil-window-move-far-left
                                         ; C-w J           evil-window-move-very-bottom
                                         ; C-w K           evil-window-move-very-top
