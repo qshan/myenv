@@ -1077,7 +1077,7 @@
 ;;M-x shell   ;run avaiable shell in emacs window
 ;;M-!         ;run shell
 ;;M-x replace-string   ;replace string, like replace ^M with C-j
-;;C-x d ;enter Dired Mode
+;;C-x d       ;enter Dired Mode
 ;;C-x o n     ;switch window to window-n
 ;;;;C-i       ;evil-jump-forward
 ;;C-o         ;evil-jump-backward (Evil-mode)
@@ -1141,7 +1141,7 @@
 ;;C-x d ;enter Dired Mode
 ;;;;;Dired, File Management. Dired is a built-in file manager for Emacs that does some pretty amazing things! Here are some key bindings you should try out:
 ;;;;;Evil Keybindings and other behaviour
-;;C-z     ;(evil-toggle-key);The key used to change to and from Emacs state. Must be readable by read-kbd-macro
+;;C-z               ;(evil-toggle-key);The key used to change to and from Emacs state. Must be readable by read-kbd-macro
 ;;C-x C-0  +/-/0   ;;text-scale-adjust, +: increase   -:decrease
 ;; C-x d           ;;open the dired buffer, then input the directory info and get the files list info in that folder
 ;;M-x dired        ;;same as the C-x d
@@ -1397,6 +1397,16 @@
 ;;M-x whitesace-cleanup
 ;;
 ;;--------------------------------------------------
+;;=======dired_info start============================================
+;;C-x d             ;;enter dired mode
+;;M-x dired         ;;same as the C-x d
+;;;;The primary use of Dired is to flag files for deletion and then delete the files previously flagged.
+;;d                 ;;Flag this file for deletion.
+;;u                 ;;Remove deletion flag on this line.
+;;DEL               ;;Move point to previous line and remove the deletion flag on that line.
+;;x                 ;;Delete the files that are flagged for deletion.
+
+;;=======dired_info end============================================
 
 ;;=======ediff_info start============================================
 ;;detail info web https://www.gnu.org/software/emacs/manual/html_mono/ediff.html
@@ -1513,7 +1523,7 @@
 ;;;;Brings up Ediff session registry. This feature enables you to quickly find and restart active Ediff sessions.
 ;;
 ;;
-;;ediff
+;;ediff edit command
 ;;3.1 Quick Help Commands
 ;; ?
 ;;;;Toggles the Ediff Quick Help window ON and OFF.
