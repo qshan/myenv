@@ -88,6 +88,8 @@ alias findSwfFile='find ./ -type f -iname "*.sw*" '
 alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rf '
 alias findDotOFile='find ./ -type f -iname "*.o" '
 alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rf '
+#find ./ -type f | xargs sed -i 's/13/14/g'
+#find TargetPathName -type f -iname "*.c" | xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
 ##------------------------------
 alias lnsTf='ln -sTf '
 alias lnsnf='ln -snf '
@@ -133,6 +135,10 @@ alias openPdf='evince '
 alias cargonew='cargo new '
 alias cargobuild='cargo build '
 alias cargorun='cargo run '
+
+#go_path alias
+alias goCTest='cd ~/data/work/test_space/ctest_qshan'
+alias goCppTest='cd ~/data/work/test_space/cpptest_qshan'
 
 #git alias
 alias gitcommit_am='git commit -am '

@@ -559,13 +559,14 @@
   ;;(set-face-background 'space-face "yellow")
   ;;(set-face-background 'space-face "DimGray")
   ;;(set-face-background 'space-face "gray40")
-  (set-face-background 'space-face "gray30")
+  ;;ToCheck;;mask_space_background_highlight;;(set-face-background 'space-face "gray30")
   (setq whitespace-space 'space-face)
 
   ;;set whitespace mapping table
   (setq whitespace-display-mappings '(
         ;;(space-mark    ?\    [?\u00B7]    [?.])  ;;space
         (space-mark    ?\     [?\xB7]      [?.])  ;;space displayed as a centered dot
+        ;;worked;;(space-mark    ?\     [?\xB7 ?\ ]      [?. ?\ ])  ;;space displayed as a centered dot
         ;;(space-mark    ?\     [?\ ]      [?.])  ;;space displayed as a space
         ;;(space-mark    ?\     [?\u02fd]      [?.])  ;;space
         ;;(space-mark    ?\     [?\u2423]      [?.])  ;;space
