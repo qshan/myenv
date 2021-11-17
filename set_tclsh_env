@@ -1,0 +1,65 @@
+#!/usr/bash
+
+#bash format
+#if [ -f ~/_mybashrc ]; then
+#    . ~/_mybashrc
+#fi
+
+#-------------------------tcsh-------------------------
+#format for tcsh code
+#
+#tcsh format
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#endif
+
+#if ( $?MyEnvVariableName ) then
+#    echo "MyEnvVariableName is $MyEnvVariableName"
+#else
+#    echo "MyEnvVariableName is not defined now"
+#endif
+
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#else
+#endif
+
+#if ( -d MyFolderName ) then
+#    . ~/_mycshrc
+#else
+#endif
+
+#if ( $?MyVariable ) then
+#    echo "MyVariable is $MyVariable"
+#else
+#endif
+
+#switch (STRING)
+#  case PATTERN:
+#    COMMAND
+#    breaksw
+#  default:
+#    COMMAND
+#endsw
+
+#-------------------------tcsh-------------------------
+
+#tcsh format
+#if ( -f ~/_mycshrc ) then
+#    . ~/_mycshrc
+#endif
+
+sudo apt install tcl-tclreadline
+
+if [ -f ~/.tclshrc ]; then
+  echo  "~/.tclshrc is there"
+  ls ~/.tclshrc
+else
+  touch ~/.tclshrc
+  echo  "touch ~/.tclshrc"
+  echo  "#!/usr/tclsh " >>  ~/.tclshrc
+fi
+
+#echo "if ( -f `pwd`/_mycshrc ) then"  >> ~/.tclshrc
+echo "source `pwd`/_mytclshrc" >>  ~/.tclshrc
+#echo "endif"  >> ~/.tclshrc

@@ -89,7 +89,7 @@ git config --list
 
 # $git remote
 
-# $git branch -A
+# $git branch -a
 
 # $git branch BranchName
 

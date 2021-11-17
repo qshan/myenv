@@ -140,6 +140,11 @@ alias cargonew            'cargo new '
 alias cargobuild          'cargo build '
 alias cargorun            'cargo run '
 
+#go_path alias
+alias gotestspace         'cd ~/data/work/test_space'
+alias goCTest             'cd ~/data/work/test_space/ctest_qshan'
+alias goCppTest           'cd ~/data/work/test_space/cpptest_qshan'
+
 #git alias
 alias gitcommit_am        'git commit -am '
 alias gitpush             'git push '
