@@ -1,0 +1,80 @@
+#!/bin/bash
+#
+#echo   "arg1 is $1" $1
+
+#set the backup ropo path here
+#TODO# update the fullpathname of remote repo
+export FullPathOfRemoteRepo="/home/${USER}/data/back/back_git"
+echo  "FullPathOfRemoteRepo is      ${FullPathOfRemoteRepo}"
+#
+#make the folder of remote repo if it is not there
+if [ ! -d ${FullPathOfRemoteRepo} ]; then
+  echo "Try to [make] the directory ${FullPathOfRemoteRepo}"
+  mkdir -p ${FullPathOfRemoteRepo}
+fi
+#
+#set the target foloder name with path follow this shell.
+#if not set it with argument1, the shell will use the current path
+if [[ -z "$1" ]]; then
+  export ProjectNameWithFullPath=`pwd`
+  echo "\$1 is empty"
+else
+  echo "Get \$1 is $1"
+  export ProjectNameWithFullPath=$1
+fi
+
+#echo  "ProjectNameWithFullPath is   ${ProjectNameWithFullPath}"
+
+#export FullPathOfRemoteRepo="/home/fshan/_back"
+#export ProjectNameWithFullPath=`pwd`
+#
+export FullPathOfProjectName=`echo ${ProjectNameWithFullPath} | sed -r "s/(.*)\/(.*)/\1/g"`
+#export FullPathOfProjectName=`pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\1/g"`
+#export FullPathOfProjectName="/home/fshan"
+#
+export ProjectName=`echo ${ProjectNameWithFullPath} | sed -r "s/(.*)\/(.*)/\2/g"`
+#export ProjectName=`pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\2/g"`
+#export ProjectName="data"
+#
+echo  "ProjectNameWithFullPath is   ${ProjectNameWithFullPath}"
+echo  "FullPathOfProjectName is     ${FullPathOfProjectName}"
+echo  "ProjectName is               ${ProjectName}"
+echo  "FullPathOfRemoteRepo is      ${FullPathOfRemoteRepo}"
+#echo  " is ${}"
+#
+#------------start of create git backup in local path--------------------------------------
+####create the local repo folder
+# $mkdir ProjectFolderName
+####init the local repo
+# $cd ProjectFolderName
+  cd ${ProjectNameWithFullPath}
+  git init
+####create or copy file you need here
+# $touch Reamme.txt
+  touch Readme.txt
+  echo "init version by $USER @ `date +%Y-%m-%d-%H%M`" >> Readme.txt
+####add the files into stage
+  git add Readme.txt
+# $git add FilesNameNeededBack
+####add to repo
+# $git commit -am "comment for this change"
+  git commit -am "init repo by $USER"
+####create a bare repository and clone the local info to remote repository
+# $cd RemoteRepositoryFolerNameWithPullPath
+# $git clone --bare file://ProjectFolderNameWithFullPath/.git RemoteRepositoryName.git
+##or
+# $git clone --bare file://ProjectFolderNameWithFullPath/.git RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git
+  git clone --bare file://${ProjectNameWithFullPath}/.git   ${FullPathOfRemoteRepo}/${ProjectName}.git
+####add a localname for remote repo. create linker the local repository with remote repository
+# $git remote add origin file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git
+  git remote add origin file://${FullPathOfRemoteRepo}/${ProjectName}.git
+####push the local repo to remote repo
+# $git push --set-upstream origin master        #first time
+  #TODO# set the default behavior of git push
+  git push --set-upstream origin master        #first time
+# $git push origin master                       #normal push
+####get the code from remote repo
+# $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git
+# $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git NewFolderName
+#------------end of create git backup in local path--------------------------------------
+##

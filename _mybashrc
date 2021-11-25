@@ -10,6 +10,28 @@
 #else
 #     echo "no this file"
 #fi
+#
+#if [ ! -d ~/data/myenv ]; then
+#    mkdir -p ~/data/myenv
+#fi
+#
+
+## if the variable is #not# set
+##if [[ -z ${variable_tested} ]]; then
+#if [[ -z ${variable01_tested} ]]; then
+#  echo "variable01_tested is not existed"
+#else
+#  echo "variable01_tested is existed"
+#fi
+#
+## if the variable is set
+#if [[ -v variable_tested ]]; then
+#  echo "variable_tested is existed"
+#else
+#  echo "variable_tested is not existed"
+#fi
+
+
 #read here https://tecadmin.net/tutorial/bash-scripting/bash-functions/
 #--------------------------------------------------
 
@@ -109,6 +131,15 @@ alias RenameCleanDotInFileName="\rename    's/[-|_]*\.+[-|_]*/./g' "
 alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
 alias RenameFilesInFolder='functionRenameFilesInFolder(){ unset -f functionRenameFilesInFolder; RenameRemoveSChar "$@"/*.* ; RenameReplaceSpace "$@"/*.* ;  RenameCleanDotInFileName "$@"/*.* ;}; functionRenameFilesInFolder '
 ##------------------------------
+#alias GetCurrentFolderName="`pwd | grep 'dev_' | sed -r 's/.*dev_\w+\/\w+\/([0-9a-zA-Z_-]*)\/.*/\1/g'`"
+#alias GetCurrentFolderName='`pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\2/g"`'
+#alias GetCurrentFolderName='pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\2/g"'
+alias GetNameofCurrentFolder='echo $PWD | sed -r "s/(.*)\/(.*)/\2/g"'
+#alias GetCurrentPathOfFolderName='`pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\1/g"`'
+#alias GetCurrentPathOfFolderName='pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\1/g"'
+alias GetFullPathOfCurrentFolder='echo $PWD | sed -r "s/(.*)\/(.*)/\1/g"'
+##------------------------------
+
 alias h='\history 1000'
 alias v='vim'
 
@@ -142,6 +173,7 @@ alias goCTest='cd ~/data/work/test_space/ctest_qshan'
 alias goCppTest='cd ~/data/work/test_space/cpptest_qshan'
 
 #git alias
+alias gitadd_f='git add -f '
 alias gitcommit_am='git commit -am '
 alias gitpush='git push '
 alias gitremoteadd='git remote add origin '

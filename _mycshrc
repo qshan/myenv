@@ -146,6 +146,7 @@ alias goCTest             'cd ~/data/work/test_space/ctest_qshan'
 alias goCppTest           'cd ~/data/work/test_space/cpptest_qshan'
 
 #git alias
+alias gitadd_f             'git add -f '
 alias gitcommit_am        'git commit -am '
 alias gitpush             'git push '
 alias gitremoteadd        'git remote add origin '
