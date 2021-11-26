@@ -8,6 +8,7 @@ echo "arg 1 is" $1
 echo "arg * is" $*
 
 echo "------------------------------"
+#get current time info here
 echo "Current time is `date +%Y-%m-%d-%H%M`"
 echo "------------------------------"
 
