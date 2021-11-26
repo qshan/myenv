@@ -1,0 +1,151 @@
+#!/bin/bash
+
+#bash bash_shell_example $PWD/common_useful
+
+echo "arg 0 is" $0
+echo "arg 1 is" $1
+#echo "arg n_update is" $1_update
+echo "arg * is" $*
+
+echo "------------------------------"
+echo "Current time is `date +%Y-%m-%d-%H%M`"
+echo "------------------------------"
+
+export input_argument_file="$1"
+echo "input_arguments is ${input_argument_file}"
+
+export input_argument_file_name="`ls ${input_argument_file} | sed -r 's/(.*)\/(.*)/\2/g'`"
+export input_argument_path_name="`ls ${input_argument_file} | sed -r 's/(.*)\/(.*)/\1/g'`"
+#setenv input_argument_file_name `ls ${input_argument_file} | sed -r 's/.*\/(.*)\..*/\1/g'`
+#setenv input_argument_file_name `echo ${input_argument_file} | sed -r 's/.*\/(.*)\..*/\1/g'`
+#setenv input_argument_file_name `ls ${input_argument_file} | sed -r 's/.*\/*(.*)\..*/\1/g'`
+#
+echo "------------------------------"
+export input_argument_file_name_line_number="`wc -l < ${input_argument_file}`"
+echo "the line number of is: ${input_argument_file_name_line_number}"
+
+echo "------------------------------"
+export output_file_name="${input_argument_file_name}_`date +%Y-%m-%d-%H%M`"
+echo "output_file_name is ${output_file_name}"
+
+echo "------------------------------"
+#####exmaple of Calling this file, just add this part at the end of ~/.bashrc
+if [ -f ~/data/myenv/_mybashrc ];
+then
+  #. ~/data/myenv/_mybashrc
+  echo "the file ~/data/myenv/_mybashrc exist"
+#else
+#  echo "the file ~/data/myenv/_mybashrc does not exist"
+fi
+#
+#if [ -f ~/data/myenv/_mybashrc ]; then
+#    . ~/data/myenv/_mybashrc
+#else
+#     echo "no this file"
+#fi
+#
+echo "------------------------------"
+if [ ! -d ~/data/myenv ];
+then
+  #mkdir -p ~/data/myenv
+  echo "the path ~/data/myenv do not exit"
+else
+  echo "the path ~/data/myenv exist"
+fi
+#
+echo "------------------------------"
+# if the variable is #not# set
+#if [[ -z ${variable_tested} ]]; then
+if [[ -z ${variable01_tested} ]];
+then
+  echo "variable01_tested is not existed"
+else
+  echo "variable01_tested is existed"
+fi
+
+echo "------------------------------"
+# if the variable is set
+if [[ -v variable_tested ]];
+then
+  echo "variable_tested is existed"
+else
+  echo "variable_tested is not existed"
+fi
+#
+echo "------------------------------"
+export try_run_variable="this is the try run if-else branch 00"
+if [ "${try_run_variable}" == "this is the try run if-else branch 00" ];
+#if [ "${try_run_variable}" = "this is the try run if-else branch 00" ];
+then
+  echo "if-else #True# branch 00"
+else
+  echo "if-else #False# branch 00"
+fi
+#
+echo "------------------------------"
+export try_run_variable="this is the try run if-else branch 01"
+if [[ ${try_run_variable} = "this is the try run if-else branch 02" ]];
+then
+  echo "if-else #True# branch 01"
+else
+  echo "if-else #False# branch 01"
+fi
+#
+echo "------------------------------"
+if [ "$2" = "" ];
+then
+  #echo "if-else true branch"
+  echo "\$2 is empty"
+else
+  #echo "if-else fault branch"
+  echo "\$2 is $2"
+fi
+#
+echo "------------------------------"
+# https://tecadmin.net/tutorial/bash-scripting/bash-if-else-statement/
+#
+#https://www.shell-tips.com/bash/if-statement/
+##Conditional Expression  Meaning
+# -a file                 True if file exists.
+# -b file                 True if file exists and is a block special file.
+# -c file                 True if file exists and is a character special file.
+# -d file                 [True] if file exists and is a directory.
+# -e file                 True if file exists.
+# -f file                 [True] if file exists and is a regular file.
+# -g file                 True if file exists and its set-group-id bit is set.
+# -h file                 True if file exists and is a symbolic link.
+# -k file                 True if file exists and its “sticky” bit is set.
+# -p file                 True if file exists and is a named pipe (FIFO).
+# -r file                 True if file exists and is readable.
+# -s file                 True if file exists and has a size greater than zero.
+# -t fd                   True if file descriptor fd is open and refers to a terminal.
+# -u file                 True if file exists and its set-user-id bit is set.
+# -w file                 True if file exists and is writable.
+# -x file                 True if file exists and is executable.
+# -G file                 True if file exists and is owned by the effective group id.
+# -L file                 True if file exists and is a symbolic link.
+# -N file                 True if file exists and has been modified since it was last read.
+# -O file                 True if file exists and is owned by the effective user id.
+# -S file                 True if file exists and is a socket.
+# file1 -ef file2         True if file1 and file2 refer to the same device and inode numbers.
+# file1 -nt file2         True if file1 is newer (according to modification date) than file2, or if file1 exists and file2 does not.
+# file1 -ot file2         True if file1 is older than file2, or if file2 exists and file1 does not.
+# -o optname              True if the shell option optname is enabled (see set -o for a list of options).
+# -v varname              [True] if the shell variable varname is set (has been assigned a value, even an empty value).
+# -R varname              True if the shell variable varname is set and is a name reference.
+# -z string               [True] if the length of string is zero.
+# -n string               True if the length of string is non-zero.
+# string1 == string2
+# string1 = string2       True if the strings are equal. It will perform pattern matching when used with the [[ command. The = notation should be used with the test command for POSIX conformance.
+# string1 != string2      True if the strings are not equal.
+# string1 =~ regex        True if the strings match the Bash regular expressionicon mdi-link-variant regex. Captured groups are stored in the BASH_REMATCH array variableicon mdi-link-variant.
+# string1 < string2       True if string1 sorts before string2 lexicographically.
+# string1 > string2       True if string1 sorts after string2 lexicographically.
+
+##Conditional Expression    Meaning
+# arg1 -eq arg2             True if arg1 equal to arg2
+# arg1 -ne arg2             True if arg1 not equal to arg2
+# arg1 -lt arg2             True if arg1 less than arg2
+# arg1 -le arg2             True if arg1 less than or equal to arg2
+# arg1 -gt arg2             True if arg1 greater than arg2
+# arg1 -ge arg2             True if arg1 greater than or equal to arg2

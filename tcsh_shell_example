@@ -1,4 +1,5 @@
-#/bin/tcsh!
+#!/bin/tcsh
+#!/bin/csh
 
 echo "arg 0 is" $0
 echo "arg 1 is" $1
