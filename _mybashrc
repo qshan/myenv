@@ -227,11 +227,14 @@ alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar &"
 ##										37: White									 47: White
 ##  \e[  – Indicates the beginning of color prompt
 ##  x;ym – Indicates color code. Use the color code values mentioned below.
-##  \e[m – indicates the end of color promptSTARTFGCOLOR='\e[0;34m';
+##  \e[m – indicates the end of color promptSTARTFGCOLOR='\e[0;47;34m';
 ##  STARTBGCOLOR="\e[47m"
 ##  ENDCOLOR="\e[0m"
 ##  export PS1="$STARTFGCOLOR$STARTBGCOLOR\u@\h \w> $ENDCOLOR"
 ##  export PS1="${STARTFGCOLOR}${STARTBGCOLOR}\u@\h \w> ${ENDCOLOR}"
+#
+export BashBlackBG="40;"
+#TODO#set color of background #export BashBlack="\[\e[0;40;30m\]"
 #
 export BashBlack="\[\e[0;30m\]"
 export BashDarkGray="\[\e[1;30m\]"

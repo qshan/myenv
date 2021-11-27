@@ -343,6 +343,9 @@
 
 ;;C-c C-l  ;;disable electric indentation in the current buffer
 
+(setq-default python-offset qshan-tab-width)
+(setq-default python-indent qshan-tab-width)
+
 (setq-default c-basic-offset qshan-tab-width)
 (setq-default c-basic-indent qshan-tab-width)
 (setq-default c-basic-offset qshan-tab-width c-default-style "linux")

@@ -1,4 +1,6 @@
-kkkjjjk# python startup file
+#!/usr/bin/python3
+#
+# python startup file
 #
 ###add apt source
 ##sudo add-apt-repository ppa:deadsnakes/ppa

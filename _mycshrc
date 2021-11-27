@@ -196,9 +196,30 @@ alias ctags_L_Python      "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf 
 alias ctags_L_SV          "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
 
 
+# https://zipcon.net/~swhite/docs/computers/linux/shell_prompts.html
+#
+## Text Format					Foreground (text) color		 Background color
+## 0: normal text			30: Black									 40: Black
+## 1: bold						31: Red										 41: Red
+## 4: Underlined text	32: Green									 42: Green
+##										33: Yellow								 43: Yellow
+##										34: Blue									 44: Blue
+##										35: Purple								 45: Purple
+##										36: Cyan									 46: Cyan
+##										37: White									 47: White
+##  \e[  – Indicates the beginning of color prompt
+##  x;ym – Indicates color code. Use the color code values mentioned below.
+##  \e[m – indicates the end of color promptSTARTFGCOLOR='\e[0;47;34m';
+##  STARTBGCOLOR="\e[47m"
+##  ENDCOLOR="\e[0m"
+##  export PS1="$STARTFGCOLOR$STARTBGCOLOR\u@\h \w> $ENDCOLOR"
+##  export PS1="${STARTFGCOLOR}${STARTBGCOLOR}\u@\h \w> ${ENDCOLOR}"
+#
 ###set prompt to change the display format of
 ###head of tcsh shell
-
+#
+#TODO#set color of background #export BashBlack="\[\e[0;40;37m\]"
+#
 setenv TcshBlack          "%{\e[0;30m%}"
 setenv TcshDarkGray       "%{\e[1;30m%}"
 setenv TcshBlue           "%{\e[0;34m%}"
