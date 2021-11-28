@@ -140,6 +140,10 @@ alias GetNameofCurrentFolder='echo $PWD | sed -r "s/(.*)\/(.*)/\2/g"'
 #alias GetCurrentPathOfFolderName='pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\1/g"'
 alias GetFullPathOfCurrentFolder='echo $PWD | sed -r "s/(.*)\/(.*)/\1/g"'
 ##------------------------------
+alias sed_i_r='sed -i -r '
+#example#sed -i -r 's/Word_searched/word_target/g' File_name_replaced
+#sed -i -r "s/AC_INIT(.*)/AC_INIT(${FileNameOfTopCode})/g" configure.in
+##------------------------------
 
 alias h='\history 1000'
 alias v='vim'
