@@ -8,6 +8,10 @@
 ;;https://blog.csdn.net/redguardtoo/article/details/7222501
 ;;https://orgmode.org/
 
+;;company --> auto-complete
+;;flymake --> flycheck
+;;Etags   --> ctags???
+
 '(ansi-color-faces-vector
   [default default default italic underline success warning error])
 (custom-set-faces
@@ -448,6 +452,13 @@
                   indent-tabs-mode nil)
             ))
 
+;;(require-init 'init-flymake t)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+;;(setq-default flymake-start-syntax-check-on-newline t)
+;;(setq flymake-start-syntax-check-on-newline t)
+;;(setq flymake-no-changes-timeout t)
+;;(setq flymake-start-syntax-check t)
+
 ;;set alignment
 ;;select the word you want to edit firstly
 ;;M-x align-regexp RET = RET
@@ -543,6 +554,12 @@
   ;;(whitespace-mode t)
   ;;
 
+;;(require-init 'init-flymake t)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(setq flymake-start-syntax-check t)
+;;(setq-default flymake-start-syntax-check-on-newline t)
+(setq flymake-start-syntax-check-on-newline t)
+(setq flymake-no-changes-timeout t)
 ;;
 ) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
