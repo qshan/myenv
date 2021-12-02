@@ -539,7 +539,6 @@
   (global-whitespace-newline-mode)
 
 ;;
-;;
 (setq fill-column 80)
 ;;set limit length
 ;;(setq whitespace-line-column 80);
@@ -554,16 +553,123 @@
   ;;(whitespace-mode t)
   ;;
 
-;;(require-init 'init-flymake t)
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-(setq flymake-start-syntax-check t)
-;;(setq-default flymake-start-syntax-check-on-newline t)
-(setq flymake-start-syntax-check-on-newline t)
-(setq flymake-no-changes-timeout t)
+;;ToCheck;;(fshan-flymake-setting)
+
+  (fshan-flycheck-init)
+
 ;;
 ) ;;end of fshan-subword-mode
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
+(defun fshan-flycheck-init ()
+
+;;  (Require 'Package)
+;;  (Add-To-List 'Package-Archives
+;;               '("Melpa Stable" . "Http://Stable.Melpa.Org/Packages/") T)
+;;  (Package-Initialize)
+;;  (Package-Refresh-Contents)
+
+;;  (package-install 'flycheck)
+
+;;  (global-flycheck-mode)
+
+  ;;M-x package-install RET flycheck
+
+  (use-package flycheck
+    :ensure t
+    :init (global-flycheck-mode))
+
+  (use-package flycheck
+     :defer t
+     :hoook (prog-mode . flycheck-mode)
+  )
+
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+
+  (global-flycheck-mode)
+
+) ;;end of defun fshan-flycheck-init ()
+;;--------------------------------------------------
+(defun fshan-flycheck-enable ()
+  (interactive)
+
+  ;;(add-hook 'after-init-hook #'global-flycheck-mode)
+
+  ;; (setq global-flycheck-mode t)
+  ;; (setq flycheck-mode t)
+
+  (global-flycheck-mode)
+  ;;(flycheck-mode)
+  (list
+    'an-info-here
+    'a-warning-here
+    'an-error-here
+  )
+
+  //set error info style
+  ;;(setq flycheck-highlighting-mode nil)
+  (setq flycheck-highlighting-mode lines)
+  ;; (setq flycheck-highlighting-mode columns)
+  ;; (setq flycheck-highlighting-mode symbols)
+  ;; (setq flycheck-highlighting-mode sexps)
+  ;;
+  ;;(setq flycheck-highlighting-style nil)
+  (setq flycheck-highlighting-style level-face)
+  defface flycheck-fringe-error
+  defface flycheck-fringe-warning
+  defface flycheck-fringe-info
+
+  ;;Check automatically
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
+
+  ;;Check manually
+  ;;You can also start a syntax check explicitly with C-c ! c:
+  ;;C-c ! c¶
+  ;;M-x flycheck-buffer
+  ;;ToCheck;;(flycheck-buffer)
+  ;;Check syntax in the current buffer.
+
+) ;; end of defun fshan-flycheck-enable ()
+;;--------------------------------------------------
+(defun fshan-flymake-setting ()
+  ;;ToCheck;;enable interactive;;(interactive)
+  ;;ToCheck;;(require-init 'init-flymake t)
+
+  ;;(require-init 'init-flymake t)
+  (add-hook 'find-file-hook 'flymake-find-file-hook)
+  (setq flymake-start-syntax-check t)
+  ;;(setq-default flymake-start-syntax-check-on-newline t)
+  (setq flymake-start-syntax-check-on-newline t)
+  (setq flymake-no-changes-timeout t)
+;;
+;;----------Queued syntax checks
+;; run 8 checks at once instead.
+(setq flymake-max-parallel-syntax-checks 8)
+;; no max limits.
+;;(setq flymake-max-parallel-syntax-checks nil)
+;;
+;;----------Use the system temporary directory for temp files
+;; set the  flymake check copies in the same dir as the original.
+(setq flymake-run-in-place t)
+;;;; set the flymake check copies in the system temp dir.
+;;(setq flymake-run-in-place nil)
+;;;; set the  flymake check copies in specific dir.
+;;(setq temporary-file-directory "~/.emacs.d/tmp/")
+;;
+;;----------Show multiple errors in tooltips
+;; I want to see at most the first 4 errors for a line.
+(setq flymake-number-of-errors-to-display 4)
+;;;; I want to see all errors for the line.
+;;(setq flymake-number-of-errors-to-display nil)
+;;
+;;----------start flymake
+(setq flymake-mode t)
+(setq flymake-start-on-flymake-mode t)
+;;(setq flymake-start-on-flymake-mode nil)
+
+) ;;end of defun fshan-flymake-setting ()
+;;--------------------------------------------------
+
 (defun fshan-reset-whitespace-display-mapping ()
   (interactive)
 
