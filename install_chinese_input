@@ -1,0 +1,47 @@
+#!bin/bash
+#
+#os version 4.15.0-142-generic #146~16.04.1-Ubuntu SMP Tue Apr 13 09:27:15 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+
+##### install googlepinyin ########################################
+#install language package
+sudo apt-get install language-pack-zh-hans
+#language-pack-zh-hans-base
+#------------------------------
+sudo apt-get install fcitx fcitx-pinyin
+#sudo apt-get install fcitx-googlepinyin
+#------------------------------
+#SystemSettings --> Language Support --> Language --> Keybaord input methods system --> fcitx --> reboot
+#------------------------------
+#fcitx -r
+fcitx-configtool
+#Input methods configuration --> input methods --> add --> select google Pinyin
+#------------------------------
+#Text Entry--> config the hotkey for input methods switch -->  -->  -->
+#------------------------------
+#
+#
+#
+# not confirmed ##### install ibus ########################################
+#System Settings --> LanguageSupport --> Install/RemoveLanguages --> chinese --> Apply
+#------------------------------
+sudo apt-get install ibus ibus-clutter ibus-gtkibus-gtk3 ibus-qt4
+
+sudo apt install ibus ibus-clutter ibus-pinyin ibus-qt4 ibus-libpinyin
+sudo apt install zenity
+#------------------------------
+im-config-s ibus
+im-config
+#------------------------------
+sudo apt-get install ibus-pinyin
+#------------------------------
+sudo ibus-setup
+#[ibus preferencs] --> [input methods] --> [add] --> select [ibus]
+#------------------------------
+#Text Entry--> config the hotkey for input methods switch --> selct the key you need
+#------------------------------
+#ibus注意事项：
+#1.在安装后要把[模糊拼音]的勾选去掉，不然可能输入显示不正确。
+#2.对于安装后输入出现[InvalidUTF-8]的问题
+#先点击桌面右上角的拼音图标，点击[首选项]，如下图所示
+#点击常规选项卡，由于中文输入法设置成全角的时候，输入中文时就会出现[InvalidUTF-8]错误，故将输入法设置成半角(部分图片来自百度)
+#####  ####################
