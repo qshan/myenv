@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#####Unofficial Ubuntu application packages maintained by xtradeb
+#You may request additional packages by filing a bug here: https://launchpad.net/xtradeb.
+#You can find more information in our website: https://xtradeb.net.
+#####Adding this PPA to your system
+#You can update your system with unsupported packages from this untrusted PPA by adding ppa:xtradeb/apps to your system's Software Sources. (Read about installing)
+sudo add-apt-repository ppa:xtradeb/apps
+sudo apt-get update

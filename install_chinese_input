@@ -3,12 +3,27 @@
 #os version 4.15.0-142-generic #146~16.04.1-Ubuntu SMP Tue Apr 13 09:27:15 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 
 ##### install googlepinyin ########################################
+#Install Google Pinyin in Ubuntu
+sudo add-apt-repository ppa:fcitx-team/nightly
+sudo apt-get update
+sudo apt-get install fcitx fcitx-googlepinyin
+sudo apt-get install fcitx-module-cloudpinyin
+
+##### install googlepinyin ########################################
 #install language package
-sudo apt-get install language-pack-zh-hans
+sudo apt-get install language-pack-en language-pack-zh-hans
 #language-pack-zh-hans-base
 #------------------------------
-sudo apt-get install fcitx fcitx-pinyin
+sudo apt-get install fcitx fcitx-pinyin fcitx-googlepinyin
 #sudo apt-get install fcitx-googlepinyin
+sudo apt-get install fcitx-table-all
+
+
+
+
+
+sudo apt install remote fcitx-ui-classic ; sudo apt install fcitx-ui-qimpanel
+#sudo apt install fcitx-ui-light
 #------------------------------
 #SystemSettings --> Language Support --> Language --> Keybaord input methods system --> fcitx --> reboot
 #------------------------------

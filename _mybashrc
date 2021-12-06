@@ -197,6 +197,9 @@ alias gitreset_head3='git reset HEAD~3 '
 alias gitdiffhead='git diff HEAD '
 alias gitdiff_cached='git diff --cached '
 
+#input methods reset
+alias input_methods_reset_fcitx='fcitx -r'
+
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
 

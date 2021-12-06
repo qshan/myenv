@@ -453,11 +453,14 @@
             ))
 
 ;;(require-init 'init-flymake t)
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+;;ToCheck;;(add-hook 'find-file-hook 'flymake-find-file-hook)
 ;;(setq-default flymake-start-syntax-check-on-newline t)
 ;;(setq flymake-start-syntax-check-on-newline t)
 ;;(setq flymake-no-changes-timeout t)
 ;;(setq flymake-start-syntax-check t)
+
+;; (add-to-list 'package-archives
+;;         '("popkit" . "http://elpa.popkit.org/packages/"))
 
 ;;set alignment
 ;;select the word you want to edit firstly
@@ -605,7 +608,7 @@
     'a-warning-here
     'an-error-here
   )
-
+------------------------------
   //set error info style
   ;;(setq flycheck-highlighting-mode nil)
   (setq flycheck-highlighting-mode lines)
