@@ -322,10 +322,36 @@
 (add-hook 'rust-mode-hook         'hs-minor-mode)
 (add-hook 'makefile-mode-hook     'hs-minor-mode)
 ;;--------------------------------------------------
+
+;; (req-package company
+;;   :config
+;;   (progn
+;;     (add-hook 'after-init-hook 'global-company-mode)
+;;     (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+;;     (setq company-idle-delay 0)
+;;   ))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+  (setq company-idle-delay 0)
+;;
 ;;set for company mode
 (with-eval-after-load 'company (company-ctags-auto-setup))
 ;;
+;;##;;removes all the predefined backends at first:
+(setf company-backends '())
+;;##;;Then get the company-keywrods backend back:
+(add-to-list 'company-backends 'company-keywords)
+;;##;;Now we can configure irony with company, it’s just two more line of code:
+(add-to-list 'company-backends 'company-irony)
+(add-to-list 'company-backends 'company-irony-c-headers)
+;;##;;You can group the above code into a function and then add it to the c++-mode-hook:
+(add-hook 'c++-mode-hook #'(lambda ()
+;;	...code here...
+  ))
+;;##;;
 ;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
+;;--------------------------------------------------
+;;set for company mode
 ;;ToCheck;;;;--------------------------------------------------
 ;;ToCheck;;;;clear whitespace end of row/line
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

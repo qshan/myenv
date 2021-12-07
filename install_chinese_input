@@ -1,6 +1,7 @@
 #!bin/bash
 #
 #os version 4.15.0-142-generic #146~16.04.1-Ubuntu SMP Tue Apr 13 09:27:15 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+sudo apt install lubuntu-desktop
 
 ##### install googlepinyin ########################################
 #Install Google Pinyin in Ubuntu
