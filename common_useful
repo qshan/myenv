@@ -16,9 +16,14 @@ sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 sed -i -E "s/\s*Addr:(0[xX][0-9a-fA-F]*).*:Data:#(0[xX][0-9a-fA-F]*).*/      <register address='\1' value='\2' \/>/g" Cypress_FF_reg_dump_after_wla_pass_BBB_20190822.xml
 
 #replase the space on the end of line in that files
-sed -i 's/\s\+\$/\$/g' File_name_replaced
+#sed -i 's/\s\+\$/\$/g' File_name_replaced
+#worked in bash
+sed -i 's/\s\+$//g' File_name_replaced
+#ToCheck#try in others
+sed -i 's/\s\+\$//g' File_name_replaced
 
 #find the specific named file and replase the space on the end of line in that files
+#worked
 find TargetPathName -type f -iname "*.[c|h]" | xargs sed -i 's/\s\+\$/\$/g'
 
 #delete the empty line (cover write space) in targetfile

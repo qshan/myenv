@@ -121,12 +121,12 @@ alias chmod+R='chmod -R a+r '
 alias chmod-R='chmod -R a-r '
 alias chmodER='chmod -R a=r '
 ##------------------------------
-alias RenameReplaceSpace="\rename 's/\s+/_/g' "
-alias RenameReplaceSpace1="\rename 's/_-_/-/g' "
-alias RenameRePlaceSpace2="\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/-/g' "
-alias RenameRemoveSChar="\rename   's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
-alias RenameRemoveSChar2="\rename     's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
-alias RenameCleanDotInFileName="\rename    's/[-|_]*\.+[-|_]*/./g' "
+alias RenameReplaceSpace="\rename         's/\s+/_/g' "
+alias RenameReplaceSpace1="\rename        's/_-_/-/g' "
+alias RenameRePlaceSpace2="\rename        's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/-/g' "
+alias RenameRemoveSChar="\rename          's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
+alias RenameRemoveSChar2="\rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
+alias RenameCleanDotInFileName="\rename   's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFiles='functionRenameFiles(){ unset -f functionRenameFiles; RenameRemoveSChar "$@" ; RenameReplaceSpace "$@" ;}; functionRenameFiles '
 #alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
 alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
@@ -168,34 +168,34 @@ alias openFileBroswer='pcmanfm &'
 
 alias openPdf='evince '
 
-alias cargonew='cargo new '
-alias cargobuild='cargo build '
-alias cargorun='cargo run '
+alias cargonew='    cargo new '
+alias cargobuild='  cargo build '
+alias cargorun='    cargo run '
 
 #go_path alias
-alias gotestspace='cd ~/data/work/test_space'
-alias goCTest='cd ~/data/work/test_space/ctest_qshan'
-alias goCppTest='cd ~/data/work/test_space/cpptest_qshan'
+alias gotestspace=' cd ~/data/work/test_space'
+alias goCTest='     cd ~/data/work/test_space/ctest_qshan'
+alias goCppTest='   cd ~/data/work/test_space/cpptest_qshan'
 
 #git alias
-alias gitadd_f='git add -f '
-alias gitcommit_am='git commit -am '
-alias gitpush='git push '
-alias gitremoteadd='git remote add origin '
-alias gitclone='git clone --recursive '
-alias gitdiffstat='git diff --stat '
-alias gitdifftool='git difftool --tool=vimdiff '
-alias gitlog='git log '
-alias gitlogstat='git log --stat '
-alias gitstatus='git status '
-alias gitreset_soft='git reset --soft '
-alias gitreset_hard='git reset --hard '
-alias gitreset_head0='git reset HEAD '
-alias gitreset_head1='git reset HEAD^ '
-alias gitreset_head2='git reset HEAD~2 '
-alias gitreset_head3='git reset HEAD~3 '
-alias gitdiffhead='git diff HEAD '
-alias gitdiff_cached='git diff --cached '
+alias gitadd_f='        git add -f '
+alias gitcommit_am='    git commit -am '
+alias gitpush='         git push '
+alias gitremoteadd='    git remote add origin '
+alias gitclone='        git clone --recursive '
+alias gitdiffstat='     git diff --stat '
+alias gitdifftool='     git difftool --tool=vimdiff '
+alias gitlog='          git log '
+alias gitlogstat='      git log --stat '
+alias gitstatus='       git status '
+alias gitreset_soft='   git reset --soft '
+alias gitreset_hard='   git reset --hard '
+alias gitreset_head0='  git reset HEAD '
+alias gitreset_head1='  git reset HEAD^ '
+alias gitreset_head2='  git reset HEAD~2 '
+alias gitreset_head3='  git reset HEAD~3 '
+alias gitdiffhead='     git diff HEAD '
+alias gitdiff_cached='  git diff --cached '
 
 #input methods reset
 alias input_methods_reset_fcitx='fcitx -r'
@@ -203,15 +203,15 @@ alias input_methods_reset_fcitx='fcitx -r'
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
 
-alias ctags_R='         ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf'
-alias ctags_R_Python="  ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf"
-alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
-alias ctags_Re='        ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf'
-alias ctags_Re_Python=" ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf"
-alias ctags_Re_SV="     ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf"
-alias ctags_L_C='       ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L'
-alias ctags_L_Python="  ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L"
-alias ctags_L_SV="      ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L"
+alias ctags_R="         ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
+alias ctags_R_Python="  ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
+alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_Re="        ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
+alias ctags_Re_Python=" ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
+alias ctags_Re_SV="     ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_L_C="       ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
+alias ctags_L_Python="  ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
+alias ctags_L_SV="      ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
