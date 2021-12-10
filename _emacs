@@ -827,7 +827,8 @@
   ;;(whitespace-newline-mode)
   (global-whitespace-newline-mode)
 )
-;;start function of copy without selection--------------------------------------------------
+;;start function of copy_without_selection--------------------------------------------------
+;; reference linker: https://www.emacswiki.org/emacs/CopyWithoutSelection
 ;;--------------------------------------------------
 ;;the base functions
 (defun get-point (symbol &optional arg)
@@ -857,7 +858,7 @@
   (copy-thing 'backward-word 'forward-word arg)
   ;;(paste-to-mark arg)
 )
-
+;;ToCheck;;
 (global-set-key (kbd "C-c w")         (quote copy-word))
 ;;--------------------------------------------------
 ;;Copy backward word
@@ -868,7 +869,7 @@
    (let ((end (point))
      (beg (get-point 'backward-word 1)))
      (copy-region-as-kill beg end))))
-
+;;ToCheck;;
 (global-set-key (kbd "C-c W") 'copy-backward-word)
 ;;--------------------------------------------------
 ;;Copy Line
@@ -878,7 +879,7 @@
   (copy-thing 'beginning-of-line 'end-of-line arg)
   (paste-to-mark arg)
 )
-
+;;ToCheck;;
 (global-set-key (kbd "C-c l")         (quote copy-line))
 ;;--------------------------------------------------
 ;;Copy Paragraph
@@ -889,6 +890,7 @@
   (paste-to-mark arg)
 )
 
+;;ToCheck;;
 (global-set-key (kbd "C-c p")         (quote copy-paragraph))
 ;;--------------------------------------------------
 ;;Copy String
@@ -907,7 +909,7 @@ When used in shell-mode, it will paste string on shell prompt by default "
   (copy-thing 'beginning-of-string 'end-of-string arg)
   (paste-to-mark arg)
 )
-
+;;ToCheck;;
 (global-set-key (kbd "C-c s")         (quote thing-copy-string-to-mark))
 ;;--------------------------------------------------
 ;;Copy Parenthesis
@@ -926,11 +928,11 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
   (copy-thing 'beginning-of-parenthesis 'end-of-parenthesis arg)
   (paste-to-mark arg)
 )
-
+;;ToCheck;;
 (global-set-key (kbd "C-c a")         (quote thing-copy-parenthesis-to-mark))
 ;;--------------------------------------------------
 ;;
-;;end function of copy without selection--------------------------------------------------
+;;end function of copy_without_selection--------------------------------------------------
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;open emacs with miximized windows
 ;;emacs -mm
