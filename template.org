@@ -4,17 +4,13 @@
 #+author: here is author
 
 
-* add new head with
-##### M-RET
+* ##### M-RET ##### add new head with
 
-* TODO add new TODO with
-##### M-S-RET
+* TODO ##### M-S-RET ##### add new TODO with
 
-** set this line as a header with
-##### C-c *
+** ##### C-c * ##### set/change this line between a header and contents with
 
-** change the heading level with
- ##### M->    or    M-<
+** ##### M-> or M-< ##### change the heading level with
 
 * TODO item is here
 ** Heading is here
@@ -24,13 +20,26 @@
 
 
 * Heading is here
-Head item
+** Head item
+
+ -----
+
+Para\\
+
+* TODO ##### C-c C-t ##### insert the tag with timestamp
+
+** ##### C-c C-t ##### , select the tag type
+  - State "TODO"       from "DONE"       [2021-12-11 Sat 01:59]
 
 
-
+  - State "DONE"       from              [2021-12-11 Sat 01:57]
 CLOSED: [2021-02-01 Mon 17:35] DEADLINE: <2021-02-01 Mon> SCHEDULED: <2021-01-14 Thu>
 - State "DONE"       from "STARTED"    [2021-02-01 Mon 17:35]
 - State "TODO"       from "CANCELLED"  [2021-02-01 Mon 15:02]
+
+
+
+
 1.try list here
 + try list here
 - try list here
