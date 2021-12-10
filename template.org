@@ -3,10 +3,24 @@
 #+title: here is title
 #+author: here is author
 
+
+* add new head with
+##### M-RET
+
+* TODO add new TODO with
+##### M-S-RET
+
+** set this line as a header with
+##### C-c *
+
+** change the heading level with
+ ##### M->    or    M-<
+
 * TODO item is here
-* Heading is here
+** Heading is here
+
 * TODO header item 1 level
-** DONE header item 2 level                                                    :try_tag_here:
+*** DONE header item 2 level                                                    :try_tag_here:
 
 
 * Heading is here
