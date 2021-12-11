@@ -6,18 +6,28 @@
 
 * ##### M-RET ##### add new head with
 
+--------------------------------------------------
+
 * TODO ##### M-S-RET ##### add new TODO with
 
-** ##### C-c * ##### set/change this line between a header and contents with
+--------------------------------------------------
 
-** ##### M-> or M-< ##### change the heading level with
+* ##### C-c * ##### set/change this line between a header and contents with
+
+* ##### S-> or S-< ##### change the heading level with
+
+--------------------------------------------------
 
 * TODO item is here
 ** Heading is here
 
-* TODO header item 1 level
-*** DONE header item 2 level                                                    :try_tag_here:
+--------------------------------------------------
 
+* TODO header item 1 level
+** DONE header item 2 level                                                    :try_tag_here:
+
+
+--------------------------------------------------
 
 * Heading is here
 ** Head item
@@ -26,39 +36,91 @@
 
 Para\\
 
-* TODO ##### C-c C-t ##### insert the tag with timestamp
+* TODO ##### C-c C-t ##### insert the tag type with timestamp
 
-** ##### C-c C-t ##### , select the tag type
+--------------------------------------------------
+
+* reference linker https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html
+* ##### C-c . ##### , select the time, and insert the time info
+<2021-12-11 Sat>
+
+--------------------------------------------------
+
+* ##### C-c ! ##### , select the time, and insert un-active time info
+[2021-12-11 Sat]
+
+--------------------------------------------------
+
+* ##### C-c . ##### , select the time with
+* ##### S-> or S-< ##### to change the time, and insert the time info
+<2021-12-25 Sat>
+
+--------------------------------------------------
+
+* ##### C-c C-t ##### , select the time, and insert the from timestamp info
   - State "TODO"       from "DONE"       [2021-12-11 Sat 01:59]
 
+--------------------------------------------------
 
+* ##### C-c C-d ##### , select the time, and insert the deadline timestamp
+   DEADLINE: <2021-02-01 Mon>
+
+--------------------------------------------------
+
+* ##### C-c C-s ##### , select the time, and insert the scheduled timestamp
+   SCHEDULED: <2021-01-14 Thu>
+
+--------------------------------------------------
+
+* time stamp example
   - State "DONE"       from              [2021-12-11 Sat 01:57]
 CLOSED: [2021-02-01 Mon 17:35] DEADLINE: <2021-02-01 Mon> SCHEDULED: <2021-01-14 Thu>
 - State "DONE"       from "STARTED"    [2021-02-01 Mon 17:35]
 - State "TODO"       from "CANCELLED"  [2021-02-01 Mon 15:02]
 
+--------------------------------------------------
 
-
-
+* head format example
 1.try list here
 + try list here
 - try list here
 [] try list here
+
+* ##### M-RET ##### to add new item
 1. order list format
 2. order list format
-
 3. order list format here
 4. order list format here
+
 <2021-02-01 Mon>
 [2021-02-18 Thu]
 
+* format example_01 of string contents
  *format text here*
  /format text here/
  +format text here+
  _format text here_
 
+* format example_02 of string contents
 *H_2 O*
 +H^2 O+
+
+* ##### C-c | ##### insert table, then input table size, like 5x2
+|   |   |   |   |   |
+|---+---+---+---+---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+
+* ##### M-RET ##### add table line
+
+-----
+
+* ##### Tab ##### move cursor in table
+
 
 | Name | Phone | Age |   |   |
 |------+-------+-----+---+---|
@@ -80,10 +142,13 @@ CLOSED: [2021-02-01 Mon 17:35] DEADLINE: <2021-02-01 Mon> SCHEDULED: <2021-01-14
 |------+-------+-----+---+---|
 
 
+* format example of imbedded code in text
 #+BEGIN
 try block here
 #+END
+
 :
 try to change format here
-**
+
+* format of linker
 [[info:here%20is%20try-run%20for%20link]]
