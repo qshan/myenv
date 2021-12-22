@@ -69,6 +69,22 @@ sudo apt install gcc g++ clang cmake scons build-essential
 #
 sudo apt-get install unetbootin
 sudo apt install meld xxdiff diffuse kompare
+
+#install reader for epub reader
+#
+sudo apt install calibre calibre-bin
+# reference web here https://calibre-ebook.com/download_linux
+#
+#sudo apt install fbreader
+#
+#sudo apt install gnome-books
+#
+#sudo apt-add-repository ppa:bookworm-team/bookworm
+#sudo apt update
+#sudo apt install com.github.babluboy.bookworm
+#
+#Koodo Reader
+
 ####usage of unetbootin
 # $sudo unetbootin installtype=USB targetdrive=/dev/sdb1
 #
