@@ -155,6 +155,9 @@ alias cargorun            'cargo run '
 
 #go_path alias
 alias gotestspace         'cd ~/data/work/test_space'
+alias goriot              'cd ~/data/work/test_space/RIOT'
+alias gortthread          'cd ~/data/work/test_space/rt-thread'
+#
 alias goquarkts           'cd ~/data/work/test_space/QuarkTS'
 alias gonuttx             'cd ~/data/work/test_space/nuttx'
 alias goCTest             'cd ~/data/work/test_space/ctest_qshan'
