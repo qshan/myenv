@@ -176,6 +176,7 @@ alias cargorun='    cargo run '
 alias gotestspace=' cd ~/data/work/test_space'
 alias goriot='      cd ~/data/work/test_space/RIOT'
 alias gortthread='  cd ~/data/work/test_space/rt-thread'
+alias gortqemu='    cd ~/data/work/test_space/rt-thread/bsp/qemu-vexpress-a9'
 #
 alias goquarkts='   cd ~/data/work/test_space/QuarkTS'
 alias gonuttx='     cd ~/data/work/test_space/nuttx'
