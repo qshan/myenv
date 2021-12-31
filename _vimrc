@@ -635,7 +635,9 @@ command! MySaveWithSudo                         :w !sudo tee %
 command! MySearchCompileError                   :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
 command! MyReadCurrentFileName                  :r! echo %
 command! MyReadCurrentFileNameWithFullPath      :r! echo %:p
-command! MyRemoveWhiteSpaceOnEnd                :%s/\s*$//g
+command! MyRemoveWhiteSpaceOnEnd                :%s/\s\+$//g
+autocmd BufWritePost *                          :MyRemoveWhiteSpaceOnEnd
+"worked"autocmd BufWritePost *                          :%s/\s\+$//g
 command! MyRemoveEmptyLine                      :%s/^\s*$\n//g
 command! MyReplaceSpaceWithNewLine              :%s/\s\+/\r/g
 command! MyReplaceSpaceWithNewLine1             :%s/\s\+//g
