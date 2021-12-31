@@ -24,7 +24,8 @@ sed -i 's/\s\+\$//g' File_name_replaced
 
 #find the specific named file and replase the space on the end of line in that files
 #worked
-find TargetPathName -type f -iname "*.[c|h]" | xargs sed -i 's/\s\+\$/\$/g'
+find TargetPathName -type f -iname "*.[c|h]" | xargs sed -i "s/\s\+\$//g"
+find TargetPathName -type f -iname "*.[c|h]" | xargs sed -i 's/\ \+$//g'
 
 #delete the empty line (cover write space) in targetfile
 sed  -i '/^\s*$/d' data.txt

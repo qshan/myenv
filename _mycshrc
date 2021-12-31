@@ -76,18 +76,19 @@ setxkbmap -option ctrl:nocaps
 
 #alias setting here
 ##------------------------------
-alias ls                  '\ls --color=auto '
-alias la                  'ls -alh '
-alias lt                  'ls -ctl '
+alias ls                    '\ls --color=auto '
+alias la                    'ls -alh '
+alias lt                    'ls -ctl '
 ##------------------------------
-alias grep                '\grep --color=auto '
-alias greprni             '\grep --color=auto -rni '
+alias grep                  '\grep --color=auto '
+alias greprni               '\grep --color=auto -rni '
 ##------------------------------
-alias findL               '\find -L '
-alias findSwfFile         'find ./ -type f -iname "*.sw*" '
-alias findSwfFileRemove   'find ./ -type f -iname "*.sw*" | xargs \rm -rf '
-alias findDotOFile        'find ./ -type f -iname "*.o*" '
-alias findDotOFileRemove  'find ./ -type f -iname "*.o*" | xargs \rm -rf '
+alias findL                 '\find -L '
+alias findSwfFile           'find ./ -type f -iname "*.sw*" '
+alias findSwfFileRemove     'find ./ -type f -iname "*.sw*" | xargs \rm -rf '
+alias findDotOFile          'find ./ -type f -iname "*.o*" '
+alias findDotOFileRemove    'find ./ -type f -iname "*.o*" | xargs \rm -rf '
+alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
 ##------------------------------
 alias lnsTf               'ln -sTf '
 alias lnsnf               'ln -snf '
@@ -115,7 +116,8 @@ alias GetNameofCurrentFolder 'echo $PWD | sed -r "s/(.*)\/(.*)/\2/g"'
 #alias GetCurrentPathOfFolderName 'pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\1/g"'
 alias GetFullPathOfCurrentFolder 'echo $PWD | sed -r "s/(.*)\/(.*)/\1/g"'
 ##------------------------------
-alias sed_i_r       'sed -i -r '
+alias sed_i_r               'sed -i -r '
+alias sedremovespaceonend   'sed -i "s/\s\+\$//g" '
 #example#sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 #sed -i -r "s/AC_INIT(.*)/AC_INIT(${FileNameOfTopCode})/g" configure.in
 ##------------------------------

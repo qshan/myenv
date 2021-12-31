@@ -104,12 +104,17 @@ alias lt='ls -ctl '
 ##------------------------------
 alias grep='\grep --color=auto '
 alias greprni='\grep --color=auto -rni '
+#alias grepspaceonendofline='\grep --color=auto -rni "\s\+\$$" '
+#find path_name -type f -iname "*.[c|h]" | xargs grep '\s\+\$'
+#find path_name -type f -iname "*.[c|h]" | xargs sed -i 's/\s\+\$//g'
+#grep --color=auto -rni '\s\+\$' pathname
 ##------------------------------
 alias findL='\find -L '
 alias findSwfFile='find ./ -type f -iname "*.sw*" '
 alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rf '
 alias findDotOFile='find ./ -type f -iname "*.o" '
 alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rf '
+alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfindremovespaceonend; find "$@" -type f | xargs sed -i "s/\s\+\$//g" ; }; functionfindremovespaceonend '
 #TODO#
 #find ./ -type f | xargs sed -i 's/13/14/g'
 #find TargetPathName -type f -iname "*.c" | xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
@@ -140,7 +145,8 @@ alias GetNameofCurrentFolder='echo $PWD | sed -r "s/(.*)\/(.*)/\2/g"'
 #alias GetCurrentPathOfFolderName='pwd | grep ".*" | sed -r "s/(.*)\/(.*)/\1/g"'
 alias GetFullPathOfCurrentFolder='echo $PWD | sed -r "s/(.*)\/(.*)/\1/g"'
 ##------------------------------
-alias sed_i_r='sed -i -r '
+alias sed_i_r='             sed -i -r '
+alias sedremovespaceonend=' sed -i "s/\s\+\$//g" '
 #example#sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 #sed -i -r "s/AC_INIT(.*)/AC_INIT(${FileNameOfTopCode})/g" configure.in
 ##------------------------------
