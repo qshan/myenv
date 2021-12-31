@@ -32,9 +32,9 @@ sudo apt install build-essential cmake python3-dev
 
 
 if [ -f ~/.vimrc ]; then
-  echo  "source `pwd`/_vimrc" >>  ~/.vimrc
+  echo  "source `pwd`/_myvimrc" >>  ~/.vimrc
 else
-  echo  "source `pwd`/_vimrc" >  ~/.vimrc
+  echo  "source `pwd`/_myvimrc" >  ~/.vimrc
 fi
 
 #get bundle plugin tools if internet is available
