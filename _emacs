@@ -970,12 +970,12 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;    $ make install #may require extra privileges depending on where to install
 ;;
 ;;set tags for emacs
-;;1.generate the TAGS for Emacs
+;;1.TODO generate the TAGS for Emacs
 ;;find SearchPathName -name "*.[chCH]" -print | etags -
 ;;find SearchPathName -name "*.[chCH]"  | xargs ctags
 ;;ctags -e -R --c++-kinds=+px --fields=+iaS --extra=+qf SearchPathName
 ;;
-;;2. TODO;open/set TAGS file for current emancs env
+;;2.TODO;open/set TAGS file for current emancs env
 ;;M-x visit-tags-table RETURN
 ;;then select the TAGS file for project, and TAGS setting work now
 ;;
@@ -991,12 +991,15 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;M-x tags-reset-tags-tables
 ;;
 ;;M-x list-tags
-;;M-.     ;search/jump to the function definition
-;;C-]     ;jump to the function definition on evil mode
-;;C-u M-. ;search next function name
-;;C-o     ;return back on evil mode
-;;M-*     ;return the location of last searching tag
-;;C-M-.   ;search the function definition with FunctionName
+;;C-]                           ;M-x counsel-etags-find-tag-at-point  ; jump to the function definition on evil mode
+;;C-o                           ;M-x evil-jump-back                   ; return back on evil mode
+;;M-.                           ;M-x xref-find-definitions            ;search/jump to the function definition
+;;M-,                           ;M-x xref-pop-marker-stack            ;jump back
+;;C-u M-.                       ;search next function name
+;;M-*                           ;return the location of last searching tag
+;;C-M-.                         ;search the function definition with FunctionName
+;;
+;;M-x find-tag                  ;;find tag with input keywords
 ;;
 ;;M-x tags-query-replace
 ;;C-u M-x tags-query-replace
@@ -1005,7 +1008,6 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;complete the function name
 ;;C-n
 ;;
-
 ;;set for company mode
 ;;  (with-eval-after-load 'company (company-ctags-auto-setup))
 
@@ -1016,13 +1018,11 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;(require 'company)
 ;;(add-hook 'after-init-hook 'global-company-mode)
 
-
 ;;;;;;useful .el info
 ;;functions-args.el
 ;;;;GNU Emacs package for showing an inline arguments hint
 ;;;;for the C/C++ function at point.
 ;;https://github.com/abo-abo/function-args
-
 
 ;;;;;config the theme with color-theme
 ;;(load-file "~/.emacs.d/elpa/color-theme-20190220.1115/themes/color-theme-library.el")
@@ -1095,7 +1095,9 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;install org-mode
 ;;;;;Using Emacs packaging system. You can install Org from the “package menu”, with
 ;;M-x list-packages
-;;;;;Downloading Org as an archive. You can download Org latest release from Org’s website, and then set the load path in your emcas init files, like .emacs or init.el
+;;;;;Downloading Org as an archive. You can download Org latest release from Org’s website,
+;;            and then set the load path in your emcas init files, like .emacs or init.el
+
 ;;(add-to-list 'load-path "~/path/to/orgdir/lisp")
 ;;(add-to-list 'load-path "~/path/to/orgdir/contrib/lisp" t)
 ;;;;;Using Org’s git repository. download the src, and compile and install
@@ -1106,16 +1108,24 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;$ make doc
 ;;$ make install
 
-;;;;;For a better experience, the three Org commands org-store-link, org-capture and org-agenda ought to be accessible anywhere in Emacs, not just in Org buffers. To that effect, you need to bind them to globally available keys, like the ones reserved for users (see (elisp)Key Binding Conventions). Here are suggested bindings, please modify the keys to your own liking.
+;;;;;For a better experience, the three Org commands org-store-link, org-capture and org-agenda
+;;  ought to be accessible anywhere in Emacs, not just in Org buffers. To that effect, you need
+;;  to bind them to globally available keys, like the ones reserved for users (see (elisp)Key
+;;  Binding Conventions). Here are suggested bindings, please modify the keys to your own liking.
+
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
 ;;(global-set-key (kbd "C-c a") 'org-agenda)
 ;;(global-set-key (kbd "C-c c") 'org-capture)
-;;;;;Files with the ‘.org’ extension use Org mode by default. To turn on Org mode in a file that does not have the extension ‘.org’, make the first line of a file look like this:
+;;;;;Files with the ‘.org’ extension use Org mode by default. To turn on Org mode in a file that
+;;    does not have the extension ‘.org’, make the first line of a file look like this:
+
 ;;MY PROJECTS    -*- mode: org; -*-
-;;;;;which selects Org mode for this buffer no matter what the file’s name is. See also the variable org-insert-mode-line-in-empty-file.
+;;;;;which selects Org mode for this buffer no matter what the file’s name is. See also the
+;;    variable org-insert-mode-line-in-empty-file.
 
+;;;;;Headlines define the structure of an outline tree. Org headlines start on the left margin3
+;;    with one or more stars followed by a space. For example:
 
-;;;;;Headlines define the structure of an outline tree. Org headlines start on the left margin3 with one or more stars followed by a space. For example:
 ;;C-RET ;(org-insert-heading-after-content)
 ;;M-RET ;(org-insert-heading-respect-content)
 ;;C-c * ;(org-insert-heading);turn item/line into headline
@@ -1168,18 +1178,29 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;#+TODO: TODO | DONE
 ;;#+TODO: REPORT BUG KNOWNCAUSE | FIXED
 ;;#+TODO: | CANCELED
-;;;;;To make sure you are using the correct keyword, type ‘#+’ into the buffer and then use M-TAB to complete it (see Completion).
-;;;;;Remember that the keywords after the vertical bar—or the last keyword if no bar is there—must always mean that the item is DONE, although you may use a different word. After changing one of these lines, use C-c C-c with point still in the line to make the changes known to Org mode40.
+;;;;;To make sure you are using the correct keyword, type ‘#+’ into the buffer and then use
+;;  M-TAB to complete it (see Completion).
 
-;;;;;Faces for TODO keywords. Org mode highlights TODO keywords with special faces: org-todo for keywords indicating that an item still has to be acted upon, and org-done for keywords indicating that an item is finished. If you are using more than two different states, you might want to use special faces for some of them. This can be done using the variable org-todo-keyword-faces. For example:
+;;;;;Remember that the keywords after the vertical bar—or the last keyword if no bar is
+;;there—must always mean that the item is DONE, although you may use a different word. After
+;;changing one of these lines, use C-c C-c with point still in the line to make the changes known to Org mode40.
+
+;;;;;Faces for TODO keywords. Org mode highlights TODO keywords with special faces: org-todo
+;;for keywords indicating that an item still has to be acted upon, and org-done for keywords
+;;indicating that an item is finished. If you are using more than two different states, you
+;;might want to use special faces for some of them. This can be done using the variable
+;;org-todo-keyword-faces. For example:
+
 ;;(setq org-todo-keyword-faces
 ;;      '(("TODO" . org-warning) ("STARTED" . "yellow")
 ;;        ("CANCELED" . (:foreground "blue" :weight bold))))
-;;;;;While using a list with face properties as shown for ‘CANCELED’ should work, this does not always seem to be the case. If necessary, define a special face and use that. A string is interpreted as a color. The variable org-faces-easy-properties determines if that color is interpreted as a foreground or a background color.
+;;;;;While using a list with face properties as shown for ‘CANCELED’ should work, this does not
+;;always seem to be the case. If necessary, define a special face and use that. A string is
+;;interpreted as a color. The variable org-faces-easy-properties determines if that color is
+;;interpreted as a foreground or a background color.
 
-
-
-;;;;;TODO keywords as workflow states. You can use TODO keywords to indicate different, possibly sequential states in the process of working on an item, for example:
+;;;;;TODO keywords as workflow states. You can use TODO keywords to indicate different, possibly
+;;sequential states in the process of working on an item, for example:
 ;;(setq org-todo-keywords
 ;;      '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
 ;;;;;or
@@ -1187,10 +1208,20 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;'((sequence "TODO(t)" "|" "DONE(d)")
 ;;        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
 ;;        (sequence "|" "CANCELED(c)")))
-;;;;;The vertical bar separates the TODO keywords (states that need action) from the DONE states (which need no further action). If you do not provide the separator bar, the last state is used as the DONE state.
-;;;;;With this setup, the command C-c C-t cycles an entry from ‘TODO’ to ‘FEEDBACK’, then to ‘VERIFY’, and finally to ‘DONE’ and ‘DELEGATED’. You may also use a numeric prefix argument to quickly select a specific state. For example C-3 C-c C-t changes the state immediately to ‘VERIFY’. Or you can use S-RIGHT and S-LEFT to go forward and backward through the states. If you define many keywords, you can use in-buffer completion (see Completion) or a special one-key selection scheme (see Fast access to TODO states) to insert these words into the buffer. Changing a TODO state can be logged with a timestamp, see Tracking TODO state changes, for more information.
+;;;;;The vertical bar separates the TODO keywords (states that need action) from the DONE states
+;;(which need no further action). If you do not provide the separator bar, the last state is used as the DONE state.
 
-;;;;;Setting Tags. Tags can simply be typed into the buffer at the end of a headline. After a colon, M-TAB offers completion on tags. There is also a special command for inserting tags:
+;;;;;With this setup, the command C-c C-t cycles an entry from ‘TODO’ to ‘FEEDBACK’, then to ‘VERIFY’,
+;;and finally to ‘DONE’ and ‘DELEGATED’. You may also use a numeric prefix argument to quickly select
+;;a specific state. For example C-3 C-c C-t changes the state immediately to ‘VERIFY’. Or you can use
+;;S-RIGHT and S-LEFT to go forward and backward through the states. If you define many keywords, you
+;;can use in-buffer completion (see Completion) or a special one-key selection scheme (see Fast access
+;;to TODO states) to insert these words into the buffer. Changing a TODO state can be logged with a
+;;timestamp, see Tracking TODO state changes, for more information.
+
+;;;;;Setting Tags. Tags can simply be typed into the buffer at the end of a headline. After a colon,
+;;    M-TAB offers completion on tags. There is also a special command for inserting tags:
+
 ;;C-c C-q (org-set-tags-command)
 ;;C-c C-c (org-set-tags-command)
 
@@ -1199,10 +1230,15 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;- Unordered list items
 ;;+ Unordered list items
 ;;* Unordered list items
-;;;;;Ordered list items start with a numeral followed by either a period or a right parenthesis10, such as ‘1.’ or ‘1)’11 If you want a list to start with a different value—e.g., 20—start the text of the item with ‘[@20]’12. Those constructs can be used in any item of the list in order to enforce a particular numbering.
+;;;;;Ordered list items start with a numeral followed by either a period or a right parenthesis10,
+;;    such as ‘1.’ or ‘1)’11 If you want a list to start with a different value—e.g., 20—start the
+;;    text of the item with ‘[@20]’12. Those constructs can be used in any item of the list in order to
+;;    enforce a particular numbering.
+
 ;;1. ordered list item
 ;;1) ordered list item
-;;;;;Description list items are unordered list items, and contain the separator ‘::’ to distinguish the description term from the description.
+;;;;;Description list items are unordered list items, and contain the separator ‘::’ to distinguish
+;;    the description term from the description.
 
 ;;;;;formated text with pair of '*', '/', '+' and '_', like this
 ;; *formated text here*
@@ -1373,34 +1409,43 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;
 ;;(toggle-read-only)    ;;force edit the file opened with read only mode
 ;;C-x C-q     ;;(read-only-mode)      ;;switch read-only-mode between read-only and writable
-;;C-x C-q     ;(dired-toggle-read-only) - Makes all file names in the buffer editable directly to rename them! Press Z Z to confirm renaming or Z Q to abort.
+;;C-x C-q     ;(dired-toggle-read-only) - Makes all file names in the buffer editable directly to rename them!
+;;                                        Press Z Z to confirm renaming or Z Q to abort.
 ;;M-x delete-trailing-whitespace    ;remove the white space at end of line
 ;;M-x whitespace-cleanup            ;
 
 ;;help and get the info with help
-;;;;; list the key binding, (M-x describe-bindings)
+;;;;; TODO list the key binding, (M-x describe-bindings)
 ;;;;C-h .     ;display-local-help
 ;;;;C-h RET   ;view-order-manuals display local help
 ;;;;C-h ?     ;help-for-help
-;;;;C-h C-h   ;runs help-for-help. Use this command if you want to see a list of available help commands. Remember, if you partially remember a key binding, just press as much as you can remember and then press C-h, Emacs will list available commands for that prefix. Prefix C-h is no exception. C-h C-h simply returns all key bindings and commands of prefix C-h
+;;;;C-h C-h   ;runs help-for-help. Use this command if you want to see a list of available help commands.
+;;            Remember, if you partially remember a key binding, just press as much as you can remember
+;;            and then press C-h, Emacs will list available commands for that prefix. Prefix C-h is no exception.
+;;            C-h C-h simply returns all key bindings and commands of prefix C-h
 ;;;;C-h r     ;info-emacs-manual
 ;;;;C-h t     ;help-with-tutorial to read bundled tutorial.
 ;;C-h q       ;quit-help
 ;;
-;;;;C-h b     ;(M-x describe-bindings), list the binding info
-;;C-h c       ;runs describe-key-briefly to find out what command is bound to a key. For example, after C-h c, run C-x C-f gives you find-files.
+;;;;C-h b     ;(M-x describe-bindings), list the key binding info
+;;C-h c       ;ToCheck;runs describe-key-briefly to find out what command is bound to a key.
+;;              For example, after C-h c, run C-x C-f gives you find-files.
 ;;C-h c       ;describe-key-briefly check the info of input-key
 ;;C-h f       ;counsel-describe-function ###good###
-;;;;C-h k     ;runs describe-key to find out what command is bound to a key, along with the documentation of the command. Use this if you want to know how to use a command.
+;;;;C-h k     ;runs describe-key to find out what command is bound to a key,
+;;              along with the documentation of the command. Use this if you want to know how to use a command.
 ;;;;C-h k     ;describe-key, will open describe with a windows
 ;;;;C-h p     ;finder-by-keywords
 ;;;;C-h K     ;find-function-on-key, will open the function definition
 ;;C-h C-f     ;find-function, will open the function definition
 ;;;;C-h C     ;describe-coding-system
-;;;;C-h m     ;runs describe-mode to see all the key bindings and documentation of current major mode and minor modes of a buffer.
+;;;;C-h m     ;runs describe-mode to see all the key bindings and documentation of current major mode
+;;              and minor modes of a buffer.
 ;;;;C-h w     ;runs where-is to get which keystrokes invoke a given command.
 ;;;;C-h e     ;runs view-echo-area-messages, allow you to see the logging of echo area messages.
-;;;;C-h v     ;runs describe-variable, and asks you for a variable; you can TAB to complete a variable. This command is important, because aside from describing a variable, it allows you to customize the behavior of Emacs and 3rd party packages. But for now, you don't need it.
+;;;;C-h v     ;runs describe-variable, and asks you for a variable; you can TAB to complete a variable.
+;;              This command is important, because aside from describing a variable, it allows you to
+;;              customize the behavior of Emacs and 3rd party packages. But for now, you don't need it.
 
 ;;re-load the emacs config file with load-file
 ;;M-x load-file ~/.emacs    ;load .emacs file as Lisp code, and execute
@@ -1410,9 +1455,13 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;C-x d ;enter Dired Mode
-;;;;;Dired, File Management. Dired is a built-in file manager for Emacs that does some pretty amazing things! Here are some key bindings you should try out:
+;;;;;Dired, File Management. Dired is a built-in file manager for Emacs that does some pretty amazing things!
+;;  Here are some key bindings you should try out:
+
 ;;;;;Evil Keybindings and other behaviour
-;;C-z               ;(evil-toggle-key);The key used to change to and from Emacs state. Must be readable by read-kbd-macro
+;;C-z               ;(evil-toggle-key);The key used to change to and from Emacs state.
+;;                                      Must be readable by read-kbd-macro
+
 ;;C-x C-0  +/-/0   ;;text-scale-adjust, +: increase   -:decrease
 ;; C-x d           ;;open the dired buffer, then input the directory info and get the files list info in that folder
 ;;M-x dired        ;;same as the C-x d
