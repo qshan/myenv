@@ -1415,7 +1415,7 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;M-x whitespace-cleanup            ;
 
 ;;help and get the info with help
-;;;;; TODO list the key binding, (M-x describe-bindings)
+;;;;;C-h b    ;M-x describe-bindings ;TODO;list the key binding
 ;;;;C-h .     ;display-local-help
 ;;;;C-h RET   ;view-order-manuals display local help
 ;;;;C-h ?     ;help-for-help
@@ -1427,8 +1427,8 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;;;C-h t     ;help-with-tutorial to read bundled tutorial.
 ;;C-h q       ;quit-help
 ;;
-;;;;C-h b     ;(M-x describe-bindings), list the key binding info
-;;C-h c       ;ToCheck;runs describe-key-briefly to find out what command is bound to a key.
+;;;;C-h b     ;M-x describe-bindings  ;ToCheck;list the key binding info
+;;C-h c       ;runs describe-key-briefly to find out what command is bound to a key.
 ;;              For example, after C-h c, run C-x C-f gives you find-files.
 ;;C-h c       ;describe-key-briefly check the info of input-key
 ;;C-h f       ;counsel-describe-function ###good###
