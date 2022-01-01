@@ -857,12 +857,15 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """i_C-r + +            "insert the clipboard contents
 """i_C-r + :            "insert the last command-line
 """i_C-r + .            "insert the last inserted text
+"""i_C-r + '"'          "the unnamed register, containing the text of the last delete or yank
+"""i_C-r + '#'          "the alternate file name
+"""i_C-r + '/'          "the last search pattern
+"""i_C-r + '-'          "the last small (less than a line) delete
 """i_C-v + C-m          "insert the symbo of end of line with windows format
 """i_C-a                "Insert previously inserted text.
 """i_C-w                "delete the word before the cursor
 """i_C-u                "delete all of words before the cursor
 """i_C-c                "exit the insert mode
-
 """----------------------------case change lowercase uppercase----------------------------
 "~                      "swap the case on the cursor location
 "g~ RET                 "swap the case on the current line
@@ -982,6 +985,17 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """:Sex
 """:Vexplore
 """:Vex
+""""     :[N]Explore[!]  [dir]... Explore directory of current file      :Explore
+""""     :[N]Hexplore[!] [dir]... Horizontal Split & Explore             :Hexplore
+""""     :[N]Lexplore[!] [dir]... Left Explorer Toggle                   :Lexplore
+""""     :[N]Sexplore[!] [dir]... Split&Explore current file's directory :Sexplore
+""""     :[N]Vexplore[!] [dir]... Vertical   Split & Explore             :Vexplore
+""""     :Texplore       [dir]... Tab & Explore                          :Texplore
+""""     :Rexplore            ... Return to/from Explorer                :Rexplore
+""""------------------------------
+""""     Used with :Explore **/pattern : (also see |netrw-starstar|)
+""""     :Nexplore............. go to next matching file                :Nexplore
+""""     :Pexplore............. go to previous matching file            :Pexplore
 "let g:netrw_sort_by
 "let g:netrw_sort_direction = 'reverse'
 """"--------------------Session     -------------------
