@@ -174,10 +174,25 @@ set wildmode=longest,list
 "show symbol, like show blank and tab
 set list
 ""set nolist
+" unicode example i C-v uxxxx
+"   u21a9   ↩
+"   u21b5   ↵
+"   u21a6   ↦
+"   u2610   ☐
+" Reference linker for unicode
+" https://unicode-table.com
+"
+" https://www.vertex42.com/ExcelTips/unicode-symbols.html#:~:text=Standard%200-255%20%28UTF-8%29%20Character%20Set%20%20%20%21,%20%2092%20%2014%20more%20rows%20
+" https://en.wikipedia.org/wiki/List_of_Unicode_characters
+" https://www.quackit.com/character_sets/unicode/
+"
 ""set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
 ""set listchars=eol:$,tab:»\ ,trail:~,extends:>,precedes:<,space:·
-set listchars=eol:$,tab:»»,trail:~,extends:>,precedes:<,space:·
-""set listchars=eol:$,tab:→\ ,trail:~,extends:>,precedes:<,space:·
+""set listchars=eol:↩,tab:»»,trail:~,extends:>,precedes:<,space:⌴⏘
+set listchars+=eol:↵,tab:»»
+set listchars+=trail:~,extends:>,precedes:<
+""set listchars=space:□
+set listchars+=space:·
 "highlight StrangeWhitespace guibg=Red ctermbg=Red
 highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
 autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
@@ -636,7 +651,7 @@ command! MySearchCompileError                   :/"incompatible\|redefined\|expa
 command! MyReadCurrentFileName                  :r! echo %
 command! MyReadCurrentFileNameWithFullPath      :r! echo %:p
 command! MyRemoveWhiteSpaceOnEnd                :%s/\s\+$//g
-autocmd BufWritePost *                          :MyRemoveWhiteSpaceOnEnd
+""autocmd BufWritePost *                          :MyRemoveWhiteSpaceOnEnd
 "worked"autocmd BufWritePost *                          :%s/\s\+$//g
 command! MyRemoveEmptyLine                      :%s/^\s*$\n//g
 command! MyReplaceSpaceWithNewLine              :%s/\s\+/\r/g
