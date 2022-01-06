@@ -194,9 +194,18 @@ set listchars+=trail:~,extends:>,precedes:<
 ""set listchars=space:□
 set listchars+=space:·
 "highlight StrangeWhitespace guibg=Red ctermbg=Red
-highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
-autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
-match Whitespace /  \+/
+""highlight Whitespace                        cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
+""autocmd ColorScheme * highlight Whitespace  cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
+""match Whitespace /  \+/
+"
+"highlight the space on end of the line
+""syntax match ExtraWhitespace /\s\+$/
+                      highlight SpaceOnEnd ctermbg=red guibg=red
+autocmd ColorScheme * highlight SpaceOnEnd ctermbg=red guibg=red
+""autocmd ColorScheme * highlight SpaceOnEnd
+autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
+"autocmd FileRead *.* match ExtraWhitespace /\s\+$/
+"autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 "
 set mouse=a
 " Display options
@@ -416,10 +425,15 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
 
+""list the syntax list
+""syntax list
+""list the syntax specific item
+""syntax syntax_item_name
 "it is better to put those match words on end of file
 "just one highlight type per time
 :match Todo /fshan\|DSF_IP\|dsf_ip\|fixme\|todo/
 :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 :3match Underlined /incompatible\|redefined\|expansion/
 "
 "need source $MYVIMRC after e(open)
