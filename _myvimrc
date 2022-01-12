@@ -90,6 +90,8 @@ set backspace=indent,eol,start
 "you could resize with Ctl-Shift-'+' | Ctl-'-' in vim
 "set guifont=Sans\ Bold\ 12
 set guifont=Monospace\ 16
+""C-x C- -       "decrease the char size in current buffer
+""C-x C- =/+     "increase the char size in current buffer
 
 " set the color of text background
 set background=dark
