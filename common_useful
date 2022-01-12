@@ -64,13 +64,14 @@ grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
 
 #search the space on end of line
 #one space char
-grep -rni '\s\$'  SearchPath
+grep -rni '\ \$'  SearchPath
 #multi space chars
-grep -rni '\s\+\$'  SearchPath
+grep -rni "\s\+\$"  SearchPath
+grep -rni '\ \+$'  SearchPath
 #one space char from line start
-grep -rni '^.*\s\$'  SearchPath
+grep -rni '^.*\ \$'  SearchPath
 #multi space chars from line start
-grep -rni '^.*\s\+\$'  SearchPath
+grep -rni '^.*\ \+\$'  SearchPath
 
 #rename the file name with replace the space with underline
 rename  's/\s+/_/g' FileName
