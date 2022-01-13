@@ -56,9 +56,20 @@ find SearchPath -type f -iname SearchNamePattern | xargs -I{} mv {} TargetCopyPa
 find SearchPath -type f -iname SearchNamePattern | xargs -I{} \mv -f {} TargetCopyPath
 find SearchPath -type f -iname SearchNamePattern | xargs \grep --color -oi grepPattern
 
+#find the file with specific property/feature
+find SearchPath -type f -writable
+find SearchPath -type f -readable
+find SearchPath -type f -executable
+
 #forcely remove the folder in the SearchPath
 find SearchPath -type d -iname "*" | xargs \rm -rf
 find ./* -type d -iname "*" | xargs \rm -rf
+
+#regular express
+#   ?     :match any single character
+#   *     :match zero or more characters
+#   []    :match list of characters in the list specified
+#   [!]   :match character not in the list specified
 
 grep -RiIl 'SearchPattern' SearchPath | xargs sed -i 's/search/replace/g'
 

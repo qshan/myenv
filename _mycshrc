@@ -82,7 +82,10 @@ alias lt                    'ls -ctl '
 ##------------------------------
 alias grep                  '\grep --color=auto '
 alias greprni               '\grep --color=auto -rni '
-alias grepspaceonend        '\grep --color=auto -rni "\s\+\$" '
+#alias grepspaceonend        '\grep --color=auto -rni "\s\+\$" '
+#alias grepspaceonend        '\grep --color=auto -rni " \+\$" '
+alias grepspaceonend        '\grep --color=auto -rni " \+"\$ '
+#alias grepspaceonend        '\grep --color=auto -rni " "\$ '
 ##------------------------------
 alias findL                 '\find -L '
 alias findSwfFile           'find ./ -type f -iname "*.sw*" '
