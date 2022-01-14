@@ -107,6 +107,7 @@ alias greprni='         \grep --color=auto -rni '
 alias grepspaceonend='  \grep --color=auto -rni "\s\+\$" '
 #worked#alias grepspaceonend='  \grep --color=auto -rni " \+\$" '
 #alias grepspaceonendofline='\grep --color=auto -rni "\s\+\$$" '
+#
 #find path_name -type f -iname "*.[c|h]" | xargs grep '\s\+\$'
 #find path_name -type f -iname "*.[c|h]" | xargs sed -i 's/\s\+\$//g'
 #grep --color=auto -rni '\s\+\$' pathname
