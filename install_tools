@@ -55,21 +55,71 @@ sudo add-apt-repository ppa:gezakovacs/ppa
 ##sudo add-apt-repository ppa:jonathonf/gcc
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 #
+#add ppa source here
+#--------------------------------------------------
+# google-chrome-stable
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo apt update
+sudo apt install google-chrome-stable
+#--------------------------------------------------
+# # google-earth-pro-stable google-earth-stable
+# wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/earth/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+# sudo apt update
+# sudo apt install google-earth-pro-stable
+#--------------------------------------------------
+# atom editor
+# curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+# sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+# sudo apt update
+# sudo apt install atom
+#--------------------------------------------------
+# ubuntu desktop
+sudo add-apt-repository ppa:ubuntu-desktop/ppa
+sudo apt update
+sudo apt install ubuntu-desktop
+#--------------------------------------------------
+# vscode Visual Studio Code
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code
+#--------------------------------------------------
+# Nginx from nginx.org repository
+curl -s https://nginx.org/keys/nginx_signing.key | sudo apt-key add -
+sudo sh -c 'echo "deb http://nginx.org/packages/ubuntu/ impish nginx" >> /etc/apt/sources.list.d/nginx_(nginx.org).list'
+sudo apt update
+sudo apt install nginx
+#--------------------------------------------------
+#--------------------------------------------------
+#--------------------------------------------------
+#--------------------------------------------------
+#--------------------------------------------------
+#
 sudo apt update
 #
-#sudo apt install vim gcc python python-dev clang clang-4.0 python-dev python3-dev
+#sudo apt install vim gcc g++ python python-dev clang clang-4.0 python-dev python3-dev
 sudo apt install git ssh sshd vim
 #
 #for vim
 #sudo apt install vim gcc python-dev clang python3-dev
-#sudo apt install vim vim-gnome gcc python-dev clang python3-dev
+#sudo apt install vim vim-gnome gcc g++ python-dev clang python3-dev
 #
 sudo apt install gcc g++ clang cmake scons build-essential
 #sudo apt install python-dev python3-dev
 #
 #install qemu for try run
-# sudo apt install qemu
+ sudo apt install qemu qemu-launcher libncurses5-dev
 # sudo apt install libncurses5-dev
+# sudo apt-get install git qemu scons libncurses5-dev
+#
+# sudo apt install gdb gdb-multiarch
+ sudo apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+ sudo apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+# sudo apt install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
 #
 sudo apt-get install unetbootin
 sudo apt install meld xxdiff diffuse kompare

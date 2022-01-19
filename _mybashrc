@@ -195,6 +195,7 @@ alias goCppTest='   cd ~/data/work/test_space/cpptest_qshan'
 #git alias
 alias gitadd_f='        git add -f '
 alias gitcommitma='     git commit -am '
+#example git commit -ma "coment description"
 alias gitcommitm='      git commit -m '
 #example git commit -m "coment description" FileName1 FileName2
 alias gitpush='         git push '

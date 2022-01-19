@@ -413,6 +413,7 @@
                                 ("\\.emacs\\'" . emacs-lisp-mode)
                                 ("_emacs.*\\'" . emacs-lisp-mode)
                                 ("_emacs.*"    . emacs-lisp-mode)
+                                ("\\*.get\\'"  . shell-mode)
                                 ("makefile*"   . makefile-mode)
                                 ("Makefile*"   . makefile-mode)
                                 ("SConstruct*" . scons-mode)
