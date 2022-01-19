@@ -53,7 +53,9 @@ endif
 #set the tcsh history size for personal setting
 set history = 10000
 
-setenv timefshan "`date +%Y-%m-%d-%H%M`"
+setenv timefshan  "`date +%Y-%m-%d-%H%M`"
+#alias  gettime    'echo `date +%Y-%m-%d-%H%M`'
+alias  gettime=   'export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
 
 # replace Caps with CTRL
 setxkbmap -option ctrl:nocaps

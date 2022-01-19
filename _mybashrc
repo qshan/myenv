@@ -77,7 +77,8 @@ export HISTSIZE=10000
 alias history='\history 1000'
 
 export timefshan="`date +%Y-%m-%d-%H%M`"
-
+#alias  gettime='echo `date +%Y-%m-%d-%H%M`'
+alias  gettime='export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
 
 # replace Caps with CTRL
 setxkbmap -option ctrl:nocaps
