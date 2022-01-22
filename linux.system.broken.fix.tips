@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+#
+# check the broken package, get the list info
+sudo dpkg --configure -a
+#
+#删除有问题的软件包并清除其配置，而不删除依赖项
+#TODO
+sudo dpkg -P --force-depends libc6-armel-cross libc6-armhf-cross libc6-dev-armel-cross libc6-dev-armhf-cros
+sudo dpkg -P --force-depends libasan2-armhf-cross libasan4-armhf-cross libatomic1-armhf-cross libc6-dev-armel-cross libc6-dev-armhf-cross libcilkrts5-armhf-cross libgcc1-armhf-cross libgomp1-armhf-cross libstdc++6-armhf-cross libubsan0-armhf-cross
+sudo dpkg -P --force-depends libgcc-5-dev-armhf-crosslibgcc-7-dev-armhf-cross gcc-7-arm-linux-gnueabihf gcc-5-arm-linux-gnueabihf gcc-arm-linux-gnueabihf
+sudo dpkg -P --force-depends libgcc-5-dev-armhf-cross libgcc-7-dev-armhf-cross
+#
+# clean
+sudo apt clean
+#
+# udpate
+sudo apt update
+#
+# install the sw forcelly, and reinstall dependance
+sudo apt -f install
+#
+# autoremove unused sw
+sudo apt apt autoremove
+#
+# upgrade the sw
+sudo apt upgrade
+#
+# install and fix broken sw
+sudo apt --fix-broken install
