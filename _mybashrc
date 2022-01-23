@@ -123,6 +123,10 @@ alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfin
 #find ./ -type f | xargs sed -i 's/13/14/g'
 #find TargetPathName -type f -iname "*.c" | xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
 ##------------------------------
+alias sudodpkgforce-depends='sudo dpkg -P --force-depends '
+##------------------------------
+alias whicha='which -a '
+##------------------------------
 alias lnsTf='ln -sTf '
 alias lnsnf='ln -snf '
 ##------------------------------

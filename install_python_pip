@@ -1,0 +1,11 @@
+#!/usr/bash
+
+#
+#wget -c https://bootstrap.pypa.io/get-pip.py
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+
+#
+sudo python3.5m get-pip.py
+
+#check pip info in env
+which -a pip3

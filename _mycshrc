@@ -96,6 +96,10 @@ alias findDotOFile          'find ./ -type f -iname "*.o*" '
 alias findDotOFileRemove    'find ./ -type f -iname "*.o*" | xargs \rm -rf '
 alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
 ##------------------------------
+alias sudodpkgforce-depends 'sudo dpkg -P --force-depends '
+##------------------------------
+alias whicha                'which -a '
+##------------------------------
 alias lnsTf               'ln -sTf '
 alias lnsnf               'ln -snf '
 ##------------------------------
