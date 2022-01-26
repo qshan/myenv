@@ -1,5 +1,8 @@
-#!/usr/bash
-#sudo add-apt-repository ppa:jonathonf/vim
+#!/bin/bash
+
+sudo apt install software-properties-common
+#
+sudo add-apt-repository ppa:jonathonf/vim
 #sudo add-apt-repository ppa:jonathonf/python-3.6
 #sudo add-apt-repository ppa:jonathonf/python-3.8
 sudo add-apt-repository ppa:deadsnakes/ppa
@@ -10,6 +13,7 @@ sudo apt install build-essential manpages-dev software-properties-common
 ####other ppa source from this web
 #### https://launchpad.net/~jonathonf
 sudo add-apt-repository ppa:jonathonf/gcc
+#sudo add-apt-repository --yes ppa:jonathonf/gcc-9.1
 ##sudo add-apt-repository ppa:jonathonf/binutils
 ##sudo add-apt-repository ppa:jonathonf/gnat
 ##sudo add-apt-repository ppa:jonathonf/nvptx-tools
@@ -28,6 +32,24 @@ sudo add-apt-repository ppa:jonathonf/gcc
 ##sudo add-apt-repository ppa:jonathonf/gettext
 ##sudo add-apt-repository ppa:jonathonf/git
 ##sudo add-apt-repository ppa:jonathonf/googletest
+#
+# good info about the ppa
+# https://github.com/qshan/Ubuntu-Universal-PPAs-Collection/blob/master/Add_PPAs_Address.sh
+sudo add-apt-repository --yes ppa:sicklylife/meld
+#sudo add-apt-repository --yes ppa:sicklylife/ppa
+#sudo add-apt-repository --yes ppa:cassou/emacs
+#sudo add-apt-repository --yes ppa:kelleyk/emacs
+#sudo add-apt-repository --yes ppa:kelleyk/curl
+#sudo add-apt-repository --yes ppa:gunnarhj/ibus-pinyin
+sudo add-apt-repository --yes ppa:janisozaur/cmake-update
+sudo add-apt-repository ppa:fcitx-team/stable
+sudo apt update
+
+pip3.6 install cmake --upgrade
+
+#ToCheck
+# good web for ppa
+# https://github.com/qshan/Ubuntu-Universal-PPAs-Collection/blob/master/Add_PPAs_Address.sh
 
 #####example of install and remove start#####
 ####add ppa source

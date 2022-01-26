@@ -106,6 +106,16 @@ man bash
 
 #sudo \rm -f  /var/lib/dpkg/info/git-el.postinst
 
+# check the package info list
+sudo apt list
+# check the package installed in env
+sudo apt list --installed
+# check the specific package installed in env
+sudo apt list vim* --installed
+
+# install language support completely in ubuntu
+# sudo apt install --reinstall $(check-language-support)
+
 #sudo apt-get install -y NameOfSoftware
 #sudo apt-get -f install
 #sudo apt-get install --reinstall NameOfSoftware
