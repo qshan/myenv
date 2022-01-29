@@ -100,12 +100,12 @@ alias sudodpkgforce-depends 'sudo dpkg -P --force-depends '
 ##------------------------------
 alias whicha                'which -a '
 ##------------------------------
-alias lnsTf               'ln -sTf '
-alias lnsnf               'ln -snf '
+alias lnsTf                 'ln -sTf '
+alias lnsnf                 'ln -snf '
 ##------------------------------
-alias chmod+R             'chmod -R a+r '
-alias chmod-R             'chmod -R a-r '
-alias chmodER             'chmod -R a=r '
+alias chmod+R               'chmod -R a+r '
+alias chmod-R               'chmod -R a-r '
+alias chmodER               'chmod -R a=r '
 ##------------------------------
 alias RenameReplaceSpace        "\rename 's/\s+/_/g' "
 alias RenameReplaceSpace1       "\rename 's/_-_/-/g' "
@@ -132,14 +132,14 @@ alias sedremovespaceonend   'sed -i "s/\s\+\$//g" '
 #sed -i -r "s/AC_INIT(.*)/AC_INIT(${FileNameOfTopCode})/g" configure.in
 ##------------------------------
 
-alias h                   '\history 1000'
-alias v                   'vim'
+alias h                     '\history 1000'
+alias v                     'vim'
 
 ##ToCheck# for your env default setting
-alias Emacs '/usr/bin/emacs26'
+alias Emacs                 '/usr/bin/emacs26'
 #alias EmacsM 'Emacs -mm'
 #alias EmacsM 'Emacs -mm \!* &'
-alias EmacsM 'Emacs -mm --nodesktop \!* &'
+alias EmacsM                'Emacs -mm --nodesktop \!* &'
 #alias EmacsM 'Emacs --maximized'
 ################################################################################
 # arguments of tcsh:
@@ -155,51 +155,55 @@ alias EmacsM 'Emacs -mm --nodesktop \!* &'
 #NotSupportInCsh}
 #
 #for lubuntu
-alias openFileBroswer     'pcmanfm &'
+alias openFileBroswer       'pcmanfm &'
 #for ubuntu
 #alias openFileBroswer 'nautilus &'
 
-alias openPdf             'evince '
+alias openPdf               'evince '
 
-alias cargonew            'cargo new '
-alias cargobuild          'cargo build '
-alias cargorun            'cargo run '
+alias cargonew              'cargo new '
+alias cargobuild            'cargo build '
+alias cargorun              'cargo run '
 
 #go_path alias
-alias gotestspace         'cd ~/data/work/test_space'
-alias goriot              'cd ~/data/work/test_space/RIOT'
-alias gortthread          'cd ~/data/work/test_space/rt-thread'
-alias gortqemu            'cd ~/data/work/test_space/rt-thread/bsp/qemu-vexpress-a9'
+alias gotestspace           'cd ~/data/work/test_space'
+alias goriot                'cd ~/data/work/test_space/RIOT'
+alias gortthread            'cd ~/data/work/test_space/rt-thread'
+alias gortqemu              'cd ~/data/work/test_space/rt-thread/bsp/qemu-vexpress-a9'
 #
-alias goquarkts           'cd ~/data/work/test_space/QuarkTS'
-alias gonuttx             'cd ~/data/work/test_space/nuttx'
-alias goCTest             'cd ~/data/work/test_space/ctest_qshan'
-alias goCppTest           'cd ~/data/work/test_space/cpptest_qshan'
+alias goquarkts             'cd ~/data/work/test_space/QuarkTS'
+alias gonuttx               'cd ~/data/work/test_space/nuttx'
+alias goCTest               'cd ~/data/work/test_space/ctest_qshan'
+alias goCppTest             'cd ~/data/work/test_space/cpptest_qshan'
 
 #git alias
-alias gitadd_f            'git add -f '
-alias gitcommitma         'git commit -am '
+alias gitadd_f              'git add -f '
+alias gitcommitma           'git commit -am '
 #example git commit -ma "coment description"
-alias gitcommitm          'git commit -m '
+alias gitcommitm            'git commit -m '
 #example git commit -m "coment description" FileName1 FileName2
-alias gitpush             'git push '
-alias gitpull             'git pull --tags '
-alias gitfetch            'git fetch --all '
-alias gitremoteadd        'git remote add origin '
-alias gitclone            'git clone --recursive '
-alias gitdiffstat         'git diff --stat '
-alias gitdifftool         'git difftool --tool=vimdiff '
-alias gitlog              'git log '
-alias gitlogstat          'git log --stat '
-alias gitstatus           'git status '
-alias gitreset_soft       'git reset --soft '
-alias gitreset_hard       'git reset --hard '
-alias gitreset_head0      'git reset HEAD '
-alias gitreset_head1      'git reset HEAD^ '
-alias gitreset_head2      'git reset HEAD~2 '
-alias gitreset_head3      'git reset HEAD~3 '
-alias gitdiffhead         'git diff HEAD '
-alias gitdiff_cached      'git diff --cached '
+alias gitpush               'git push '
+alias gitpull               'git pull --tags '
+alias gitfetch              'git fetch --all '
+alias gitremoteadd          'git remote add origin '
+alias gitclone              'git clone --recursive '
+alias gitdiffstat           'git diff --stat '
+alias gitdifftool           'git difftool --tool=vimdiff '
+alias gitshow               'git show '
+alias gitlog                'git log '
+alias gitlogpretty          'git log --pretty="%h - %s" --no-merges -- t/ '
+alias gitloggraph           'git log --graph '
+alias gitlogstat            'git log --stat '
+#alias gitstatus             'git status '
+alias gitstatusshort        'git status --short '
+alias gitreset_soft         'git reset --soft '
+alias gitreset_hard         'git reset --hard '
+alias gitreset_head0        'git reset HEAD '
+alias gitreset_head1        'git reset HEAD^ '
+alias gitreset_head2        'git reset HEAD~2 '
+alias gitreset_head3        'git reset HEAD~3 '
+alias gitdiffhead           'git diff HEAD '
+alias gitdiff_cached        'git diff --cached '
 
 #input methods reset
 alias input_methods_reset_fcitx   'fcitx -r'
