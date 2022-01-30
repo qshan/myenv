@@ -8,7 +8,6 @@
 
 echo "Calling ###[_mycshrc]### file setting"
 
-
 ##ToCheck##
 ## https://web.fe.up.pt/~jmcruz/etc/unix/sh-vs-csh.html
 ##------------------------------
@@ -55,7 +54,7 @@ set history = 10000
 
 setenv timefshan  "`date +%Y-%m-%d-%H%M`"
 #alias  gettime    'echo `date +%Y-%m-%d-%H%M`'
-alias  gettime=   'export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
+alias gettime=    'export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
 
 # replace Caps with CTRL
 setxkbmap -option ctrl:nocaps
@@ -179,9 +178,10 @@ alias goCppTest             'cd ~/data/work/test_space/cpptest_qshan'
 #git alias
 alias gitadd_f              'git add -f '
 alias gitcommitma           'git commit -am '
-#example git commit -ma "coment description"
+#example# git commit -ma "coment description"
 alias gitcommitm            'git commit -m '
-#example git commit -m "coment description" FileName1 FileName2
+#example# git commit -m "coment description" FileName1 FileName2
+alias gitcommitamend        'git commit --amend '
 alias gitpush               'git push '
 alias gitpull               'git pull --tags '
 alias gitfetch              'git fetch --all '
@@ -192,12 +192,15 @@ alias gitdifftool           'git difftool --tool=vimdiff '
 alias gitshow               'git show '
 alias gitlog                'git log '
 alias gitlogpretty          'git log --pretty="%h - %s" --no-merges -- t/ '
+alias gitlogprettys         'git log --pretty=short '
 alias gitloggraph           'git log --graph '
 alias gitlogstat            'git log --stat '
 #alias gitstatus             'git status '
 alias gitstatusshort        'git status --short '
 alias gitreset_soft         'git reset --soft '
 alias gitreset_hard         'git reset --hard '
+#example# gitreset_hard FileName
+#example# gitreset_hard FolderName
 alias gitreset_head0        'git reset HEAD '
 alias gitreset_head1        'git reset HEAD^ '
 alias gitreset_head2        'git reset HEAD~2 '
