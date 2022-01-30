@@ -28,6 +28,21 @@
 *.swn
 *.swm
 *.sw?
+#big data
+*.iso
+*.mp3
+*.mp4
+*.rm
+*.rmvb
+*.7z
+*.zip
+*.rar
+*.tar
+*.tar.gz
+# install file type
+*.deb
+*.exe
+*.exe_
 #
 #python temp file:
 *.pyc
