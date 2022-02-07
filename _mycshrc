@@ -108,7 +108,8 @@ alias chmodER               'chmod -R a=r '
 ##------------------------------
 alias RenameReplaceSpace        "\rename 's/\s+/_/g' "
 alias RenameReplaceSpace1       "\rename 's/_-_/-/g' "
-alias RenameRePlaceSpace2       "\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/-/g' "
+#alias RenameReplaceSpace2       "\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/_/g' "
+alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' "
 alias RenameRemoveSChar         "\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
 alias RenameRemoveSChar2        "\rename 's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
 alias RenameCleanDotInFileName  "\rename    's/[-|_]*\.+[-|_]*/./g' "
