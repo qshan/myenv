@@ -51,7 +51,7 @@ find SearchPath -type f -iname SearchPattern | xargs -I{} cp -u {} TargetCopyPat
 #forcely copy the source file to destination
 find SearchPath -type f -iname SearchPattern | xargs -I{} \cp -f {} TargetCopyPath
 
-find SearchPath -type f -iname SearchNamePattern | xargs -I{} cp  {} TargetCopyPath
+find SearchPath -type f -iname SearchNamePattern | xargs -I{} cp {} TargetCopyPath
 find SearchPath -type f -iname SearchNamePattern | xargs -I{} mv {} TargetCopyPath
 find SearchPath -type f -iname SearchNamePattern | xargs -I{} \mv -f {} TargetCopyPath
 find SearchPath -type f -iname SearchNamePattern | xargs \grep --color -oi grepPattern
@@ -90,6 +90,8 @@ rename -v 's/\s+/_/g' FileName
 #To translate uppercase names to lower, you'd use
 rename 'y/A-Z/a-z/' *
 
+find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' {}
+
 env | sort
 ln -sTf SourceFolderName TargetLinkerName
 ln -snf SourceFolderName TargetLinkerName
@@ -115,6 +117,8 @@ sudo apt list vim* --installed
 
 # install language support completely in ubuntu
 # sudo apt install --reinstall $(check-language-support)
+
+sudo apt install lubuntu-default-session lubuntu-default-settings lubuntu-desktop
 
 #sudo apt-get install -y NameOfSoftware
 #sudo apt-get -f install

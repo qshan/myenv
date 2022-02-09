@@ -196,6 +196,7 @@ alias gitremotev            'git remote -v'
 alias gitremoteshow         'git remote show '
 #example# gitremoteshow RemoteRepoName
 alias gitremoteshoworigin   'git remote show origin'
+alias gitremotev            'git remote -v'
 alias gitclone              'git clone --recursive '
 alias gitdiffstat           'git diff --stat '
 alias gitdifftool           'git difftool --tool=vimdiff '
