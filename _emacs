@@ -57,6 +57,8 @@
 (toggle-scroll-bar t)
 (global-auto-revert-mode t)
 ;;(global-hl-line-mode t)
+;;set the frame info here
+(setq frame-title-format "%b")
 ;;
 ;;;;ToCheck:
 ;;;;good reference web for eamcs init.el setting
