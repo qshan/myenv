@@ -91,6 +91,7 @@ rename -v 's/\s+/_/g' FileName
 rename 'y/A-Z/a-z/' *
 
 find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' {}
+find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\+|\s]+/_/g' {}
 
 env | sort
 ln -sTf SourceFolderName TargetLinkerName
@@ -187,6 +188,27 @@ chgrp R UserName FolderName
 
 #sudo apt-get install kdbg
 #==============================the command related to disk start==============================
+#check the id and label info about the disk
+ls -alh /dev/disk/by-uuid
+#
+ls -alh /dev/disk/by-partuuid
+ls -alh /dev/disk/by-id
+ls -alh /dev/disk/by-label
+ls -alh /dev/disk/by-path
+#example of /etc/fstab
+## <file system>                             <mount point>         <type>  <options>       <dump>  <pass>
+## / was on /dev/sdb1 during installation
+#UUID=8bf41389-1993-4722-8d4e-b876897c6cd2   /                     ext4    errors=remount-ro 0       1
+## swap was on /dev/sdb5 during installation
+#UUID=67cc51ab-e762-4f7f-85bc-651d04358f66                       none            swap    sw              0       0
+#
+##/dev/sda1                                   /home/fshan/data/sda1 ext4   defaults,rw      0       0
+#UUID=cbc98ca9-0f47-4d7f-b6e9-4ad2b4728612   /home/fshan/data/sda1 ext4   defaults,rw      0       0
+#
+##/dev/sdb                                    /data                 ext4   defaults,rw      0       0
+#UUID=7eb38f56-b17e-4fe9-b39d-21d2ba984e3d   /data                 ext4   defaults,rw      0       0
+
+
 #------------------------------
 # $df -a
 # $df -k
