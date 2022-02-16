@@ -273,6 +273,18 @@ export PATH=$PATH:/usr/local/lib
 export BrissInstallPath='~/data/tools/briss/briss-0.9'
 alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar &"
 #
+#set title with current path
+export PROMPT_COMMAND='\
+echo -ne "\033]0; $PWD\007" ; \
+echo -ne "\033]1; ${PWD}_Min\007" '
+#where \033 is the character code for ESC, and \007 for BEL
+
+alias set_terminal_title='        echo -ne "\033]0; $PWD\007"'
+alias set_terminal_title_min='    echo -ne "\033]1; $PWD\007"'
+
+#get the current shell type
+alias get_current_shell="         sh -c 'ps -p \$\$ -o ppid=' | xargs ps -o comm= -p"
+
 #Bash Color Codes
 ## Text Format					Foreground (text) color		 Background color
 ## 0: normal text			30: Black									 40: Black

@@ -97,6 +97,9 @@ env | sort
 ln -sTf SourceFolderName TargetLinkerName
 ln -snf SourceFolderName TargetLinkerName
 
+#get the shell info in current shell
+sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p
+
 #check the key details in the SHELL you used
 #list binding key details info in tcsh
 bindkey -b

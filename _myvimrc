@@ -154,6 +154,9 @@ set guioptions-=T
 """"enable the menubar
 set guioptions=m
 ""
+""set title with default style, the default is filename
+set title
+""
 set wildmenu     "wmnu, When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 set wildmode=longest,list
 "set omnifunc=syntaxcomplete#Complete     "incase, you have to use moni

@@ -257,6 +257,16 @@ alias ctags_L_C         "ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python    "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
 alias ctags_L_SV        "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
 
+#set the titile with current path
+#tcsh
+echo -n "\033]0;csh $PWD\007"
+
+alias set_terminal_title          'echo -n "\033]0; $cmd\007"'
+alias set_terminal_title_min      'echo -n "\033]1; $cmd\007"'
+
+#get the current shell type
+# sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p
+alias get_current_shell           "sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p"
 
 # https://zipcon.net/~swhite/docs/computers/linux/shell_prompts.html
 #
