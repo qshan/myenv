@@ -372,31 +372,32 @@
 ;;TODO;;(add-hook 'prog-mode-hook 'whitespace-mode)
 ;;--------------------------------------------------
 ;;create mytab width here
-(setq qshan-tab-width 2)
+(setq         qshan-tab-width   2)
 ;;
 ;;setting for whitespace-mode
-(setq default-tab-width qshan-tab-width)
-(setq-default tab-width qshan-tab-width)
+(setq         default-tab-width qshan-tab-width)
+(setq         tab-width         qshan-tab-width)
+(setq-default tab-width         qshan-tab-width)
 ;;set current buffer's tab width
-(setq tab-width qshan-tab-width)
 
 (setq-default evil-shift-width qshan-tab-width)
 
 ;;C-c C-l  ;;disable electric indentation in the current buffer
 
-(setq-default python-offset qshan-tab-width)
-(setq-default python-indent qshan-tab-width)
+(setq-default python-offset         qshan-tab-width)
+(setq-default python-indent         qshan-tab-width)
+(setq-default python-indent-offset  qshan-tab-width)
 
-(setq-default c-basic-offset qshan-tab-width)
-(setq-default c-basic-indent qshan-tab-width)
-(setq-default c-basic-offset qshan-tab-width c-default-style "linux")
+(setq-default c-basic-offset        qshan-tab-width)
+(setq-default c-basic-indent        qshan-tab-width)
+(setq-default c-basic-offset        qshan-tab-width c-default-style "linux")
 ;;(setq-default tab-width 2 indent-tabs-mode nil)
 ;;(setq-default c-basic-offset 2 c-default-style "bsd")
 (setq-default tab-width qshan-tab-width)
 (setq-default tab-always-indent nil)
-(setq tab-always-indent nil)
+(setq         tab-always-indent nil)
 (setq-default indent-tabs-mode nil)
-(setq indent-tabs-mode nil)
+(setq         indent-tabs-mode nil)
 ;;(setq-default tab-always-indent t)
 ;;(setq-default indent-tabs-mode t)
 ;
@@ -478,6 +479,12 @@
              )
 
 (add-hook 'prog-mode-hook
+          (lambda ()
+            (setq tag-width qshan-tab-width
+                  indent-tabs-mode nil)
+            ))
+
+(add-hook 'python-mode-hook
           (lambda ()
             (setq tag-width qshan-tab-width
                   indent-tabs-mode nil)
@@ -811,8 +818,9 @@
         ;;;;;;(space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
         ;;;;;;(space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
         ;; NEWLINE is displayed using the face `whitespace-newline'
-        (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
-        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
+        ;; (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
+        ;;(newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - dollar char
+        (newline-mark ?\n    [9166 ?\n] [?$ ?\n])	; eol - downwards arrow
         ;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n])	; eol - pilcrow
         ;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n])	; eol - overscore
         ;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n])	; eol - negation
