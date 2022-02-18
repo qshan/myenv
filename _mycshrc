@@ -49,6 +49,28 @@ endif
 #set autolist
 #set autoexpand
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #set the tcsh history size for personal setting
 set history = 10000
 
@@ -80,6 +102,8 @@ setxkbmap -option ctrl:nocaps
 alias ls                    '\ls --color=auto '
 alias la                    'ls -alh '
 alias lt                    'ls -ctl '
+#
+alias mvf                   '\mv -f '
 ##------------------------------
 alias grep                  '\grep --color=auto '
 alias greprni               '\grep --color=auto -rni '
@@ -87,6 +111,9 @@ alias greprni               '\grep --color=auto -rni '
 #alias grepspaceonend        '\grep --color=auto -rni " \+"\$ '
 alias grepspaceonend        '\grep --color=auto -rni " \+"\$ '
 #alias grepspaceonend        '\grep --color=auto -rni " "\$ '
+
+
+
 ##------------------------------
 alias findL                 '\find -L '
 alias findSwfFile           'find ./ -type f -iname "*.sw*" '
@@ -94,6 +121,9 @@ alias findSwfFileRemove     'find ./ -type f -iname "*.sw*" | xargs \rm -rf '
 alias findDotOFile          'find ./ -type f -iname "*.o*" '
 alias findDotOFileRemove    'find ./ -type f -iname "*.o*" | xargs \rm -rf '
 alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
+
+
+
 ##------------------------------
 alias sudodpkgforce-depends 'sudo dpkg -P --force-depends '
 ##------------------------------
@@ -168,15 +198,15 @@ alias cargobuild            'cargo build '
 alias cargorun              'cargo run '
 
 #go_path alias
-alias gotestspace           'cd ~/data/work/test_space'
-alias goriot                'cd ~/data/work/test_space/RIOT'
-alias gortthread            'cd ~/data/work/test_space/rt-thread'
-alias gortqemu              'cd ~/data/work/test_space/rt-thread/bsp/qemu-vexpress-a9'
+alias gotestspace           'cd /data/work/test_space'
+alias goriot                'cd /data/work/test_space/RIOT'
+alias gortthread            'cd /data/work/test_space/rt-thread'
+alias gortqemu              'cd /data/work/test_space/rt-thread/bsp/qemu-vexpress-a9'
 #
-alias goquarkts             'cd ~/data/work/test_space/QuarkTS'
-alias gonuttx               'cd ~/data/work/test_space/nuttx'
-alias goCTest               'cd ~/data/work/test_space/ctest_qshan'
-alias goCppTest             'cd ~/data/work/test_space/cpptest_qshan'
+alias goquarkts             'cd /data/work/test_space/QuarkTS'
+alias gonuttx               'cd /data/work/test_space/nuttx'
+alias goCTest               'cd /data/work/test_space/ctest_qshan'
+alias goCppTest             'cd /data/work/test_space/cpptest_qshan'
 
 #git alias
 alias gitadd_f              'git add -f '
@@ -257,6 +287,10 @@ alias ctags_L_C         "ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python    "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
 alias ctags_L_SV        "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
 
+
+
+
+
 #set the titile with current path
 #tcsh
 echo -n "\033]0;csh $PWD\007"
@@ -268,17 +302,22 @@ alias set_terminal_title_min      'echo -n "\033]1; $cmd\007"'
 # sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p
 alias get_current_shell           "sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p"
 
+
+
+
+
+
 # https://zipcon.net/~swhite/docs/computers/linux/shell_prompts.html
 #
-## Text Format					Foreground (text) color		 Background color
-## 0: normal text			30: Black									 40: Black
-## 1: bold						31: Red										 41: Red
-## 4: Underlined text	32: Green									 42: Green
-##										33: Yellow								 43: Yellow
-##										34: Blue									 44: Blue
-##										35: Purple								 45: Purple
-##										36: Cyan									 46: Cyan
-##										37: White									 47: White
+## Text Format          Foreground (text) color   Background color
+## 0: normal text       30: Black                 40: Black
+## 1: bold              31: Red                   41: Red
+## 4: Underlined text   32: Green                 42: Green
+##                      33: Yellow                43: Yellow
+##                      34: Blue                  44: Blue
+##                      35: Purple                45: Purple
+##                      36: Cyan                  46: Cyan
+##                      37: White                 47: White
 ##  \e[  – Indicates the beginning of color prompt
 ##  x;ym – Indicates color code. Use the color code values mentioned below.
 ##  \e[m – indicates the end of color promptSTARTFGCOLOR='\e[0;47;34m';
@@ -310,6 +349,7 @@ setenv TcshLightGray      "%{\e[0;37m%}"
 setenv TcshWhite          "%{\e[1;37m%}"
 setenv TcshColorEnd       "%{\e[0m%}"
 #worked#setenv TcshColorEnd        "%{\033[0m%}"
+
 
 #set format of shell header string for tcsh
 #alias set_full_path "%U%m%u:%B%~%b%#"

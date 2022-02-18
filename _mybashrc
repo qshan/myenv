@@ -102,6 +102,8 @@ setxkbmap -option ctrl:nocaps
 alias ls='\ls --color=auto '
 alias la='ls -alh '
 alias lt='ls -ctl '
+#
+alias mvf='\mv -f '
 ##------------------------------
 alias grep='            \grep --color=auto '
 alias greprni='         \grep --color=auto -rni '
@@ -178,6 +180,12 @@ alias Emacs='/usr/bin/emacs26'
 alias EmacsM='functionEmacsM(){ unset -f functionEmacsM; Emacs -mm --no-desktop "$@" & }; functionEmacsM '
 
 
+
+
+
+
+
+
 #for lubuntu
 alias openFileBroswer='pcmanfm &'
 #for ubuntu
@@ -190,15 +198,15 @@ alias cargobuild='  cargo build '
 alias cargorun='    cargo run '
 
 #go_path alias
-alias gotestspace=' cd ~/data/work/test_space'
-alias goriot='      cd ~/data/work/test_space/RIOT'
-alias gortthread='  cd ~/data/work/test_space/rt-thread'
-alias gortqemu='    cd ~/data/work/test_space/rt-thread/bsp/qemu-vexpress-a9'
+alias gotestspace=' cd /data/work/test_space'
+alias goriot='      cd /data/work/test_space/RIOT'
+alias gortthread='  cd /data/work/test_space/rt-thread'
+alias gortqemu='    cd /data/work/test_space/rt-thread/bsp/qemu-vexpress-a9'
 #
-alias goquarkts='   cd ~/data/work/test_space/QuarkTS'
-alias gonuttx='     cd ~/data/work/test_space/nuttx'
-alias goCTest='     cd ~/data/work/test_space/ctest_qshan'
-alias goCppTest='   cd ~/data/work/test_space/cpptest_qshan'
+alias goquarkts='   cd /data/work/test_space/QuarkTS'
+alias gonuttx='     cd /data/work/test_space/nuttx'
+alias goCTest='     cd /data/work/test_space/ctest_qshan'
+alias goCppTest='   cd /data/work/test_space/cpptest_qshan'
 
 #git alias
 alias gitadd_f='        git add -f '
@@ -251,6 +259,21 @@ alias gitdiff_cached='        git diff --cached '
 #input methods reset
 alias input_methods_reset_fcitx='fcitx -r'
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
 
@@ -286,15 +309,15 @@ alias set_terminal_title_min='    echo -ne "\033]1; $PWD\007"'
 alias get_current_shell="         sh -c 'ps -p \$\$ -o ppid=' | xargs ps -o comm= -p"
 
 #Bash Color Codes
-## Text Format					Foreground (text) color		 Background color
-## 0: normal text			30: Black									 40: Black
-## 1: bold						31: Red										 41: Red
-## 4: Underlined text	32: Green									 42: Green
-##										33: Yellow								 43: Yellow
-##										34: Blue									 44: Blue
-##										35: Purple								 45: Purple
-##										36: Cyan									 46: Cyan
-##										37: White									 47: White
+## Text Format          Foreground (text) color   Background color
+## 0: normal text       30: Black                 40: Black
+## 1: bold              31: Red                   41: Red
+## 4: Underlined text   32: Green                 42: Green
+##                      33: Yellow                43: Yellow
+##                      34: Blue                  44: Blue
+##                      35: Purple                45: Purple
+##                      36: Cyan                  46: Cyan
+##                      37: White                 47: White
 ##  \e[  – Indicates the beginning of color prompt
 ##  x;ym – Indicates color code. Use the color code values mentioned below.
 ##  \e[m – indicates the end of color promptSTARTFGCOLOR='\e[0;47;34m';
@@ -305,6 +328,8 @@ alias get_current_shell="         sh -c 'ps -p \$\$ -o ppid=' | xargs ps -o comm
 #
 export BashBlackBG="40;"
 #TODO#set color of background #export BashBlack="\[\e[0;40;30m\]"
+
+
 #
 export BashBlack="\[\e[0;30m\]"
 export BashDarkGray="\[\e[1;30m\]"
