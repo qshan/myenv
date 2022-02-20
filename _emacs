@@ -573,11 +573,11 @@
   ;;toggle on/off for current file
   ;;(whitespace-mode)
   ;;toggle on/off globally in very buffer for current emacs session
-  (global-whitespace-mode)
+  (global-whitespace-mode t)
   ;;toggle on/off for current file
   ;;(whitespace-newline-mode)
   ;;toggle on/off globally in very buffer for current emacs session
-  (global-whitespace-newline-mode)
+  (global-whitespace-newline-mode t)
 
 ;;
 (setq fill-column 80)
@@ -622,12 +622,12 @@
 
   (use-package flycheck
      :defer t
-     :hoook (prog-mode . flycheck-mode)
+     :hoook (prog-mode . global-flycheck-mode)
   )
 
-  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (add-hook 'after-init-hook 'global-flycheck-mode)
 
-  (global-flycheck-mode)
+  (global-flycheck-mode t)
 
 ) ;;end of defun fshan-flycheck-init ()
 ;;--------------------------------------------------
@@ -751,8 +751,8 @@
         ;;(newline-mark  ?\n   [? \?\n])           ;;end of line
         ;;(newline-mark  ?\n    [?\xB6 ?n]   [?$ ?\n])   ;;end of line
         ;;(newline-mark ?\n    [?$ ?\n])	; end of line - dollar sign
-        ;;(newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
-        (newline-mark ?\n    [9166 ?\n] [?$ ?\n])	; eol - downwards arrow
+        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
+        (newline-mark ?\n    [9166 ?\n] [?$ ?\n])	; eol - downwards arrow (preferred)
         ;;;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n]) ; eol - pilcrow
         ;;;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n]) ; eol - overscore
         ;;;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n]) ; eol - negation
@@ -774,9 +774,9 @@
   (subword-mode -1)
 
   ;;(whitespace-mode)
-  (global-whitespace-mode)
+  (global-whitespace-mode nil)
   ;;(whitespace-newline-mode)
-  (global-whitespace-newline-mode)
+  (global-whitespace-newline-mode nil)
 
 ;;
   ;;set whitespace mappling table
@@ -811,6 +811,7 @@
         ;;(tab-mark     ?\t    [?\xBB ?\t] [?\\ ?\t]) ; tab - left quote mark
 
         ;; good web https://www.emacswiki.org/emacs/whitespace.el
+        ;; (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
         (space-mark   ?\     [?\u00B7]     [?.]) ; space - centered dolar
         ;;;;;;(space-mark   ?\xA0  [?\u00A4]     [?_]) ; hard space - currency
         ;;;;;;(space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
@@ -818,9 +819,9 @@
         ;;;;;;(space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
         ;;;;;;(space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
         ;; NEWLINE is displayed using the face `whitespace-newline'
-        ;; (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
-        ;;(newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - dollar char
-        (newline-mark ?\n    [9166 ?\n] [?$ ?\n])	; eol - downwards arrow
+        (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
+        ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
+        ;; (newline-mark ?\n    [9166 ?\n] [?$ ?\n])	; eol - downwards arrow 01
         ;; (newline-mark ?\n    [?\u00B6 ?\n] [?$ ?\n])	; eol - pilcrow
         ;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n])	; eol - overscore
         ;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n])	; eol - negation
@@ -836,9 +837,9 @@
                                       ))
 
   ;;(whitespace-mode)
-  (global-whitespace-mode)
+  (global-whitespace-mode t)
   ;;(whitespace-newline-mode)
-  (global-whitespace-newline-mode)
+  (global-whitespace-newline-mode t)
 )
 ;;start function of copy_without_selection--------------------------------------------------
 ;; reference linker: https://www.emacswiki.org/emacs/CopyWithoutSelection
@@ -953,6 +954,7 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
                                         ;
 ;;check variable in emacs envelop
 ;;C-h v NameOfVariable RET
+;;M-x describe-variable
 ;;;;or
 ;; M-: NameOfVariable RET
                                         ;
@@ -1456,7 +1458,7 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;              and minor modes of a buffer.
 ;;;;C-h w     ;runs where-is to get which keystrokes invoke a given command.
 ;;;;C-h e     ;runs view-echo-area-messages, allow you to see the logging of echo area messages.
-;;;;C-h v     ;runs describe-variable, and asks you for a variable; you can TAB to complete a variable.
+;;;;C-h v     ;M-x describe-variable, and asks you for a variable; you can TAB to complete a variable.
 ;;              This command is important, because aside from describing a variable, it allows you to
 ;;              customize the behavior of Emacs and 3rd party packages. But for now, you don't need it.
 
