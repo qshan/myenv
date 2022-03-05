@@ -22,12 +22,17 @@
 ##check this config
 # $git config --global core.excludesfile
 #
+#local git ignore config file
+.gitignore
 #gvim temp file:sw?
 *.swp
 *.swo
 *.swn
 *.swm
 *.sw?
+#tags file
+tags
+TAGS
 #big data
 *.iso
 *.mp3
