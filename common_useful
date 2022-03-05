@@ -61,6 +61,10 @@ find SearchPath -type f -writable
 find SearchPath -type f -readable
 find SearchPath -type f -executable
 
+find Todo_SearchPath -type f -executable    | xargs chmod a-x
+find Todo_SearchPath -type f -writable      | xargs chmod a-w
+find Todo_SearchPath -type f -iname "*.pdf" | xargs chmod a-x
+
 #forcely remove the folder in the SearchPath
 find SearchPath -type d -iname "*" | xargs \rm -rf
 find ./* -type d -iname "*" | xargs \rm -rf
