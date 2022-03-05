@@ -56,6 +56,28 @@ find SearchPath -type f -iname SearchNamePattern | xargs -I{} mv {} TargetCopyPa
 find SearchPath -type f -iname SearchNamePattern | xargs -I{} \mv -f {} TargetCopyPath
 find SearchPath -type f -iname SearchNamePattern | xargs \grep --color -oi grepPattern
 
+find SearchPath -type f -print
+#find and print the info into one line
+find SearchPath -type f -print0
+
+#file name only with %f, print the info into one line
+find SearchPath -type f -printf %f
+#file name with path with %p, print the info into one line
+find SearchPath -type f -printf %p
+#path list with %h, print the info into one line
+find SearchPath -type f -printf %h
+#ToCheck
+#get the file name without path
+find SearchPath -type f | xargs -I{} basename {}
+#get the file name without path and without trailing SUFFIX
+find SearchPath -type f -iname "*.pdf" | xargs -I{} basename {} .pdf
+find SearchPath -type f -iname "*.pdf" | xargs -I{} basename -s .pdf {}
+#
+#get the path info of FileSearched
+find SearchPath -type f -iname "*.pdf" | xargs -I{} dirname {}
+#get the path info of FolderSearched
+find SearchPath -type d -iname KeyWordSearched | xargs -I{} dirname {}
+
 #find the file with specific property/feature
 find SearchPath -type f -writable
 find SearchPath -type f -readable
