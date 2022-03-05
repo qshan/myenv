@@ -332,12 +332,28 @@
 ;;     (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
 ;;     (setq company-idle-delay 0)
 ;;   ))
+;;
+;;To use company-mode in all buffers
   (add-hook 'after-init-hook 'global-company-mode)
+;;
   (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
   (setq company-idle-delay 0)
 ;;
 ;;set for company mode
 (with-eval-after-load 'company (company-ctags-auto-setup))
+
+;;company function info
+;;info got from here: http://company-mode.github.io/manual/Backends.html#Backends
+;;File Name Completion
+;; M-x company-files
+(setq company-files-exclusions '(".git/" ".DS_Store"))
+;;
+;;completion-at-point-functions
+;; M-x company-capf
+(setq company-backends '((company-capf company-dabbrev-code)))
+;;
+;;company-complete-common-or-cycle
+;; M-x company-complete-common-or-cycle
 ;;
 ;;##;;removes all the predefined backends at first:
 (setf company-backends '())
@@ -354,6 +370,20 @@
 ;;   (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
 ;;--------------------------------------------------
 ;;set for company mode
+;;set for ctags-update module start--------------------------------------------------
+;;ToCheck----------
+;;(ctags-global-auto-update-mode)
+;;(setq ctags-update-prompt-create-tags nil);you need manually create TAGS in your project
+;;ToCheck----------
+;;or only turn it on for some special mode
+;;(autoload 'turn-on-ctags-auto-update-mode "ctags-update" "turn on `ctags-auto-update-mode'." t)
+;;(add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
+;;(add-hook 'emacs-lisp-mode-hook  'turn-on-ctags-auto-update-mode)
+;;----------
+;;when you save a file ,`ctags-auto-update-mode' will update TAGS using `exuberant-ctags'.
+;;custom the interval  of updating TAGS  by  `ctags-update-delay-seconds'.
+;;set for ctags-update module end--------------------------------------------------
+;;--------------------------------------------------
 ;;ToCheck;;;;--------------------------------------------------
 ;;ToCheck;;;;clear whitespace end of row/line
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
