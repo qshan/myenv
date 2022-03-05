@@ -132,6 +132,9 @@ sudo apt install git ssh sshd vim
 #
 sudo apt install gcc g++ clang cmake scons build-essential
 #sudo apt install python-dev python3-dev
+sudo apt install gcc-multilib g++-multilib
+#
+sudo apt install clang-tools clang-format clang-tidy
 #
 #install qemu for try run
  sudo apt install qemu qemu-launcher libncurses5-dev
