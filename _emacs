@@ -82,6 +82,12 @@
             ("PHONE" :foreground "forest green" :weight bold))))
 (setq-default org-export-with-todo-keywords nil)
 (setq-default org-enforce-todo-dependencies t)
+;;
+;; to turn off fontification for marked up text
+;;(setq-default org-fontify-emphasized-text nil)
+;; to turn on fontification for marked up text
+(setq-default org-fontify-emphasized-text t)
+;;
 ;;end of org setting--------------------------------------------------
 
 
@@ -1445,12 +1451,29 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;C-g         ;quit current command
 ;;
 ;; comment command here
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
+;;ToCheck https://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
 ;;M-;         ;comment/uncomment current line or selected part
 ;;C-x C-;     ;(comment-line) switch between the comment current line and uncomment line
 ;;C-u M-;     ;kill comment on current line
 ;;C-C C-c     ;(comment-region) in C-like modes
 ;;M-x comment-region
+;s;ToCheck;;(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+;;ToCheck;;
+(global-set-key (kbd "C-c ;") 'comment-line)
+;; leader key: ,
+;; , ci   ;;comment-line
+;;
+;; set leader key in all states
+;;(evil-set-leader nil (kbd "C-SPC"))
+;;
+;; set leader key in normal state
+;;(evil-set-leader 'normal (kbd "SPC"))
+;;
+;; set local leader
+;;(evil-set-leader 'normal "," t)
+;;
+;; ToCheck;;leader key: , SPC ;
+;;(evil-define-key 'normal 'global (kbd "<leader>fs") 'save-buffer)
 ;;
 ;;(toggle-read-only)    ;;force edit the file opened with read only mode
 ;;C-x C-q     ;;(read-only-mode)      ;;switch read-only-mode between read-only and writable
@@ -1766,10 +1789,16 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;C-x d             ;;enter dired mode
 ;;M-x dired         ;;same as the C-x d
 ;;;;The primary use of Dired is to flag files for deletion and then delete the files previously flagged.
-;;d                 ;;Flag this file for deletion.
-;;u                 ;;Remove deletion flag on this line.
-;;DEL               ;;Move point to previous line and remove the deletion flag on that line.
-;;x                 ;;Delete the files that are flagged for deletion.
+;; d                  ;;Flag this file for deletion.
+;; u                  ;;Remove deletion flag on this line.
+;; DEL                ;;Move point to previous line and remove the deletion flag on that line.
+;; x                  ;;Delete the files that are flagged for deletion.
+;; R                  ;;remove or rename the file
+;; q
+;; +
+;; g
+;; D
+;; C                  ;;copy
 
 ;;=======dired_info end============================================
 
