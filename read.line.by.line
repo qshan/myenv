@@ -1,0 +1,9 @@
+#!/bin/bash
+
+inputfile=$1
+echo "get input file: ${inputfile}"
+
+while IFS= read -r line
+do
+  echo "${line}"
+done < "${inputfile}"
