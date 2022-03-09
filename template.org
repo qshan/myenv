@@ -16,6 +16,13 @@
 
 * ##### S-> or S-< ##### change the heading level with
 
+=heading =
+=   heading =
+==heading ==
+==  heading ==
+===heading ===
+=== heading ===
+
 --------------------------------------------------
 
 * TODO item is here
@@ -40,7 +47,10 @@ Para\\
 
 --------------------------------------------------
 
-* reference linker https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html
+* TODO reference linker https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html
+* TODO reference linker http://pragmaticemacs.com/org-mode-tutorials/
+* TODO reference linker https://emacsclub.github.io/html/org_tutorial.html
+* TODO The Org Manual: https://orgmode.org/org.html
 * ##### C-c . ##### , select the time, and insert the time info
 <2021-12-11 Sat>
 
@@ -95,11 +105,22 @@ CLOSED: [2021-02-01 Mon 17:35] DEADLINE: <2021-02-01 Mon> SCHEDULED: <2021-01-14
 <2021-02-01 Mon>
 [2021-02-18 Thu]
 
-* format example_01 of string contents
- *format text here*
- /format text here/
- +format text here+
- _format text here_
+* Emphasis and Monospace, format example_01 of string contents
+ *bold            format text here*
+ /italics         format text here/
+ _underlined      format text here_
+ +strike-through  format text here+
+
+ =literal text    format text here=
+ ~code            format text here~
+
+ *bold*
+ /italics/
+ _underlined_
+ +strike-through+
+
+ =literal text=
+ ~code~
 
 * format example_02 of string contents
 *H_2 O*
