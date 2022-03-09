@@ -46,6 +46,9 @@ sed  -i 's/,0x)/,0x0)/g' data.txt
 find ./CONFIG -type f -exec sed -i "s/_HOME_DIR_/$_HOME_DIR/g" {} \;
 find . -type f -exec sed -i 's/foo/bar/g' {} +
 
+#Good#find multi-extention file with find
+find SearchPath -type f \( -iname *.mobi -o -iname *.epub \)
+
 #copy when source file is newer than destination file
 find SearchPath -type f -iname SearchPattern | xargs -I{} cp -u {} TargetCopyPath
 #forcely copy the source file to destination
@@ -116,8 +119,8 @@ rename -v 's/\s+/_/g' FileName
 #To translate uppercase names to lower, you'd use
 rename 'y/A-Z/a-z/' *
 
-find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' {}
-find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\+|\s]+/_/g' {}
+find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|'|\!|-|\s]+/_/g' {}
+find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|'|\!|-|\+|\s]+/_/g' {}
 
 env | sort
 ln -sTf SourceFolderName TargetLinkerName
