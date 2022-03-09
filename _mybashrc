@@ -136,13 +136,17 @@ alias chmod+R='chmod -R a+r '
 alias chmod-R='chmod -R a-r '
 alias chmodER='chmod -R a=r '
 ##------------------------------
-alias RenameReplaceSpace="\rename         's/\s+/_/g' "
-alias RenameReplaceSpace1="\rename        's/[-|_]+/-/g' "
+#alias RenameReplaceSpace="\rename         's/\s+/_/g' "
+alias RenameReplaceSpace="\rename         s/\'+/_/g "
+alias RenameReplaceSpace1="\rename        's/[\-|_|\s]*\-[\-|_|\s]*/-/g' "
 #alias RenameReplaceSpace2="\rename        's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|-|\+|\s]+/_/g' "
-alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|-|_|\s|:]+/_/g' "
-alias RenameReplaceSpace3="\rename        's/[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]+/_/g' "
+#alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|\-|_|\s|:]+/_/g' "
+alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|_|\s|:]+/_/g' "
+#\rename        's/[(|)|\[|\]|{|}|&|,|'"'"'|\!|-|_|\s|:]+/_/g'
+#alias RenameReplaceSpace3="\rename        's/[《|》|（|）|：|、|(|)|“|”|·|，|’|、|\[|\]|\s|’]+/_/g' "
+alias RenameReplaceSpace3="\rename        's/[\-|_]*\.[\-|_]*/./g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
 alias RenameRemoveSChar="\rename          's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
 alias RenameRemoveSChar2="\rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
