@@ -1573,13 +1573,83 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;c                ;- Compress selection to a specific file
 ;;;;;dired-compress-files-alist - Bind compression commands to file extension
 ;;;;;Other common operations
-;;T                ;- Touch (change timestamp)
-;;M                ;- Change file mode
-;;O                ;- Change file owner
-;;G                ;- Change file group
-;;S                ;- Create a symbolic link to this file
-;;L                ;- Load an Emacs Lisp file into Emacs
+;; T                ;; Touch (change timestamp)
+;; M                ;; Change file mode
+;; O                ;; Change file owner
+;; G                ;; Change file group
+;; S                ;; Create a symbolic link to this file
+;; L                ;; Load an Emacs Lisp file into Emacs
+;;
+;; C-x d            ;; M-x 'dired
+;; C                ;; 'dired-do-copy
+;; D                ;; 'dired-do-delete
+;; L                ;; 'dired-do-load
+;; R                ;; 'dired-do-rename
 
+;; A                ;; 'dired-do-find-regexp
+;; B                ;; 'dired-do-byte-compile
+;; C                ;; 'dired-do-copy
+;; D                ;; 'dired-do-delete
+;; F                ;; 'dired-do-find-marked-files
+;; G                ;; 'dired-do-chgrp
+;; H                ;; 'dired-do-hardlink
+;; I                ;; 'dired-info
+;; L                ;; 'dired-do-load
+;; M                ;; 'dired-do-chmod
+;; N                ;; 'dired-man
+;; O                ;; 'dired-do-chown
+;; P                ;; 'dired-do-print
+;; Q                ;; 'dired-do-find-regexp-and-replace
+;; R                ;; 'dired-do-rename
+;; S                ;; 'dired-do-symlink
+;; T                ;; 'dired-do-touch
+;; U                ;; 'dired-unmark-all-marks
+;; V                ;; 'dired-do-run-mail
+;; W                ;; 'browse-url-of-dired-file
+;; X                ;; 'dired-do-shell-command
+;;
+;; ^                ;; 'dired-up-directory
+;; a                ;; 'dired-find-alternate-file
+;; c                ;; 'dired-do-compress-to
+;; d                ;; 'dired-flag-file-deletion
+;; e                ;; 'my-ediff-files
+;; f                ;; 'dired-find-file
+;; g                ;; 'revert-buffer
+;; h                ;; 'describe-mode
+;; i                ;; 'dired-maybe-insert-subdir
+;; j                ;; 'dired-goto-file
+;; k                ;; 'dired-do-kill-lines
+;; l                ;; 'dired-do-redisplay
+;; m                ;; 'dired-mark
+;; n                ;; 'dired-next-line
+;; o                ;; 'dired-find-file-other-window
+;; p                ;; 'dired-previous-line
+;; q                ;; 'quit-window
+;; r                ;; 'dired-up-directory
+;; s                ;; 'dired-sort-toggle-or-edit
+;; t                ;; 'dired-toggle-marks
+;; u                ;; 'dired-unmark
+;; v                ;; 'dired-view-file
+;; w                ;; 'dired-copy-filename-as-kill
+;; x                ;; 'dired-do-flagged-delete
+;; y                ;; 'hydra-dired/body
+;; ~                ;; 'dired-flag-backup-files
+;; DEL              ;; 'dired-unmark-backward
+;; S-SPC            ;; 'dired-previous-line
+;;
+;;----------
+;;ToCheck#rename example
+;; C-x d    ;;M-x 'dired
+;; C-x C-q  ;;M-x 'wdired-change-to-wdired-mode
+;;;;update the file name
+;; C-c C-c  ;;M-x 'wdired-finish-edit
+;; C-c ESC  ;;M-x 'wdired-abort-changes
+;; C-c C-q  ;;M-x 'wdired-exit
+;;----------
+;;ToCheck#delete file
+;;C-x d     ;;M-x 'dired
+;;d         ;;mark the file for delete
+;;x         ;;execute the file operation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
