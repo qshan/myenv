@@ -282,7 +282,7 @@
 ;; layout scr   ;;open the source code window
 ;; layout regs  ;;open the register window
 ;;
-;; C-x o    ;;change the active window
+;; C-x o    ;;change the active window    ;;ToCheck
 ;; C-x s    ;;switch in and out of the TUI SingleKey mode, in SingleKey mode, step -> s; out of SingleKey mode, step -> s <CR>;
 ;; C-L      ;;refresh the screen
 ;;
@@ -542,8 +542,10 @@
 
 ;;(hook 'c-mode-common-hook (lambda () (setq indent-tabs-mode t)))
 ;;--------------------------------------------------
+;;ToCheck;;
+(global-set-key (kbd "C-c ;") 'comment-line)
 ;;
-;;it is better to end the setting here
+;;TODO;;it is better to end the setting here
 ;;##############################################################################
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;--------------------------------------------------
@@ -1459,7 +1461,7 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;M-x comment-region
 ;s;ToCheck;;(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 ;;ToCheck;;
-(global-set-key (kbd "C-c ;") 'comment-line)
+;;(global-set-key (kbd "C-c ;") 'comment-line)
 ;; leader key: ,
 ;; , ci   ;;comment-line
 ;;
@@ -1639,17 +1641,21 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;
 ;;----------
 ;;ToCheck#rename example
-;; C-x d    ;;M-x 'dired
-;; C-x C-q  ;;M-x 'wdired-change-to-wdired-mode
+;; C-x d    ;;M-x 'dired                    ;;ToCheck
+;; C-x C-q  ;;M-x 'dired-toggle-read-only   ;;ToCheck
+;; 'dired-toggle-read-only, Edit Dired buffer with Wdired, or make it read-only.
+;;    If the current buffer can be edited with Wdired, i.e. the major mode
+;;    is ‘dired-mode’, call ‘wdired-change-to-wdired-mode’. Otherwise, toggle ‘read-only-mode’.
+;;  M-x 'wdired-change-to-wdired-mode ;;ToCheck
 ;;;;update the file name
-;; C-c C-c  ;;M-x 'wdired-finish-edit
+;; C-c C-c  ;;M-x 'wdired-finish-edit       ;;ToCheck
 ;; C-c ESC  ;;M-x 'wdired-abort-changes
-;; C-c C-q  ;;M-x 'wdired-exit
+;; C-c C-q  ;;M-x 'wdired-exit              ;;ToCheck
 ;;----------
 ;;ToCheck#delete file
 ;;C-x d     ;;M-x 'dired
-;;d         ;;mark the file for delete
-;;x         ;;execute the file operation
+;;d         ;;mark the file for delete    ;;ToCheck
+;;x         ;;execute the file operation  ;;ToCheck
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1871,6 +1877,21 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;; C                  ;;copy
 
 ;;=======dired_info end============================================
+
+;;=======emacs multi-window_info start============================================
+;;  emacs
+;; C-x 2  ;;split-window-vertically
+;; C-x 3  ;;split-window-horizontally
+;; C-x 1  ;;delete-other-windows
+;; C-x 0  ;;delete-window
+;; C-x 4 0  ;;kill-buffer-and-window
+;; C-x o  ;;other-window
+;; C-x ^  ;;enlarge-window ,Make selected window taller (enlarge-window).
+;; C-x }  ;;enlarge-window-horizontally, Make selected window wider (enlarge-window-horizontally).
+;; C-x {  ;;shrink-window-horizontally, Make selected window narrower (shrink-window-horizontally).
+;; C-x -  ;;shrink-window-if-larger-than-buffer, Shrink this window if its buffer doesn't need so many lines (shrink-window-if-larger-than-buffer).
+;; C-x +  ;;balance-windows, Make all windows the same height (balance-windows).
+;;=======emacs multi-window_info end============================================
 
 ;;=======ediff_info start============================================
 ;;detail info web https://www.gnu.org/software/emacs/manual/html_mono/ediff.html
