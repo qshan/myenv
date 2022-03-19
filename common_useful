@@ -49,6 +49,9 @@ find . -type f -exec sed -i 's/foo/bar/g' {} +
 #Good#find multi-extention file with find
 find SearchPath -type f \( -iname *.mobi -o -iname *.epub \)
 
+#Good#find files in multi-path
+find SearchPath01 SearchPath02 -type f
+
 #copy when source file is newer than destination file
 find SearchPath -type f -iname SearchPattern | xargs -I{} cp -u {} TargetCopyPath
 #forcely copy the source file to destination
