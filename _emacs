@@ -1583,39 +1583,35 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;; L                ;; Load an Emacs Lisp file into Emacs
 ;;
 ;; C-x d            ;; M-x 'dired
-;; C                ;; 'dired-do-copy
-;; D                ;; 'dired-do-delete
-;; L                ;; 'dired-do-load
-;; R                ;; 'dired-do-rename
-
 ;; A                ;; 'dired-do-find-regexp
 ;; B                ;; 'dired-do-byte-compile
-;; C                ;; 'dired-do-copy
-;; D                ;; 'dired-do-delete
+;; C        ;;      ;; 'dired-do-copy
+;; D        ;;      ;; 'dired-do-delete
 ;; F                ;; 'dired-do-find-marked-files
 ;; G                ;; 'dired-do-chgrp
 ;; H                ;; 'dired-do-hardlink
 ;; I                ;; 'dired-info
-;; L                ;; 'dired-do-load
-;; M                ;; 'dired-do-chmod
+;; L        ;;      ;; 'dired-do-load
+;; M        ;;      ;; 'dired-do-chmod
 ;; N                ;; 'dired-man
 ;; O                ;; 'dired-do-chown
 ;; P                ;; 'dired-do-print
 ;; Q                ;; 'dired-do-find-regexp-and-replace
-;; R                ;; 'dired-do-rename
+;; R        ;;      ;; 'dired-do-rename
 ;; S                ;; 'dired-do-symlink
 ;; T                ;; 'dired-do-touch
 ;; U                ;; 'dired-unmark-all-marks
 ;; V                ;; 'dired-do-run-mail
 ;; W                ;; 'browse-url-of-dired-file
-;; X                ;; 'dired-do-shell-command
+;; X        ;;      ;; 'dired-do-shell-command
 ;;
-;; ^                ;; 'dired-up-directory
+;; +        ;;      ;; 'dired-create-directory
+;; ^        ;;      ;; 'dired-up-directory
 ;; a                ;; 'dired-find-alternate-file
 ;; c                ;; 'dired-do-compress-to
-;; d                ;; 'dired-flag-file-deletion
-;; e                ;; 'my-ediff-files
-;; f                ;; 'dired-find-file
+;; d        ;;      ;; 'dired-flag-file-deletion
+;; e        ;;      ;; 'my-ediff-files
+;; f        ;;      ;; 'dired-find-file
 ;; g                ;; 'revert-buffer
 ;; h                ;; 'describe-mode
 ;; i                ;; 'dired-maybe-insert-subdir
@@ -1629,11 +1625,11 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;; q                ;; 'quit-window
 ;; r                ;; 'dired-up-directory
 ;; s                ;; 'dired-sort-toggle-or-edit
-;; t                ;; 'dired-toggle-marks
+;; t         ;;     ;; 'dired-toggle-marks
 ;; u                ;; 'dired-unmark
 ;; v                ;; 'dired-view-file
 ;; w                ;; 'dired-copy-filename-as-kill
-;; x                ;; 'dired-do-flagged-delete
+;; x         ;;     ;; 'dired-do-flagged-delete
 ;; y                ;; 'hydra-dired/body
 ;; ~                ;; 'dired-flag-backup-files
 ;; DEL              ;; 'dired-unmark-backward
