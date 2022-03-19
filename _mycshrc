@@ -165,6 +165,7 @@ alias GetFullPathOfCurrentFolder 'echo $PWD | sed -r "s/(.*)\/(.*)/\1/g"'
 ##------------------------------
 alias sed_i_r               'sed -i -r '
 alias sedremovespaceonend   'sed -i "s/\s\+\$//g" '
+alias sedremovespaceonend1  'sed -i "s/\ \+$//g" '
 #example#sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 #sed -i -r "s/AC_INIT(.*)/AC_INIT(${FileNameOfTopCode})/g" configure.in
 ##------------------------------

@@ -107,8 +107,9 @@ alias mvf='\mv -f '
 ##------------------------------
 alias grep='            \grep --color=auto '
 alias greprni='         \grep --color=auto -rni '
-alias grepspaceonend='  \grep --color=auto -rni "\s\+\$" '
-#worked#alias grepspaceonend='  \grep --color=auto -rni " \+\$" '
+#alias grepspaceonend='  \grep --color=auto -rni "\s\+\$" '
+#alias grepspaceonend='  \grep --color=auto -rni "\ $" '
+alias grepspaceonend='  \grep --color=auto -rni " \+$" '
 #alias grepspaceonendofline='\grep --color=auto -rni "\s\+\$$" '
 #
 #find path_name -type f -iname "*.[c|h]" | xargs grep '\s\+\$'
@@ -126,6 +127,10 @@ alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfin
 #find TargetPathName -type f -iname "*.c" | xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
 ##------------------------------
 alias sudodpkgforce-depends='sudo dpkg -P --force-depends '
+##------------------------------
+alias tree.U='\tree -U '
+alias tree.r='\tree -r '
+alias tree.sort.name='\tree --sort=name '
 ##------------------------------
 alias whicha='which -a '
 ##------------------------------
@@ -166,6 +171,7 @@ alias GetFullPathOfCurrentFolder='echo $PWD | sed -r "s/(.*)\/(.*)/\1/g"'
 ##------------------------------
 alias sed_i_r='             sed -i -r '
 alias sedremovespaceonend=' sed -i "s/\s\+\$//g" '
+alias sedremovespaceonend1='sed -i "s/\ \+$//g" '
 #example#sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 #sed -i -r "s/AC_INIT(.*)/AC_INIT(${FileNameOfTopCode})/g" configure.in
 ##------------------------------
