@@ -153,6 +153,7 @@ alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g'
 #alias RenameReplaceSpace3="\rename        's/[《|》|（|）|：|、|(|)|“|”|·|，|’|、|\[|\]|\s|’]+/_/g' "
 alias RenameReplaceSpace3="\rename        's/[\-|_]*\.+[\-|_]*/./g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
+alias RenameReplaceSpaceAll="RenameReplaceSpace2 *.* ;RenameReplaceSpace1 *.* ;RenameReplaceSpace3 *.* ;"
 alias RenameRemoveSChar="\rename          's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
 alias RenameRemoveSChar2="\rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
 alias RenameCleanDotInFileName="\rename   's/[-|_]*\.+[-|_]*/./g' "
