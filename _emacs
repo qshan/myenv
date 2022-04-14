@@ -232,6 +232,7 @@
 ;;--------------------------------------------------
 ;;show match pattern
 (show-paren-mode t)
+;;wrap the line
 (auto-fill-mode 1)
 ;;(setq-default auto-fill-function 'do-auto-fill)
 ;;(add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -986,25 +987,28 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;
 ;;end function of copy_without_selection--------------------------------------------------
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;open emacs with miximized windows
+;;ToCheck;;open emacs with miximized windows
 ;;emacs -mm
 ;;emacs --miximized
-                                        ;
-;;check variable in emacs envelop
+;
+;;ToCheck;;check variable in emacs envelop
 ;;C-h v NameOfVariable RET
 ;;M-x describe-variable
 ;;;;or
 ;; M-: NameOfVariable RET
-                                        ;
+;;
 ;;set the variable
-                                        ;M-x set-variable RET NameOfVariable RET 80 RET
-                                        ;                                        ;
+;M-x set-variable RET NameOfVariable RET 80 RET
+;;
 ;;set the NameOfVariable after checking
 ;;(setq NameOfVariable ValueSet)
-                                        ;
-                                        ;M-x set-variable RET fill-column RET 80 RET
-                                        ;(setq fill-column 85)
-                                        ;
+;
+;M-x set-variable RET fill-column RET 80 RET
+;(setq fill-column 85)
+;
+;;ToCheck;;hex file edit
+;; M-x hexl-mode
+;;
 ;;Univeral ctags
 ;;;;https://github.com/universal-ctags
 ;;;;https://github.com/universal-ctags/ctags-win32/releases
@@ -1014,7 +1018,6 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;install universal ctags with following script
 ;;the details could be get here,
 ;;https://github.com/universal-ctags/ctags/blob/master/docs/autotools.rst
-
 ;;    $ git clone https://github.com/universal-ctags/ctags.git
 ;;    $ cd ctags
 ;;    $ ./autogen.sh
@@ -1516,6 +1519,8 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;;;C-h v     ;M-x describe-variable, and asks you for a variable; you can TAB to complete a variable.
 ;;              This command is important, because aside from describing a variable, it allows you to
 ;;              customize the behavior of Emacs and 3rd party packages. But for now, you don't need it.
+
+;;;;C-x k     ;M-x `kill-buffer ;;kill this buffer, keep window there
 
 ;;re-load the emacs config file with load-file
 ;;M-x load-file ~/.emacs    ;load .emacs file as Lisp code, and execute
