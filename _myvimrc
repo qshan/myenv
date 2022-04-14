@@ -159,7 +159,7 @@ set guioptions-=T
 """"remove the menubar
 ""set guioptions-=m
 """"enable the menubar
-set guioptions=m
+set guioptions+=m
 ""
 ""set title with default style, the default is filename
 set title
@@ -219,7 +219,7 @@ autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
 "autocmd FileRead *.* match ExtraWhitespace /\s\+$/
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 "
-set mouse=a
+"set mouse=a
 " Display options
 set showmode
 set showcmd
