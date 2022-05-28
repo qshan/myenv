@@ -458,6 +458,8 @@
                                 ("\\.min\\'"    . makefile-mode)
                                 ("makefile*'"   . makefile-mode)
                                 ("Makefile*'"   . makefile-mode)
+                                ("Makefile.config'"   . makefile-mode)
+                                ("Makefile.rules'"   . makefile-mode)
                                 ("SConstruct*'" . scons-mode)
                                 ("SConscript*'" . scons-mode)
                                 ("\\.c\\'"      . c-mode)
