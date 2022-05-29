@@ -304,10 +304,13 @@ alias ctags_L_SV        "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSK
 
 #set the titile with current path
 #tcsh
-echo -n "\033]0;csh $PWD\007"
+#echo -n "\033]0;csh $PWD \007"
+echo -n "\033]0;`basename $PWD` \a"
 
-alias set_terminal_title          'echo -n "\033]0; $cmd\007"'
-alias set_terminal_title_min      'echo -n "\033]1; $cmd\007"'
+#alias set_terminal_title          'echo -n "\033]0; $PWD \007"'
+alias set_terminal_title          'echo -n "\033]0; `basename $PWD` \007"'
+#alias set_terminal_title_min      'echo -n "\033]1; $PWD \007"'
+alias set_terminal_title_min      'echo -n "\033]1; `basename $PWD` \007"'
 
 #get the current shell type
 # sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p
