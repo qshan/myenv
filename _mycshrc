@@ -405,6 +405,9 @@ alias set_default_path_with_yellow1 "set prompt='${TcshYellow}%N@%U%m%u:%B%c3%b$
 #set_full_path
 set_full_path1
 
+alias wgetc   'wget -c '
+alias curlCL  'curl -CL '
+
 ##%U%m%u:%B%~%b%#
 #set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands
 #set prompt='%B%c%b%h%#' #display last part of current folder + linenumber of history commands
