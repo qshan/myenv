@@ -1,0 +1,8 @@
+#!bin/bash
+#
+#Run the following commands as a user with sudo permissions :
+#1. Add the Tor browser launcher PPA repository :
+sudo add-apt-repository ppa:micahflee/ppa
+#2. Install the Tor browser launcher package:
+sudo apt update
+sudo apt install torbrowser-launcher
