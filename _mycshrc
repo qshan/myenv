@@ -36,6 +36,8 @@ echo "Calling ###[_mycshrc]### file setting"
 ##------------------------------
 ##tcsh PATH & path variables
 # export path=(PathName01 PathName02)
+# set path = ($path /usr/local/bin)
+# setenv PATH $PATH\:/usr/local/bin
 ##------------------------------
 ##alias setting format
 # alias ls  "ls -l"
@@ -118,9 +120,9 @@ alias grepspaceonend        '\grep --color=auto -rni " \+"\$ '
 ##------------------------------
 alias findL                 '\find -L '
 alias findSwfFile           'find ./ -type f -iname "*.sw*" '
-alias findSwfFileRemove     'find ./ -type f -iname "*.sw*" | xargs \rm -rf '
+alias findSwfFileRemove     'find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
 alias findDotOFile          'find ./ -type f -iname "*.o*" '
-alias findDotOFileRemove    'find ./ -type f -iname "*.o*" | xargs \rm -rf '
+alias findDotOFileRemove    'find ./ -type f -iname "*.o*" | xargs \rm -rfv '
 alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
 
 
@@ -136,6 +138,12 @@ alias lnsnf                 'ln -snf '
 alias chmod+R               'chmod -R a+r '
 alias chmod-R               'chmod -R a-r '
 alias chmodER               'chmod -R a=r '
+##------------------------------
+alias tarczvf               'tar -czvf '
+alias tarxzvf               'tar -xzvf '
+alias tarcJvf               'tar -cJvf '
+alias tarxJvf               'tar -xJvf '
+alias tartf                 'tar -tf '
 ##------------------------------
 #alias RenameReplaceSpace        "\rename 's/\s+/_/g' "
 alias RenameReplaceSpace        "\rename s/\'+/_/g "
@@ -201,6 +209,7 @@ alias openFileBroswer       'pcmanfm &'
 
 alias openPdf               'evince '
 
+#rust setting
 alias cargonew              'cargo new '
 alias cargobuild            'cargo build '
 alias cargorun              'cargo run '
@@ -291,12 +300,15 @@ endif
 alias ctags_R           "ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_R_Python    "ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_R_SV        "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re          "ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_Re_Python   "ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_Re_SV       "ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_scala     "ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_L_C         "ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python    "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
 alias ctags_L_SV        "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
+alias ctags_R_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L "
 
 
 
@@ -406,7 +418,17 @@ alias set_default_path_with_yellow1 "set prompt='${TcshYellow}%N@%U%m%u:%B%c3%b$
 set_full_path1
 
 alias wgetc   'wget -c '
+alias wgetL   'wget -L '
 alias curlCL  'curl -CL '
+
+#scala env setting
+setenv PATH /home/fshan/.local/share/coursier/bin:$PATH
+#setenv PATH $PATH\:/home/fshan/.local/share/coursier/bin
+#set path = ($path /home/fshan/.local/share/coursier/bin)
+alias sbtcompile      'sbt compile'
+alias sbtrun          'sbt run'
+alias sbttest         'sbt test'
+alias sbtpublishLocal 'sbt publishLocal'
 
 ##%U%m%u:%B%~%b%#
 #set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands

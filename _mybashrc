@@ -119,9 +119,9 @@ alias grepspaceonend='  \grep --color=auto -rni " \+$" '
 ##------------------------------
 alias findL='\find -L '
 alias findSwfFile='find ./ -type f -iname "*.sw*" '
-alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rf '
+alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
 alias findDotOFile='find ./ -type f -iname "*.o" '
-alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rf '
+alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rfv '
 alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfindremovespaceonend; find "$@" -type f | xargs sed -i "s/\s\+\$//g" ; }; functionfindremovespaceonend '
 #TODO#
 #find ./ -type f | xargs sed -i 's/13/14/g'
@@ -141,6 +141,12 @@ alias lnsnf='ln -snf '
 alias chmod+R='chmod -R a+r '
 alias chmod-R='chmod -R a-r '
 alias chmodER='chmod -R a=r '
+##------------------------------
+alias tarczvf='tar -czvf '
+alias tarxzvf='tar -xzvf '
+alias tarcJvf='tar -cJvf '
+alias tarxJvf='tar -xJvf '
+alias tartf='  tar -tf '
 ##------------------------------
 #alias RenameReplaceSpace="\rename         's/\s+/_/g' "
 alias RenameReplaceSpace="\rename         s/\'+/_/g "
@@ -207,6 +213,7 @@ alias openFileBroswer='pcmanfm &'
 
 alias openPdf='evince '
 
+#rust setting
 alias cargonew='    cargo new '
 alias cargobuild='  cargo build '
 alias cargorun='    cargo run '
@@ -297,12 +304,15 @@ alias input_methods_reset_fcitx='fcitx -r'
 alias ctags_R="         ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_R_Python="  ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_scala="   ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re="        ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_Re_Python=" ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_Re_SV="     ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_scala="   ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_L_C="       ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python="  ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
 alias ctags_L_SV="      ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
+alias ctags_R_scala="   ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L "
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
@@ -418,8 +428,16 @@ alias set_default_lubuntu_path_with_yellow1="export PS1='${BashYellow}\u@\H:\W${
 #export PS1=``\s-\v\$ ''
 set_full_path
 
-alias wget='  wget -c '
+alias wgetc='  wget -c '
+alias wgetL='  wget -L '
 alias curlCL='curl -CL '
+
+#scala env setting
+export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
+alias sbtcompile='      sbt compile'
+alias sbtrun='          sbt run'
+alias sbttest='         sbt test'
+alias sbtpublishLocal=' sbt publishLocal'
 
 #alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
 
