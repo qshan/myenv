@@ -368,6 +368,7 @@ Plugin 'Python-Syntax-Folding'
 " 你的所有插件需要在下面这行之前
 " 插件列表结束
 Plugin 'qshan/nerdcommenter'
+Plugin 'derekwyatt/vim-scala'
 "
 call vundle#end()            "required for Vundle
 "
