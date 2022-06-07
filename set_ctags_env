@@ -22,5 +22,5 @@ if [ -f ~/.ctags ]; then
   cat "#add `pwd`/_ctags file contents"  >>  ~/.ctags
   cat _ctags >>  ~/.ctags
 else
-  ln -s `pwd`/_ctags ~/.ctags 
+  ln -s `pwd`/_ctags ~/.ctags
 fi
