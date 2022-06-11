@@ -319,7 +319,7 @@ Plugin 'Valloric/YouCompleteMe'
 """./install.py --clang-completer
 """or
 """./install.py --all
-""" will download clang and other pludgin automatically
+""" will download clang and other plugin automatically
 "
 "The g:ycm_auto_trigger option
 "auto popup to complete
@@ -368,6 +368,7 @@ Plugin 'Python-Syntax-Folding'
 " 你的所有插件需要在下面这行之前
 " 插件列表结束
 Plugin 'qshan/nerdcommenter'
+"not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
 call vundle#end()            "required for Vundle

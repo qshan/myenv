@@ -183,6 +183,8 @@ alias sedremovespaceonend1='sed -i "s/\ \+$//g" '
 #example#sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 #sed -i -r "s/AC_INIT(.*)/AC_INIT(${FileNameOfTopCode})/g" configure.in
 ##------------------------------
+alias mount.loop='          mount -o loop '
+##------------------------------
 
 alias h='\history 1000'
 alias v='vim'
@@ -246,8 +248,8 @@ alias gitpull='               git pull --tags '
 alias gitfetch='              git fetch --all '
 alias gitremoteadd='          git remote add origin '
 alias gitremotev='            git remote -v'
-alias gitremoteshow='         git remote show '
-#example# gitremoteshow RemoteRepoName
+alias gitremotevshow='        git remote -v show '
+#example# gitremoteshow RemoteRepoNamr
 alias gitremoteshoworigin='   git remote show origin'
 alias gitremotev='            git remote -v'
 alias gitclone='              git clone --recursive '
@@ -257,6 +259,7 @@ alias gitdifftoolhead='       git difftool --tool=vimdiff HEAD'
 alias gitdifftoolhead1='      git difftool --tool=vimdiff HEAD^'
 alias gitdifftoolhead2='      git difftool --tool=vimdiff HEAD^^'
 alias gitshow='               git show '
+alias gitlsfiles='            git ls-files '
 alias gitlog='                git log '
 alias gitlogpretty='          git log --pretty="%h - %s" --no-merges -- t/ '
 alias gitlogprettyshort='     git log --pretty=short '
@@ -434,10 +437,26 @@ alias curlCL='curl -CL '
 
 #scala env setting
 export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
-alias sbtcompile='      sbt compile'
-alias sbtrun='          sbt run'
-alias sbttest='         sbt test'
-alias sbtpublishLocal=' sbt publishLocal'
+# https://www.scala-sbt.org/1.x/docs/Running.html
+# https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html
+# https://www.scalawilliam.com/essential-sbt/
+alias sbtnew='            sbt new'
+alias sbttask='           sbt task'
+alias sbtabout='          sbt about'
+alias sbtclean='          sbt clean'
+alias sbtcompile='        sbt compile'
+alias sbtrecompile='      sbt ~compile'
+alias sbttest='           sbt test'
+alias sbttestQuick='      sbt ~testQuick'
+alias sbtconsole='        sbt console'
+alias sbtrun='            sbt run'
+alias sbtpackage='        sbt package'
+alias sbtreload='         sbt reload'
+alias sbtproject='        sbt project'
+alias sbtprojects='       sbt projects'
+alias sbtpublishLocal='   sbt publishLocal'
+alias sbtinspect='        sbt "inspect actual console"'
+alias sbtinspectactual='  sbt "inspect actual console"'
 
 #alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
 
