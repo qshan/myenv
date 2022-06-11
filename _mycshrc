@@ -307,11 +307,18 @@ alias ctags_R_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re          "ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_Re_Python   "ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_Re_SV       "ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_R_scala     "ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
+alias ctags_Re_scala    "ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_L_C         "ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python    "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
 alias ctags_L_SV        "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
-alias ctags_R_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L "
+alias ctags_L_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L "
+#you could try with filelist input style, like
+#ctags_R -L filelist_name
+
+export PATH       '$PATH:/usr/local/lib'
+
+#set the the path of graalvm instead of openjdk
+export PATH       '~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH'
 
 
 
