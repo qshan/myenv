@@ -85,6 +85,21 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 sudo apt update
 sudo apt install google-chrome-stable
 #--------------------------------------------------
+#install ftp client tool
+sudo apt install filezilla filezilla-common
+#--------------------------------------------------
+# re-install language package
+# sudo apt-get install --reinstall language-pack-en language-pack-en-base manpages
+sudo apt install --reinstall language-pack-zh-han* language-pack-en* manpages
+sudo apt install --reinstall language-pack-gnome-zh-han*
+#sudo apt install language-pack-zh-hans language-pack-zh-hans-base language-pack-zh-hant language-pack-zh-hant-base language-pack-en language-pack-en-base
+# sudo apt install chinese*
+#install ibus input methods
+sudo apt install ibus ibus-sunpinyin
+#install fictc input methods google-pinyin
+sudo apt install fcitx fcitx-googlepinyin fcitx-config-common
+#
+#--------------------------------------------------
 # # google-earth-pro-stable google-earth-stable
 # wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 # sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/earth/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -163,6 +178,15 @@ sudo apt install calibre calibre-bin
 #sudo apt install com.github.babluboy.bookworm
 #
 #Koodo Reader
+
+#install mtp-tools
+# ls /run/user/1000/gvfs/
+#
+####install lxscreenshot
+sudo apt install screengrab
+
+#the location of apt cache files
+ls /var/cache/apt/archives
 
 ####usage of unetbootin
 # $sudo unetbootin installtype=USB targetdrive=/dev/sdb1
