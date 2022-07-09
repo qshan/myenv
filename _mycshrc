@@ -315,10 +315,10 @@ alias ctags_L_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L 
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
-export PATH       '$PATH:/usr/local/lib'
+setenv PATH       '$PATH:/usr/local/lib'
 
 #set the the path of graalvm instead of openjdk
-export PATH       '~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH'
+setenv PATH       '~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH'
 
 
 
@@ -327,7 +327,7 @@ export PATH       '~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH'
 #set the titile with current path
 #tcsh
 #echo -n "\033]0;csh $PWD \007"
-echo -n "\033]0;`basename $PWD` \a"
+#TODO#echo -n "\033]0;`basename $PWD` \a"
 
 #alias set_terminal_title          'echo -n "\033]0; $PWD \007"'
 alias set_terminal_title          'echo -n "\033]0; `basename $PWD` \007"'
@@ -396,7 +396,8 @@ setenv TcshColorEnd       "%{\e[0m%}"
 #alias set_full_path "set prompt='${TcshGreen}%B%n%b${TcshColorEnd}@${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%/%b${TcshColorEnd}${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}${TcshLightGray}%S'"
 alias set_full_path   "set prompt='${TcshGreen}%B%n%b${TcshColorEnd}@${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%/%b${TcshColorEnd}${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}'"
 #alias set_full_path1 "set prompt='${TcshYellow}%U%m%u:%B%/%b${TcshColorEnd}${TcshGreen}[%h]%#${TcshColorEnd}'"
-alias set_full_path1  "set prompt='${TcshYellow}%U%n%u${TcshColorEnd}${TcshLightGray}:%B%~%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
+#alias set_full_path1  "set prompt='${TcshYellow}%U%n%u${TcshColorEnd}${TcshLightGray}:%B%~%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
+alias set_full_path1  "set prompt='${TcshYellow}%U%n%u${TcshColorEnd}${TcshLightGray}:%B%~%b${TcshColorEnd}${TcshLightGreen}%B\n[%h]%#%b${TcshColorEnd}'"
 alias set_full_path2  "set prompt='${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%c3%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
 
 alias set_short_path  "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
