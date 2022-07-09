@@ -371,6 +371,11 @@ Plugin 'qshan/nerdcommenter'
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
+" install vim-markdown
+""https://github.com/qshan/vim-markdown
+""Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
+"
 call vundle#end()            "required for Vundle
 "
 filetype plugin indent on    "required for Vundle 加载vim自带和插件相应的语法和文件类型相关脚本
@@ -436,6 +441,9 @@ map <leader>n :set number<CR>
 au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
 "set *.min file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.min set syntax=make
+""
+"set the *.scala file as the makefile type
+au BufReadPre,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  set filetype=scala
 "
 "set the *.cshrc and *_cshrc file as the makefile type
 au BufReadPre,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=csh
