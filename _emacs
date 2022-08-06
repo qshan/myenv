@@ -188,6 +188,8 @@
     ("FAIL"    . "#ff0000")
     ("error"   . "#ff0000")
     ("Error"   . "#ff0000")
+    ("fatal"   . "#ff0000")
+    ("Fatal"   . "#ff0000")
     ("DONE"    . "#afd8af")
     ("NOTE"    . "#d0bf8f")
     ("ToCheck" . "#d0bf8f")

@@ -278,6 +278,7 @@ alias gitreset_head2        'git reset HEAD~2 '
 alias gitreset_head3        'git reset HEAD~3 '
 alias gitdiffhead           'git diff HEAD '
 alias gitdiff_cached        'git diff --cached '
+alias gitsubmoduleupdate    'git submodule update --init --recursive --remote --force '
 
 #input methods reset
 alias input_methods_reset_fcitx   'fcitx -r'
