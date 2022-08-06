@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# https://linuxize.com/post/create-a-linux-swap-file/
+
+#Swap is a space on a disk that is used when the amount of physical RAM memory is full. When a Linux system runs out of RAM, inactive pages are moved from the RAM to the swap space.
+
+#Swap space can take the form of either a dedicated swap partition or a swap file. In most cases, when running Linux on a virtual machine, a swap partition is not present, so the only option is to create a swap file.
+
+#This tutorial was tested on Linux systems with Ubuntu 18.04 and CentOS 7, but it should work with any other Linux distribution.
+
+##How to add Swap File
+#Follow these steps to add 1GB of swap to your server. If you want to add 2GB instead of 1 GB, replace 1G with 2G.
+
+#Create a file that will be used for swap:
+#TODO# sudo fallocate -l 64G /swapfile
+
+#If faillocate is not installed or if you get an error message saying fallocate failed: Operation not supported then you can use the following command to create the swap file:
+#TODO# #sudo dd if=/dev/zero of=/swapfile bs=1G count=64
+
+#Only the root user should be able to write and read the swap file. To set the correct permissions type:
+#TODO# sudo chmod 600 /swapfile
+
+#Use the mkswap utility to set up the file as Linux swap area:
+#TODO# sudo mkswap /swapfile
+
+#Enable the swap with the following command:
+#TODO# sudo swapon /swapfile
+
+#To make the change permanent open the /etc/fstab file and append the following line:
+#TODO# add following those lines in /etc/fstab
+#       <file system> <mount point> <type>  <options> <dump>  <pass>
+#TODO#  /swapfile     swap          swap    defaults  0       0
+
+#To verify that the swap is active, use either the swapon or the free command as shown below:
+#TODO# sudo swapon --show
+
+# # NAME      TYPE  SIZE   USED PRIO
+# # /swapfile file 1024M 507.4M   -1
+
+#TODO# sudo free -h
+# #              total        used        free      shared  buff/cache   available
+# #Mem:           488M        158M         83M        2.3M        246M        217M
+# #Swap:          1.0G        506M        517MCopy
+
+# # How to adjust the swappiness value
+#Swappiness is a Linux kernel property that defines how often the system will use the swap space. Swappiness can have a value between 0 and 100. A low value will make the kernel to try to avoid swapping whenever possible, while a higher value will make the kernel to use the swap space more aggressively.
+
+#TODO# The default swappiness value is 60. You can check the current swappiness value by typing the following command:
+#TODO# cat /proc/sys/vm/swappiness
+# # 60
+
+#While the swappiness value of 60 is OK for most Linux systems, for production servers, you may need to set a lower value.
+
+#For example, to set the swappiness value to 10, you would run the following sysctl command:
+#TODO# sudo sysctl vm.swappiness=10
+
+#To make this parameter persistent across reboots append the following line to the /etc/sysctl.conf file:
+#/etc/sysctl.conf
+#TODO# vm.swappiness=10
+
+#The optimal swappiness value depends on your system workload and how the memory is being used. You should adjust this parameter in small increments to find an optimal value.
+
+#How to remove Swap File
+#If for any reason you want to deactivate and remove the swap file, follow these steps:
+
+#First, deactivate the swap by typing:
+
+#TODO# sudo swapoff -v /swapfile
+
+#Remove the swap file entry /swapfile swap swap defaults 0 0 from the /etc/fstab file.
+
+#Finally, delete the actual swapfile file using the rm command:
+
+#TODO# sudo rm /swapfile
+
+#Conclusion
+#You have learned how to create a swap file and activate and configure swap space on your Linux system.
