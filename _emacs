@@ -765,7 +765,8 @@
   ;;toggle on/off for current file
   ;;(whitespace-mode)
   ;;toggle on/off globally for current emacs session
-  (global-whitespace-mode)
+  ;;(global-whitespace-mode)
+  (global-whitespace-mode t)
 
   ;;toggle on/off for current file
   ;;(whitespace-newline-mode)
