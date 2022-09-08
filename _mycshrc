@@ -6,6 +6,9 @@
 #  source ~/.cshrc.local
 #endif
 
+echo $path
+#echo $PATH
+
 echo "Calling ###[_mycshrc]### file setting"
 
 ##ToCheck##
@@ -101,7 +104,8 @@ setxkbmap -option ctrl:nocaps
 
 #alias setting here
 ##------------------------------
-alias ls                    '\ls --color=auto '
+#alias ls                    'ls --color=auto '
+#alias ls                    'ls --color=auto '
 alias la                    'ls -alh '
 alias lt                    'ls -ctl '
 alias lstr                  'ls -tr '
@@ -288,6 +292,7 @@ alias input_methods_reset_fcitx   'fcitx -r'
 set autolist = ambiguous
 #set complete = igncase
 set complete = enhance
+#
 ####set complete = Enhance
 set autoexpand
 ####set correct = cmd
@@ -297,6 +302,8 @@ set autocorrect
 if ( -f ~/.git-completion.tcsh ) then
   source ~/.git-completion.tcsh
 endif
+
+#echo "run here to check"
 
 ###############alias for tags generation
 #
@@ -316,10 +323,15 @@ alias ctags_L_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L 
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
-setenv PATH       '$PATH:/usr/local/lib'
+#setenv PATH       '$PATH\:/usr/local/lib'
+set     path    = ($path /usr/local/lib )
+#
+# setenv PATH       '$PATH\:/bin:/home/fshan/.cargo/bin:/home/fshan/bin:/home/fshan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/lib:/home/fshan/.cargo/bin'
+#set     path    = ($path /bin /home/fshan/.cargo/bin /home/fshan/bin /home/fshan/.local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/games /usr/local/games /snap/bin /usr/local/lib /home/fshan/.cargo/bin)
 
 #set the the path of graalvm instead of openjdk
-setenv PATH       '~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH'
+#setenv PATH       '~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH'
+set    path    = (~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin $path)
 
 
 
@@ -434,7 +446,8 @@ alias wgetL   'wget -L '
 alias curlCL  'curl -CL '
 
 #scala env setting
-setenv PATH /home/fshan/.local/share/coursier/bin:$PATH
+#setenv PATH '/home/fshan/.local/share/coursier/bin:$PATH'
+set    path    = (/home/fshan/.local/share/coursier/bin $path)
 #setenv PATH $PATH\:/home/fshan/.local/share/coursier/bin
 #set path = ($path /home/fshan/.local/share/coursier/bin)
 # https://www.scala-sbt.org/1.x/docs/Running.html
@@ -511,3 +524,6 @@ alias sbtinspectactual  'sbt "inspect actual console"'
 ##$##                   tut [37] [2:54pm] [/usr/accts/sys] you rang? _
 ##$##               If `%t', `%@', `%T', `%p', or `%P' is used, and noding is not set, then print `DING!' on the change of hour  (i.e,  `:00'  min‐utes) instead of the actual time.
 ##$##               Set by default to `%# ' in interactive shells.
+
+echo $path
+#echo $PATH
