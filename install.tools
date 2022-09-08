@@ -32,6 +32,8 @@ sudo add-apt-repository ppa:jonathonf/gcc
 ##sudo add-apt-repository ppa:jonathonf/gettext
 ##sudo add-apt-repository ppa:jonathonf/git
 ##sudo add-apt-repository ppa:jonathonf/googletest
+##
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 #
 # good info about the ppa
 # https://github.com/qshan/Ubuntu-Universal-PPAs-Collection/blob/master/Add_PPAs_Address.sh
