@@ -48,6 +48,7 @@ if ( ! -e ${__git_tcsh_completion_original_script} ) then
 endif
 
 cat << EOF >! ${__git_tcsh_completion_script}
+
 #!bash
 #
 # This script is GENERATED and will be overwritten automatically.
