@@ -220,6 +220,11 @@ chgrp UserName FileName
 # change the group of FolderName and subfolder as UserName
 chgrp R UserName FolderName
 
+#==============================access android file with linux shell start==============================
+##browser the detail of folder contents
+# ls /run/user/1000/gvfs/
+# ls /run/user/1000/gvfs/mtp*
+#==============================access android file with linux shell end==============================
 
 #sudo apt-get install kdbg
 #==============================the command related to disk start==============================
