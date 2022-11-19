@@ -157,10 +157,13 @@ alias RenameReplaceSpace1       "\rename 's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
 #alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\+|\s]+/_/g' "
 #alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|’|\!|-|_|\s|:]+/_/g' "
 alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
+alias RenameReplaceSpace21      "\rename 's/[(|)|\[|\]|{|}|&|,|\!|:]+/./g' "
+alias RenameReplaceSpace22      "\rename 's/[_|\s]+/_/g' "
 #alias RenameReplaceSpace3       "\rename 's/[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]+/_/g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
 alias RenameReplaceSpace3       "\rename 's/[\-|_]*\.+[\-|_]*/./g' "
-alias RenameReplaceSpaceAll     "RenameReplaceSpace2 *.* ;RenameReplaceSpace1 *.* ;RenameReplaceSpace3 *.* ;"
+#alias RenameReplaceSpaceAll     "RenameReplaceSpace2 *.* ;RenameReplaceSpace1 *.* ;RenameReplaceSpace3 *.* ;"
+alias RenameReplaceSpaceAll     "RenameReplaceSpace21 *.* ; RenameReplaceSpace22 *.* ; RenameReplaceSpace1 *.* ; RenameReplaceSpace3 *.* ;"
 alias RenameRemoveSChar         "\rename 's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
 alias RenameRemoveSChar2        "\rename 's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
 alias RenameCleanDotInFileName  "\rename    's/[-|_]*\.+[-|_]*/./g' "
@@ -444,6 +447,8 @@ set_full_path1
 alias wgetc   'wget -c '
 alias wgetL   'wget -L '
 alias curlCL  'curl -CL '
+alias curlL   'curl -L '
+#alias curlCLO 'curl -CL -O '
 
 #scala env setting
 #setenv PATH '/home/fshan/.local/share/coursier/bin:$PATH'
