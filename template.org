@@ -3,7 +3,6 @@
 #+title: here is title
 #+author: here is author
 
-
 * ##### M-RET ##### add new head with
 
 --------------------------------------------------
