@@ -1,4 +1,4 @@
-"
+"#!/usr/bin/vim
 "save these contents as _myvimrc file
 "source _myvimrc
 
@@ -91,6 +91,8 @@ set linespace=4
 set wrap       "auto display line with a line break, but do not insert the line break in the file
 "set nowrap       "display a lines in one lies
 "
+set undolevels=200
+"
 set backspace=indent,eol,start
 "
 "set guifont size in gvim
@@ -133,8 +135,11 @@ set tabstop=2         "set to show the tab with 2 blankspace; identify how many 
 set softtabstop=2    " how many space to show for a tab in Insert mode
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
-"set textwidth=30 "breaking the line if the count is over 30 in this line
-"set linebreak
+set textwidth=90 "breaking the line if the count is over 30 in this line
+set noerrorbells " for the sake of your sanity, I highly recommend turning this on
+set linebreak
+"set showbreak=>
+set showbreak=+++
 "
 "set smartcase  "- use case if any caps used    Override the 'ignorecase' option if the search pattern contains upper case characters.
 "set scs
@@ -390,9 +395,35 @@ Plugin 'derekwyatt/vim-scala'
 ""https://github.com/qshan/vim-markdown
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
-""Plugin 'godlygeek/tabular'
-""Plugin 'plasticboy/vim-markdown'
-"
+""Plugin 'qshan/tabular'
+""Plugin 'qshan/vim-markdown'
+""
+" A disturbance in the force: we are using some emacs functionality here, org-mode specifically
+Plugin 'jceb/vim-orgmode'
+""
+""https://news.itsfoss.com/configuring-vim-writing/
+"   This is for color themes
+Plugin 'colepeters/spacemacs-theme.vim'
+""Plug 'sainnhe/gruvbox-material'
+""Plug 'phanviet/vim-monokai-pro'
+"TODO"Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/base16-vim'
+""Plug 'gruvbox-community/gruvbox'
+""
+"" https://github.com/dpelle/vim-LanguageTool/blob/master/doc/LanguageTool.txt
+""https://github.com/dpelle/vim-LanguageTool
+Plugin 'dpelle/vim-LanguageTool'
+""https://github.com/rhysd/vim-grammarous
+Plugin 'rhysd/vim-grammarous'
+""
+"   This is a selection of plugins to make prose writing easier.
+""Plug 'dpelle/vim-LanguageTool'
+Plugin 'ron89/thesaurus_query.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'reedes/vim-pencil'
+Plugin 'reedes/vim-wordy'
+""
 call vundle#end()
 "required for Vundle
 "
