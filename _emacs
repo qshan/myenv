@@ -553,6 +553,15 @@
 ;;ToCheck;;
 (global-set-key (kbd "C-c ;") 'comment-line)
 ;;
+;;
+;; start of writing_with_emacs
+;; good reference for writing with emacs https://github.com/qshan/writingwithemacs
+;;
+(add-hook 'tex-mode-hook
+          #'(lambda () (setq ispell-parser 'tex)))
+;;
+;; end of writing_with_emacs
+;;
 ;;TODO;;it is better to end the setting here
 ;;##############################################################################
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
