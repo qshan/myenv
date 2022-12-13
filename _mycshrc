@@ -7,7 +7,7 @@
 #endif
 
 echo $path
-#echo $PATH
+echo $PATH
 
 echo "Calling ###[_mycshrc]### file setting"
 
@@ -41,6 +41,7 @@ echo "Calling ###[_mycshrc]### file setting"
 # export path=(PathName01 PathName02)
 # set path = ($path /usr/local/bin)
 # setenv PATH $PATH\:/usr/local/bin
+# setenv PATH "${PATH}:/usr/local/bin"
 ##------------------------------
 ##alias setting format
 # alias ls  "ls -l"
@@ -81,7 +82,7 @@ set history = 10000
 
 setenv timefshan  "`date +%Y-%m-%d-%H%M`"
 #alias  gettime    'echo `date +%Y-%m-%d-%H%M`'
-alias gettime=    'export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
+alias gettime     'export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
 
 # replace Caps with CTRL
 setxkbmap -option ctrl:nocaps
@@ -269,6 +270,8 @@ alias gitlogprettyshort     'git log --pretty=short '
 alias gitlogprettyoneline   'git log --pretty=oneline '
 alias gitloggraph           'git log --graph '
 alias gitlogstat            'git log --stat '
+alias gitlogl               'git log -l '
+alias gitloga               'git log -a '
 #alias gitstatus             'git status '
 alias gitstatusshort        'git status --short '
 alias gitbranchall          'git branch --all'
@@ -326,15 +329,15 @@ alias ctags_L_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L 
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
-#setenv PATH       '$PATH\:/usr/local/lib'
+setenv  PATH      "${PATH}:/usr/local/lib"
 set     path    = ($path /usr/local/lib )
 #
 # setenv PATH       '$PATH\:/bin:/home/fshan/.cargo/bin:/home/fshan/bin:/home/fshan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/lib:/home/fshan/.cargo/bin'
 #set     path    = ($path /bin /home/fshan/.cargo/bin /home/fshan/bin /home/fshan/.local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/games /usr/local/games /snap/bin /usr/local/lib /home/fshan/.cargo/bin)
 
 #set the the path of graalvm instead of openjdk
-#setenv PATH       '~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH'
-set    path    = (~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin $path)
+setenv  PATH      "~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:${PATH}"
+set     path    = (~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin $path)
 
 
 
@@ -452,8 +455,8 @@ alias curlL   'curl -L '
 
 #scala env setting
 #setenv PATH '/home/fshan/.local/share/coursier/bin:$PATH'
-set    path    = (/home/fshan/.local/share/coursier/bin $path)
-#setenv PATH $PATH\:/home/fshan/.local/share/coursier/bin
+set    path   = (/home/fshan/.local/share/coursier/bin $path)
+setenv PATH     "${PATH}:/home/fshan/.local/share/coursier/bin"
 #set path = ($path /home/fshan/.local/share/coursier/bin)
 # https://www.scala-sbt.org/1.x/docs/Running.html
 # https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html
