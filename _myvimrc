@@ -174,9 +174,14 @@ set wildmode=longest,list
 "set omnifunc=syntaxcomplete#Complete     "incase, you have to use moni
 "--------------------------------------
 "filetype plugin indent on
-"set completeopt+=longest
-"set completeopt+=menu
-"set wildmenu
+"set cot+=longest
+set completeopt+=longest
+set completeopt+=menu
+set completeopt+=preview
+set completeopt+=popup
+set wildmenu
+"set nowildmenu
+"
 "syntax enable  "This command switches on syntax highlighting: >
 "syntax on      "turn on the syntax highlight
 "syntax off     "turn off the syntax highlight
