@@ -140,6 +140,7 @@ set backspace=indent,eol,start
 "you could resize with Ctl-Shift-'+' | Ctl-'-' in vim
 "set guifont=Sans\ Bold\ 12
 set guifont=Monospace\ 16
+""Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif
 ""C-x C- -       "decrease the char size in current buffer
 ""C-x C- =/+     "increase the char size in current buffer
 
@@ -212,9 +213,14 @@ set wildmode=longest,list
 "set omnifunc=syntaxcomplete#Complete     "incase, you have to use moni
 "--------------------------------------
 "filetype plugin indent on
-"set completeopt+=longest
-"set completeopt+=menu
-"set wildmenu
+"set cot+=longest
+set completeopt+=longest
+set completeopt+=menu
+set completeopt+=preview
+""set completeopt+=popup
+set wildmenu
+"set nowildmenu
+""
 "syntax enable  "This command switches on syntax highlighting: >
 "syntax on      "turn on the syntax highlight
 "syntax off     "turn off the syntax highlight
@@ -360,7 +366,8 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'vim-scripts/DrawIt'
 "Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+""
+""for_vim""Plugin 'Valloric/YouCompleteMe'
 """recompile the YouCompleteMe for local Env
 "re-compile lib for YCM
 ""sudo apt install python2.7-dev
@@ -376,6 +383,20 @@ Plugin 'Valloric/YouCompleteMe'
 "  au!
 "  au Filetype * set completeopt=menu,preview
 "augroup END
+""
+""https://github.com/qshan/nvim-cmp
+"call plug#begin(s:plug_dir)
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'hrsh7th/cmp-nvim-lsp'
+Plugin 'hrsh7th/cmp-buffer'
+Plugin 'hrsh7th/cmp-path'
+Plugin 'hrsh7th/cmp-cmdline'
+Plugin 'hrsh7th/nvim-cmp'
+
+" For vsnip users.
+Plugin 'hrsh7th/cmp-vsnip'
+Plugin 'hrsh7th/vim-vsnip'
+"
 "
 "tabnine-vim is good complete plugin based on youcomplete. It is better to use on Windows. YCM is not good for windows install
 "Plugin 'zxqfl/tabnine-vim'
