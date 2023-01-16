@@ -143,6 +143,10 @@ man bash
 # $git clone --recursive git@github.com:qshan/myenv.git
 
 #sudo \rm -f  /var/lib/dpkg/info/git-el.postinst
+#
+##force overwrie the confilct package or lib
+#sudo dpkg -i --force-overwrite theDebYouWantToInstall.deb
+#sudo apt-get --fix-broken install
 
 # check the package info list
 sudo apt list
@@ -219,6 +223,10 @@ chgrp UserName FileName
 
 # change the group of FolderName and subfolder as UserName
 chgrp R UserName FolderName
+
+##check linux details
+#uname -a
+#lsb_release -a
 
 #==============================access android file with linux shell start==============================
 ##browser the detail of folder contents
