@@ -16,7 +16,7 @@
 #fi
 #
 
-## if the variable is #not# set
+#### if the variable is #not# set
 ##if [[ -z ${variable_tested} ]]; then
 #if [[ -z ${variable01_tested} ]]; then
 #  echo "variable01_tested is not existed"
@@ -36,6 +36,11 @@
 #--------------------------------------------------
 
 echo "Calling ###[_mybashrc]### file setting"
+
+echo "======================================"
+echo "Check PATH info:"
+#echo $path
+echo $PATH
 
 ##ToCheck##
 ## https://web.fe.up.pt/~jmcruz/etc/unix/sh-vs-csh.html
@@ -527,3 +532,8 @@ export PATH=$PATH:/opt/riscv/bin
 ###$              \]     end a sequence of non-printing characters
 ###$
 ###$       The  command  number and the history number are usually different: the history number of a command is its position in the history list, which may include commands restored from the history file (see HISTORY below), while the command number is the position in the sequence of  commands  executed  during the current shell session.  After the string is decoded, it is expanded via parameter expansion, command substitution, arithmetic expansion, and quote removal, subject to the value of the promptvars shell option (see the description of  the shopt command under SHELL BUILTIN COMMANDS below).
+#
+echo "======================================"
+echo "Updated path info:"
+#echo $path
+echo $PATH

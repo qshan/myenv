@@ -6,10 +6,27 @@
 #  source ~/.cshrc.local
 #endif
 
-echo $path
-echo $PATH
+####if the env variable is #not# set, check the env variable status, and update
+#if (! $?VarEnvNameTry) then
+#  setenv VarEnvNameTry  "/usr/bin"
+#else
+#  if ("${VarEnvNameTry}" == "") then
+#    echo "[Info] Current VarEnvNameTry is empty, update it"
+#    setenv VarEnvNameTry  "/usr/bin"
+#  else
+#    setenv VarEnvNameTry  "${VarEnvNameTry}:/usr/bin"
+#  endif
+#endif
+
+
+
 
 echo "Calling ###[_mycshrc]### file setting"
+
+echo "======================================"
+echo "Check path info:"
+echo $path
+#echo $PATH
 
 ##ToCheck##
 ## https://web.fe.up.pt/~jmcruz/etc/unix/sh-vs-csh.html
@@ -533,5 +550,7 @@ alias sbtinspectactual  'sbt "inspect actual console"'
 ##$##               If `%t', `%@', `%T', `%p', or `%P' is used, and noding is not set, then print `DING!' on the change of hour  (i.e,  `:00'  min‐utes) instead of the actual time.
 ##$##               Set by default to `%# ' in interactive shells.
 
+echo "======================================"
+echo "Updated path info:"
 echo $path
 #echo $PATH
