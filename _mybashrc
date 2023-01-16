@@ -37,10 +37,10 @@
 
 echo "Calling ###[_mybashrc]### file setting"
 
-echo "======================================"
-echo "Check PATH info:"
-#echo $path
-echo $PATH
+#echo "======================================"
+#echo "Check PATH info:"
+##echo $path
+#echo $PATH
 
 ##ToCheck##
 ## https://web.fe.up.pt/~jmcruz/etc/unix/sh-vs-csh.html
