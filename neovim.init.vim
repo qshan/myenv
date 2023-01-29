@@ -26,8 +26,13 @@ else
     :set guifont=Monospace\ 20
 
     ""set the columns to fits on the screen
-    "":set columns=9999
+""not_work_on_nvim""""    :set columns=9999
+
+    :set clipboard+=unnamedplus
+    :let g:python3_host_prog = "/usr/bin/python3"
 endif
+
+let g:loaded_perl_provider = 0
 
 " inside plug#begin:
 " use normal easymotion when in VIM mode
@@ -386,14 +391,18 @@ Plugin 'VundleVim/Vundle.vim'
 ""
 ""https://github.com/qshan/nvim-cmp
 "call plug#begin(s:plug_dir)
+"nvim-cmp completion plugin
 Plugin 'neovim/nvim-lspconfig'
 Plugin 'hrsh7th/cmp-nvim-lsp'
+"nvim-cmp source for buffer words
 Plugin 'hrsh7th/cmp-buffer'
 Plugin 'hrsh7th/cmp-path'
 Plugin 'hrsh7th/cmp-cmdline'
+"A completion plugin for neovim coded in Lua
 Plugin 'hrsh7th/nvim-cmp'
 
 " For vsnip users.
+" Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
 Plugin 'hrsh7th/cmp-vsnip'
 Plugin 'hrsh7th/vim-vsnip'
 "
@@ -442,7 +451,8 @@ endif
 """Plugin 'ascenator/L9', {'name': 'newL9'}
 " 你的所有插件需要在下面这行之前
 " 插件列表结束
-Plugin 'qshan/nerdcommenter'
+"Plugin 'qshan/nerdcommenter'
+Plugin 'preservim/nerdcommenter'
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
@@ -596,17 +606,21 @@ filetype plugin on
 if exists("loaded_matchit")
 else
 "source ~/.vim/plugin/matchit.vim
-source $VIMRUNTIME/macros/matchit.vim
+  if !has('nvim')
+""    source $VIMRUNTIME/macros/matchit.vim
+  else
+""    source /usr/share/nvim/runtime/plugin/matchit.vim
+  endif
 endif
 
 if exists("loaded_matchit")
-let b:match_ignorecase = 0
-"let b:match_ignorecase = 1
-let b:match_skip = 's:Comment'
-let b:match_words = '<:>'
-"autocmd BufReadPre,BufNewFile,FileReadPost *.min  set filetype=make
-":autocmd FileType systemverilog :let b:match_words .=  '<:>,'
-"                    \ . 'module:endmodule,'
+  let b:match_ignorecase = 0
+  "let b:match_ignorecase = 1
+  let b:match_skip = 's:Comment'
+""  let b:match_words = '<:>'
+  "autocmd BufReadPre,BufNewFile,FileReadPost *.min  set filetype=make
+  ":autocmd FileType systemverilog :let b:match_words .=  '<:>,'
+  "                    \ . 'module:endmodule,'
 endif "end of if exists("loaded_matchit")
 
 :let b:match_words  =  '<:>,'
@@ -670,7 +684,7 @@ autocmd BufReadPre,BufNewFilE *.c,*.h  :let b:match_words =  '<:>,'
                     \ . 'fshan_start\>:fshan_end\>'
 
 ".html file match jump
-let b:match_words = '<:>,' .
+autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,' .
         \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
         \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
         \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
