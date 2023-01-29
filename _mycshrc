@@ -209,6 +209,8 @@ alias mount.loop            'mount -o loop '
 
 alias h                     '\history 1000'
 alias v                     'vim'
+alias nvimclean             'nvim --clean '
+alias nvimd                 'nvim -d '
 
 ##ToCheck# for your env default setting
 alias Emacs                 '/usr/bin/emacs26'

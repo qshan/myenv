@@ -64,7 +64,7 @@ echo "Calling ###[_mybashrc]### file setting"
 ##bash Environment variables (children inherit them)
 # export EnvVarName=5
 ##------------------------------
-##bsh PATH & path variables
+##bash PATH & path variables
 # export PATH=PathName01:PathName02
 ##------------------------------
 ##alias setting format
@@ -109,7 +109,7 @@ alias la='    ls -alh '
 alias lt='    ls -ctl '
 alias lstr='  ls -tr '
 #
-alias mvf='\mv -f '
+alias mvf='             \mv -f '
 ##------------------------------
 alias grep='            \grep --color=auto '
 alias greprni='         \grep --color=auto -rni '
@@ -122,11 +122,11 @@ alias grepspaceonend='  \grep --color=auto -rni " \+$" '
 #find path_name -type f -iname "*.[c|h]" | xargs sed -i 's/\s\+\$//g'
 #grep --color=auto -rni '\s\+\$' pathname
 ##------------------------------
-alias findL='\find -L '
-alias findSwfFile='find ./ -type f -iname "*.sw*" '
-alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
-alias findDotOFile='find ./ -type f -iname "*.o" '
-alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rfv '
+alias findL='               \find -L '
+alias findSwfFile='         find ./ -type f -iname "*.sw*" '
+alias findSwfFileRemove='   find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
+alias findDotOFile='        find ./ -type f -iname "*.o" '
+alias findDotOFileRemove='  find ./ -type f -iname "*.o" | xargs \rm -rfv '
 alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfindremovespaceonend; find "$@" -type f | xargs sed -i "s/\s\+\$//g" ; }; functionfindremovespaceonend '
 #TODO#
 #find ./ -type f | xargs sed -i 's/13/14/g'
@@ -134,8 +134,8 @@ alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfin
 ##------------------------------
 alias sudodpkgforce-depends='sudo dpkg -P --force-depends '
 ##------------------------------
-alias tree.U='\tree -U '
-alias tree.r='\tree -r '
+alias tree.U='        \tree -U '
+alias tree.r='        \tree -r '
 alias tree.sort.name='\tree --sort=name '
 ##------------------------------
 alias whicha='which -a '
@@ -154,23 +154,23 @@ alias tarxJvf='tar -xJvf '
 alias tartf='  tar -tf '
 ##------------------------------
 #alias RenameReplaceSpace="\rename         's/\s+/_/g' "
-alias RenameReplaceSpace="\rename         s/\'+/_/g "
-alias RenameReplaceSpace1="\rename        's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
+alias RenameReplaceSpace="  \rename         s/\'+/_/g "
+alias RenameReplaceSpace1=" \rename        's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
 #alias RenameReplaceSpace2="\rename        's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|-|\+|\s]+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|\-|_|\s|:]+/_/g' "
-alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
+alias RenameReplaceSpace2=" \rename        's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
 alias RenameReplaceSpace21="\rename        's/[(|)|\[|\]|{|}|&|,|\!|:]+/./g' "
 alias RenameReplaceSpace22="\rename        's/[_|\s]+/_/g' "
 #\rename        's/[(|)|\[|\]|{|}|&|,|'"'"'|\!|-|_|\s|:]+/_/g'
 #alias RenameReplaceSpace3="\rename        's/[《|》|（|）|：|、|(|)|“|”|·|，|’|、|\[|\]|\s|’]+/_/g' "
-alias RenameReplaceSpace3="\rename        's/[\-|_]*\.+[\-|_]*/./g' "
+alias RenameReplaceSpace3=" \rename        's/[\-|_]*\.+[\-|_]*/./g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
 #alias RenameReplaceSpaceAll="RenameReplaceSpace2 *.* ;RenameReplaceSpace1 *.* ;RenameReplaceSpace3 *.* ;"
 alias RenameReplaceSpaceAll="RenameReplaceSpace21 *.* ; RenameReplaceSpace22 *.* ; RenameReplaceSpace1 *.* ; RenameReplaceSpace3 *.* ;"
-alias RenameRemoveSChar="\rename          's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
-alias RenameRemoveSChar2="\rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
+alias RenameRemoveSChar="   \rename          's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
+alias RenameRemoveSChar2="  \rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
 alias RenameCleanDotInFileName="\rename   's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFiles='functionRenameFiles(){ unset -f functionRenameFiles; RenameRemoveSChar "$@" ; RenameReplaceSpace "$@" ;}; functionRenameFiles '
 #alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
@@ -195,7 +195,9 @@ alias mount.loop='          mount -o loop '
 ##------------------------------
 
 alias h='\history 1000'
-alias v='vim'
+alias v='         vim '
+alias nvimclean=' nvim --clean '
+alias nvimd='     nvim -d '
 
 ##ToCheck# for your env default setting
 alias Emacs='/usr/bin/emacs26'
@@ -257,7 +259,7 @@ alias gitfetch='              git fetch --all '
 alias gitremoteadd='          git remote add origin '
 alias gitremotev='            git remote -v'
 alias gitremotevshow='        git remote -v show '
-#example# gitremoteshow RemoteRepoNamr
+#example# gitremoteshow RemoteRepoName
 alias gitremoteshoworigin='   git remote show origin'
 alias gitremotev='            git remote -v'
 alias gitclone='              git clone --recursive '
@@ -317,12 +319,14 @@ alias input_methods_reset_fcitx='fcitx -r'
 
 alias ctags_R="         ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_R_Python="  ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
-alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+#alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+q "
 alias ctags_R_scala="   ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re="        ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_Re_Python=" ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_Re_SV="     ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
+#alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
+alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+q "
 alias ctags_L_C="       ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python="  ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
 alias ctags_L_SV="      ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
@@ -483,6 +487,18 @@ export LANG=C.UTF-8
 #------------------------------
 
 export PATH=$PATH:/opt/riscv/bin
+export PATH=$PATH:~/miniconda/bin
+#------------------------------
+# conda alias
+alias condaactivate='conda activate '
+alias condadeactivate='conda deactivate '
+alias condacreate='conda create '
+alias condacreaten='conda create -n '
+#info#alias condacreaten='conda create -name '
+#info#alias condaconfigadd="conda config --add channels conda-forge"
+#info#alias condaconfigconfig="conda config --set channel_priority strict"
+#info#alias condaconfiginstall="conda install <package-name>"
+
 #------------------------------
 
 #alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
