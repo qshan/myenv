@@ -27,6 +27,18 @@
 (setenv "LC_ALL" "en_US.UTF-8")
 (setenv "LC_CTYPE" "en_US.UTF-8")
 
+;;set language env
+(set-language-environment 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-clipboard-coding-system 'euc-cn)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'euc-cn)
+(set-selection-coding-system 'euc-cn)
+(modify-coding-system-alist 'process "*" 'utf-8)
+(setq default-process-coding-system
+             '(euc-cn . euc-cn))
+(setq-default pathname-coding-system 'utf-8)
+
 ;;(set-background-color "grey20")        ;; 使用grey20背景
 (set-background-color "black")       ;; 使用黑色背景
 (set-foreground-color "white")         ;; 使用白色前景
