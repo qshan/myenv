@@ -46,7 +46,13 @@
 " -----good part--Start-------------------
 set nocompatible
 "
-"set encoding=utf-8
+""for chinese input
+set encoding=UTF-8
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8
+""
 set number
 "set nu
 "set nonumber
@@ -98,7 +104,11 @@ set backspace=indent,eol,start
 "set guifont size in gvim
 "you could resize with Ctl-Shift-'+' | Ctl-'-' in vim
 "set guifont=Sans\ Bold\ 12
-set guifont=Monospace\ 16
+if exists('g:nvim')
+  set guifont
+else
+  set guifont=Monospace\ 16
+endif
 ""C-x C- -       "decrease the char size in current buffer
 ""C-x C- =/+     "increase the char size in current buffer
 
@@ -244,6 +254,10 @@ syntax enable     "keep your current color settings
 "tabnine, based on youcompleteme, set this if do not use vundle install  the youcompleteme
 "set rtp+=~/tabnine-vim
 "
+"" for ycm
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+"
 "set the folder methods
 "set foldmethod=indent
 "set foldmethod=manual
@@ -295,6 +309,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set nocompatible              " be iMproved, required for Vundle
 filetype off                  " required for Vundle
 "
+"setting example from this file
+"Vundle.vim/test/vimrc
 " set the runtimepath to include Vundle and initialize rtp=runtimepath
 "set runtimepath+=~/.vim/syntax
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -390,7 +406,11 @@ Plugin 'Python-Syntax-Folding'
 """Plugin 'ascenator/L9', {'name': 'newL9'}
 " 你的所有插件需要在下面这行之前
 " 插件列表结束
-Plugin 'qshan/nerdcommenter'
+""Plugin 'qshan/nerdcommenter'
+"Plugin 'preservim/nerdcommenter'
+Plugin 'http://github.com/preservim/nerdcommenter.git'
+"Plugin 'preservim/nerdtree'
+Plugin 'http://github.com/preservim/nerdtree.git'
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
@@ -400,8 +420,7 @@ Plugin 'derekwyatt/vim-scala'
 ""https://github.com/qshan/vim-markdown
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
-""Plugin 'qshan/tabular'
-""Plugin 'qshan/vim-markdown'
+"Plugin 'https://github.com/preservim/vim-markdown.git'
 ""
 " A disturbance in the force: we are using some emacs functionality here, org-mode specifically
 Plugin 'jceb/vim-orgmode'
@@ -428,6 +447,32 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'reedes/vim-wordy'
+""
+"" reference linker https://zhuanlan.zhihu.com/p/35536223
+"" reference linker https://github.com/iamcco/markdown-preview.nvim
+""TODO"
+Plugin 'iamcco/mathjax-support-for-mkdp'
+""TODO"
+Plugin 'iamcco/markdown-preview.nvim'
+""
+Plugin 'tpope/vim-surround'
+""
+Plugin 'jiangmiao/auto-pairs'
+"
+"" input methods for chinese language input
+"" reference linker https://github.com/ZSaberLv0/ZFVimIM
+""Plugin 'ZSaberLv0/ZFVimIM'
+""Plugin 'ZSaberLv0/ZFVimJob' " optional, for better db load performance
+""
+"" reference linker https://zhuanlan.zhihu.com/p/79615409
+Plugin 'ZSaberLv0/ZFVimIM'
+Plugin 'ZSaberLv0/ZFVimJob'
+Plugin 'ZSaberLv0/ZFVimGitUtil'
+"Plugin 'YourUserName/ZFVimIM_pinyin_base'
+Plugin 'ZSaberLv0/ZFVimIM_openapi'
+""
+"" reference linker https://github.com/StrayDragon/vim-smartim
+""TODO"Plugin 'StrayDragon/vim-smartim'
 ""
 call vundle#end()
 "required for Vundle
@@ -528,7 +573,7 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 ""syntax syntax_item_name
 "it is better to put those match words on end of file
 "just one highlight type per time
-:match Todo /fshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+:match Todo /fshan\|qshan\|worked\|info\|DSF_IP\|dsf_ip\|fixme\|TODO\|todo/
 :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 :3match Underlined /incompatible\|redefined\|expansion/
@@ -644,11 +689,11 @@ autocmd BufReadPre,BufNewFilE *.c,*.h  :let b:match_words =  '<:>,'
                     \ . 'for\>:break\>:continue\>,'
                     \ . 'fshan_start\>:fshan_end\>'
 
-".html file match jump
-let b:match_words = '<:>,' .
-        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
-        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+"".html file match jump
+"let b:match_words = '<:>,' .
+"        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
+"        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
+"        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 "
 
 "".html file match jump
