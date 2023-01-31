@@ -2,14 +2,16 @@
 
 echo "---------- install mill on env ----------"
 # web info https://github.com/com-lihaoyi/mill/releases/
-sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.4/0.10.4 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.4/0.10.4 > /usr/local/bin/mill"
+sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.11/0.10.11 > /usr/local/bin/mill"
 sudo chmod +x /usr/local/bin/mill
 which mill
 mill version
 
 echo "---------- install amm (Ammonite) on env ----------"
 # install amm (Ammonite) on env
-sudo sh -c '(echo "#!/usr/bin/env sh" && curl -L https://github.com/com-lihaoyi/Ammonite/releases/download/2.5.4/2.13-2.5.4) > /usr/local/bin/amm && chmod +x /usr/local/bin/amm' && amm
+#sudo sh -c '(echo "#!/usr/bin/env sh" && curl -L https://github.com/com-lihaoyi/Ammonite/releases/download/2.5.4/2.13-2.5.4) > /usr/local/bin/amm && chmod +x /usr/local/bin/amm' && amm
+sudo sh -c '(echo "#!/usr/bin/env sh" && curl -L https://github.com/com-lihaoyi/Ammonite/releases/download/2.5.6/2.13-2.5.6) > /usr/local/bin/amm && chmod +x /usr/local/bin/amm' && amm
 
 echo "---------- install GraalVM instead of OpenJDK on env (optinal, need install by manual)----------"
 # [optional] install GraalVM instead of OpenJDK
