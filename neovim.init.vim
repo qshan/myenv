@@ -464,6 +464,33 @@ Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 ""Plugin 'godlygeek/tabular'
 ""Plugin 'plasticboy/vim-markdown'
+""
+"" reference linker https://zhuanlan.zhihu.com/p/35536223
+"" reference linker https://github.com/iamcco/markdown-preview.nvim
+""TODO"
+Plugin 'iamcco/mathjax-support-for-mkdp'
+""TODO"
+Plugin 'iamcco/markdown-preview.nvim'
+""
+Plugin 'tpope/vim-surround'
+""
+Plugin 'jiangmiao/auto-pairs'
+"
+"" input methods for chinese language input
+"" reference linker https://github.com/ZSaberLv0/ZFVimIM
+""Plugin 'ZSaberLv0/ZFVimIM'
+""Plugin 'ZSaberLv0/ZFVimJob' " optional, for better db load performance
+""
+"" reference linker https://zhuanlan.zhihu.com/p/79615409
+Plugin 'ZSaberLv0/ZFVimIM'
+Plugin 'ZSaberLv0/ZFVimJob'
+Plugin 'ZSaberLv0/ZFVimGitUtil'
+"Plugin 'YourUserName/ZFVimIM_pinyin_base'
+Plugin 'ZSaberLv0/ZFVimIM_openapi'
+""
+"" reference linker https://github.com/StrayDragon/vim-smartim
+""TODO"Plugin 'StrayDragon/vim-smartim'
+""
 "
 call vundle#end()            "required for Vundle
 "
