@@ -191,6 +191,8 @@
     ("fatal"   . "#ff0000")
     ("Fatal"   . "#ff0000")
     ("DONE"    . "#afd8af")
+    ("worked"  . "#afd8af")
+    ("WORKED"  . "#afd8af")
     ("NOTE"    . "#d0bf8f")
     ("ToCheck" . "#d0bf8f")
     ("tocheck" . "#d0bf8f")
@@ -654,7 +656,15 @@
   (fshan-flycheck-init)
 
 ;;
+;;reference linker https://github.com/emacs-evil/evil-surround
+;;TODO;;need to confirm
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+;;
 ) ;;end of fshan-subword-mode
+
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
 (defun fshan-flycheck-init ()
