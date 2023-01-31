@@ -307,6 +307,7 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " copy following words into bot of your .vimrc file
 " vundle set before call plugin list
 set nocompatible              " be iMproved, required for Vundle
+syntax on
 filetype off                  " required for Vundle
 "
 "setting example from this file
