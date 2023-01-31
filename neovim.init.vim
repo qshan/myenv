@@ -149,7 +149,10 @@ set guifont=Monospace\ 16
 ""C-x C- -       "decrease the char size in current buffer
 ""C-x C- =/+     "increase the char size in current buffer
 
+"debug"set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
+"
 " set the color of text background
 set background=dark
 color murphy
