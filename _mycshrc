@@ -152,6 +152,10 @@ alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
 ##------------------------------
 alias sudodpkgforce-depends 'sudo dpkg -P --force-depends '
 ##------------------------------
+alias tree.U          '\tree -U '
+alias tree.r          '\tree -r '
+alias tree.sort.name  '\tree --sort=name '
+##------------------------------
 alias whicha                'which -a '
 ##------------------------------
 alias lnsTf                 'ln -sTf '
@@ -211,6 +215,8 @@ alias h                     '\history 1000'
 alias v                     'vim'
 alias nvimclean             'nvim --clean '
 alias nvimd                 'nvim -d '
+alias nvimo                 'nvim -o '
+alias nvimO                 'nvim -O '
 
 ##ToCheck# for your env default setting
 alias Emacs                 '/usr/bin/emacs26'

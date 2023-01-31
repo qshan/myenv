@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #####exmaple of Calling this file, just add this part at the end of ~/.bashrc
 #if [ -f ~/data/myenv/_mybashrc ]; then
@@ -169,9 +169,9 @@ alias RenameReplaceSpace3=" \rename        's/[\-|_]*\.+[\-|_]*/./g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
 #alias RenameReplaceSpaceAll="RenameReplaceSpace2 *.* ;RenameReplaceSpace1 *.* ;RenameReplaceSpace3 *.* ;"
 alias RenameReplaceSpaceAll="RenameReplaceSpace21 *.* ; RenameReplaceSpace22 *.* ; RenameReplaceSpace1 *.* ; RenameReplaceSpace3 *.* ;"
-alias RenameRemoveSChar="   \rename          's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
+alias RenameRemoveSChar="   \rename         's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
 alias RenameRemoveSChar2="  \rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
-alias RenameCleanDotInFileName="\rename   's/[-|_]*\.+[-|_]*/./g' "
+alias RenameCleanDotInFileName="\rename     's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFiles='functionRenameFiles(){ unset -f functionRenameFiles; RenameRemoveSChar "$@" ; RenameReplaceSpace "$@" ;}; functionRenameFiles '
 #alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
 alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
@@ -198,6 +198,8 @@ alias h='\history 1000'
 alias v='         vim '
 alias nvimclean=' nvim --clean '
 alias nvimd='     nvim -d '
+alias nvimo='     nvim -o '
+alias nvimO='     nvim -O '
 
 ##ToCheck# for your env default setting
 alias Emacs='/usr/bin/emacs26'
