@@ -504,6 +504,29 @@ alias sbtpublishLocal   'sbt publishLocal'
 alias sbtinspect        'sbt "inspect actual console"'
 alias sbtinspectactual  'sbt "inspect actual console"'
 
+#------------------------------
+#mill Built-in commands
+alias millwatch         'mill --watch '
+alias millresolve       'mill resolve '
+alias mill__compile     'mill __.compile '
+alias mill__run         'mill __.run '
+alias millinit          'mill init '
+alias millresolve       'mill resolve '
+alias millinspect       'mill inspect '
+alias millshow          'mill show '
+alias millshowNamed     'mill showNamed '
+alias millpath          'mill path '
+alias millplan          'mill plan '
+alias millvisualize     'mill visualize '
+alias millvisualizePlan 'mill visualizePlan '
+alias millclean         'mill clean '
+#Search for dependency updates
+alias millsearchdepend  'mill mill.scalalib.Dependency/showUpdates'
+#The Build REPL
+alias millbuildrepl     'mill --repl '
+#Deploying your code
+
+
 ##%U%m%u:%B%~%b%#
 #set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands
 #set prompt='%B%c%b%h%#' #display last part of current folder + linenumber of history commands

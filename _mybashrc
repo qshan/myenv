@@ -463,23 +463,45 @@ export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
 # https://www.scala-sbt.org/1.x/docs/Running.html
 # https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html
 # https://www.scalawilliam.com/essential-sbt/
-alias sbtnew='            sbt new'
-alias sbttask='           sbt task'
-alias sbtabout='          sbt about'
-alias sbtclean='          sbt clean'
-alias sbtcompile='        sbt compile'
-alias sbtrecompile='      sbt ~compile'
-alias sbttest='           sbt test'
-alias sbttestQuick='      sbt ~testQuick'
-alias sbtconsole='        sbt console'
-alias sbtrun='            sbt run'
-alias sbtpackage='        sbt package'
-alias sbtreload='         sbt reload'
-alias sbtproject='        sbt project'
-alias sbtprojects='       sbt projects'
-alias sbtpublishLocal='   sbt publishLocal'
-alias sbtinspect='        sbt "inspect actual console"'
+alias sbtnew='            sbt new '
+alias sbttask='           sbt task '
+alias sbtabout='          sbt about '
+alias sbtclean='          sbt clean '
+alias sbtcompile='        sbt compile '
+alias sbtrecompile='      sbt ~compile '
+alias sbttest='           sbt test '
+alias sbttestQuick='      sbt ~testQuick '
+alias sbtconsole='        sbt console '
+alias sbtrun='            sbt run '
+alias sbtpackage='        sbt package '
+alias sbtreload='         sbt reload '
+alias sbtproject='        sbt project '
+alias sbtprojects='       sbt projects '
+alias sbtpublishLocal='   sbt publishLocal '
+alias sbtinspect='        sbt inspect '
 alias sbtinspectactual='  sbt "inspect actual console"'
+
+#------------------------------
+#mill Built-in commands
+alias millwatch='         mill --watch '
+alias millresolve='       mill resolve '
+alias mill__compile='     mill __.compile '
+alias mill__run='         mill __.run '
+alias millinit='          mill init '
+alias millresolve='       mill resolve '
+alias millinspect='       mill inspect '
+alias millshow='          mill show '
+alias millshowNamed='     mill showNamed '
+alias millpath='          mill path '
+alias millplan='          mill plan '
+alias millvisualize='     mill visualize '
+alias millvisualizePlan=' mill visualizePlan '
+alias millclean='         mill clean '
+#Search for dependency updates
+alias millsearchdepend='  mill mill.scalalib.Dependency/showUpdates'
+#The Build REPL
+alias millbuildrepl='     mill --repl '
+#Deploying your code
 
 #------------------------------
 #chinese display support
