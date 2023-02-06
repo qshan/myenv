@@ -27,10 +27,10 @@ else
 
     ""set the columns to fits on the screen
 ""not_work_on_nvim""""    :set columns=9999
-
-    :set clipboard+=unnamedplus
-    :let g:python3_host_prog = "/usr/bin/python3"
 endif
+
+:set clipboard+=unnamedplus
+:let g:python3_host_prog = "/usr/bin/python3"
 
 let g:loaded_perl_provider = 0
 
@@ -489,6 +489,8 @@ Plugin 'ZSaberLv0/ZFVimIM'
 Plugin 'ZSaberLv0/ZFVimJob'
 Plugin 'ZSaberLv0/ZFVimGitUtil'
 "Plugin 'YourUserName/ZFVimIM_pinyin_base'
+Plugin 'ZSaberLv0/ZFVimIM_pinyin_base'
+Plugin 'ZSaberLv0/ZFVimIM_pinyin'
 Plugin 'ZSaberLv0/ZFVimIM_openapi'
 ""
 "" reference linker https://github.com/StrayDragon/vim-smartim
