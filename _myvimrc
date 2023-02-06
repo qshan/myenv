@@ -31,6 +31,8 @@
 "vim +PluginInstall +qall
 ":PluginInstall
 "cd ~/.vim/bundle/YouCompleteMe
+"https://github.com/ycm-core/YouCompleteMe
+"./install.py --clangd-completer
 "./install.py --clang-completer
 "python3 ./install.py --clang-completer
 "or
@@ -48,8 +50,8 @@ set nocompatible
 "
 ""for chinese input
 set encoding=UTF-8
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
+"todo""set langmenu=zh_CN.UTF-8
+"todo""language message zh_CN.UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
 ""
@@ -345,7 +347,8 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'vim-scripts/DrawIt'
 "Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 """recompile the YouCompleteMe for local Env
 "re-compile lib for YCM
 ""sudo apt install python2.7-dev
