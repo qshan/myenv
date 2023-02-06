@@ -56,6 +56,10 @@
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
+
+;; enable evil-mode again
+(evil-mode 1)
+;
 (menu-bar-mode t)    ;;show the menu bar in the GUI
 ;;M-x menu-bar-mode  ;;show the menu bar with command
 ;;(menu-bar-mode -1) ;;disable the menu bar in GUI
@@ -358,6 +362,7 @@
 ;;
 ;;To use company-mode in all buffers
   (add-hook 'after-init-hook 'global-company-mode)
+  (global-company-mode t)
 ;;
   (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
   (setq company-idle-delay 0)
