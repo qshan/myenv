@@ -256,10 +256,6 @@ syntax enable     "keep your current color settings
 "tabnine, based on youcompleteme, set this if do not use vundle install  the youcompleteme
 "set rtp+=~/tabnine-vim
 "
-"" for ycm
-let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
-"
 "set the folder methods
 "set foldmethod=indent
 "set foldmethod=manual
@@ -505,6 +501,19 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 "" -----Vundle part--end------------------
+"
+"nvim"" for ycm
+"nvim""let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+"nvim""let g:ycm_confirm_extra_conf = 0
+"
+"vim for ycm
+let g:ycm_show_detailed_diag_in_popup=1
+"vim C-c to close the popup
+    autocmd FileType c,cpp let b:ycm_hover = {
+      \ 'command': 'GetDoc',
+      \ 'syntax': &filetype
+      \ }
+
 "
 "set the leaderkey setting
 let mapleader = ","  "map leader-key to ,
