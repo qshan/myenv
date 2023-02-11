@@ -196,6 +196,9 @@ alias mount.loop='          mount -o loop '
 
 alias h='\history 1000'
 alias v='         vim '
+alias vimd='      vim -d '
+alias vimo='      vim -o '
+alias vimO='      vim -O '
 alias nvimclean=' nvim --clean '
 alias nvimd='     nvim -d '
 alias nvimo='     nvim -o '
@@ -510,18 +513,40 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 #------------------------------
 
+#python alias
+alias python3mvenv='                  python3 -m venv '
+#Example#python3 -m venv VirtualEnvName ; cd VirtualEnvName; source bin/activate; pip3 list
+#deactivate
+alias python3mpipinstall='            python3 -m pip install'
+alias python3mpipinstallupgradepip='  python3 -m pip install --upgrade pip'
+alias python3mpiplist='               python3 -m pip list'
+
 export PATH=$PATH:/opt/riscv/bin
 export PATH=$PATH:~/miniconda/bin
 #------------------------------
 # conda alias
-alias condaactivate='conda activate '
-alias condadeactivate='conda deactivate '
-alias condacreate='conda create '
-alias condacreaten='conda create -n '
+alias condaactivate='   conda activate '
+alias condadeactivate=' conda deactivate '
+alias condacreate='     conda create '
+alias condacreatename=' conda create -n '
 #info#alias condacreaten='conda create -name '
+alias condaremove=' conda remove '
+alias condaremovename=' conda remove -n '
+#example#conda remove -n EnvName RemovingModuleName
+alias condainstall='    conda install '
+alias condainstallname='conda install --name '
 #info#alias condaconfigadd="conda config --add channels conda-forge"
 #info#alias condaconfigconfig="conda config --set channel_priority strict"
 #info#alias condaconfiginstall="conda install <package-name>"
+alias condaversion='    conda --version '
+alias condaupdateconda='conda update conda '
+alias condaupdateall='  conda update --all '
+alias condainfoe='      conda info -e '
+alias condalist='       conda list '
+alias condalistname='   conda list --name '
+alias condasearch='     conda search '
+alias condaupdate='     conda update '
+alias condaconfigaddchannels='  conda config --add channels '
 
 #------------------------------
 
