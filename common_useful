@@ -227,6 +227,7 @@ chgrp R UserName FolderName
 ##check linux details
 #uname -a
 #lsb_release -a
+#TODO#sudo mv /etc/lsb-release-test /etc/lsb-release
 
 #==============================access android file with linux shell start==============================
 ##browser the detail of folder contents
