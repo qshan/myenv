@@ -12,6 +12,11 @@
 ""TODO
 ":source ~/.vimrc
 "
+"workaround for nvim-qt could not open file in shell
+if @% == ""
+  bd
+endif
+"
 set runtimepath+=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 ""source ~/.vimrc
@@ -23,16 +28,20 @@ else
 "
     ":set guioptions=mlrb
     :set guioptions+=m
-    :set guifont=Monospace\ 20
+    :set guioptions+=r
+    :set guioptions+=a
+"    :set guifont=Monospace\ 20
 
     ""set the columns to fits on the screen
 ""not_work_on_nvim""""    :set columns=9999
 endif
-
+"
+"the unnamed register is the same as the "* register.  Thus you can yank to and paste the selection without prepending "* to commands.
 :set clipboard+=unnamedplus
-:let g:python3_host_prog = "/usr/bin/python3"
+:let g:python3_host_prog = "/usr/bin/python3.8"
 
 let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
 
 " inside plug#begin:
 " use normal easymotion when in VIM mode
@@ -57,7 +66,7 @@ let g:loaded_perl_provider = 0
 "   ~/.vimrc
 ""------------------------------
 "# -----install guidance--Start-------------------
-"#udpate vim python gcc
+"#update vim python gcc
 "#fshan
 
 "sudo add-apt-repository ppa:jonathonf/vim
@@ -73,8 +82,8 @@ let g:loaded_perl_provider = 0
 "#get bundle plugin tools if internet is available
 "mkdir -p ~/.vim/bundle/
 "cd ~/.vim/bundle/
-"git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"#git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
+"worked""git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"old""#git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
 "gvim
 "vim +PluginInstall +qall
 ":PluginInstall
@@ -84,7 +93,7 @@ let g:loaded_perl_provider = 0
 "or
 "./install.py --all
 "python3 ./install.py --all
-" will download clang and other pludgin automatically
+" will download clang and other plugin automatically
 " -----install guidance--End-------------------
 
 "good web: https://blog.csdn.net/zhangpower1993/article/details/52184581
@@ -136,21 +145,39 @@ set list
 "set the space line, if linespace=0, Maybe the underline is invisible
 set linespace=4
 "
-set wrap       "auto display line with a line break, but do not insert the line break in the file
+set wrap
+"auto display line with a line break, but do not insert the line break in the file
 "set nowrap       "display a lines in one lies
 "
 set backspace=indent,eol,start
 "
-"set guifont size in gvim
+"info"set guifont size in gvim/nvim
 "you could resize with Ctl-Shift-'+' | Ctl-'-' in vim
+"list the available font in gvim or GUI frontend
+"set guifont=*
+"
 "set guifont=Sans\ Bold\ 12
-set guifont=Monospace\ 16
+"set guifont=Monospace\ 16
+"set guifont=Monospace\ 20
+"for nvim-qt set
+"nvim-qt":GuiFont FontName:hXX:b/l/i
+"Guifont DejaVu Sans Mono:h15
+""TODO":Guifont DejaVu\ Sans\ Mono:h15
+command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
+":GuiFont DejaVu Sans Mono:h15
+"if exists('g:nvim-qt')
+""debug"if exists('g:GuiLoaded-qt')
+""debug"  :Guifont DejaVu Sans Mono:h16
+""debug"endif
+"
 ""Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif
-""C-x C- -       "decrease the char size in current buffer
-""C-x C- =/+     "increase the char size in current buffer
+"info""change the font size in terminal mode
+""C-x C-H--       "decrease the char size in current buffer
+""C-x C-H-=/+     "increase the char size in current buffer
 
 "debug"set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"for terminal mode
 set termguicolors
 "
 " set the color of text background
@@ -207,7 +234,7 @@ set incsearch
 "
 set nocompatible
 """"remove the toolbar
-set guioptions-=T
+"only for Win32""set guioptions-=T
 """"remove the menubar
 ""set guioptions-=m
 """"enable the menubar
@@ -351,7 +378,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 "http://vim-scripts.org/vim/scripts.html
 
 " call vundle from ~/.vim/bundle
-call vundle#begin()           "required for Vundle
+call vundle#begin()
+"required for Vundle
 " 另一种选择, 指定一个vundle安装插件的路径
 "call vundle#begin('~/some/path/here')
 "
@@ -489,15 +517,16 @@ Plugin 'ZSaberLv0/ZFVimIM'
 Plugin 'ZSaberLv0/ZFVimJob'
 Plugin 'ZSaberLv0/ZFVimGitUtil'
 "Plugin 'YourUserName/ZFVimIM_pinyin_base'
-Plugin 'ZSaberLv0/ZFVimIM_pinyin_base'
-Plugin 'ZSaberLv0/ZFVimIM_pinyin'
-Plugin 'ZSaberLv0/ZFVimIM_openapi'
+"TODO""Plugin 'ZSaberLv0/ZFVimIM_pinyin_base'
+"TODO""Plugin 'ZSaberLv0/ZFVimIM_pinyin'
+"TODO""Plugin 'ZSaberLv0/ZFVimIM_openapi'
 ""
 "" reference linker https://github.com/StrayDragon/vim-smartim
 ""TODO"Plugin 'StrayDragon/vim-smartim'
 ""
 "
-call vundle#end()            "required for Vundle
+call vundle#end()
+"required for Vundle
 "
 filetype plugin indent on    "required for Vundle 加载vim自带和插件相应的语法和文件类型相关脚本
 " 忽视插件改变缩进,可以使用以下替代:
@@ -804,8 +833,11 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi def link FrankShanError     Error
 "
 "need source $MYVIMRC after e(open)
-syntax match Todo /todo\|fshan\|DSF_IP\|dsf_ip/
+"TODO#add keyword in syntax list
+syntax match Todo /todo\|info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
 syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+"syntax match Ignore /Error\:\|error\:\|error\-\|Error\-/
+"syntax match Underlined /Error\:\|error\:\|error\-\|Error\-/
 
 
 ""you could check the highlight details with hi or hightlight
@@ -1240,24 +1272,24 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 " Note that double quotes are used.
 "
 " A string constant accepts these special characters:
-" \...	three-digit octal number (e.g., "\316")
-" \..	two-digit octal number (must be followed by non-digit)
-" \.	one-digit octal number (must be followed by non-digit)
-" \x..	byte specified with two hex numbers (e.g., "\x1f")
-" \x.	byte specified with one hex number (must be followed by non-hex char)
-" \X..	same as \x..
-" \X.	same as \x.
-" \u....	character specified with up to 4 hex numbers, stored according to the
+" \...    three-digit octal number (e.g., "\316")
+" \..     two-digit octal number (must be followed by non-digit)
+" \.      one-digit octal number (must be followed by non-digit)
+" \x..    byte specified with two hex numbers (e.g., "\x1f")
+" \x.     byte specified with one hex number (must be followed by non-hex char)
+" \X..    same as \x..
+" \X.     same as \x.
+" \u....  character specified with up to 4 hex numbers, stored according to the
 "   current value of 'encoding' (e.g., "\u02a4")
-" \U....	same as \u but allows up to 8 hex numbers.
-" \b	backspace <BS>
-" \e	escape <Esc>
-" \f	formfeed <FF>
-" \n	newline <NL>
-" \r	return <CR>
-" \t	tab <Tab>
-" \\	backslash
-" \"	double quote
+" \U....  same as \u but allows up to 8 hex numbers.
+" \b      backspace <BS>
+" \e      escape <Esc>
+" \f      formfeed <FF>
+" \n      newline <NL>
+" \r      return <CR>
+" \t      tab <Tab>
+" \\      backslash
+" \"      double quote
 " \<xxx>	Special key named "xxx".  e.g. "\<C-W>" for CTRL-W.  This is for use
 "   in mappings, the 0x80 byte is escaped.
 "   To use the double quote character it must be escaped: "<M-\">".
