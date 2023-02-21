@@ -40,6 +40,10 @@
 "python3 ./install.py --all
 " will download clang and other pludgin automatically
 " -----install guidance--End-------------------
+"
+"the unnamed register is the same as the "* register.  Thus you can yank to and paste the selection without prepending "* to commands.
+:set clipboard+=unnamedplus
+"
 
 "good web: https://blog.csdn.net/zhangpower1993/article/details/52184581
 "good web: https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt
@@ -256,6 +260,8 @@ syntax enable     "keep your current color settings
 "tabnine, based on youcompleteme, set this if do not use vundle install  the youcompleteme
 "set rtp+=~/tabnine-vim
 "
+set pyx=3
+"
 "set the folder methods
 "set foldmethod=indent
 "set foldmethod=manual
@@ -457,12 +463,29 @@ Plugin 'iamcco/markdown-preview.nvim'
 ""
 "--------------------
 Plugin 'tpope/vim-surround'
-"
+"  ds
 "  Old text                  Command     New text ~
 "  "Hello *world!"           ds"         Hello world!
+"  (123+4*56)/2              ds)         123+456/2
+"  <div>Yo!*</div>           dst         Yo!
+"  cs
 "  [123+4*56]/2              cs])        (123+456)/2
 "  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+"  "Hello *world!"           cs"'        'Hello world!'
+"  "Hello *world!"           cs"<q>      <q>Hello world!</q>
+"  (123+4*56)/2              cs)]        [123+456]/2
+"  (123+4*56)/2              cs)[        [ 123+456 ]/2
+"  <div>Yo!*</div>           cst<p>      <p>Yo!</p>
+"  ys
 "  if *x>3 {                 ysW(        if ( x>3 ) {
+"  Hello w*orld!             ysiw)       Hello (world)!
+"  Hello w*orld!             yssB            {Hello world!}
+"  ysW
+"  "hello"                   ysWfprint<cr>     print("hello")
+"  "hello"                   ysWFprint<cr>     print( "hello" )
+"  "hello"                   ysW<C-f>print<cr> (print "hello")
+"  yss
+"  print "Hello *world!"     yss-        <?php print "Hello world!" ?>
 "  my $str = *whee!;         vllllS'     my $str = 'whee!';
 "--------------------
 ""
