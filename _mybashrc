@@ -203,6 +203,8 @@ alias nvimclean=' nvim --clean '
 alias nvimd='     nvim -d '
 alias nvimo='     nvim -o '
 alias nvimO='     nvim -O '
+#alias nvimqt='    nvim-qt -- '
+alias nvimqt='    nvim-qt --geometry 970x512 -- '
 
 ##ToCheck# for your env default setting
 alias Emacs='/usr/bin/emacs26'

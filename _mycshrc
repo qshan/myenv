@@ -220,6 +220,8 @@ alias nvimclean             'nvim --clean '
 alias nvimd                 'nvim -d '
 alias nvimo                 'nvim -o '
 alias nvimO                 'nvim -O '
+#alias nvimqt                'nvim-qt -- '
+alias nvimqt                'nvim-qt --geometry 970x512 -- '
 
 ##ToCheck# for your env default setting
 alias Emacs                 '/usr/bin/emacs26'
@@ -475,7 +477,7 @@ alias set_default_path_with_yellow1 "set prompt='${TcshYellow}%N@%U%m%u:%B%c3%b$
 #set_default_path_with_yellow
 #set_full_path
 #echo "prompt is $prompt"
-set_full_path
+set_short_path
 
 alias wgetc   'wget -c '
 alias wgetL   'wget -L '
