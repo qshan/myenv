@@ -228,6 +228,18 @@ chgrp R UserName FolderName
 #uname -a
 #lsb_release -a
 #TODO#sudo mv /etc/lsb-release-test /etc/lsb-release
+#
+#####install the linux kernel 5 on the ubuntu 18
+##web linker: https://wiki.ubuntu.com/Kernel/LTSEnablementStack
+##https://wiki.ubuntu.com/Kernel/LTSEnablementStack?_ga=2.265781775.1668484722.1677121937-1567260344.1670669551#Ubuntu_18.04_LTS_-_Bionic_Beaver
+####Installing the HWE stack is simple:
+##DESKTOP
+# sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04 
+##SERVER
+# sudo apt-get install --install-recommends linux-generic-hwe-18.04 
+#
+#### install lubuntu onto the installed verison of ubuntu
+#sudo apt install --no-install-recommends lubuntu-desktop
 
 #==============================access android file with linux shell start==============================
 ##browser the detail of folder contents
