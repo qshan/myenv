@@ -9,7 +9,7 @@
 "   ~/.vimrc
 ""------------------------------
 "# -----install guidance--Start-------------------
-"#udpate vim python gcc
+"#update vim python gcc
 "#fshan
 
 "sudo add-apt-repository ppa:jonathonf/vim
@@ -25,25 +25,19 @@
 "#get bundle plugin tools if internet is available
 "mkdir -p ~/.vim/bundle/
 "cd ~/.vim/bundle/
-"git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"#git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
+"worked""git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"old""#git clone https://github.com/gmarik/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
 "gvim
 "vim +PluginInstall +qall
 ":PluginInstall
 "cd ~/.vim/bundle/YouCompleteMe
-"https://github.com/ycm-core/YouCompleteMe
-"./install.py --clangd-completer
 "./install.py --clang-completer
 "python3 ./install.py --clang-completer
 "or
 "./install.py --all
 "python3 ./install.py --all
-" will download clang and other pludgin automatically
+" will download clang and other plugin automatically
 " -----install guidance--End-------------------
-"
-"the unnamed register is the same as the "* register.  Thus you can yank to and paste the selection without prepending "* to commands.
-:set clipboard+=unnamedplus
-"
 
 "good web: https://blog.csdn.net/zhangpower1993/article/details/52184581
 "good web: https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt
@@ -52,13 +46,7 @@
 " -----good part--Start-------------------
 set nocompatible
 "
-""for chinese input
-set encoding=UTF-8
-"todo""set langmenu=zh_CN.UTF-8
-"todo""language message zh_CN.UTF-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set fileencoding=utf-8
-""
+"set encoding=utf-8
 set number
 "set nu
 "set nonumber
@@ -100,15 +88,19 @@ set list
 "set the space line, if linespace=0, Maybe the underline is invisible
 set linespace=4
 "
-set wrap       "auto display line with a line break, but do not insert the line break in the file
+set wrap
+"auto display line with a line break, but do not insert the line break in the file
 "set nowrap       "display a lines in one lies
 "
 set undolevels=200
 "
 set backspace=indent,eol,start
 "
-"set guifont size in gvim
+"info"set guifont size in gvim/nvim
 "you could resize with Ctl-Shift-'+' | Ctl-'-' in vim
+"list the available font in gvim or GUI frontend
+"set guifont=*
+"
 "set guifont=Sans\ Bold\ 12
 if exists('g:nvim')
   set guifont
@@ -117,7 +109,31 @@ else
 endif
 ""C-x C- -       "decrease the char size in current buffer
 ""C-x C- =/+     "increase the char size in current buffer
+"set guifont=Monospace\ 16
+"set guifont=Monospace\ 20
+"for nvim-qt set
+"nvim-qt":GuiFont FontName:hXX:b/l/i
+"Guifont DejaVu Sans Mono:h15
+""TODO":Guifont DejaVu\ Sans\ Mono:h15
+command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
+"autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
+au BufReadPost,FileReadPost *.* :MyNvimGuiFont15
+"autocmd BufWritePost * match ExtraWhitespace /\s\+$/
+"
+":GuiFont DejaVu Sans Mono:h15
+"if exists('g:nvim-qt')
+""debug"if exists('g:GuiLoaded-qt')
+""debug"  :Guifont DejaVu Sans Mono:h16
+""debug"endif
+"
+""Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif
+"info""change the font size in terminal mode
+""C-x C-H--       "decrease the char size in current buffer
+""C-x C-H-=/+     "increase the char size in current buffer
 
+"debug"set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"for terminal mode
 set termguicolors
 " set the color of text background
 set background=dark
@@ -144,11 +160,15 @@ set autoindent     "Copy indent from current line when starting a new line
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
 set expandtab        "replae the tab with blankspace
+"To insert a real tab when 'expandtab' is on, use CTRL-V<Tab>
 "set et
 ""set expandtab
 ""
 set tabstop=2         "set to show the tab with 2 blankspace; identify how many space as a TAB
 set softtabstop=2    " how many space to show for a tab in Insert mode
+au BufReadPost,FileReadPost * :set      tabstop=2
+au BufReadPost,FileReadPost * :set  softtabstop=2
+
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
 set textwidth=90 "breaking the line if the count is over 30 in this line
@@ -176,7 +196,7 @@ set incsearch
 "
 set nocompatible
 """"remove the toolbar
-set guioptions-=T
+"only for Win32""set guioptions-=T
 """"remove the menubar
 ""set guioptions-=m
 """"enable the menubar
@@ -194,10 +214,10 @@ set wildmode=longest,list
 set completeopt+=longest
 set completeopt+=menu
 set completeopt+=preview
-set completeopt+=popup
+""set completeopt+=popup
 set wildmenu
 "set nowildmenu
-"
+""
 "syntax enable  "This command switches on syntax highlighting: >
 "syntax on      "turn on the syntax highlight
 "syntax off     "turn off the syntax highlight
@@ -267,7 +287,9 @@ set pyx=3
 "set foldmethod=manual
 set foldmethod=syntax
 set foldlevel=100
-syntax enable  "This command switches on syntax highlighting: >
+"
+:syntax enable
+"This command switches on syntax highlighting: >
 " set the fold options
 set nofoldenable
 "set foldenable     "enable fold when you need
@@ -612,16 +634,23 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
 
-""list the syntax list
+""todo""list the syntax list
 ""syntax list
 ""list the syntax specific item
 ""syntax syntax_item_name
 "it is better to put those match words on end of file
 "just one highlight type per time
-:match Todo /fshan\|qshan\|worked\|info\|DSF_IP\|dsf_ip\|fixme\|TODO\|todo/
-:2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+"worked":match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+au BufReadPost,FileReadPost *.* :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+"
+"worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+au BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+"
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
-:3match Underlined /incompatible\|redefined\|expansion/
+":3match Underlined /incompatible\|redefined\|expansion/
+"worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+au BufReadPost,FileReadPost *.* :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+"
 "
 "need source $MYVIMRC after e(open)
 "syntax keyword FrankShanTodo   todo DSF_IP dsf_ip fshan
@@ -734,11 +763,11 @@ autocmd BufReadPre,BufNewFilE *.c,*.h  :let b:match_words =  '<:>,'
                     \ . 'for\>:break\>:continue\>,'
                     \ . 'fshan_start\>:fshan_end\>'
 
-"".html file match jump
-"let b:match_words = '<:>,' .
-"        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
-"        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-"        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+".html file match jump
+autocmd BufReadPre,BufNewFilE *.html  :let b:match_words = '<:>,' .
+        \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
+        \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
+        \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
 "
 
 "".html file match jump
@@ -823,8 +852,21 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi def link FrankShanError     Error
 "
 "need source $MYVIMRC after e(open)
-syntax match Todo /todo\|fshan\|DSF_IP\|dsf_ip/
-syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+":highlight to check the build-in item
+"TODO#add keyword in syntax list
+"syntax match Underlined
+"syntax match ErrorMsg
+"syntax match IncSearch
+"syntax match WildMenu
+"syntax match SpaceOnEnd
+"worked""syntax match Todo /todo\|info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
+"worked""syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+"syntax match Ignore /Error\:\|error\:\|error\-\|Error\-/
+"syntax match Underlined /Error\:\|error\:\|error\-\|Error\-/
+"
+"au BufReadPost,FileReadPost *.* :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
+"au BufReadPost,FileReadPost *.* :syntax match Todo /todo\|TODO\|toDo/
+"au BufReadPost,FileReadPost *.* :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
 ""you could check the highlight details with hi or hightlight
@@ -1259,24 +1301,24 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 " Note that double quotes are used.
 "
 " A string constant accepts these special characters:
-" \...	three-digit octal number (e.g., "\316")
-" \..	two-digit octal number (must be followed by non-digit)
-" \.	one-digit octal number (must be followed by non-digit)
-" \x..	byte specified with two hex numbers (e.g., "\x1f")
-" \x.	byte specified with one hex number (must be followed by non-hex char)
-" \X..	same as \x..
-" \X.	same as \x.
-" \u....	character specified with up to 4 hex numbers, stored according to the
+" \...    three-digit octal number (e.g., "\316")
+" \..     two-digit octal number (must be followed by non-digit)
+" \.      one-digit octal number (must be followed by non-digit)
+" \x..    byte specified with two hex numbers (e.g., "\x1f")
+" \x.     byte specified with one hex number (must be followed by non-hex char)
+" \X..    same as \x..
+" \X.     same as \x.
+" \u....  character specified with up to 4 hex numbers, stored according to the
 "   current value of 'encoding' (e.g., "\u02a4")
-" \U....	same as \u but allows up to 8 hex numbers.
-" \b	backspace <BS>
-" \e	escape <Esc>
-" \f	formfeed <FF>
-" \n	newline <NL>
-" \r	return <CR>
-" \t	tab <Tab>
-" \\	backslash
-" \"	double quote
+" \U....  same as \u but allows up to 8 hex numbers.
+" \b      backspace <BS>
+" \e      escape <Esc>
+" \f      formfeed <FF>
+" \n      newline <NL>
+" \r      return <CR>
+" \t      tab <Tab>
+" \\      backslash
+" \"      double quote
 " \<xxx>	Special key named "xxx".  e.g. "\<C-W>" for CTRL-W.  This is for use
 "   in mappings, the 0x80 byte is escaped.
 "   To use the double quote character it must be escaped: "<M-\">".
@@ -1293,3 +1335,6 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 " Note that "\000" and "\x00" force the end of the string.
 "
 " -----String-char--End-------------------
+
+
+""end_source

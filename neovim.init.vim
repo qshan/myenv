@@ -43,6 +43,8 @@ endif
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
 
+:noswapfile
+
 " inside plug#begin:
 " use normal easymotion when in VIM mode
 ""Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
@@ -164,6 +166,10 @@ set backspace=indent,eol,start
 "Guifont DejaVu Sans Mono:h15
 ""TODO":Guifont DejaVu\ Sans\ Mono:h15
 command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
+"autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
+au BufReadPost,FileReadPost *.* :MyNvimGuiFont15
+"autocmd BufWritePost * match ExtraWhitespace /\s\+$/
+"
 ":GuiFont DejaVu Sans Mono:h15
 "if exists('g:nvim-qt')
 ""debug"if exists('g:GuiLoaded-qt')
@@ -205,15 +211,22 @@ set autoindent     "Copy indent from current line when starting a new line
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
 set expandtab        "replae the tab with blankspace
+"To insert a real tab when 'expandtab' is on, use CTRL-V<Tab>
 "set et
 ""set expandtab
 ""
 set tabstop=2         "set to show the tab with 2 blankspace; identify how many space as a TAB
 set softtabstop=2    " how many space to show for a tab in Insert mode
+au BufReadPost,FileReadPost * :set      tabstop=2
+au BufReadPost,FileReadPost * :set  softtabstop=2
+
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
 "set textwidth=30 "breaking the line if the count is over 30 in this line
-"set linebreak
+set noerrorbells " for the sake of your sanity, I highly recommend turning this on
+set linebreak
+"set showbreak=>
+set showbreak=+++
 "
 "set smartcase  "- use case if any caps used    Override the 'ignorecase' option if the search pattern contains upper case characters.
 "set scs
@@ -323,7 +336,9 @@ syntax enable     "keep your current color settings
 "set foldmethod=manual
 set foldmethod=syntax
 set foldlevel=100
-syntax enable  "This command switches on syntax highlighting: >
+"
+:syntax enable
+"This command switches on syntax highlighting: >
 " set the fold options
 set nofoldenable
 "set foldenable     "enable fold when you need
@@ -450,6 +465,7 @@ Plugin 'hrsh7th/vim-vsnip'
 "Plugin 'lilydjwg/fcitx.vim'
 """""Verilog/SystemVerilog Syntax and Omni-completion
 Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'Python-Syntax-Folding'
 
 if !has('nvim')
   Plugin 'Python-Syntax-Folding'
@@ -504,6 +520,31 @@ Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'iamcco/markdown-preview.nvim'
 ""
 Plugin 'tpope/vim-surround'
+"  ds
+"  Old text                  Command     New text ~
+"  "Hello *world!"           ds"         Hello world!
+"  (123+4*56)/2              ds)         123+456/2
+"  <div>Yo!*</div>           dst         Yo!
+"  cs
+"  [123+4*56]/2              cs])        (123+456)/2
+"  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+"  "Hello *world!"           cs"'        'Hello world!'
+"  "Hello *world!"           cs"<q>      <q>Hello world!</q>
+"  (123+4*56)/2              cs)]        [123+456]/2
+"  (123+4*56)/2              cs)[        [ 123+456 ]/2
+"  <div>Yo!*</div>           cst<p>      <p>Yo!</p>
+"  ys
+"  if *x>3 {                 ysW(        if ( x>3 ) {
+"  Hello w*orld!             ysiw)       Hello (world)!
+"  Hello w*orld!             yssB            {Hello world!}
+"  ysW
+"  "hello"                   ysWfprint<cr>     print("hello")
+"  "hello"                   ysWFprint<cr>     print( "hello" )
+"  "hello"                   ysW<C-f>print<cr> (print "hello")
+"  yss
+"  print "Hello *world!"     yss-        <?php print "Hello world!" ?>
+"  my $str = *whee!;         vllllS'     my $str = 'whee!';
+"--------------------
 ""
 Plugin 'jiangmiao/auto-pairs'
 "
@@ -552,6 +593,19 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 "" -----Vundle part--end------------------
+"
+"nvim"" for ycm
+"nvim""let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+"nvim""let g:ycm_confirm_extra_conf = 0
+"
+"vim for ycm
+let g:ycm_show_detailed_diag_in_popup=1
+"vim C-c to close the popup
+    autocmd FileType c,cpp let b:ycm_hover = {
+      \ 'command': 'GetDoc',
+      \ 'syntax': &filetype
+      \ }
+
 "
 "set the leaderkey setting
 let mapleader = ","  "map leader-key to ,
@@ -618,16 +672,23 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "
 ""highlight  the user defined keywords
 
-""list the syntax list
+""todo""list the syntax list
 ""syntax list
 ""list the syntax specific item
 ""syntax syntax_item_name
 "it is better to put those match words on end of file
 "just one highlight type per time
-:match Todo /fshan\|DSF_IP\|dsf_ip\|fixme\|todo/
-:2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+"worked":match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+au BufReadPost,FileReadPost *.* :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+"
+"worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+au BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+"
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
-:3match Underlined /incompatible\|redefined\|expansion/
+":3match Underlined /incompatible\|redefined\|expansion/
+"worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+au BufReadPost,FileReadPost *.* :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+"
 "
 "need source $MYVIMRC after e(open)
 "syntax keyword FrankShanTodo   todo DSF_IP dsf_ip fshan
@@ -833,11 +894,21 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "hi def link FrankShanError     Error
 "
 "need source $MYVIMRC after e(open)
+":highlight to check the build-in item
 "TODO#add keyword in syntax list
-syntax match Todo /todo\|info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
-syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+"syntax match Underlined
+"syntax match ErrorMsg
+"syntax match IncSearch
+"syntax match WildMenu
+"syntax match SpaceOnEnd
+"worked""syntax match Todo /todo\|info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
+"worked""syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 "syntax match Ignore /Error\:\|error\:\|error\-\|Error\-/
 "syntax match Underlined /Error\:\|error\:\|error\-\|Error\-/
+"
+"au BufReadPost,FileReadPost *.* :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
+"au BufReadPost,FileReadPost *.* :syntax match Todo /todo\|TODO\|toDo/
+"au BufReadPost,FileReadPost *.* :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
 ""you could check the highlight details with hi or hightlight
