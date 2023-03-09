@@ -166,9 +166,22 @@ set backspace=indent,eol,start
 "Guifont DejaVu Sans Mono:h15
 ""TODO":Guifont DejaVu\ Sans\ Mono:h15
 command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
-"autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
-au BufReadPost,FileReadPost *.* :MyNvimGuiFont15
+"autocmd BufReadPost,FileReadPost * :Guifont DejaVu\ Sans\ Mono:h15
+"only"worked"with"gui"
+""au BufReadPost,FileReadPost * :MyNvimGuiFont15
+""
+""Guifont DejaVu Sans Mono:h15
+if exists('g:GuiLoaded')
+:MyNvimGuiFont15
+endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
+au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
+au BufReadPost,FileReadPost * :MyNvimGuiFont15
+au BufReadPost,FileReadPost * :endif
+"""Guifont DejaVu Sans Mono:h15
+"""au BufReadPost,FileReadPost * :MyNvimGuiFont15
+"":Guifont DejaVu\ Sans\ Mono:h15
+""endif
 "
 ":GuiFont DejaVu Sans Mono:h15
 "if exists('g:nvim-qt')
@@ -514,10 +527,14 @@ Plugin 'preservim/vim-markdown'
 ""
 "" reference linker https://zhuanlan.zhihu.com/p/35536223
 "" reference linker https://github.com/iamcco/markdown-preview.nvim
+"" reference liker: https://dev.to/hrk2023/markdown-preview-in-vim-44bl
 ""TODO"
 Plugin 'iamcco/mathjax-support-for-mkdp'
 ""TODO"
 Plugin 'iamcco/markdown-preview.nvim'
+":source %
+":PluginInstall
+":call mkdp#util#install()
 ""
 Plugin 'tpope/vim-surround'
 "  ds
@@ -679,15 +696,15 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "it is better to put those match words on end of file
 "just one highlight type per time
 "worked":match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
-au BufReadPost,FileReadPost *.* :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+au BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
-au BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+au BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 "
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufReadPost,FileReadPost *.* :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+au BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
 "
 "
 "need source $MYVIMRC after e(open)
@@ -906,9 +923,9 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "syntax match Ignore /Error\:\|error\:\|error\-\|Error\-/
 "syntax match Underlined /Error\:\|error\:\|error\-\|Error\-/
 "
-"au BufReadPost,FileReadPost *.* :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
-"au BufReadPost,FileReadPost *.* :syntax match Todo /todo\|TODO\|toDo/
-"au BufReadPost,FileReadPost *.* :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+"au BufReadPost,FileReadPost * :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
+"au BufReadPost,FileReadPost * :syntax match Todo /todo\|TODO\|toDo/
+"au BufReadPost,FileReadPost * :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
 ""you could check the highlight details with hi or hightlight
@@ -942,7 +959,7 @@ command! MyRemoveEmptyLine                      :%s/^\s*$\n//g
 command! MyReplaceSpaceWithNewLine              :%s/\s\+/\r/g
 command! MyReplaceSpaceWithNewLine1             :%s/\s\+//g
 command! MyReplaceSpaceWithTab                  :%s/\s\+/\t/g
-command! MyWhiteSpace2UnderLine                 :s/\s\+/_/g
+command! MyReplaceSpaceWithUnderLine            :s/\s\+/_/g
 command! MyExchangePattern12                    :s/\(Pattern1\)\(Pattern2\)/\2\1/g
 ""command! MySpellCheckEn                         set spell spelllang=en_us
 command! MySpellCheckEn                         setlocal spell spelllang=en_us
@@ -950,6 +967,8 @@ command! MyCheckCurrentActiveGroups             :so $VIMRUNTIME/syntax/hitest.vi
 command! MyAddMatchWords                        let b:match_words= '<:>,' .
 command! MyShowHex                              :%!xxd
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
+":set diffopt+=horizontal
+"vim -c "set diffopt+=horizontal"
 "command! MyCursorHighlight                      :hi CursorLine cterm=NONE ctermbg=grey CursorColumn ctermbg=grey
 command! MyCursorColumn                         :hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
 command! MyCursorLine                           :hi CursorLine cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
