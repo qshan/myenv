@@ -31,7 +31,6 @@
 #  echo "variable_tested is not existed"
 #fi
 
-
 #read here https://tecadmin.net/tutorial/bash-scripting/bash-functions/
 #--------------------------------------------------
 
@@ -101,6 +100,9 @@ setxkbmap -option ctrl:nocaps
 #if [ -f ~/.myalias_common ]; then
 #  source ~/.myalias_common
 #fi
+
+
+
 
 #alias setting here
 ##------------------------------
@@ -197,10 +199,14 @@ alias mount.loop='          mount -o loop '
 alias h='\history 1000'
 alias v='         vim '
 alias vimd='      vim -d '
+alias vimdh='    vim -c "set diffopt+=horizontal" -d '
+#alias nvimdh='    vim -c "set-default diffopt+=horizontal" -d '
 alias vimo='      vim -o '
 alias vimO='      vim -O '
 alias nvimclean=' nvim --clean '
 alias nvimd='     nvim -d '
+alias nvimdh='    nvim -c "set diffopt+=horizontal" -d '
+#alias nvimdh='    nvim -c "set-default diffopt+=horizontal" -d '
 alias nvimo='     nvim -o '
 alias nvimO='     nvim -O '
 #alias nvimqt='    nvim-qt -- '
@@ -327,13 +333,13 @@ alias input_methods_reset_fcitx='fcitx -r'
 alias ctags_R="         ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_R_Python="  ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 #alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+q "
+alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
 alias ctags_R_scala="   ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re="        ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_Re_Python=" ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_Re_SV="     ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
 #alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
-alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+q "
+alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_L_C="       ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python="  ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
 alias ctags_L_SV="      ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
