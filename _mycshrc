@@ -21,6 +21,16 @@
 
 
 
+
+
+
+
+#####
+if ( -f ~/.cshrc.local ) then
+  source ~/.cshrc.local
+endif
+
+
 echo "Calling ###[_mycshrc]### file setting"
 
 #echo "======================================"
@@ -64,35 +74,8 @@ echo "Calling ###[_mycshrc]### file setting"
 # alias ls  "ls -l"
 ##------------------------------
 
-#####
-if ( -f ~/.cshrc.local ) then
-  source ~/.cshrc.local
-endif
-
 #set autolist
 #set autoexpand
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #set the tcsh history size for personal setting
 set history = 10000
@@ -146,6 +129,7 @@ alias findSwfFileRemove     'find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
 alias findDotOFile          'find ./ -type f -iname "*.o*" '
 alias findDotOFileRemove    'find ./ -type f -iname "*.o*" | xargs \rm -rfv '
 alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
+
 
 
 
@@ -214,10 +198,14 @@ alias mount.loop            'mount -o loop '
 alias h                     '\history 1000'
 alias v                     'vim'
 alias vimd                  'vim -d '
+alias vimdh                 'vim -c "set diffopt+=horizontal" -d '
+#alias vimdh                '    vim -c "set-default diffopt+=horizontal" -d '
 alias vimo                  'vim -o '
 alias vimO                  'vim -O '
 alias nvimclean             'nvim --clean '
 alias nvimd                 'nvim -d '
+alias nvimdh                'nvim -c "set diffopt+=horizontal" -d '
+#alias nvimdh                'nvim -c "set-default diffopt+=horizontal" -d '
 alias nvimo                 'nvim -o '
 alias nvimO                 'nvim -O '
 #alias nvimqt                'nvim-qt -- '
