@@ -347,6 +347,7 @@ syntax enable     "keep your current color settings
 "set the folder methods
 "set foldmethod=indent
 "set foldmethod=manual
+let g:verilog_syntax_fold_lst = "all"
 set foldmethod=syntax
 set foldlevel=100
 "
@@ -479,6 +480,7 @@ Plugin 'hrsh7th/vim-vsnip'
 """""Verilog/SystemVerilog Syntax and Omni-completion
 Plugin 'vhda/verilog_systemverilog.vim'
 Plugin 'Python-Syntax-Folding'
+Plugin 'azidar/firrtl-syntax'
 
 if !has('nvim')
   Plugin 'Python-Syntax-Folding'

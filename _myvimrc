@@ -285,6 +285,7 @@ set pyx=3
 "set the folder methods
 "set foldmethod=indent
 "set foldmethod=manual
+let g:verilog_syntax_fold_lst = "all"
 set foldmethod=syntax
 set foldlevel=100
 "
@@ -402,6 +403,7 @@ Plugin 'ycm-core/YouCompleteMe'
 """""Verilog/SystemVerilog Syntax and Omni-completion
 Plugin 'vhda/verilog_systemverilog.vim'
 Plugin 'Python-Syntax-Folding'
+Plugin 'azidar/firrtl-syntax'
 
 "if !has('nvim')
 "  Plugin 'Python-Syntax-Folding'
