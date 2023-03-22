@@ -263,6 +263,7 @@ alias gitcommitamend        'git commit --amend '
 alias gitpush               'git push '
 #example# git push TargetName SourceName #push data from SourceName to TargetName
 alias gitpull               'git pull --tags '
+alias gitpulloriginmaster   'git pull --tags origin master '
 #example git checkout TagName FileName
 #example git checkout TagName
 #example git checkout -b NewBranchName
@@ -307,6 +308,8 @@ alias gitreset_head3        'git reset HEAD~3 '
 alias gitdiffhead           'git diff HEAD '
 alias gitdiff_cached        'git diff --cached '
 alias gitsubmoduleupdate    'git submodule update --init --recursive --remote --force '
+alias gitsubmoduleadd       'git submodule add '
+alias gitsubmodulestatus    'git submodule status '
 
 #input methods reset
 alias input_methods_reset_fcitx   'fcitx -r'
