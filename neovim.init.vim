@@ -141,7 +141,7 @@ set cursorcolumn
 "autocmd InsertLeave * hi CursorLine cterm=NONE gui=NONE ctermbg=grey guibg=Grey40
 "
 "show symbol, like show blank and tab
-set list
+""set list
 "set nolist
 "
 "set the space line, if linespace=0, Maybe the underline is invisible
@@ -165,18 +165,30 @@ set backspace=indent,eol,start
 "nvim-qt":GuiFont FontName:hXX:b/l/i
 "Guifont DejaVu Sans Mono:h15
 ""TODO":Guifont DejaVu\ Sans\ Mono:h15
+command! MyNvimGuiFont10                    :Guifont DejaVu\ Sans\ Mono:h10
 command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
+
 "autocmd BufReadPost,FileReadPost * :Guifont DejaVu\ Sans\ Mono:h15
 "only"worked"with"gui"
 ""au BufReadPost,FileReadPost * :MyNvimGuiFont15
 ""
 ""Guifont DejaVu Sans Mono:h15
 if exists('g:GuiLoaded')
-:MyNvimGuiFont15
+"  if exists('nodiff')
+  if &diff
+    :MyNvimGuiFont10
+  else
+    :MyNvimGuiFont15
+  endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
-au BufReadPost,FileReadPost * :MyNvimGuiFont15
+"au BufReadPost,FileReadPost *   :if exists('nodiff')
+au BufReadPost,FileReadPost *   :if &diff
+au BufReadPost,FileReadPost *     :MyNvimGuiFont10
+au BufReadPost,FileReadPost *   :else
+au BufReadPost,FileReadPost *     :MyNvimGuiFont15
+au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 """Guifont DejaVu Sans Mono:h15
 """au BufReadPost,FileReadPost * :MyNvimGuiFont15
@@ -205,8 +217,9 @@ color murphy
 "colorscheme desert
 "colorscheme industry
 "
-"
-
+""set backup
+""set history=50
+""
 set magic
 "substitute magic
 "set nomagic
@@ -214,12 +227,16 @@ set magic
 ""substitute magic
 "set sm
 
-set cindent     "Enables automatic C program indenting.
-"set cin
+"set cindent     "Enables automatic C program indenting.
+""set cin
 """more cindent setting: cinkeys, cinoptions, cinwords
-
+"
+""todo"set smartindent     "Do smart autoindenting when starting a new line
+"set si
 set autoindent     "Copy indent from current line when starting a new line
 "set ai     "autoindent
+"
+set smarttab
 "mask_for_sv_file"set smartindent     "better than autoindent, use basic c syntax to indent
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
@@ -230,8 +247,10 @@ set expandtab        "replae the tab with blankspace
 ""
 set tabstop=2         "set to show the tab with 2 blankspace; identify how many space as a TAB
 set softtabstop=2    " how many space to show for a tab in Insert mode
-au BufReadPost,FileReadPost * :set      tabstop=2
-au BufReadPost,FileReadPost * :set  softtabstop=2
+set vartabstop=2,4,8        "set to show the tab with 2 blankspace; identify how many space as a TAB
+set varsofttabstop=2,4,8    "set to show the tab with 2 blankspace; identify how many space as a TAB
+au BufReadPost,FileReadPost *,*.* :set      tabstop=2
+au BufReadPost,FileReadPost *,*.* :set  softtabstop=2
 
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
@@ -332,12 +351,12 @@ autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
 "set mouse=a
 " Display options
 set showmode
-set showcmd
+""set showcmd
 set showcmd     "show the commnds info
 set cmdheight=1 "set the number of display command line as 1
 set laststatus=2 "set the status bar (default is 1, no display)
 "
-filetype plugin indent on
+"todo"filetype plugin indent on
 "
 syntax enable     "keep your current color settings
 "syntax on     "overrule your settings with the defaults
@@ -347,8 +366,12 @@ syntax enable     "keep your current color settings
 "set the folder methods
 "set foldmethod=indent
 "set foldmethod=manual
+let b:verilog_indent_width = 2
+let g:verilog_disable_indent_lst = "module,class,interface"
 let g:verilog_syntax_fold_lst = "all"
-set foldmethod=syntax
+""" help verilog_systemverilog
+""let g:verilog_syntax_fold_lst = "function,task,class,instance,define,comments,block,property,sequence,covergroup"
+set foldmethod=syntax ""for verilog_systemverilog plugin
 set foldlevel=100
 "
 :syntax enable
@@ -396,6 +419,7 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " copy following words into bot of your .vimrc file
 " vundle set before call plugin list
 set nocompatible              " be iMproved, required for Vundle
+syntax on
 filetype off                  " required for Vundle
 "
 " set the runtimepath to include Vundle and initialize rtp=runtimepath
@@ -481,6 +505,8 @@ Plugin 'hrsh7th/vim-vsnip'
 Plugin 'vhda/verilog_systemverilog.vim'
 Plugin 'Python-Syntax-Folding'
 Plugin 'azidar/firrtl-syntax'
+Plugin 'Konfekt/FastFold'
+"" https://github.com/Konfekt/FastFold
 
 if !has('nvim')
   Plugin 'Python-Syntax-Folding'
@@ -588,6 +614,8 @@ Plugin 'ZSaberLv0/ZFVimGitUtil'
 call vundle#end()
 "required for Vundle
 "
+filetype on
+filetype plugin on
 filetype plugin indent on    "required for Vundle 加载vim自带和插件相应的语法和文件类型相关脚本
 " 忽视插件改变缩进,可以使用以下替代:
 "filetype plugin on
@@ -629,6 +657,7 @@ let g:ycm_show_detailed_diag_in_popup=1
 "set the leaderkey setting
 let mapleader = ","  "map leader-key to ,
 map <leader>n :set number<CR>
+""info" :map  ""lists current mappings
 "
 "set here again to avoid the vundle's plugin setting
 :hi CursorLine   cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
@@ -666,11 +695,13 @@ au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
 "set *.min file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.min set syntax=make
 ""
+au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.v,*.sv  set filetype=verilog_systemverilog
+"
 "set the *.scala file as the makefile type
-au BufReadPre,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  set filetype=scala
+au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  set filetype=scala
 "
 "set the *.cshrc and *_cshrc file as the makefile type
-au BufReadPre,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=csh
+au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=csh
 "set *.cshrc and *_cshrc file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.cshrc,*_cshrc set syntax=csh
 "
@@ -966,9 +997,11 @@ command! MyExchangePattern12                    :s/\(Pattern1\)\(Pattern2\)/\2\1
 ""command! MySpellCheckEn                         set spell spelllang=en_us
 command! MySpellCheckEn                         setlocal spell spelllang=en_us
 command! MyCheckCurrentActiveGroups             :so $VIMRUNTIME/syntax/hitest.vim
+command! MyCheckFiletype                        : set filetype?
 command! MyAddMatchWords                        let b:match_words= '<:>,' .
 command! MyShowHex                              :%!xxd
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
+command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase
 ":set diffopt+=horizontal
 "vim -c "set diffopt+=horizontal"
 "command! MyCursorHighlight                      :hi CursorLine cterm=NONE ctermbg=grey CursorColumn ctermbg=grey
