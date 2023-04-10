@@ -1275,8 +1275,8 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """C-w + b                  "移动到最右下角的窗口
 """C-w + p                  "移动到前一个访问的窗口
 """
-"""C-w + J                  "show window layout vertically
-"""C-w + H                  "show window layout horizontally
+"info""C-w + J                  "show window layout vertically
+"info""C-w + H                  "show window layout horizontally
 """
 """:res(ize) num            "将窗口的高度调整为num行
 """:res num
