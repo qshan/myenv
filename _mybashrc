@@ -320,6 +320,9 @@ alias gitsubmodulestatus='    git submodule status '
 alias gitsubmoduleset-url='   git submodule set-url -- '
 # git submodule set-url -- <path> <url>
 alias gitpullsubmodules='     git pull --recurse-submodules '
+alias gitcheckoutf='          git checkout -f '
+alias gitcheckoutm='          git checkout -m '
+alias gitcleanfd='            git clean -fd '
 
 #input methods reset
 alias input_methods_reset_fcitx='fcitx -r'
