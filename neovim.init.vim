@@ -127,6 +127,10 @@ set cursorline
 ":hi CursorLine ctermbg=grey guibg=Grey40
 ":hi CursorLine cterm=bold ctermfg=white ctermbg=grey gui=bold guifg=white guibg=Grey40
 :hi CursorLine cterm=NONE ctermbg=DarkGray guibg=Grey40
+":hi CursorLine ctermfg=NONE ctermbg=DarkGray guifg=Grey40 guibg=Grey40
+":hi CursorLine cterm=reverse ctermbg=DarkGray guifg=reverse guibg=Grey40
+":hi DiffAdd cterm=reverse ctermbg=DarkGray guifg=reverse guibg=Grey40
+"
 "
 set cursorcolumn
 "set cuc
@@ -165,8 +169,9 @@ set backspace=indent,eol,start
 "nvim-qt":GuiFont FontName:hXX:b/l/i
 "Guifont DejaVu Sans Mono:h15
 ""TODO":Guifont DejaVu\ Sans\ Mono:h15
-command! MyNvimGuiFont10                    :Guifont DejaVu\ Sans\ Mono:h10
-command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
+command! MyFont10                    :Guifont DejaVu\ Sans\ Mono:h10
+command! MyFont12                    :Guifont DejaVu\ Sans\ Mono:h12
+command! MyFont15                    :Guifont DejaVu\ Sans\ Mono:h15
 
 "autocmd BufReadPost,FileReadPost * :Guifont DejaVu\ Sans\ Mono:h15
 "only"worked"with"gui"
@@ -176,18 +181,18 @@ command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
 if exists('g:GuiLoaded')
 "  if exists('nodiff')
   if &diff
-    :MyNvimGuiFont10
+    :MyFont10
   else
-    :MyNvimGuiFont15
+    :MyFont15
   endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 "au BufReadPost,FileReadPost *   :if exists('nodiff')
 au BufReadPost,FileReadPost *   :if &diff
-au BufReadPost,FileReadPost *     :MyNvimGuiFont10
+au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyNvimGuiFont15
+au BufReadPost,FileReadPost *     :MyFont15
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 """Guifont DejaVu Sans Mono:h15

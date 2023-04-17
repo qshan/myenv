@@ -116,15 +116,16 @@ endif
 "Guifont DejaVu Sans Mono:h15
 ""TODO":Guifont DejaVu\ Sans\ Mono:h15
 "command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
-command! MyVimGuiFont10                       :set guifont=Monospace\ 10
-command! MyVimGuiFont16                       :set guifont=Monospace\ 16
+command! MyFont10                       :set guifont=Monospace\ 10
+command! MyFont12                       :set guifont=Monospace\ 12
+command! MyFont16                       :set guifont=Monospace\ 16
 "autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
-""au BufReadPost,FileReadPost *.* :MyNvimGuiFont15
-""au BufReadPost,FileReadPost *.* :MyVimGuiFont16
+""au BufReadPost,FileReadPost *.* :MyFont15
+""au BufReadPost,FileReadPost *.* :MyFont16
 au BufReadPost,FileReadPost *   :if &diff
-au BufReadPost,FileReadPost *     :MyVimGuiFont10
+au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyVimGuiFont16
+au BufReadPost,FileReadPost *     :MyFont16
 au BufReadPost,FileReadPost *   :endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 "
