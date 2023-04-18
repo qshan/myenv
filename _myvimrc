@@ -1073,6 +1073,21 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 "z_A
 """ Folding, close
 "z_c
+"
+":help folding
+":help fold-commands
+":help foldmethod
+":set foldmethod=syntax
+"zi - toggle folding
+"zj - move to top of next fold
+"zk - move to bottom of previous fold
+"za - toggle current fold open and closed
+"zo - open current fold
+"zc - close current fold
+"zA - toggle all current folds at the current cursor position
+"zO - open all current folds at the current cursor position
+"zC - close all current folds at the current cursor position
+"
 """ delete the words in '' 删除单引号中的文字
 "d_i_’
 """ delete the words in ""删除双引号中的文字
