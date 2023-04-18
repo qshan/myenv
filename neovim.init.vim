@@ -1156,15 +1156,15 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 ":help fold-commands
 ":help foldmethod
 ":set foldmethod=syntax
-"zi - toggle folding
-"zj - move to top of next fold
-"zk - move to bottom of previous fold
-"za - toggle current fold open and closed
-"zo - open current fold
-"zc - close current fold
-"zA - toggle all current folds at the current cursor position
-"zO - open all current folds at the current cursor position
-"zC - close all current folds at the current cursor position
+"z_i - toggle folding
+"z_j - move to top of next fold
+"z_k - move to bottom of previous fold
+"z_a - toggle current fold open and closed
+"z_o - open current fold
+"z_c - close current fold
+"z_A - toggle all current folds at the current cursor position
+"z_O - open all current folds at the current cursor position
+"z_C - close all current folds at the current cursor position
 "
 """ delete the words in '' 删除单引号中的文字
 "d_i_’
