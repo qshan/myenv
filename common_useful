@@ -4,6 +4,12 @@
 #HWIO_OUTXF ( basename, xxxxx) -> HWIO_OUTF (xxxxx)
 find TargetPathName -type f -iname "*.c" |xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
 
+#example of find/grep/sed
+find ./PathSearched -iname "*.[ch]" | xargs grep -rnE --color "(HWIO_.*)I(\s*\(CADENCE_DDR_CONTROLLER_DENALI_CTL_[0-9]+)_I,\s*ch(.*)"
+find ./PathSearched -iname "*.[ch]" | xargs grep -rnE --color "(HWIO_.*)I(\s*\(CADENCE_DDR_CONTROLLER_DENALI_CTL_[0-9]+)_I,\s*ch(.*)" |wc -l
+find ./PathSearched -iname "*.[ch]" | xargs sed -i -E --color "s/(.*HWIO_.*)I(\s*\(CADENCE_DDR_CONTROLLER_DENALI_CTL_)0*([1-9]+)_I,\s*ch(.*)/\1\2\3\4/g" |wc -l
+find ./PathSearched -iname "*.[ch]" | xargs grep -rnE --color "(HWIO_.*)(\s*\(CADENCE_DDR_CONTROLLER_DENALI_CTL_[0-9]+)(.*)" |wc -l
+
 #replace the keywords and generate a new file
 sed 's/Word_searched/word_target/g' input_file > outputfile
 
@@ -143,6 +149,10 @@ man bash
 # $git clone --recursive git@github.com:qshan/myenv.git
 
 #sudo \rm -f  /var/lib/dpkg/info/git-el.postinst
+#
+##force overwrie the confilct package or lib
+#sudo dpkg -i --force-overwrite theDebYouWantToInstall.deb
+#sudo apt-get --fix-broken install
 
 # check the package info list
 sudo apt list
@@ -219,6 +229,23 @@ chgrp UserName FileName
 
 # change the group of FolderName and subfolder as UserName
 chgrp R UserName FolderName
+
+##check linux details
+#uname -a
+#lsb_release -a
+#TODO#sudo mv /etc/lsb-release-test /etc/lsb-release
+#
+#####install the linux kernel 5 on the ubuntu 18
+##web linker: https://wiki.ubuntu.com/Kernel/LTSEnablementStack
+##https://wiki.ubuntu.com/Kernel/LTSEnablementStack?_ga=2.265781775.1668484722.1677121937-1567260344.1670669551#Ubuntu_18.04_LTS_-_Bionic_Beaver
+####Installing the HWE stack is simple:
+##DESKTOP
+# sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04 
+##SERVER
+# sudo apt-get install --install-recommends linux-generic-hwe-18.04 
+#
+#### install lubuntu onto the installed verison of ubuntu
+#sudo apt install --no-install-recommends lubuntu-desktop
 
 #==============================access android file with linux shell start==============================
 ##browser the detail of folder contents

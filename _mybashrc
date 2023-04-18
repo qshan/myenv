@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #####exmaple of Calling this file, just add this part at the end of ~/.bashrc
 #if [ -f ~/data/myenv/_mybashrc ]; then
@@ -16,7 +16,7 @@
 #fi
 #
 
-## if the variable is #not# set
+#### if the variable is #not# set
 ##if [[ -z ${variable_tested} ]]; then
 #if [[ -z ${variable01_tested} ]]; then
 #  echo "variable01_tested is not existed"
@@ -31,11 +31,15 @@
 #  echo "variable_tested is not existed"
 #fi
 
-
 #read here https://tecadmin.net/tutorial/bash-scripting/bash-functions/
 #--------------------------------------------------
 
 echo "Calling ###[_mybashrc]### file setting"
+
+#echo "======================================"
+#echo "Check PATH info:"
+##echo $path
+#echo $PATH
 
 ##ToCheck##
 ## https://web.fe.up.pt/~jmcruz/etc/unix/sh-vs-csh.html
@@ -59,7 +63,7 @@ echo "Calling ###[_mybashrc]### file setting"
 ##bash Environment variables (children inherit them)
 # export EnvVarName=5
 ##------------------------------
-##bsh PATH & path variables
+##bash PATH & path variables
 # export PATH=PathName01:PathName02
 ##------------------------------
 ##alias setting format
@@ -97,6 +101,9 @@ setxkbmap -option ctrl:nocaps
 #  source ~/.myalias_common
 #fi
 
+
+
+
 #alias setting here
 ##------------------------------
 alias ls='    \ls --color=auto '
@@ -104,7 +111,7 @@ alias la='    ls -alh '
 alias lt='    ls -ctl '
 alias lstr='  ls -tr '
 #
-alias mvf='\mv -f '
+alias mvf='             \mv -f '
 ##------------------------------
 alias grep='            \grep --color=auto '
 alias greprni='         \grep --color=auto -rni '
@@ -117,11 +124,11 @@ alias grepspaceonend='  \grep --color=auto -rni " \+$" '
 #find path_name -type f -iname "*.[c|h]" | xargs sed -i 's/\s\+\$//g'
 #grep --color=auto -rni '\s\+\$' pathname
 ##------------------------------
-alias findL='\find -L '
-alias findSwfFile='find ./ -type f -iname "*.sw*" '
-alias findSwfFileRemove='find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
-alias findDotOFile='find ./ -type f -iname "*.o" '
-alias findDotOFileRemove='find ./ -type f -iname "*.o" | xargs \rm -rfv '
+alias findL='               \find -L '
+alias findSwfFile='         find ./ -type f -iname "*.sw*" '
+alias findSwfFileRemove='   find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
+alias findDotOFile='        find ./ -type f -iname "*.o" '
+alias findDotOFileRemove='  find ./ -type f -iname "*.o" | xargs \rm -rfv '
 alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfindremovespaceonend; find "$@" -type f | xargs sed -i "s/\s\+\$//g" ; }; functionfindremovespaceonend '
 #TODO#
 #find ./ -type f | xargs sed -i 's/13/14/g'
@@ -129,8 +136,8 @@ alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfin
 ##------------------------------
 alias sudodpkgforce-depends='sudo dpkg -P --force-depends '
 ##------------------------------
-alias tree.U='\tree -U '
-alias tree.r='\tree -r '
+alias tree.U='        \tree -U '
+alias tree.r='        \tree -r '
 alias tree.sort.name='\tree --sort=name '
 ##------------------------------
 alias whicha='which -a '
@@ -149,24 +156,24 @@ alias tarxJvf='tar -xJvf '
 alias tartf='  tar -tf '
 ##------------------------------
 #alias RenameReplaceSpace="\rename         's/\s+/_/g' "
-alias RenameReplaceSpace="\rename         s/\'+/_/g "
-alias RenameReplaceSpace1="\rename        's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
+alias RenameReplaceSpace="  \rename         s/\'+/_/g "
+alias RenameReplaceSpace1=" \rename        's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
 #alias RenameReplaceSpace2="\rename        's/\s*[(|)|\[|\]|{|}|&|,|\!|-]*\s+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|-|\+|\s]+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|\-|_|\s|:]+/_/g' "
-alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
+alias RenameReplaceSpace2=" \rename        's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
 alias RenameReplaceSpace21="\rename        's/[(|)|\[|\]|{|}|&|,|\!|:]+/./g' "
 alias RenameReplaceSpace22="\rename        's/[_|\s]+/_/g' "
 #\rename        's/[(|)|\[|\]|{|}|&|,|'"'"'|\!|-|_|\s|:]+/_/g'
 #alias RenameReplaceSpace3="\rename        's/[《|》|（|）|：|、|(|)|“|”|·|，|’|、|\[|\]|\s|’]+/_/g' "
-alias RenameReplaceSpace3="\rename        's/[\-|_]*\.+[\-|_]*/./g' "
+alias RenameReplaceSpace3=" \rename        's/[\-|_]*\.+[\-|_]*/./g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
 #alias RenameReplaceSpaceAll="RenameReplaceSpace2 *.* ;RenameReplaceSpace1 *.* ;RenameReplaceSpace3 *.* ;"
 alias RenameReplaceSpaceAll="RenameReplaceSpace21 *.* ; RenameReplaceSpace22 *.* ; RenameReplaceSpace1 *.* ; RenameReplaceSpace3 *.* ;"
-alias RenameRemoveSChar="\rename          's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
-alias RenameRemoveSChar2="\rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
-alias RenameCleanDotInFileName="\rename   's/[-|_]*\.+[-|_]*/./g' "
+alias RenameRemoveSChar="   \rename         's/\s*[(|)|\[|\]|{|}|&|,|\!|-]+\s*/-/g' "
+alias RenameRemoveSChar2="  \rename         's/[(|)|\[|\]|{|}|&|,|\!]+//g' "
+alias RenameCleanDotInFileName="\rename     's/[-|_]*\.+[-|_]*/./g' "
 #alias RenameFiles='functionRenameFiles(){ unset -f functionRenameFiles; RenameRemoveSChar "$@" ; RenameReplaceSpace "$@" ;}; functionRenameFiles '
 #alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* "
 alias RenameFilesInCurrentFolder="RenameRemoveSChar *.* ; RenameReplaceSpace *.* ; RenameCleanDotInFileName *.* ;"
@@ -190,7 +197,27 @@ alias mount.loop='          mount -o loop '
 ##------------------------------
 
 alias h='\history 1000'
-alias v='vim'
+alias v='         vim '
+alias vimd='      vim -d '
+alias vimdh='     vim -c "set diffopt+=horizontal" -d '
+alias vimdo='     vim -d -o '
+#alias nvimdh='    vim -c "set-default diffopt+=horizontal" -d '
+alias vimR='      vim -R '
+alias vimo='      vim -o '
+alias vimO='      vim -O '
+alias gvimd='     gvim -d '
+alias gvimdo='    gvim -d -o '
+alias gvimR='     gvim -R '
+alias nvimclean=' nvim --clean '
+alias nvimd='     nvim -d '
+alias nvimdh='    nvim -c "set diffopt+=horizontal" -d '
+alias nvimdo='    nvim -d -o '
+alias nvimR='     nvim -R '
+#alias nvimdh='    nvim -c "set-default diffopt+=horizontal" -d '
+alias nvimo='     nvim -o '
+alias nvimO='     nvim -O '
+#alias nvimqt='    nvim-qt -- '
+alias nvimqt='    nvim-qt --geometry 970x512 -- '
 
 ##ToCheck# for your env default setting
 alias Emacs='/usr/bin/emacs26'
@@ -244,6 +271,7 @@ alias gitcommitamend='  git commit --amend '
 alias gitpush='         git push '
 #example# git push TargetName SourceName #push data from SourceName to TargetName
 alias gitpull='               git pull --tags '
+alias gitpulloriginmaster='   git pull --tags origin master '
 #example git checkout TagName FileName
 #example git checkout TagName
 #example git checkout -b NewBranchName
@@ -252,9 +280,10 @@ alias gitfetch='              git fetch --all '
 alias gitremoteadd='          git remote add origin '
 alias gitremotev='            git remote -v'
 alias gitremotevshow='        git remote -v show '
-#example# gitremoteshow RemoteRepoNamr
+#example# gitremoteshow RemoteRepoName
 alias gitremoteshoworigin='   git remote show origin'
 alias gitremotev='            git remote -v'
+alias gitremotePruneOrigin='  git remote prune origin'
 alias gitclone='              git clone --recursive '
 alias gitdiffstat='           git diff --stat '
 alias gitdifftool='           git difftool --tool=vimdiff '
@@ -270,6 +299,7 @@ alias gitlogprettyoneline='   git log --pretty=oneline '
 alias gitloggraph='           git log --graph '
 alias gitlogstat='            git log --stat '
 alias gittagl='               git tag -l '
+alias gittaga='               git tag -a '
 #alias gitstatus='             git status '
 alias gitstatusshort='        git status --short '
 alias gitbranchall='          git branch --all'
@@ -286,7 +316,16 @@ alias gitreset_head2='        git reset HEAD~2 '
 alias gitreset_head3='        git reset HEAD~3 '
 alias gitdiffhead='           git diff HEAD '
 alias gitdiff_cached='        git diff --cached '
-alias gitsubmoduleupdate='    git submodule update --init --recursive --remote --force '
+alias gitsubmoduleupdate='    git submodule update --init --recursive '
+alias gitsubmoduleupdatef='   git submodule update --init --recursive --remote --force '
+alias gitsubmoduleadd='       git submodule add '
+alias gitsubmodulestatus='    git submodule status '
+alias gitsubmoduleset-url='   git submodule set-url -- '
+# git submodule set-url -- <path> <url>
+alias gitpullsubmodules='     git pull --recurse-submodules '
+alias gitcheckoutf='          git checkout -f '
+alias gitcheckoutm='          git checkout -m '
+alias gitcleanfd='            git clean -fd '
 
 #input methods reset
 alias input_methods_reset_fcitx='fcitx -r'
@@ -311,11 +350,13 @@ alias input_methods_reset_fcitx='fcitx -r'
 
 alias ctags_R="         ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_R_Python="  ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
+#alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
 alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
 alias ctags_R_scala="   ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re="        ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_Re_Python=" ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_Re_SV="     ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+#alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_L_C="       ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L_Python="  ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
@@ -431,13 +472,15 @@ alias set_short_path1='export PS1="${BashYellow}\u${BashColorEnd}:${BashLightBlu
 #alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\u@\H: \w\a\]${BashColorEnd}\$'"
 #alias set_default_lubuntu_path_with_yellow="export PS1='\[${BashYellow}\]\u@\H:\w\[${BashColorEnd}\][\#]$'"
 ####update the color variable formate
-alias              set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
+#alias              set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"
+alias              set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$'"
 #alias set_default_lubuntu_path_with_yellow="export PS1='${BashYellow}\u@\H:\w${BashColorEnd}[\#]$'"
 alias  set_default_lubuntu_path_with_yellow="export PS1='${BashYellow}\u@\H:\w${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
 alias set_default_lubuntu_path_with_yellow1="export PS1='${BashYellow}\u@\H:\W${BashColorEnd}${BashLightGreen}[\#]${BashColorEnd}$'"
 #####set default with color by default
 #set_default_lubuntu_path_with_yellow
 #export PS1=``\s-\v\$ ''
+#echo "PS1 is $PS1"
 set_full_path
 
 alias wgetc='   wget -c '
@@ -451,23 +494,75 @@ export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
 # https://www.scala-sbt.org/1.x/docs/Running.html
 # https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html
 # https://www.scalawilliam.com/essential-sbt/
-alias sbtnew='            sbt new'
-alias sbttask='           sbt task'
-alias sbtabout='          sbt about'
-alias sbtclean='          sbt clean'
-alias sbtcompile='        sbt compile'
-alias sbtrecompile='      sbt ~compile'
-alias sbttest='           sbt test'
-alias sbttestQuick='      sbt ~testQuick'
-alias sbtconsole='        sbt console'
-alias sbtrun='            sbt run'
-alias sbtpackage='        sbt package'
-alias sbtreload='         sbt reload'
-alias sbtproject='        sbt project'
-alias sbtprojects='       sbt projects'
-alias sbtpublishLocal='   sbt publishLocal'
-alias sbtinspect='        sbt "inspect actual console"'
-alias sbtinspectactual='  sbt "inspect actual console"'
+alias sbtnew='                      sbt new '
+alias sbttask='                     sbt task '
+alias sbtabout='                    sbt about '
+alias sbtclean='                    sbt clean '
+alias sbtclearCaches='              sbt clearCaches '
+alias sbtcompile='                  sbt compile '
+alias sbtrecompile='                sbt ~compile '
+alias sbttest='                     sbt test '
+alias sbttestQuick='                sbt ~testQuick '
+alias sbtconsole='                  sbt console '
+alias sbtrun='                      sbt run '
+alias sbtpackage='                  sbt package '
+alias sbtreload='                   sbt reload '
+alias sbtproject='                  sbt project '
+alias sbtpublishLocal='             sbt publishLocal '
+alias sbtinspect='                  sbt inspect '
+alias sbtinspectactual='            sbt "inspect actual console"'
+alias sbtsettings='                 sbt settings '
+alias sbtsettingsv='                sbt "settings -v"'
+alias sbttasks='                    sbt tasks '
+alias sbttasksv='                   sbt "tasks -v"'
+alias sbtprojects='                 sbt projects '
+alias sbtshowversion='              sbt "show version"'
+alias sbtscalaVersion='             sbt scalaVersion'
+alias sbtcrossScalaVersions='       sbt crossScalaVersions'
+alias sbtclassDirectory='           sbt classDirectory'
+alias sbtbaseDirectory='            sbt baseDirectory'
+alias sbtlibraryDepend='            sbt libraryDependencies'
+alias sbtmanagedResourceDir='       sbt managedResourceDirectories'
+
+#------------------------------
+#mill Built-in commands
+alias millwatch='                   mill --watch '
+alias mill__compile='               mill __.compile '
+alias mill__run='                   mill __.run '
+alias millinit='                    mill init '
+alias millresolve='                 mill resolve '
+#info# mill resolve foo._
+alias millresolvecompile='          mill resolve _.compile'
+alias millresolvecompileall='       mill resolve __.compile'
+alias millresolve_='                mill resolve _'
+alias millresolve__='               mill resolve __'
+alias millinspect='                 mill inspect '
+#info# mill inspect foo.run
+#info# mill inspect foo._
+alias millinspectcompile='          mill inspect _.compile'
+alias millinspectcompileall='       mill inspect __.compile'
+alias millinspect_='                mill inspect _'
+alias millinspect__='               mill inspect __'
+alias millshow='                    mill show '
+#info# mill show foo.scalaVersion
+alias millshowNamed='               mill showNamed '
+alias millshow_='                   mill show _'
+alias millshow__='                  mill show __'
+alias millpath='                    mill path '
+#info# mill path foo.assembly foo.sources
+alias millpath_='                   mill path _'
+alias millplan='                    mill plan '
+#info# mill plan foo.compileClasspath
+alias millshowvisualize='           mill show visualize '
+alias millshowvisualizePlan='       mill show visualizePlan '
+alias millclean='                   mill clean '
+alias millcleancompile='            mill clean _compile'
+alias millcleancompileall='         mill clean __compile'
+#Search for dependency updates
+alias millsearchdepend='            mill mill.scalalib.Dependency/showUpdates'
+#The Build REPL
+alias millbuildrepl='               mill --repl '
+#Deploying your code
 
 #------------------------------
 #chinese display support
@@ -476,7 +571,41 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 #------------------------------
 
+#python alias
+alias python3mvenv='                  python3 -m venv '
+#Example#python3 -m venv VirtualEnvName ; cd VirtualEnvName; source bin/activate; pip3 list
+#deactivate
+alias python3mpipinstall='            python3 -m pip install'
+alias python3mpipinstallupgradepip='  python3 -m pip install --upgrade pip'
+alias python3mpiplist='               python3 -m pip list'
+
 export PATH=$PATH:/opt/riscv/bin
+export PATH=$PATH:~/miniconda/bin
+#------------------------------
+# conda alias
+alias condaactivate='   conda activate '
+alias condadeactivate=' conda deactivate '
+alias condacreate='     conda create '
+alias condacreatename=' conda create -n '
+#info#alias condacreaten='conda create -name '
+alias condaremove=' conda remove '
+alias condaremovename=' conda remove -n '
+#example#conda remove -n EnvName RemovingModuleName
+alias condainstall='    conda install '
+alias condainstallname='conda install --name '
+#info#alias condaconfigadd="conda config --add channels conda-forge"
+#info#alias condaconfigconfig="conda config --set channel_priority strict"
+#info#alias condaconfiginstall="conda install <package-name>"
+alias condaversion='    conda --version '
+alias condaupdateconda='conda update conda '
+alias condaupdateall='  conda update --all '
+alias condainfoe='      conda info -e '
+alias condalist='       conda list '
+alias condalistname='   conda list --name '
+alias condasearch='     conda search '
+alias condaupdate='     conda update '
+alias condaconfigaddchannels='  conda config --add channels '
+
 #------------------------------
 
 #alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
@@ -526,3 +655,8 @@ export PATH=$PATH:/opt/riscv/bin
 ###$              \]     end a sequence of non-printing characters
 ###$
 ###$       The  command  number and the history number are usually different: the history number of a command is its position in the history list, which may include commands restored from the history file (see HISTORY below), while the command number is the position in the sequence of  commands  executed  during the current shell session.  After the string is decoded, it is expanded via parameter expansion, command substitution, arithmetic expansion, and quote removal, subject to the value of the promptvars shell option (see the description of  the shopt command under SHELL BUILTIN COMMANDS below).
+#
+echo "======================================"
+echo "Updated path info:"
+#echo $path
+echo $PATH

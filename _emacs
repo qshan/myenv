@@ -27,6 +27,18 @@
 (setenv "LC_ALL" "en_US.UTF-8")
 (setenv "LC_CTYPE" "en_US.UTF-8")
 
+;;set language env
+(set-language-environment 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-clipboard-coding-system 'euc-cn)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'euc-cn)
+(set-selection-coding-system 'euc-cn)
+(modify-coding-system-alist 'process "*" 'utf-8)
+(setq default-process-coding-system
+             '(euc-cn . euc-cn))
+(setq-default pathname-coding-system 'utf-8)
+
 ;;(set-background-color "grey20")        ;; 使用grey20背景
 (set-background-color "black")       ;; 使用黑色背景
 (set-foreground-color "white")         ;; 使用白色前景
@@ -44,6 +56,10 @@
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
+
+;; enable evil-mode again
+(evil-mode 1)
+;
 (menu-bar-mode t)    ;;show the menu bar in the GUI
 ;;M-x menu-bar-mode  ;;show the menu bar with command
 ;;(menu-bar-mode -1) ;;disable the menu bar in GUI
@@ -191,6 +207,8 @@
     ("fatal"   . "#ff0000")
     ("Fatal"   . "#ff0000")
     ("DONE"    . "#afd8af")
+    ("worked"  . "#afd8af")
+    ("WORKED"  . "#afd8af")
     ("NOTE"    . "#d0bf8f")
     ("ToCheck" . "#d0bf8f")
     ("tocheck" . "#d0bf8f")
@@ -344,6 +362,7 @@
 ;;
 ;;To use company-mode in all buffers
   (add-hook 'after-init-hook 'global-company-mode)
+  (global-company-mode t)
 ;;
   (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
   (setq company-idle-delay 0)
@@ -553,6 +572,15 @@
 ;;ToCheck;;
 (global-set-key (kbd "C-c ;") 'comment-line)
 ;;
+;;
+;; start of writing_with_emacs
+;; good reference for writing with emacs https://github.com/qshan/writingwithemacs
+;;
+(add-hook 'tex-mode-hook
+          #'(lambda () (setq ispell-parser 'tex)))
+;;
+;; end of writing_with_emacs
+;;
 ;;TODO;;it is better to end the setting here
 ;;##############################################################################
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -645,7 +673,15 @@
   (fshan-flycheck-init)
 
 ;;
+;;reference linker https://github.com/emacs-evil/evil-surround
+;;TODO;;need to confirm
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+;;
 ) ;;end of fshan-subword-mode
+
 ;;(require 'my-subword-mode)
 ;;--------------------------------------------------
 (defun fshan-flycheck-init ()
@@ -1110,7 +1146,11 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;
 ;;re-read the file using the correct coding system
 ;;C-x RET r (revert-buffer-with-coding-system)
-                                        ;
+;;
+;; Try use the chinese input
+; M-x set-input-method
+; select pyim
+;
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
 ;;M-x load-theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
