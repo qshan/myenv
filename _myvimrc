@@ -118,6 +118,7 @@ endif
 "command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
 command! MyFont10                       :set guifont=Monospace\ 10
 command! MyFont12                       :set guifont=Monospace\ 12
+command! MyFont14                       :set guifont=Monospace\ 12
 command! MyFont16                       :set guifont=Monospace\ 16
 "autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
 ""au BufReadPost,FileReadPost *.* :MyFont15
@@ -125,7 +126,7 @@ command! MyFont16                       :set guifont=Monospace\ 16
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont16
+au BufReadPost,FileReadPost *     :MyFont12
 au BufReadPost,FileReadPost *   :endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 "

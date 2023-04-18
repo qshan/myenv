@@ -171,6 +171,7 @@ set backspace=indent,eol,start
 ""TODO":Guifont DejaVu\ Sans\ Mono:h15
 command! MyFont10                    :Guifont DejaVu\ Sans\ Mono:h10
 command! MyFont12                    :Guifont DejaVu\ Sans\ Mono:h12
+command! MyFont14                    :Guifont DejaVu\ Sans\ Mono:h14
 command! MyFont15                    :Guifont DejaVu\ Sans\ Mono:h15
 
 "autocmd BufReadPost,FileReadPost * :Guifont DejaVu\ Sans\ Mono:h15
@@ -183,7 +184,7 @@ if exists('g:GuiLoaded')
   if &diff
     :MyFont10
   else
-    :MyFont15
+    :MyFont12
   endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
@@ -192,7 +193,7 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont15
+au BufReadPost,FileReadPost *     :MyFont12
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 """Guifont DejaVu Sans Mono:h15
