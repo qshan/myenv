@@ -126,7 +126,7 @@ command! MyFont16                       :set guifont=Monospace\ 16
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont12
+au BufReadPost,FileReadPost *     :MyFont14
 au BufReadPost,FileReadPost *   :endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 "

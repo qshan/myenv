@@ -193,7 +193,7 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont12
+au BufReadPost,FileReadPost *     :MyFont14
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 """Guifont DejaVu Sans Mono:h15
