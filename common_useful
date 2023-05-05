@@ -179,19 +179,19 @@ sudo apt install lubuntu-default-session lubuntu-default-settings lubuntu-deskto
 #sudo apt-cache search KeyWordsSearched
 
 #--------------------------------------------------
-#$sudo apt-get install -y gettext gettext-base gettext-doc gettext-el gettext-lint libgettextpo0 libgettextpo-dev
-#$sudo apt-get install -y libsysfs-dev
-#$sudo apt-get install pkg-config pkg-config-aarch64-linux-gnu pkgconf
-#$sudo apt-get install libncurses5 libncurses5-dbg libncurses5-dev lib64ncurses5 lib64ncurses5-dev
-#$sudo apt-get install gdb gdb64 gdb-source gdb-doc gdb-dbg gdb-multiarch xxgdb
+#sudo apt-get install -y gettext gettext-base gettext-doc gettext-el gettext-lint libgettextpo0 libgettextpo-dev
+#sudo apt-get install -y libsysfs-dev
+#sudo apt-get install pkg-config pkg-config-aarch64-linux-gnu pkgconf
+#sudo apt-get install libncurses5 libncurses5-dbg libncurses5-dev lib64ncurses5 lib64ncurses5-dev
+#sudo apt-get install gdb gdb64 gdb-source gdb-doc gdb-dbg gdb-multiarch xxgdb
 
-#$sudo apt-get install libiconv-hook-dev
-#$sudo apt-get install libtool
-#$sudo apt-get install linkchecker linkchecker-gui linklint link-grammar
-#$sudo apt-get install intltool intltool-debian autopoint libint-dev
-#$sudo apt-get install libgtk2.0-dev libgtk2.0-common libgtk-3-dev libgtk-3-common libgtk2.0-bin libgtk-3-bin
-#$sudo apt-get install autoconf autoconf-archive automake libtool libtool-bin
-#$sudo apt-get install libglib2.0-dev libglib3.0-cil-dev
+#sudo apt-get install libiconv-hook-dev
+#sudo apt-get install libtool
+#sudo apt-get install linkchecker linkchecker-gui linklint link-grammar
+#sudo apt-get install intltool intltool-debian autopoint libint-dev
+#sudo apt-get install libgtk2.0-dev libgtk2.0-common libgtk-3-dev libgtk-3-common libgtk2.0-bin libgtk-3-bin
+#sudo apt-get install autoconf autoconf-archive automake libtool libtool-bin
+#sudo apt-get install libglib2.0-dev libglib3.0-cil-dev
 
 #issue 'AM_ICONV_LINK' not found in library
 #To check where aclocal is looking for m4 files
@@ -334,6 +334,11 @@ ls -alh /dev/disk/by-path
 # $scrub    /dev/sdc2
 # $
 #==============================the command related to disk end  ==============================
+#
+#==============================update the grub manu start==============================
+#gvim /boot/grub/grub.cfg
+#search menuentry
+#==============================update the grub manu end  ==============================
 
 #==============================make udisk with unetbootin start==============================
 ####install unetbootin if there is no this sw in your pc
