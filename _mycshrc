@@ -261,7 +261,20 @@ alias goCTest               'cd /data/work/test_space/ctest_qshan'
 alias goCppTest             'cd /data/work/test_space/cpptest_qshan'
 
 #git alias
+alias githelpa              'git help -a '
+alias gitgui                'git gui '
 alias gitadd_f              'git add -f '
+alias gitmvn                'git mv -n '
+#alias gitmvn                'git mv -dry-run '
+alias gitmv                 'git mv '
+alias gitmvv                'git mv -v '
+alias gitmvf                'git mv -f '
+alias gitrmn                'git rm -n '
+#alias gitrmn                'git rm -dry-run '
+alias gitrm                 'git rm '
+alias gitrmr                'git rm -r '
+alias gitrmf                'git rm -f '
+#
 alias gitcommitma           'git commit -a -m '
 #example# git commit -ma "coment description"
 alias gitcommitm            'git commit -m '
@@ -284,6 +297,12 @@ alias gitremoteshoworigin   'git remote show origin'
 alias gitremotev            'git remote -v'
 alias gitremotePruneOrigin  'git remote prune origin'
 alias gitclone              'git clone --recursive '
+#
+alias gitgrep               'git grep '
+alias gitgrepr              'git grep -r '
+alias gitgrepi              'git grep -i '
+alias gitgrepI              'git grep -I '
+alias gitgrephelp           'git grep --help'
 alias gitdiffstat           'git diff --stat '
 alias gitdifftool           'git difftool --tool=vimdiff '
 alias gitdifftoolhead       'git difftool --tool=vimdiff HEAD '
@@ -291,19 +310,28 @@ alias gitdifftoolhead1      'git difftool --tool=vimdiff HEAD^ '
 alias gitdifftoolhead2      'git difftool --tool=vimdiff HEAD^^ '
 alias gitshow               'git show '
 alias gitlsfiles            'git ls-files '
+alias gitlsremote           'git ls-remote '
+alias gitlstree             'git ls-tree '
 alias gitlog                'git log '
 alias gitlogpretty          'git log --pretty="%h - %s" --no-merges -- t/ '
 alias gitlogprettyshort     'git log --pretty=short '
 alias gitlogprettyoneline   'git log --pretty=oneline '
 alias gitloggraph           'git log --graph '
 alias gitlogstat            'git log --stat '
-alias gitlogl               'git log -l '
-alias gitloga               'git log -a '
+alias gittagl               'git tag -l '
+alias gittaga               'git tag -a '
 #alias gitstatus             'git status '
 alias gitstatusshort        'git status --short '
 alias gitbranchall          'git branch --all'
 alias gitbranchlist         'git branch --list'
 alias gitbranchremotes      'git branch --remotes'
+alias gitbranchtrack        'git branch --track'
+#example# gitbranchtrack localBranchName remoteHostName/remoteBranchName
+alias gitbranchb            'git branch -b'
+#example# gitbranchb localBranchName remoteHostName/remoteBranchName
+#example# gitbranchb localBranchName
+alias gitswitchc            'git cwitch -c'
+#example# gitswitchc localBranchName remoteHostName/remoteBranchName
 alias gitconfiglist         'git config --list'
 alias gitreset_soft         'git reset --soft '
 alias gitreset_hard         'git reset --hard '
@@ -324,6 +352,9 @@ alias gitsubmoduleset-url   'git submodule set-url -- '
 alias gitpullsubmodules     'git pull --recurse-submodules '
 alias gitcheckoutf          'git checkout -f '
 alias gitcheckoutm          'git checkout -m '
+alias gitcheckout--         'git checkout -- '
+#example# gitcheckout commitNumber fileName
+#example# gitcheckout fileName
 alias gitcleanfd            'git clean -fd '
 
 
@@ -350,7 +381,7 @@ endif
 
 ###############alias for tags generation
 #
-#alias ctags='the_ctags_in_your_env'
+#alias ctags 'the_ctags_in_your_env'
 alias ctags_R           "ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_R_Python    "ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
 alias ctags_R_SV        "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
