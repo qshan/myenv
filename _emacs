@@ -53,6 +53,8 @@
 ;;ToCheckCamelCaseCodeStyle
 ;;(with-evil-after-load `evil (defalias #`forward-evil-word #`forward-evil-symbol))
 
+;; good reference: https://zhuanlan.zhihu.com/p/87527003
+
 ;;Start to load config in init.el
 ;;worked;;(load (expand-file-name "~/.emacs.d/init.el") nil nil t)
 (load-file "~/.emacs.d/init.el")
@@ -467,32 +469,36 @@
 ;;check the mode info here
 ;;/usr/share/emacs/site-lisp/*.el
 
+;;set mode by manual
+;A-x makefile-mode
+;
 ;;check current major modesto
 ;;M-: major-mode RET
 ;;(setq auto-mode-alist (append '(("*_emacs\\.emacs\\'" . emacs-lisp-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(
-                                ("\\.emacs\\'"  . emacs-lisp-mode)
-                                ("_emacs.*\\'"  . emacs-lisp-mode)
-                                ("_emacs.*'"    . emacs-lisp-mode)
-                                ("\\.get\\'"    . shell-mode)
-                                ("*.min'"       . makefile-mode)
-                                ("\\.min\\'"    . makefile-mode)
-                                ("makefile*'"   . makefile-mode)
-                                ("Makefile*'"   . makefile-mode)
+                                ("\\.emacs\\'"        . emacs-lisp-mode)
+                                ("_emacs.*\\'"        . emacs-lisp-mode)
+                                ("_emacs.*'"          . emacs-lisp-mode)
+                                ("\\.get\\'"          . shell-mode)
+                                ("*.min'"             . makefile-mode)
+                                ("\\.min\\'"          . makefile-mode)
+                                ("makefile*'"         . makefile-mode)
+                                ("Makefile*'"         . makefile-mode)
+                                ("Makefrag*"          . makefile-mode)
                                 ("Makefile.config'"   . makefile-mode)
                                 ("Makefile.rules'"    . makefile-mode)
-                                ("SConstruct*'" . scons-mode)
-                                ("SConscript*'" . scons-mode)
-                                ("\\.scala\\'"  . scala-mode)
-                                ("\\.sc\\'"     . scala-mode)
-                                ("\\.sbt\\'"    . scala-mode)
-                                ("\\.c\\'"      . c-mode)
-                                ("\\.cc\\'"     . c-mode)
-                                ("\\.cpp\\'"    . c-mode)
-                                ("\\.h\\'"      . c-mode)
-                                ("\\.hh\\'"     . c-mode)
-                                ("\\.py\\'"     . python-mode)
-                                ("\\.sm\\'"     . ruby-mode)
+                                ("SConstruct*'"       . scons-mode)
+                                ("SConscript*'"       . scons-mode)
+                                ("\\.scala\\'"        . scala-mode)
+                                ("\\.sc\\'"           . scala-mode)
+                                ("\\.sbt\\'"          . scala-mode)
+                                ("\\.c\\'"            . c-mode)
+                                ("\\.cc\\'"           . c-mode)
+                                ("\\.cpp\\'"          . c-mode)
+                                ("\\.h\\'"            . c-mode)
+                                ("\\.hh\\'"           . c-mode)
+                                ("\\.py\\'"           . python-mode)
+                                ("\\.sm\\'"           . ruby-mode)
                                 ) auto-mode-alist))
 
 ;;rainbow display mode
