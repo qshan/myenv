@@ -118,8 +118,11 @@ endif
 "command! MyNvimGuiFont15                    :Guifont DejaVu\ Sans\ Mono:h15
 command! MyFont10                       :set guifont=Monospace\ 10
 command! MyFont12                       :set guifont=Monospace\ 12
-command! MyFont14                       :set guifont=Monospace\ 12
+command! MyFont14                       :set guifont=Monospace\ 14
 command! MyFont16                       :set guifont=Monospace\ 16
+command! MyFont18                       :set guifont=Monospace\ 18
+command! MyFont20                       :set guifont=Monospace\ 20
+command! MyFont22                       :set guifont=Monospace\ 22
 "autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
 ""au BufReadPost,FileReadPost *.* :MyFont15
 ""au BufReadPost,FileReadPost *.* :MyFont16
@@ -183,8 +186,8 @@ set tabstop=2               "set to show the tab with 2 blankspace; identify how
 set softtabstop=2           " how many space to show for a tab in Insert mode
 set vartabstop=2,4,8        "set to show the tab with 2 blankspace; identify how many space as a TAB
 set varsofttabstop=2,4,8    "set to show the tab with 2 blankspace; identify how many space as a TAB
-au BufReadPost,FileReadPost *,*.* :set      tabstop=2
-au BufReadPost,FileReadPost *,*.* :set  softtabstop=2
+au BufReadPost,FileReadPost * :set      tabstop=2
+au BufReadPost,FileReadPost * :set  softtabstop=2
 
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
@@ -317,6 +320,7 @@ set nofoldenable
 "set foldenable     "enable fold when you need
 "set fen     "=foldenable
 "
+""" https://secluded.site/vim-as-a-markdown-editor/
 "" " Set spell check to British English
 ""autocmd FileType markdown setlocal spell spelllang=en_gb
 "set spell
@@ -355,7 +359,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " copy following words into bot of your .vimrc file
 " vundle set before call plugin list
 set nocompatible              " be iMproved, required for Vundle
-syntax on
+"syntax on     "overrule your settings with the defaults
+syntax enable     "keep your current color settings
 filetype off                  " required for Vundle
 "
 "setting example from this file
@@ -501,10 +506,19 @@ Plugin 'reedes/vim-wordy'
 ""
 "" reference linker https://zhuanlan.zhihu.com/p/35536223
 "" reference linker https://github.com/iamcco/markdown-preview.nvim
+"" reference liker: https://dev.to/hrk2023/markdown-preview-in-vim-44bl
 ""TODO"
 Plugin 'iamcco/mathjax-support-for-mkdp'
 ""TODO"
 Plugin 'iamcco/markdown-preview.nvim'
+" sudo apt install yarn
+"
+Plugin 'instant-markdown/vim-instant-markdown'
+" sudo npm -g install instant-markdown-d
+"
+":source %
+":PluginInstall
+":call mkdp#util#install()
 ""
 "--------------------
 Plugin 'tpope/vim-surround'
@@ -631,10 +645,12 @@ map <leader>n :set number<CR>
 "
 "filetype on
 "set the *.min file as the makefile type
-au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
+au BufReadPre,BufNewFilE,FileReadPost *.min,Make*  set filetype=make
 "set *.min file with make syntax highlight
-:autocmd BufReadPost,FileReadPost *.min set syntax=make
+:autocmd BufReadPost,FileReadPost *.min,Make* set syntax=make
 ""
+au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.v,*.sv  set filetype=verilog_systemverilog
+"
 "set the *.scala file as the makefile type
 au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  set filetype=scala
 "
@@ -667,7 +683,7 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "it is better to put those match words on end of file
 "just one highlight type per time
 "worked":match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
-au BufReadPost,FileReadPost *.* :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+au BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 au BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
@@ -675,7 +691,7 @@ au BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|E
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufReadPost,FileReadPost *.* :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+au BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
 "
 "
 "need source $MYVIMRC after e(open)
@@ -729,7 +745,7 @@ let b:match_words = '<:>'
 "                    \ . 'module:endmodule,'
 endif "end of if exists("loaded_matchit")
 
-:let b:match_words .=  '<:>,'
+:let b:match_words  =  '<:>,'
                     \ . '\<module\>:\<endmodule\>,'
                     \ . '\<begin\>:\<end\>,'
                     \ . '\<fork\>:\<join\>\|\<join_any\>\|\<join_none\>,'
@@ -890,9 +906,9 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "syntax match Ignore /Error\:\|error\:\|error\-\|Error\-/
 "syntax match Underlined /Error\:\|error\:\|error\-\|Error\-/
 "
-"au BufReadPost,FileReadPost *.* :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
-"au BufReadPost,FileReadPost *.* :syntax match Todo /todo\|TODO\|toDo/
-"au BufReadPost,FileReadPost *.* :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+"au BufReadPost,FileReadPost * :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
+"au BufReadPost,FileReadPost * :syntax match Todo /todo\|TODO\|toDo/
+"au BufReadPost,FileReadPost * :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
 ""you could check the highlight details with hi or hightlight
@@ -926,7 +942,7 @@ command! MyRemoveEmptyLine                      :%s/^\s*$\n//g
 command! MyReplaceSpaceWithNewLine              :%s/\s\+/\r/g
 command! MyReplaceSpaceWithNewLine1             :%s/\s\+//g
 command! MyReplaceSpaceWithTab                  :%s/\s\+/\t/g
-command! MyWhiteSpace2UnderLine                 :s/\s\+/_/g
+command! MyReplaceSpaceWithUnderLine            :s/\s\+/_/g
 command! MyExchangePattern12                    :s/\(Pattern1\)\(Pattern2\)/\2\1/g
 ""command! MySpellCheckEn                         set spell spelllang=en_us
 command! MySpellCheckEn                         setlocal spell spelllang=en_us
@@ -936,6 +952,8 @@ command! MyAddMatchWords                        let b:match_words= '<:>,' .
 command! MyShowHex                              :%!xxd
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
 command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase
+":set diffopt+=horizontal
+"vim -c "set diffopt+=horizontal"
 "command! MyCursorHighlight                      :hi CursorLine cterm=NONE ctermbg=grey CursorColumn ctermbg=grey
 command! MyCursorColumn                         :hi CursorColumn cterm=NONE ctermbg=grey guibg=Grey40
 command! MyCursorLine                           :hi CursorLine cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
@@ -945,6 +963,13 @@ command! MyCursorLine                           :hi CursorLine cterm=NONE ctermb
 " :set diffopt+=icase
 " :set diffopt+=iwhiteall
 " :set diffopt+=iwhiteeol
+command! MyMarkdownPreview                      :set conceallevel=3
+command! MyMarkdownPreviewDisable               :set conceallevel=0
+"
+" Insert timestamp at the end of the line in this format: 2020-0527-113245
+nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
+
+
 
 "input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m

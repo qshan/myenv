@@ -173,10 +173,14 @@ command! MyFont10                    :Guifont DejaVu\ Sans\ Mono:h10
 command! MyFont12                    :Guifont DejaVu\ Sans\ Mono:h12
 command! MyFont14                    :Guifont DejaVu\ Sans\ Mono:h14
 command! MyFont15                    :Guifont DejaVu\ Sans\ Mono:h15
+command! MyFont16                    :Guifont DejaVu\ Sans\ Mono:h16
+command! MyFont18                    :Guifont DejaVu\ Sans\ Mono:h18
+command! MyFont20                    :Guifont DejaVu\ Sans\ Mono:h20
+command! MyFont22                    :Guifont DejaVu\ Sans\ Mono:h22
 
-"autocmd BufReadPost,FileReadPost * :Guifont DejaVu\ Sans\ Mono:h15
+"autocmd BufReadPost,FileReadPost *,*.* :Guifont DejaVu\ Sans\ Mono:h15
 "only"worked"with"gui"
-""au BufReadPost,FileReadPost * :MyNvimGuiFont15
+""au BufReadPost,FileReadPost *,*.* :MyNvimGuiFont15
 ""
 ""Guifont DejaVu Sans Mono:h15
 if exists('g:GuiLoaded')
@@ -196,8 +200,9 @@ au BufReadPost,FileReadPost *   :else
 au BufReadPost,FileReadPost *     :MyFont14
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
+
 """Guifont DejaVu Sans Mono:h15
-"""au BufReadPost,FileReadPost * :MyNvimGuiFont15
+"""au BufReadPost,FileReadPost *,*.* :MyNvimGuiFont15
 "":Guifont DejaVu\ Sans\ Mono:h15
 ""endif
 "
@@ -255,8 +260,8 @@ set tabstop=2         "set to show the tab with 2 blankspace; identify how many 
 set softtabstop=2    " how many space to show for a tab in Insert mode
 set vartabstop=2,4,8        "set to show the tab with 2 blankspace; identify how many space as a TAB
 set varsofttabstop=2,4,8    "set to show the tab with 2 blankspace; identify how many space as a TAB
-au BufReadPost,FileReadPost *,*.* :set      tabstop=2
-au BufReadPost,FileReadPost *,*.* :set  softtabstop=2
+au BufReadPost,FileReadPost * :set      tabstop=2
+au BufReadPost,FileReadPost * :set  softtabstop=2
 
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
@@ -387,6 +392,7 @@ set nofoldenable
 "set foldenable     "enable fold when you need
 "set fen     "=foldenable
 "
+""" https://secluded.site/vim-as-a-markdown-editor/
 "" " Set spell check to British English
 ""autocmd FileType markdown setlocal spell spelllang=en_gb
 "set spell
@@ -425,7 +431,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " copy following words into bot of your .vimrc file
 " vundle set before call plugin list
 set nocompatible              " be iMproved, required for Vundle
-syntax on
+"syntax on     "overrule your settings with the defaults
+syntax enable     "keep your current color settings
 filetype off                  " required for Vundle
 "
 " set the runtimepath to include Vundle and initialize rtp=runtimepath
@@ -566,6 +573,11 @@ Plugin 'preservim/vim-markdown'
 Plugin 'iamcco/mathjax-support-for-mkdp'
 ""TODO"
 Plugin 'iamcco/markdown-preview.nvim'
+" sudo apt install yarn
+"
+Plugin 'instant-markdown/vim-instant-markdown'
+" sudo npm -g install instant-markdown-d
+"
 ":source %
 ":PluginInstall
 ":call mkdp#util#install()
@@ -697,9 +709,9 @@ map <leader>n :set number<CR>
 "
 "filetype on
 "set the *.min file as the makefile type
-au BufReadPre,BufNewFilE,FileReadPost *.min  set filetype=make
+au BufReadPre,BufNewFilE,FileReadPost *.min,Make*  set filetype=make
 "set *.min file with make syntax highlight
-:autocmd BufReadPost,FileReadPost *.min set syntax=make
+:autocmd BufReadPost,FileReadPost *.min,Make* set syntax=make
 ""
 au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.v,*.sv  set filetype=verilog_systemverilog
 "
@@ -1019,6 +1031,13 @@ command! MyCursorLine                           :hi CursorLine cterm=NONE ctermb
 " :set diffopt+=icase
 " :set diffopt+=iwhiteall
 " :set diffopt+=iwhiteeol
+command! MyMarkdownPreview                      :set conceallevel=3
+command! MyMarkdownPreviewDisable               :set conceallevel=0
+"
+" Insert timestamp at the end of the line in this format: 2020-0527-113245
+nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
+
+
 
 "input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
