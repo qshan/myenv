@@ -247,7 +247,7 @@ set magic
 set autoindent     "Copy indent from current line when starting a new line
 "set ai     "autoindent
 "
-set smarttab
+"set smarttab
 "mask_for_sv_file"set smartindent     "better than autoindent, use basic c syntax to indent
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
@@ -256,8 +256,8 @@ set expandtab        "replae the tab with blankspace
 "set et
 ""set expandtab
 ""
-set tabstop=2         "set to show the tab with 2 blankspace; identify how many space as a TAB
-set softtabstop=2    " how many space to show for a tab in Insert mode
+set tabstop=2               "set to show the tab with 2 blankspace; identify how many space as a TAB
+set softtabstop=2           " how many space to show for a tab in Insert mode
 set vartabstop=2,4,8        "set to show the tab with 2 blankspace; identify how many space as a TAB
 set varsofttabstop=2,4,8    "set to show the tab with 2 blankspace; identify how many space as a TAB
 au BufReadPost,FileReadPost * :set      tabstop=2
@@ -360,6 +360,7 @@ autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
 "
 "set mouse=a
+set mouse=invc
 " Display options
 set showmode
 ""set showcmd
@@ -577,6 +578,9 @@ Plugin 'iamcco/markdown-preview.nvim'
 "
 Plugin 'instant-markdown/vim-instant-markdown'
 " sudo npm -g install instant-markdown-d
+"disable autostart"" let g:instant_markdown_autostart = 0
+"Manual start""       InstantMarkdownPreview|
+"Manual stop""        InstantMarkdownStop|
 "
 ":source %
 ":PluginInstall
@@ -631,6 +635,7 @@ Plugin 'ZSaberLv0/ZFVimGitUtil'
 "
 call vundle#end()
 "required for Vundle
+let g:instant_markdown_autostart = 0
 "
 filetype on
 filetype plugin on
@@ -727,6 +732,18 @@ au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=
 au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  set filetype=lisp
 "set *.emacs and *_emacs file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.emacs,*_emacs set syntax=lisp
+"
+"The ":syntax" commands are implemented by sourcing a file.  To see exactly how
+"this works, look in the file:
+"    command           file ~
+"    :syntax enable    $VIMRUNTIME/syntax/syntax.vim
+"    :syntax on        $VIMRUNTIME/syntax/syntax.vim
+"    :syntax manual    $VIMRUNTIME/syntax/manual.vim
+"    :syntax off       $VIMRUNTIME/syntax/nosyntax.vim
+"
+"TODO""au Syntax c           runtime! syntax/c.vim
+"TODO""au Syntax cpp         runtime! syntax/cpp.vim
+"TODO""au Syntax sv          runtime! syntax/verilog.vim
 "
 "------------------------------
 "set the *.c,*.h file auto pattern
@@ -1184,6 +1201,8 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 "z_A - toggle all current folds at the current cursor position
 "z_O - open all current folds at the current cursor position
 "z_C - close all current folds at the current cursor position
+"info"z_M - Close all folds: set 'foldlevel' to 0.
+"info"z_R - Open all folds.  This sets 'foldlevel' to highest fold level.
 "
 """ delete the words in '' 删除单引号中的文字
 "d_i_’
@@ -1274,16 +1293,16 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """----------------------------Auto completion----------------------------
 """Completion command
 """COMPLETING SPECIFIC ITEMS
-"""  C-x    C-f       "#####file names
+"""  C-x    C-f       "info"file names
 """  C-x    C-l       "whole lines
-"""  C-x    C-d       "macro definitions (also in included files)
-"""  C-x    C-i       "current and included files
-"""  C-x    C-k       "words from a dictionary
-"""  C-x    C-t       "words from a thesaurus
-"""  C-x    C-]       "#####tags
-"""  C-x    C-v       "Vim command line
+"""  C-x    C-d       "info"macro definitions (also in included files)
+"""  C-x    C-i       "info"current and included files
+"""  C-x    C-k       "info"words from a dictionary
+"""  C-x    C-t       "info"words from a thesaurus
+"""  C-x    C-]       "info"tags
+"""  C-x    C-v       "info"Vim command line
 """  C-x    C-o       "Omni compeletion
-"""  C-x    C-j       "Search keywords to complete in forwad directions
+"""  C-x    C-j       "Search keywords to complete in forward directions
 
 """  C-n              "#####find the next match,
 """  C-p              "find the previous match.
