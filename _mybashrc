@@ -130,6 +130,8 @@ alias findSwfFileRemove='   find ./ -type f -iname "*.sw*" | xargs \rm -rfv '
 alias findDotOFile='        find ./ -type f -iname "*.o" '
 alias findDotOFileRemove='  find ./ -type f -iname "*.o" | xargs \rm -rfv '
 alias findremovespaceonend='functionfindremovespaceonend(){ unset -f functionfindremovespaceonend; find "$@" -type f | xargs sed -i "s/\s\+\$//g" ; }; functionfindremovespaceonend '
+#define a bash function
+function findCheckFiles() { find "$@" -type f | xargs ls -alh ; }
 #TODO#
 #find ./ -type f | xargs sed -i 's/13/14/g'
 #find TargetPathName -type f -iname "*.c" | xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
@@ -230,6 +232,8 @@ alias Emacs='/usr/bin/emacs26'
 ##worked##alias EmacsM='functionEmacsM(){ Emacs -mm "$@" & }; functionEmacsM '
 #alias EmacsM='functionEmacsM(){ unset -f functionEmacsM; Emacs -mm "$@" & }; functionEmacsM '
 alias EmacsM='functionEmacsM(){ unset -f functionEmacsM; Emacs -mm --no-desktop "$@" & }; functionEmacsM '
+
+function EmacsM1() { Emacs -mm --no-desktop "$@" & }
 
 
 
