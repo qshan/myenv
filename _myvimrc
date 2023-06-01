@@ -652,14 +652,17 @@ map <leader>n :set number<CR>
 "
 "filetype on
 "set the *.min file as the makefile type
-au BufReadPre,BufNewFilE,FileReadPost *.min,Make*  set filetype=make
+"au BufReadPre,BufNewFilE,FileReadPost *.min,Make*  set filetype=make
+:au BufReadPre,BufNewFilE,FileReadPost *.min,Make*  setfiletype make
 "set *.min file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.min,Make* set syntax=make
 ""
-au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.v,*.sv  set filetype=verilog_systemverilog
+"au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.v,*.sv  set filetype=verilog_systemverilog
+:au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.v,*.sv  setfiletype verilog_systemverilog
 "
 "set the *.scala file as the makefile type
-au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  set filetype=scala
+"au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  set filetype=scala
+:au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  setfiletype scala
 "
 "set the *.cshrc and *_cshrc file as the makefile type
 au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=csh
@@ -667,7 +670,8 @@ au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=
 :autocmd BufReadPre,BufReadPost,FileReadPost *.cshrc,*_cshrc set syntax=csh
 "
 "set the *.emacs and *_emacs file as the makefile type
-au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  set filetype=lisp
+"au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  set filetype=lisp
+:au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  setfiletype lisp
 "set *.emacs and *_emacs file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.emacs,*_emacs set syntax=lisp
 "
