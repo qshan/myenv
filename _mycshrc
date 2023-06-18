@@ -356,6 +356,43 @@ alias gitcheckout--         'git checkout -- '
 #example# gitcheckout commitNumber fileName
 #example# gitcheckout fileName
 alias gitcleanfd            'git clean -fd '
+alias gitstash              'git stash '
+alias gitstashlist          'git stash list '
+alias gitstashshow          'git stash show '
+alias gitstashpop           'git stash pop '
+alias gitstashapply         'git stash apply '
+alias gitstashdrop          'git stash drop '
+alias gitstashclear         'git stash clear '
+alias gitstashbranch        'git stash branch '
+alias gitstashclear         'git stash clear '
+alias gitstashcreate        'git stash create '
+alias gitstashstore         'git stash store '
+##### Interrupted workflow
+###  When you are in the middle of something, your boss comes in and demands that you fix something immediately.
+###  Traditionally, you would make a commit to a temporary branch to store your changes away, and return to your
+###  original branch to make the emergency fix, like this:
+###      # ... hack hack hack ...
+###TODO# $ git switch -c my_wip
+###      $ git commit -a -m "WIP"
+###      $ git switch master
+###      # edit emergency fix
+###      $ git commit -a -m "Fix in a hurry"
+###      $ git switch my_wip
+###      $ git reset --soft HEAD^
+###      # ... continue hacking ...
+###  You can use git stash to simplify the above, like this:
+###      # ... hack hack hack ...
+###info  $ git stash
+###      # edit emergency fix
+###      $ git commit -a -m "Fix in a hurry"
+###info  $ git stash pop
+###      # ... continue hacking ...
+#
+alias gitinit               'git init '
+alias gitinitbare           'git init --bare '
+alias gitclonebarel         'git clone --bare -l '
+#example git clone --bare -l LocalRepoPathWithFullName/.git BackupRepoNameWithFullPath.git
+
 
 
 #input methods reset
@@ -382,18 +419,25 @@ endif
 ###############alias for tags generation
 #
 #alias ctags 'the_ctags_in_your_env'
-alias ctags_R           "ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
-alias ctags_R_Python    "ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
-alias ctags_R_SV        "ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_R_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
-alias ctags_Re          "ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
-alias ctags_Re_Python   "ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
-alias ctags_Re_SV       "ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_Re_scala    "ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
-alias ctags_L_C         "ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
-alias ctags_L_Python    "ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
-alias ctags_L_SV        "ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
-alias ctags_L_scala     "ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L "
+alias ctags_list-languages "ctags --list-languages "
+alias ctags_list-maps   "ctags --list-maps "
+alias ctags_list-kinds  "ctags --list-kinds "
+alias ctags_langmap     'echo "ctags --langmap=c:.c.x,java:+.j"'
+alias ctags_langdef     'echo "ctags --langdef=C "'
+alias ctags_R           "ctags -R    --c++-kinds=+lpx --fields=+iaS --extra=+qf "
+alias ctags_R_C         "ctags -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
+alias ctags_R_Python    "ctags -R    --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qf "
+alias ctags_R_SV        "ctags -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_scala     "ctags -R    --languages=scala --scala-kinds=+p --fields=+iaS --extra=+qf "
+alias ctags_Re          "ctags -R -e --c++-kinds=+lpx --fields=+iaS --extra=+qf "
+alias ctags_Re_C        "ctags -R -e --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
+alias ctags_Re_Python   "ctags -R -e --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qf "
+alias ctags_Re_SV       "ctags -R -e --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_Re_scala    "ctags -R -e --languages=scala --scala-kinds=+p --fields=+iaS --extra=+qf "
+alias ctags_L_C         "ctags -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf -L "
+alias ctags_L_Python    "ctags -R    --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
+alias ctags_L_SV        "ctags -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
+alias ctags_L_scala     "ctags -R --languages=scala --scala-kinds=+p --fields=+iaS --extra=+qf -L "
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
