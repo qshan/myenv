@@ -221,6 +221,8 @@ alias nvimO='     nvim -O '
 #alias nvimqt='    nvim-qt -- '
 alias nvimqt='    nvim-qt --geometry 970x512 -- '
 
+alias cscopebcqRv=' cscope -bcqRv '
+
 ##ToCheck# for your env default setting
 alias Emacs='/usr/bin/emacs26'
 #alias EmacsM='Emacs -mm'
@@ -266,27 +268,33 @@ alias goCTest='     cd /data/work/test_space/ctest_qshan'
 alias goCppTest='   cd /data/work/test_space/cpptest_qshan'
 
 #git alias
-alias githelpa='        git help -a '
-alias gitgui='          git gui '
-alias gitadd_f='        git add -f '
-alias gitmvn='          git mv -n '
-#alias gitmvn='          git mv -dry-run '
-alias gitmv='           git mv '
-alias gitmvv='          git mv -v '
-alias gitmvf='          git mv -f '
-alias gitrmn='          git rm -n '
-#alias gitrmn='          git rm -dry-run '
-alias gitrm='           git rm '
-alias gitrmr='          git rm -r '
-alias gitrmf='          git rm -f '
+alias githelpa='              git help -a '
+alias gitgui='                git gui '
+alias gitadd_f='              git add -f '
+alias gitmvn='                git mv -n '
+#alias gitmvn='                git mv -dry-run '
+alias gitmv='                 git mv '
+alias gitmvv='                git mv -v '
+alias gitmvf='                git mv -f '
+alias gitrmn='                git rm -n '
+#alias gitrmn='                git rm -dry-run '
+alias gitrm='                 git rm '
+alias gitrmr='                git rm -r '
+alias gitrmf='                git rm -f '
 #
-alias gitcommitma='     git commit -a -m '
+alias gitcommitma='           git commit -a -m '
 #example# git commit -ma "coment description"
-alias gitcommitm='      git commit -m '
+alias gitcommitm='            git commit -m '
 #example# git commit -m "coment description" FileName1 FileName2
-alias gitcommitamend='  git commit --amend '
-alias gitpush='         git push '
+alias gitcommitamend='        git commit --amend '
+alias gitpush='               git push '
 #example# git push TargetName SourceName #push data from SourceName to TargetName
+alias gitpushset-upstream='    git push --set-upstream '
+##### set the default behavior of git push operation, from local master to remote origin
+##### git push --set-upstream origin master
+alias gitpushoriginmaster='    git push origin master'
+# $git push origin master                       #normal push, find a ref that matches master in the source repo(most likely, it would find refs/heads/master), and update the same ref in the origin repo with it. If master did not exist remotely, it would be created.
+#example# git push --set-stream TargetName SourceName #push data from SourceName to TargetName
 alias gitpull='               git pull --tags '
 alias gitpulloriginmaster='   git pull --tags origin master '
 #example git checkout TagName FileName
@@ -294,7 +302,9 @@ alias gitpulloriginmaster='   git pull --tags origin master '
 #example git checkout -b NewBranchName
 #example git checkout -b NewBranchName TagName
 alias gitfetch='              git fetch --all '
-alias gitremoteadd='          git remote add origin '
+alias gitremoteaddorigin='    git remote add origin '
+alias gitremoteadd='          git remote add '
+#git remote add LocalNameForRemoteRepo file://${FullPathOfRemoteRepo}/${ProjectName}.git
 alias gitremotev='            git remote -v'
 alias gitremotevshow='        git remote -v show '
 #example# gitremoteshow RemoteRepoName
@@ -335,7 +345,8 @@ alias gitbranchtrack='        git branch --track'
 alias gitbranchb='            git branch -b'
 #example# gitbranchb localBranchName remoteHostName/remoteBranchName
 #example# gitbranchb localBranchName
-alias gitswitchc='            git cwitch -c'
+alias gitswitch='             git switch '
+alias gitswitchc='            git switch -c'
 #example# gitswitchc localBranchName remoteHostName/remoteBranchName
 alias gitconfiglist='         git config --list'
 alias gitreset_soft='         git reset --soft '
@@ -361,6 +372,42 @@ alias gitcheckout--='         git checkout -- '
 #example# gitcheckout commitNumber fileName
 #example# gitcheckout fileName
 alias gitcleanfd='            git clean -fd '
+alias gitstash='              git stash '
+alias gitstashlist='          git stash list '
+alias gitstashshow='          git stash show '
+alias gitstashpop='           git stash pop '
+alias gitstashapply='         git stash apply '
+alias gitstashdrop='          git stash drop '
+alias gitstashclear='         git stash clear '
+alias gitstashbranch='        git stash branch '
+alias gitstashclear='         git stash clear '
+alias gitstashcreate='        git stash create '
+alias gitstashstore='         git stash store '
+##### Interrupted workflow
+###  When you are in the middle of something, your boss comes in and demands that you fix something immediately.
+###  Traditionally, you would make a commit to a temporary branch to store your changes away, and return to your
+###  original branch to make the emergency fix, like this:
+###      # ... hack hack hack ...
+###TODO# $ git switch -c my_wip
+###      $ git commit -a -m "WIP"
+###      $ git switch master
+###      # edit emergency fix
+###      $ git commit -a -m "Fix in a hurry"
+###      $ git switch my_wip
+###      $ git reset --soft HEAD^
+###      # ... continue hacking ...
+###  You can use git stash to simplify the above, like this:
+###      # ... hack hack hack ...
+###info  $ git stash
+###      # edit emergency fix
+###      $ git commit -a -m "Fix in a hurry"
+###info  $ git stash pop
+###      # ... continue hacking ...
+#
+alias gitinit='               git init '
+alias gitinitbare='           git init --bare '
+alias gitclonebarel='         git clone --bare -l '
+#example git clone --bare -l LocalRepoPathWithFullName/.git BackupRepoNameWithFullPath.git
 
 #input methods reset
 alias input_methods_reset_fcitx='fcitx -r'
@@ -382,21 +429,28 @@ alias input_methods_reset_fcitx='fcitx -r'
 
 ###############alias for tags generation
 #alias ctags='the_ctags_in_your_env'
-
-alias ctags_R="         ctags -R --c++-kinds=+px --fields=+iaS --extra=+qf "
-alias ctags_R_Python="  ctags -R --python-kinds=+vi --fields=+iaSKz --extra=+qf "
-#alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_R_SV="      ctags -R --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_R_scala="   ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf "
+alias ctags_list-languages="ctags --list-languages "
+alias ctags_list-maps=" ctags --list-maps "
+alias ctags_list-kinds="ctags --list-kinds "
+alias ctags_langmap='   echo "ctags --langmap=c:.c.x,java:+.j"'
+alias ctags_langdef='   echo "ctags --langdef=C "'
+alias ctags_R="         ctags -R    --c++-kinds=+px --fields=+iaS --extra=+qf "
+alias ctags_R_C="       ctags -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
+alias ctags_R_Python="  ctags -R    --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qf "
+#alias ctags_R_SV="      ctags -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_SV="      ctags -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_scala="   ctags -R    --languages=scala --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re="        ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
-alias ctags_Re_Python=" ctags -R -e --python-kinds=+vi --fields=+iaSKz --extra=+qf "
-alias ctags_Re_SV="     ctags -R -e --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_Re_C="      ctags -R -e --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
+alias ctags_Re_Python=" ctags -R -e --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qf "
+alias ctags_Re_SV="     ctags -R -e --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
 #alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
-alias ctags_Re_scala="  ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
-alias ctags_L_C="       ctags --c++-kinds=+px --fields=+iaS --extra=+qf -L "
-alias ctags_L_Python="  ctags --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
-alias ctags_L_SV="      ctags --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
-alias ctags_L_scala="   ctags -R --scala-kinds=+p --fields=+iaS --extra=+qf -L "
+alias ctags_Re_scala="  ctags -R -e --languages=scala --scala-kinds=+p --fields=+iaS --extra=+qf "
+alias ctags_L="         ctags -R    --c++-kinds=+px --fields=+iaS --extra=+qf -L "
+alias ctags_L_C="       ctags -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf -L "
+alias ctags_L_Python="  ctags -R    --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qf -L "
+alias ctags_L_SV="      ctags -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf -L "
+alias ctags_L_scala="   ctags -R    --languages=scala --scala-kinds=+p --fields=+iaS --extra=+qf -L "
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
