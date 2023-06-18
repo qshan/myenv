@@ -355,10 +355,10 @@ set listchars+=space:·
                       highlight SpaceOnEnd ctermbg=red guibg=red
 autocmd ColorScheme * highlight SpaceOnEnd ctermbg=red guibg=red
 ""autocmd ColorScheme * highlight SpaceOnEnd
-autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
+"autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
 "autocmd FileRead *.* match ExtraWhitespace /\s\+$/
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
-"
+"  
 "set mouse=a
 set mouse=invc
 " Display options
@@ -767,16 +767,16 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 ""syntax syntax_item_name
 "it is better to put those match words on end of file
 "just one highlight type per time
-"worked":match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
-au BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+"worked":match Todo /TODO\|todo\|Todo\|fshan\|qshan\|DSF_IP\|dsf_ip\|fixme/
+au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
-au BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
-"
+au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-\|\s\+$/
+"  
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
 "
 "
 "need source $MYVIMRC after e(open)
