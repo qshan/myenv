@@ -73,6 +73,6 @@
 --scala-kinds=+ctmpivVTlo
 
 
---langmap=make:+.min
+--langmap=make:+([Mm]akefile).mak.min.mk
 
 --languages=+SystemVerilog,C,C++,HTML,Lisp,Make,make,Matlab,Perl,Python,Sh,Tex,scala
