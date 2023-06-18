@@ -68,11 +68,11 @@ echo  "FullPathOfRemoteRepo is      ${FullPathOfRemoteRepo}"
 ####add a localname for remote repo. create linker the local repository with remote repository
 # $git remote add origin file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git
   git remote add origin file://${FullPathOfRemoteRepo}/${ProjectName}.git
-####push the local repo to remote repo
+####push the local repo (master) to remote repo (origin), origin is the local name of remote repo
 # $git push --set-upstream origin master        #first time
   #TODO# set the default behavior of git push
   git push --set-upstream origin master        #first time
-# $git push origin master                       #normal push
+# $git push origin master                       #normal push, find a ref that matches master in the source repo(most likely, it would find refs/heads/master), and update the same ref in the origin repo with it. If master did not exist remotely, it would be created.
 ####get the code from remote repo
 # $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git
 # $git clone file://RemoteRepositoryFolerNameWithPullPath/RemoteRepositoryName.git.git NewFolderName
