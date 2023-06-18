@@ -706,15 +706,15 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "it is better to put those match words on end of file
 "just one highlight type per time
 "worked":match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
-au BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
-au BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
+au BufWinEnter,BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 "
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
 "
 "
 "need source $MYVIMRC after e(open)
@@ -1022,6 +1022,32 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """ -----personal command--End-------------------
 "
 """ -----popular command--Start-------------------
+"""----------------------------cscope start----------------------------
+"##info## To get started, build the cscope database in your project root directory: >
+"info"" cscope -bcqR
+"##info## By default the cscope database file is named "cscope.out". After building the
+"database, connect to it from Nvim:
+"info"" :cscope add cscope.out
+"##info## That establishes a cscope connection for Nvim to use.  You can check the
+"result with ":cs show".  It will show something like:
+"info"" Once a cscope connection is established, you can make queries to cscope and
+"the results will be printed.  Queries are made using the command ":cs find".
+"For example: >
+"info"" :cs find g ALIGN_SIZE
+"##USAGE   :cs find {querytype} {name}
+"       {querytype} corresponds to the actual cscope line
+"       interface numbers as well as default nvi commands:
+"info"" 0 or s: Find this C #symbol#
+"info"" 1 or g: Find this #definition#
+"info"" 2 or d: Find functions #called by# this function
+"info"" 3 or c: Find functions #calling this function#
+"info"" 4 or t: Find this #text string#
+"info"" 6 or e: Find this #egrep pattern#
+"info"" 7 or f: Find this #file#
+"info"" 8 or i: Find files #including this file
+"info"" 9 or a: Find places where this symbol is #assigned# a value
+"
+"""----------------------------cscope end----------------------------
 "Hotkeys
 """----------------------------basic command to move cursor in command mode----------------------------
 "           k
