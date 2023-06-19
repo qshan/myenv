@@ -1153,9 +1153,10 @@ When used in shell-mode, it will paste parenthesis on shell prompt by default "
 ;;re-read the file using the correct coding system
 ;;C-x RET r (revert-buffer-with-coding-system)
 ;;
-;; Try use the chinese input
+;;info;; Try use the chinese input
 ; M-x set-input-method
 ; select pyim
+; C-\ turn off IME
 ;
 ;;C-\ Enable or disable use of the selected input method (toggle-input-method).
 ;;M-x load-theme
