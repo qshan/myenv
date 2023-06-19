@@ -613,12 +613,29 @@ let g:ycm_show_detailed_diag_in_popup=1
       \ 'command': 'GetDoc',
       \ 'syntax': &filetype
       \ }
-
+"
+" Overview of which map command works in which mode.  More details below.
+"      COMMANDS                    MODES ~
+" :map   :noremap  :unmap     Normal, Visual, Select, Operator-pending
+" :nmap  :nnoremap :nunmap    Normal
+" :vmap  :vnoremap :vunmap    Visual and Select
+" :smap  :snoremap :sunmap    Select
+" :xmap  :xnoremap :xunmap    Visual
+" :omap  :onoremap :ounmap    Operator-pending
+" :map!  :noremap! :unmap!    Insert and Command-line
+" :imap  :inoremap :iunmap    Insert
+" :lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
+" :cmap  :cnoremap :cunmap    Command-line
+" :tmap  :tnoremap :tunmap    Terminal
 "
 "set the leaderkey setting
 let mapleader = ","  "map leader-key to ,
-map <leader>n :set number<CR>
+"info"" check the leaderkey map
+":echo mapleader
+nmap <leader>n :set number<CR>
 ""info" :map  ""lists current mappings
+""info" show the hotkey define in current status
+" :map
 "
 "set here again to avoid the vundle's plugin setting
 :hi CursorLine   cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
@@ -705,12 +722,12 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 ""syntax syntax_item_name
 "it is better to put those match words on end of file
 "just one highlight type per time
-"worked":match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+"worked":match Todo /TODO\|todo\|Todo\|fshan\|qshan\|DSF_IP\|dsf_ip\|fixme/
 au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
-au BufWinEnter,BufReadPost,FileReadPost *.* :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
-"
+au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-\|\s\+$/
+"  
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
@@ -759,13 +776,13 @@ source $VIMRUNTIME/macros/matchit.vim
 endif
 
 if exists("loaded_matchit")
-let b:match_ignorecase = 0
-"let b:match_ignorecase = 1
-let b:match_skip = 's:Comment'
-let b:match_words = '<:>'
-"autocmd BufReadPre,BufNewFile,FileReadPost *.min  set filetype=make
-":autocmd FileType systemverilog :let b:match_words .=  '<:>,'
-"                    \ . 'module:endmodule,'
+  let b:match_ignorecase = 0
+  "let b:match_ignorecase = 1
+  let b:match_skip = 's:Comment'
+""  let b:match_words = '<:>'
+  "autocmd BufReadPre,BufNewFile,FileReadPost *.min  set filetype=make
+  ":autocmd FileType systemverilog :let b:match_words .=  '<:>,'
+  "                    \ . 'module:endmodule,'
 endif "end of if exists("loaded_matchit")
 
 :let b:match_words  =  '<:>,'

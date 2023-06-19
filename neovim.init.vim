@@ -675,12 +675,29 @@ let g:ycm_show_detailed_diag_in_popup=1
       \ 'command': 'GetDoc',
       \ 'syntax': &filetype
       \ }
-
+"
+" Overview of which map command works in which mode.  More details below.
+"      COMMANDS                    MODES ~
+" :map   :noremap  :unmap     Normal, Visual, Select, Operator-pending
+" :nmap  :nnoremap :nunmap    Normal
+" :vmap  :vnoremap :vunmap    Visual and Select
+" :smap  :snoremap :sunmap    Select
+" :xmap  :xnoremap :xunmap    Visual
+" :omap  :onoremap :ounmap    Operator-pending
+" :map!  :noremap! :unmap!    Insert and Command-line
+" :imap  :inoremap :iunmap    Insert
+" :lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
+" :cmap  :cnoremap :cunmap    Command-line
+" :tmap  :tnoremap :tunmap    Terminal
 "
 "set the leaderkey setting
 let mapleader = ","  "map leader-key to ,
-map <leader>n :set number<CR>
+"info"" check the leaderkey map
+":echo mapleader
+nmap <leader>n :set number<CR>
 ""info" :map  ""lists current mappings
+""info" show the hotkey define in current status
+" :map
 "
 "set here again to avoid the vundle's plugin setting
 :hi CursorLine   cterm=NONE ctermbg=grey gui=NONE guibg=Grey40
