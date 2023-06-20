@@ -1176,10 +1176,19 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 " :set foo-=opt   - remove opt from value
 " :set foo&       - reset foo to default value
 " :setlocal foo   - only the current buffer
+"
+""""""##Substitute##
+":[range]s[ubstitute]/{pattern}/{string}/[flags] [count]
+"
 """Search and replace... (substitute)
 """search whole file and replace, (substitute)
 ":%s/search_for_this/replace_with_this/
 ":%s/search_for_this/replace_with_this/g
+"  *:s_g*
+"[g]  Replace all occurrences in the line.  Without this argument,
+" replacement occurs only for the first occurrence in each line.  If the
+" 'gdefault' option is on, this flag is on by default and the [g]
+" argument switches it off.
 ""
 " replace/substitute the specific lines, from Start to End"
 ":StartLineNumber,EndLineNumbers/search_for_this/replace_with_this/g
@@ -1194,6 +1203,37 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 ""
 """ confirm each replace
 ":%s/search_for_this/replace_with_this/c
+"
+"Line numbers may be specified with:                  *:range* *{address}*
+" {number}    an absolute line number  *E1247*
+" .           the current line                        *:.*
+" $           the last line in the file               *:$*
+" %           equal to 1,$ (the entire file)          *:%*
+" 't          position of mark t (lowercase)          *:'*
+" 'T          position of mark T (uppercase); when the mark is in
+"             another file it cannot be used in a range
+" /{pattern}[/]       the next line where {pattern} matches           *:/*
+" ?{pattern}[?]       the previous line where {pattern} matches       *:?*
+" \/          the next line where the previously used search
+"             pattern matches
+" \?          the previous line where the previously used search
+"             pattern matches
+" \&          the next line where the previously used substitute
+"             pattern matches
+"
+"Each may be followed (several times) by '+' or '-' and an optional number.
+"This number is added or subtracted from the preceding line number.  If the
+"number is omitted, 1 is used.  If there is nothing before the '+' or '-' then
+"the current line is used.
+"info"example of number used in range"
+"  .+3                three lines below the cursor
+"  /that/+1           the line below the next line containing "that"
+"  .,$                from current line until end of file
+"  0;/that            the first line containing "that", also matches in the
+"                     first line.
+"  1;/that            the first line after line 1 containing "that"
+"
+"
 """ Folding, select block, then
 ":fold
 """ Fold control - enable
