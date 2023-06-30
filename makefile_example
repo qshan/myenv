@@ -1,4 +1,143 @@
+#!/usr/bin/make
+#
+#meaning of specific strings
+#reference info is here: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables
+#--------------------------------------------------
+#*#     $@      The file name of the target of the rule. ‘$@’ is the name of whichever target caused the rule’s recipe
+#                 to be run. all of FileNameWithExtension produced
+#       $*      all of FileNameWithoutExtension produced
+#       $<      the FileName of first dependence item
+#*#     $^      the dependency items with space isolated and remove the repeated item
+#       $+      the dependency items with space isolated, but do not remove the repeated item
+#       $?      the dependency items with space isolated, but just have the new item
+#       $|      The names of all the order-only prerequisites, with spaces between them
+#--------------------------------------------------
+#       $(@D)   The directory part of the file name of the target, with the trailing slash removed.
+#                 If the value of ‘$@’ is dir/foo.o then ‘$(@D)’ is dir.
+#                 This value is . if ‘$@’ does not contain a slash
+#       $(@F)   The file-within-directory part of the file name of the target. If the value of ‘$@’
+#                 is dir/foo.o then ‘$(@F)’ is foo.o. ‘$(@F)’ is equivalent to ‘$(notdir $@)’.
+#       $(*D)
+#       $(*F)   The directory part and the file-within-directory part of the stem; dir and foo in this example.
+#       $(%D)
+#       $(%F)   The directory part and the file-within-directory part of the target archive member name.
+#                 This makes sense only for archive member targets of the form archive(member) and is useful
+#                 only when member may contain a directory name. (See Archive Members as Targets.)
+#       $(<D)
+#       $(<F)   The directory part and the file-within-directory part of the first prerequisite.
+#       $(^D)
+#       $(^F)   Lists of the directory parts and the file-within-directory parts of all prerequisites.
+#       $(+D)
+#       $(+F)   Lists of the directory parts and the file-within-directory parts of all prerequisites,
+#                 including multiple instances of duplicated prerequisites.
+#       $(?D)
+#       $(?F)   Lists of the directory parts and the file-within-directory parts of all prerequisites that are newer
+#                 than the target.
+#--------------------------------------------------
+#*#     %   pattern rules, like %.o : %.c
+#--------------------------------------------------
+# Functions for Transforming Text : https://www.gnu.org/software/make/manual/html_node/Functions.html
+##### function about string
+# $(subst <from>,<to>,<text> )
+# $(patsubst <pattern>,<replacement>,<text> )
+# $(strip <string> )
+# $(strip a b c )
+# $(findstring <find>,<in> )
+# $(filter <pattern...>,<text> )
+# $(filter-out <pattern...>,<text> )
+# $(sort <list> )
+# $(word <n>,<text> )
+# $(word n,text)
+# $(wordlist s,e,text)
+# $(words text)
+# $(firstword names…)
+# $(lastword names…)
+#--------------------------------------------------
+# https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html
+##### function about operation of file name
+# $(dir <names...> )
+# $(notdir <names...> )
+# $(suffix <names...> )
+# $(basename <names...> )
+# $(addsuffix <suffix>,<names...> )
+# $(addprefix <prefix>,<names...> )
+# $(join <list1>,<list2> )
+# $(wildcard pattern)
+# $(realpath names…)
+# $(abspath names…)
+#
+# $(file op filename[,text])
+#--------------------------------------------------
+##### function foreach
+# $(foreach <var>,<list>,<text> )
+#--------------------------------------------------
+##### function conditional
+# $(if <condition>,<then-part> )
+# $(if <condition>,<then-part>,<else-part> )
+# $(if condition,then-part[,else-part])
+# $(or condition1[,condition2[,condition3…]])
+# $(and condition1[,condition2[,condition3…]])
 
+#--------------------------------------------------
+##### function call
+# $(call <expression>,<parm1>,<parm2>,<parm3>...)
+#--------------------------------------------------
+##### function origin
+# $(origin <variable> )
+#--------------------------------------------------
+# $(value variable)
+#--------------------------------------------------
+##### function shell
+# $(shell ls *.c)
+# files := $(shell ls *.c)
+#--------------------------------------------------
+##### function control make process
+# $(error <text ...> )
+# $(warning <text ...> )
+# $(info <text ...> )
+#--------------------------------------------------
+##### rule of Makefile, update a list from a to b
+# $(var_name:a=b)
+# $(var_name:.o=.c)
+# same as
+# $(patsubst %a ,%b ,var_name)
+#--------------------------------------------------
+#
+#automatic variables          Descriptions
+#*#     $@                    The file name of the target
+#       $<                    The name of the first prerequisite
+#*#     $^                    The names of all the prerequisites
+#       $+                    Prerequisites listed more than once are duplicated in the order
+#
+# define a variable, Var=xx , and the methods of using variable is $(Var)
+#
+#search path
+# VPATH was designed to find sources, not targets.
+#
+# VPATH = src include
+# VPATH %.c src
+# VPATH %.C src
+#
+# VPATH %.cpp src
+# VPATH %.CPP src
+#
+# VPATH %.h include
+#
+# VPATH %.cc src
+# VPATH %.CC src
+#
+# VPATH %.s src
+# VPATH %.S src
+#
+#match standard
+# %.o: %.c
+#
+# %.o: %.c
+#   gcc -g -o $@ -c $<
+#
+#
+#.PHONY: all #info#this items is for no dependance item
+#------------------------------
 
 DSF_CC?=armcc
 DSF_LINK?=armlink
