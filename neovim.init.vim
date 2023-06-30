@@ -256,10 +256,10 @@ set expandtab        "replae the tab with blankspace
 "set et
 ""set expandtab
 ""
-set tabstop=2               "set to show the tab with 2 blankspace; identify how many space as a TAB
-set softtabstop=2           " how many space to show for a tab in Insert mode
-set vartabstop=2,4,8        "set to show the tab with 2 blankspace; identify how many space as a TAB
-set varsofttabstop=2,4,8    "set to show the tab with 2 blankspace; identify how many space as a TAB
+set tabstop=2                 "set to show the tab with 2 blankspace; identify how many space as a TAB
+"worked"set vartabstop=2,4,4,2        "set to show the tab with 2 blankspace; identify how many space as a TAB
+set softtabstop=2             " how many space to show for a tab in Insert mode
+"worked"set varsofttabstop=2,4,4,2    "set to show the tab with 2 blankspace; identify how many space as a TAB
 au BufReadPost,FileReadPost * :set      tabstop=2
 au BufReadPost,FileReadPost * :set  softtabstop=2
 
@@ -355,10 +355,10 @@ set listchars+=space:·
                       highlight SpaceOnEnd ctermbg=red guibg=red
 autocmd ColorScheme * highlight SpaceOnEnd ctermbg=red guibg=red
 ""autocmd ColorScheme * highlight SpaceOnEnd
-"autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
+"set_in_2match""autocmd BufWinEnter * match     SpaceOnEnd /\s\+$/
 "autocmd FileRead *.* match ExtraWhitespace /\s\+$/
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
-"  
+"
 "set mouse=a
 set mouse=invc
 " Display options
