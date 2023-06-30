@@ -4,6 +4,9 @@
 #HWIO_OUTXF ( basename, xxxxx) -> HWIO_OUTF (xxxxx)
 find TargetPathName -type f -iname "*.c" |xargs sed -i 's/HWIO_OUTXF\s*(\s*[a-zA-Z0-9_\-]*\s*,\s*/HWIO_OUTF (/g'
 
+#replace TAB_Key with white space in files, input the TAB_Key with C-V TAB
+find TargetPathName -type f -iname "*.c" |xargs sed -i 's/	/  /g'
+
 #example of find/grep/sed
 find ./PathSearched -iname "*.[ch]" | xargs grep -rnE --color "(HWIO_.*)I(\s*\(CADENCE_DDR_CONTROLLER_DENALI_CTL_[0-9]+)_I,\s*ch(.*)"
 find ./PathSearched -iname "*.[ch]" | xargs grep -rnE --color "(HWIO_.*)I(\s*\(CADENCE_DDR_CONTROLLER_DENALI_CTL_[0-9]+)_I,\s*ch(.*)" |wc -l
