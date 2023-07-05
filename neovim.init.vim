@@ -187,6 +187,7 @@ if exists('g:GuiLoaded')
 "  if exists('nodiff')
   if &diff
     :MyFont10
+"    :MyDiffIgnoreWhiteSpace
   else
     :MyFont12
   endif
