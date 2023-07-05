@@ -134,6 +134,9 @@ rename 'y/A-Z/a-z/' *
 find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|'|\!|-|\s]+/_/g' {}
 find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|'|\!|-|\+|\s]+/_/g' {}
 
+# Device or resource busy issue - resolved
+# lsof +D PathNameOfBadFile
+
 env | sort
 ln -sTf SourceFolderName TargetLinkerName
 ln -snf SourceFolderName TargetLinkerName
