@@ -1,0 +1,21 @@
+
+
+#update the contents of ~/.config/lxqt/panel.conf file
+
+#update the field and add part
+[quicklaunch]
+alignment=Left
+apps\1\desktop=/usr/share/applications/pcmanfm-qt.desktop
+apps\2\desktop=/usr/share/applications/google-chrome.desktop
+apps\size=2
+type=quicklaunch
+
+# or
+#add field
+[quicklaunch2]
+alignment=Left
+apps\1\desktop=/usr/share/applications/google-chrome.desktop
+apps\size=1
+type=quicklaunch
+
+# Right click on the panel -> Configure panel -> Select Widgets -> Select Quick launch(quicklaunch) or Quick launch(quicklaunch2) -> Use ^ to change/up/down the location in the widgets list
