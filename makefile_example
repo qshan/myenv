@@ -45,7 +45,7 @@
 # $(findstring <find>,<in> )
 # $(filter <pattern...>,<text> )
 # $(filter-out <pattern...>,<text> )
-# $(sort <list> )
+# $(sort <list> )  #sort the words of the list in lexical order, removing duplicate words.
 # $(word <n>,<text> )
 # $(word n,text)
 # $(wordlist s,e,text)
@@ -160,6 +160,10 @@ DSF_SRCS := $(wildcard *.c)
 DSF_SRCS += $(foreach dir,$(DSF_SRC_DIR),$(wildcard $(dir)/*.c))
 #replace the *.c to *.o name in the contents of DSF_SRCS
 DSF_OBJS := $(patsubst %.c,%.o, $(DSF_SRCS))
+#replace the *.c to *.o name in the contents of DSF_SRCS, tne remove the path info, and remove the duplacte files
+#info# DSF_OBJS := $(sort $(notdir $(DSF_SRCS:.c=.o)))
+#get the path info, and remove the duplacte files
+#info# DSF_OBJS := $(sort $(notdir $(DSF_SRCS)))
 #replace the *.c to *.o name in the contents of DSF_SRCS
 DSF_OBJS_D := $(patsubst %.c,%.d,$(DSF_SRCS))
 
