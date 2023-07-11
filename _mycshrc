@@ -446,8 +446,8 @@ alias ctags_L_scala     "ctags -R --languages=scala --scala-kinds=+p --fields=+i
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
-setenv  PATH      "${PATH}:/usr/local/lib"
-set     path    = ($path /usr/local/lib )
+setenv  PATH      "${PATH}:/usr/local/lib:/usr/lib"
+set     path    = ($path /usr/local/lib /usr/lib)
 #
 # setenv PATH       '$PATH\:/bin:/home/fshan/.cargo/bin:/home/fshan/bin:/home/fshan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/lib:/home/fshan/.cargo/bin'
 #set     path    = ($path /bin /home/fshan/.cargo/bin /home/fshan/bin /home/fshan/.local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/games /usr/local/games /snap/bin /usr/local/lib /home/fshan/.cargo/bin)

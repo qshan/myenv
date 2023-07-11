@@ -465,7 +465,7 @@ alias ctags_L_scala="   ctags -R    --languages=scala --scala-kinds=+p --fields=
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
-export PATH=$PATH:/usr/local/lib
+export PATH=$PATH:/usr/local/lib:/usr/lib
 
 #set the the path of graalvm instead of openjdk
 export PATH=~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH
