@@ -422,27 +422,35 @@ endif
 ## todo Universal-ctags is required
 #
 #alias ctags 'the_ctags_in_your_env'
-alias ctags_list-languages "ctags --list-languages "
-alias ctags_list-maps   "ctags --list-maps "
-alias ctags_list-kinds  "ctags --list-kinds "
-alias ctags_langmap     'echo "ctags --langmap=c:.c.x,java:+.j"'
-alias ctags_langdef     'echo "ctags --langdef=C "'
-alias ctags_R           "ctags -R     "
-#alias ctags_R_C         "ctags -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
-alias ctags_R_C         "ctags -R    --languages=C,C++,C#,Asm,make "
-alias ctags_R_Python    "ctags -R    --languages=python "
-#alias ctags_R_SV        "ctags -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
-alias ctags_R_SV        "ctags -R    --languages=systemverilog,verilog "
-alias ctags_R_scala     "ctags -R    --languages=scala,java  --scala-kinds=+p --fields=+iaS --extras=+qf "
-alias ctags_Re          "ctags -R -e "
-alias ctags_Re_C        "ctags -R -e --languages=C,C++,C#,Asm,make "
-alias ctags_Re_Python   "ctags -R -e --languages=python "
-alias ctags_Re_SV       "ctags -R -e --languages=systemverilog,verilog "
-alias ctags_Re_scala    "ctags -R -e --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qf "
-alias ctags_L_C         "ctags -R    --languages=C,C++,C#,Asm,make -L "
-alias ctags_L_Python    "ctags -R    --languages=python -L "
-alias ctags_L_SV        "ctags -R    --languages=systemverilog,verilog -L "
-alias ctags_L_scala     "ctags -R --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qf -L "
+alias ctags_list-languages        "ctags --list-languages "
+alias ctags_list-maps             "ctags --list-maps "
+alias ctags_list-map-exetensions  "ctags --list-map-extensions "
+alias ctags_list-fields           "ctags --list-fields "
+alias ctags_list-kinds            "ctags --list-kinds "
+alias ctags_list-kinds-full       "ctags --list-kinds-full "
+alias ctags_list-extras           "ctags --list-extras "
+alias ctags_list-excludes         "ctags --list-excludes "
+alias ctags_list-features         "ctags --list-features "
+alias ctags_list-params           "ctags --list-params "
+alias ctags_langmap               'echo "ctags --langmap=c:.c.x,java:+.j"'
+alias ctags_langdef               'echo "ctags --langdef=C "'
+alias ctags_R                     "ctags -R --extra=+qfrs "
+#alias ctags_R_C                   "ctags -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
+alias ctags_R_C                   "ctags -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qfrs "
+alias ctags_R_Python              "ctags -R    --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qfrs "
+#alias ctags_R_SV                  "ctags -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
+alias ctags_R_SV                  "ctags -R    --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs "
+alias ctags_R_scala               "ctags -R    --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qfrs "
+alias ctags_Re                    "ctags -R -e --extra=+qfrs "
+alias ctags_Re_C                  "ctags -R -e --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qfrs "
+alias ctags_Re_Python             "ctags -R -e --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qfrs"
+alias ctags_Re_SV                 "ctags -R -e --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs"
+alias ctags_Re_scala              "ctags -R -e --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qf "
+alias ctags_L                     "ctags -R -L --extra=+qfrs "
+alias ctags_L_C                   "ctags -R -L --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qfrs "
+alias ctags_L_Python              "ctags -R -L --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qfrs "
+alias ctags_L_SV                  "ctags -R -L --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs"
+alias ctags_L_scala               "ctags -R -L --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qfrs "
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
