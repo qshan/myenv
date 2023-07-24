@@ -7,7 +7,8 @@ cs setup;
 # https://www.scala-lang.org/download/
 #install specific version
 # cs install scala:3.1.2 && cs install scalac:3.1.2
-# cs install scala:2.13.8 && cs install scalac:2.13.8
+# cs install scala:2.13.11 && cs install scalac:2.13.11
+# cs install scala:2.12.18 && cs install scalac:2.12.18
 
 # export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
 #
