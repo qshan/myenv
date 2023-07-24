@@ -723,7 +723,7 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "it is better to put those match words on end of file
 "just one highlight type per time
 "worked":match Todo /TODO\|todo\|Todo\|fshan\|qshan\|DSF_IP\|dsf_ip\|fixme/
-au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|FIXME\|Fixme\|FixMe\|todo/
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-\|\s\+$/
