@@ -786,7 +786,12 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "it is better to put those match words on end of file
 "just one highlight type per time
 "worked":match Todo /TODO\|todo\|Todo\|fshan\|qshan\|DSF_IP\|dsf_ip\|fixme/
-au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|todo/
+au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|FIXME\|Fixme\|FixMe\|todo/
+
+""""""                                          syntax keyword FrankShanTodo    fshan qshan DSF_IP dsf_ip TODO todo Todo fixme Fixme FIXME
+""""""au BufWinEnter,BufReadPost,FileReadPost * syntax keyword FrankShanTodo    fshan qshan DSF_IP dsf_ip TODO todo Todo fixme Fixme FIXME
+""""""highlight link FrankShanTodo  Todo
+
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-\|\s\+$/
@@ -809,7 +814,7 @@ au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefi
 "syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
-""you could check the highlight details with hi or hightlight
+""you could check the highlight details with hi or highlight
 """""syntax keyword FrankShanTodo  contained fshan DSF_IP dsf_ip TODO todo Todo
 """""hi FrankShanTodo   term=standout ctermfg=0 ctermbg=3 guifg=Blue guibg=Yellow
 """"""highlight link FrankShanTodo  Todo
@@ -1013,9 +1018,9 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "syntax match Ignore /Error\:\|error\:\|error\-\|Error\-/
 "syntax match Underlined /Error\:\|error\:\|error\-\|Error\-/
 "
-"au BufReadPost,FileReadPost * :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
-"au BufReadPost,FileReadPost * :syntax match Todo /todo\|TODO\|toDo/
-"au BufReadPost,FileReadPost * :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
+"au BufReadPost,FileReadPost *.* :syntax match WildMenu /info\|DSF_IP\|dsf_ip\|fshan\|qshan\|worked/
+"au BufReadPost,FileReadPost *.* :syntax match Todo /todo\|TODO\|toDo/
+"au BufReadPost,FileReadPost *.* :syntax match Error /Error\:\|error\:\|error\-\|Error\-/
 
 
 ""you could check the highlight details with hi or hightlight
