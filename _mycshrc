@@ -446,11 +446,11 @@ alias ctags_Re_C                  "ctags -R -e --languages=C,C++,C#,Asm,make --c
 alias ctags_Re_Python             "ctags -R -e --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qfrs"
 alias ctags_Re_SV                 "ctags -R -e --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs"
 alias ctags_Re_scala              "ctags -R -e --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qf "
-alias ctags_L                     "ctags -R -L --extra=+qfrs "
-alias ctags_L_C                   "ctags -R -L --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qfrs "
-alias ctags_L_Python              "ctags -R -L --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qfrs "
-alias ctags_L_SV                  "ctags -R -L --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs"
-alias ctags_L_scala               "ctags -R -L --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qfrs "
+alias ctags_L                     "ctags       --extra=+qfrs -L"
+alias ctags_L_C                   "ctags       --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qfrs -L"
+alias ctags_L_Python              "ctags       --languages=python --python-kinds=+vi --fields=+iaSKz --extra=+qfrs -L"
+alias ctags_L_SV                  "ctags       --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs -L"
+alias ctags_L_scala               "ctags       --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qfrs -L"
 #you could try with filelist input style, like
 #ctags_R -L filelist_name
 
@@ -660,6 +660,9 @@ alias millsearchdepend              'mill mill.scalalib.Dependency/showUpdates'
 #The Build REPL
 alias millbuildrepl                 'mill --repl '
 #Deploying your code
+#
+#Integrating IntelliJ with Mill
+alias mill.scalalib.GenIdea          'mill mill.scalalib.GenIdea/idea'
 
 #------------------------------
 #chinese display support
