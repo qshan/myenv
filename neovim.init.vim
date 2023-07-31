@@ -90,6 +90,7 @@ let g:loaded_ruby_provider = 0
 "vim +PluginInstall +qall
 ":PluginInstall
 "cd ~/.vim/bundle/YouCompleteMe
+"git submodule update --init --recursive
 "./install.py --clang-completer
 "python3 ./install.py --clang-completer
 "or
@@ -518,15 +519,16 @@ Plugin 'hrsh7th/vim-vsnip'
 "Plugin 'lilydjwg/fcitx.vim'
 """""Verilog/SystemVerilog Syntax and Omni-completion
 Plugin 'vhda/verilog_systemverilog.vim'
-Plugin 'Python-Syntax-Folding'
 Plugin 'azidar/firrtl-syntax'
+Plugin 'Python-Syntax-Folding'
 Plugin 'Konfekt/FastFold'
 "" https://github.com/Konfekt/FastFold
 
-if !has('nvim')
-  Plugin 'Python-Syntax-Folding'
-  ""set ttymouse=xterm2
-endif
+"if !has('nvim')
+"  Plugin 'Python-Syntax-Folding'
+"  Plugin 'Konfekt/FastFold'
+"  ""set ttymouse=xterm2
+"endif
 
 "https://github.com/vhda/verilog_systemverilog.vim
 "the following example is used to show the installation of different plugin
@@ -556,6 +558,7 @@ endif
 " 插件列表结束
 "Plugin 'qshan/nerdcommenter'
 Plugin 'preservim/nerdcommenter'
+Plugin 'preservim/nerdtree'
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
