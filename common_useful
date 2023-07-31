@@ -16,9 +16,22 @@ find ./PathSearched -iname "*.[ch]" | xargs grep -rnE --color "(HWIO_.*)(\s*\(CA
 #replace the keywords and generate a new file
 sed 's/Word_searched/word_target/g' input_file > outputfile
 
+#save the output info into file. To use ">", let standard output stream redirected to file Info.log.txt.
+RunCommandToGetInfo > Info.log.txt
+#
+#To use ">", let standard output stream redirected to file Info.log.txt. “2>&1” at the end of the command. These symbols tell that the second standard stream ( standard error stream ) needs to be directed at the first standard stream (standard output stream) permanently for this command.
+RunCommandToGetInfo > Info.log.txt 2>&1
+#
+#To use "2>". These symbols tell that the second standard stream ( standard error stream ) needs to be directed to ErrorInfo.log.txt.
+RunCommandToGetInfo 2> ErrorInfo.log.txt
+#
+RunCommandToGetInfo > Info.log.txt 2> ErrorInfo.log.txt
+ls exitedFileInFolder noExitedFileInFolder > Info.log.txt 2> ErrorInfo.log.txt
+
 #replace the keywords in targetfile
 sed -i 's/Word_searched/word_target/g' File_name_replaced
 
+cat *.d | awk -F ":" '{print $2}' | sort -u | xargs ctags
 
 sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 
