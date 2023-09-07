@@ -347,7 +347,19 @@ alias gitdiffhead           'git diff HEAD '
 alias gitdiff_cached        'git diff --cached '
 alias gitsubmoduleupdate    'git submodule update --init --recursive '
 alias gitsubmoduleupdatef   'git submodule update --init --recursive --remote --force '
+alias gitsubmoduledeinit    'git submodule deinit '
 alias gitsubmoduleadd       'git submodule add '
+#example# git submodule add <submodule-url> <submodule-path>
+#example#reinit submodule
+##1#Delete the submodule folder:
+#git submodule deinit <submodule_path>
+#git rm <submodule_path>
+#rm -rf .git/modules/<submodule_path>
+##2#Add the submodule again:
+#git submodule add <repository_url> <submodule_path>
+##3#Update the submodule:
+#git submodule update --init --recursive
+#
 alias gitsubmodulestatus    'git submodule status '
 alias gitsubmoduleset-url   'git submodule set-url -- '
 # git submodule set-url -- <path> <url>
@@ -631,7 +643,13 @@ alias millresolve                   'mill resolve '
 #info# mill resolve foo._
 alias millresolvecompile            'mill resolve _.compile'
 alias millresolvecompileall         'mill resolve __.compile'
+alias millresolverun                'mill resolve _.run'
+alias millresolverunall             'mill resolve __.run'
+alias millresolvetest               'mill resolve _.test'
+alias millresolvetestall            'mill resolve __.test'
+#info#List what tasks are available to run:
 alias millresolve_                  'mill resolve _'
+#info#see a full list of the different tasks that are available
 alias millresolve__                 'mill resolve __'
 alias millinspect                   'mill inspect '
 #info# mill inspect foo.run
@@ -662,7 +680,11 @@ alias millbuildrepl                 'mill --repl '
 #Deploying your code
 #
 #Integrating IntelliJ with Mill
-alias mill.scalalib.GenIdea          'mill mill.scalalib.GenIdea/idea'
+alias mill.scalalib.GenIdea         'mill mill.scalalib.GenIdea/idea'
+alias mill.idea.GenIdea             'mill  -j 2 mill.idea.GenIdea/idea'
+alias mill.idea.GenIdea.debug       'mill  -j 2 mill.idea.GenIdea/idea --debug'
+alias mill.bsp.Install              'mill  -j 2 mill.bsp.BSP/install'
+alias mill.bsp.Install.debug        'mill  -j 2 mill.bsp.BSP/install --debug'
 
 #------------------------------
 #chinese display support
