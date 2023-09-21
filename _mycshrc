@@ -332,8 +332,12 @@ alias gitbranchtrack        'git branch --track'
 alias gitbranchb            'git branch -b'
 #example# gitbranchb localBranchName remoteHostName/remoteBranchName
 #example# gitbranchb localBranchName
-alias gitswitchc            'git cwitch -c'
+alias gitswitch             'git switch '
+alias gitswitchc            'git switch -c'
+alias gitswitchf            'git switch -f'
+alias gitswitchm            'git switch -m'
 #example# gitswitchc localBranchName remoteHostName/remoteBranchName
+alias gitrestore            'git restore'
 alias gitconfiglist         'git config --list'
 alias gitreset_soft         'git reset --soft '
 alias gitreset_hard         'git reset --hard '
@@ -364,6 +368,7 @@ alias gitsubmodulestatus    'git submodule status '
 alias gitsubmoduleset-url   'git submodule set-url -- '
 # git submodule set-url -- <path> <url>
 alias gitpullsubmodules     'git pull --recurse-submodules '
+alias gitcheckoutb          'git checkout -b '
 alias gitcheckoutf          'git checkout -f '
 alias gitcheckoutm          'git checkout -m '
 alias gitcheckout--         'git checkout -- '
@@ -632,6 +637,8 @@ alias sbtclassDirectory       'sbt classDirectory'
 alias sbtbaseDirectory        'sbt baseDirectory'
 alias sbtlibraryDepend        'sbt libraryDependencies'
 alias sbtmanagedResourceDir   'sbt managedResourceDirectories'
+alias sbtassembly             'sbt assembly'
+alias sbtpublishLocal         'sbt publishLocal'
 
 #------------------------------
 #mill Built-in commands
