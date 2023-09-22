@@ -134,7 +134,8 @@ alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
 
 
 ##------------------------------
-alias sudodpkgforce-depends 'sudo dpkg -P --force-depends '
+alias sudodpkgforce-depends     'sudo dpkg -P --force-depends '
+alias sudoaptfix-brokeninstall  'sudo apt --fix-broken install'
 ##------------------------------
 alias tree.U          '\tree -U '
 alias tree.r          '\tree -r '
