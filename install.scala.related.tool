@@ -3,7 +3,8 @@
 echo "---------- install mill on env ----------"
 # web info https://github.com/com-lihaoyi/mill/releases/
 #sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.4/0.10.4 > /usr/local/bin/mill"
-sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.11/0.10.11 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.11/0.10.11 > /usr/local/bin/mill"
+sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.13/0.10.13 > /usr/local/bin/mill"
 sudo chmod +x /usr/local/bin/mill
 which mill
 mill version
