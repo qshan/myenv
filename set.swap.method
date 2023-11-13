@@ -14,7 +14,7 @@
 #Create a file that will be used for swap:
 #TODO# sudo fallocate -l 64G /swapfile
 
-#If faillocate is not installed or if you get an error message saying fallocate failed: Operation not supported then you can use the following command to create the swap file:
+#If fallocate is not installed or if you get an error message saying fallocate failed: Operation not supported then you can use the following command to create the swap file:
 #TODO# #sudo dd if=/dev/zero of=/swapfile bs=1G count=64
 
 #Only the root user should be able to write and read the swap file. To set the correct permissions type:
