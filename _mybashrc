@@ -475,6 +475,8 @@ alias ctags_R_Python="              ctags -R    --languages=python --python-kind
 #alias ctags_R_SV="                  ctags -R    --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qf "
 alias ctags_R_SV="                  ctags -R    --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs "
 alias ctags_R_scala="               ctags -R    --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qfrs "
+alias ctags_R_scala-C-Python="      ctags -R    --exclude=@.ctagsignore --links=no --languages=scala,C,C++,python "
+
 #alias ctags_Re="                    ctags -R -e --c++-kinds=+px --fields=+iaS --extra=+qf "
 alias ctags_Re="                    ctags -R -e --extra=+qfrs "
 #alias ctags_Re_C="                  ctags -R -e --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
@@ -486,6 +488,7 @@ alias ctags_Re_Python="             ctags -R -e --languages=python --python-kind
 alias ctags_Re_SV="                 ctags -R -e --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs"
 #alias ctags_Re_scala="              ctags -R -e --scala-kinds=+p --fields=+iaS --extra=+qf "
 alias ctags_Re_scala="              ctags -R -e --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qf "
+alias ctags_Re_scala-C-Python="     ctags -R -e --exclude=@.ctagsignore --links=no --languages=scala,C,C++,python "
 #alias ctags_L="                     ctags -R    --c++-kinds=+px --fields=+iaS --extra=+qf -L "
 alias ctags_L="                     ctags       --extra=+qfrs -L"
 alias ctags_L_C="                   ctags       --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qfrs -L"
