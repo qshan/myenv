@@ -566,6 +566,7 @@ Plugin 'derekwyatt/vim-scala'
 "" https://secluded.site/vim-as-a-markdown-editor/#vim-markdown
 " install vim-markdown
 ""https://github.com/qshan/vim-markdown
+""#todo# sudo apt install vim-addon-manager
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 ""Plugin 'godlygeek/tabular'
@@ -639,7 +640,6 @@ Plugin 'ZSaberLv0/ZFVimGitUtil'
 "
 call vundle#end()
 "required for Vundle
-let g:instant_markdown_autostart = 0
 "
 filetype on
 filetype plugin on
@@ -648,6 +648,8 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "filetype plugin on
 "" To ignore plugin indent changes, instead use:
 "filetype plugin on
+"
+let g:instant_markdown_autostart = 0
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -757,6 +759,11 @@ au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=
 :au BufReadPre,BufNewFilE,FileReadPost *.emacs,*_emacs  setfiletype lisp
 "set *.emacs and *_emacs file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.emacs,*_emacs set syntax=lisp
+"
+"markdown
+:au BufReadPre,BufNewFilE,FileReadPost *.md,*_md  setfiletype=markdown
+"set *.emacs and *_emacs file with make syntax highlight
+:autocmd BufReadPost,FileReadPost *.md,*_md set syntax=markdown
 "
 "The ":syntax" commands are implemented by sourcing a file.  To see exactly how
 "this works, look in the file:
