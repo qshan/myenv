@@ -10,6 +10,8 @@ cs setup;
 # cs install scala:2.13.11 && cs install scalac:2.13.11
 # cs install scala:2.12.18 && cs install scalac:2.12.18
 
+# cs install scala:2.12.15 && cs install scalac:2.12.15 && cs install scaladoc:2.12.15
+
 # export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
 #
 ####add·the·scala·alternative·linker↵
