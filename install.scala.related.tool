@@ -2,9 +2,19 @@
 
 echo "---------- install mill on env ----------"
 # web info https://github.com/com-lihaoyi/mill/releases/
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.7.3/0.7.3 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.7.4/0.7.4 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.8.0/0.8.0 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.0/0.9.0 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.12/0.9.12 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.0/0.10.0 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.2/0.10.2 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.3/0.10.3 > /usr/local/bin/mill"
 #sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.4/0.10.4 > /usr/local/bin/mill"
 #sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.11/0.10.11 > /usr/local/bin/mill"
 sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.10.13/0.10.13 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.11.6/0.11.0 > /usr/local/bin/mill"
+#sudo sh -c "curl -L https://github.com/com-lihaoyi/mill/releases/download/0.11.6/0.11.6 > /usr/local/bin/mill"
 sudo chmod +x /usr/local/bin/mill
 which mill
 mill version
