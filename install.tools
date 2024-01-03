@@ -150,7 +150,10 @@ sudo apt install ssh sshd vim
 #
 sudo apt install gcc g++ clang cmake scons build-essential
 #sudo apt install python-dev python3-dev
-sudo apt install gcc-multilib g++-multilib
+sudo apt install gcc-multilib g++-multilib gcc-source
+
+sudo apt install gcc-4.9 gcc-4.9-multilib gcc-4.9-source g++-4.9 g++-4.9-multilib
+sudo apt install gcc-5 gcc-5-multilib gcc-5-source  g++-5 g++-5-multilib
 #
 sudo apt install clang-tools clang-format clang-tidy
 #
