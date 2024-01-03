@@ -190,7 +190,7 @@ if exists('g:GuiLoaded')
     :MyFont10
 "    :MyDiffIgnoreWhiteSpace
   else
-    :MyFont12
+    :MyFont16
   endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
@@ -199,7 +199,7 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont14
+au BufReadPost,FileReadPost *     :MyFont16
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 
@@ -761,7 +761,7 @@ au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=
 :autocmd BufReadPost,FileReadPost *.emacs,*_emacs set syntax=lisp
 "
 "markdown
-:au BufReadPre,BufNewFilE,FileReadPost *.md,*_md  setfiletype=markdown
+ :au BufReadPre,BufNewFilE,FileReadPost *.md,*_md  set filetype=markdown
 "set *.emacs and *_emacs file with make syntax highlight
 :autocmd BufReadPost,FileReadPost *.md,*_md set syntax=markdown
 "
@@ -1087,6 +1087,35 @@ command! MyCursorLine                           :hi CursorLine cterm=NONE ctermb
 " :set diffopt+=iwhiteeol
 command! MyMarkdownPreview                      :set conceallevel=3
 command! MyMarkdownPreviewDisable               :set conceallevel=0
+
+" set for Plugin 'preservim/vim-markdown'
+" https://github.com/preservim/vim-markdown
+" Folding
+" zr: reduces fold level throughout the buffer
+" zR: opens all folds
+" zm: increases fold level throughout the buffer
+" zM: folds everything all the way
+" za: open a fold your cursor is on
+" zA: open a fold your cursor is on recursively
+" zc: close a fold your cursor is on
+" zC: close a fold your cursor is on recursively
+"
+" let g:vim_markdown_folding_disabled = 1
+" let g:vim_markdown_folding_style_pythonic = 1
+" let g:vim_markdown_override_foldtext = 0
+"
+" Set header folding level
+"let g:vim_markdown_folding_level = 1
+"let g:vim_markdown_folding_level = 6
+"
+" Concealing
+" :help concealcursor
+" :help conceallevel
+"
+" Borderless tables
+" let g:vim_markdown_borderless_table = 1
+" Mappings
+" gx ge ]] [[ ][ [] ]h ]u
 "
 " Insert timestamp at the end of the line in this format: 2020-0527-113245
 nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
