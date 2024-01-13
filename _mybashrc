@@ -475,7 +475,7 @@ alias ctags_R_C="                   ctags-universal -R    --languages=C,C++,C#,A
 alias ctags_R_Python="              ctags-universal -R    --languages=python --python-kinds=+vi --fields=+iaSKz --extras=+qfrs "
 #alias ctags_R_SV="                  ctags-exuberant -R    --languages=systemverilog --systemverilog-kinds=+ctfeilmpdva --fields=+iaSKz --extra=+qf "
 #alias ctags_R_SV="                  ctags-exuberant -R    --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qf "
-alias ctags_R_SV="                  ctags-universal -R    --languages=systemverilog,verilog --systemverilog-kinds=+ctfeilmp --fields=+iaSKz --extras=+qfrs "
+alias ctags_R_SV="                  ctags-universal -R    --languages=systemverilog,verilog --systemverilog-kinds=+ctfemp --fields=+aSKz --extras=+qfrs "
 alias ctags_R_scala="               ctags-universal -R    --languages=scala --scala-kinds=+p --fields=+iaS --extras=+qfrs "
 alias ctags_R_scala-C-Python="      ctags-universal -R    --exclude=@.ctagsignore --links=no --languages=scala,C,C++,python "
 
