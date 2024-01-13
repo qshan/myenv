@@ -512,15 +512,18 @@ Plugin 'reedes/vim-wordy'
 "" reference linker https://zhuanlan.zhihu.com/p/35536223
 "" reference linker https://github.com/iamcco/markdown-preview.nvim
 "" reference liker: https://dev.to/hrk2023/markdown-preview-in-vim-44bl
+"" https://www.cnblogs.com/awakenedy/p/11376465.html
 ""TODO"
 Plugin 'iamcco/mathjax-support-for-mkdp'
 ""TODO"
 Plugin 'iamcco/markdown-preview.nvim'
 " sudo apt install yarn
 "
+" https://github.com/instant-markdown/vim-instant-markdown
 Plugin 'instant-markdown/vim-instant-markdown'
-" sudo npm -g install instant-markdown-d
-"disable autostart"" let g:instant_markdown_autostart = 0
+"TODO" sudo npm -g install instant-markdown-d
+"TODO" sudo apt install xdg-utils curl nodejs
+"info"disable autostart"" let g:instant_markdown_autostart = 0
 "Manual start""       InstantMarkdownPreview|
 "Manual stop""        InstantMarkdownStop|
 "
@@ -576,7 +579,6 @@ Plugin 'ZSaberLv0/ZFVimIM_openapi'
 "
 call vundle#end()
 "required for Vundle
-let g:instant_markdown_autostart = 0
 "
 filetype on
 filetype plugin on
@@ -604,6 +606,54 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 "" -----Vundle part--end------------------
+
+" setting for instant-markdown/vim-instant-markdown
+let g:instant_markdown_autostart = 0
+"Uncomment to override defaults:
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_mermaid = 1
+"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+"let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
+"let g:instant_markdown_theme = 'dark'
+"
+" ---------- setting for Plugin 'iamcco/markdown-preview.nvim' ----------
+let g:mkdp_path_to_chrome = "firefox"
+" 设置 chrome 浏览器的路径（或是启动 chrome（或其他现代浏览器）的命令）
+" 如果设置了该参数, g:mkdp_browserfunc 将被忽略
+
+let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
+" vim 回调函数, 参数为要打开的 url
+
+let g:mkdp_auto_start = 1
+" 设置为 1 可以在打开 markdown 文件的时候自动打开浏览器预览，只在打开
+" markdown 文件的时候打开一次
+
+let g:mkdp_auto_open = 1
+" 设置为 1 在编辑 markdown 的时候检查预览窗口是否已经打开，否则自动打开预
+" 览窗口
+
+let g:mkdp_auto_close = 1
+" 在切换 buffer 的时候自动关闭预览窗口，设置为 0 则在切换 buffer 的时候不
+" 自动关闭预览窗口
+
+let g:mkdp_refresh_slow = 0
+" 设置为 1 则只有在保存文件，或退出插入模式的时候更新预览，默认为 0，实时
+" 更新预览
+
+let g:mkdp_command_for_global = 0
+" 设置为 1 则所有文件都可以使用 MarkdownPreview 进行预览，默认只有 markdown
+" 文件可以使用改命令
+
+let g:mkdp_open_to_the_world = 0
+" 设置为 1, 在使用的网络中的其他计算机也能访问预览页面
+" 默认只监听本地（127.0.0.1），其他计算机不能访问
 "
 "nvim"" for ycm
 "nvim""let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
