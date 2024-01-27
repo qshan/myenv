@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#
+#example ./try.update.gcc.version.bash 4.8
 
 export input_argument1="$1"
 echo "input_argument1 is ${input_argument1}"
