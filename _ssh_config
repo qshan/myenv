@@ -1,0 +1,10 @@
+
+# copy or link to ~/.ssh/config
+# Add section below to it
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+
+#$ ssh -T git@github.com
+#Hi xxxxx! You've successfully authenticated, but GitHub does not
+#provide shell access.
