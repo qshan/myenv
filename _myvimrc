@@ -70,6 +70,10 @@ set cursorline
 ":hi CursorLine ctermbg=grey guibg=Grey40
 ":hi CursorLine cterm=bold ctermfg=white ctermbg=grey gui=bold guifg=white guibg=Grey40
 :hi CursorLine cterm=NONE ctermbg=DarkGray guibg=Grey40
+":hi CursorLine ctermfg=NONE ctermbg=DarkGray guifg=Grey40 guibg=Grey40
+":hi CursorLine cterm=reverse ctermbg=DarkGray guifg=reverse guibg=Grey40
+":hi DiffAdd cterm=reverse ctermbg=DarkGray guifg=reverse guibg=Grey40
+"
 "
 set cursorcolumn
 "set cuc
@@ -125,6 +129,7 @@ command! MyFont16                       :set guifont=Monospace\ 16
 command! MyFont18                       :set guifont=Monospace\ 18
 command! MyFont20                       :set guifont=Monospace\ 20
 command! MyFont22                       :set guifont=Monospace\ 22
+
 "autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
 ""au BufReadPost,FileReadPost *.* :MyFont15
 ""au BufReadPost,FileReadPost *.* :MyFont16
@@ -432,8 +437,10 @@ Plugin 'ycm-core/YouCompleteMe'
 "Plugin 'lilydjwg/fcitx.vim'
 """""Verilog/SystemVerilog Syntax and Omni-completion
 Plugin 'vhda/verilog_systemverilog.vim'
-Plugin 'Python-Syntax-Folding'
 Plugin 'azidar/firrtl-syntax'
+Plugin 'Python-Syntax-Folding'
+Plugin 'Konfekt/FastFold'
+"" https://github.com/Konfekt/FastFold
 
 "if !has('nvim')
 "  Plugin 'Python-Syntax-Folding'
@@ -571,7 +578,9 @@ Plugin 'ZSaberLv0/ZFVimIM'
 Plugin 'ZSaberLv0/ZFVimJob'
 Plugin 'ZSaberLv0/ZFVimGitUtil'
 "Plugin 'YourUserName/ZFVimIM_pinyin_base'
-Plugin 'ZSaberLv0/ZFVimIM_openapi'
+"TODO""Plugin 'ZSaberLv0/ZFVimIM_pinyin_base'
+"TODO""Plugin 'ZSaberLv0/ZFVimIM_pinyin'
+"TODO""Plugin 'ZSaberLv0/ZFVimIM_openapi'
 ""
 "" reference linker https://github.com/StrayDragon/vim-smartim
 ""TODO"Plugin 'StrayDragon/vim-smartim'
@@ -587,6 +596,8 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "filetype plugin on
 "" To ignore plugin indent changes, instead use:
 "filetype plugin on
+"
+let g:instant_markdown_autostart = 0
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -1042,6 +1053,8 @@ command! MySpellCheckEn                         setlocal spell spelllang=en_us
 command! MyCheckCurrentActiveGroups             :so $VIMRUNTIME/syntax/hitest.vim
 command! MyCheckFiletype                        : set filetype?
 command! MyAddMatchWords                        let b:match_words= '<:>,' .
+command! MyAddLineExtension                     :s/\(.*\)/\1 \\/g
+command! MyAddLineExtensionAll                  :%s/\(.*\)/\1 \\/g
 command! MyShowHex                              :%!xxd
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
 command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase

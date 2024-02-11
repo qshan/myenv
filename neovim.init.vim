@@ -1071,6 +1071,8 @@ command! MySpellCheckEn                         setlocal spell spelllang=en_us
 command! MyCheckCurrentActiveGroups             :so $VIMRUNTIME/syntax/hitest.vim
 command! MyCheckFiletype                        : set filetype?
 command! MyAddMatchWords                        let b:match_words= '<:>,' .
+command! MyAddLineExtension                     :s/\(.*\)/\1 \\/g
+command! MyAddLineExtensionAll                  :%s/\(.*\)/\1 \\/g
 command! MyShowHex                              :%!xxd
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
 command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase
@@ -1150,6 +1152,32 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 """ -----personal command--End-------------------
 "
 """ -----popular command--Start-------------------
+"""----------------------------cscope start----------------------------
+"##info## To get started, build the cscope database in your project root directory: >
+"info"" cscope -bcqR
+"##info## By default the cscope database file is named "cscope.out". After building the
+"database, connect to it from Nvim:
+"info"" :cscope add cscope.out
+"##info## That establishes a cscope connection for Nvim to use.  You can check the
+"result with ":cs show".  It will show something like:
+"info"" Once a cscope connection is established, you can make queries to cscope and
+"the results will be printed.  Queries are made using the command ":cs find".
+"For example: >
+"info"" :cs find g ALIGN_SIZE
+"##USAGE   :cs find {querytype} {name}
+"       {querytype} corresponds to the actual cscope line
+"       interface numbers as well as default nvi commands:
+"info"" 0 or s: Find this C #symbol#
+"info"" 1 or g: Find this #definition#
+"info"" 2 or d: Find functions #called by# this function
+"info"" 3 or c: Find functions #calling this function#
+"info"" 4 or t: Find this #text string#
+"info"" 6 or e: Find this #egrep pattern#
+"info"" 7 or f: Find this #file#
+"info"" 8 or i: Find files #including this file
+"info"" 9 or a: Find places where this symbol is #assigned# a value
+"
+"""----------------------------cscope end----------------------------
 "Hotkeys
 """----------------------------basic command to move cursor in command mode----------------------------
 "           k
