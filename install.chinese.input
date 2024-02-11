@@ -1,14 +1,23 @@
 #!bin/bash
 #
-#os version 4.15.0-142-generic #146~16.04.1-Ubuntu SMP Tue Apr 13 09:27:15 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+#os Ubuntu 20.04.6 LTS
 sudo apt install lubuntu-desktop
 
 ##### install googlepinyin ########################################
 #Install Google Pinyin in Ubuntu
-sudo add-apt-repository ppa:fcitx-team/nightly
-sudo apt-get update
-sudo apt-get install fcitx fcitx-googlepinyin
-sudo apt-get install fcitx-module-cloudpinyin
+#sudo add-apt-repository ppa:fcitx-team/nightly
+#sudo apt-get update
+#sudo apt-get install fcitx fcitx-googlepinyin
+#sudo apt-get install fcitx-module-cloudpinyin
+sudo apt-get install fcitx-googlepinyin
+
+#Configure language support
+# select the language support and select items
+#   select chinese language
+#   select fcitx as the Keyboard input methods system
+
+# reboot now
+# done for googlepinyin now
 
 ##### install googlepinyin ########################################
 #install language package
