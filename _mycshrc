@@ -144,6 +144,9 @@ alias findDotOFile          'find ./ -type f -iname "*.o*" '
 alias findDotOFileRemove    'find ./ -type f -iname "*.o*" | xargs \rm -rfv '
 alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
 
+##------------------------------
+alias readlinkf             'readlink -f '
+
 
 
 
