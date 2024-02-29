@@ -36,8 +36,15 @@ else
 ""not_work_on_nvim""""    :set columns=9999
 endif
 "
-"the unnamed register is the same as the "* register.  Thus you can yank to and paste the selection without prepending "* to commands.
+"the unnamed register is the same as the
+" * register.  Thus you can yank to and paste the selection without prepending
+" * to commands.
+:set clipboard+=unnamed
 :set clipboard+=unnamedplus
+" :let @+=@""
+" paste the unnamed contents is ""p
+" paste the clipboard contents "+p
+
 :let g:python3_host_prog = "/usr/bin/python3.8"
 
 let g:loaded_perl_provider = 0
@@ -581,8 +588,12 @@ Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'iamcco/markdown-preview.nvim'
 " sudo apt install yarn
 "
+" https://github.com/instant-markdown/vim-instant-markdown
 Plugin 'instant-markdown/vim-instant-markdown'
-" sudo npm -g install instant-markdown-d
+"todo" sudo npm -g install instant-markdown-d
+"todo" sudo apt install xdg-utils  curl nodejs
+" reference info : https://github.com/instant-markdown/vim-instant-markdown
+" help info: :help vim-instant-markdown-configuration
 "disable autostart"" let g:instant_markdown_autostart = 0
 "Manual start""       InstantMarkdownPreview|
 "Manual stop""        InstantMarkdownStop|
@@ -649,7 +660,22 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "" To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
+"Minimal default configuration for instant-markdown
+filetype plugin on
 let g:instant_markdown_autostart = 0
+"Uncomment to override defaults:
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_mermaid = 1
+"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+"let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
+"let g:instant_markdown_theme = 'dark'
 "
 " Brief help
 " :PluginList       - lists configured plugins

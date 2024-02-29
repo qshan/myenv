@@ -44,6 +44,18 @@
 "good web: https://blog.csdn.net/zhangpower1993/article/details/52184581
 "good web: https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt
 "good web: https://www.cnblogs.com/aaronLinux/p/6798898.html
+"
+"the unnamed register is the same as the
+" * register.  Thus you can yank to and paste the selection without prepending
+" * to commands.
+:set clipboard+=unnamedplus
+:set clipboard+=unnamed
+" :let @+=@""
+" paste the unnamed contents is ""p
+" paste the clipboard contents "+p
+"
+"
+:noswapfile
 
 " -----good part--Start-------------------
 set nocompatible
@@ -530,6 +542,8 @@ Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'instant-markdown/vim-instant-markdown'
 "TODO" sudo npm -g install instant-markdown-d
 "TODO" sudo apt install xdg-utils curl nodejs
+" reference info : https://github.com/instant-markdown/vim-instant-markdown
+" help info: :help vim-instant-markdown-configuration
 "info"disable autostart"" let g:instant_markdown_autostart = 0
 "Manual start""       InstantMarkdownPreview|
 "Manual stop""        InstantMarkdownStop|
@@ -618,7 +632,9 @@ let g:instant_markdown_autostart = 0
 " 将你自己对非插件片段放在这行之后
 "" -----Vundle part--end------------------
 
+"Minimal default configuration for instant-markdown
 " setting for instant-markdown/vim-instant-markdown
+filetype plugin on
 let g:instant_markdown_autostart = 0
 "Uncomment to override defaults:
 "let g:instant_markdown_slow = 1
