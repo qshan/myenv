@@ -39,8 +39,12 @@ endif
 "the unnamed register is the same as the
 " * register.  Thus you can yank to and paste the selection without prepending
 " * to commands.
-:set clipboard+=unnamed
-:set clipboard+=unnamedplus
+" for register *
+":set clipboard+=unnamed
+:set clipboard=unnamed
+" for register +
+":set clipboard+=unnamedplus
+:set clipboard=unnamedplus
 " :let @+=@""
 " paste the unnamed contents is ""p
 " paste the clipboard contents "+p
