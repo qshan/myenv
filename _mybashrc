@@ -140,6 +140,7 @@ alias readlinkf='readlink -f '
 ##------------------------------
 alias sudodpkgforce-depends='   sudo dpkg -P --force-depends '
 alias sudoaptfix-brokeninstall='sudo apt --fix-broken install'
+alias sudoubuntu-driversauto='  sudo ubuntu-drivers autoinstall'
 alias sudoupdatedb='            sudo updatedb '
 alias sudolocate='              sudo locate '
 #example# sudolocate AppName

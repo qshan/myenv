@@ -153,6 +153,7 @@ alias readlinkf             'readlink -f '
 ##------------------------------
 alias sudodpkgforce-depends     'sudo dpkg -P --force-depends '
 alias sudoaptfix-brokeninstall  'sudo apt --fix-broken install'
+alias sudoubuntu-driversauto    'sudo ubuntu-drivers autoinstall'
 ##------------------------------
 alias tree.U          '\tree -U '
 alias tree.r          '\tree -r '
