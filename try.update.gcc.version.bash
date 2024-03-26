@@ -7,6 +7,7 @@ echo "input_argument1 is ${input_argument1}"
 cd /usr/bin
 
 sudo ln -sf        cpp-${input_argument1} cpp
+sudo ln -sf        gcc-${input_argument1} gcc
 sudo ln -sf        g++-${input_argument1} g++
 sudo ln -sf     gcc-ar-${input_argument1} gcc-ar
 sudo ln -sf     gcc-nm-${input_argument1} gcc-nm
