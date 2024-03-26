@@ -601,6 +601,8 @@ Plugin 'instant-markdown/vim-instant-markdown'
 "disable autostart"" let g:instant_markdown_autostart = 0
 "Manual start""       InstantMarkdownPreview|
 "Manual stop""        InstantMarkdownStop|
+" Markdown format reference web :
+" https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting
 "
 ":source %
 ":PluginInstall
@@ -664,9 +666,16 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 "" To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
+"mathjax reference :
+" https://www.mathjax.org/
+" https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions
+" https://github.github.com/gfm/
 "Minimal default configuration for instant-markdown
 filetype plugin on
 let g:instant_markdown_autostart = 0
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_mermaid = 1
+let g:instant_markdown_slow = 1
 "Uncomment to override defaults:
 "let g:instant_markdown_slow = 1
 "let g:instant_markdown_autostart = 0

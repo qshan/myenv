@@ -642,6 +642,9 @@ let g:instant_markdown_autostart = 0
 " setting for instant-markdown/vim-instant-markdown
 filetype plugin on
 let g:instant_markdown_autostart = 0
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_mermaid = 1
+let g:instant_markdown_slow = 1
 "Uncomment to override defaults:
 "let g:instant_markdown_slow = 1
 "let g:instant_markdown_autostart = 0
