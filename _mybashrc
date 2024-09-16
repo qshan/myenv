@@ -261,8 +261,9 @@ alias openFileBroswer='pcmanfm &'
 #for ubuntu
 #alias openFileBroswer='nautilus &'
 
-# sudo apt install qpdf
 alias openPdf='evince '
+
+# sudo apt install qpdf
 alias qpdf.decrypt='qpdf --decrypt '
 # example
 # qpdf --decrypt inputfile.pdf outpurfile.pdf
