@@ -548,6 +548,8 @@ Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'instant-markdown/vim-instant-markdown'
 "TODO" sudo npm -g install instant-markdown-d
 "TODO" sudo apt install xdg-utils curl nodejs
+" sudo apt install pandoc
+" pip install --user smdv
 " reference info : https://github.com/instant-markdown/vim-instant-markdown
 " help info: :help vim-instant-markdown-configuration
 "info"disable autostart"" let g:instant_markdown_autostart = 0
@@ -641,6 +643,7 @@ let g:instant_markdown_autostart = 0
 "Minimal default configuration for instant-markdown
 " setting for instant-markdown/vim-instant-markdown
 filetype plugin on
+" :help vim-instant-markdown-configuration
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_mathjax = 1
 let g:instant_markdown_mermaid = 1
