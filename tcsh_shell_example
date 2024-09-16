@@ -17,3 +17,12 @@ echo "the number of is:" ${input_argument_file_name_line_number}
 
 setenv output_file_name ${input_argument_file_name}_`date +%Y-%m-%d-%H%M`
 echo "output_file_name is" ${output_file_name}
+
+echo $1
+setenv inputFileName $1
+echo "inputFileName is : " ${inputFileName}
+foreach line (`awk '{print}' ${inputFileName}`)
+  echo ${line}
+  echo `echo ${line} | sed -r 's/(.*)\/mainline\/(.*)/\1\/mainline.updated\/\2/g'`
+  ln ${line} `echo ${line} | sed -r 's/(.*)\/mainline\/(.*)/\1\/mainline.updated\/\2/g'`
+end
