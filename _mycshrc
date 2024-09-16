@@ -182,7 +182,7 @@ alias RenameReplaceSpace1       "\rename 's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
 #alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\+|\s]+/_/g' "
 #alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|’|\!|-|_|\s|:]+/_/g' "
 alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
-alias RenameReplaceSpace21      "\rename 's/[(|)|\[|\]|{|}|&|,|\!|:]+/./g' "
+alias RenameReplaceSpace21      "\rename 's/[(|)|\[|\]|{|}|&|,|\!|\"|;|:]+/./g' "
 alias RenameReplaceSpace22      "\rename 's/[_|\s]+/_/g' "
 #alias RenameReplaceSpace3       "\rename 's/[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]+/_/g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
@@ -266,6 +266,11 @@ alias openFileBroswer       'pcmanfm &'
 #alias openFileBroswer 'nautilus &'
 
 alias openPdf               'evince '
+
+# sudo apt install qpdf
+alias qpdf.decrypt          'qpdf --decrypt '
+# example
+# qpdf --decrypt inputfile.pdf outpurfile.pdf
 
 #rust setting
 alias cargonew              'cargo new '
@@ -375,6 +380,7 @@ alias gitsubmoduleupdatef         'git submodule update --init --recursive --for
 alias gitsubmoduleupdateremotef   'git submodule update --init --recursive --remote --force '
 alias gitsubmoduledeinit          'git submodule deinit '
 alias gitsubmoduleadd             'git submodule add '
+alias gitsubmodulesync            'git submodule sync '
 #example# git submodule add <submodule-url> <submodule-path>
 #example#reinit submodule
 ##1#Delete the submodule folder:
@@ -385,6 +391,11 @@ alias gitsubmoduleadd             'git submodule add '
 #git submodule add <repository_url> <submodule_path>
 ##3#Update the submodule:
 #git submodule update --init --recursive
+##4#Update submodule repo source
+#git config --file=.gitmodules submodule.Submod.url https://github.com/username/ABC.git
+#git config --file=.gitmodules submodule.Submod.branch Development
+#git submodule sync
+#git submodule update --init --recursive --remote
 #
 alias gitsubmodulestatus          'git submodule status '
 alias gitsubmoduleset-url         'git submodule set-url -- '
@@ -504,9 +515,11 @@ set     path    = ($path /usr/local/lib /usr/lib)
 #set     path    = ($path /bin /home/fshan/.cargo/bin /home/fshan/bin /home/fshan/.local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/games /usr/local/games /snap/bin /usr/local/lib /home/fshan/.cargo/bin)
 
 #set the the path of graalvm instead of openjdk
-setenv  PATH      "~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:${PATH}"
-set     path    = (~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin $path)
-
+# setenv  PATH      "~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:${PATH}"
+# set     path    = (~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin $path)
+setenv graalvmHome "~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1"
+setenv PATH       "${graalvmHome}/bin:${PATH}"
+setenv JAVA_HOME=${graalvmHome}
 
 
 
