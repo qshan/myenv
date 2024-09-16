@@ -152,6 +152,15 @@ rename 'y/A-Z/a-z/' *
 find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|'|\!|-|\s]+/_/g' {}
 find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|'|\!|-|\+|\s]+/_/g' {}
 
+# Save the log with tee
+ping google.com | tee output.txt
+ls | tee -a [file]
+ls file* | tee output.txt | wc -l
+# Write file with elevate privileges
+:w !sudo tee %
+# The -i command line option enables tee to ignore the interrupt signal (SIGINT), which is usually issued when you press the crl+c key combination.
+[command] | tee -i [file]
+
 # Device or resource busy issue - resolved
 # lsof +D PathNameOfBadFile
 
