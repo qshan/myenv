@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 #####exmaple of Calling this file, just add this part at the end of ~/.bashrc
 #if [ -f ~/data/myenv/_mybashrc ]; then
@@ -174,8 +174,8 @@ alias RenameReplaceSpace1=" \rename        's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|\!|-|\s]+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|-|\+|\s]+/_/g' "
 #alias RenameReplaceSpace2="\rename        's/[(|)|\[|\]|{|}|&|,|’|\!|\-|_|\s|:]+/_/g' "
-alias RenameReplaceSpace2=" \rename        's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
-alias RenameReplaceSpace21="\rename        's/[(|)|\[|\]|{|}|&|,|\!|:]+/./g' "
+alias RenameReplaceSpace2=" \rename        's/[(|)|\[|\]|{|}|&|,|\!|_|\s|;|:]+/_/g' "
+alias RenameReplaceSpace21="\rename        's/[(|)|\[|\]|{|}|&|,|\!|\"|;|:]+/./g' "
 alias RenameReplaceSpace22="\rename        's/[_|\s]+/_/g' "
 #\rename        's/[(|)|\[|\]|{|}|&|,|'"'"'|\!|-|_|\s|:]+/_/g'
 #alias RenameReplaceSpace3="\rename        's/[《|》|（|）|：|、|(|)|“|”|·|，|’|、|\[|\]|\s|’]+/_/g' "
@@ -261,7 +261,11 @@ alias openFileBroswer='pcmanfm &'
 #for ubuntu
 #alias openFileBroswer='nautilus &'
 
+# sudo apt install qpdf
 alias openPdf='evince '
+alias qpdf.decrypt='qpdf --decrypt '
+# example
+# qpdf --decrypt inputfile.pdf outpurfile.pdf
 
 #rust setting
 alias cargonew='    cargo new '
@@ -379,6 +383,7 @@ alias gitsubmoduleupdatef='         git submodule update --init --recursive --fo
 alias gitsubmoduleupdateremotef='   git submodule update --init --recursive --remote --force '
 alias gitsubmoduledeinit='          git submodule deinit '
 alias gitsubmoduleadd='             git submodule add '
+alias gitsubmodulesync='            git submodule sync '
 #example# git submodule add <submodule-url> <submodule-path>
 #example#reinit submodule
 ##1#Delete the submodule folder:
@@ -389,6 +394,11 @@ alias gitsubmoduleadd='             git submodule add '
 #git submodule add <repository_url> <submodule_path>
 ##3#Update the submodule:
 #git submodule update --init --recursive
+##4#Update submodule repo source
+#git config --file=.gitmodules submodule.Submod.url https://github.com/username/ABC.git
+#git config --file=.gitmodules submodule.Submod.branch Development
+#git submodule sync
+#git submodule update --init --recursive --remote
 #
 alias gitsubmodulestatus='          git submodule status '
 alias gitsubmoduleset-url='         git submodule set-url -- '
@@ -438,6 +448,118 @@ alias gitinit='                     git init '
 alias gitinitbare='                 git init --bare '
 alias gitclonebarel='               git clone --bare -l '
 #example git clone --bare -l LocalRepoPathWithFullName/.git BackupRepoNameWithFullPath.git
+
+### docker start ###
+#
+# docker-compose up
+# 启动和运行整个应用。默认情况下，docker-compose up会尝试自动构建任何尚未构建的镜像。如果你想强制它重新构建镜像，可以使用--build选项。
+alias docker-compose.up='           docker-compose up '
+#
+# docker-compose down
+# 停止并删除容器、网络、卷和镜像创建的docker-compose up。
+alias docker-compose.down='         docker-compose down '
+#
+#构建和镜像管理
+#
+#
+#docker-compose build
+#构建或重新构建服务中定义的镜像。
+alias docker-compose.build='        docker-compose build '
+#
+#docker-compose push
+#将服务镜像推送到Docker Hub或其他镜像仓库。
+alias docker-compose.push='         docker-compose push '
+#
+#docker-compose pull
+#拉取服务依赖的镜像。
+alias docker-compose.pull='         docker-compose pull '
+#
+#服务管理
+#
+#
+#docker-compose start
+#启动已经存在的服务容器。
+alias docker-compose.start='        docker-compose start '
+#
+#docker-compose stop
+#停止正在运行的容器而不删除它们。与docker-compose down不同，不会删除容器和网络。
+alias docker-compose.stop='         docker-compose stop '
+#
+#docker-compose restart
+#重启服务。
+alias docker-compose.restart='      docker-compose restart '
+#
+#docker-compose pause
+#暂停服务中的容器。
+alias docker-compose.pause='        docker-compose pause '
+#
+#docker-compose unpause
+#恢复服务中已暂停的容器。
+alias docker-compose.unpause='      docker-compose unpause '
+#
+# 查看服务状态和日志
+#
+#
+#docker-compose ps
+#列出项目中当前的容器。
+alias docker-compose.ps='           docker-compose ps '
+alias docker-compose.ps-a='         docker-compose ps -a'
+#
+#docker-compose logs
+#查看服务的日志输出。可以指定服务名称来查看特定服务的日志。
+alias docker-compose.logs='         docker-compose logs '
+alias docker-compose.logsf='        docker-compose logs -f '
+# docker-compose logs -f containerName
+#
+#
+#运行一次性命令
+#
+#
+#docker-compose run
+#在一个新容器中运行一个一次性命令。例如，docker-compose run app bash会在app服务的容器中启动一个新的bash会话。
+alias docker-compose.run='          docker-compose run '
+#
+#docker-compose exec
+#在运行中的容器上执行命令。与run不同，exec会在已经存在且正在运行的容器中执行命令。
+alias docker-compose.exec='         docker-compose exec '
+#
+# 其他命令
+#
+#
+#docker-compose config
+#验证并查看配置。这个命令可以用来检查配置文件的语法是否正确。
+alias docker-compose.config='       docker-compose config '
+#
+# docker-compose version
+# 显示Docker Compose的版本信息。
+alias docker-compose.version='      docker-compose version '
+#
+#list docker images
+alias docker.images='               docker images '
+#
+# remove the local/downloaded image
+alias docker.rmi='                  docker rmi '
+#docker rmi 镜像名称:标签名	删除已下载的镜像
+#remove the container
+alias docker.rm='                   docker rm '
+alias docker.rmf='                  docker rm -f '
+#
+# search image from offical repo (hub.docker.com)
+alias docker.search='               docker search '
+#
+## #docker run --name 容器名称 -d -p 主机端口:容器内端口 -e 环境变量 -v localpath:dockerpath --link 其它容器名:容器中别名 镜像名称:标签名
+## -d: 后台运行容器，并返回容器ID；
+## -i: 以交互模式运行容器，通常与 -t 同时使用；
+## -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+## --name="XXXX": 为容器指定一个名称；
+## -e username="XXXX": 设置环境变量；
+## -m :设置容器使用内存最大值；
+## --link=[]: 添加链接到另一个容器；当要访问其它容器中的内容时，需要先链接才可以使用
+## -p: 开放一个端口或一组端口
+## -v: 映射容器的卷
+#
+### docker end ###
+
 
 #input methods reset
 alias input_methods_reset_fcitx='fcitx -r'
@@ -509,7 +631,12 @@ alias ctags_L_scala="               ctags-universal       --languages=scala --sc
 export PATH=$PATH:/usr/local/lib:/usr/lib
 
 #set the the path of graalvm instead of openjdk
-export PATH=~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH
+#export PATH=~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH
+#export PATH=~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1/bin:$PATH
+#export PATH=~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1/bin:$PATH
+export graalvmHome=~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1
+export PATH=$graalvmHome/bin:$PATH
+export JAVA_HOME=$graalvmHome
 
 #sudo apt install openjdk-8-jdk
 #if ['' eq `which java`]; then sudo apt install openjdk-8-jdk; fi;
@@ -626,6 +753,7 @@ set_full_path
 
 alias wgetc='   wget -c '
 alias wgetL='   wget -L '
+# curl - transfer a URL
 alias curlCL='  curl -CL '
 alias curlL='   curl -L '
 #alias curlCLO=' curl -CL -O '
@@ -750,31 +878,252 @@ alias python3mpiplist='               python3 -m pip list'
 export PATH=$PATH:/opt/riscv/bin
 export PATH=$PATH:~/miniconda3/bin
 #------------------------------
+# conda --help
+# usage: conda [-h] [-V] command ...
+# conda is a tool for managing and deploying applications, environments and packages.
+# Options:
+# positional arguments:
+#   command
+#     clean             Remove unused packages and caches.
+#     compare           Compare packages between conda environments.
+#     config            Modify configuration values in .condarc. This is modeled after the git config command. Writes to the user
+#                       .condarc file (/home/fshan/.condarc) by default. Use the --show-sources flag to display all identified
+#                       configuration locations on your computer.
+#     create            Create a new conda environment from a list of specified packages.
+#     info              Display information about current conda install.
+#     init              Initialize conda for shell interaction.
+#     install           Installs a list of packages into a specified conda environment.
+#     list              List installed packages in a conda environment.
+#     package           Low-level conda package utility. (EXPERIMENTAL)
+#     remove (uninstall)
+#                       Remove a list of packages from a specified conda environment.
+#     rename            Renames an existing environment.
+#     run               Run an executable in a conda environment.
+#     search            Search for packages and display associated information.The input is a MatchSpec, a query language for conda
+#                       packages. See examples below.
+#     update (upgrade)  Updates conda packages to the latest compatible version.
+#     notices           Retrieves latest channel notifications.
+# 
+# options:
+#   -h, --help          Show this help message and exit.
+#   -V, --version       Show the conda version number and exit.
+# 
+# conda commands available from other packages (legacy):
+#   content-trust
+#   env
+#   lock
+#
+# conda command info
+# https://docs.conda.io/projects/conda/en/latest/commands/index.html
+#
 # conda alias
 alias condaactivate='   conda activate '
 alias condadeactivate=' conda deactivate '
+#
 alias condacreate='     conda create '
-alias condacreatename=' conda create -n '
-#info#alias condacreaten='conda create -name '
+# alias condacreatename=' conda create -n '
+alias condacreatename=' conda create -name '
+# conda create --name new_base_name python=3.8
+#info#alias condacreaten='conda create --name new_base_name '
+alias condacreatePwd=' conda create  --prefix `pwd`'
+# conda create --prefix /tmp/test-env -name EnvName python=3.8
+#
 alias condaremove=' conda remove '
 alias condaremovename=' conda remove -n '
-#example#conda remove -n EnvName RemovingModuleName
+# conda remove -n EnvName RemovingModuleName
+# conda remove --name old_env_name --all
+#
 alias condainstall='    conda install '
+# conda install python=3.8
 alias condainstallname='conda install --name '
+#
 #info#alias condaconfigadd="conda config --add channels conda-forge"
 #info#alias condaconfigconfig="conda config --set channel_priority strict"
 #info#alias condaconfiginstall="conda install <package-name>"
 alias condaversion='    conda --version '
+#
 alias condaupdateconda='conda update conda '
 alias condaupdateall='  conda update --all '
+#
 alias condainfoe='      conda info -e '
+alias condainfoenv='    conda info --envs '
+#
 alias condalist='       conda list '
 alias condalistname='   conda list --name '
+#
 alias condasearch='     conda search '
+#
 alias condaupdate='     conda update '
+#
 alias condaconfigaddchannels='  conda config --add channels '
+#
+#conda env remove --name pybites
+alias condaenvexport='  conda env export'
+alias condaenvconfig='  conda env config'
+alias condaenvcreate='  conda env create'
+# conda create --clone old_base_name --name new_base_name
+alias condaenvexport='  conda env export'
 alias condaenvlist='    conda env list'
+alias condaenvremove='  conda env remove'
+alias condaenvupdate='  conda env update'
+#
+# [conda workflow]
+# 1. Creating and activating a new environment
+#  conda create --name new_base_name
+#  conda create --name new_base_name --no-default-packages python=3.8
+#  conda activate new_base_name
+# 2. Adding packages from Anaconda and PyPi
+#  conda install click
+#  pip install daiquiri
+#  conda list
+# 3. Adding your local application source code
+# 4. Saving the "project" environment
+#  conda env export --file environment.yml
+#  conda env export --from-history --file environment.yml
+#  conda env export --no-builds --file environment.yml
+# 5. Recreating the "project" environment
+#  conda env create --file environment.yml
+#  conda activate project
+# 6 List env and activate env
+#  conda env list
+#  ## get the env name list, and activate specific env
+#  conda activate env_name
+#
+# conda cheatsheet
+# https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html
+#
+# ### QUICK START
+## Tip: It is recommended to create a new environment for any new project or workflow.
+### verify conda install and check version
+###  conda info
+#
+### update conda in base environment
+###  conda update -n base conda
+#
+### install latest anaconda distribution (see release notes)
+### conda install anaconda=2022.05
+#
+### create a new environment (tip: name environment descriptively)
+###  conda create --name ENVNAME
+#
+### activate environment (do this before installing packages)
+###  conda activate ENVNAME
+#
+# ### CHANNELS AND PACKAGES
+## Tip: Package dependencies and platform specifics are automatically resolved when using conda.
+#
+# list installed packages
+#  conda list
+#
+# list installed packages with source info
+#  conda list --show-channel-urls
+#
+# update all packages
+#  conda update --all
+#
+# install a package from specific channel
+#  conda install -c CHANNELNAME PKG1 PKG2
+#
+# install specific version of package
+#  conda install PKGNAME=3.1.4
+#
+# install a package from specific channel
+#  conda install CHANNELNAME::PKGNAME
+#
+# install package with AND logic
+#  conda install “PKGNAME>2.5,<3.2”
+#
+# install package with OR logic
+#  conda install “PKGNAME [version=’2.5|3.2’]”
+#
+# uninstall package
+#  conda uninstall PKGNAME
+#
+# view channel sources
+#  conda config --show-sources
+#
+# add channel
+#  conda config --add channels CHANNELNAME
+#
+# set default channel for pkg fetching (targets first channel in channel sources)
+#  conda config --set channel_priority strict
+#
+# ### WORKING WITH CONDA ENVIRONMENTS
+## Tip: List environments at the beginning of your session. Environments with an asterisk are active.
+# list all environments and locations
+#  conda env list
+#
+# list all packages + source channels
+#  conda list -n ENVNAME --show-channel-urls
+#
+# install packages in environment
+#  conda install -n ENVNAME PKG1 PKG2
+#
+# remove package from environment
+#  conda uninstall PKGNAME -n ENVNAME
+#
+# update all packages in environment
+#  conda update --all -n ENVNAME
+#
+# ### ENVIRONMENT MANAGEMENT
+## Tip: Specifying the environment name confines conda commands to that environment.
+# create environment with Python version
+#  conda create -n ENVNAME python=3.10
+#
+# clone environment
+#  conda create --clone ENVNAME -n NEWENV
+#
+# rename environment
+#  conda rename -n ENVNAME NEWENVNAME
+#
+# delete environment by name
+#  conda remove -n ENVNAME --all
+#
+# list revisions made to environment
+#  conda list -n ENVNAME --revisions
+#
+# restore environment to a revision
+#  conda install -n ENVNAME --revision NUMBER
+#
+# uninstall package from specific channel
+#  conda remove -n ENVNAME -c CHANNELNAME PKGNAME
+#
+# ### EXPORTING ENVIRONMENTS
+## Recommendation: Name the export file “environment.” Environment name will be preserved.
+# cross-platform compatible
+#  conda env export --from-history>ENV.yml
+#
+# platform + package specific
+#  conda env export ENVNAME>ENV.yml
+#
+# platform + package + channel specific
+#  conda list --explicit>ENV.txt
+#
+# ### IMPORTING ENVIRONMENTS
+## Tip: When importing an environment, conda resolves platform and package specifics.
+# from a .yml file
+#  conda env create -n ENVNAME --file ENV.yml
+#
+# from a .txt file
+#  conda create -n ENVNAME --file ENV.txt
 
+# ### ADDITIONAL HINTS
+# get help for any command
+#  conda COMMAND --help
+#
+# get info for any package
+#  conda search PKGNAME --info
+#
+# run commands w/o user prompt eg, installing multiple packages
+#  conda COMMAND ARG --yes
+#  conda install PKG1 PKG2 --yes
+#
+# remove all unused files
+#  conda clean --all
+#
+# examine conda configuration
+#  conda config --show
+#
 #------------------------------
 
 #alias set_default_lubuntu_path="export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
