@@ -43,7 +43,11 @@ sudo add-apt-repository --yes ppa:sicklylife/meld
 #sudo add-apt-repository --yes ppa:kelleyk/emacs
 #sudo add-apt-repository --yes ppa:kelleyk/curl
 #sudo add-apt-repository --yes ppa:gunnarhj/ibus-pinyin
-sudo add-apt-repository --yes ppa:janisozaur/cmake-update
+# https://launchpad.net/~janisozaur
+# sudo add-apt-repository --yes ppa:janisozaur/cmake-update
+sudo add-apt-repository --yes ppa:janisozaur/cmake-backport
+sudo add-apt-repository --yes ppa:janisozaur/cmake-backport-2
+#sudo apt update
 sudo add-apt-repository ppa:fcitx-team/stable
 sudo apt update
 
