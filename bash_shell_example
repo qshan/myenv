@@ -70,11 +70,10 @@ done
 declare -A myAssociativeArray
 echo "Array example end   ------------------------------"
 #####exmaple of Calling this file, just add this part at the end of ~/.bashrc
-if [ -f ~/data/myenv/_mybashrc ];
-then
+if [ -f ~/data/myenv/_mybashrc ]; then
   #. ~/data/myenv/_mybashrc
   echo "the file ~/data/myenv/_mybashrc exist"
-#else
+else
 #  echo "the file ~/data/myenv/_mybashrc does not exist"
 fi
 #
@@ -189,3 +188,9 @@ echo "------------------------------"
 # arg1 -le arg2             True if arg1 less than or equal to arg2
 # arg1 -gt arg2             True if arg1 greater than arg2
 # arg1 -ge arg2             True if arg1 greater than or equal to arg2
+
+# reference : https://linuxhandbook.com/bash-loops/
+# C-style for Loops in Bash
+# for ((initialized ; condition ; increment)); do
+# [commands]
+# done
