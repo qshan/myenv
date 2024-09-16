@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #example ./try.update.gcc.version.bash 4.8
 
 export input_argument1="$1"
@@ -8,8 +9,8 @@ cd /usr/bin
 
 ls python python-config -alh
 
-sudo ln -sf        python-${input_argument1} python
-sudo ln -sf        python-config-${input_argument1} python-config
+sudo ln -sf        python${input_argument1} python
+sudo ln -sf        python${input_argument1}-config python-config
 
 # #ls gcc g++ cpp gcc-nm gcc-ar gcc-ranlib -alh
 # sudo ln -sf        cpp-4.8 cpp
@@ -28,6 +29,8 @@ sudo ln -sf        python-config-${input_argument1} python-config
 
 ls python python-config -alh
 
+cd -
+
 # python
 # python-config
 # python2
@@ -38,6 +41,6 @@ ls python python-config -alh
 # python3-config
 # python3.8
 # python3.8-config
-# 
+#
 # # python3-futurize
 # # python3-pasteurize
