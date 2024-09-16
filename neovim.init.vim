@@ -210,9 +210,11 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont10
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont16
+au BufReadPost,FileReadPost *     :MyFont20
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
+
+au BufReadPost,FileReadPost *.md     :MyFont20
 
 """Guifont DejaVu Sans Mono:h15
 """au BufReadPost,FileReadPost *,*.* :MyNvimGuiFont15
@@ -518,6 +520,15 @@ Plugin 'hrsh7th/cmp-vsnip'
 Plugin 'hrsh7th/vim-vsnip'
 "
 "
+"Plugin for quarto start
+Plugin 'quarto-dev/quarto-nvim'
+Plugin 'jmbuhr/otter.nvim'
+"todo"debug"Plugin 'nvim-treesitter/nvim-treesitter'
+"Plugin 'hrsh7th/nvim-cmp'
+"Plugin 'neovim/nvim-lspconfig'
+" :QuartoPreview
+"Plugin for quarto end
+"
 "tabnine-vim is good complete plugin based on youcomplete. It is better to use on Windows. YCM is not good for windows install
 "Plugin 'zxqfl/tabnine-vim'
 "Plugin 'derekwyatt/vim-protodef'
@@ -573,6 +584,9 @@ Plugin 'preservim/nerdtree'
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
+" https://github.com/mattf1n/VimMarp
+Plugin 'mattf1n/VimMarp.vim'
+"
 " https://www.shixuen.com/linux/vim_markdown.html
 "" https://secluded.site/vim-as-a-markdown-editor/#vim-markdown
 " install vim-markdown
@@ -586,6 +600,7 @@ Plugin 'preservim/vim-markdown'
 "" reference linker https://zhuanlan.zhihu.com/p/35536223
 "" reference linker https://github.com/iamcco/markdown-preview.nvim
 "" reference liker: https://dev.to/hrk2023/markdown-preview-in-vim-44bl
+Plugin 'mzlogin/vim-markdown-toc'
 ""TODO"
 Plugin 'iamcco/mathjax-support-for-mkdp'
 ""TODO"
@@ -596,14 +611,22 @@ Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'instant-markdown/vim-instant-markdown'
 "todo" sudo npm -g install instant-markdown-d
 "todo" sudo apt install xdg-utils  curl nodejs
+" sudo apt install pandoc
+" pip install --user smdv
 " reference info : https://github.com/instant-markdown/vim-instant-markdown
 " help info: :help vim-instant-markdown-configuration
 "disable autostart"" let g:instant_markdown_autostart = 0
 "Manual start""       InstantMarkdownPreview|
 "Manual stop""        InstantMarkdownStop|
+" :Toc
+" :InsertToc
+" :SetexToAtx
 " Markdown format reference web :
 " https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting
 "
+" Plugin 'mzlogin/vim-markdown-toc'
+" :GenTocGFM
+" :GenTocMarked
 ":source %
 ":PluginInstall
 ":call mkdp#util#install()
@@ -642,6 +665,9 @@ Plugin 'jiangmiao/auto-pairs'
 ""Plugin 'ZSaberLv0/ZFVimIM'
 ""Plugin 'ZSaberLv0/ZFVimJob' " optional, for better db load performance
 ""
+"" enable ZFVimIM and change input mode: ;;
+"" search next: ;
+"
 "" reference linker https://zhuanlan.zhihu.com/p/79615409
 Plugin 'ZSaberLv0/ZFVimIM'
 Plugin 'ZSaberLv0/ZFVimJob'
@@ -672,6 +698,7 @@ filetype plugin indent on    "required for Vundle 加载vim自带和插件相应
 " https://github.github.com/gfm/
 "Minimal default configuration for instant-markdown
 filetype plugin on
+" :help vim-instant-markdown-configuration
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_mathjax = 1
 let g:instant_markdown_mermaid = 1
@@ -689,6 +716,11 @@ let g:instant_markdown_slow = 1
 "let g:instant_markdown_port = 8888
 "let g:instant_markdown_python = 1
 "let g:instant_markdown_theme = 'dark'
+"
+" setting for Plugin 'mzlogin/vim-markdown-toc'
+let g:vmt_link = 1
+let g:vmt_min_level = 1
+let g:vmt_max_level = 6
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -1092,7 +1124,8 @@ command! UpdateTags !ctags -R .
 command! MyCdCurrentFilePath                    cd %:p:h
 command! MyDotInIskeywordAdd                    set iskeyword+=.
 command! MyDotInIskeywordRemove                 set iskeyword-=.
-command! MySaveWithSudo                         :w !sudo tee %
+"command! MySaveWithSudo                         :w !sudo tee %
+command! MySaveWithSudo                         :w !sudo -S tee %
 command! MySearchCompileError                   :/"incompatible\|redefined\|expansion\|error\:\|Error\:\|error\-"
 command! MyReadCurrentFileName                  :r! echo %
 command! MyReadCurrentFileNameWithFullPath      :r! echo %:p
@@ -1112,6 +1145,7 @@ command! MyCheckFiletype                        : set filetype?
 command! MyAddMatchWords                        let b:match_words= '<:>,' .
 command! MyAddLineExtension                     :s/\(.*\)/\1 \\/g
 command! MyAddLineExtensionAll                  :%s/\(.*\)/\1 \\/g
+command! MyAddLineExtensionWith1                :s/\(.*\)/\1 \|/g
 command! MyShowHex                              :%!xxd
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
 command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase
@@ -1128,6 +1162,7 @@ command! MyCursorLine                           :hi CursorLine cterm=NONE ctermb
 " :set diffopt+=iwhiteeol
 command! MyMarkdownPreview                      :set conceallevel=3
 command! MyMarkdownPreviewDisable               :set conceallevel=0
+command! MyAddContentLinker                     :'<,'>s/$/<a name="item_liner_for_contents"><\/a>/g
 
 " set for Plugin 'preservim/vim-markdown'
 " https://github.com/preservim/vim-markdown
@@ -1161,8 +1196,11 @@ command! MyMarkdownPreviewDisable               :set conceallevel=0
 " Insert timestamp at the end of the line in this format: 2020-0527-113245
 nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
 
-
-
+" Chinese input setting
+set encoding=utf-8
+set fileencodings=utf-8,gbk,gb18030,gb2312
+set termencoding=utf-8
+"
 "input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
 "au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
@@ -1171,6 +1209,10 @@ nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
 au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab cccc //--------------------//comments: //--------------------
 
 au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //--------------------<CR>//Comments: <CR>//--------------------<CR>
+
+"set the *.md file auto pattern
+"worked""au BufRead,BufNewFile,FileReadPost *.md iab mdhdl <hr></hr>
+"worked""au BufRead,BufNewFile,FileReadPost *.md iab mdpic ![]()
 
 "
 "set the *.c,*.h file auto pattern when edit this file
