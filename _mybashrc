@@ -235,6 +235,9 @@ alias nvimqt='    nvim-qt --geometry 970x512 -- '
 
 alias cscopebcqRv=' cscope -bcqRv '
 
+alias try.open.proxy.clash-verge='clash-verge'
+alias try.open.proxy.hiddify='/data/tools/proxy/hiddify/Hiddify-Linux-x64.2.3.1.AppImage'
+
 ##ToCheck# for your env default setting
 alias Emacs='/usr/bin/emacs26'
 #alias EmacsM='Emacs -mm'
