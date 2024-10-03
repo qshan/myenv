@@ -321,7 +321,9 @@ alias gitpulloriginmaster='         git pull --tags origin master '
 #example git checkout TagName
 #example git checkout -b NewBranchName
 #example git checkout -b NewBranchName TagName
-alias gitfetch='                    git fetch --all '
+alias gitfetch='                    git fetch '
+alias gitfetch.unshallow='          git fetch --unshallow '
+alias gitfetch.all='                git fetch --all '
 alias gitremoteaddorigin='          git remote add origin '
 alias gitremoteadd='                git remote add '
 #git remote add LocalNameForRemoteRepo file://${FullPathOfRemoteRepo}/${ProjectName}.git
@@ -331,7 +333,9 @@ alias gitremotevshow='              git remote -v show '
 #example# gitremoteshow RemoteRepoName
 alias gitremoteshoworigin='         git remote show origin'
 alias gitremotePruneOrigin='        git remote prune origin'
-alias gitclone='                    git clone --recursive '
+alias gitclone='                    git clone '
+alias gitclone.depth1='             git clone --depth=1 '
+alias gitclone.recursive='          git clone --recursive '
 #
 alias gitgrep='                     git grep '
 alias gitgrepr='                    git grep -r '
@@ -357,10 +361,10 @@ alias gittagl='                     git tag -l '
 alias gittaga='                     git tag -a '
 #alias gitstatus='                   git status '
 alias gitstatusshort='              git status --short '
-alias gitbranchall='                git branch --all'
-alias gitbranchlist='               git branch --list'
-alias gitbranchremotes='            git branch --remotes'
-alias gitbranchtrack='              git branch --track'
+alias gitbranch.all='                git branch --all'
+alias gitbranch.list='              git branch --list'
+alias gitbranch.remotes='            git branch --remotes'
+alias gitbranch.track='              git branch --track'
 #example# gitbranchtrack localBranchName remoteHostName/remoteBranchName
 alias gitbranchb='                  git branch -b'
 #example# gitbranchb localBranchName remoteHostName/remoteBranchName
