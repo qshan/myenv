@@ -148,6 +148,9 @@ command! MyFont18                       :set guifont=Monospace\ 18
 command! MyFont20                       :set guifont=Monospace\ 20
 command! MyFont22                       :set guifont=Monospace\ 22
 
+command! MyTabstop                   :set tabstop=2 softtabstop=2 shiftwidth=2
+" set softtabstop=2
+
 "autocmd BufReadPost,FileReadPost *.* :Guifont DejaVu\ Sans\ Mono:h15
 ""au BufReadPost,FileReadPost *.* :MyFont15
 ""au BufReadPost,FileReadPost *.* :MyFont16
@@ -214,6 +217,9 @@ set softtabstop=2             " how many space to show for a tab in Insert mode
 "worked"set varsofttabstop=2,4,4,2    "set to show the tab with 2 blankspace; identify how many space as a TAB
 au BufReadPost,FileReadPost * :set      tabstop=2
 au BufReadPost,FileReadPost * :set  softtabstop=2
+
+set shiftwidth=2                 "when smarttab is on, follow shiftwidth?
+"set tabstop=2 softtabstop=2     "when smarttab is off, follow tabstop softtabstop?
 
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
@@ -1083,6 +1089,7 @@ command! MyCheckFiletype                        : set filetype?
 command! MyAddMatchWords                        let b:match_words= '<:>,' .
 command! MyAddLineExtension                     :s/\(.*\)/\1 \\/g
 command! MyAddLineExtensionAll                  :%s/\(.*\)/\1 \\/g
+command! MyAddLineExtensionWith1                :s/\(.*\)/\1 \|/g
 command! MyShowHex                              :%!xxd
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
 command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase
@@ -1099,6 +1106,7 @@ command! MyCursorLine                           :hi CursorLine cterm=NONE ctermb
 " :set diffopt+=iwhiteeol
 command! MyMarkdownPreview                      :set conceallevel=3
 command! MyMarkdownPreviewDisable               :set conceallevel=0
+command! MyAddContentLinker                     :'<,'>s/$/<a name="item_liner_for_contents"><\/a>/g
 
 " set for Plugin 'preservim/vim-markdown'
 " https://github.com/preservim/vim-markdown
@@ -1129,12 +1137,14 @@ command! MyMarkdownPreviewDisable               :set conceallevel=0
 " Mappings
 " gx ge ]] [[ ][ [] ]h ]u
 "
-"
 " Insert timestamp at the end of the line in this format: 2020-0527-113245
 nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
 
-
-
+" Chinese input setting
+set encoding=utf-8
+set fileencodings=utf-8,gbk,gb18030,gb2312
+set termencoding=utf-8
+"
 "input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
 "au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
@@ -1143,6 +1153,9 @@ nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
 au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab cccc //--------------------//comments: //--------------------
 
 au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //--------------------<CR>//Comments: <CR>//--------------------<CR>
+"set the *.md file auto pattern
+"worked""au BufRead,BufNewFile,FileReadPost *.md iab mdhdl <hr></hr>
+"worked""au BufRead,BufNewFile,FileReadPost *.md iab mdpic ![]()
 
 "
 "set the *.c,*.h file auto pattern when edit this file

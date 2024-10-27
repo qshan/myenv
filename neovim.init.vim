@@ -190,6 +190,9 @@ command! MyFont18                    :Guifont DejaVu\ Sans\ Mono:h18
 command! MyFont20                    :Guifont DejaVu\ Sans\ Mono:h20
 command! MyFont22                    :Guifont DejaVu\ Sans\ Mono:h22
 
+command! MyTabstop                   :set tabstop=2 softtabstop=2 shiftwidth=2
+" set softtabstop=2
+
 "autocmd BufReadPost,FileReadPost *,*.* :Guifont DejaVu\ Sans\ Mono:h15
 "only"worked"with"gui"
 ""au BufReadPost,FileReadPost *,*.* :MyNvimGuiFont15
@@ -263,6 +266,7 @@ set autoindent     "Copy indent from current line when starting a new line
 "set ai     "autoindent
 "
 "set smarttab
+"set sta
 "mask_for_sv_file"set smartindent     "better than autoindent, use basic c syntax to indent
 "set si     "smartindent
 set shiftwidth=2     "indent multi shifwidth value
@@ -277,6 +281,9 @@ set softtabstop=2             " how many space to show for a tab in Insert mode
 "worked"set varsofttabstop=2,4,4,2    "set to show the tab with 2 blankspace; identify how many space as a TAB
 au BufReadPost,FileReadPost * :set      tabstop=2
 au BufReadPost,FileReadPost * :set  softtabstop=2
+
+set shiftwidth=2                 "when smarttab is on, follow shiftwidth?
+"set tabstop=2 softtabstop=2     "when smarttab is off, follow tabstop softtabstop?
 
 ":retab 2                  "command, to replace the tab as 2 space in current file
 "ret 2
@@ -589,6 +596,7 @@ Plugin 'mattf1n/VimMarp.vim'
 "
 " https://www.shixuen.com/linux/vim_markdown.html
 "" https://secluded.site/vim-as-a-markdown-editor/#vim-markdown
+"" https://codeinthehole.com/tips/writing-markdown-in-vim/
 " install vim-markdown
 ""https://github.com/qshan/vim-markdown
 ""#todo# sudo apt install vim-addon-manager
@@ -867,7 +875,7 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "it is better to put those match words on end of file
 "just one highlight type per time
 "worked":match Todo /TODO\|todo\|Todo\|fshan\|qshan\|DSF_IP\|dsf_ip\|fixme/
-au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf_ip\|fixme\|FIXME\|Fixme\|FixMe\|todo/
+au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|??\|DSF_IP\|dsf_ip\|fixme\|FIXME\|Fixme\|FixMe\|Todo\|todo/
 
 """"""                                          syntax keyword FrankShanTodo    fshan qshan DSF_IP dsf_ip TODO todo Todo fixme Fixme FIXME
 """"""au BufWinEnter,BufReadPost,FileReadPost * syntax keyword FrankShanTodo    fshan qshan DSF_IP dsf_ip TODO todo Todo fixme Fixme FIXME
