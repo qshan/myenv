@@ -184,7 +184,8 @@ alias RenameReplaceSpace1       "\rename 's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
 #alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|\!|-|\+|\s]+/_/g' "
 #alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|’|\!|-|_|\s|:]+/_/g' "
 alias RenameReplaceSpace2       "\rename 's/[(|)|\[|\]|{|}|&|,|\!|_|\s|:]+/_/g' "
-alias RenameReplaceSpace21      "\rename 's/[(|)|\[|\]|{|}|&|,|\!|\"|;|:]+/./g' "
+#todo#alias RenameReplaceSpace21      "\rename 's/[(|)|\[|\]|{|}|&|,|\!|\"|;|:]+/./g' "
+alias RenameReplaceSpace21      "\rename 's/[(|)|\[|\]|{|}|&|,|\!|;|:]+/./g' "
 alias RenameReplaceSpace22      "\rename 's/[_|\s]+/_/g' "
 #alias RenameReplaceSpace3       "\rename 's/[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]+/_/g' "
 #[《|》|（|）|：|、|(|)|“|”|·|，|、|\[|\]|\s|’]
@@ -291,98 +292,98 @@ alias goCTest               'cd /data/work/test_space/ctest_qshan'
 alias goCppTest             'cd /data/work/test_space/cpptest_qshan'
 
 #git alias
-alias githelpa                    'git help -a '
-alias gitgui                      'git gui '
-alias gitadd_f                    'git add -f '
-alias gitmvn                      'git mv -n '
+alias git.help.a                  'git help -a '
+alias git.gui                     'git gui '
+alias git.add.f                   'git add -f '
+alias git.mv.n                    'git mv -n '
 #alias gitmvn                      'git mv -dry-run '
-alias gitmv                       'git mv '
-alias gitmvv                      'git mv -v '
-alias gitmvf                      'git mv -f '
-alias gitrmn                      'git rm -n '
+alias git.mv                      'git mv '
+alias git.mv.v                    'git mv -v '
+alias git.mv.f                    'git mv -f '
+alias git.rm.n                    'git rm -n '
 #alias gitrmn                      'git rm -dry-run '
-alias gitrm                       'git rm '
-alias gitrmr                      'git rm -r '
-alias gitrmf                      'git rm -f '
+alias git.rm                      'git rm '
+alias git.rm.r                    'git rm -r '
+alias git.rm.f                    'git rm -f '
 #
-alias gitcommitma                 'git commit -a -m '
+alias git.commit.ma               'git commit -a -m '
 #example# git commit -ma "coment description"
-alias gitcommitm                  'git commit -m '
+alias git.commit.m                'git commit -m '
 #example# git commit -m "coment description" FileName1 FileName2
-alias gitcommitamend              'git commit --amend '
-alias gitpush                     'git push '
+alias git.commit.amend            'git commit --amend '
+alias git.push                    'git push '
 #example# git push TargetName SourceName #push data from SourceName to TargetName
-alias gitpull                     'git pull --tags '
-alias gitpulloriginmaster         'git pull --tags origin master '
+alias git.pull                    'git pull --tags '
+alias git.pull.origin.master      'git pull --tags origin master '
 #example git checkout TagName FileName
 #example git checkout TagName
 #example git checkout -b NewBranchName
 #example git checkout -b NewBranchName TagName
-alias gitfetch                    'git fetch --all '
-alias gitremoteadd                'git remote add origin '
+alias git.fetch                   'git fetch --all '
+alias git.remote.add              'git remote add origin '
 
-alias gitremotev                  'git remote -v'
-alias gitremotevshow              'git remote -v show '
+alias git.remote.v                'git remote -v'
+alias git.remote.v.show           'git remote -v show '
 #example# gitremoteshow RemoteRepoName
-alias gitremoteshoworigin         'git remote show origin'
-alias gitremotePruneOrigin        'git remote prune origin'
-alias gitclone                    'git clone --recursive '
+alias git.remote.show.origin      'git remote show origin'
+alias git.remote.prune.origin     'git remote prune origin'
+alias git.clone                   'git clone --recursive '
 #
-alias gitgrep                     'git grep '
-alias gitgrepr                    'git grep -r '
-alias gitgrepi                    'git grep -i '
-alias gitgrepI                    'git grep -I '
-alias gitgrephelp                 'git grep --help'
-alias gitdiffstat                 'git diff --stat '
-alias gitdifftool                 'git difftool --tool=vimdiff '
-alias gitdifftoolhead             'git difftool --tool=vimdiff HEAD '
-alias gitdifftoolhead1            'git difftool --tool=vimdiff HEAD^ '
-alias gitdifftoolhead2            'git difftool --tool=vimdiff HEAD^^ '
-alias gitshow                     'git show '
-alias gitlsfiles                  'git ls-files '
-alias gitlsremote                 'git ls-remote '
-alias gitlstree                   'git ls-tree '
-alias gitlog                      'git log '
-alias gitlogpretty                'git log --pretty="%h - %s" --no-merges -- t/ '
-alias gitlogprettyshort           'git log --pretty=short '
-alias gitlogprettyoneline         'git log --pretty=oneline '
-alias gitloggraph                 'git log --graph '
-alias gitlogstat                  'git log --stat '
-alias gittagl                     'git tag -l '
-alias gittaga                     'git tag -a '
+alias git.grep                    'git grep '
+alias git.grep.r                  'git grep -r '
+alias git.grep.i                  'git grep -i '
+alias git.grep.I                  'git grep -I '
+alias git.grep.help               'git grep --help'
+alias git.diff.stat               'git diff --stat '
+alias git.difftool                'git difftool --tool=vimdiff '
+alias git.difftool.head           'git difftool --tool=vimdiff HEAD '
+alias git.difftool.head1          'git difftool --tool=vimdiff HEAD^ '
+alias git.difftool.head2          'git difftool --tool=vimdiff HEAD^^ '
+alias git.show                    'git show '
+alias git.lsfiles                 'git ls-files '
+alias git.lsremote                'git ls-remote '
+alias git.lstree                  'git ls-tree '
+alias git.log                     'git log '
+alias git.log.pretty              'git log --pretty="%h - %s" --no-merges -- t/ '
+alias git.log.pretty.short        'git log --pretty=short '
+alias git.log.pretty.oneline      'git log --pretty=oneline '
+alias git.log.graph               'git log --graph '
+alias git.log.stat                'git log --stat '
+alias git.tag.l                   'git tag -l '
+alias git.tag.a                   'git tag -a '
 #alias gitstatus                   'git status '
-alias gitstatusshort              'git status --short '
-alias gitbranchall                'git branch --all'
-alias gitbranchlist               'git branch --list'
-alias gitbranchremotes            'git branch --remotes'
-alias gitbranchtrack              'git branch --track'
+alias git.status.short            'git status --short '
+alias git.branch.all              'git branch --all'
+alias git.branch.list             'git branch --list'
+alias git.branch.remotes          'git branch --remotes'
+alias git.branch.track            'git branch --track'
 #example# gitbranchtrack localBranchName remoteHostName/remoteBranchName
-alias gitbranchb                  'git branch -b'
+alias git.branch.b                'git branch -b'
 #example# gitbranchb localBranchName remoteHostName/remoteBranchName
 #example# gitbranchb localBranchName
-alias gitswitch                   'git switch '
-alias gitswitchc                  'git switch -c'
-alias gitswitchf                  'git switch -f'
-alias gitswitchm                  'git switch -m'
+alias git.switch                  'git switch '
+alias git.switch.c                'git switch -c'
+alias git.switch.f                'git switch -f'
+alias git.switch.m                'git switch -m'
 #example# gitswitchc localBranchName remoteHostName/remoteBranchName
-alias gitrestore                  'git restore'
-alias gitconfiglist               'git config --list'
-alias gitreset_soft               'git reset --soft '
-alias gitreset_hard               'git reset --hard '
+alias git.restore                 'git restore'
+alias git.config.list             'git config --list'
+alias git.reset.soft              'git reset --soft '
+alias git.reset_hard              'git reset --hard '
 #example# gitreset_hard FileName
 #example# gitreset_hard FolderName
-alias gitreset_head0              'git reset HEAD '
-alias gitreset_head1              'git reset HEAD^ '
-alias gitreset_head2              'git reset HEAD~2 '
-alias gitreset_head3              'git reset HEAD~3 '
-alias gitdiffhead                 'git diff HEAD '
-alias gitdiff_cached              'git diff --cached '
-alias gitsubmoduleupdate          'git submodule update --init --recursive '
-alias gitsubmoduleupdatef         'git submodule update --init --recursive --force '
-alias gitsubmoduleupdateremotef   'git submodule update --init --recursive --remote --force '
-alias gitsubmoduledeinit          'git submodule deinit '
-alias gitsubmoduleadd             'git submodule add '
-alias gitsubmodulesync            'git submodule sync '
+alias git.reset.head0             'git reset HEAD '
+alias git.reset.head1             'git reset HEAD^ '
+alias git.reset.head2             'git reset HEAD~2 '
+alias git.reset.head3             'git reset HEAD~3 '
+alias git.diff.head               'git diff HEAD '
+alias git.diff.cached             'git diff --cached '
+alias git.submodule.update        'git submodule update --init --recursive '
+alias git.submodule.update.f      'git submodule update --init --recursive --force '
+alias git.submodule.update.remote.f 'git submodule update --init --recursive --remote --force '
+alias git.submodule.deinit        'git submodule deinit '
+alias git.submodule.add           'git submodule add '
+alias git.submodule.sync          'git submodule sync '
 #example# git submodule add <submodule-url> <submodule-path>
 #example#reinit submodule
 ##1#Delete the submodule folder:
@@ -399,29 +400,29 @@ alias gitsubmodulesync            'git submodule sync '
 #git submodule sync
 #git submodule update --init --recursive --remote
 #
-alias gitsubmodulestatus          'git submodule status '
-alias gitsubmoduleset-url         'git submodule set-url -- '
+alias git.submodule.status        'git submodule status '
+alias git.submodule.set-url       'git submodule set-url -- '
 # git submodule set-url -- <path> <url>
-alias gitpullsubmodules           'git pull --recurse-submodules '
-alias gitcheckoutb                'git checkout -b '
-alias gitcheckoutf                'git checkout -f '
+alias git.pull.submodules         'git pull --recurse-submodules '
+alias git.checkout.b              'git checkout -b '
+alias git.checkout.f              'git checkout -f '
 #example# git checkout -f <branch> [<start point>]
-alias gitcheckoutm                'git checkout -m '
-alias gitcheckout--               'git checkout -- '
+alias git.checkout.m              'git checkout -m '
+alias git.checkout.--             'git checkout -- '
 #example# gitcheckout commitNumber fileName
 #example# gitcheckout fileName
-alias gitcleanfd                  'git clean -fd '
-alias gitstash                    'git stash '
-alias gitstashlist                'git stash list '
-alias gitstashshow                'git stash show '
-alias gitstashpop                 'git stash pop '
-alias gitstashapply               'git stash apply '
-alias gitstashdrop                'git stash drop '
-alias gitstashclear               'git stash clear '
-alias gitstashbranch              'git stash branch '
-alias gitstashclear               'git stash clear '
-alias gitstashcreate              'git stash create '
-alias gitstashstore               'git stash store '
+alias git.clean.fd                'git clean -fd '
+alias git.stash                   'git stash '
+alias git.stash.list              'git stash list '
+alias git.stash.show              'git stash show '
+alias git.stash.pop               'git stash pop '
+alias git.stash.apply             'git stash apply '
+alias git.stash.drop              'git stash drop '
+alias git.stash.clear             'git stash clear '
+alias git.stash.branch            'git stash branch '
+alias git.stash.clear             'git stash clear '
+alias git.stash.create            'git stash create '
+alias git.stash.store             'git stash store '
 ##### Interrupted workflow
 ###  When you are in the middle of something, your boss comes in and demands that you fix something immediately.
 ###  Traditionally, you would make a commit to a temporary branch to store your changes away, and return to your
@@ -443,9 +444,9 @@ alias gitstashstore               'git stash store '
 ###info  $ git stash pop
 ###      # ... continue hacking ...
 #
-alias gitinit                     'git init '
-alias gitinitbare                 'git init --bare '
-alias gitclonebarel               'git clone --bare -l '
+alias git.init                    'git init '
+alias git.init.bare               'git init --bare '
+alias git.clone.barel             'git clone --bare -l '
 #example git clone --bare -l LocalRepoPathWithFullName/.git BackupRepoNameWithFullPath.git
 
 
@@ -521,7 +522,7 @@ set     path    = ($path /usr/local/lib /usr/lib)
 # set     path    = (~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin $path)
 setenv graalvmHome "~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1"
 setenv PATH       "${graalvmHome}/bin:${PATH}"
-setenv JAVA_HOME=${graalvmHome}
+setenv JAVA_HOME ${graalvmHome}
 
 
 
