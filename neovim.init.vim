@@ -189,6 +189,9 @@ command! MyFont16                    :Guifont DejaVu\ Sans\ Mono:h16
 command! MyFont18                    :Guifont DejaVu\ Sans\ Mono:h18
 command! MyFont20                    :Guifont DejaVu\ Sans\ Mono:h20
 command! MyFont22                    :Guifont DejaVu\ Sans\ Mono:h22
+command! MyFont26                    :Guifont DejaVu\ Sans\ Mono:h26
+command! MyFont28                    :Guifont DejaVu\ Sans\ Mono:h28
+command! MyFont30                    :Guifont DejaVu\ Sans\ Mono:h30
 
 command! MyTabstop                   :set tabstop=2 softtabstop=2 shiftwidth=2
 " set softtabstop=2
@@ -1208,6 +1211,8 @@ nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
 set encoding=utf-8
 set fileencodings=utf-8,gbk,gb18030,gb2312
 set termencoding=utf-8
+
+:MyTabstop
 "
 "input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
