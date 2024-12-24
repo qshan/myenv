@@ -595,6 +595,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'derekwyatt/vim-scala'
 "
 " https://github.com/mattf1n/VimMarp
+Plugin 'skywind3000/asyncrun.vim'
 Plugin 'mattf1n/VimMarp.vim'
 "
 " https://www.shixuen.com/linux/vim_markdown.html
@@ -664,7 +665,7 @@ Plugin 'tpope/vim-surround'
 "  "hello"                   ysWfprint<cr>     print("hello")
 "  "hello"                   ysWFprint<cr>     print( "hello" )
 "  "hello"                   ysW<C-f>print<cr> (print "hello")
-"  yss
+" info yss
 "  print "Hello *world!"     yss-        <?php print "Hello world!" ?>
 "  my $str = *whee!;         vllllS'     my $str = 'whee!';
 "--------------------
@@ -691,6 +692,7 @@ Plugin 'ZSaberLv0/ZFVimGitUtil'
 "" reference linker https://github.com/StrayDragon/vim-smartim
 ""TODO"Plugin 'StrayDragon/vim-smartim'
 ""
+Plugin 'makerj/vim-pdf'
 "
 call vundle#end()
 "required for Vundle
@@ -1360,6 +1362,10 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 " replace/substitute the specific lines, from Start to End"
 ":StartLineNumber,EndLineNumbers/search_for_this/replace_with_this/g
 ":1,6s/search_for_this/replace_with_this/g
+" 5428,9971s/^\(3\.5\.[0-9]*\)/#### \1/g
+" 18691,23966s/^\(4\.[0-9]*\.[0-9]*\.[0-9]*\)/##### \1/g
+" 18691,23966s/^\(4\.[0-9]*\.[0-9]*\)/#### \1/g
+" 18691,23966s/^\(4\.[0-9]*\)/### \1/g
 ""
 ":s/search_for_this/replace_with_this/g TheNumberOfRepeated
 ":s/search_for_this/replace_with_this/g 6

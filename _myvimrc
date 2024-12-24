@@ -498,15 +498,20 @@ Plugin 'Konfekt/FastFold'
 " 你的所有插件需要在下面这行之前
 " 插件列表结束
 ""Plugin 'qshan/nerdcommenter'
-"Plugin 'preservim/nerdcommenter'
-Plugin 'http://github.com/preservim/nerdcommenter.git'
-"Plugin 'preservim/nerdtree'
-Plugin 'http://github.com/preservim/nerdtree.git'
+Plugin 'preservim/nerdcommenter'
+"Plugin 'http://github.com/preservim/nerdcommenter.git'
+Plugin 'preservim/nerdtree'
+"Plugin 'http://github.com/preservim/nerdtree.git'
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
+" https://github.com/mattf1n/VimMarp
+Plugin 'skywind3000/asyncrun.vim'
+Plugin 'mattf1n/VimMarp.vim'
+"
 " https://www.shixuen.com/linux/vim_markdown.html
 "" https://secluded.site/vim-as-a-markdown-editor/#vim-markdown
+"" https://codeinthehole.com/tips/writing-markdown-in-vim/
 " install vim-markdown
 ""https://github.com/qshan/vim-markdown
 ""#todo# sudo apt install vim-addon-manager
@@ -589,7 +594,7 @@ Plugin 'tpope/vim-surround'
 "  "hello"                   ysWfprint<cr>     print("hello")
 "  "hello"                   ysWFprint<cr>     print( "hello" )
 "  "hello"                   ysW<C-f>print<cr> (print "hello")
-"  yss
+" info yss
 "  print "Hello *world!"     yss-        <?php print "Hello world!" ?>
 "  my $str = *whee!;         vllllS'     my $str = 'whee!';
 "--------------------
@@ -613,6 +618,7 @@ Plugin 'ZSaberLv0/ZFVimGitUtil'
 "" reference linker https://github.com/StrayDragon/vim-smartim
 ""TODO"Plugin 'StrayDragon/vim-smartim'
 ""
+Plugin 'makerj/vim-pdf'
 "
 call vundle#end()
 "required for Vundle
