@@ -509,3 +509,13 @@ ls -alh /dev/disk/by-path
 #--------------------------------------------------
 
 #==============================the-user-groups-management ent==============================
+# ubuntu-drivers devices
+# sudo apt install --install-recommends --reinstall xserver-xorg-video-nouveau
+# sudo apt install --install-recommends --reinstall nvidia-driver-390
+# nvdia 390 driver install
+# sudo nano/etc/modprobe . d/black list.conf
+#
+#todo# fshan# for cuda install
+# blacklist nouveaou
+# options nouveau modeset=0
+###todo### sudo update-initramfs -u
