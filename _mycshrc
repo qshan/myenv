@@ -652,11 +652,12 @@ alias set_default_path_with_yellow1 "set prompt='${TcshYellow}%N@%U%m%u:%B%c3%b$
 #set_short_path
 set_full_path1
 
-alias wgetc   'wget -c '
-alias wgetL   'wget -L '
-alias curlCL  'curl -CL '
-alias curlL   'curl -L '
+alias wget.c   'wget -C '
+alias wget.L   'wget -L '
+alias curl.CL  'curl -CL '
+alias curl.L   'curl -L '
 #alias curlCLO 'curl -CL -O '
+alias curl.L.O 'curl -L -O '
 
 #scala env setting
 #setenv PATH '/home/fshan/.local/share/coursier/bin:$PATH'
