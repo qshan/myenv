@@ -652,7 +652,7 @@ alias set_default_path_with_yellow1 "set prompt='${TcshYellow}%N@%U%m%u:%B%c3%b$
 #set_short_path
 set_full_path1
 
-alias wget.c   'wget -C '
+alias wget.c   'wget -c '
 alias wget.L   'wget -L '
 alias curl.CL  'curl -CL '
 alias curl.L   'curl -L '
