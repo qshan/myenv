@@ -12,21 +12,6 @@ ls python python-config -alh
 sudo ln -sf        python${input_argument1} python
 sudo ln -sf        python${input_argument1}-config python-config
 
-# #ls gcc g++ cpp gcc-nm gcc-ar gcc-ranlib -alh
-# sudo ln -sf        cpp-4.8 cpp
-# sudo ln -sf        g++-4.8 g++
-# sudo ln -sf     gcc-ar-4.8 gcc-ar
-# sudo ln -sf     gcc-nm-4.8 gcc-nm
-# sudo ln -sf gcc-ranlib-4.8 gcc-ranlib
-# #ls gcc g++ cpp gcc-nm gcc-ar gcc-ranlib -alh
-# #ls -alh ld
-
-# sudo ln -sf        cpp-9 cpp
-# sudo ln -sf        g++-9 g++
-# sudo ln -sf     gcc-ar-9 gcc-ar
-# sudo ln -sf     gcc-nm-9 gcc-nm
-# sudo ln -sf gcc-ranlib-9 gcc-ranlib
-
 ls python python-config -alh
 
 cd -
@@ -41,6 +26,10 @@ cd -
 # python3-config
 # python3.8
 # python3.8-config
+# python3.9
+# python3.9-config
+# python3.10
+# python3.10-config
 #
 # # python3-futurize
 # # python3-pasteurize
