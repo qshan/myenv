@@ -111,6 +111,8 @@ alias la='    ls -alh '
 alias lt='    ls -ctl '
 alias lstr='  ls -tr '
 #
+alias du.sh=' du -sh '
+#
 alias mvf='             \mv -f '
 ##------------------------------
 alias grep='            \grep --color=auto '
