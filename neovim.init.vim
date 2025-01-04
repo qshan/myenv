@@ -530,7 +530,9 @@ Plugin 'hrsh7th/cmp-vsnip'
 Plugin 'hrsh7th/vim-vsnip'
 "
 "
+"
 "Plugin for quarto start
+"" reference: https://github.com/quarto-dev/quarto-nvim
 Plugin 'quarto-dev/quarto-nvim'
 Plugin 'jmbuhr/otter.nvim'
 "todo"debug"Plugin 'nvim-treesitter/nvim-treesitter'
@@ -538,6 +540,9 @@ Plugin 'jmbuhr/otter.nvim'
 "Plugin 'neovim/nvim-lspconfig'
 " :QuartoPreview
 "Plugin for quarto end
+"
+"todo""https://github.com/jmbuhr/quarto-nvim-kickstarter
+"
 "
 "tabnine-vim is good complete plugin based on youcomplete. It is better to use on Windows. YCM is not good for windows install
 "Plugin 'zxqfl/tabnine-vim'
@@ -594,9 +599,9 @@ Plugin 'preservim/nerdtree'
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
-" https://github.com/mattf1n/VimMarp
-Plugin 'skywind3000/asyncrun.vim'
-Plugin 'mattf1n/VimMarp.vim'
+"todo" https://github.com/mattf1n/VimMarp
+"todoPlugin 'skywind3000/asyncrun.vim'
+"todoPlugin 'mattf1n/VimMarp.vim'
 "
 " https://www.shixuen.com/linux/vim_markdown.html
 "" https://secluded.site/vim-as-a-markdown-editor/#vim-markdown
@@ -643,6 +648,7 @@ Plugin 'instant-markdown/vim-instant-markdown'
 ":PluginInstall
 ":call mkdp#util#install()
 ""
+"
 Plugin 'tpope/vim-surround'
 "  ds
 "  Old text                  Command     New text ~
