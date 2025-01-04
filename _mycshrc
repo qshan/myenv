@@ -269,6 +269,9 @@ alias openFileBroswer       'pcmanfm &'
 #alias openFileBroswer 'nautilus &'
 
 alias openPdf               'evince '
+alias md.quarto.convert     'quarto convert'
+alias md.quarto.preview     'quarto preview'
+alias md.marp.info          'whereis marp'
 
 # sudo apt install qpdf
 alias qpdf.decrypt          'qpdf --decrypt '
@@ -340,7 +343,6 @@ alias git.grep.i                  'git grep -i '
 alias git.grep.I                  'git grep -I '
 alias git.grep.help               'git grep --help'
 alias git.diff                    'git diff '
-/bin/bash: k:w: command not found
 alias git.difftool.head           'git difftool --tool=vimdiff HEAD '
 alias git.difftool.head1          'git difftool --tool=vimdiff HEAD^ '
 alias git.difftool.head2          'git difftool --tool=vimdiff HEAD^^ '
@@ -766,12 +768,12 @@ setenv LANG     C.UTF-8
 #------------------------------
 
 #python alias
-alias python3mvenv '                  python3 -m venv '
+alias python3.m.venv '                    python3 -m venv '
 #Example#python3 -m venv VirtualEnvName ; cd VirtualEnvName; source bin/activate; pip3 list
 #deactivate
-alias python3mpipinstall '            python3 -m pip install'
-alias python3mpipinstallupgradepip '  python3 -m pip install --upgrade pip'
-alias python3mpiplist '               python3 -m pip list'
+alias python3.m.pip.install '             python3 -m pip install'
+alias python3.m.pip.install.upgrade.pip ' python3 -m pip install --upgrade pip'
+alias python3.m.piplist '                 python3 -m pip list'
 
 setenv PATH "${PATH}:/opt/riscv/bin"
 setenv PATH "${PATH}:~/miniconda/bin"

@@ -266,7 +266,10 @@ alias openFileBroswer='pcmanfm &'
 #for ubuntu
 #alias openFileBroswer='nautilus &'
 
-alias openPdf='evince '
+alias openPdf='             evince '
+alias md.quarto.convert='   quarto convert'
+alias md.quarto.preview='   quarto preview'
+alias md.marp.info='        whereis marp'
 
 # sudo apt install qpdf
 alias qpdf.decrypt='qpdf --decrypt '
@@ -896,12 +899,12 @@ export LANG=C.UTF-8
 #------------------------------
 
 #python alias
-alias python3mvenv='                  python3 -m venv '
+alias python3.m.venv='                    python3 -m venv '
 #Example#python3 -m venv VirtualEnvName ; cd VirtualEnvName; source bin/activate; pip3 list
 #deactivate
-alias python3mpipinstall='            python3 -m pip install'
-alias python3mpipinstallupgradepip='  python3 -m pip install --upgrade pip'
-alias python3mpiplist='               python3 -m pip list'
+alias python3.m.pip.install='             python3 -m pip install'
+alias python3.m.pip.install.upgrade.pip=' python3 -m pip install --upgrade pip'
+alias python3.m.pip.list='                python3 -m pip list'
 
 export PATH=$PATH:/opt/riscv/bin
 export PATH=$PATH:~/miniconda3/bin
