@@ -98,11 +98,17 @@ setenv timefshan  "`date +%Y-%m-%d-%H%M`"
 #alias  gettime    'echo `date +%Y-%m-%d-%H%M`'
 alias gettime     'export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
 
+alias numlockx.status '   numlockx status'
+alias numlockx.on '       numlockx on'
+alias numlockx.off '      numlockx off'
+
 # replace Caps with CTRL
 setxkbmap -option ctrl:nocaps
+alias setxkbmap.print '   setxkbmap -print'
 #
 ###set as default setting
 ##setxkbmap -option
+alias setxkbmap.option '   setxkbmap -option'
 #
 # replace the Caps as press left-Shift and right-Shift both
 #setxkbmap -option shift:both_capslock
@@ -781,28 +787,28 @@ setenv PATH "${PATH}:/opt/riscv/bin"
 setenv PATH "${PATH}:~/miniconda/bin"
 #------------------------------
 # conda alias
-alias condaactivate '   conda activate '
-alias condadeactivate ' conda deactivate '
-alias condacreate '     conda create '
-alias condacreatename ' conda create -n '
+alias conda.activate '   conda activate '
+alias conda.deactivate ' conda deactivate '
+alias conda.create '     conda create '
+alias conda.create.name ' conda create -n '
 #info#alias condacreaten 'conda create -name '
-alias condaremove ' conda remove '
-alias condaremovename ' conda remove -n '
+alias conda.remove ' conda remove '
+alias conda.remove.name ' conda remove -n '
 #example#conda remove -n EnvName RemovingModuleName
-alias condainstall '    conda install '
-alias condainstallname 'conda install --name '
+alias conda.install '    conda install '
+alias conda.install.name 'conda install --name '
 #info#alias condaconfigadd "conda config --add channels conda-forge"
 #info#alias condaconfigconfig "conda config --set channel_priority strict"
 #info#alias condaconfiginstall "conda install <package-name>"
-alias condaversion '    conda --version '
-alias condaupdateconda 'conda update conda '
-alias condaupdateall '  conda update --all '
-alias condainfoe '      conda info -e '
-alias condalist '       conda list '
-alias condalistname '   conda list --name '
-alias condasearch '     conda search '
-alias condaupdate '     conda update '
-alias condaconfigaddchannels '  conda config --add channels '
+alias conda.version '    conda --version '
+alias conda.update.conda 'conda update conda '
+alias conda.update.all '  conda update --all '
+alias conda.info.e '      conda info -e '
+alias conda.list '       conda list '
+alias conda.list.name '   conda list --name '
+alias conda.search '     conda search '
+alias conda.update '     conda update '
+alias conda.config.add.channels '  conda config --add channels '
 
 #------------------------------
 

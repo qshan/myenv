@@ -84,12 +84,22 @@ export timefshan="`date +%Y-%m-%d-%H%M`"
 #alias  gettime='echo `date +%Y-%m-%d-%H%M`'
 alias  gettime='export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
 
+alias numlockx.status=' numlockx status'
+alias numlockx.on='     numlockx on'
+alias numlockx.off='    numlockx off'
+
 # replace Caps with CTRL
 #debug#fshan#setxkbmap -option ctrl:nocaps
+alias setxkbmap.print='    setxkbmap -print'
 #
 ###set as default setting
 ##setxkbmap -option
+alias setxkbmap.option='  setxkbmap -option'
+
+alias xmodmap.help='      xmodmap --help'
+
 #
+#reference : https://superuser.com/questions/1133476/make-terminal-recognize-pageup-and-pagedown-when-remapped-to-different-keys
 # replace the Caps as press left-Shift and right-Shift both
 #setxkbmap -option shift:both_capslock
 #
@@ -950,60 +960,66 @@ export PATH=$PATH:~/miniconda3/bin
 # https://docs.conda.io/projects/conda/en/latest/commands/index.html
 #
 # conda alias
-alias condaactivate='   conda activate '
-alias condadeactivate=' conda deactivate '
+alias conda.activate='   conda activate '
+alias conda.deactivate=' conda deactivate '
 #
-alias condacreate='     conda create '
+alias conda.create='        conda create '
 # alias condacreatename=' conda create -n '
-alias condacreatename=' conda create -name '
+alias conda.create.name='   conda create --name '
 # conda create --name new_base_name python=3.8
 #info#alias condacreaten='conda create --name new_base_name '
-alias condacreatePwd=' conda create  --prefix `pwd`'
+alias conda.create.pwd='    conda create  --prefix `pwd`'
 # conda create --prefix /tmp/test-env -name EnvName python=3.8
+# conda create --prefix FullPath --yes --name EnvName python=3.8
+# conda create -p FullPath -y -n EnvName python=3.10
 #
-alias condaremove=' conda remove '
-alias condaremovename=' conda remove -n '
+alias conda.remove='        conda remove '
+alias conda.remove.name='   conda remove -n '
 # conda remove -n EnvName RemovingModuleName
 # conda remove --name old_env_name --all
 #
-alias condainstall='    conda install '
+alias conda.install='       conda install '
 # conda install python=3.8
-alias condainstallname='conda install --name '
+alias conda.install.name='  conda install --name '
 #
 #info#alias condaconfigadd="conda config --add channels conda-forge"
 #info#alias condaconfigconfig="conda config --set channel_priority strict"
 #info#alias condaconfiginstall="conda install <package-name>"
-alias condaversion='    conda --version '
+alias conda.version='       conda --version '
 #
-alias condaupdateconda='conda update conda '
-alias condaupdateall='  conda update --all '
+alias conda.update.conda='  conda update conda '
+alias conda.update.all='    conda update --all '
 #
-alias condainfoe='      conda info -e '
-alias condainfoenv='    conda info --envs '
+alias conda.info.e='        conda info -e '
+alias conda.info.env='      conda info --envs '
 #
-alias condalist='       conda list '
-alias condalistname='   conda list --name '
+alias conda.list='          conda list '
+alias conda.list.name='     conda list --name '
 #
-alias condasearch='     conda search '
+alias conda.search='        conda search '
 #
-alias condaupdate='     conda update '
+alias conda.update='        conda update '
 #
-alias condaconfigaddchannels='  conda config --add channels '
+alias conda.config.add.channels='  conda config --add channels '
 #
 #conda env remove --name pybites
-alias condaenvexport='  conda env export'
-alias condaenvconfig='  conda env config'
-alias condaenvcreate='  conda env create'
+alias conda.env.export='  conda env export'
+alias conda.env.config='  conda env config'
+alias conda.env.create='  conda env create'
 # conda create --clone old_base_name --name new_base_name
-alias condaenvexport='  conda env export'
-alias condaenvlist='    conda env list'
-alias condaenvremove='  conda env remove'
-alias condaenvupdate='  conda env update'
+# alias conda.env.export='  conda env export'
+alias conda.env.list='    conda env list'
+alias conda.env.remove='  conda env remove'
+alias conda.env.update='  conda env update'
 #
 # [conda workflow]
 # 1. Creating and activating a new environment
 #  conda create --name new_base_name
 #  conda create --name new_base_name --no-default-packages python=3.8
+#
+#  conda create --prefix FullPath --yes --name EnvName python=3.8
+#  conda create -p FullPath -y -n EnvName python=3.10
+#
 #  conda activate new_base_name
 # 2. Adding packages from Anaconda and PyPi
 #  conda install click
