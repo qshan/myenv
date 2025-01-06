@@ -477,6 +477,17 @@ alias git.init.bare               'git init --bare '
 #example git clone --bare -l LocalRepoPathWithFullName/.git BackupRepoNameWithFullPath.git
 
 
+### docker start ###
+#
+# docker-compose up
+# 启动和运行整个应用。默认情况下，docker-compose up会尝试自动构建任何尚未构建的镜像。如果你想强制它重新构建镜像，可以使用--build选项。
+alias docker-compose.up '           docker-compose up '
+#
+# docker-compose down
+# 停止并删除容器、网络、卷和镜像创建的docker-compose up。
+alias docker-compose.down '         docker-compose down '
+#
+### docker end ###
 
 #input methods reset
 alias input_methods_reset_fcitx   'fcitx -r'
