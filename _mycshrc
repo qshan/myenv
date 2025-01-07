@@ -787,6 +787,16 @@ alias mill.idea.GenIdea.debug       'mill -j 2  mill.idea.GenIdea/idea --debug'
 alias mill.bsp.Install              'mill -j 2 -i mill.bsp.BSP/install'
 alias mill.bsp.Install.debug        'mill -j 2 -i mill.bsp.BSP/install --debug'
 
+#-----bazel start-------------------------
+alias bazel.help "      bazel help "
+alias bazel.build "     bazel build "
+alias bazel.run "       bazel run "
+alias bazel.test "      bazel test "
+alias bazel.query "     bazel query "
+alias bazel.clean "     bazel clean "
+alias bazel.version "   bazel version "
+#-----bazel end-------------------------
+
 #------------------------------
 #chinese display support
 #add following part into /etc/profile
@@ -811,6 +821,13 @@ alias conda.deactivate ' conda deactivate '
 alias conda.create '     conda create '
 alias conda.create.name ' conda create -n '
 #info#alias condacreaten 'conda create -name '
+#
+alias conda.rename '     conda rename '
+# conda rename -n test123 test321
+# conda rename --name test123 test321
+# conda rename -p path/to/test123 test321
+# conda rename --prefix path/to/test123 test321
+#
 alias conda.remove ' conda remove '
 alias conda.remove.name ' conda remove -n '
 #example#conda remove -n EnvName RemovingModuleName

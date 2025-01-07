@@ -920,6 +920,20 @@ if [ -f ~/data/myenv/mill-bash-completion/mill.complete.sh ]; then
   source ~/data/myenv/mill-bash-completion/mill.complete.sh
 fi
 
+if [ -f /usr/local/lib/bazel/bin/bazel-complete.bash ]; then
+  source /usr/local/lib/bazel/bin/bazel-complete.bash
+fi
+
+#-----bazel start-------------------------
+alias bazel.help="      bazel help "
+alias bazel.build="     bazel build "
+alias bazel.run="       bazel run "
+alias bazel.test="      bazel test "
+alias bazel.query="     bazel query "
+alias bazel.clean="     bazel clean "
+alias bazel.version="   bazel version "
+#-----bazel end-------------------------
+
 #------------------------------
 #chinese display support
 #add following part into /etc/profile
@@ -990,6 +1004,14 @@ alias conda.create.pwd='    conda create  --prefix `pwd`'
 # conda create --prefix FullPath --yes --name EnvName python=3.8
 # conda create -p FullPath -y -n EnvName python=3.10
 #
+alias conda.rename='        conda rename '
+# conda rename -n test123 test321
+# conda rename --name test123 test321
+# #info#will move the conda env to home path
+# conda rename -p path/to/test123 test321
+# conda rename --prefix path/to/test123 test321
+#
+alias conda.remove='        conda remove '
 alias conda.remove='        conda remove '
 alias conda.remove.name='   conda remove -n '
 # conda remove -n EnvName RemovingModuleName
