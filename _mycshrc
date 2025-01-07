@@ -109,6 +109,14 @@ alias setxkbmap.print '   setxkbmap -print'
 ###set as default setting
 ##setxkbmap -option
 alias setxkbmap.option '   setxkbmap -option'
+
+alias xmodmap.help '      xmodmap --help'
+
+alias xinput.list '       xinput --list '
+alias xinput.list.tpad '  xinput --list | grep -i touchpad'
+alias xinput.enable '     xinput --enable '
+alias xinput.disable '    xinput --disable '
+
 #
 # replace the Caps as press left-Shift and right-Shift both
 #setxkbmap -option shift:both_capslock
