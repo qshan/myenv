@@ -30,8 +30,8 @@ python3 -m pip install tensorflow
 ```bash
 
 ## conda create -p /data1/work/tinyml -yn tf-lite
-conda create -p /data1/work/tinyml/tf-lite
-conda active /data1/work/tinyml/tf-lite
+conda create -p /data1/work/tinyml/conda-tf-lite python=3.10.0 numpy=1.26.0
+conda activate /data1/work/tinyml/conda-tf-lite
 
 python3 -m pip install tflite-runtime
 
