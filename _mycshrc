@@ -117,6 +117,12 @@ alias xinput.list.tpad '  xinput --list | grep -i touchpad'
 alias xinput.enable '     xinput --enable '
 alias xinput.disable '    xinput --disable '
 
+alias 7z.a='              7x a '
+alias 7z.x='              7x x '
+alias 7z.e='              7x e '
+alias 7z.l='              7x l '
+alias 7z.t='              7x t '
+
 #
 # replace the Caps as press left-Shift and right-Shift both
 #setxkbmap -option shift:both_capslock
@@ -186,11 +192,11 @@ alias chmod+R               'chmod -R a+r '
 alias chmod-R               'chmod -R a-r '
 alias chmodER               'chmod -R a=r '
 ##------------------------------
-alias tarczvf               'tar -czvf '
-alias tarxzvf               'tar -xzvf '
-alias tarcJvf               'tar -cJvf '
-alias tarxJvf               'tar -xJvf '
-alias tartf                 'tar -tf '
+alias tar.czvf               'tar -czvf '
+alias tar.cJvf               'tar -cJvf '
+alias tar.xzvf               'tar -xzvf '
+alias tar.xJvf               'tar -xJvf '
+alias tar.tf                 'tar -tf '
 ##------------------------------
 #alias RenameReplaceSpace        "\rename 's/\s+/_/g' "
 alias RenameReplaceSpace        "\rename s/\'+/_/g "
