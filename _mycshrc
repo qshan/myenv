@@ -294,6 +294,14 @@ alias openPdf               'evince '
 alias md.quarto.convert     'quarto convert'
 alias md.quarto.preview     'quarto preview'
 alias md.marp.info          'whereis marp'
+if ( -d ~/data/tools/marp ) then
+#  set    path   = (~/data/tools/marp $path)
+  setenv PATH     "${PATH}:~/data/tools/marp"
+  alias md.marp.help '        marp --help'
+  alias md.marp.pdf '         marp --pdf '
+  alias md.marp.pptx '        marp --pptx '
+  alias md.marp.p '           marp -p '
+endif
 
 # sudo apt install qpdf
 alias qpdf.decrypt          'qpdf --decrypt '
