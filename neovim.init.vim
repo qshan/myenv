@@ -596,6 +596,11 @@ Plugin 'Konfekt/FastFold'
 "Plugin 'qshan/nerdcommenter'
 Plugin 'preservim/nerdcommenter'
 Plugin 'preservim/nerdtree'
+
+"https://github.com/scalameta/nvim-metals?tab=readme-ov-file#installation
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'scalameta/nvim-metals'
+
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
