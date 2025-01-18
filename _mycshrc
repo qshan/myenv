@@ -572,7 +572,14 @@ set     path    = ($path /usr/local/lib /usr/lib)
 #set the the path of graalvm instead of openjdk
 # setenv  PATH      "~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:${PATH}"
 # set     path    = (~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin $path)
+
+if ( -d ~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1 ) then
 setenv graalvmHome "~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1"
+endif
+if ( -d ~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1 ) then
+setenv graalvmHome "~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1"
+endif
+
 setenv PATH       "${graalvmHome}/bin:${PATH}"
 setenv JAVA_HOME ${graalvmHome}
 
@@ -695,10 +702,12 @@ alias curl.L   'curl -L '
 alias curl.L.O 'curl -L -O '
 
 #scala env setting
+if ( -d /home/fshan/.local/share/coursier/bin ) then
+  set    path   = (/home/fshan/.local/share/coursier/bin $path)
+  setenv PATH     "${PATH}:/home/fshan/.local/share/coursier/bin"
 #setenv PATH '/home/fshan/.local/share/coursier/bin:$PATH'
-set    path   = (/home/fshan/.local/share/coursier/bin $path)
-setenv PATH     "${PATH}:/home/fshan/.local/share/coursier/bin"
 #set path = ($path /home/fshan/.local/share/coursier/bin)
+endif
 # https://www.scala-sbt.org/1.x/docs/Running.html
 # https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html
 # https://www.scalawilliam.com/essential-sbt/
@@ -765,6 +774,8 @@ alias mill.inspect.compile            'mill inspect _.compile'
 alias mill.inspect.compile.all        'mill inspect __.compile'
 alias mill.inspect_                   'mill inspect _'
 alias mill.inspect__                  'mill inspect __'
+alias mill.describe                   'mill describe '
+#info# mill describe ops[2.12.4].compile
 alias mill.show                       'mill show '
 #info# mill show foo.scalaVersion
 alias mill.showNamed                  'mill showNamed '
@@ -821,8 +832,12 @@ alias python3.m.pip.install '             python3 -m pip install'
 alias python3.m.pip.install.upgrade.pip ' python3 -m pip install --upgrade pip'
 alias python3.m.piplist '                 python3 -m pip list'
 
+if ( -d /opt/riscv/bin ) then
 setenv PATH "${PATH}:/opt/riscv/bin"
+endif
+if ( -d ~/miniconda/bin ) then
 setenv PATH "${PATH}:~/miniconda/bin"
+endif
 #------------------------------
 # conda alias
 alias conda.activate '   conda activate '

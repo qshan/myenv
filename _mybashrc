@@ -699,14 +699,23 @@ export PATH=$PATH:/usr/local/lib:/usr/lib
 #export PATH=~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH
 #export PATH=~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1/bin:$PATH
 #export PATH=~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1/bin:$PATH
-export graalvmHome=~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1
+if [ -d ~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1 ]; then
+  export graalvmHome=~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1
+fi
+if [ -d ~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1 ]; then
+  export graalvmHome=~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1
+fi
+
 export PATH=$graalvmHome/bin:$PATH
 export JAVA_HOME=$graalvmHome
 
 #sudo apt install openjdk-8-jdk
 #if ['' eq `which java`]; then sudo apt install openjdk-8-jdk; fi;
+
+if [ -d ~/data/tools/briss/briss-0.9 ]; then
 export BrissInstallPath='~/data/tools/briss/briss-0.9'
 alias OpenBriss="java -jar ${BrissInstallPath}/briss-0.9.jar &"
+fi
 #
 #set title with current path
 #export PROMPT_COMMAND=' echo -ne "\033]0; $PWD \007" ; echo -ne "\033]1; ${PWD}_Min \007" '
@@ -825,7 +834,9 @@ alias curlL='   curl -L '
 alias curl.L.O=' curl -L -O '
 
 #scala env setting
-export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
+if [ -d /home/fshan/.local/share/coursier/bin ]; then
+  export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
+fi
 # https://www.scala-sbt.org/1.x/docs/Running.html
 # https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html
 # https://www.scalawilliam.com/essential-sbt/
@@ -892,6 +903,8 @@ alias mill.inspect.compile='          mill inspect _.compile'
 alias mill.inspect.compileall='       mill inspect __.compile'
 alias mill.inspect._='                mill inspect _'
 alias mill.inspect.__='               mill inspect __'
+alias mill.describe='                 mill describe '
+#info# mill describe ops[2.12.4].compile
 alias mill.show='                     mill show '
 #info# mill show foo.scalaVersion
 alias mill.show.Named='               mill showNamed '
@@ -957,8 +970,13 @@ alias python3.m.pip.install='             python3 -m pip install'
 alias python3.m.pip.install.upgrade.pip=' python3 -m pip install --upgrade pip'
 alias python3.m.pip.list='                python3 -m pip list'
 
-export PATH=$PATH:/opt/riscv/bin
-export PATH=$PATH:~/miniconda3/bin
+if [ -d /opt/riscv/bin ]; then
+  export PATH=$PATH:/opt/riscv/bin
+fi
+
+if [ -d ~/miniconda3/bin ]; then
+  export PATH=$PATH:~/miniconda3/bin
+fi
 #------------------------------
 # conda --help
 # usage: conda [-h] [-V] command ...
