@@ -292,9 +292,11 @@ alias openFileBroswer='pcmanfm &'
 #for ubuntu
 #alias openFileBroswer='nautilus &'
 
-alias openPdf='             evince '
+alias open.pdf='            evince '
 alias md.quarto.convert='   quarto convert'
 alias md.quarto.preview='   quarto preview'
+
+alias open.vcd='            gtkwave '
 
 if [ -d ~/data/tools/marp ]; then
   export PATH="$PATH:~/data/tools/marp"

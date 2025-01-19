@@ -293,10 +293,12 @@ alias openFileBroswer       'pcmanfm &'
 #for ubuntu
 #alias openFileBroswer 'nautilus &'
 
-alias openPdf               'evince '
+alias open.pdf              'evince '
 alias md.quarto.convert     'quarto convert'
 alias md.quarto.preview     'quarto preview'
-alias md.marp.info          'whereis marp'
+
+alias open.vcd              'gtkwave '
+
 if ( -d ~/data/tools/marp ) then
 #  set    path   = (~/data/tools/marp $path)
   setenv PATH     "${PATH}:~/data/tools/marp"
