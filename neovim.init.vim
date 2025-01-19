@@ -793,10 +793,12 @@ let g:ycm_show_detailed_diag_in_popup=1
 " :tmap  :tnoremap :tunmap    Terminal
 "
 "set the leaderkey setting
+"let mapleader = "Space"  "map leader-key to ,
 let mapleader = ","  "map leader-key to ,
 "info"" check the leaderkey map
 ":echo mapleader
 nmap <leader>n :set number<CR>
+nmap <leader>t :tabnew<CR>
 ""info" :map  ""lists current mappings
 ""info" show the hotkey define in current status
 " :map
