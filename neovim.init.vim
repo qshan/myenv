@@ -410,6 +410,7 @@ let g:verilog_syntax_fold_lst = "all"
 ""let g:verilog_syntax_fold_lst = "function,task,class,instance,define,comments,block,property,sequence,covergroup"
 set foldmethod=syntax ""for verilog_systemverilog plugin
 set foldlevel=100
+"set foldlevel=0
 "
 :syntax enable
 "This command switches on syntax highlighting: >
@@ -842,7 +843,7 @@ nmap <leader>n :set number<CR>
 "
 "set the *.scala file as the makefile type
 "au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  set filetype=scala
-:au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt  setfiletype scala
+:au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.scala,*.sc,*.sbt,*.mill  setfiletype scala
 "
 "set the *.cshrc and *_cshrc file as the makefile type
 au BufReadPre,BufReadPost,BufNewFilE,FileReadPost *.cshrc,*_cshrc  set filetype=csh
