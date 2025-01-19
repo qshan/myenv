@@ -1,0 +1,24 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "cmake.options.statusBarVisibility": "visible",
+    "window.zoomLevel": 3,
+    "vim.enableNeovim": true,
+    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "$HOME/.config/nvim/init.vim",
+    "vim.hlsearch": true,
+    "git.openRepositoryInParentFolders": "never",
+    "vim.visualModeKeyBindings": [],
+    "vim.highlightedyank.enable": true,
+    "makefile.configureOnOpen": true,
+    "redhat.telemetry.enabled": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.commandLineModeKeyBindings": [],
+    "vim.insertModeKeyBindingsNonRecursive": [],
+    "vim.commandLineModeKeyBindingsNonRecursive": []
+}
