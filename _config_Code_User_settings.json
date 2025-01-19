@@ -42,6 +42,7 @@
      // 下面定义的按键将交由vscode进行处理，而不是vscode-vim插件
      "vim.handleKeys": {
        "<C-a>": false,
-       "<C-f>": false
-     }
+       "<C-f>": true
+    },
+    "editor.wordWrap": "on"
 }
