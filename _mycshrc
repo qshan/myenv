@@ -797,6 +797,7 @@ alias mill.plan                       'mill plan '
 alias mill.show.visualize             'mill show visualize '
 alias mill.show.visualizePlan         'mill show visualizePlan '
 alias mill.clean                      'mill clean '
+# mill clean <task>  # delete the cached output of a task, terminate any runBackground
 alias mill.clean.compile              'mill clean _compile'
 alias mill.clean.compile.all          'mill clean __compile'
 #Search for dependency updates
