@@ -1,0 +1,22 @@
+
+#  back up file of /etc/hosts
+
+# Host addresses
+127.0.0.1  localhost
+127.0.1.1  xxHotNameNeedUpdate
+::1        localhost ip6-localhost ip6-loopback
+ff02::1    ip6-allnodes
+ff02::2    ip6-allrouters
+
+#Download 下载
+180.163.151.161 dl.google.com
+180.163.151.161 dl-ssl.google.com
+
+ #Groups
+180.163.151.161 groups.google.com
+
+ #Google URL Shortener
+180.163.151.161 goo.gl
+
+ #Google App Engine
+180.163.151.161 appengine.google.com
