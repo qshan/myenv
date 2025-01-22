@@ -1,4 +1,17 @@
 "
+" Reference: https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package
+"
+" sudo apt-get install software-properties-common
+""" sudo apt-get install python-software-properties
+" sudo apt install neovim
+" sudo apt install python3-neovim
+"
+" sudo add-apt-repository ppa:neovim-ppa/stable
+" sudo apt-get update
+" sudo apt-get install neovim
+"
+" sudo apt-get install python-dev python-pip python3-dev python3-pip
+"
 ""###detail:
 ""###   https://launchpad.net/~neovim-ppa
 ""###   https://launchpad.net/~neovim-ppa/+archive/ubuntu/stable
@@ -220,7 +233,7 @@ au BufReadPost,FileReadPost *     :MyFont20
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 
-au BufReadPost,FileReadPost *.md     :MyFont20
+"au BufReadPost,FileReadPost *.md     :MyFont20
 
 """Guifont DejaVu Sans Mono:h15
 """au BufReadPost,FileReadPost *,*.* :MyNvimGuiFont15
@@ -1187,9 +1200,13 @@ command! MyCursorLine                           :hi CursorLine cterm=NONE ctermb
 " :set diffopt+=icase
 " :set diffopt+=iwhiteall
 " :set diffopt+=iwhiteeol
+
 command! MyMarkdownPreview                      :set conceallevel=3
 command! MyMarkdownPreviewDisable               :set conceallevel=0
 command! MyAddContentLinker                     :'<,'>s/$/<a name="item_liner_for_contents"><\/a>/g
+command! MyMarkdownInstantMarkdownPreview       :InstantMarkdownPreview
+command! MyMarkdownQuartoPreview                :MarkdownPreview
+
 
 " set for Plugin 'preservim/vim-markdown'
 " https://github.com/preservim/vim-markdown

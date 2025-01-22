@@ -1112,9 +1112,13 @@ command! MyCursorLine                           :hi CursorLine cterm=NONE ctermb
 " :set diffopt+=icase
 " :set diffopt+=iwhiteall
 " :set diffopt+=iwhiteeol
+
 command! MyMarkdownPreview                      :set conceallevel=3
 command! MyMarkdownPreviewDisable               :set conceallevel=0
 command! MyAddContentLinker                     :'<,'>s/$/<a name="item_liner_for_contents"><\/a>/g
+command! MyMarkdownInstantMarkdownPreview       :InstantMarkdownPreview
+command! MyMarkdownQuartoPreview                :MarkdownPreview
+
 
 " set for Plugin 'preservim/vim-markdown'
 " https://github.com/preservim/vim-markdown
