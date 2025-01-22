@@ -20,4 +20,5 @@ Host gitlab.com
 #Hi xxxxx! You've successfully authenticated, but GitHub does not
 #provide shell access.
 #
-
+# generate the id_rsa.pub
+# ssh-keygen
