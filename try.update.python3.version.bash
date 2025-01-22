@@ -12,6 +12,12 @@ ls python3 python3-config -alh
 sudo ln -sf        python${input_argument1} python3
 sudo ln -sf        python${input_argument1}-config python3-config
 
+# ubuntu 20.4
+# Issue: No module named 'apt_pkg'
+# ls /usr/lib/python3/dist-packages/apt_pkg.cpython-38-x86_64-linux-gnu.so
+#onetimes# sudo ln -sf /usr/lib/python3/dist-packages/apt_pkg.cpython-38-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.cpython-310-x86_64-linux-gnu.so
+#onetimes# sudo ln -sf /usr/lib/python3/dist-packages/apt_pkg.cpython-38-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.cpython-39-x86_64-linux-gnu.so
+
 ls python3 python3-config -alh
 
 cd -
