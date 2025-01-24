@@ -12,7 +12,13 @@ cs setup;
 
 # cs install scala:2.12.15 && cs install scalac:2.12.15 && cs install scaladoc:2.12.15
 
-# export PATH="/home/fshan/.local/share/coursier/bin:$PATH"
+# cs info, downgrade the cs version
+# location: $HOME/.local/share/coursier/bin/cs
+# $HOME/.local/share/coursier/bin/.cs.aux
+## After back up .cs.aux file, replace the cs with version you needed, like
+## ln -s cs-x86_64-pc-linux.v2.1.22 .cs.aux
+
+# export PATH="$HOME/.local/share/coursier/bin:$PATH"
 #
 ####add·the·scala·alternative·linker↵
 ####update-alternatives:·····--install··<link>·········<name>·<path>············<priority>↵
