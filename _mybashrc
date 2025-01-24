@@ -109,6 +109,9 @@ alias 7z.e='              7x e '
 alias 7z.l='              7x l '
 alias 7z.t='              7x t '
 
+alias gzip.d='            gzip -d '
+alias gzip.dk='           gzip -d -k '
+
 #
 #reference : https://superuser.com/questions/1133476/make-terminal-recognize-pageup-and-pagedown-when-remapped-to-different-keys
 # replace the Caps as press left-Shift and right-Shift both

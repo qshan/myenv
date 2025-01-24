@@ -117,11 +117,14 @@ alias xinput.list.tpad '  xinput --list | grep -i touchpad'
 alias xinput.enable '     xinput --enable '
 alias xinput.disable '    xinput --disable '
 
-alias 7z.a='              7x a '
-alias 7z.x='              7x x '
-alias 7z.e='              7x e '
-alias 7z.l='              7x l '
-alias 7z.t='              7x t '
+alias 7z.a '              7x a '
+alias 7z.x '              7x x '
+alias 7z.e '              7x e '
+alias 7z.l '              7x l '
+alias 7z.t '              7x t '
+
+alias gzip.d '            gzip -d '
+alias gzip.dk '           gzip -d -k '
 
 #
 # replace the Caps as press left-Shift and right-Shift both
