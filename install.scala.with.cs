@@ -4,6 +4,8 @@ alias cs='/data/tools/scala/cs-x86_64-pc-linux.run';
 
 cs setup;
 
+#onetimes# scala-cli install completions
+
 # https://www.scala-lang.org/download/
 #install specific version
 # cs install scala:3.1.2 && cs install scalac:3.1.2
