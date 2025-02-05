@@ -217,7 +217,7 @@ command! MyTabstop                   :set tabstop=2 softtabstop=2 shiftwidth=2
 if exists('g:GuiLoaded')
 "  if exists('nodiff')
   if &diff
-    :MyFont10
+    :MyFont12
 "    :MyDiffIgnoreWhiteSpace
   else
     :MyFont16
@@ -227,9 +227,9 @@ endif
 au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 "au BufReadPost,FileReadPost *   :if exists('nodiff')
 au BufReadPost,FileReadPost *   :if &diff
-au BufReadPost,FileReadPost *     :MyFont10
+au BufReadPost,FileReadPost *     :MyFont12
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont20
+au BufReadPost,FileReadPost *     :MyFont18
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 
@@ -543,6 +543,19 @@ Plugin 'hrsh7th/nvim-cmp'
 Plugin 'hrsh7th/cmp-vsnip'
 Plugin 'hrsh7th/vim-vsnip'
 "
+"https://scalameta.org/metals/docs/editors/vim/
+"https://github.com/scalameta/nvim-metals?tab=readme-ov-file#installation
+"todo"Prerequisites
+"1. latest nvim v.0.10.x or newer.
+"2. Ensure Coursier is installed locally
+"3. Ensure that you have all the LSP mappings for the core functionality you want setup
+"4. Ensure plenary.nvim is installed
+"5. Subscribe to this discussion which will notify you of any breaking changes.
+"6. Unfamiliar with Lua and Neovim? Check out the great :h lua-guide.
+"needed""Plugin 'neovim/nvim-lspconfig'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'scalameta/nvim-metals'
+":help metals-commands
 "
 "
 "Plugin for quarto start
@@ -610,11 +623,7 @@ Plugin 'Konfekt/FastFold'
 "Plugin 'qshan/nerdcommenter'
 Plugin 'preservim/nerdcommenter'
 Plugin 'preservim/nerdtree'
-
-"https://github.com/scalameta/nvim-metals?tab=readme-ov-file#installation
-Plugin 'nvim-lua/plenary.nvim'
-Plugin 'scalameta/nvim-metals'
-
+"
 "not_work"Plugin 'qshan/firrtl-syntax'
 Plugin 'derekwyatt/vim-scala'
 "
@@ -759,6 +768,17 @@ let g:instant_markdown_slow = 1
 let g:vmt_link = 1
 let g:vmt_min_level = 1
 let g:vmt_max_level = 6
+"
+"todo"" metals config
+"  metals_config = require("metals").bare_config()
+"  metals_config.settings = {
+"    verboseCompilation = true,
+"    excludedPackages = {
+"      "akka.actor.typed.javadsl",
+"      "com.github.swagger.akka.javadsl"
+"    }
+"  }
+"
 "
 " Brief help
 " :PluginList       - lists configured plugins
