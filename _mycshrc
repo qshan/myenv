@@ -46,6 +46,7 @@ endif
 
 
 echo "Calling ###[_mycshrc]### file setting"
+#echo "Debugging ###[_mycshrc]### file setting"
 
 #echo "======================================"
 #echo "Check path info:"
@@ -188,8 +189,9 @@ alias tree.sort.name  '\tree --sort=name '
 ##------------------------------
 alias whicha                'which -a '
 ##------------------------------
-alias lnsTf                 'ln -sTf '
-alias lnsnf                 'ln -snf '
+alias ln.sTf                 'ln -sTf '
+alias ln.snf                 'ln -snf '
+alias ln.sf                  'ln -sf '
 ##------------------------------
 alias chmod+R               'chmod -R a+r '
 alias chmod-R               'chmod -R a-r '
@@ -269,6 +271,7 @@ alias nvim.O                'nvim -O '
 alias nvim.p                'nvim -p '
 #alias nvimqt                'nvim-qt -- '
 alias nvim.qt               'nvim-qt --geometry 970x512 -- '
+alias nvim.startuptime      'nvim --startuptime /data/temp/nvim.startuptime.log.txt '
 
 alias cscopebcqRv           'cscope -bcqRv '
 
@@ -824,6 +827,14 @@ alias mill.idea.GenIdea.debug       'mill -j 2  mill.idea.GenIdea/idea --debug'
 alias mill.bsp.Install              'mill -j 2 -i mill.bsp.BSP/install'
 alias mill.bsp.Install.debug        'mill -j 2 -i mill.bsp.BSP/install --debug'
 
+alias scala-cli.2.13.chisel.6 'scala-cli -S 2.13 --dep org.chipsalliance::chisel:6.0.0'
+alias scala-cli.repl.2.13.chisel.6 'scala-cli repl -S 2.13 --dep org.chipsalliance::chisel:6.0.0'
+alias scala-cli.repl 'scala-cli repl '
+alias scala-cli.repl.amm 'scala-cli --power repl --amm '
+alias scala-cli.repl.lihaoyi.os-lib 'scala-cli repl --dep com.lihaoyi::os-lib:0.11.3 '
+alias scala-cli.native 'scala-cli --native '
+alias scala-cli.native.version 'scala-cli --native --native-version 0.4.3 '
+
 #-----bazel start-------------------------
 alias bazel.help "      bazel help "
 alias bazel.build "     bazel build "
@@ -846,8 +857,14 @@ alias python3.m.venv '                    python3 -m venv '
 #Example#python3 -m venv VirtualEnvName ; cd VirtualEnvName; source bin/activate; pip3 list
 #deactivate
 alias python3.m.pip.install '             python3 -m pip install'
+#python3 -m pip install urllib3==1.26.19
 alias python3.m.pip.install.upgrade.pip ' python3 -m pip install --upgrade pip'
 alias python3.m.piplist '                 python3 -m pip list'
+
+alias pip3.install='                pip3 install '
+#pip3 install urllib3==1.26.19
+alias pip3.install.upgrade.pip '          pip3 install --upgrade pip'
+alias pip3.list '                         pip3 list '
 
 if ( -d /opt/riscv/bin ) then
 setenv PATH "${PATH}:/opt/riscv/bin"
