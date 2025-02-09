@@ -730,6 +730,8 @@ endif
 # https://www.scala-sbt.org/1.x/docs/Running.html
 # https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html
 # https://www.scalawilliam.com/essential-sbt/
+alias sbt.debug               'sbt --debug '
+alias sbt.d                   'sbt -d '
 alias sbt.new                  'sbt new'
 alias sbt.task                 'sbt task'
 alias sbt.about                'sbt about'
@@ -765,6 +767,7 @@ alias sbt.managedResourceDir   'sbt managedResourceDirectories'
 alias sbt.assembly             'sbt assembly'
 alias sbt.publishLocal         'sbt publishLocal'
 alias sbt.evicted              'sbt evicted'
+alias sbt.bspconfig             'sbt bspConfig'
 
 alias idea.community "intellij-idea-community "
 
