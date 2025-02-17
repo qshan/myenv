@@ -736,6 +736,7 @@ alias sbt.new                  'sbt new'
 alias sbt.task                 'sbt task'
 alias sbt.about                'sbt about'
 alias sbt.clean                'sbt clean'
+alias sbt.cleanCoverage        'sbt clean coverage test '
 alias sbt.clearCaches          'sbt clearCaches '
 alias sbt.compile              'sbt compile'
 alias sbt.recompile            'sbt ~compile'
@@ -743,6 +744,7 @@ alias sbt.test                 'sbt test'
 alias sbt.testcompile          'sbt test:compile '
 alias sbt.testonly             'sbt test:testOnly '
 alias sbt.testQuick            'sbt ~testQuick'
+alias sbt.coverageReport       'sbt coverageReport '
 alias sbt.console              'sbt console'
 alias sbt.run                  'sbt run'
 alias sbt.package              'sbt package'
@@ -877,13 +879,14 @@ setenv PATH "${PATH}:~/miniconda/bin"
 endif
 #------------------------------
 # conda alias
-alias conda.activate '   conda activate '
-alias conda.deactivate ' conda deactivate '
-alias conda.create '     conda create '
-alias conda.create.name ' conda create -n '
+alias conda.activate '      conda activate '
+alias conda.activate.pwd '  conda activate `pwd`'
+alias conda.deactivate '    conda deactivate '
+alias conda.create '        conda create '
+alias conda.create.name '   conda create -n '
 #info#alias condacreaten 'conda create -name '
 #
-alias conda.rename '     conda rename '
+alias conda.rename '        conda rename '
 # conda rename -n test123 test321
 # conda rename --name test123 test321
 # conda rename -p path/to/test123 test321
@@ -897,22 +900,44 @@ alias conda.install.name 'conda install --name '
 #info#alias condaconfigadd "conda config --add channels conda-forge"
 #info#alias condaconfigconfig "conda config --set channel_priority strict"
 #info#alias condaconfiginstall "conda install <package-name>"
-alias conda.version '    conda --version '
-alias conda.update.conda 'conda update conda '
-alias conda.update.all '  conda update --all '
-alias conda.info.e '      conda info -e '
-alias conda.list '       conda list '
-alias conda.list.name '   conda list --name '
-alias conda.search '     conda search '
-alias conda.update '     conda update '
-alias conda.config.add.channels '  conda config --add channels '
+alias conda.version '               conda --version '
+alias conda.update.conda '          conda update conda '
+alias conda.update.all '            conda update --all '
+alias conda.info.e '                conda info -e '
+alias conda.list '                  conda list '
+alias conda.info.env '              conda info --envs '
+alias conda.list.name '             conda list --name '
+alias conda.search '                conda search '
+#
+alias conda.update '                conda update '
+#
+alias conda.config.add.channels '   conda config --add channels '
+alias conda.config.add.conda-forge 'conda config --add channels conda-forge'
+alias conda.config.show '           conda config --show '
+alias conda.config.show.channels '  conda config --show channels '
+alias conda.config.show.sources '   conda config --show-sources '
+alias conda.config.get.channels '   conda config --get channels '
 
+#
+#conda env remove --name pybites
+alias conda.env.export '  conda env export'
+alias conda.env.export.f 'conda env export -f '
+alias conda.env.config '  conda env config'
+alias conda.env.create '  conda env create'
+alias conda.env.create.pwd '  conda env create -p `pwd`'
+alias conda.env.create.n '  conda env create -n '
+# conda create --clone old_base_name --name new_base_name
+# alias conda.env.export '  conda env export'
+alias conda.env.list '    conda env list'
+alias conda.env.remove '  conda env remove'
+alias conda.env.update '  conda env update'
+#
 #------------------------------
 
 
 ##%U%m%u:%B%~%b%#
-#set prompt='%B%m%b%h%#' #display hostname + linenumber of histoty commands
-#set prompt='%B%c%b%h%#' #display last part of current folder + linenumber of history commands
+#set prompt '%B%m%b%h%#' #display hostname + linenumber of histoty commands
+#set prompt '%B%c%b%h%#' #display last part of current folder + linenumber of history commands
 
 #following info got from man tcsh
 ##$##       prompt  The string which is printed before reading each command from the terminal.  prompt may include any of the following  formattingsequences (+), which are replaced by the given information:

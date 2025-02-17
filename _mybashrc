@@ -864,6 +864,7 @@ alias sbt.new='                      sbt new '
 alias sbt.task='                     sbt task '
 alias sbt.about='                    sbt about '
 alias sbt.clean='                    sbt clean '
+alias sbt.cleanCoverage='            sbt clean coverage test '
 alias sbt.clearCaches='              sbt clearCaches '
 alias sbt.compile='                  sbt compile '
 alias sbt.recompile='                sbt ~compile '
@@ -871,6 +872,7 @@ alias sbt.test='                     sbt test '
 alias sbt.testcompile='              sbt test:compile '
 alias sbt.testonly='                 sbt test:testOnly '
 alias sbt.testQuick='                sbt ~testQuick '
+alias sbt.coverageReport='           sbt coverageReport '
 alias sbt.console='                  sbt console '
 alias sbt.run='                      sbt run '
 alias sbt.package='                  sbt package '
@@ -1058,8 +1060,9 @@ fi
 # https://docs.conda.io/projects/conda/en/latest/commands/index.html
 #
 # conda alias
-alias conda.activate='   conda activate '
-alias conda.deactivate=' conda deactivate '
+alias conda.activate='      conda activate '
+alias conda.activate.pwd='  conda activate `pwd`'
+alias conda.deactivate='    conda deactivate '
 #
 alias conda.create='        conda create '
 # alias condacreatename=' conda create -n '
@@ -1091,27 +1094,53 @@ alias conda.install.name='  conda install --name '
 #info#alias condaconfigadd="conda config --add channels conda-forge"
 #info#alias condaconfigconfig="conda config --set channel_priority strict"
 #info#alias condaconfiginstall="conda install <package-name>"
-alias conda.version='       conda --version '
+alias conda.version='               conda --version '
 #
-alias conda.update.conda='  conda update conda '
-alias conda.update.all='    conda update --all '
+alias conda.update.conda='          conda update conda '
+alias conda.update.all='            conda update --all '
 #
-alias conda.info.e='        conda info -e '
-alias conda.info.env='      conda info --envs '
+alias conda.info.e='                conda info -e '
+alias conda.info.env='              conda info --envs '
 #
-alias conda.list='          conda list '
-alias conda.list.name='     conda list --name '
+alias conda.list='                  conda list '
+alias conda.list.name='             conda list --name '
 #
-alias conda.search='        conda search '
+alias conda.search='                conda search '
 #
-alias conda.update='        conda update '
+alias conda.update='                conda update '
 #
-alias conda.config.add.channels='  conda config --add channels '
+alias conda.config.add.channels='   conda config --add channels '
+alias conda.config.add.conda-forge='conda config --add channels conda-forge'
+alias conda.config.show='           conda config --show '
+alias conda.config.show.channels='  conda config --show channels '
+alias conda.config.show.sources='   conda config --show-sources '
+alias conda.config.get.channels='   conda config --get channels '
+
+# Example of conda config
+# conda config --add channels conda-forge
+# conda config --set channel_priority flexible
+# conda config --get channels #此命令会明确标出通道优先级，与你.condarc文件上下顺序相反
+# conda config --show channels
+# conda config --show-sources
+# conda config --remove channels
+# conda config --remove-key channels
+# conda config --show
+# conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+# conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+# conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
+# conda config --set show_channel_urls yes
+# conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-64/
+
+
 #
 #conda env remove --name pybites
 alias conda.env.export='  conda env export'
+alias conda.env.export.f='conda env export -f '
+# conda env export -f ../../try.export.conda.env.yaml
 alias conda.env.config='  conda env config'
 alias conda.env.create='  conda env create'
+alias conda.env.create.pwd='  conda env create -p `pwd`'
+alias conda.env.create.n='  conda env create -n '
 # conda create --clone old_base_name --name new_base_name
 # alias conda.env.export='  conda env export'
 alias conda.env.list='    conda env list'
@@ -1181,6 +1210,7 @@ alias conda.env.update='  conda env update'
 #
 # install specific version of package
 #  conda install PKGNAME=3.1.4
+# conda install -p path/to/myenv python=3.11
 #
 # install a package from specific channel
 #  conda install CHANNELNAME::PKGNAME
@@ -1258,6 +1288,7 @@ alias conda.env.update='  conda env update'
 ## Tip: When importing an environment, conda resolves platform and package specifics.
 # from a .yml file
 #  conda env create -n ENVNAME --file ENV.yml
+#  conda env create -f /path/to/requirements.txt -p /home/user/envname
 #
 # from a .txt file
 #  conda create -n ENVNAME --file ENV.txt
