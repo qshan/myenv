@@ -833,11 +833,11 @@ au BufWinEnter,BufReadPost,FileReadPost * :match Todo /fshan\|qshan\|DSF_IP\|dsf
 "
 "worked":2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-/
 au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\|Error-\|ERROR-\|error-\|\s\+$/
-"  
+"
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
+au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\|issue/
 "
 "
 "need source $MYVIMRC after e(open)
