@@ -154,6 +154,8 @@ find FolderNameSearched -type f | xargs -I{} rename 's/[(|)|\[|\]|{|}|&|,|'|\!|-
 
 # Save the log with tee
 ping google.com | tee output.txt
+ping google.com 2>&1 | tee output.txt
+ping google.com 2>&1 | tee -a output.txt
 ls | tee -a [file]
 ls file* | tee output.txt | wc -l
 # Write file with elevate privileges
