@@ -728,6 +728,24 @@ Plugin 'ZSaberLv0/ZFVimGitUtil'
 ""
 Plugin 'makerj/vim-pdf'
 "
+"https://github.com/chrisbra/vim-diff-enhanced
+Plugin 'chrisbra/vim-diff-enhanced'
+":help EnhancedDiff
+"
+"https://github.com/will133/vim-dirdiff
+Plugin 'will133/vim-dirdiff'
+":help dirdiff
+":DirDiff <dir1> <dir2>
+"vim -c "DirDiff dir1 dir2"
+"
+" https://github.com/rickhowe/diffchar.vim
+Plugin 'rickhowe/diffchar.vim'
+":help diffchar
+"
+":help hl-DiffText
+":help hl-DiffChange
+"
+"
 call vundle#end()
 "required for Vundle
 "
@@ -940,7 +958,7 @@ au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\|issue/
+au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\>\|issue/
 "
 "
 "need source $MYVIMRC after e(open)
@@ -1193,6 +1211,7 @@ command! MyRemoveWhiteSpaceOnEnd                :%s/\s\+$//g
 ""autocmd BufWritePost *                          :MyRemoveWhiteSpaceOnEnd
 "worked"autocmd BufWritePost *                          :%s/\s\+$//g
 command! MyRemoveEmptyLine                      :%s/^\s*$\n//g
+command! MyRemoveLineExtensionAll               :%s/\ \+\\$//g
 command! MyReplaceSpaceWithNewLine              :%s/\s\+/\r/g
 command! MyReplaceSpaceWithNewLine1             :%s/\s\+//g
 command! MyReplaceSpaceWithTab                  :%s/\s\+/\t/g
@@ -1226,6 +1245,7 @@ command! MyMarkdownPreviewDisable               :set conceallevel=0
 command! MyAddContentLinker                     :'<,'>s/$/<a name="item_liner_for_contents"><\/a>/g
 command! MyMarkdownInstantMarkdownPreview       :InstantMarkdownPreview
 command! MyMarkdownQuartoPreview                :MarkdownPreview
+command! MyLoadLazyNeovim                       :luafile ~/.config/nvim/lua/config/lazy.lua
 
 
 " set for Plugin 'preservim/vim-markdown'
@@ -1672,7 +1692,23 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 ":ts                        "list the jump tag definition available
 ":tjump                     "jump to tag dinfinition if there is one definition, list the jump tag definition available if there are more than one definition
 ":tlast
+":tl[ast][!]    Jump to last matching tag.  See |tag-!| for [!].
 ":tfirst
+":[count]tf[irst][!]  Same as ":trewind".
+":[count]tr[ewind][!] Jump to first matching tag.  If [count] is given, jump to [count]th matching tag.  See |tag-!| for [!].
+"
+":ts
+":ts[elect][!] [name]
+": tags
+":tj[ump][!] [name]  Like ":tselect", but jump to the tag directly when there is only one match.
+":stj[ump][!] [name] Does ":tjump[!] [name]" and splits the window for the selected tag.
+":[count]tn[ext][!] Jump to [count] next matching tag (default 1).  See |tag-!| for [!].
+":[count]tp[revious][!] Jump to [count] previous matching tag (default 1). See |tag-!| for [!].
+":[count]tN[ext][!] Same as ":tprevious".
+"
+"
+"
+"
 "
 """q + :                    "list the command history list
 """q + /                    "list the search command history list

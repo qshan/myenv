@@ -618,7 +618,24 @@ Plugin 'ZSaberLv0/ZFVimGitUtil'
 "" reference linker https://github.com/StrayDragon/vim-smartim
 ""TODO"Plugin 'StrayDragon/vim-smartim'
 ""
-Plugin 'makerj/vim-pdf'
+Plugin 'makerj/vim-pdf' "
+"
+"https://github.com/chrisbra/vim-diff-enhanced
+Plugin 'chrisbra/vim-diff-enhanced'
+":help EnhancedDiff
+"
+"https://github.com/will133/vim-dirdiff
+Plugin 'will133/vim-dirdiff'
+":help dirdiff
+":DirDiff <dir1> <dir2>
+"vim -c "DirDiff dir1 dir2"
+"
+" https://github.com/rickhowe/diffchar.vim
+Plugin 'rickhowe/diffchar.vim'
+":help diffchar
+"
+":help hl-DiffText
+":help hl-DiffChange
 "
 call vundle#end()
 "required for Vundle
@@ -837,7 +854,7 @@ au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\|issue/
+au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\>\|issue/
 "
 "
 "need source $MYVIMRC after e(open)
