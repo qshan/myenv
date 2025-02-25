@@ -111,23 +111,56 @@
 #
 # define a variable, Var=xx , and the methods of using variable is $(Var)
 #
-#search path
-# VPATH was designed to find sources, not targets.
+#Search path
+# vpath src include
+# vpath %.c src
+# vpath %.C src
 #
-# VPATH = src include
-# VPATH %.c src
-# VPATH %.C src
+# vpath %.cpp src
+# vpath %.CPP src
 #
-# VPATH %.cpp src
-# VPATH %.CPP src
+# vpath %.h include
 #
-# VPATH %.h include
+# vpath %.cc src
+# vpath %.CC src
 #
-# VPATH %.cc src
-# VPATH %.CC src
+# vpath %.s src
+# vpath %.S src
 #
-# VPATH %.s src
-# VPATH %.S src
+#VPATH: Search Path for All Prerequisites. #VPATH was designed to find sources, not targets.
+# The value of the make variable VPATH specifies a list of directories that make should search.
+# Most often, the directories are expected to contain prerequisite files that are not in the
+# current directory; however, make uses VPATH as a search list for both prerequisites and targets of rules.
+# Example of VPATH:
+#
+# VPATH = path1 path2
+# VPATH = path1:path2
+# VPATH = path1;path2
+#
+#vpath, The vpath Directive
+# Similar to the VPATH variable, but more selective, is the vpath directive (note lower case),
+# which allows you to specify a search path for a particular class of file names: those that
+# match a particular pattern. Thus you can supply certain search directories for one class of
+# file names and other directories (or none) for other file names.
+# Example of vpath
+#
+# #Specify the search path directories for file names that match pattern.
+# 1. vpath Pattern Path
+# #Clear out the search path associated with pattern.
+# 2. vpath Pattern
+# #Clear all search paths previously specified with vpath directives.
+# 3. vpath
+#
+# #Specify the search path directories for file names that match pattern.
+# vpath test.c Path
+# vpath %.c Path
+#
+# #Clear out the search path associated with pattern.
+# vpath test.c
+# vpath %.c
+#
+# #Clear all search paths previously specified with vpath directives.
+# vpath
 #
 #match standard
 # %.o: %.c
@@ -135,8 +168,17 @@
 # %.o: %.c
 #   gcc -g -o $@ -c $<
 #
-#
 #.PHONY: all #info#this items is for no dependance item
+#------------------------------
+# compiler to generate the dep files
+# gcc
+# -MD
+# -MF File
+# -MP
+# -MT Target
+#
+#%.o:%.c
+# 	gcc -c -g -Wall $< -o $@ -MD -MF $*.d -MP
 #------------------------------
 
 DSF_CC?=armcc
@@ -167,11 +209,16 @@ DSF_OBJS := $(patsubst %.c,%.o, $(DSF_SRCS))
 #replace the *.c to *.o name in the contents of DSF_SRCS
 DSF_OBJS_D := $(patsubst %.c,%.d,$(DSF_SRCS))
 
+$(info $(DSF_TARGET_NAME) )
+$(info “here add the debug info”)
+$(warning “here add the debug info”)
+$(error “error: this will stop the compile”)
 
 #all:$(TARGET) debug
 $(DSF_TARGET_NAME):$(DSF_OBJS)
 #	$(DSF_CC) $(DSF_OBJS) -o $(DSF_TARGET_NAME)
 	$(DSF_CC)  -o $(DSF_TARGET_NAME) $^ -include $(DSF_OBJS_D)
+	$(info $(DSF_TARGET_NAME) )
 
 $(DSF_OBJS):%.o:%.c
 #	$(DSF_CC) -c  $(DSF_CPPFLAGS)  -o $@  $(DSF_CFLAGS) $^
