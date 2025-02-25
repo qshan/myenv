@@ -162,6 +162,7 @@ sudo apt install gcc-multilib g++-multilib gcc-source
 sudo apt install clang clang-format clang-tidy clang-tools
 sudo apt install clang-11 clang-format-11 clang-tidy-11 clang-tools-11
 sudo apt install clang-12 clang-format-12 clang-tidy-12 clang-tools-12
+sudo apt install clang-15 clang-format-15 clang-tidy-15 clang-tools-15
 
 ## deb https://mirrors.aliyun.com/ubuntu/ xenial main
 ## deb-src https://mirrors.aliyun.com/ubuntu/ xenial main
