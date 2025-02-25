@@ -36,7 +36,49 @@ ls exitedFileInFolder noExitedFileInFolder > Info.log.txt 2> ErrorInfo.log.txt
 #replace the keywords in targetfile
 sed -i 's/Word_searched/word_target/g' File_name_replaced
 
-cat *.d | awk -F ":" '{print $2}' | sort -u | xargs ctags
+cat *.d | awk -F ":" '{ print $2 }' | sort -u | xargs ctags
+cat *.d | awk -F: '{ print $2 }' | sort -u | xargs ctags
+cat *.d | awk -F: '{ print $1 }' | sort -u | xargs ctags
+cat *.d | awk -F: '{ print $1 }' |sed -i 's/\ \+\\/ /g' | xargs ctags-universal
+cat *.d | awk -F: '{ print $1 }' |sed -i 's/\ \+\\/ /g' | xargs ctags
+
+cat  main.cpp.o.1.d |  awk -F: '{ print $1 }'
+cat  main.cpp.o.1.d | sed  's/\ \+\\/ /'
+cat  main.cpp.o.1.d | gawk -F ':' '{ print $1 }' | sed 's/\ \+\\/ /'
+cat  main.cpp.o.1.d | awk '-F ":" { print $1 }' | sed 's/\ \+\\/ /'
+
+cat  main.cpp.o.1.d | gawk -F:  '{ print $1 }' | sed 's/\ \+\\/ /'
+
+cat  main.cpp.o.1.d |  awk -F: '{ print $1 }' | sed 's/.*\.o/ /' | sed 's/\ \+\\/ /'
+
+cat  main.cpp.o.1.d | sed 's/.*\.o:/ /'
+cat  main.cpp.o.1.d | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /'
+cat  main.cpp.o.1.d | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs ctags -R
+cat  main.cpp.o.1.d | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs 'ctags-universal -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs '
+
+find ./ -type f -iname *.o.d |xargs cat | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs ctags-universal --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs
+find ./ -type f -iname *.o.d |xargs cat | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs ctags-universal --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+
+# worked
+rm tags
+find `pwd` -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+find ./ -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+#find ./ -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+
+#debugging
+find `pwd` -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo  > filelist.o.d.cat.sort.rm.o.rm.ext.echo.txt
+
+find `pwd` -type f -iname *.o.d |xargs cat | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+find `pwd` -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+
+find `pwd` -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo
+|xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+
+find `pwd` -type f -iname *.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+
+find ./CMakeFiles/olympia.dir/sim -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
+
+ctags -L filelist
 
 sed -i -r 's/Word_searched/word_target/g' File_name_replaced
 
