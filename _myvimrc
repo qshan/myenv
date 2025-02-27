@@ -1090,6 +1090,17 @@ highlight MatchParen ctermbg=DarkRed guibg=lightblue
 "define update the tags command in vim env, this require ctags is avilable in env
 "":! command_you_want_to_run    "run the shell command in VIM command
 command! UpdateTags !ctags -R .
+"command! MyTags                                 set tags=tags
+"command! MyTags                                 let pwdtags = getcwd() .. "/tags" | execute "set tags=" . pwdtags
+command! MyTagsPwd                              let &tags = getcwd() .. "/tags"
+"set tags?
+"echo tagfiles()
+"echo ${getcwd() . "/tags"}
+"let &tags = getcwd() .. "/tags"
+"
+"let pwdtags = getcwd() .. "/tags2" | execute "set tags=" . pwdtags
+"set tags?
+"echo tagfiles()
 "command! MyCdFilePath                           cd %:p:h
 command! MyCdCurrentFilePath                    cd %:p:h
 command! MyDotInIskeywordAdd                    set iskeyword+=.
@@ -1173,6 +1184,14 @@ nnoremap <C-t><C-s> m'A<C-R>=strftime('%Y-%m%d-%H%M%S')<CR>
 set encoding=utf-8
 set fileencodings=utf-8,gbk,gb18030,gb2312
 set termencoding=utf-8
+"
+:MyTabstop
+:MyTagsPwd
+"
+":set tags=./tags,tags,/home/user/commontags
+"todo""set tags=tags
+"todo""set autochdir
+"gvim -c "set tags=tags"
 "
 "input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
