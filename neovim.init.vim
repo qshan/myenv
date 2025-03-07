@@ -155,6 +155,11 @@ set cursorline
 ":hi CursorLine ctermfg=NONE ctermbg=DarkGray guifg=Grey40 guibg=Grey40
 ":hi CursorLine cterm=reverse ctermbg=DarkGray guifg=reverse guibg=Grey40
 ":hi DiffAdd cterm=reverse ctermbg=DarkGray guifg=reverse guibg=Grey40
+":hi DiffAdd ctermfg=231 ctermbg=65 guifg=#ffffff guibg=#5f875f
+":hi DiffChange ctermbg=67 guibg=#5f87af
+":hi DiffChange ctermbg=67 guibg=Grey40
+":hi DiffDelete ctermfg=231 ctermbg=133 guifg=#ffffff guibg=#af5faf
+":hi DiffText ctermbg=251 guibg=#c6c6c6
 "
 "
 set cursorcolumn
@@ -744,6 +749,7 @@ Plugin 'rickhowe/diffchar.vim'
 "
 ":help hl-DiffText
 ":help hl-DiffChange
+":hi
 "
 "
 call vundle#end()
@@ -958,7 +964,7 @@ au BufWinEnter,BufReadPost,FileReadPost * :2match Error /Error:\|error:\|ERROR:\
 highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse guifg=White guibg=Red
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
-au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\>\|issue/
+au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\>\|not\|issue/
 "
 "
 "need source $MYVIMRC after e(open)
@@ -1237,7 +1243,8 @@ command! MyAddLineExtension                     :s/\(.*\)/\1 \\/g
 command! MyAddLineExtensionAll                  :%s/\(.*\)/\1 \\/g
 command! MyAddLineExtensionWith1                :s/\(.*\)/\1 \|/g
 command! MyShowHex                              :%!xxd
-command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
+"command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
+command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank | hi DiffChange ctermbg=67 guibg=Grey40
 command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase
 ":set diffopt+=horizontal
 "vim -c "set diffopt+=horizontal"
