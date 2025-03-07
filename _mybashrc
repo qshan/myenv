@@ -112,6 +112,9 @@ alias 7z.t='              7x t '
 alias gzip.d='            gzip -d '
 alias gzip.dk='           gzip -d -k '
 
+alias remake.trace='      remake --trace '
+alias remake.tasks='      remake --tasks'
+
 #
 #reference : https://superuser.com/questions/1133476/make-terminal-recognize-pageup-and-pagedown-when-remapped-to-different-keys
 # replace the Caps as press left-Shift and right-Shift both
@@ -334,6 +337,8 @@ alias goquarkts='   cd /data/work/test_space/QuarkTS'
 alias gonuttx='     cd /data/work/test_space/nuttx'
 alias goCTest='     cd /data/work/test_space/ctest_qshan'
 alias goCppTest='   cd /data/work/test_space/cpptest_qshan'
+
+function goFilePath() { cd `dirname "$@" ` ; }
 
 #git alias
 alias git.help.a='                   git help -a '

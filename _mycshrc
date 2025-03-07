@@ -127,6 +127,9 @@ alias 7z.t '              7x t '
 alias gzip.d '            gzip -d '
 alias gzip.dk '           gzip -d -k '
 
+alias remake.trace '      remake --trace '
+alias remake.tasks '      remake --tasks'
+
 #
 # replace the Caps as press left-Shift and right-Shift both
 #setxkbmap -option shift:both_capslock
@@ -337,6 +340,7 @@ alias goquarkts             'cd /data/work/test_space/QuarkTS'
 alias gonuttx               'cd /data/work/test_space/nuttx'
 alias goCTest               'cd /data/work/test_space/ctest_qshan'
 alias goCppTest             'cd /data/work/test_space/cpptest_qshan'
+alias goFilePath            'cd `dirname  \!* `'
 
 #git alias
 alias git.help.a                  'git help -a '
