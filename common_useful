@@ -21,6 +21,10 @@ find ./PathSearched -iname "*.[ch]" | xargs grep -rnE --color "(HWIO_.*)(\s*\(CA
 #replace the keywords and generate a new file
 sed 's/Word_searched/word_target/g' input_file > outputfile
 
+# install python module
+python3 -m pip install <package_name>
+pip3 install <package_name>
+
 #save the output info into file. To use ">", let standard output stream redirected to file Info.log.txt.
 RunCommandToGetInfo > Info.log.txt
 #
