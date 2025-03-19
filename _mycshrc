@@ -130,6 +130,15 @@ alias gzip.dk '           gzip -d -k '
 alias remake.trace '      remake --trace '
 alias remake.tasks '      remake --tasks'
 
+alias lspci.t '           lspci -t -v '
+alias lspci.k '           lspci -k -v '
+alias lspci.vvv '         lspci -vvv '
+
+alias lsusb.t='           lsusb -t -v '
+
+alias dmesg.tail '        dmesg | tail '
+alias dmesg.tail.20 '     dmesg | tail -20 '
+
 #
 # replace the Caps as press left-Shift and right-Shift both
 #setxkbmap -option shift:both_capslock
