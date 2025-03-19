@@ -164,6 +164,9 @@ sudo apt install clang-11 clang-format-11 clang-tidy-11 clang-tools-11
 sudo apt install clang-12 clang-format-12 clang-tidy-12 clang-tools-12
 sudo apt install clang-15 clang-format-15 clang-tidy-15 clang-tools-15
 
+## Bear is a tool to generate compilation database for clang tooling.
+sudo apt install bear
+
 ## deb https://mirrors.aliyun.com/ubuntu/ xenial main
 ## deb-src https://mirrors.aliyun.com/ubuntu/ xenial main
 ## deb https://mirrors.aliyun.com/ubuntu/ xenial universe
