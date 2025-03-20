@@ -274,6 +274,12 @@ sudo apt install lubuntu-default-session lubuntu-default-settings lubuntu-deskto
 #sudo apt-get install autoconf autoconf-archive automake libtool libtool-bin
 #sudo apt-get install libglib2.0-dev libglib3.0-cil-dev
 
+#issue libsdl2-dev : Depends: libsdl2-2.0-0 (= 2.0.10+dfsg1-3) but 2.0.10+dfsg1-3ubuntu0.1~esm1 is to be installed
+sudo apt-get install aptitude
+sudo aptitude install libsdl2-dev
+
+
+
 #issue 'AM_ICONV_LINK' not found in library
 #To check where aclocal is looking for m4 files
 #$(aclocal --print)
