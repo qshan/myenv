@@ -286,7 +286,18 @@ alias nvim.O                'nvim -O '
 alias nvim.p                'nvim -p '
 #alias nvimqt                'nvim-qt -- '
 alias nvim.qt               'nvim-qt --geometry 970x512 -- '
+alias nvim.qt.u             'nvim-qt --geometry 970x512 -- -u '
 alias nvim.startuptime      'nvim --startuptime /data/temp/nvim.startuptime.log.txt '
+#
+# :help start
+#info# To avoid a file name starting with a '-' being interpreted as
+# an option, precede the arglist with "--", e.g.:
+# todo# nvim -- -filename
+# All arguments after "--" are interpreted as file names, no
+# other options or "+command" arguments can follow.
+#
+# `-` Alias for stdin (standard input).
+# todo# echo text | nvim - file
 
 alias cscopebcqRv           'cscope -bcqRv '
 
