@@ -225,7 +225,7 @@ if exists('g:GuiLoaded')
     :MyFont12
 "    :MyDiffIgnoreWhiteSpace
   else
-    :MyFont16
+    :MyFont20
   endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
@@ -234,7 +234,7 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont12
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont18
+au BufReadPost,FileReadPost *     :MyFont20
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 
@@ -483,6 +483,8 @@ filetype off                  " required for Vundle
 " set the runtimepath to include Vundle and initialize rtp=runtimepath
 "set runtimepath+=~/.vim/syntax
 set rtp+=~/.vim/bundle/Vundle.vim
+"??" load plugin ~/.vim/bundle/Vundle.vim/autoload/vundle.vim
+"??"runtime! autoload/vundle.vim
 ""
 "vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 "help file: https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt
