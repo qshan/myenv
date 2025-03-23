@@ -225,7 +225,7 @@ if exists('g:GuiLoaded')
     :MyFont12
 "    :MyDiffIgnoreWhiteSpace
   else
-    :MyFont20
+    :MyFont22
   endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
@@ -234,7 +234,7 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont12
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont20
+au BufReadPost,FileReadPost *     :MyFont22
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 
@@ -533,7 +533,9 @@ Plugin 'VundleVim/Vundle.vim'
 "  au Filetype * set completeopt=menu,preview
 "augroup END
 ""
-""https://github.com/qshan/nvim-cmp
+""A completion plugin for neovim coded in Lua.
+"" Reference: https://github.com/hrsh7th/nvim-cmp
+"" This example configuration uses vim-plug as the plugin manager and vim-vsnip as a snippet plugin.
 "call plug#begin(s:plug_dir)
 "nvim-cmp completion plugin
 Plugin 'neovim/nvim-lspconfig'
@@ -544,11 +546,12 @@ Plugin 'hrsh7th/cmp-path'
 Plugin 'hrsh7th/cmp-cmdline'
 "A completion plugin for neovim coded in Lua
 Plugin 'hrsh7th/nvim-cmp'
-
+"
 " For vsnip users.
 " Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
 Plugin 'hrsh7th/cmp-vsnip'
 Plugin 'hrsh7th/vim-vsnip'
+"call plug#end()
 "
 "https://scalameta.org/metals/docs/editors/vim/
 "https://github.com/scalameta/nvim-metals?tab=readme-ov-file#installation
@@ -836,6 +839,94 @@ let g:ycm_show_detailed_diag_in_popup=1
       \ 'command': 'GetDoc',
       \ 'syntax': &filetype
       \ }
+"
+"todo "" " Reference: https://github.com/hrsh7th/nvim-cmp
+"todo "" """" Configuration of 'hrsh7th/nvim-cmp' 'hrsh7th/nvim-lspconfig'
+"todo "" " work with plugin 'hrsh7th/nvim-cmp'
+"todo "" "
+"todo "" lua <<EOF
+"todo ""   -- Set up nvim-cmp.
+"todo ""   local cmp = require'cmp'
+"todo ""
+"todo ""   cmp.setup({
+"todo ""     snippet = {
+"todo ""       -- REQUIRED - you must specify a snippet engine
+"todo ""       expand = function(args)
+"todo ""         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+"todo ""         -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+"todo ""         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+"todo ""         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+"todo ""         -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+"todo ""
+"todo ""         -- For `mini.snippets` users:
+"todo ""         -- local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
+"todo ""         -- insert({ body = args.body }) -- Insert at cursor
+"todo ""         -- cmp.resubscribe({ "TextChangedI", "TextChangedP" })
+"todo ""         -- require("cmp.config").set_onetime({ sources = {} })
+"todo ""       end,
+"todo ""     },
+"todo ""     window = {
+"todo ""       -- completion = cmp.config.window.bordered(),
+"todo ""       -- documentation = cmp.config.window.bordered(),
+"todo ""     },
+"todo ""     mapping = cmp.mapping.preset.insert({
+"todo ""       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+"todo ""       ['<C-f>'] = cmp.mapping.scroll_docs(4),
+"todo ""       ['<C-Space>'] = cmp.mapping.complete(),
+"todo ""       ['<C-e>'] = cmp.mapping.abort(),
+"todo ""       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+"todo ""     }),
+"todo ""     sources = cmp.config.sources({
+"todo ""       { name = 'nvim_lsp' },
+"todo ""       { name = 'vsnip' }, -- For vsnip users.
+"todo ""       -- { name = 'luasnip' }, -- For luasnip users.
+"todo ""       -- { name = 'ultisnips' }, -- For ultisnips users.
+"todo ""       -- { name = 'snippy' }, -- For snippy users.
+"todo ""     }, {
+"todo ""       { name = 'buffer' },
+"todo ""     })
+"todo ""   })
+"todo ""
+"todo ""   -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
+"todo ""   -- Set configuration for specific filetype.
+"todo ""   --[[ cmp.setup.filetype('gitcommit', {
+"todo ""     sources = cmp.config.sources({
+"todo ""       { name = 'git' },
+"todo ""     }, {
+"todo ""       { name = 'buffer' },
+"todo ""     })
+"todo ""  })
+"todo ""  require("cmp_git").setup() ]]--
+"todo ""
+"todo ""   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+"todo ""   cmp.setup.cmdline({ '/', '?' }, {
+"todo ""     mapping = cmp.mapping.preset.cmdline(),
+"todo ""     sources = {
+"todo ""       { name = 'buffer' }
+"todo ""     }
+"todo ""   })
+"todo ""
+"todo ""   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+"todo ""   cmp.setup.cmdline(':', {
+"todo ""     mapping = cmp.mapping.preset.cmdline(),
+"todo ""     sources = cmp.config.sources({
+"todo ""       { name = 'path' }
+"todo ""     }, {
+"todo ""       { name = 'cmdline' }
+"todo ""     }),
+"todo ""     matching = { disallow_symbol_nonprefix_matching = false }
+"todo ""   })
+"todo ""
+"todo ""   -- Set up lspconfig.
+"todo ""   local capabilities = require('cmp_nvim_lsp').default_capabilities()
+"todo ""   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+"todo ""   require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+"todo ""     capabilities = capabilities
+"todo ""   }
+"todo "" EOF
+"todo "" "
+"todo "" """" end of Configuration of 'hrsh7th/nvim-cmp' 'hrsh7th/nvim-lspconfig'
+"
 "
 " Overview of which map command works in which mode.  More details below.
 "      COMMANDS                    MODES ~
