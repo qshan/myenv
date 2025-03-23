@@ -123,6 +123,12 @@ alias lsusb.t='           lsusb -t -v '
 
 alias dmesg.tail='        dmesg | tail '
 alias dmesg.tail.20='     dmesg | tail -20 '
+alias dmesg.grep.acpi='   dmesg | grep -i acpi '
+
+alias journalctl.b.1='    journalctl -b -1'
+
+alias systemctl.poweroff='systemctl poweroff --force'
+alias shutdown.h.now='shutdown -h now'
 
 #
 #reference : https://superuser.com/questions/1133476/make-terminal-recognize-pageup-and-pagedown-when-remapped-to-different-keys
