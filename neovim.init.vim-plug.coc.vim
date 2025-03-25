@@ -609,15 +609,56 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 """ in vim, run :PlugInstall
 """todo"" :CocInstall coc-clangd
 """todo"" For Python3 :CocInstall coc-pyright
+"""todo"" for json:CocInstall coc-json coc-css
+"""todo"" for json:CocInstall coc-cmake
+""" Reference: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+""" Reference: https://github.com/fannheyward/coc-marketplace
+"""todo"" :CocInstall coc-marketplace
+"""todo"" :CocList marketplace "" list all available extensions
+"""todo"" :CocList marketplace python "" to search extension that name contains python
+"""todo"" coc-json for json.
+"""??"" coc-ltex grammar/spell checker
+"""todo"" coc-lua for lua.
+"""todo"" coc-tag for tag.
+"""todo"" coc-syntax for syntax
+"""todo"" coc-highlight provides default document symbol highlighting and color support.
+"""todo"" coc-pairs for auto pair
+"""todo"" coc-yank for yank highlight
+"""todo"" coc-lists ""https://github.com/neoclide/coc-lists
+"""todo"" coc-snippets ""Snippets solution for coc.nvim, https://github.com/neoclide/coc-snippets
+"""??"" coc-tsserver, ?? not for c/c++ env
+"""todo"" coc-markdownlint for markdown linting
+"""??"" coc-markdown-preview-enhanced Markdown Preview Enhanced for coc.nvim
+"""??"" coc-markmap markdown + mindmap for coc.nvim
+"""todo??"" coc-metals for Scala using Metals
+"""??"" coc-nav Provides the context of the cursor position.
+"""??"" coc-omnisharp for csharp and visualbasic.
+"""??"" coc-perl for perl.
+""" Reference: https://github.com/neoclide/coc.nvim/wiki/Language-servers
+"""todo"" coc-pyright for python, Pyright extension
+"""??"" coc-pylsp for python, use pylsp(python-lsp-server). (scoped packages: @yaegassy/coc-pylsp)
+"""??"" coc-jedi for python, use jedi-language-server.
+"""??"" coc-ruff for python, ruff-lsp (ruff) extension. (scoped packages: @yaegassy/coc-ruff)
+"""??"" coc-mypy for python, microsoft/vscode-mypy's langauge server extension. (scoped packages: @yaegassy/coc-mypy)
+"""??"" coc-pydocstring for python, using doq (python docstring generator) extension.
+"""??"" coc-python for python, extension forked from vscode-python. (Not maintained anymore)
+"""todo"" coc-rls for rust, use Rust Language Server (deprecated and archived)
+"""todo"" coc-rust-analyzer for rust, use rust-analyzer
+"""todo"" coc-sh for bash using bash-language-server.
+"""??"" coc-sumneko-lua Lua extension using sumneko lua-language-server
 """todo"" :CocInfo
 """todo"" :checkhealth
 """info"" coc: health#coc#check
+"""info"" :CocUpdate
+"""info"" :CocUpdateSync
+"""info"" :CocList extensions
 """For generic web-development consider :CocInstall coc-tsserver coc-json coc-html coc-css
 """For PHP :CocInstall coc-phpls
 "
 "coc-clangd will try to find clangd from your $PATH, if not found,
 "you can run :CocCommand clangd.install to install the latest release from GitHub
-" :CocConfig
+" :CocConfig  ""open the coc-settings.json file
+" :CocList commands ""list avaliable command
 """ coc-clangd also provides commands to interact with clangd:
 " :CocCommand clangd.switchSourceHeader, switch between source/header files
 " :CocCommand clangd.symbolInfo, resolve symbol info under the cursor
@@ -629,7 +670,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " You have to install coc extensions or configure language servers for LSP support.
 " Install extensions like this:
 "todo"" :CocInstall coc-json coc-tsserver
-"todo"" Or you can configure a language server in your coc-settings.json(open it using :CocConfig) like this:
+"info"" Or you can configure a language server in your coc-settings.json(open it using :CocConfig) like this:
 """ {
 """   "languageserver": {
 """     "go": {
@@ -883,6 +924,17 @@ let g:instant_markdown_slow = 1
 "let g:instant_markdown_port = 8888
 "let g:instant_markdown_python = 1
 "let g:instant_markdown_theme = 'dark'
+"
+"Configuration of """ Reference: https://github.com/neoclide/coc.nvim
+"" GoTo code navigation.
+""todo" nmap gd <Plug>(coc-definition)
+""todo" nmap gy <Plug>(coc-type-definition)
+""todo" nmap gi <Plug>(coc-implementation)
+""todo" nmap gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 "
 " setting for Plugin 'mzlogin/vim-markdown-toc'
 let g:vmt_link = 1
