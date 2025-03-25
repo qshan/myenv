@@ -225,7 +225,7 @@ if exists('g:GuiLoaded')
     :MyFont12
 "    :MyDiffIgnoreWhiteSpace
   else
-    :MyFont16
+    :MyFont22
   endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
@@ -234,7 +234,7 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont12
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont18
+au BufReadPost,FileReadPost *     :MyFont22
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 
@@ -607,44 +607,50 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 """ https://github.com/clangd/coc-clangd
 """ in vim, run :PlugInstall
-"""todo"" :CocInstall coc-clangd
-"""todo"" For Python3 :CocInstall coc-pyright
-"""todo"" for json:CocInstall coc-json coc-css
-"""todo"" for json:CocInstall coc-cmake
+"""todo"" :CocInstall coc-clangd coc-pyright coc-cmake coc-sh coc-metals
+"""todo"" :CocInstall coc-tag coc-syntax coc-highlight coc-pairs coc-yank
+"""todo"" :CocInstall coc-snippets coc-markdownlint coc-vimlsp coc-word
+"""todo"" :CocInstall coc-marketplace coc-lists
+"""todo"" :CocInstall coc-rust-analyzer coc-lua coc-json coc-css
+"""info"" :CocInstall coc-tabnine ""AI complete
+"""info"" :CocInstall coc-clangd
+"""info"" For Python3 :CocInstall coc-pyright
+"""info"" for json:CocInstall coc-json coc-css
+"""info"" for json:CocInstall coc-cmake
 """ Reference: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 """ Reference: https://github.com/fannheyward/coc-marketplace
-"""todo"" :CocInstall coc-marketplace
+"""info"" :CocInstall coc-marketplace
 """todo"" :CocList marketplace "" list all available extensions
 """todo"" :CocList marketplace python "" to search extension that name contains python
-"""todo"" coc-json for json.
+"""info"" coc-json for json.
 """??"" coc-ltex grammar/spell checker
-"""todo"" coc-lua for lua.
-"""todo"" coc-tag for tag.
-"""todo"" coc-syntax for syntax
-"""todo"" coc-highlight provides default document symbol highlighting and color support.
-"""todo"" coc-pairs for auto pair
-"""todo"" coc-yank for yank highlight
-"""todo"" coc-lists ""https://github.com/neoclide/coc-lists
-"""todo"" coc-snippets ""Snippets solution for coc.nvim, https://github.com/neoclide/coc-snippets
+"""info"" coc-lua for lua.
+"""info"" coc-tag for tag.
+"""info"" coc-syntax for syntax
+"""info"" coc-highlight provides default document symbol highlighting and color support.
+"""info"" coc-pairs for auto pair
+"""info"" coc-yank for yank highlight
+"""info"" coc-lists ""https://github.com/neoclide/coc-lists
+"""info"" coc-snippets ""Snippets solution for coc.nvim, https://github.com/neoclide/coc-snippets
 """??"" coc-tsserver, ?? not for c/c++ env
-"""todo"" coc-markdownlint for markdown linting
+"""info"" coc-markdownlint for markdown linting
 """??"" coc-markdown-preview-enhanced Markdown Preview Enhanced for coc.nvim
 """??"" coc-markmap markdown + mindmap for coc.nvim
-"""todo??"" coc-metals for Scala using Metals
+"""info??"" coc-metals for Scala using Metals
 """??"" coc-nav Provides the context of the cursor position.
 """??"" coc-omnisharp for csharp and visualbasic.
 """??"" coc-perl for perl.
 """ Reference: https://github.com/neoclide/coc.nvim/wiki/Language-servers
-"""todo"" coc-pyright for python, Pyright extension
+"""info"" coc-pyright for python, Pyright extension
 """??"" coc-pylsp for python, use pylsp(python-lsp-server). (scoped packages: @yaegassy/coc-pylsp)
 """??"" coc-jedi for python, use jedi-language-server.
 """??"" coc-ruff for python, ruff-lsp (ruff) extension. (scoped packages: @yaegassy/coc-ruff)
 """??"" coc-mypy for python, microsoft/vscode-mypy's langauge server extension. (scoped packages: @yaegassy/coc-mypy)
 """??"" coc-pydocstring for python, using doq (python docstring generator) extension.
 """??"" coc-python for python, extension forked from vscode-python. (Not maintained anymore)
-"""todo"" coc-rls for rust, use Rust Language Server (deprecated and archived)
-"""todo"" coc-rust-analyzer for rust, use rust-analyzer
-"""todo"" coc-sh for bash using bash-language-server.
+"""deprecated??"" coc-rls for rust, use Rust Language Server (deprecated and archived)
+"""info"" coc-rust-analyzer for rust, use rust-analyzer
+"""info"" coc-sh for bash using bash-language-server.
 """??"" coc-sumneko-lua Lua extension using sumneko lua-language-server
 """todo"" :CocInfo
 """todo"" :checkhealth
