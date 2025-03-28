@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-#example ./try.update.gcc.version.bash 4.8
+#example try.update.python.version.bash 2.7
+#example try.update.python.version.bash 3
+#example try.update.python.version.bash 3.8
+#example try.update.python.version.bash 3.9
+#example try.update.python.version.bash 3.10
 
 export input_argument1="$1"
 echo "input_argument1 is ${input_argument1}"
