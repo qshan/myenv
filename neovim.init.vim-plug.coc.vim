@@ -610,6 +610,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 """todo"" :CocInstall coc-clangd coc-pyright coc-cmake coc-sh coc-metals
 """todo"" :CocInstall coc-tag coc-syntax coc-highlight coc-pairs coc-yank
 """todo"" :CocInstall coc-snippets coc-markdownlint coc-vimlsp coc-word
+"""todo"" :CocInstall coc-spell-checker
 """todo"" :CocInstall coc-marketplace coc-lists
 """todo"" :CocInstall coc-rust-analyzer coc-lua coc-json coc-css
 """info"" :CocInstall coc-tabnine ""AI complete
