@@ -1032,20 +1032,30 @@ export LANG=C.UTF-8
 #------------------------------
 
 #python alias
+# create new virtual env
 alias python3.m.venv='                    python3 -m venv '
-#Example#python3 -m venv VirtualEnvName ; cd VirtualEnvName; source bin/activate; pip3 list
+#Example#python3 -m venv VirtualEnvName/.venv ; source VirtualEnvName/.venv/bin/activate; pip3 list
 #deactivate
 alias python3.m.pip.install='             python3 -m pip install'
 #python3 -m pip install urllib3==1.26.19
 alias python3.m.pip.install.upgrade.pip=' python3 -m pip install --upgrade pip'
 alias python3.m.pip.list='                python3 -m pip list'
 
-alias pip3.install='                pip3 install '
+alias pip3.install='                      pip3 install '
 #pip3 install urllib3==1.26.19
 alias pip3.install.upgrade.pip='          pip3 install --upgrade pip'
 #pip3 install --upgrade pip
 alias pip3.list='                         pip3 list '
 #pip3 install jupyter --ignore-installed
+
+alias pip3.show.f.west='                  pip3 show -f west '
+# info https://docs.zephyrproject.org/latest/develop/west/install.html
+alias python3.m.west='                    python3 -m west '
+
+# sifive freedom studio
+if [ -d /data1/tools/FreedomStudio-2020-06-3-lin64 ]; then
+  export PATH=$PATH:/data1/tools/FreedomStudio-2020-06-3-lin64
+fi
 
 if [ -d /opt/riscv/bin ]; then
   export PATH=$PATH:/opt/riscv/bin
@@ -1054,6 +1064,12 @@ fi
 if [ -d ~/miniconda3/bin ]; then
   export PATH=$PATH:~/miniconda3/bin
 fi
+
+# update ~/.local/bin in PATH
+if [ -d ~/.local/bin ]; then
+  export PATH=~/.local/bin:$PATH
+fi
+
 #------------------------------
 # conda --help
 # usage: conda [-h] [-V] command ...

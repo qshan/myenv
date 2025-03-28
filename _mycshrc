@@ -892,7 +892,7 @@ setenv LANG     C.UTF-8
 
 #python alias
 alias python3.m.venv '                    python3 -m venv '
-#Example#python3 -m venv VirtualEnvName ; cd VirtualEnvName; source bin/activate; pip3 list
+#Example#python3 -m venv VirtualEnvName/.venv ; source VirtualEnvName/.venv/bin/activate; pip3 list
 #deactivate
 alias python3.m.pip.install '             python3 -m pip install'
 #python3 -m pip install urllib3==1.26.19
@@ -904,12 +904,27 @@ alias pip3.install='                pip3 install '
 alias pip3.install.upgrade.pip '          pip3 install --upgrade pip'
 alias pip3.list '                         pip3 list '
 
+alias pip3.show.f.west '                  pip3 show -f west '
+# info https://docs.zephyrproject.org/latest/develop/west/install.html
+alias python3.m.west='                    python3 -m west '
+
+if ( -d /data1/tools/FreedomStudio-2020-06-3-lin64 ) then
+setenv PATH "${PATH}:/data1/tools/FreedomStudio-2020-06-3-lin64"
+endif
+
 if ( -d /opt/riscv/bin ) then
 setenv PATH "${PATH}:/opt/riscv/bin"
 endif
+
 if ( -d ~/miniconda/bin ) then
 setenv PATH "${PATH}:~/miniconda/bin"
 endif
+
+# update ~/.local/bin in PATH
+if ( -d ~/.local/bin ) then
+setenv PATH "~/.local/bin:${PATH}"
+endif
+
 #------------------------------
 # conda alias
 alias conda.activate '      conda activate '
