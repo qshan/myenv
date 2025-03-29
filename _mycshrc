@@ -194,12 +194,16 @@ alias findremovespaceonend  'find \!* -type f | xargs sed -i "s/\s\+\$//g" '
 alias readlinkf             'readlink -f '
 
 
-
-
 ##------------------------------
-alias sudodpkgforce-depends     'sudo dpkg -P --force-depends '
-alias sudoaptfix-brokeninstall  'sudo apt --fix-broken install'
-alias sudoubuntu-driversauto    'sudo ubuntu-drivers autoinstall'
+alias sudo.dpkg.force-depends '     sudo dpkg -P --force-depends '
+alias sudo.apt.fix.broken.install ' sudo apt --fix-broken install'
+alias sudo.ubuntu-drivers.auto '    sudo ubuntu-drivers autoinstall'
+alias sudo.updatedb '               sudo updatedb '
+alias sudo.locate '                 sudo locate '
+#example# sudolocate AppName
+alias sudo.update-alternative '     sudo update-alternatives --remove-all '
+#example# sudoupdatealternative AppName
+
 ##------------------------------
 alias tree.U          '\tree -U '
 alias tree.r          '\tree -r '
@@ -906,7 +910,17 @@ alias pip3.list '                         pip3 list '
 
 alias pip3.show.f.west '                  pip3 show -f west '
 # info https://docs.zephyrproject.org/latest/develop/west/install.html
-alias python3.m.west='                    python3 -m west '
+alias python3.m.west '                    python3 -m west '
+
+alias west.help.build '                   west help build'
+alias west.build.p.always '               west build -p always '
+alias west.build.p.always.b.qemu_riscv64 'west build -p always -b qemu_riscv64 '
+alias west.build.qemu_riscv64 '           west build -p always -b qemu_riscv64 '
+# west build -p always -b qemu_riscv64 samples/synchronization
+alias west.build.t.run '                  west build -t run '
+alias west.build.t.footprint '            west build -t footprint '
+alias west.build.t.ram_report '           west build -t ram_report '
+alias west.build.t.rom_report '           west build -t rom_report '
 
 if ( -d /data1/tools/FreedomStudio-2020-06-3-lin64 ) then
 setenv PATH "${PATH}:/data1/tools/FreedomStudio-2020-06-3-lin64"
