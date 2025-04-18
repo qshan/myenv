@@ -7,6 +7,20 @@
 --exclude=*.swp
 --exclude=tags
 
+--langdef=zephyr
+--langmap=zephyr:.h
+--regex-zephyr=/^DT_INST_FOREACH_STATUS_OKAY\(([^)]+)\)/\1/d,devicetree/
+--regex-zephyr=/^DEVICE_DT_DEFINE\([^,]+,\s*([^,]+)/\1/d,device/
+--regex-zephyr=/^K_THREAD_DEFINE\(([^,]+)/\1/d,thread/
+
+--regex-C++=/^DT_INST_FOREACH_STATUS_OKAY\(([^)]+)\)/\1/d,devicetree/
+--regex-C++=/^DEVICE_DT_DEFINE\([^,]+,\s*([^,]+)/\1/d,device/
+--regex-C++=/^K_THREAD_DEFINE\(([^,]+)/\1/d,thread/
+
+--regex-C=/^DT_INST_FOREACH_STATUS_OKAY\(([^)]+)\)/\1/d,devicetree/
+--regex-C=/^DEVICE_DT_DEFINE\([^,]+,\s*([^,]+)/\1/d,device/
+--regex-C=/^K_THREAD_DEFINE\(([^,]+)/\1/d,thread/
+
 --langdef=SystemVerilog
 --langmap=SystemVerilog:.v.vg.vh.sv.svh.svi.tv.vinc
 
