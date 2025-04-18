@@ -225,7 +225,7 @@ if exists('g:GuiLoaded')
     :MyFont12
 "    :MyDiffIgnoreWhiteSpace
   else
-    :MyFont22
+    :MyFont26
   endif
 endif
 "autocmd BufWritePost * match ExtraWhitespace /\s\+$/
@@ -234,7 +234,7 @@ au BufReadPost,FileReadPost * :if exists('g:GuiLoaded')
 au BufReadPost,FileReadPost *   :if &diff
 au BufReadPost,FileReadPost *     :MyFont12
 au BufReadPost,FileReadPost *   :else
-au BufReadPost,FileReadPost *     :MyFont22
+au BufReadPost,FileReadPost *     :MyFont26
 au BufReadPost,FileReadPost *   :endif
 au BufReadPost,FileReadPost * :endif
 
@@ -443,7 +443,9 @@ set nofoldenable
 "set spell
 ""set spelllang=en_us
 ""setlocal spell spelllang=en_gb
-setlocal spell spelllang=en_us
+"""setlocal spell spelllang=en_us
+""todo??"setlocal spell spelllang=en_us,nl,medical
+setlocal spell spelllang=en_us,cjk
 "" " Set spell check to US English
 ""autocmd FileType markdown setlocal spell spelllang=en_us
 "set spell spelllang=en_us
@@ -1990,6 +1992,19 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 " Note that "\000" and "\x00" force the end of the string.
 "
 " -----String-char--End-------------------
+" -----Markdown-lint--Start-------------------
+" add those content in ~/.config/nvim/coc-settings.json, or open it with
+" :CocConfig
+" {
+"   "cSpell.userWords": ["CUDA", "Nsight"],
+"     "markdownlint.config":
+"       {
+"         "default": true,
+"         "line_length": false
+"       }
+" }
+"
+" -----Markdown-lint--End-------------------
 
 
 ""end_source
