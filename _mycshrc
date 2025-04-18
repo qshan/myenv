@@ -132,13 +132,22 @@ alias remake.tasks '      remake --tasks'
 
 alias lspci.t '           lspci -t -v '
 alias lspci.k '           lspci -k -v '
+alias lspci.vv '          lspci -vv '
+alias lspci.vvx '         lspci -vvx '
 alias lspci.vvv '         lspci -vvv '
+alias lspci.grep.aspm '   lspci -vvv | grep -i aspm '
+alias lspci.grep.lnksta ' lspci -vvv | grep -i lnksta'
+
+alias cpupower.set.aspm.powersave 'cpupower set aspm powersave'
+alias turbostat.show.pkg_pci 'turbostat --show pkg_pci'
 
 alias lsusb.t='           lsusb -t -v '
 
 alias dmesg.tail '        dmesg | tail '
 alias dmesg.tail.20 '     dmesg | tail -20 '
 alias dmesg.grep.acpi '   dmesg | grep -i acpi '
+alias dmesg.grep.pcie '   dmesg | grep -i pcie '
+alias dmesg.grep.aspm='   dmesg | grep -i aspm '
 
 alias journalctl.b.1 '    journalctl -b -1'
 
@@ -171,10 +180,15 @@ alias du.sh                 'du -sh '
 #
 alias mvf                   '\mv -f '
 ##------------------------------
-alias grep                  '\grep --color=auto '
-alias grep.rni              '\grep --color=auto -rni '
-alias grep.rniE             '\grep --color=auto -rniE '
-alias grep.rnio             '\grep --color=auto -rnio '
+alias grep              '\grep --color=auto '
+alias grep.rni          '\grep --color=auto -rni '
+alias grep.rniE         '\grep --color=auto -rniE '
+alias grep.rnio         '\grep --color=auto -rnio '
+# -P, --perl-regexp -o, --only-matching
+alias grep.oP '         \grep --color=auto -oP '
+alias grep.ioP '        \grep --color=auto -ioP '
+alias grep.ioP.C '      \grep --color=auto -ioP "\S+\.(c|h|s|S|cpp|hpp)$" '
+alias grep.rioP '           \grep --color=auto -rioP '
 #worked#alias grepspaceonend        '\grep --color=auto -rni "\s\+"\$ '
 #alias grepspaceonend        '\grep --color=auto -rni " \+"\$ '
 alias grep.spaceonend       '\grep --color=auto -rni " \+"\$ '
@@ -584,19 +598,21 @@ endif
 ## todo Universal-ctags is required
 #
 #alias ctags 'the_ctags_in_your_env'
-alias ctags_list-languages        "ctags --list-languages "
-alias ctags_list-maps             "ctags --list-maps "
-alias ctags_list-map-exetensions  "ctags --list-map-extensions "
-alias ctags_list-fields           "ctags --list-fields "
-alias ctags_list-kinds            "ctags --list-kinds "
-alias ctags_list-kinds-full       "ctags --list-kinds-full "
-alias ctags_list-extras           "ctags --list-extras "
-alias ctags_list-excludes         "ctags --list-excludes "
-alias ctags_list-features         "ctags --list-features "
-alias ctags_list-params           "ctags --list-params "
-alias ctags_langmap               'echo "ctags --langmap=c:.c.x,java:+.j"'
-alias ctags_langdef               'echo "ctags --langdef=C "'
+alias ctags_list-languages        "ctags-universal --list-languages "
+alias ctags_list-maps             "ctags-universal --list-maps "
+alias ctags_list-map-exetensions  "ctags-universal --list-map-extensions "
+alias ctags_list-fields           "ctags-universal --list-fields "
+alias ctags_list-kinds            "ctags-universal --list-kinds "
+alias ctags_list-kinds-full       "ctags-universal --list-kinds-full "
+alias ctags_list-extras           "ctags-universal --list-extras "
+alias ctags_list-excludes         "ctags-universal --list-excludes "
+alias ctags_list-features         "ctags-universal --list-features "
+alias ctags_list-params           "ctags-universal --list-params "
+alias ctags_langmap               'echo "ctags-universal --langmap=c:.c.x,java:+.j"'
+alias ctags_langdef               'echo "ctags-universal --langdef=C "'
 #
+#info#ctags-universal --append=yes -f tags --regex-c='/^DEVICE_DT_DEFINE\([^,]+,\s*([^,]+)/\1/d,device/' zephyr/include/zephyr/device.h
+alias ctags.append.tags "         ctags-universal  --append=yes -f tags "
 alias ctags_R                     "ctags-universal -R --extras=+qfrs "
 #alias ctags_R_C                   "ctags-exuberant -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extra=+qf "
 alias ctags_R_C                   "ctags-universal -R    --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs "
@@ -913,14 +929,32 @@ alias pip3.show.f.west '                  pip3 show -f west '
 alias python3.m.west '                    python3 -m west '
 
 alias west.help.build '                   west help build'
+alias west.init '                         west init '
+alias west.update '                       west update '
 alias west.build.p.always '               west build -p always '
+alias west.build.p.always.v='             west build -p always -v '
+alias west.build.p.always.vv='            west build -p always -vv '
+alias west.build.p.always.vvv='           west build -p always -vvv '
 alias west.build.p.always.b.qemu_riscv64 'west build -p always -b qemu_riscv64 '
 alias west.build.qemu_riscv64 '           west build -p always -b qemu_riscv64 '
 # west build -p always -b qemu_riscv64 samples/synchronization
+alias west.build.c '                      west build -c '
+alias west.build.t.clean '                west build -t clean '
 alias west.build.t.run '                  west build -t run '
+alias west.build.t.flash '                west build -t flash '
+alias west.build.t.debug '                west build -t debug '
+alias west.build.t.debugserver '          west build -t debugserver '
 alias west.build.t.footprint '            west build -t footprint '
 alias west.build.t.ram_report '           west build -t ram_report '
 alias west.build.t.rom_report '           west build -t rom_report '
+alias west.build.t.usage '                west build -t usage '
+alias west.build.t.help '                 west build -t help '
+alias west.build.t.boards '               west build -t boards '
+alias west.boards '                       west boards '
+alias west.config '                       west config '
+alias west.list '                         west list '
+alias west.topdir '                       west topdir '
+alias west.zephyr-export '                west zephyr-export '
 
 if ( -d /data1/tools/FreedomStudio-2020-06-3-lin64 ) then
 setenv PATH "${PATH}:/data1/tools/FreedomStudio-2020-06-3-lin64"
