@@ -80,8 +80,30 @@ ctags_L_C source_files.txt
 #alias gvim.tags.pwd='gvim -c "set tags=`pwd`/tags"'
 gvim -c "set tags=`pwd`/tags"
 
+#====================
 
+#**==`-M`==**==：生成==**==完整的依赖关系==**==（==**==包含系统头文件==**==）。==
 
+#**==`-MP`==**==：==**==避免因头文件删除导致 Makefile 报错==**==。==
+
+#**==`-MMD`==**：生成 **========`.d`========** 文件\*\*==（==**==忽略系统头文件==**==）。==\*\*
+
+#**==-MD==** ： 生成依赖文件（`.d`），等同于 **==`-M -MF <file.d>`====，但自动命名（====`<source>.d`====）==**。
+# 编译并生成 .d 文件
+riscv64-unknown-elf-gcc -MD -MP -c src/*.c -Iinclude -march=rv64gc -mabi=lp64d
+
+find . -name "*.d" -exec cat {} \; | grep -oE '\S+\.h\b' | sort -u > headers.txt
+find . -name "*.d" -exec cat {} \; | grep -oE '\S+\.[c|h|s|S]\b' | sort -u > headers.txt
+find . -name "*.d" -exec cat {} \; | grep -ioP '\S+\.[c|h|s|cpp|hpp]\b' | sort -u > headers.txt
+
+ctags -L headers.txt --fields=+iaS --extras=+q \
+  -I "__riscv__" \
+  /opt/riscv/riscv64-unknown-elf/include
+
+ctags_L_C source_files.txt
+ctags-universal       --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -L headers.txt
+
+#====================
 
 #debugging
 find `pwd` -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo  > filelist.o.d.cat.sort.rm.o.rm.ext.echo.txt
