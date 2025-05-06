@@ -64,6 +64,16 @@ cat  main.cpp.o.1.d | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs 'ctags-univer
 find ./ -type f -iname *.o.d |xargs cat | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs ctags-universal --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs
 find ./ -type f -iname *.o.d |xargs cat | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs ctags-universal --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
 
+#generate the compile_commands.json
+#bear make -n Arguments_and_others
+bear make Arguments_and_others
+# then copy the compile_command.json to vscode project root folder
+# or set the compile_commands.json in .vscode/settings.json
+# "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+# or set the compile_commands.json in .vscode/c_cpp_properties.json
+# "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+# for nvim project, put compile_commands.json in nvim root folder
+
 # worked
 rm tags
 find `pwd` -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\ \+\\/ /' |xargs echo |xargs ctags-universal --append=yes --languages=C,C++,C#,Asm,make --c++-kinds=+lpx --fields=+iaS --extras=+qfrs -R
@@ -73,8 +83,10 @@ find ./ -type f -iname *.o.d |xargs cat | sort -u | sed 's/.*\.o:/ /' | sed 's/\
 #info#good#  tag generate for zephyr project
 ## compile project
 west build -p always -b qemu_cortex_m3 zephyr/samples/hello_world
-# -P, --perl-regexp -o, --only-matching
+# -P, --perl-regexp -o, --only-matching -i, --ignore-case
+# -E, --extended-regexp -o, --only-matching -i, --ignore-case
 ninja -C build -t deps | grep -ioP '\S+\.(c|h|s|S|cpp|hpp)$' | sort -u > source_files.txt
+ninja -C build -t deps | grep -ioP '\S+\.(c|h|s|S|cpp|hpp)' | sort -u > source_files.txt
 ## generate tags
 ctags_L_C source_files.txt
 #alias gvim.tags.pwd='gvim -c "set tags=`pwd`/tags"'
@@ -91,10 +103,22 @@ gvim -c "set tags=`pwd`/tags"
 #**==-MD==** ： 生成依赖文件（`.d`），等同于 **==`-M -MF <file.d>`====，但自动命名（====`<source>.d`====）==**。
 # 编译并生成 .d 文件
 riscv64-unknown-elf-gcc -MD -MP -c src/*.c -Iinclude -march=rv64gc -mabi=lp64d
+gcc -MD -MP
+gcc -save-temps
+CFLAGS+= -MD -MP
+CFLAGS+= -save-temps
 
+cmake -DCMAKE_C_FLAGS="-MD -MP -save-temps" -DCMAKE_CXX_FLAGS="-MD -MP -save-temps"
+
+#for zephyr project
+west build -DEXTRA_CFLAGS="-MD -MP -save-temps" -DEXTRA_CXXFLAGS="-MD -MP -save-temps"
+
+# -P, --perl-regexp -o, --only-matching -i, --ignore-case
+# -E, --extended-regexp -o, --only-matching -i, --ignore-case
 find . -name "*.d" -exec cat {} \; | grep -oE '\S+\.h\b' | sort -u > headers.txt
-find . -name "*.d" -exec cat {} \; | grep -oE '\S+\.[c|h|s|S]\b' | sort -u > headers.txt
-find . -name "*.d" -exec cat {} \; | grep -ioP '\S+\.[c|h|s|cpp|hpp]\b' | sort -u > headers.txt
+find . -name "*.d" -exec cat {} \; | grep -oE '\S+\.[c|h|s|S]' | sort -u > headers.txt
+find . -name "*.d" -exec cat {} \; | grep -ioE '\S+\.[c|h|s|cpp|hpp]' | sort -u > headers.txt
+find . -name "*.d" -exec cat {} \; | grep -ioP '\S+\.[c|h|s|cpp|hpp]' | sort -u > headers.txt
 
 ctags -L headers.txt --fields=+iaS --extras=+q \
   -I "__riscv__" \
