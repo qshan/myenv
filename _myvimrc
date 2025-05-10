@@ -1205,6 +1205,24 @@ set termencoding=utf-8
 :MyTabstop
 :MyTagsPwd
 "
+"todo"" enable local config
+set exrc       " enable local config: ./.exrc or ./.vimrc ./.vim
+set secure     " 限制危险操作（推荐）
+"# 全局配置
+"~/.vimrc            # 基础设置
+"~/.vim/plugins.vim  # 插件声明
+"# 项目配置
+"/myproject/
+"  ├── .vimrc        # 覆盖缩进、插件路径等
+"  └── .vim/
+"      └── ftplugin/ # 文件类型专用配置
+"
+"" 在全局配置中加载本地配置（安全方式）
+if filereadable(".vimrc.local")
+  source ./.vimrc.local
+endif
+"
+"
 ":set tags=./tags,tags,/home/user/commontags
 "todo""set tags=tags
 "todo""set autochdir
