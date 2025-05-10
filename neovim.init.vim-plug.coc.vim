@@ -522,6 +522,7 @@ runtime! vim-plug/plug.vim
 " call vundle#begin()
 ""call plug#begin("~/.local/share/nvim/site/autoload/plug.vim")
 call plug#begin()
+"todo""call plug#begin('~/.local/share/nvim/plugged')
 "info"" the plugin will be stored in ~/.local/share/nvim/plugged/
 "required for Vundle
 " 另一种选择, 指定一个vundle安装插件的路径
@@ -600,7 +601,10 @@ call plug#begin()
 "
 """ For vim-plug users:
 "" Use release branch (recommended)
+" sudo apt install clangd
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"todo , run :CocConfig to open coc-settings.json to config for
+"compile_commands.json
 " Or build from source code by using npm
 ""todo" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 " in your .vimrc or init.vim, then restart Vim and run :PlugInstall.
@@ -678,8 +682,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Checkout Install coc.nvim for more info.
 " You have to install coc extensions or configure language servers for LSP support.
 " Install extensions like this:
+"todo""确认 clangd 已附加到当前文件:CocList services
+"todo""查看 clangd 日志 :CocCommand workspace.showOutput clangd
+"todo""确保 compile_commands.json 路径正确, ln -s build/compile_commands.json .  # 软链接到根目录
+"todo""检查文件类型是否为 c/cpp :set ft?  " 确认输出为 cpp/c
+"todo""确保 clangd 已激活 :CocCommand clangd.activate
+"todo""在项目根目录创建 .clangd 文件，自定义行为
+"""CompileFlags:
+"""  Add: [-std=c++20, -Wall, -Wextra]
+"""  Remove: [-Werror]
+"""Diagnostics:
+"""  UnusedMacros: false
+"
 "todo"" :CocInstall coc-json coc-tsserver
-"info"" Or you can configure a language server in your coc-settings.json(open it using :CocConfig) like this:
+"info"" Or you can configure a language server in your coc-settings.json
+"(open it using :CocConfig) like this:
 """ {
 """   "languageserver": {
 """     "go": {
@@ -691,6 +708,25 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 """   }
 """ }
 "
+"""{
+"""  "languageserver": {
+"""    "clangd": {
+"""      "command": "clangd",
+"""      "args": [
+"""        "--background-index",      // 后台索引加速响应
+"""        "--clang-tidy",            // 启用静态检查
+"""        """clangd 会自动在项目根目录查找 compile_commands.json。
+"""        "--compile-commands-dir=build"  // 指定 compile_commands.json 所在目录
+"""        "--header-insertion=never" // 禁止自动插入头文件
+"""      ],
+"""      "rootPatterns": [
+"""        "compile_commands.json",   // 依赖 compile_commands.json
+"""        ".git"
+"""      ],
+"""      "filetypes": ["c", "cpp", "objc", "objcpp"]
+"""    }
+"""  }
+"""}
 "
 "https://scalameta.org/metals/docs/editors/vim/
 "https://github.com/scalameta/nvim-metals?tab=readme-ov-file#installation
@@ -892,6 +928,47 @@ Plug 'will133/vim-dirdiff'
 Plug 'rickhowe/diffchar.vim'
 ":help diffchar
 "
+"todo"for debugger config"
+"todo""
+"reference: https://github.com/rcarriga/nvim-dap-ui
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'rcarriga/nvim-dap-ui'
+
+" 调试核心插件
+Plug 'mfussenegger/nvim-dap'
+" DAP User interface
+Plug 'rcarriga/nvim-dap-ui'
+" show debug info
+Plug 'theHamsta/nvim-dap-virtual-text'
+" 开发辅助
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Telescope integration
+"todo""Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+" optional, status bar integration
+Plug 'nvim-lualine/lualine.nvim'
+"
+"todo""reference: https://github.com/theHamsta/nvim-dap-virtual-text
+"reduced""Plug 'mfussenegger/nvim-dap'
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'theHamsta/nvim-dap-virtual-text'
+"
+"
+"todo""reference: https://github.com/titanzero/zephyrium
+"Plug 'titanzero/zephyrium'
+"usage"":colorscheme zephyrium
+"
+"todo""reference: https://github.com/nvimdev/zephyr-nvim
+"Plug 'glepnir/zephyr-nvim'
+"Plug 'nvim-treesitter/nvim-treesitter'
+"usage"":colorscheme zephyrium
+"
+"todo""
+"https://github.com/mfussenegger/nvim-lint
+"Plug 'mfussenegger/nvim-lint'
+"
 ":help hl-DiffText
 ":help hl-DiffChange
 ":hi
@@ -935,6 +1012,23 @@ let g:instant_markdown_slow = 1
 "let g:instant_markdown_theme = 'dark'
 "
 "Configuration of """ Reference: https://github.com/neoclide/coc.nvim
+"" 启用 coc.nvim 的 clangd 扩展
+let g:coc_global_extensions = ['coc-clangd']
+"""~/.vimrc 中 无需硬编码 clangd 参数，只需确保 clangd 能找到 compile_commands.json
+" 配置 clangd 参数
+"""let g:coc_user_config = {
+"""  \ "clangd.path": "/usr/bin/clangd",
+"""  \ "clangd.arguments": [
+"""  \   "--background-index",           " 后台索引加速响应
+"""  \   "--compile-commands-dir=.",     " 从当前目录查找 compile_commands.json
+"""  \   "--clang-tidy",                 " 启用静态检查
+"""  \   "--query-driver=/usr/bin/g++",  " 获取系统头文件路径
+"""  \   "--exclude-dir=**/test/**",     " 忽略测试目录
+"""  \   "--header-insertion=never"      " 禁止自动插入头文件
+"""  \ ],
+"""  \ "rootPattern":["compile_commands.json",".git"],
+"""  \ "filetypes":["c","cpp","s"]
+"""\ }
 "" GoTo code navigation.
 ""todo" nmap gd <Plug>(coc-definition)
 ""todo" nmap gy <Plug>(coc-type-definition)
@@ -944,6 +1038,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" 悬浮文档
+nnoremap <silent> K :call CocAction('doHover')<CR>
+""todo"# 检查是否包含正确的编译参数（如 -I、-D）
+"""jq '.[0].command' compile_commands.json
+
 "
 " setting for Plugin 'mzlogin/vim-markdown-toc'
 let g:vmt_link = 1
@@ -1421,6 +1520,7 @@ command! MyAddContentLinker                     :'<,'>s/$/<a name="item_liner_fo
 command! MyMarkdownInstantMarkdownPreview       :InstantMarkdownPreview
 command! MyMarkdownQuartoPreview                :MarkdownPreview
 command! MyLoadLazyNeovim                       :luafile ~/.config/nvim/lua/config/lazy.lua
+command! MyLoadDapConfig                        :luafile ~/.config/nvim/lua/config/dap-config.lua
 
 
 " set for Plugin 'preservim/vim-markdown'
@@ -1463,6 +1563,24 @@ set termencoding=utf-8
 :MyTabstop
 :MyTagsPwd
 "
+"todo"" enable local config
+set exrc       " enable local config: ./.exrc or ./.vimrc ./.vim
+set secure     " 限制危险操作（推荐）
+"# 全局配置
+"~/.vimrc            # 基础设置
+"~/.vim/plugins.vim  # 插件声明
+"# 项目配置
+"/myproject/
+"  ├── .vimrc        # 覆盖缩进、插件路径等
+"  └── .vim/
+"      └── ftplugin/ # 文件类型专用配置
+"
+"" 在全局配置中加载本地配置（安全方式）
+if filereadable(".vimrc.local")
+  source ./.vimrc.local
+endif
+"
+"
 ":set tags=./tags,tags,/home/user/commontags
 "todo""set tags=tags
 "todo""set autochdir
@@ -1497,6 +1615,53 @@ au BufRead,BufNewFile,FileReadPost *.v,*.vh,*.sv,*.svh,*.c,*.h iab Fileheader //
 :autocmd BufEnter  *.c,*.h     abbr SWITCH switch()<CR>{<CR>case ITEM :<CR>;<CR>break;<CR>case ITEM :<CR>;<CR>break;<CR>default:<CR>;<CR>}<Esc>O
 :autocmd BufLeave  *.c,*.h     unabbr SWITCH
 ""
+"
+":help lua-commands
+"lua <<EOF
+"-- lua code goes here
+"EOF
+"
+"todo"??"debuger config for nvim-dap
+lua require ('config.dap-config')
+"lua <<EOF
+"  local dap = require("dap")
+"  dap.configurations.c = {
+"    {
+"      name = "Launch",
+"      type = "gdb",
+"      request = "launch",
+"      program = function()
+"        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+"      end,
+"      cwd = "${workspaceFolder}",
+"      stopAtBeginningOfMainSubprogram = false,
+"    },
+"    {
+"      name = "Select and attach to process",
+"      type = "gdb",
+"      request = "attach",
+"      program = function()
+"         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+"      end,
+"      pid = function()
+"         local name = vim.fn.input('Executable name (filter): ')
+"         return require("dap.utils").pick_process({ filter = name })
+"      end,
+"      cwd = '${workspaceFolder}'
+"    },
+"    {
+"      name = 'Attach to gdbserver :1234',
+"      type = 'gdb',
+"      request = 'attach',
+"      target = 'localhost:1234',
+"      program = function()
+"         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+"      end,
+"      cwd = '${workspaceFolder}'
+"    }
+"  }
+"EOF
+"
 """ -----personal command--End-------------------
 "
 """ -----popular command--Start-------------------
