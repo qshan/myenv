@@ -406,10 +406,47 @@ alias git.commit.ma               'git commit -a -m '
 alias git.commit.m                'git commit -m '
 #example# git commit -m "coment description" FileName1 FileName2
 alias git.commit.amend            'git commit --amend '
+#info#
+# git push <remote-name> <local-branch>:<remote-branch>
 alias git.push                    'git push '
+#
+# git push <remote> <local-ref>:<remote-ref>
+# git push origin feature-login:refs/heads/staging-feature
+# 将本地 feature-login 分支推送到远程的 staging-feature 分支
+# origin is the remote
+# 格式为 +<src>:<dst>，其中：
+# + 表示强制更新（--force）。
+# <src> 是本地引用，<dst> 是远程引用。
+# 可以省略 <dst>，表示本地和远程引用同名。
+
+# git push <remote> <local-ref>:<remote-ref>
+# git push origin :refs/heads/old-branch
+# 删除远程的 old-branch 分支（推送一个空引用到远程）
+#
+# git fetch <remote> <remote-ref>:<local-ref>
+
+# git fetch origin refs/heads/staging:refs/heads/local-staging
+# 将远程的 staging 分支拉取到本地的 local-staging 分支
+# git fetch origin refs/heads/remote-dev:refs/heads/local-dev
+## 拉取远程的 dev 分支到本地的 local-dev 分支
+#
 alias git.push.origin             'git push origin '
+# git push origin refs/notes/commits:refs/notes/commits  # 推送 Git 笔记
+# git push origin :refs/heads/experimental  # 删除远程 experimental 分支git push origin :refs/heads/experimental  # 删除远程 experimental 分支
 alias git.push.origin.tags        'git push origin --tags'
+alias git.push.origin.all         'git push origin --all'
+# git push origin --all    # 推送所有本地分支到远程仓库
 #example# git push TargetName SourceName #push data from SourceName to TargetName
+alias git.push.set-upstream       'git push --set-upstream '
+##### set the default behavior of git push operation, from local master to remote origin
+##### git push --set-upstream origin master
+alias git.push.origin.main        'git push origin main' #push local_main to remote_origin
+alias git.push.origin.master      'git push origin master'
+# $git push origin master                       #normal push, find a ref that matches master in the source repo(most likely, it would find refs/heads/master), and update the same ref in the origin repo with it. If master did not exist remotely, it would be created.
+#example# git push --set-stream TargetName SourceName #push data from SourceName to TargetName
+#
+#example# git push origin master:refs/heads/experimental
+## Create the branch experimental in the origin repository by copying the current master branch. This form is only needed to create a new branch or tag in the remote repository when the local name and the remote name are different; otherwise, the ref name on its own will work.
 alias git.pull                    'git pull --tags '
 alias git.pull.origin.master      'git pull --tags origin master '
 #example git checkout TagName FileName
