@@ -97,21 +97,37 @@ set history = 10000
 
 setenv timefshan  "`date +%Y-%m-%d-%H%M`"
 #alias  gettime    'echo `date +%Y-%m-%d-%H%M`'
-alias gettime     'export timefshan="`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
+alias gettime     'setenv timefshan "`date +%Y-%m-%d-%H%M`"; echo ${timefshan}'
 
 alias numlockx.status '   numlockx status'
 alias numlockx.on '       numlockx on'
 alias numlockx.off '      numlockx off'
 
 # replace Caps with CTRL
-setxkbmap -option ctrl:nocaps
-alias setxkbmap.print '   setxkbmap -print'
+#debug#fshan#setxkbmap -option 'ctrl:nocaps'
+
+# replace Caps with ESC with setxkbmap
+#debug#fshan#setxkbmap -option 'escape:nocaps'
+#/usr/bin/setxkbmap -option "caps:swapescape"
+#/usr/bin/setxkbmap -option "caps:escape"
+#onetimes#worked#setxkbmap -option "caps:escape"
+# 将 Caps Lock 映射为 Escape with xmodmap
+#onetimes#workedxmodmap -e "remove Lock = Caps_Lock"
+#onetimes#workedxmodmap -e "keysym Caps_Lock = Escape"
 #
+#debug_method#xev
+#Make Caps Lock an additional ESC
+# man xkeyboard-config
+alias setxkbmap.print '    setxkbmap -print'
+alias setxkbmap.query '    setxkbmap -query'
+alias setxkbmap.display '  setxkbmap -display' #
 ###set as default setting
+alias setxkbmap.option '  setxkbmap -option "" '
 ##setxkbmap -option
-alias setxkbmap.option '   setxkbmap -option'
 
 alias xmodmap.help '      xmodmap --help'
+alias xmodmap.pke '       xmodmap -pke'
+
 
 alias xinput.list '       xinput --list '
 alias xinput.list.tpad '  xinput --list | grep -i touchpad'
@@ -739,6 +755,10 @@ alias get_current_shell           "sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm=
 ##  export PS1="$STARTFGCOLOR$STARTBGCOLOR\u@\h \w> $ENDCOLOR"
 ##  export PS1="${STARTFGCOLOR}${STARTBGCOLOR}\u@\h \w> ${ENDCOLOR}"
 #
+#  %b：启用反斜杠转义。
+#  \n：换行符，将提示符分为两行。
+#  %n：用户名，%m：主机名，%/：当前目录。
+#  %#：根据用户身份显示 % 或 #。
 ###set prompt to change the display format of
 ###head of tcsh shell
 #
@@ -777,6 +797,7 @@ alias set_full_path   "set prompt='${TcshGreen}%B%n%b${TcshColorEnd}@${TcshYello
 #alias set_full_path1  "set prompt='${TcshYellow}%U%n%u${TcshColorEnd}${TcshLightGray}:%B%~%b${TcshColorEnd}${TcshLightGreen}%B\n[%h]%#%b${TcshColorEnd}'"
 alias set_full_path1  "set prompt='${TcshYellow}%U%n%u${TcshColorEnd}${TcshLightGray}:%B%~%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
 alias set_full_path2  "set prompt='${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%c3%b${TcshColorEnd}${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
+alias set_full_path3  "set prompt='${TcshYellow}%U%m%u${TcshColorEnd}${TcshLightGray}:%B%c3%b${TcshColorEnd}${TcshLightGreen}%B[%h]\n%#%b${TcshColorEnd}'"
 
 alias set_short_path  "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshLightGreen}%B[%h]%#%b${TcshColorEnd}'"
 #alias set_short_path "set prompt='${TcshYellow}%B%n%b${TcshColorEnd}:${TcshLightGreen}%S[%h]%#%s${TcshColorEnd}'"
@@ -807,7 +828,7 @@ alias set_default_path_with_yellow1 "set prompt='${TcshYellow}%N@%U%m%u:%B%c3%b$
 #set_full_path
 #echo "prompt is $prompt"
 #set_short_path
-set_full_path1
+set_full_path3
 
 alias wget.c   'wget -c '
 alias wget.L   'wget -L '

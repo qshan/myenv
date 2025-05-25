@@ -89,14 +89,29 @@ alias numlockx.on='     numlockx on'
 alias numlockx.off='    numlockx off'
 
 # replace Caps with CTRL
-#debug#fshan#setxkbmap -option ctrl:nocaps
-alias setxkbmap.print='    setxkbmap -print'
+#debug#fshan#setxkbmap -option 'ctrl:nocaps'
+
+# replace Caps with ESC with setxkbmap
+#debug#fshan#setxkbmap -option 'escape:nocaps'
+#/usr/bin/setxkbmap -option "caps:swapescape"
+#/usr/bin/setxkbmap -option "caps:escape"
+#onetimes#worked#setxkbmap -option "caps:escape"
+# 将 Caps Lock 映射为 Escape with xmodmap
+#onetimes#workedxmodmap -e "remove Lock = Caps_Lock"
+#onetimes#workedxmodmap -e "keysym Caps_Lock = Escape"
 #
+#debug_method#xev
+#Make Caps Lock an additional ESC
+# man xkeyboard-config
+alias setxkbmap.print='    setxkbmap -print'
+alias setxkbmap.query='    setxkbmap -query'
+alias setxkbmap.display='  setxkbmap -display' #
 ###set as default setting
+alias setxkbmap.option='  setxkbmap -option "" '
 ##setxkbmap -option
-alias setxkbmap.option='  setxkbmap -option'
 
 alias xmodmap.help='      xmodmap --help'
+alias xmodmap.pke='       xmodmap -pke'
 
 alias xinput.list='       xinput --list '
 alias xinput.list.tpad='  xinput --list | grep -i touchpad'
@@ -932,7 +947,7 @@ alias set_default_lubuntu_path_with_yellow1="export PS1='${BashYellow}\u@\H:\W${
 #set_default_lubuntu_path_with_yellow
 #export PS1=``\s-\v\$ ''
 #echo "PS1 is $PS1"
-set_full_path
+set_full_path1
 
 alias wget.c='  wget -c '
 alias wget.L='  wget -L '
