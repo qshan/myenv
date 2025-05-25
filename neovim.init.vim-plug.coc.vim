@@ -1586,6 +1586,25 @@ endif
 "todo""set autochdir
 "gvim -c "set tags=tags"
 "
+"info"":cs find c function_name  " 查找调用者
+":cs add cscope.out  " 手动加载数据库
+" 配置自动加载（添加到 ~/.vimrc）
+if filereadable("cscope.out")
+  cs add cscope.out
+  " 同时支持 ctags 和 cscope
+  set cscopetag
+  set cscopetagorder=0  " 优先使用 cscope
+endif
+":cs find <type> <symbol>
+"" 自动生成 tags 和 cscope 数据库（保存时触发）
+function! GenerateTags()
+  silent !ctags -R .
+  silent !find . -name "*.c" -o -name "*.h" -o -name "*.cpp" > cscope.files
+  silent !cscope -b -q
+  cs reset
+endfunction
+"todo""autocmd BufWritePost * call GenerateTags():cs find <type> <symbol>
+"
 "input a ENTER in vim: C-v, <Enter>, then you could get  as a Enter input in vim
 " change line char in windows is ^M, we could input it as i_CTRL-v_CTRL-SHIFT-m
 "au BufReadPost,FileReadPost *.v,*.vh,*.sv,*.svh :iab ccc //-------------------- //comments: //--------------------
