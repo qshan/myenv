@@ -1,48 +1,88 @@
+
+// this file is ~/.config/Code/User/settings.json
 {
-    "workbench.colorTheme": "Default Dark Modern",
-    "files.watcherExclude": {
-        "**/.bloop": true,
-        "**/.metals": true,
-        "**/.ammonite": true
-    },
-    "cmake.options.statusBarVisibility": "visible",
-    "window.zoomLevel": 3,
-    "vim.enableNeovim": true,
-    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
-    "vim.vimrc.enable": true,
-    "vim.vimrc.path": "$HOME/.config/nvim/init.vim",
-    "vim.hlsearch": true,
-    "git.openRepositoryInParentFolders": "never",
-    "vim.visualModeKeyBindings": [],
-    "vim.highlightedyank.enable": true,
-    "makefile.configureOnOpen": true,
-    "redhat.telemetry.enabled": true,
-    "vim.camelCaseMotion.enable": true,
-    "vim.commandLineModeKeyBindings": [],
-    "vim.insertModeKeyBindingsNonRecursive": [],
-    "vim.commandLineModeKeyBindingsNonRecursive": [],
-     // 绑定vim前导键
-     "vim.leader": "<space>",
-     // 启用easymotion插件
-     "vim.easymotion": true,
-     // 启用系统粘贴板作为vim寄存器
-     "vim.useSystemClipboard": true,
-     // 由vim接管ctrl+any的按键，而不是vscode
-     "vim.useCtrlKeys": true,
-     // 突出显示与当前搜索匹配的所有文本
-     "vim.hlsearch": true,
-      // 普通模式下的非递归按键绑定
-     "vim.normalModeKeyBindingsNonRecursive": [],
-      // 插入模式下的非递归按键绑定
-     "vim.insertModeKeyBindings": [],
-     // 命令模式下的非递归按键绑定
-     "vim.commandLineModeKeyBindingsNonRecursive": [],
-     // 可视模式下的非递归按键绑定
-     "vim.operatorPendingModeKeyBindings": [],
-     // 下面定义的按键将交由vscode进行处理，而不是vscode-vim插件
-     "vim.handleKeys": {
-       "<C-a>": false,
-       "<C-f>": true
-    },
-    "editor.wordWrap": "on"
+  "workbench.colorTheme": "Default Dark Modern",
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "cmake.options.statusBarVisibility": "visible",
+  "window.zoomLevel": 3,
+  "vim.vimrc.enable": true,
+  //"vim.vimrc.path": "$HOME/.config/nvim/init.vim",
+  //"vim.vimrc.path": "$HOME/.vimrc",
+  "vim.vimrc.path": "~/.vimrc",
+  "vim.enableNeovim": true,
+  "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+  "vim.hlsearch": true,
+  "git.openRepositoryInParentFolders": "never",
+  "vim.visualModeKeyBindings": [],
+  "vim.highlightedyank.enable": true,
+  "makefile.configureOnOpen": true,
+  "redhat.telemetry.enabled": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.commandLineModeKeyBindings": [],
+  "vim.insertModeKeyBindingsNonRecursive": [],
+  "vim.commandLineModeKeyBindingsNonRecursive": [],
+  // 绑定vim前导键
+  "vim.leader": "<space>",
+  // 启用easymotion插件
+  "vim.easymotion": true,
+  // 启用系统粘贴板作为vim寄存器
+  "vim.useSystemClipboard": true,
+  // 由vim接管ctrl+any的按键，而不是vscode
+  "vim.useCtrlKeys": true,
+  // 突出显示与当前搜索匹配的所有文本
+  "vim.hlsearch": true,
+  // 普通模式下的非递归按键绑定
+  "vim.normalModeKeyBindingsNonRecursive": [],
+  // 插入模式下的非递归按键绑定
+  "vim.insertModeKeyBindings": [],
+  // 命令模式下的非递归按键绑定
+  "vim.commandLineModeKeyBindingsNonRecursive": [],
+  // 可视模式下的非递归按键绑定
+  "vim.operatorPendingModeKeyBindings": [],
+  "vim.warp": true,
+  // 下面定义的按键将交由vscode进行处理，而不是vscode-vim插件
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": true
+  },
+  "editor.wordWrap": "on",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.win32": "~/.config/nvim/init.vim",
+  "security.workspace.trust.untrustedFiles": "open",
+  //"metals.customRepositories": [
+  //  "https://maven.aliyun.com/repository/central"
+  //],
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "metals.javaHome": "/home/fshan/data/tools/graalvm/graalvm-jdk-17.0.11+7.1",
+  //"C_Cpp.default.compileCommands": [
+  //
+  //  "zephyr/build/compile_commands.json"
+  //],
+  //"C_Cpp.default.compileCommands":".zephyr/build/compile_commands.json”,
+  "clangd.detectExtensionConflicts": false,
+  "clangd.onConfigChanged": "restart"
+  //"C_Cpp.files.exclude": {
+  //  "**/.vscode": true,
+  //  "**/.vs": true
+  //},
+  "editor.tabCompletion": "on",
+  //zephyr_project//"C_Cpp.default.compilerPath": "/usr/bin/clang",
+  //zephyr_project//"zephyr-workbench.pathToEnvScript": "/home/fshan/.zinstaller/env.sh",
+  //zephyr_project//"zephyr-workbench.listSDKs": [
+  //zephyr_project//  "/home/fshan/zephyr-sdk-0.17.0"
+  //zephyr_project//],
+  //zephyr_project//"zephyr-workbench.debug.openocd.pathExec": "/home/fshan/.zinstaller/tools/openocd/bin/openocd",
+  //zephyr_project//"[c]": {
+  //zephyr_project//  "editor.wordBasedSuggestions": "off",
+  //zephyr_project//  "editor.semanticHighlighting.enabled": true,
+  //zephyr_project//  "editor.stickyScroll.defaultModel": "foldingProviderModel",
+  //zephyr_project//  "editor.suggest.insertMode": "replace",
+  //zephyr_project//  "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  }
 }
