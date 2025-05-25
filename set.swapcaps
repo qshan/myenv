@@ -10,6 +10,10 @@
 #if [ -f /usr/bin/setxkbmap ]; then
 /usr/bin/setxkbmap -option "ctrl:swapcaps"
 echo "swap the Ctrl and CapsLock now"
+#/usr/bin/setxkbmap -option "caps:swapescape"
+#/usr/bin/setxkbmap -option "caps:escape"
+#       │caps:swapescape          Swap ESC and Caps Lock                                                     │
+#       │caps:escape              Make Caps Lock an additional ESC                                           │
 #    . ~/_mybashrc
 #else
 echo "there is no setxkbmap"
