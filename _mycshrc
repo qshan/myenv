@@ -157,13 +157,13 @@ alias lspci.grep.lnksta ' lspci -vvv | grep -i lnksta'
 alias cpupower.set.aspm.powersave 'cpupower set aspm powersave'
 alias turbostat.show.pkg_pci 'turbostat --show pkg_pci'
 
-alias lsusb.t='           lsusb -t -v '
+alias lsusb.t '           lsusb -t -v '
 
 alias dmesg.tail '        dmesg | tail '
 alias dmesg.tail.20 '     dmesg | tail -20 '
 alias dmesg.grep.acpi '   dmesg | grep -i acpi '
 alias dmesg.grep.pcie '   dmesg | grep -i pcie '
-alias dmesg.grep.aspm='   dmesg | grep -i aspm '
+alias dmesg.grep.aspm '   dmesg | grep -i aspm '
 
 alias journalctl.b.1 '    journalctl -b -1'
 
@@ -426,32 +426,62 @@ alias git.commit.amend            'git commit --amend '
 # git push <remote-name> <local-branch>:<remote-branch>
 alias git.push                    'git push '
 #
+# git fetch origin 'refs/heads/*:refs/remotes/origin/*'
+# 等价于 git fetch origin
+# refs/heads/*：远程所有分支（源）.
+# refs/remotes/origin/*：本地远程跟踪分支（目标）.
+#
 # git push <remote> <local-ref>:<remote-ref>
 # git push origin feature-login:refs/heads/staging-feature
 # 将本地 feature-login 分支推送到远程的 staging-feature 分支
 # origin is the remote
-# 格式为 +<src>:<dst>，其中：
+# refspec格式为 +<src>:<dst>，其中：
 # + 表示强制更新（--force）。
 # <src> 是本地引用，<dst> 是远程引用。
 # 可以省略 <dst>，表示本地和远程引用同名。
-
+## refspec: [+]<source>[:<destination>]
+### Source: BranchName, TagName, HEAD or CommitHashes
+### Destination: BranchName, refs/remotes/origin/feature
+### symbols in refspec:
+#### + force to overwrite DestinationIndex, like -f
+#### * wild symbols, like refs/heads/*:refs/remotes/origin/*
+#### : spearator, there is no Source, means to delete the RemoteDestinations
+#
 # git push <remote> <local-ref>:<remote-ref>
+#
 # git push origin :refs/heads/old-branch
 # 删除远程的 old-branch 分支（推送一个空引用到远程）
 #
+# git push origin refs/remotes/origin/develop:develop
+# 同步本地缓存的远程 develop 分支到远程
+#
 # git fetch <remote> <remote-ref>:<local-ref>
-
+#
 # git fetch origin refs/heads/staging:refs/heads/local-staging
 # 将远程的 staging 分支拉取到本地的 local-staging 分支
 # git fetch origin refs/heads/remote-dev:refs/heads/local-dev
 ## 拉取远程的 dev 分支到本地的 local-dev 分支
 #
 alias git.push.origin             'git push origin '
+#alias git.push.origin.local.remote ' git push origin '
+alias git.push.origin.local.remote ' git push origin -u '
+alias git.push.origin.local.remote ' git push origin '
 # git push origin refs/notes/commits:refs/notes/commits  # 推送 Git 笔记
 # git push origin :refs/heads/experimental  # 删除远程 experimental 分支git push origin :refs/heads/experimental  # 删除远程 experimental 分支
 alias git.push.origin.tags        'git push origin --tags'
-alias git.push.origin.all         'git push origin --all'
+alias git.push.origin.head.remote_master '        git push origin HEAD:master'
+# git push origin HEAD:refs/for/master   # 推送当前提交到 Gerrit 的 master 分支评审队列
+#
+# # 推送本地远程跟踪分支到远程（罕见场景，通常用 git fetch/pull）
+# git push <远程名> refs/remotes/<远程名>/*:refs/heads/*
+#
+# # 清理本地无效的远程跟踪分支（远程已删除的分支）
+# git remote prune <远程名>
+alias git.push.origin.all '         git push origin --all'
 # git push origin --all    # 推送所有本地分支到远程仓库
+# git push RemoteRepoName refs/heads/*:refs/heads/*
+# git push origin refs/heads/*:refs/heads/*
+#
 #example# git push TargetName SourceName #push data from SourceName to TargetName
 alias git.push.set-upstream       'git push --set-upstream '
 ##### set the default behavior of git push operation, from local master to remote origin
@@ -470,7 +500,11 @@ alias git.pull.origin.master      'git pull --tags origin master '
 #example git checkout -b NewBranchName
 #example git checkout -b NewBranchName TagName
 alias git.fetch                   'git fetch --all '
+alias git.fetch.unshallow '       git fetch --unshallow '
+alias git.fetch.all '             git fetch --all '
+alias git.remote.add.origin '       git remote add origin '
 alias git.remote.add              'git remote add origin '
+#git remote add LocalNameForRemoteRepo file://${FullPathOfRemoteRepo}/${ProjectName}.git
 
 alias git.remote.v                'git remote -v'
 alias git.remote.v.show           'git remote -v show '
@@ -481,7 +515,7 @@ alias git.clone                   'git clone '
 alias git.clone.b.master          'git clone -b master '
 alias git.clone.depth1            'git clone --depth=1 '
 alias git.clone.recursive         'git clone --recursive '
-alias git.clone.barel             'git clone --bare -l '
+alias git.clone.bare.l            'git clone --bare -l '
 #example git clone --bare -l LocalRepoPathWithFullName/.git BackupRepoNameWithFullPath.git
 #
 alias git.grep                    'git grep '
@@ -505,24 +539,60 @@ alias git.lsfiles                 'git ls-files '
 alias git.lsremote                'git ls-remote '
 alias git.lstree                  'git ls-tree '
 alias git.log                     'git log '
-alias git.log.pretty              'git log --pretty="%h - %s" --no-merges -- t/ '
-alias git.log.pretty.short        'git log --pretty=short '
-alias git.log.pretty.oneline      'git log --pretty=oneline '
-alias git.log.graph               'git log --graph '
-alias git.log.stat                'git log --stat '
-alias git.tag.l                   'git tag -l '
-alias git.tag.a                   'git tag -a '
-alias git.tag.d                   'git tag -d '
-#alias gitstatus                   'git status '
-alias git.status.short            'git status --short '
-alias git.branch.all              'git branch --all'
-alias git.branch.list             'git branch --list'
-alias git.branch.remotes          'git branch --remotes'
-alias git.branch.track            'git branch --track'
+#alias git.log.pretty '              git log --color=always --pretty="%h - %s" --no-merges -- t/ '
+alias git.log.pretty '              git log --color=always --pretty="%h - %s"'
+alias git.log.pretty.short '        git log --pretty=short '
+alias git.log.pretty.oneline '      git log --pretty=oneline '
+alias git.log.pretty.medium '       git log --pretty=medium '
+alias git.log.pretty.full '         git log --pretty=full '
+alias git.log.pretty.fuller '       git log --pretty=fuller '
+#alias git.log.pretty.format0 '      git log --pretty=format:"%h | %an | %s" '
+alias git.log.pretty.format0 '      git log --color=always --pretty=format:"%h | %s" '
+alias git.log.pretty.format1 '      git log --pretty=format:"%h | %cn | %s" '
+alias git.log.pretty.format2 '      git log --pretty=format:"%H | %cn | %s" '
+alias git.log.pretty.format3 '      git log --pretty=format:"%h | %cn | %ad | %s" '
+#alias git.log.pretty.format '       git log --pretty=format:"%h | %an | %ar | %s" '
+alias git.log.pretty.reference '    git log --pretty=reference '
+alias git.log.graph '               git log --graph '
+alias git.log.stat '                git log --stat '
+alias git.tag.l '                   git tag -l '
+alias git.tag.a '                   git tag -a '
+alias git.tag.d '                   git tag -d '
+#alias gitstatus '                  git status '
+alias git.status.short '            git status --short '
+alias git.branch.all '              git branch --all'
+alias git.branch.list '             git branch --list'
+alias git.branch.remotes '          git branch --remotes'
+alias git.branch.track '            git branch --track'
 #example# gitbranchtrack localBranchName remoteHostName/remoteBranchName
 alias git.branch.b                'git branch -b'
 #example# gitbranchb localBranchName remoteHostName/remoteBranchName
 #example# gitbranchb localBranchName
+#Create branch in local
+## git branch NewBranchName
+## git branch NewBranchName CommitHashes
+## git branch NewBranchName BranchName/CommitHashes
+#Switch to specific branch in local
+## git switch BranchName
+## git checkout BranchName
+#Push local branch to remote
+## git push [Options] [RemoteRepoName [LocalBranchName:RemoteBranchName]]
+### RemoteRepoName : it is "origin" by default; add by "git remote add"
+## git push RemoteRepoName LocalBranchName:RemoteBranchName
+## git push origin LocalBranchName:RemoteBranchName
+## git push origin -u LocalBranchName:NewRemoteBranchName
+## git branch --set-upstream-to=origin/RemoteBranchName LocalBranchName
+## git push RemoteRepoName --delete RemoteBranchName #delete remote branch
+## git push origin --delete RemoteBranchName
+#Pull remote branch to local
+## git fetch origin #pull latest remote branch, do not merge into local
+## git checkout -b NewLocalBranchName origin/RemoteBranchName
+#Delete branch
+## git branch -d BranchName
+## git branch -D BranchName
+#Rename branch
+## git branch -m OldBranchName NewBranchName
+## git branch -m NewBranchName #rename current branchname to NewBranchName
 alias git.switch                  'git switch '
 alias git.switch.c                'git switch -c'
 alias git.switch.f                'git switch -f'
@@ -542,7 +612,7 @@ alias git.config.list.system      'git config --list --system'
 alias git.config.list.worktree    'git config --list --worktree'
 alias git.config.list.file        'git config --list --file'
 alias git.reset.soft              'git reset --soft  --'
-alias git.reset_hard              'git reset --hard  --'
+alias git.reset.hard              'git reset --hard  --'
 #example# gitreset_hard FileName
 #example# gitreset_hard FolderName
 alias git.reset.head0               'git reset HEAD '
@@ -575,6 +645,7 @@ alias git.submodule.sync.recursive  'git submodule sync --recursive '
 #git submodule update --init --recursive --remote
 #
 alias git.submodule.status        'git submodule status '
+alias git.submodule.summary       'git submodule summary '
 alias git.submodule.set-url       'git submodule set-url -- '
 # git submodule set-url -- <path> <url>
 alias git.pull.submodules         'git pull --recurse-submodules '
@@ -583,7 +654,7 @@ alias git.checkout.f              'git checkout -f '
 #example# git checkout -f <branch> [<start point>]
 alias git.checkout.m              'git checkout -m '
 alias git.checkout.--             'git checkout -- '
-#example# gitcheckout commitNumber fileName
+#example# gitcheckout CommitHashes fileName
 #example# gitcheckout fileName
 alias git.clean.fd                'git clean -fd '
 alias git.stash                   'git stash '
@@ -987,7 +1058,7 @@ alias python3.m.pip.install '             python3 -m pip install'
 alias python3.m.pip.install.upgrade.pip ' python3 -m pip install --upgrade pip'
 alias python3.m.piplist '                 python3 -m pip list'
 
-alias pip3.install='                pip3 install '
+alias pip3.install '                pip3 install '
 #pip3 install urllib3==1.26.19
 alias pip3.install.upgrade.pip '          pip3 install --upgrade pip'
 alias pip3.list '                         pip3 list '
@@ -1000,9 +1071,9 @@ alias west.help.build '                   west help build'
 alias west.init '                         west init '
 alias west.update '                       west update '
 alias west.build.p.always '               west build -p always '
-alias west.build.p.always.v='             west build -p always -v '
-alias west.build.p.always.vv='            west build -p always -vv '
-alias west.build.p.always.vvv='           west build -p always -vvv '
+alias west.build.p.always.v '             west build -p always -v '
+alias west.build.p.always.vv '            west build -p always -vv '
+alias west.build.p.always.vvv '           west build -p always -vvv '
 alias west.build.p.always.b.qemu_riscv64 'west build -p always -b qemu_riscv64 '
 alias west.build.qemu_riscv64 '           west build -p always -b qemu_riscv64 '
 # west build -p always -b qemu_riscv64 samples/synchronization

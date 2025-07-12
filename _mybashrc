@@ -419,19 +419,34 @@ alias git.commit.amend='            git commit --amend '
 # git push <remote-name> <local-branch>:<remote-branch>
 alias git.push='                    git push '
 #
+# git fetch origin 'refs/heads/*:refs/remotes/origin/*'
+# 等价于 git fetch origin
+# refs/heads/*：远程所有分支（源）.
+# refs/remotes/origin/*：本地远程跟踪分支（目标）.
+#
 # git push <remote> <local-ref>:<remote-ref>
 # git push origin feature-login:refs/heads/staging-feature
 # 将本地 feature-login 分支推送到远程的 staging-feature 分支
 # origin is the remote
-# 格式为 +<src>:<dst>，其中：
+# refspec格式为 +<src>:<dst>，其中：
 # + 表示强制更新（--force）。
 # <src> 是本地引用，<dst> 是远程引用。
 # 可以省略 <dst>，表示本地和远程引用同名。
+## refspec: [+]<source>[:<destination>]
+### Source: BranchName, TagName, HEAD or CommitHashes
+### Destination: BranchName, refs/remotes/origin/feature
+### symbols in refspec:
+#### + force to overwrite DestinationIndex, like -f
+#### * wild symbols, like refs/heads/*:refs/remotes/origin/*
+#### : spearator, there is no Source, means to delete the RemoteDestinations
 #
 # git push <remote> <local-ref>:<remote-ref>
 #
 # git push origin :refs/heads/old-branch
 # 删除远程的 old-branch 分支（推送一个空引用到远程）
+#
+# git push origin refs/remotes/origin/develop:develop
+# 同步本地缓存的远程 develop 分支到远程
 #
 # git fetch <remote> <remote-ref>:<local-ref>
 #
@@ -441,11 +456,25 @@ alias git.push='                    git push '
 ## 拉取远程的 dev 分支到本地的 local-dev 分支
 #
 alias git.push.origin='             git push origin '
+#alias git.push.origin.local.remote=' git push origin '
+alias git.push.origin.u.local.remote=' git push origin -u '
+alias git.push.origin.local.remote=' git push origin '
 # git push origin refs/notes/commits:refs/notes/commits  # 推送 Git 笔记
 # git push origin :refs/heads/experimental  # 删除远程 experimental 分支git push origin :refs/heads/experimental  # 删除远程 experimental 分支
 alias git.push.origin.tags='        git push origin --tags'
+alias git.push.origin.head.remote_master='        git push origin HEAD:master'
+# git push origin HEAD:refs/for/master   # 推送当前提交到 Gerrit 的 master 分支评审队列
+#
+# # 推送本地远程跟踪分支到远程（罕见场景，通常用 git fetch/pull）
+# git push <远程名> refs/remotes/<远程名>/*:refs/heads/*
+#
+# # 清理本地无效的远程跟踪分支（远程已删除的分支）
+# git remote prune <远程名>
 alias git.push.origin.all='         git push origin --all'
 # git push origin --all    # 推送所有本地分支到远程仓库
+# git push RemoteRepoName refs/heads/*:refs/heads/*
+# git push origin refs/heads/*:refs/heads/*
+#
 #example# git push TargetName SourceName #push data from SourceName to TargetName
 alias git.push.set-upstream='       git push --set-upstream '
 ##### set the default behavior of git push operation, from local master to remote origin
@@ -503,9 +532,20 @@ alias git.lsfiles='                 git ls-files '
 alias git.lsremote='                git ls-remote '
 alias git.lstree='                  git ls-tree '
 alias git.log='                     git log '
-alias git.log.pretty='              git log --pretty="%h - %s" --no-merges -- t/ '
+#alias git.log.pretty='              git log --color=always --pretty="%h - %s" --no-merges -- t/ '
+alias git.log.pretty='              git log --color=always --pretty="%h - %s"'
 alias git.log.pretty.short='        git log --pretty=short '
 alias git.log.pretty.oneline='      git log --pretty=oneline '
+alias git.log.pretty.medium='       git log --pretty=medium '
+alias git.log.pretty.full='         git log --pretty=full '
+alias git.log.pretty.fuller='       git log --pretty=fuller '
+#alias git.log.pretty.format0='      git log --pretty=format:"%h | %an | %s" '
+alias git.log.pretty.format0='      git log --color=always --pretty=format:"%h | %s" '
+alias git.log.pretty.format1='      git log --pretty=format:"%h | %cn | %s" '
+alias git.log.pretty.format2='      git log --pretty=format:"%H | %cn | %s" '
+alias git.log.pretty.format3='      git log --pretty=format:"%h | %cn | %ad | %s" '
+#alias git.log.pretty.format='       git log --pretty=format:"%h | %an | %ar | %s" '
+alias git.log.pretty.reference='    git log --pretty=reference '
 alias git.log.graph='               git log --graph '
 alias git.log.stat='                git log --stat '
 alias git.tag.l='                   git tag -l '
@@ -521,6 +561,31 @@ alias git.branch.track='            git branch --track'
 alias git.branch.b='                git branch -b'
 #example# gitbranchb localBranchName remoteHostName/remoteBranchName
 #example# gitbranchb localBranchName
+#Create branch in local
+## git branch NewBranchName
+## git branch NewBranchName CommitHashes
+## git branch NewBranchName BranchName/CommitHashes
+#Switch to specific branch in local
+## git switch BranchName
+## git checkout BranchName
+#Push local branch to remote
+## git push [Options] [RemoteRepoName [LocalBranchName:RemoteBranchName]]
+### RemoteRepoName : it is "origin" by default; add by "git remote add"
+## git push RemoteRepoName LocalBranchName:RemoteBranchName
+## git push origin LocalBranchName:RemoteBranchName
+## git push origin -u LocalBranchName:NewRemoteBranchName
+## git branch --set-upstream-to=origin/RemoteBranchName LocalBranchName
+## git push RemoteRepoName --delete RemoteBranchName #delete remote branch
+## git push origin --delete RemoteBranchName
+#Pull remote branch to local
+## git fetch origin #pull latest remote branch, do not merge into local
+## git checkout -b NewLocalBranchName origin/RemoteBranchName
+#Delete branch
+## git branch -d BranchName
+## git branch -D BranchName
+#Rename branch
+## git branch -m OldBranchName NewBranchName
+## git branch -m NewBranchName #rename current branchname to NewBranchName
 alias git.switch='                  git switch '
 alias git.switch.c='                git switch -c'
 alias git.switch.f='                git switch -f'
@@ -582,7 +647,7 @@ alias git.checkout.f='              git checkout -f '
 #example# git checkout -f <branch> [<start point>]
 alias git.checkout.m='              git checkout -m '
 alias git.checkout--='              git checkout -- '
-#example# gitcheckout commitNumber fileName
+#example# gitcheckout CommitHashes fileName
 #example# gitcheckout fileName
 alias git.clean.fd='                git clean -fd '
 alias git.stash='                   git stash '
