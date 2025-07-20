@@ -424,7 +424,9 @@ alias git.commit.m                'git commit -m '
 alias git.commit.amend            'git commit --amend '
 #info#
 # git push <remote-name> <local-branch>:<remote-branch>
-alias git.push                    'git push '
+alias git.push 'git push origin --tags ;git push origin --all'
+#"git push" is "git push origin main:main"
+# first push, git push -u origin main:main
 #
 # git fetch origin 'refs/heads/*:refs/remotes/origin/*'
 # 等价于 git fetch origin
@@ -564,6 +566,7 @@ alias git.branch.all '              git branch --all'
 alias git.branch.list '             git branch --list'
 alias git.branch.remotes '          git branch --remotes'
 alias git.branch.track '            git branch --track'
+alias git.branch.vv '               git branch -vv'
 #example# gitbranchtrack localBranchName remoteHostName/remoteBranchName
 alias git.branch.b                'git branch -b'
 #example# gitbranchb localBranchName remoteHostName/remoteBranchName
