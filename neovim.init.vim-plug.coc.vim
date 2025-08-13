@@ -1561,7 +1561,10 @@ set fileencodings=utf-8,gbk,gb18030,gb2312
 set termencoding=utf-8
 "
 :MyTabstop
+if filereadable('./tags')
+"let &tags = getcwd() .. "/tags"
 :MyTagsPwd
+endif
 "
 "todo"" enable local config
 set exrc       " enable local config: ./.exrc or ./.vimrc ./.vim
