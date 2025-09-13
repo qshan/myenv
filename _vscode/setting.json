@@ -1,0 +1,30 @@
+
+// This file is ProjectRootPath/.vscode/settings.json
+//override the setting in ~/.config/Code/User/settings.json
+//
+//for coc-clangd local config, this solution need
+//   ProjectRootPath/.vscode/settings.json
+//   ProjectRootPath/.vscode/extensions.json
+//   ProjectRootPath/.clangd
+//
+{
+  "clangd.path": "/usr/bin/clangd", // 确保路径与系统中 clangd 安装位置一致
+  "clangd.arguments": [
+    "--background-index",           // 后台索引加速响应
+    "--compile-commands-dir=${workspaceFolder}", // 指定 compile_commands.json 所在目录
+    "--compile-commands-dir=${workspaceFolder}/build"  // 指定 compile_commands.json 目录
+    "--clang-tidy",                 // 启用静态检查
+    //todo//"--header-insertion=never",      // 禁止自动插入头文件
+    "--malloc-trim",        // 减少内存占用
+    "--limit-results=500"   // 限制补全项数量
+  ],
+  //todo//"clangd.checkUpdates": true       // 自动检查 clangd 更新
+  //
+//todo// "configurationProvider": "llvm-vs-code-extensions.vscode-clangd"
+  //disable ms-vscode.cpptools
+  "C_Cpp.intelliSenseEngine": "disabled",  // 禁用 IntelliSense
+  "C_Cpp.errorSquiggles": "disabled",      // 禁用错误波浪线
+  "C_Cpp.autocomplete": "disabled",        // 禁用自动补全
+  "extensions.ignoreRecommendations": true // 忽略微软扩展的推荐
+  //
+}
