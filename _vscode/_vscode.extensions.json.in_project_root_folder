@@ -1,0 +1,32 @@
+// This file is ProjectRootPath/.vscode/extensions.json
+
+//reference: https://code.visualstudio.com/docs/configure/extensions/extension-marketplace#_command-line-extension-management
+//code --extensions-dir <dir>
+//    Set the root path for extensions.
+//code --list-extensions
+//    List the installed extensions.
+//code --show-versions
+//    Show versions of installed extensions, when using --list-extension.
+//code --install-extension (<extension-id> | <extension-vsix-path>)
+//    Installs an extension.
+//code --uninstall-extension (<extension-id>)
+//    Uninstalls an extension.
+//code --enable-proposed-api (<extension-id>)
+//    Enables proposed API features for extensions. Can receive one or more extension IDs to enable individually.
+
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+    //todo//"actboy168.tasks",
+    //todo//"editorconfig.editorconfig",
+    //todo//"humao.rest-client",
+    //todo//"ms-vscode.cpptools",
+    "zhwu95.riscv",
+    "dan-c-underwood.arm",
+    "llvm-vs-code-extensions.vscode-clangd"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.cmake-tools"
+  ]
+}
