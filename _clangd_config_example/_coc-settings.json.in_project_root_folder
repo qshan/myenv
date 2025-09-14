@@ -1,0 +1,29 @@
+
+# This file is ProjectRootPath/.coc-settings.json
+#
+#for coc-clangd local config, this solution need
+#   ProjectRootPath/.coc-settings.json
+#   ProjectRootPath/.clangd
+#
+{
+  "languageserver": {
+    "zephyr-clangd": {
+      "command": "clangd",
+      "args": [
+        "--compile-commands-dir=${workspaceFolder}/build",
+        "--query-driver=${ZEPHYR_SDK_INSTALL_DIR}/**/*-zephyr-eabi-gcc",
+        "--background-index",
+        "--clang-tidy-checks=zephyr-*"
+      ],
+      "filetypes": ["c", "cpp"],
+      "initializationOptions": {
+        "fallbackFlags": [
+          "-I${workspaceFolder}/zephyr/include",
+          "-DZEPHYR_KERNEL",
+          "-mcpu=cortex-m4",
+          "-mthumb"
+        ]
+      }
+    }
+  }
+}

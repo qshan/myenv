@@ -1,0 +1,32 @@
+
+# This file is ProjectRootPath/.clangd
+#
+#for coc-clangd local config, this solution need
+#   ProjectRootPath/.coc-settings.json
+#   ProjectRootPath/.clangd
+#
+# reference: https://clangd.llvm.org/config
+CompileFlags:                         # Tweak the parse settings
+  Add: [-xc++, -Wall]                 # treat all files as C++, enable more warnings
+  #Add: [-std=c++20, -Wall, -Wextra]  # 添加编译选项
+  #Add: [-I${workspaceFolder}/third_party/include]
+  Remove: [-W*]                       # strip all other warning-related flags
+  #Remove: [-Werror]                  # 移除严格错误检查
+  #todo#CompilationDatabase:                #Directory to search for compilation database (compile_commands.json etc).
+  Compiler: clang++                   # Change argv[0] of compile flags to `clang++`
+  #todo#BuiltinHeaders: QueryDriver
+    #info# Clangd: Use builtin headers from clangd. This is the default.
+    #info#QueryDriver: Use the headers extracted from the compiler via the --query-driver command line argument. If a query driver is not supplied or does not match the compiler, then the Clangd builtin headers will be the fallback.
+Completion:
+  AllScopes: Yes
+  ArgumentLists: FullPlaceholders     #None/OpenDelimiter/Delimiters/FullPlaceholders
+  HeaderInsertion: IWYU               #IWYU/Never
+Diagnostics:
+  UnusedMacros: false                # 禁用未使用宏的警告
+Index:
+  Background: Skip                   # 禁止后台索引（由 coc.nvim 管理）
+If:                               # Apply this config conditionally
+  #PathMatch: .*\.h                # to all headers...
+  #PathMatch: .*\.s                # to all .s files...
+  PathMatch: [.*\.s, .*\.S]       # to all .s files...
+  PathExclude: include/llvm-c/.*  # except those under include/llvm-c/

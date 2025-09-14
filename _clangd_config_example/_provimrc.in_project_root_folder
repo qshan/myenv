@@ -1,0 +1,85 @@
+
+
+
+
+"Configuration of """ Reference: https://github.com/neoclide/coc.nvim
+"" 启用 coc.nvim 的 clangd 扩展
+let g:coc_global_extensions = ['coc-clangd']
+"""~/.vimrc 中 无需硬编码 clangd 参数，只需确保 clangd 能找到 compile_commands.json
+" 配置 clangd 参数
+let g:coc_user_config = {
+  \ "clangd.path": "/usr/bin/clangd",
+  \ "clangd.arguments": [
+  \   "--background-index",           " 后台索引加速响应
+  \   "--compile-commands-dir=.",     "todo 从当前目录查找 compile_commands.json
+  \   "--clang-tidy",                 " 启用静态检查
+  \   "--query-driver=/usr/bin/g++",  " 获取系统头文件路径
+""todo"  \   "--exclude-dir=**/test/**",     " 忽略测试目录
+""todo"  \   "--header-insertion=never"      " 禁止自动插入头文件
+  \ ],
+  \ "rootPattern":["compile_commands.json",".git"],
+"""  \ "filetypes":["c","cpp","s"]
+""todo"  \ "filetypes":["c","cpp"]
+  \ "filetypes":["c","cpp","h","hpp"]
+\ }
+"" GoTo code navigation.
+""todo" nmap gd <Plug>(coc-definition)
+""todo" nmap gy <Plug>(coc-type-definition)
+""todo" nmap gi <Plug>(coc-implementation)
+""todo" nmap gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" 悬浮文档
+nnoremap <silent> K :call CocAction('doHover')<CR>
+""todo"# 检查是否包含正确的编译参数（如 -I、-D）
+"""jq '.[0].command' compile_commands.json
+"
+" Install extensions like this:
+"todo""确认 clangd 已附加到当前文件:CocList services
+"todo""查看 clangd 日志 :CocCommand workspace.showOutput clangd
+"todo""确保 compile_commands.json 路径正确, ln -s build/compile_commands.json .  # 软链接到根目录
+"todo""检查文件类型是否为 c/cpp :set ft?  " 确认输出为 cpp/c
+"todo""确保 clangd 已激活 :CocCommand clangd.activate
+"todo""在项目根目录创建 .clangd 文件，自定义行为
+"""CompileFlags:
+"""  Add: [-std=c++20, -Wall, -Wextra]
+"""  Remove: [-Werror]
+"""Diagnostics:
+"""  UnusedMacros: false
+"
+"todo"" :CocInstall coc-json coc-tsserver
+"info"" Or you can configure a language server in your coc-settings.json
+"(open it using :CocConfig) like this:
+""" {
+"""   "languageserver": {
+"""     "go": {
+"""       "command": "gopls",
+"""       "rootPatterns": ["go.mod"],
+"""       "trace.server": "verbose",
+"""       "filetypes": ["go"]
+"""     }
+"""   }
+""" }
+"
+"""{
+"""  "languageserver": {
+"""    "clangd": {
+"""      "command": "clangd",
+"""      "args": [
+"""        "--background-index",      // 后台索引加速响应
+"""        "--clang-tidy",            // 启用静态检查
+"""        """clangd 会自动在项目根目录查找 compile_commands.json。
+"""        "--compile-commands-dir=build"  // 指定 compile_commands.json 所在目录
+"""        "--header-insertion=never" // 禁止自动插入头文件
+"""      ],
+"""      "rootPatterns": [
+"""        "compile_commands.json",   // 依赖 compile_commands.json
+"""        ".git"
+"""      ],
+"""      "filetypes": ["c", "cpp", "objc", "objcpp"]
+"""    }
+"""  }
+"""}
+"
