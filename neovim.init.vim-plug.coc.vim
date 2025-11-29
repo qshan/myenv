@@ -1499,6 +1499,7 @@ command! MyAddLineExtension                     :s/\(.*\)/\1 \\/g
 command! MyAddLineExtensionAll                  :%s/\(.*\)/\1 \\/g
 command! MyAddLineExtensionWith1                :s/\(.*\)/\1 \|/g
 command! MyShowHex                              :%!xxd
+command! MyShowHex1                             :%%!xxd
 "command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank
 command! MyDiffIgnoreWhiteSpace                 :set diffopt+=iwhite,iblank | hi DiffChange ctermbg=67 guibg=Grey40
 command! MyDiffIgnoreWhiteSpaceCase             :set diffopt+=iwhite,iblank,icase
@@ -1785,7 +1786,7 @@ lua require ('config.dap-config')
 " :set foo&       - reset foo to default value
 " :setlocal foo   - only the current buffer
 "
-""""""##Substitute##
+""""""##Substitute##Replace##
 ":[range]s[ubstitute]/{pattern}/{string}/[flags] [count]
 "
 """Search and replace... (substitute)
