@@ -1166,6 +1166,23 @@ alias bazel.test="      bazel test "
 alias bazel.query="     bazel query "
 alias bazel.clean="     bazel clean "
 alias bazel.version="   bazel version "
+
+alias bazel.analyze-profile=" bazel analyze-profile "
+alias bazel.aquery="    bazel aquery "
+#alias bazel.build="     bazel build "
+alias bazel.canonicalize-flags=" bazel canonicalize-flags "
+alias bazel.clean="     bazel clean "
+alias bazel.cquery="    bazel cquery "
+alias bazel.dump="      bazel dump "
+#alias bazel.help="      bazel help "
+alias bazel.info="      bazel info "
+alias bazel.fetch="     bazel fetch "
+alias bazel.mobile-install=" bazel mobile-install "
+#alias bazel.query="     bazel query "
+#alias bazel run="       bazel run "
+alias bazel.shutdown="  bazel shutdown "
+#alias bazel.test="      bazel test "
+#alias bazel.version="   bazel version "
 #-----bazel end-------------------------
 
 #------------------------------
