@@ -284,6 +284,8 @@ alias sedremovespaceonend1='sed -i "s/\ \+$//g" '
 alias mount.loop='          mount -o loop '
 ##------------------------------
 
+alias gvim9='      /home/fshan/data/tools/vim/GVim-v9.1.1989.glibc2.34-x86_64.AppImage '
+
 alias h='\history 1000'
 alias v='           vim '
 alias vim.d='       vim -d '
@@ -898,7 +900,7 @@ if [ -d ~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1 ]; then
   export graalvmHome=~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1
 fi
 if [ -d ~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1 ]; then
-#not for sbt#  export graalvmHome=~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1
+  export graalvmHome=~/data/tools/graalvm/graalvm-jdk-22.0.1+8.1
 echo "no update graalvm"
 fi
 
@@ -1159,19 +1161,22 @@ if [ -f /usr/local/lib/bazel/bin/bazel-complete.bash ]; then
 fi
 
 #-----bazel start-------------------------
-alias bazel.help="      bazel help "
-alias bazel.build="     bazel build "
-alias bazel.run="       bazel run "
-alias bazel.test="      bazel test "
-alias bazel.query="     bazel query "
-alias bazel.clean="     bazel clean "
-alias bazel.version="   bazel version "
+alias bazel.help="            bazel help "
+alias bazel.build="           bazel build "
+alias bazel.build.all="       bazel build //..."
+alias bazel.build.all.v="     bazel build //... --verbose_failures"
+alias bazel.run="             bazel run "
+alias bazel.test="            bazel test "
+alias bazel.query="           bazel query "
+alias bazel.clean="           bazel clean "
+alias bazel.clean.expunge="   bazel clean --expunge"
+alias bazel.version="         bazel version "
 
 alias bazel.analyze-profile=" bazel analyze-profile "
 alias bazel.aquery="    bazel aquery "
 #alias bazel.build="     bazel build "
 alias bazel.canonicalize-flags=" bazel canonicalize-flags "
-alias bazel.clean="     bazel clean "
+#alias bazel.clean="     bazel clean "
 alias bazel.cquery="    bazel cquery "
 alias bazel.dump="      bazel dump "
 #alias bazel.help="      bazel help "
