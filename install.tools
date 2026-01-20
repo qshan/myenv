@@ -174,6 +174,7 @@ sudo apt install clang-11 clangd-11 clang-format-11 clang-tidy-11 clang-tools-11
 sudo apt install clang-12 clangd-12 clang-format-12 clang-tidy-12 clang-tools-12
 sudo apt install clang-15 clangd-15 clang-format-15 clang-tidy-15 clang-tools-15
 sudo apt install clang-18 clangd-18 clang-format-18 clang-tidy-18 clang-tools-18
+sudo apt install clang-22 clangd-22 clang-format-22 clang-tidy-22 clang-tools-22
 
 ## Bear is a tool to generate compilation database for clang tooling.
 sudo apt install bear
