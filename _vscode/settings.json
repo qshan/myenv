@@ -40,5 +40,176 @@
   "C_Cpp.intelliSenseEngine": "disabled",   // 禁用 IntelliSense
   "C_Cpp.errorSquiggles": "disabled",       // 禁用错误波浪线
   "C_Cpp.autocomplete": "disabled",         // 禁用自动补全
-  "extensions.ignoreRecommendations": true  // 忽略微软扩展的推荐
+  "extensions.ignoreRecommendations": true, // 忽略微软扩展的推荐
+
+  // 基础 Vim 优化
+  "vim.useCtrlKeys": false,           // 释放 Ctrl 快捷键给 VSCode（如 Ctrl+C/V）
+  "vim.handleKeys": {
+    "<C-c>": false,                   // 保留复制
+    "<C-v>": false,                   // 保留粘贴
+    "<C-f>": true,                    // 保留 Vim 的翻页
+    "<C-a>": false                    // 保留全选
+  },
+  "vim.easymotion": true,             // 启用快速跳转（需安装 EasyMotion 插件）
+  //"vim.leader": " ",                  // 设置 Leader 键为空格
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true
+  // 代码导航：映射 VSCode 命令到 Vim 快捷键
+  //"vim.normalModeKeyBindings":
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // 跳转定义 (gd) - 覆盖默认行为，确保使用 Clangd
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    // 跳转声明 (gD)
+    {
+      "before": ["g", "D"],
+      "commands": ["editor.action.goToDeclaration"]
+    },
+    // 查看引用 (gr)
+    {
+      "before": ["g", "r"],
+      "commands": ["references-view.find"]
+    },
+    // 回退 (Ctrl+o) - VSCode 的导航历史
+    {
+      "before": ["<C-o>"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    // 前进 (Ctrl+i)
+    {
+      "before": ["<C-i>"],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    // 快速文件搜索 (Leader + p)
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    // 侧边栏切换 (Leader + e)
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    // ========== 代码编辑快捷键 ==========
+    // 重命名符号
+    {
+      "before": ["<leader>", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    // 快速修复
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    // 格式化文档
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    // 格式化选中
+    {
+      "before": ["<leader>", "F"],
+      "commands": ["editor.action.formatSelection"]
+    },
+    // 展开/折叠代码块
+    {
+      "before": ["z", "c"],
+      "commands": ["editor.fold"]
+    },
+    {
+      "before": ["z", "o"],
+      "commands": ["editor.unfold"]
+    },
+    {
+      "before": ["z", "R"],
+      "commands": ["editor.unfoldAll"]
+    },
+    {
+      "before": ["z", "M"],
+      "commands": ["editor.foldAll"]
+    },
+    
+    // ========== 注释操作 ==========
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["editor.action.blockComment"]
+    },
+    
+    // ========== 选择操作 ==========
+    {
+      "before": ["v", "a", "w"],
+      "commands": ["editor.action.smartSelect.expand"]
+    },
+    {
+      "before": ["v", "i", "w"],
+      "commands": ["editor.action.smartSelect.shrink"]
+    },
+    
+    // ========== 文件操作 ==========
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":w"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["<leader>", "w", "q"],
+      "commands": [":wq"]
+    },
+    
+    // ========== 窗口管理 ==========
+    {
+      "before": ["<C-w>", "v"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<C-w>", "s"],
+      "commands": ["workbench.action.splitEditorOrthogonal"]
+    },
+    {
+      "before": ["<C-w>", "c"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<C-w>", "o"],
+      "commands": ["workbench.action.closeOtherEditors"]
+    },
+    {
+      "before": ["<C-w>", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<C-w>", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["<C-w>", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["<C-w>", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    }
+  ],
+  // 插入模式下保留 VSCode 的建议窗口导航
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["<C-n>"],
+      "after": ["<down>"]  // 下箭头选择建议
+    },
+    {
+      "before": ["<C-p>"],
+      "after": ["<up>"]    // 上箭头选择建议
+    }
+  ]
 }

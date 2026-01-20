@@ -159,6 +159,15 @@ sudo apt install openssh-server openssh-sftp-server
 sudo apt install gcc g++ clang cmake scons build-essential
 #sudo apt install python-dev python3-dev
 sudo apt install gcc-multilib g++-multilib
+
+# Add LLVM repository GPG key
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+# Add the repository for Ubuntu 20.04 (Focal Fossa)
+sudo add-apt-repository -y "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-18 main"
+# Update package list and install
+sudo apt update
+sudo apt install clangd-18 clang-18
+
 #gcc-source
 sudo apt install clang clangd clang-format clang-tidy clang-tools
 sudo apt install clang-11 clangd-11 clang-format-11 clang-tidy-11 clang-tools-11

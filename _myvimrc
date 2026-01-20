@@ -871,6 +871,9 @@ highlight Underlined term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=reverse gui
 ":3match Underlined /incompatible\|redefined\|expansion/
 "worked":3match WildMenu /incompatible\|redefined\|expansion\|worked\|info/
 au BufWinEnter,BufReadPost,FileReadPost * :3match WildMenu /incompatible\|redefined\|expansion\|worked\|info\>\|issue/
+" Todo           xxx term=bold,reverse ctermfg=21 ctermbg=226 guifg=#0000ff guibg=#ffff00
+" Error          xxx term=bold,reverse ctermfg=231 ctermbg=196 guifg=#ffffff guibg=#ff0000
+" MatchParen     xxx term=bold,underline ctermfg=236 ctermbg=1 guifg=#303030 guibg=lightblue
 "
 "
 "need source $MYVIMRC after e(open)

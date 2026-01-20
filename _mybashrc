@@ -907,6 +907,8 @@ fi
 export PATH=$graalvmHome/bin:$PATH
 export JAVA_HOME=$graalvmHome
 
+export PATH=$PATH:/home/fshan/data/tools/go/go/bin
+
 #sudo apt install openjdk-8-jdk
 #if ['' eq `which java`]; then sudo apt install openjdk-8-jdk; fi;
 

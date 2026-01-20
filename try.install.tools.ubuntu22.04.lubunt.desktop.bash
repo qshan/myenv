@@ -1,6 +1,6 @@
 sudo apt update
-sudo apt install git curl wget htop net-tools tree vim openssh-server
-#sudo apt install acpi-call-dkms lm-sensors 
+sudo apt install git curl wget rename htop net-tools tree vim openssh-server
+#sudo apt install acpi-call-dkms lm-sensors
 sudo apt install libfuse2 thinkfan
 #todo?#sudo apt install tp-smapi-dkms
 sudo timedatectl set-timezone Asia/Shanghai
@@ -61,6 +61,13 @@ export XMODIFIERS=@im=fcitx5
 EOF
 
 im-config
+fcitx5-configtool &
+#在配置工具中：
+#  点击左下角"+"号
+#  取消勾选"Only Show Current Language"
+#  找到"Pinyin"（中文 → 拼音）
+#  点击"OK"添加
+#  确保"Pinyin"是启用的（非灰色状态）
 
 sudo dpkg -i /data/tools/chrome/google-chrome-stable_current_amd64.deb
 
@@ -94,3 +101,5 @@ sudo apt install fcitx5-pinyin fcitx5-rime
 sudo apt install zram-config
 sudo systemctl restart zram-config.service
 # zramswap
+
+sudo apt install bear ninjia-build
