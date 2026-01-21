@@ -67,10 +67,29 @@
       "before": ["g", "D"],
       "commands": ["editor.action.goToDeclaration"]
     },
-    // 查看引用 (gr)
+    {
+      "before": ["g", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    // 查找所有引用
     {
       "before": ["g", "r"],
-      "commands": ["references-view.find"]
+      //"after": [],
+      "commands": [
+        {
+          //"command": "editor.action.referenceSearch.trigger",
+          //"command": "editor.action.showReferences",
+          "command": "references-view.find",
+          "args": {
+            //"position": {"line": 3, "character": 8},
+            "position": {"line": -1, "character": -1},
+            "includeDeclaration": false,
+            "timeout": 3000
+            }
+        },
+      "bench.view.extension.references-view.focus"
+      ],
+      "when": "editorTextFocus"
     },
     // 回退 (Ctrl+o) - VSCode 的导航历史
     {
@@ -93,7 +112,7 @@
       "commands": ["workbench.view.explorer"]
     }
   ],
-  "vim.normalModeKeyBindings": [
+  "vim.normalModeKeyBindingsNonRecursive": [
     // ========== 代码编辑快捷键 ==========
     // 重命名符号
     {
