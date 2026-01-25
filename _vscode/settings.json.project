@@ -1,5 +1,6 @@
 
 // This file is ProjectRootPath/.vscode/settings.json
+//override the setting in ~/.config/Code/User/settings.json
 //
 //for coc-clangd local config, this solution need
 //   ProjectRootPath/.vscode/settings.json
