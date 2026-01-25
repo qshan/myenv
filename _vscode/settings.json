@@ -1,6 +1,5 @@
 
-// This file is ProjectRootPath/.vscode/settings.json
-//override the setting in ~/.config/Code/User/settings.json
+// This file is in ~/.config/Code/User/settings.json
 //
 //for coc-clangd local config, this solution need
 //   ProjectRootPath/.vscode/settings.json
@@ -8,80 +7,71 @@
 //   ProjectRootPath/.clangd
 //
 {
-  "clangd.path": "/usr/bin/clangd", // 确保路径与系统中 clangd 安装位置一致
-  "clangd.trace": "verbose",        // 改为 "off" 或 "messages" 减少日志
-  "clangd.arguments": [
-    "--compile-commands-dir=${workspaceFolder}", // 指定 compile_commands.json 所在目录
-    //todo//"--compile-commands-dir=${workspaceFolder}/build",  // 指定 compile_commands.json 目录
-    //"--clang-tidy",                 // 启用静态检查
-    //todo//"--header-insertion=never",      // 禁止自动插入头文件
-    "--malloc-trim",        // 减少内存占用
-    "--limit-results=500",   // 限制补全项数量
-    //"--target=riscv32",                            // 显式设置目标
-    //"--compile-commands-dir=${workspaceFolder}/build", // 替换为你的路径
-    //"--log=error",  // 仅显示错误日志
-    //"--log=verbose",  // 仅显示错误日志
-    //"--clang-tidy=false", //关闭代码检查(按需)
-    "--clang-tidy=true", 关闭代码检查（按需）
-    "--background-index"  //(后台索引，首次启动较慢，后续增量更新)
-  ],
-  "clangTidyChecks": "-Wint-to-pointer-cast",
-  "files.watcherExclude": {
-  "/.cache/": true,
-  "/.git/objects/": true,
-  "/.git/subtree-cache/": true,
-  "/node_modules/*/": true
-  },
-  //todo//"clangd.checkUpdates": true       // 自动检查 clangd 更新
 
-  //todo// "configurationProvider": "llvm-vs-code-extensions.vscode-clangd"
-
-  //disable ms-vscode.cpptools
-  "C_Cpp.intelliSenseEngine": "disabled",   // 禁用 IntelliSense
-  "C_Cpp.errorSquiggles": "disabled",       // 禁用错误波浪线
-  "C_Cpp.autocomplete": "disabled",         // 禁用自动补全
-  "extensions.ignoreRecommendations": true, // 忽略微软扩展的推荐
-
-  // 基础 Vim 优化
-  "vim.useCtrlKeys": false,           // 释放 Ctrl 快捷键给 VSCode（如 Ctrl+C/V）
-  "vim.handleKeys": {
-    "<C-c>": false,                   // 保留复制
-    "<C-v>": false,                   // 保留粘贴
-    "<C-f>": true,                    // 保留 Vim 的翻页
-    "<C-a>": false                    // 保留全选
-  },
-  "vim.easymotion": true,             // 启用快速跳转（需安装 EasyMotion 插件）
-  //"vim.leader": " ",                  // 设置 Leader 键为空格
+  // ===== VSCodeVim 配置 =====
+  "vim.useCtrlKeys": false,
+  //"vim.leader": " ", //leader key is space
   "vim.leader": "<space>",
-  "vim.useSystemClipboard": true
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.foldfix": true,
+  "vim.useSystemClipboard": true,
+  "vim.easymotion": true,             // 启用快速跳转（需安装 EasyMotion 插件）
+
+  "vim.handleKeys": {
+    "<C-c>": false,                   // 保留Win复制
+    "<C-v>": false,                   // 保留Win粘贴
+    "<C-a>": false                    // 保留Win全选
+    // 释放 VSCode 快捷键
+    "<C-b>": false,
+    "<C-d>": false,
+    "<C-u>": false,
+    "<C-y>": false,
+    "<C-e>": false,
+
+    "<C-f>": true,                    // 保留 Vim 的翻页
+    "<C-o>": true,
+    "<C-i>": true,
+    "<C-]>": true,
+  },
+
+  // ===== UI 渲染控制 =====
+  "references.preferredLocation": "view",  // 侧边栏面板
+  "references.groupByFile": true,           // 按文件分组
+  "editor.gotoLocation.multipleReferences": "peek", // 必须设为 peek 以激活 references-view
+
+  "explorer.compactFolders": false,         // 展开文件夹
   // 代码导航：映射 VSCode 命令到 Vim 快捷键
   //"vim.normalModeKeyBindings":
   "vim.normalModeKeyBindingsNonRecursive": [
     // 跳转定义 (gd) - 覆盖默认行为，确保使用 Clangd
     {
       "before": ["g", "d"],
-      "commands": ["editor.action.revealDefinition"]
+      "commands": ["editor.action.revealDefinition"],
+      "when": "editorTextFocus"
     },
     // 跳转声明 (gD)
     {
       "before": ["g", "D"],
-      "commands": ["editor.action.goToDeclaration"]
+      "commands": ["editor.action.goToDeclaration"],
+      "when": "editorTextFocus"
     },
     {
       "before": ["g", "i"],
-      "commands": ["editor.action.goToImplementation"]
+      "commands": ["editor.action.goToImplementation"],
+      "when": "editorTextFocus"
     },
     // 查找所有引用
     {
       "before": ["g", "r"],
-      //"after": [],
       "commands": [
         {
           //"command": "editor.action.referenceSearch.trigger",
           //"command": "editor.action.showReferences",
           "command": "references-view.find",
           "args": {
-            //"position": {"line": 3, "character": 8},
             "position": {"line": -1, "character": -1},
             "includeDeclaration": false,
             "timeout": 3000
@@ -89,17 +79,30 @@
         },
       "bench.view.extension.references-view.focus"
       ],
-      "when": "editorTextFocus"
+      "when": "editorTextFocus && !inReferenceSearchEditor"
     },
     // 回退 (Ctrl+o) - VSCode 的导航历史
     {
       "before": ["<C-o>"],
-      "commands": ["workbench.action.navigateBack"]
+      "commands": ["workbench.action.navigateBack"],
+      "when": "editorTextFocus"
     },
-    // 前进 (Ctrl+i)
+     前进 (Ctrl+i)
     {
       "before": ["<C-i>"],
-      "commands": ["workbench.action.navigateForward"]
+      "commands": ["workbench.action.navigateForward"],
+      "when": "editorTextFocus"
+    },
+    // ===== 函数导航 =====
+    {
+      "before": ["[", "["],
+      "commands": ["cursorMove", { "to": "prevBlankLine" }],
+      "when": "editorTextFocus"
+    },
+    {
+      "before": ["]", "]"],
+      "commands": ["cursorMove", { "to": "nextBlankLine" }],
+      "when": "editorTextFocus"
     },
     // 快速文件搜索 (Leader + p)
     {
@@ -151,7 +154,12 @@
       "before": ["z", "M"],
       "commands": ["editor.foldAll"]
     },
-    
+    {
+      "before": ["z", "a"],
+      "commands": ["editor.toggleFold"],
+      "when": "editorTextFocus"
+    },
+
     // ========== 注释操作 ==========
     {
       "before": ["<leader>", "/"],
@@ -221,7 +229,7 @@
     }
   ],
   // 插入模式下保留 VSCode 的建议窗口导航
-  "vim.insertModeKeyBindings": [
+  "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": ["<C-n>"],
       "after": ["<down>"]  // 下箭头选择建议
@@ -229,6 +237,14 @@
     {
       "before": ["<C-p>"],
       "after": ["<up>"]    // 上箭头选择建议
+    },
+    {
+      "before": ["<C-space>"],
+      "commands": ["editor.action.triggerSuggest"]
+    },
+    {
+      "before": ["<C-]>"],
+      "commands": ["editor.action.triggerSuggest"]
     }
-  ]
+  ],
 }

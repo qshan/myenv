@@ -1,0 +1,49 @@
+
+// This file is ProjectRootPath/.vscode/settings.json
+//
+//for coc-clangd local config, this solution need
+//   ProjectRootPath/.vscode/settings.json
+//   ProjectRootPath/.vscode/extensions.json
+//   ProjectRootPath/.clangd
+//
+{
+  //disable ms-vscode.cpptools
+  "C_Cpp.intelliSenseEngine": "disabled",   // 禁用 IntelliSense
+  "C_Cpp.errorSquiggles": "disabled",       // 禁用错误波浪线
+  "C_Cpp.autocomplete": "disabled",         // 禁用自动补全
+  "C_Cpp.formatting": "disabled",          // 禁用微软格式化
+  "extensions.ignoreRecommendations": true, // 忽略微软扩展的推荐
+
+  "clangd.path": "/usr/bin/clangd", // 确保路径与系统中 clangd 安装位置一致
+  "clangd.trace": "verbose",        // 改为 "off" 或 "messages" 减少日志
+  "clangd.arguments": [
+    "--compile-commands-dir=${workspaceFolder}", // 指定 compile_commands.json 所在目录
+    //todo//"--compile-commands-dir=${workspaceFolder}/build",  // 指定 compile_commands.json 目录
+    "--malloc-trim",                  // 减少内存占用
+    "--limit-results=500",            // 限制补全项数量
+    //"--target=riscv32",               // 显式设置目标
+    //"--compile-commands-dir=${workspaceFolder}/build", // 替换为你的路径
+    //"--log=error",                    // 仅显示错误日志
+    //"--log=verbose",                  // 仅显示错误日志
+    //"--clang-tidy=false",             //关闭代码检查(按需)
+    "--clang-tidy",                   // 启用静态检查
+    "--clang-tidy=true",              //关闭代码检查（按需）
+    "--background-index",             //(后台索引，首次启动较慢，后续增量更新)
+    "--header-insertion=never",       // 防止自动添加头文件
+    "--completion-style=detailed",    // 详细补全
+    "--function-arg-placeholders",    // 参数占位符
+    "--fallback-style=Google",        // 备用格式
+    "--pch-storage=memory"            // 内存存储预编译头
+  ],
+  "clangTidyChecks": "-Wint-to-pointer-cast",
+  "files.watcherExclude": {
+  "/.cache/": true,
+  "/.git/objects/": true,
+  "/.git/subtree-cache/": true,
+  "/node_modules/*/": true
+  },
+  //todo//"clangd.checkUpdates": true       // 自动检查 clangd 更新
+
+  //todo// "configurationProvider": "llvm-vs-code-extensions.vscode-clangd"
+
+}
