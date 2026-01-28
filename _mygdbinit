@@ -1,0 +1,23 @@
+
+#this file is ~/.gdbinit
+
+#win
+#wincreate
+tui enable
+
+break main
+
+show args
+
+show environment
+
+list
+
+#?todo?#显示源码窗口
+#layout src
+
+#显示汇编窗口
+#layout asm
+
+#显示寄存器窗口
+#layout regs
