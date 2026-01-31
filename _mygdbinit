@@ -1,11 +1,21 @@
 
 #this file is ~/.gdbinit
+#the #gbd `PWD`/.gdbinit will overwrite the setting
+
+#example
+#gdb myprojectfile
+#gdb --args myprojectfile arg01 arg02 arg03
+#(gdb) run arg1 arg2 arg03
+#(gdb) run < input.txt > output.txt
+#(gdb) run < input.txt > output.txt 2>&1
+#gdb ./myapp #进入gdb
+#gdb -tui ./myapp #使用TUI模式获得更好的源码视图
+#gdb -tui -d /path/to/source my_program #在启动GDB时通过 -d参数指定源码路径
+#gdb -p PID    #命令附加（attach）到一个正在运行的程序上进行调试
 
 #win
 #wincreate
 tui enable
-
-break main
 
 show args
 
@@ -15,9 +25,40 @@ list
 
 #?todo?#显示源码窗口
 #layout src
-
 #显示汇编窗口
 #layout asm
-
 #显示寄存器窗口
 #layout regs
+layout split
+
+# 设置断点样式
+set breakpoint pending on
+set print pretty on
+
+#todo?#set main breakpoint, run and save the log
+break main
+run > output.log.txt 2>&1
+
+#todo?#go to breakpoint main
+#start
+
+#info#run example
+#常用 GDB 调试命令
+# (gdb) break main                            # 在 main 函数设断点
+# (gdb) run                                   # 运行程序
+# (gdb) step                                  # 单步进入（进入函数）
+# (gdb) next                                  # 单步跳过（不进入函数）
+# (gdb) print variable_name                   # 打印变量值
+# (gdb) backtrace                             # 查看调用栈
+# (gdb) continue                              # 继续执行
+# (gdb) frame N                               #（N为调用栈编号）切换到特定的栈帧
+# (gdb) list                                  #显示当前行附近的代码，默认显示10行，按回车键继续查看后续代码
+# (gdb) list 函数名                           #显示指定函数（如 main）的源代码
+# (gdb) list 文件名:行号                      #显示特定文件的特定行（如 list my_program.cpp:15
+# (gdb) directory /path/to/your/source/code   #命令，GDB就会将该路径添加到源码搜索路径中
+# (gdb) dir /path/to/your/source/code         #GDB会将该路径添加到源码搜索路径中
+# (gdb) info sources                          #可以列出GDB已知的所有源文件及其路径，帮助验证设置是否正确
+# (gdb) info threads                          #查看所有线程，
+# (gdb) thread <id>                           #切换线程，
+# (gdb) thread apply all bt                   #查看所有线程的堆栈
+# (gdb) quit                                  # 退出
