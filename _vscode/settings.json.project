@@ -18,6 +18,30 @@
   "clangd.path": "/usr/bin/clangd", // 确保路径与系统中 clangd 安装位置一致
   "clangd.trace": "verbose",        // 改为 "off" 或 "messages" 减少日志
   "clangd.arguments": [
+    //get the arguments info with clangd --help in terminal
+      //  --all-scopes-completion              - If set to true, code completion will include index symbols that are not defined in the scopes (e.g. namespaces) visible from the code completion point. Such completions can insert scope qualifiers
+      //  --background-index                   - Index project code in the background and persist index on disk.
+      //  --background-index-priority=<value>  - Thread priority for building the background index. The effect of this flag is OS-specific.
+      //    =background                        -   Minimum priority, runs on idle CPUs. May leave 'performance' cores unused.
+      //    =low                               -   Reduced priority compared to interactive work.
+      //    =normal                            -   Same priority as other clangd work.
+      //  --clang-tidy                         - Enable clang-tidy diagnostics
+      //  --completion-style=<value>           - Granularity of code completion suggestions
+      //    =detailed                          -   One completion item for each semantically distinct completion, with full type information
+      //    =bundled                           -   Similar completion items (e.g. function overloads) are combined. Type information shown where possible
+      //  --header-insertion=<value>           - Add #include directives when accepting code completions
+      //    =iwyu                              -   Include what you use. Insert the owning header for top-level symbols, unless the header is already directly included or the symbol is forward-declared
+      //    =never                             -   Never insert #include directives as part of code completion
+      //  --header-insertion-decorators        - Prepend a circular dot or space before the completion label, depending on whether an include line will be inserted or not
+      //  --import-insertions                  - If header insertion is enabled, add #import directives when accepting code completions or fixing includes in Objective-C code
+      //  --limit-references=<int>             - Limit the number of references returned by clangd. 0 means no limit (default=1000)
+      //  --limit-results=<int>                - Limit the number of results returned by clangd. 0 means no limit (default=100)
+      //  --project-root=<string>              - Path to the project root. Requires remote-index-address to be set.
+      //clangd protocol and logging options:
+      //  --log=<value>                        - Verbosity of log messages written to stderr
+      //    =error                             -   Error messages only
+      //    =info                              -   High level execution tracing
+      //    =verbose                           -   Low level details
     "--compile-commands-dir=${workspaceFolder}", // 指定 compile_commands.json 所在目录
     //todo//"--compile-commands-dir=${workspaceFolder}/build",  // 指定 compile_commands.json 目录
     "--malloc-trim",                  // 减少内存占用
