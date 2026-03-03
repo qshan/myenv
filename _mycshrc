@@ -717,7 +717,7 @@ alias docker-compose.down '         docker-compose down '
 #input methods reset
 alias input_methods_reset_fcitx   'fcitx -r'
 
-####set complete with tab in shell command
+####set completions with tab in tcsh shell command
 ####get the detail with 'man tcsh'
 set autolist = ambiguous
 #set complete = igncase
@@ -725,6 +725,7 @@ set complete = enhance
 #
 ####set complete = Enhance
 set autoexpand
+set filec
 ####set correct = cmd
 set correct = all
 set autocorrect
@@ -1121,6 +1122,36 @@ alias west.config '                       west config '
 alias west.list '                         west list '
 alias west.topdir '                       west topdir '
 alias west.zephyr-export '                west zephyr-export '
+
+#ninja alias
+alias ninja.n.v '                         ninja -c -v '
+alias ninja.t.targets '                   ninja -t targets '
+alias ninja.t.targets.all '               ninja -t targets all '
+alias ninja.t.targets.depth '             ninja -t targets depth '
+alias ninja.t.targets.rule '              ninja -t targets rule '
+alias ninja.t.list '                      ninja -t list '
+alias ninja.t.browse '                    ninja -t browse '
+alias ninja.t.clean '                     ninja -t clean '
+alias ninja.t.clean.v '                   ninja -t clean -v '
+alias ninja.t.clean.n '                   ninja -t clean -n '
+alias ninja.t.cleandead '                 ninja -t cleandead '
+alias ninja.t.commands '                  ninja -t commands '
+alias ninja.t.deps '                      ninja -t deps '
+alias ninja.t.graph '                     ninja -t graph '
+alias ninja.t.graph.dot ' ninja -t graph \!* > \!*.output.dot ; ls \!*.output.dot'
+#ninja -t graph [targets...] > output.dot
+#dot -Tpng output.dot -o graph.png
+alias ninja.t.inputs '                    ninja -t inputs '
+alias ninja.t.multi-inputs '              ninja -t multi-inputs '
+alias ninja.t.missingdeps '               ninja -t missingdeps '
+alias ninja.t.path '                      ninja -t path '
+alias ninja.t.paths '                     ninja -t paths '
+alias ninja.t.query '                     ninja -t query '
+alias ninja.t.restat '                    ninja -t restat '
+alias ninja.t.rules '                     ninja -t rules '
+alias ninja.t.rules.d '                   ninja -t rules -d '
+alias ninja.C.build '                     ninja -C build '
+alias ninja.C.inputPath '                 ninja -C '
 
 if ( -d /data1/tools/FreedomStudio-2020-06-3-lin64 ) then
 setenv PATH "${PATH}:/data1/tools/FreedomStudio-2020-06-3-lin64"

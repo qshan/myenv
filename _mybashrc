@@ -130,6 +130,30 @@ alias gzip.dk='           gzip -d -k '
 alias remake.trace='      remake --trace '
 alias remake.tasks='      remake --tasks'
 
+alias e2fsck.cfyv='       sudo e2fsck -cfyv'
+alias e2fsck.pf='         sudo e2fsck -pfv'
+#example1
+#sudo umount -l /media/fshan/back
+#sudo e2fsck -pf /dev/sdd2
+#sudo mount /dev/sdd2 /media/fshan/back
+#ls /media/fshan/back
+#
+#example2
+# 1. 确保设备已卸载（关键！修复前必须卸载）
+#  sudo umount -l /media/fshan/back
+# 2. 执行e2fsck深度修复（替换/dev/sdd2为你的实际分区）
+# -c：检测坏道并标记（结合硬件无故障，主要是文件系统修复）
+# -f：强制检查（即使文件系统标记为干净）
+# -y：自动确认修复
+#  sudo e2fsck -cfyv /dev/sdd2
+# 3. # 重新挂载分区
+#  sudo mount /dev/sdd2 /media/fshan/back
+# 4. # 验证是否能正常访问
+#  ls -alh /media/fshan/back/
+# 5. # 如果仍有错误，尝试重新挂载并修复权限
+#  sudo mount -o rw,remount /media/fshan/back
+#  sudo chown -R fshan:fshan /media/fshan/back  # 恢复目录权限
+
 alias lspci.t='           lspci -t -v '
 alias lspci.k='           lspci -k -v '
 alias lspci.vv='          lspci -vv '
@@ -827,8 +851,17 @@ if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 fi
 
+#sudo apt install bash-completion
+#if [ -f /etc/bash_completion ]; then
+#  source /etc/bash_completion
+#fi
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  source /usr/share/bash-completion/bash_completion
+fi
 
-
+if [ -f /usr/share/bash-completion/completions/git ]; then
+  source /usr/share/bash-completion/completions/git
+fi
 
 
 
@@ -891,6 +924,7 @@ alias ctags_L_scala="               ctags-universal       --languages=scala --sc
 #ctags_R -L filelist_name
 
 export PATH=$PATH:/usr/local/lib:/usr/lib
+export PATH=$PATH:~/.local/bin
 
 #set the the path of graalvm instead of openjdk
 #export PATH=~/data/tools/graalvm/graalvm-ce-java11-22.1.0/bin:$PATH
@@ -1248,6 +1282,42 @@ alias west.list='                         west list '
 alias west.topdir='                       west topdir '
 alias west.zephyr-export='                west zephyr-export '
 
+#cmake alias
+alias cmake.B.build.Ninja='               cmake -B build -G Ninja'
+alias cmake.build='                       cmake --build '
+alias cmake.build.build='                 cmake --build build'
+
+#ninja alias
+alias ninja.n.v='                         ninja -c -v '
+alias ninja.t.targets='                   ninja -t targets '
+alias ninja.t.targets.all='               ninja -t targets all '
+alias ninja.t.targets.depth='             ninja -t targets depth '
+alias ninja.t.targets.rule='              ninja -t targets rule '
+alias ninja.t.list='                      ninja -t list '
+alias ninja.t.browse='                    ninja -t browse '
+alias ninja.t.clean='                     ninja -t clean '
+alias ninja.t.clean.v='                   ninja -t clean -v '
+alias ninja.t.clean.n='                   ninja -t clean -n '
+alias ninja.t.cleandead='                 ninja -t cleandead '
+alias ninja.t.commands='                  ninja -t commands '
+alias ninja.t.deps='                      ninja -t deps '
+alias ninja.t.graph='                     ninja -t graph '
+alias ninja.t.graph.dot='functionNinjiaTGraph(){ unset -f functionNinjiaTGraph; ninja -t graph "$@" > "$@".output.dot}; functionNinjiaTGraph ; ls "$@".output.dot'
+#ninja -t graph [targets...] > output.dot
+#dot -Tpng output.dot -o graph.png
+alias ninja.t.inputs='                    ninja -t inputs '
+alias ninja.t.multi-inputs='              ninja -t multi-inputs '
+alias ninja.t.missingdeps='               ninja -t missingdeps '
+alias ninja.t.path='                      ninja -t path '
+alias ninja.t.paths='                     ninja -t paths '
+alias ninja.t.query='                     ninja -t query '
+alias ninja.t.restat='                    ninja -t restat '
+alias ninja.t.rules='                     ninja -t rules '
+alias ninja.t.rules.d='                   ninja -t rules -d '
+alias ninja.C.build='                     ninja -C build '
+alias ninja.C.inputPath='                 ninja -C '
+
+
 # sifive freedom studio
 if [ -d /data1/tools/FreedomStudio-2020-06-3-lin64 ]; then
   export PATH=$PATH:/data1/tools/FreedomStudio-2020-06-3-lin64
@@ -1292,11 +1362,11 @@ fi
 #                       packages. See examples below.
 #     update (upgrade)  Updates conda packages to the latest compatible version.
 #     notices           Retrieves latest channel notifications.
-# 
+#
 # options:
 #   -h, --help          Show this help message and exit.
 #   -V, --version       Show the conda version number and exit.
-# 
+#
 # conda commands available from other packages (legacy):
 #   content-trust
 #   env
@@ -1334,6 +1404,7 @@ alias conda.remove.name='   conda remove -n '
 # conda remove --name old_env_name --all
 #
 alias conda.install='       conda install '
+alias conda.install.reinstall='       conda install --force-reinstall '
 # conda install python=3.8
 alias conda.install.name='  conda install --name '
 #
@@ -1343,6 +1414,7 @@ alias conda.install.name='  conda install --name '
 alias conda.version='               conda --version '
 #
 alias conda.update.conda='          conda update conda '
+alias conda.update.base.conda='     conda update -n base -c defaults conda '
 alias conda.update.all='            conda update --all '
 #
 alias conda.info.e='                conda info -e '
@@ -1393,7 +1465,7 @@ alias conda.env.list='    conda env list'
 alias conda.env.remove='  conda env remove'
 alias conda.env.update='  conda env update'
 #
-# [conda workflow]
+# [conda workflow] conda init; conda create; conda activate; conda install conda_package;
 # 1. Creating and activating a new environment
 #  conda create --name new_base_name
 #  conda create --name new_base_name --no-default-packages python=3.8
