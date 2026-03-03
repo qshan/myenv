@@ -1,5 +1,7 @@
 sudo apt update
 sudo apt install git curl wget rename htop net-tools tree vim openssh-server
+sudo apt install bash-completion tcsh
+
 #sudo apt install acpi-call-dkms lm-sensors
 sudo apt install libfuse2 thinkfan
 #todo?#sudo apt install tp-smapi-dkms
@@ -102,4 +104,18 @@ sudo apt install zram-config
 sudo systemctl restart zram-config.service
 # zramswap
 
-sudo apt install bear ninjia-build
+sudo apt install bear ninja-build
+
+sudo apt install build-essential cmake ninja-build clang
+sudo apt install git git-lfs
+sudo apt install python3 python3-venv python3-dev python3-pip libpython3-dev
+sudo apt install lld llvm
+# IREE/Torq 编译所需
+sudo apt install libssl-dev libcurl4-openssl-dev
+
+ln -s /home/fshan/data/myenv/git-complete/git-completion.bash ~/.git-completion.bash
+ln -s /home/fshan/data/myenv/git-complete/git-completion.tcsh ~/.git-completion.tcsh
+
+sudo apt update && sudo apt install -y wget software-properties-common
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+sudo add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-20 main"
