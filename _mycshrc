@@ -249,11 +249,14 @@ alias chmod+R               'chmod -R a+r '
 alias chmod-R               'chmod -R a-r '
 alias chmodER               'chmod -R a=r '
 ##------------------------------
-alias tar.czvf               'tar -czvf '
-alias tar.cJvf               'tar -cJvf '
-alias tar.xzvf               'tar -xzvf '
-alias tar.xJvf               'tar -xJvf '
-alias tar.tf                 'tar -tf '
+alias tar.czvf                'tar -czvf '
+alias tar.cJvf                'tar -cJvf '
+alias tar.xzvf                'tar -xzvf '
+alias tar.xJvf                'tar -xJvf '
+alias tar.tf                  'tar -tf '
+##------------------------------
+alias md5sum.c                'md5sum -c '
+#example md5sum -c Base_SPB24.10.000_checksums.txt
 ##------------------------------
 #alias RenameReplaceSpace        "\rename 's/\s+/_/g' "
 alias RenameReplaceSpace        "\rename s/\'+/_/g "

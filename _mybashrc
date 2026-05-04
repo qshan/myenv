@@ -267,6 +267,9 @@ alias tar.xzvf='tar -xzvf '
 alias tar.xJvf='tar -xJvf '
 alias tar.tf='  tar -tf '
 ##------------------------------
+alias md5sum.c='  md5sum -c '
+#example md5sum -c Base_SPB24.10.000_checksums.txt
+##------------------------------
 #alias RenameReplaceSpace="\rename         's/\s+/_/g' "
 alias RenameReplaceSpace="  \rename         s/\'+/_/g "
 alias RenameReplaceSpace1=" \rename        's/[\-|_|\s]*\-+[\-|_|\s]*/-/g' "
