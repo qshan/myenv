@@ -118,14 +118,19 @@ alias xinput.list.tpad='  xinput --list | grep -i touchpad'
 alias xinput.enable='     xinput --enable '
 alias xinput.disable='    xinput --disable '
 
-alias 7z.a='              7x a '
-alias 7z.x='              7x x '
-alias 7z.e='              7x e '
-alias 7z.l='              7x l '
-alias 7z.t='              7x t '
+#sudo apt install 7zip
+alias 7z.a='              7z a '
+alias 7z.x='              7z x '
+alias 7z.e='              7z e '
+alias 7z.l='              7z l '
+alias 7z.t='              7z t '
 
 alias gzip.d='            gzip -d '
 alias gzip.dk='           gzip -d -k '
+
+#sudo apt install rar
+alias rar.x='             rar -x '
+alias rar.l='             rar -l '
 
 alias remake.trace='      remake --trace '
 alias remake.tasks='      remake --tasks'
