@@ -1,0 +1,32 @@
+# Reference web: https://github.com/strativd/ai-skills
+# Details: keep --- in first line
+# ==============================
+
+
+
+---
+# YAML Frontmatter：仅这部分常驻上下文（~100 tokens）
+name: financial-dcf-analysis
+description: 对上市公司做现金流折现(DCF)估值，含财报数据检索与模型计算
+---
+
+# DCF 估值技能
+
+## 适用场景
+当用户要求"估值/算内在价值/判断股价是否合理"时使用本技能。
+
+## 执行步骤
+1. 调用 fetch_financials(ticker) 获取近 5 年财报
+2. 计算自由现金流 FCF 与加权资本成本 WACC
+3. 按两阶段模型折现，输出敏感度表
+4. 生成结论：低估/合理/高估 + 目标价区间
+
+## 输出格式
+返回 JSON：{ ticker, intrinsic_value, current_price, verdict, assumptions }
+
+## 资源（按需加载）
+- references/dcf_formula.md      # 详细公式
+- examples/valuation_demo.json   # Few-shot 示例
+
+## 安全约束
+- 数据仅读，不触发交易；结果须附"非投资建议"声明

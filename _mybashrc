@@ -1200,6 +1200,10 @@ if [ -f ~/data/myenv/mill-bash-completion/mill.complete.sh ]; then
   source ~/data/myenv/mill-bash-completion/mill.complete.sh
 fi
 
+if [ -d ~/data/tools/bin ]; then
+  export PATH="$PATH:~/data/tools/bin"
+fi
+
 if [ -f /usr/local/lib/bazel/bin/bazel-complete.bash ]; then
   source /usr/local/lib/bazel/bin/bazel-complete.bash
 fi

@@ -1,0 +1,21 @@
+整体项目标准目录总览
+遵循「业务与管控分离、能力原子化、配置与代码分离、可测试可扩展」的设计原则，标准 Agent 项目分层目录如下：
+
+
+
+ai-agent-project/
+├── README.md                 # 项目总说明、架构概述
+├── pyproject.toml            # 依赖管理、构建配置
+├── configs/                  # 全局环境配置
+│   ├── env.example
+│   ├── global.yaml
+│   └── logging.yaml
+├── agent/                    # Agent 核心业务代码
+│   ├── core/                 # 公共基础组件（LLM 客户端、工具类）
+│   ├── skills/               # Skill 原子能力库
+│   ├── harness/              # Harness 运行时管控层
+│   ├── loops/                # 循环执行引擎
+│   └── graphs/               # 图编排工作流
+├── tests/                    # 单元测试、集成测试
+├── docs/                     # 架构设计、接口文档
+└── scripts/                  # 部署、运维脚本

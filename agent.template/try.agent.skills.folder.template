@@ -1,0 +1,28 @@
+1.1 推荐目录结构
+采用「统一注册中心 + 单 Skill 独立目录」的架构，每个 Skill 自包含元数据、代码、文档、测试，支持热插拔
+
+设计说明：references/ 采用渐进式加载机制 ——Agent 先读取 SKILL.md 掌握核心规则，需要细节时再按需加载参考文档，避免无效 Token 占用上下文，是生产级 Skill 的标准优化实践。
+
+Details:
+==============================
+
+
+agent/skills/
+├── __init__.py
+├── base.py                   # BaseSkill 抽象基类，定义统一接口
+├── registry.py               # Skill 自动扫描注册中心，加载 config.yaml
+├── common/                   # 通用工具、公共依赖包
+│   ├── http_client.py
+│   └── sandbox.py            # 沙箱执行环境
+└── library/                  # 所有原子 Skill 存放目录
+    └── query_user_info/      # 单个 Skill 完整目录
+        ├── SKILL.md          # 【必需】入口文档，Agent 可直接读取解析
+        ├── config.yaml       # 【必需】工程管控配置，注册中心自动加载
+        ├── __init__.py
+        ├── skill.py          # 核心执行逻辑
+        ├── schema.py         # 入参出参 Pydantic 数据模型
+        ├── scripts/          # 辅助执行脚本
+        ├── references/       # 深度参考资料（渐进式加载，不默认入上下文）
+        ├── templates/        # 返回格式、业务模板
+        ├── assets/           # 静态资源（图标、示例数据）
+        └── tests/            # 单元测试用例

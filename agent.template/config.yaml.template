@@ -1,0 +1,30 @@
+模板 2：config.yaml（工程管控配置）
+供注册中心自动加载，定义运行时管控规则，与业务逻辑解耦。
+Details:
+==============================
+
+
+
+# Skill 基础元数据
+meta:
+  name: query_user_info
+  version: 1.0.0
+  category: user_management
+
+# 运行时管控配置
+runtime:
+  timeout: 3000          # 超时时间，单位 ms
+  max_retry: 2           # 失败重试次数
+  idempotent: true       # 是否幂等操作
+  sandbox: false         # 是否沙箱执行
+  cache_ttl: 300         # 结果缓存时长，单位 s，0 表示不缓存
+
+# 权限配置
+permission:
+  required_perm: "user:read"
+  allow_roles: ["admin", "operator", "viewer"]
+
+# 依赖声明
+dependencies:
+  - "internal:user-center-api"
+  - "python:pydantic>=2.0"

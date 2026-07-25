@@ -1048,6 +1048,10 @@ alias scala-cli.repl.lihaoyi.os-lib 'scala-cli repl --dep com.lihaoyi::os-lib:0.
 alias scala-cli.native 'scala-cli --native '
 alias scala-cli.native.version 'scala-cli --native --native-version 0.4.3 '
 
+if ( -d ~/data/tools/bin ) then
+setenv PATH       "~/data/tools/graalvm/graalvm-jdk-17.0.11+7.1:${PATH}"
+endif
+
 #-----bazel start-------------------------
 alias bazel.help "            bazel help "
 alias bazel.build "           bazel build "
