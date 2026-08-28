@@ -437,7 +437,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'vim-scripts/DrawIt'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'ycm-core/YouCompleteMe'
+"todo"Plugin 'ycm-core/YouCompleteMe'
 """recompile the YouCompleteMe for local Env
 "re-compile lib for YCM
 ""sudo apt install python2.7-dev
